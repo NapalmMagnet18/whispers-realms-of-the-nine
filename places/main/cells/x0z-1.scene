@@ -60,7 +60,7 @@ qm-ward-maker-mark:
   state: {after: furnace_soot, mark: maker_mark, quest: MAR-06, say: "Under the grime: a lantern inside a bell. The old Beacon Guild seal.", title: Brass Maker's Mark, verb: Polish}
   tags: [quest-mark, lantern-ward]
 qm-ward-memorial-archive:
-  feetPosition: {x: -24.5, y: {terrain: 0}, z: -126.5}
+  feetPosition: {x: -14.5, y: 0.8, z: -124.5}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-ward-memorial-archive
   physics: static
@@ -69,7 +69,7 @@ qm-ward-memorial-archive:
   state: {flag: memorial_archived, mark: memorial_choice, quest: MAR-08, say: "You wrap the plaque in oilcloth and lock it in the archive chest. Recorded, kept, not shouted.", title: the plaque in the archive chest, verb: Seal}
   tags: [quest-mark, lantern-ward]
 qm-ward-memorial-public:
-  feetPosition: {x: -19, y: {terrain: 0}, z: -125.5}
+  feetPosition: {x: -7.5, y: 0.8050936410772364, z: -123}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-ward-memorial-public
   material: {color: oklch(0.7 0.03 80), texture: cdn/texture-mossy-fieldstone-wall.png}
@@ -146,7 +146,7 @@ qm-ward-pell:
   tags: [quest-mark, npc, lantern-ward]
 qm-ward-plaque:
   children: [{feetPosition: {x: 0, y: 0.25, z: -0.14}, material: {color: oklch(0.55 0.09 70), metalness: 0.8, roughness: 0.4}, primitive: {depth: 0.03, height: 0.6, kind: box, width: 1}, ui: "<div face='front' class='w-full h-full flex flex-col items-center justify-center font-serif text-center' style='color:#2a1e16'><div style='font-size:70px'>BELLWARD LANE</div><div style='font-size:46px'>Nos. 9 to 12</div><div style='font-size:40px'>Sealed in the Year of the First Silence</div></div>"}]
-  feetPosition: {x: -22, y: {terrain: 0}, z: -124}
+  feetPosition: {x: -11, y: 0.8, z: -124}
   id: qm-ward-plaque
   material: {color: oklch(0.55 0.02 120), texture: cdn/texture-mossy-fieldstone-wall.png}
   physics: static
