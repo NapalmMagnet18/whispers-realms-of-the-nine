@@ -49,9 +49,9 @@ export const PHASES = [
     ],
     "bugs": [
       {"id": "bugs-1", "text": "A hero back at the gate with an old characterCreated flag drew the game HUD over the title. Fixed v0.7.9 in main-menu-mgr.js; reload verified: title shows", "done": true},
-      {"id": "bugs-2", "text": "Realm round trip A → B → A never run end to end; logout from pause must land on the right view (realm list vs title)", "done": false},
-      {"id": "bugs-3", "text": "Character creation arrival 854 KB vs 450 KB budget: ui-menu-panel.js 147 KB, player.js 72 KB, ui.js 64 KB load before standing", "done": false},
-      {"id": "bugs-4", "text": "Title camera drift: verified moving across three fresh frames", "done": true},
+      {"id": "bugs-2", "text": "Realm round trip A → B → A run 0.8.2 (rosters held per realm); Log Out from pause lands on a clean title, no HUD (seen 0.8.1 and 0.8.5)", "done": true},
+      {"id": "bugs-3", "text": "Character creation arrival 854 KB vs 450 KB budget. 0.8.5: windows and door panel by import(), now 662 KB. Left: player.js 72 KB, ui.js 65 KB, ui-hud.js 51 KB, all needed to stand", "done": false},
+      {"id": "bugs-4", "text": "Title camera drift: two frames 4 s apart at 0.8.5 show lamp posts sliding against the gate: the camera moves", "done": true},
       {"id": "bugs-5", "text": "Version tag on a stuck hero's HUD: gone with bugs-1, title shows v0.7.9 Alpha", "done": true}
     ],
     "notes": [
