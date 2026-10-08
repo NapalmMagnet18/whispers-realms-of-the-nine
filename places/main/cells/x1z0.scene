@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x1z0
+amb-quarry:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-stone-quarry-pickaxe-chips-gravel-slide-dry-wind-loop.mp3, gain: 0.14, loop: true, maxDistance: 90, spatial: true}
+  feetPosition: {x: 135, y: {terrain: 3}, z: 30}
+  id: amb-quarry
+  tags: [ambience]
 boulder-0:
   feetPosition: {x: 153, y: {terrain: -0.2}, z: 14}
   id: boulder-0

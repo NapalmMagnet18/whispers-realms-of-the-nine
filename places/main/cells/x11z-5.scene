@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x11z-5
+amb-hollow-vale:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-cold-wind-over-graves-crows-cawing-iron-gate-creak-loop.mp3, gain: 0.17, loop: true, maxDistance: 200, spatial: true}
+  feetPosition: {x: 1350, y: {terrain: 3}, z: -700}
+  id: amb-hollow-vale
+  tags: [ambience]
 hollowcrypt-dead-0:
   feetPosition: {x: 1392.9901420106523, y: {terrain: 0}, z: -686.7015907002398}
   id: hollowcrypt-dead-0

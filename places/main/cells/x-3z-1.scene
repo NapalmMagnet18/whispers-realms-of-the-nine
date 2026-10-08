@@ -1,0 +1,6 @@
+# spawn-scene v2 yaml x-3z-1
+amb-briarwild-2:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-deep-forest-wind-through-pine-boughs-woodpecker-distant-birds-loop.mp3, gain: 0.16, loop: true, maxDistance: 110, spatial: true}
+  feetPosition: {x: -400, y: {terrain: 3}, z: -180}
+  id: amb-briarwild-2
+  tags: [ambience]

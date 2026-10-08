@@ -1,0 +1,6 @@
+# spawn-scene v2 yaml x-8z1
+amb-deepgrove:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-ancient-grove-creaking-trunks-soft-wind-chimes-owl-hoots-loop.mp3, gain: 0.17, loop: true, maxDistance: 120, spatial: true}
+  feetPosition: {x: -1085, y: {terrain: 3}, z: 64}
+  id: amb-deepgrove
+  tags: [ambience]

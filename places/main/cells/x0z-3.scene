@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x0z-3
+amb-spire:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-high-wind-moaning-through-ruined-stone-tower-faint-hum-loop.mp3, gain: 0.16, loop: true, maxDistance: 120, spatial: true}
+  feetPosition: {x: 30, y: {terrain: 3}, z: -360}
+  id: amb-spire
+  tags: [ambience]
 far-spire:
   feetPosition: {x: 30, y: {terrain: -2}, z: -360}
   id: far-spire

@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x-2z0
+amb-briarwild-1:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-deep-forest-wind-through-pine-boughs-woodpecker-distant-birds-loop.mp3, gain: 0.16, loop: true, maxDistance: 110, spatial: true}
+  feetPosition: {x: -250, y: {terrain: 3}, z: 20}
+  id: amb-briarwild-1
+  tags: [ambience]
 start-thornhollow-way-8:
   feetPosition: {x: -277.73329271757694, y: 11.455085560174835, z: -11.244770844117761}
   id: start-thornhollow-way-8

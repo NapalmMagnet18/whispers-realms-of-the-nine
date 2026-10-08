@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x-8z15
+amb-tideglass:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-ocean-surf-rolling-onto-shingle-beach-gulls-wind-loop.mp3, gain: 0.18, loop: true, maxDistance: 170, spatial: true}
+  feetPosition: {x: -1000, y: {terrain: 3}, z: 1880}
+  id: amb-tideglass
+  tags: [ambience]
 qm-tid-estuary:
   feetPosition: {x: -1062, y: {terrain: -0.2}, z: 1922}
   fx: {script: "fx\npop spray rate=4 on=disc(2) life=.8..1.4 v=up(1..2)+sdir()*.5 size=.08..0.15 acc=grav()*.6+drag(.6) col=<.85,.92,.95> a=.6>0 r=sprite(soft-disc,alpha)\npop glow n=1 pos=<0,2.4,0> glo=flick(1.5,.6) r=light(<.6,.85,1>,$glo*2.5,10)"}

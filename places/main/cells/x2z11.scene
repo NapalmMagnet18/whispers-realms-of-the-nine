@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x2z11
+amb-gullrest:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-ocean-surf-rolling-onto-shingle-beach-gulls-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 110, spatial: true}
+  feetPosition: {x: 250, y: {terrain: 3}, z: 1430}
+  id: amb-gullrest
+  tags: [ambience]
 nam-buoy-0:
   feetPosition: {x: 214, y: 0.1, z: 1405}
   fx: {script: "fx\npop glow n=1 pos=<0,1.5,0> r=light(<1,.75,.4>,2,7)"}

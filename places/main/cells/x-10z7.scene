@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x-10z7
+amb-sorrowfen-1:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-swamp-frogs-croaking-insects-buzzing-bubbling-mud-loop.mp3, gain: 0.18, loop: true, maxDistance: 160, spatial: true}
+  feetPosition: {x: -1300, y: {terrain: 3}, z: 950}
+  id: amb-sorrowfen-1
+  tags: [ambience]
 fen-chapel:
   feetPosition: {x: -1298, y: {terrain: 0}, z: 945}
   id: fen-chapel
