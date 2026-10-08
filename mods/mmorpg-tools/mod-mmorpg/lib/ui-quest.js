@@ -180,7 +180,7 @@ export function renderQuestDialog(localPlayer) {
             + '</div>'
 
             // Quest description — Times New Roman 32px, supports {player}
-            + '<div style="font-family:\'Times New Roman\',Times,serif;font-size:29px;line-height:1.15;color:oklch(0.3 0.02 0);margin-bottom:22px;max-width:640px;padding-left:148px;padding-right:12px;margin-top:8px;">'
+            + '<div style="font-family:\'Times New Roman\',Times,serif;font-size:29px;line-height:1.15;color:oklch(0.3 0.02 0);margin-bottom:22px;max-width:640px;max-height:236px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:oklch(0.55 0.08 60) transparent;padding-left:148px;padding-right:12px;margin-top:8px;" onmousedown="event.stopPropagation()">'
               + questText
             + '</div>'
 
