@@ -82,7 +82,7 @@ export function renderQuestDialog(localPlayer) {
     var obj = objectives[i];
     objectiveRows += '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;">'
       + '<div style="width:8px;height:8px;background:oklch(0.3 0.15 310);transform:rotate(45deg);flex-shrink:0;"></div>'
-      + '<span style="font-size:32px;color:oklch(0.3 0.02 0);font-family:\'Times New Roman\',Times,serif;line-height:1.2;">' + obj.desc + (obj.target ? ' (0/' + obj.target + ')' : '') + '</span>'
+      + '<span style="font-size:28px;max-width:440px;overflow-wrap:break-word;color:oklch(0.3 0.02 0);font-family:\'Times New Roman\',Times,serif;line-height:1.15;">' + obj.desc + (obj.target ? ' (0/' + obj.target + ')' : '') + '</span>'
       + '</div>';
   }
 
@@ -205,7 +205,7 @@ export function renderQuestDialog(localPlayer) {
             + '</div>'
 
             // Quest description — Times New Roman 32px, supports {player}
-            + '<div style="font-family:\'Times New Roman\',Times,serif;font-size:29px;line-height:1.15;color:oklch(0.3 0.02 0);margin-bottom:22px;max-width:640px;max-height:236px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:oklch(0.55 0.08 60) transparent;padding-left:148px;padding-right:12px;margin-top:8px;" onmousedown="event.stopPropagation()">'
+            + '<div style="font-family:\'Times New Roman\',Times,serif;font-size:29px;line-height:1.15;color:oklch(0.3 0.02 0);margin-bottom:22px;max-width:640px;max-height:176px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:oklch(0.55 0.08 60) transparent;padding-left:148px;padding-right:12px;margin-top:8px;" onmousedown="event.stopPropagation()">'
               + questText
             + '</div>'
 
