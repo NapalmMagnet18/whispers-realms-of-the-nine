@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1237,
-  "updatedAt": "2026-10-08T18:12:36.399Z",
+  "basedOnSpecVersion": 1247,
+  "updatedAt": "2026-10-08T18:20:58.300Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO set across the Lantern March and its streamed frontier regions, including Ashen Close beside Lantern's Reach. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, vitality and personal regional music, while place scenes and YAML registries define content.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -201,7 +201,7 @@
     "places/character-creation-land/ - race/class/appearance selection with preview character and creation camera.",
     "places/main/config.yaml - Lantern March terrain, regional surfaces/scatter, roads and atmosphere; levels/clears Ashen Close near (128,-185), its village and tavern ground, and their road approaches.",
     "places/main/cells/x0z0.scene - Lantern's Reach hub, town services, quests and Exchange; trade forge and alchemy bench have spatial looping ambience.",
-    "places/main/cells/x0z-1.scene, x0z-2.scene, x1z-1.scene, x1z-2.scene - Ashen Close graveyard, cathedral, gothic houses and The Last Candle tavern; grave-ground mesh, low mist, chandler/coffinwright stalls and townsfolk Wenna, Jory and Little Ada expand the district.",
+    "places/main/cells/x0z-1.scene, x0z-2.scene, x1z-1.scene, x1z-2.scene - Ashen Close graveyard, cathedral, gothic houses and The Last Candle tavern; grave-ground mesh, low mist, chandler/coffinwright stalls and townsfolk Wenna, Jory and Litt…",
     "places/main/cells/ - 111 streamed March cells across hub, frontiers and campaigns; local scenes supply structures, encounters and interactions.",
     "places/hollowcrypt/ - underground dungeon entered from the mausoleum in main; cells hold crypt halls, archive, Warden, Vale/Elric, candles and echoes."
   ],
@@ -217,22 +217,22 @@
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population, realm list and selected-realm detail shared by menu and player lifecycle.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-art.js - shared frame, rule and icon treatments used by the MMORPG screens, including the login and realm roster.",
     "scripts/lib/data/realms.yml - realm roster/config read by scripts/routing.js and crons/realm-pulse.js; room IDs must match realm-save metadata.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics shared by quest-core, quest-giver and quest UI; dialogue prose is separate in quest-text.yml.",
     "scripts/lib/economy.js + MMORPG lib/currency.js - integer-copper transactions/ledger and denomination formatting shared by quests, vendor, flight, trade and UI.",
     "scripts/lib/data/trades.yml - trade/profession, gather-node, recipe, item and auction configuration consumed by trades-core and MMORPG ui-trades.",
-    "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and continent terrain; regions.js also supplies ids consumed by scripts/region-music.js.",
-    "scripts/lib/data/item-models.yml + world.assets.yaml - reusable relic/gear GLB addresses by item and asset metadata; Ashen Close rack/table placements use the modeled set."
+    "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and continent terrain; regions.js also supplies ids consumed by scripts/region-music.js."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - getMenuRoster, getSelectedRosterIndex, hydrateMenuRoster, update, onSpawn, onInput; character-select.js - preview lifecycle, update/input and spawn handlers.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-trades.js - trade-station and auction-house panels; lib/version.js - GAME_VERSION 0.33.6 Alpha, GAME_TITLE, versionTag.",
-    "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-character-roster.js - renderCharacterRoster.",
+    "MMORPG ui.js - UI composition/actions; lib/ui-trades.js - trade-station and auction-house panels; lib/version.js - GAME_VERSION 0.33.8 Alpha, GAME_TITLE, versionTag.",
+    "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-character-roster.js - renderCharacterRoster, realm ledger with type sigils, population bars and hero counts.",
+    "MMORPG lib/ui-main-menu.js - renderMainMenu; framed login screen with herald feature/news, Enter World plaque and Lantern Gate actions.",
     "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; class-aware action bar presents kit/cooldowns in slots 1-3 unless saved spellBar entries override.",
     "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise, mending and PvP zone/death handling.",
-    "scripts/trades.js - lazy onInput/update door to trades-core; trades-core exports itemDef, band, onInput, update for gathering, profession stations and auction house.",
-    "scripts/quest-player.js - ears.kill, onInput, update (lazy quest-core delegate); scripts/quest-core.js - onInput, update; scripts/gen/ashen.js, scripts/gen/ashen-village.js, scripts/gen/grave-ground.js and scripts/gen/grave-weeds.js - geometry, collider."
+    "scripts/trades.js - lazy onInput/update door to trades-core; trades-core exports itemDef, band, onInput, update for gathering, profession stations and auction house."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
@@ -277,6 +277,6 @@
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "state.xp remains cumulative while xpInto/xpToLevel are current-bar values; levels.yml owns total-XP anchors and progression cap 60, and class damage derives from configured damagePerLevel through lib/kit.js power.",
     "Monster managers target kill and coins events to the hero's own behaviors: quest-player ears.kill owns tally/XP persistence, vendor owns coin ledger/purse; do not mutate the remote hero save from the monster's machine.",
-    "Ashen Close procedural pieces use a ground-level origin and front face at −Z; grave-ground's params holeW/holeD/holeX keep the cathedral footprint clear, and matching scene placements, transformed colliders, light/FX children align to that local frame."
+    "Ashen Close procedural pieces use a ground-level origin and front face at −Z; grave-ground's params holeW/holeD/holeX keep the cathedral footprint clear, and matching scene placements, transformed colliders, light/FX children align to that geometry."
   ]
 }
