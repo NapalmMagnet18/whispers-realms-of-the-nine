@@ -10,6 +10,7 @@ export function update(ctx, dt) {
   if (me.place !== "main" && me.place !== "hollowcrypt") return;
   if (mem.zoneAt !== Math.floor(now / 1000)) { // once a second: which ground am I on, on a PvP realm
     mem.zoneAt = Math.floor(now / 1000);
+    const room = (ctx.getRoomId && ctx.getRoomId()) || "main"; if (s.realmCurrent !== room) s.realmCurrent = room;
     const fp = me.feetPosition, safe = me.place === "main" && pvpRealm(ctx) ? sanctuaryAt(fp.x, fp.z) : null;
     const zone = me.place === "main" && pvpRealm(ctx) ? (safe ? "sanctuary" : "contested") : null;
     if (s.pvpZone !== zone) {
