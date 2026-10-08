@@ -14,9 +14,10 @@ import { levelInfo, statsFor } from './lib/leveling.js';
 import { questFirst, levelFirst } from './lib/realm-firsts.js';
 import V from './lib/data/vanguard.yml';
 import { qt, warm as warmText } from './lib/quest-text.js';
-import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
+import { getAvailableQuests, questToActiveFormat, questProgress, getQuest, seedQuests } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 import { isPlay } from './lib/places.js';
 import GEAR from './lib/data/gear.yml';
+seedQuests(Q); // quest-data's book is filled the moment quest-core lands
 
 const W = Q.woodcutting, N = Q.npc, R = Q.reading || { reach: 2.6, length: 11 }, M = Q.marks || { reach: 3.2, cooldown: 6 };
 const ELRIC = 'gatekeeper-elric';

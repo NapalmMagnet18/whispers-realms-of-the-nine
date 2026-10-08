@@ -11,6 +11,7 @@ function warmQuests() {
   }, function () { _qPending = null; });
 }
 warmQuests();
+export function seedQuests(QDATA) { if (_qReady || !QDATA) return; for (var k in QDATA) { if (QDATA[k] && QDATA[k].objectives) QUEST_DATABASE[k] = QDATA[k]; } _qReady = true; } // quest-core hands its copy over
 export function questsReady() { warmQuests(); return _qReady; }
 
 function has(list, id) { return Array.isArray(list) && list.indexOf(id) !== -1; }
