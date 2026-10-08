@@ -192,6 +192,7 @@ function useMark(ctx, r) {
   st._questSave = true;
   ctx.self.anim.action = { clip: V.strike.clip, weight: 1, loop: 'once', speed: V.strike.speed, blendIn: 0.08 };
   tell(ms.gain || ('+1 ' + m.obj.desc), 'oklch(0.86 0.15 85)');
+  if (ms.burstFx) ctx.emit('fx', { position: { x: r.feetPosition.x, y: r.feetPosition.y + (ms.burstAt || 1), z: r.feetPosition.z }, script: ms.burstFx }, { audience: { nearby: r.feetPosition, radius: 60 } }); // a mark that answers with a flare (a lamp catching, a buoy ringing)
   if (ms.say) { ctx.self.state.npcSay = { text: (ms.title ? '<b>' + ms.title + '</b><br>' : '') + ms.say, id: ctx.now(), anchor: r.id, offset: '0 1.6 0' }; ctx.session.sayUntil = ctx.now() + R.length * 1000; }
   ctx.emit('playSound', { clip: ms.sound || '/cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3', position: r.feetPosition, volume: 0.55 }, { audience: { player: ctx.self.id } });
 }
