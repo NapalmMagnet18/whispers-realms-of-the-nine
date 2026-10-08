@@ -7,6 +7,8 @@
 import Q from './lib/data/quests.yml';
 import { raycast } from 'builtin/physics';
 import TF from './lib/data/townsfolk.yml';
+import GV from './lib/data/greet-voices.yml';
+const GV_OF = {}; for (const [v, names] of Object.entries(GV.cast || {})) for (const n of names) GV_OF[n] = v;
 import { move, formatText } from './lib/economy.js';
 import { levelInfo, statsFor } from './lib/leveling.js';
 import { questFirst, levelFirst } from './lib/realm-firsts.js';
@@ -46,9 +48,20 @@ function read(ctx, r) {
   ctx.self.state.npcSay = { text: (s.title ? '<b>' + s.title + '</b><br>' : '') + (s.text || ''), id: ctx.now(), anchor: r.id, offset: s.offset || '0 1.4 0' };
   ctx.session.sayUntil = ctx.now() + R.length * 1000;
 }
+// WoW-style greeting bark: one short line in the resident's voice, heard by the one who pressed, at the resident
+function bark(ctx, r) {
+  const who = String((r.state && r.state.who) || r.id || '').replace(/^ve[il]-/, '').split(/[-_]/)[0].toLowerCase();
+  const lines = GV.voices?.[GV_OF[who]]; if (!lines) return;
+  const cd = ctx.session.barkAt || (ctx.session.barkAt = {});
+  if (ctx.now() - (cd[r.id] || 0) < (GV.cooldown || 6) * 1000) return;
+  cd[r.id] = ctx.now();
+  const pos = ctx.place.objects[r.id]?.feetPosition;
+  ctx.emit('playSound', { clip: lines[Math.floor(ctx.random() * lines.length)], position: pos ? { x: pos.x, y: pos.y + 1.6, z: pos.z } : undefined, volume: 0.75, bus: 'Voice', mode: 'restart', maxDistance: 25 }, { audience: { player: ctx.self.id } });
+}
 // a townsfolk resident (tag talker, state.who = a townsfolk.yml row): each press the next of their lines, over their head
 function chat(ctx, r) {
   const row = TF[r.state && r.state.who]; if (!row) return;
+  bark(ctx, r);
   const seen = ctx.session.talkSeen || (ctx.session.talkSeen = {});
   const i = seen[r.id] ?? 0; seen[r.id] = (i + 1) % row.lines.length;
   ctx.self.state.npcSay = { text: '<b>' + row.name + '</b><br>' + row.lines[i], id: ctx.now(), anchor: r.id, offset: '0 2.35 0' };
@@ -115,6 +128,7 @@ function addLog(st) {
 // any quest-npc: a ready turn-in first, then a quest on offer, then progress talk, then their own line
 const npcName = (npc) => (npc.state && npc.state.npcName) || (npc.id === ELRIC ? 'Elric' : 'them');
 function talk(ctx, npc) {
+  bark(ctx, npc);
   const st = ctx.self.state, id = npc.id;
   const pos = ctx.place.objects[id]?.feetPosition ?? ctx.self.feetPosition;
   const actives = (st.activeQuests || []).filter(Boolean);

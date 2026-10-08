@@ -1,0 +1,18 @@
+# WoW-style greeting barks: E on a resident plays one short spoken line in their voice (quest-core.js bark()).
+# A resident's who is matched by its base name: "vel-arlo", "sena-tide", "tamsin_glade" → arlo, sena, tamsin.
+# Unlisted names stay silent (text only). cooldown: seconds before the same resident barks again for you.
+cooldown: 6
+voices:
+  gruff:   ["/cdn/voice-gravel-voiced-weathered-middle-aged-man-saying-well-met-traveler.mp3", "/cdn/voice-gravel-voiced-weathered-middle-aged-man-saying-what-do-you-need.mp3", "/cdn/voice-gravel-voiced-weathered-middle-aged-man-saying-mm-make-it-quick.mp3"]
+  warm:    ["/cdn/voice-warm-alto-village-woman-friendly-saying-hello-there-love.mp3", "/cdn/voice-warm-alto-village-woman-friendly-saying-good-to-see-you.mp3", "/cdn/voice-warm-alto-village-woman-friendly-saying-what-can-i-do-for-you.mp3"]
+  young_w: ["/cdn/voice-bright-young-adult-woman-alert-saying-oh-hey-you.mp3", "/cdn/voice-bright-young-adult-woman-alert-saying-keep-your-eyes-open.mp3", "/cdn/voice-bright-young-adult-woman-alert-saying-need-something.mp3"]
+  young_m: ["/cdn/voice-bright-young-tenor-man-eager-saying-hail-friend.mp3", "/cdn/voice-bright-young-tenor-man-eager-saying-yes-what-is-it.mp3", "/cdn/voice-bright-young-tenor-man-eager-saying-good-day.mp3"]
+  elder:   ["/cdn/voice-reedy-old-man-slow-wise-saying-ah-a-visitor.mp3", "/cdn/voice-reedy-old-man-slow-wise-saying-the-lanterns-remember.mp3", "/cdn/voice-reedy-old-man-slow-wise-saying-sit-a-while.mp3"]
+  serene:  ["/cdn/voice-soft-serene-priestess-woman-calm-saying-light-keep-you.mp3", "/cdn/voice-soft-serene-priestess-woman-calm-saying-be-at-peace.mp3", "/cdn/voice-soft-serene-priestess-woman-calm-saying-you-are-welcome-here.mp3"]
+cast:
+  gruff:   [dren, bram, brannoc, garrick, hask, mott, scab, bryn, elric, oren, rowan, hesk, toma, ruun, otho, sentry, dockwatch, hale, orin, osric]
+  warm:    [mira, hilde, fenna, maudry, wenna, ysolde, iona, sena, marta, orla]
+  young_w: [tamsin, kele, kestrel, sari, pip, nyssa]
+  young_m: [pell, arlo, kiv, ires, wyn]
+  elder:   [hollis, leth, mareth]
+  serene:  [vale, maelis, ossa, eda]
