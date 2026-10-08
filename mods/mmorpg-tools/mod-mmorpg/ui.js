@@ -489,9 +489,9 @@ export function renderCharacterCreation(localPlayer) {
   }
 
   var lightIcons = [];
-  for (var i = 0; i < 8; i++) { lightIcons.push(raceIcon(i)); }
+  for (var i = 0; i < RACES.length; i++) { lightIcons.push(raceIcon(i)); }
   var darkIcons = [];
-  for (var i = 8; i < 16; i++) { darkIcons.push(raceIcon(i)); }
+  
 
   // --- GENDER TOGGLE (ornate icons) ---
   function genderBtn(idx) {

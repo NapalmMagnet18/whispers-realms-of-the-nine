@@ -3,32 +3,32 @@
 // Export interface matches scripts/lib/races.js exactly
 
 var CLASSES = [
-  'Class Name'
+  'Vanguard'
 ];
 
 var CLASS_STATS = {
-  'Class Name': { str: 50, agi: 50, mag: 50, def: 50 },
+  'Vanguard': { str: 50, agi: 50, mag: 50, def: 50 },
 };
 
 var CLASS_ABILITIES = {
-  'Class Name': ['Strike', 'Shield', 'Rally'],
+  'Vanguard': ['Strike', 'Heavy Strike', 'Guard'],
 };
 
 var RACE_DESCRIPTIONS = {
-  'Race 1': 'A versatile and resilient people. Race 1 excels in any role, making them ideal for players who want flexibility.',
-  'Race 2': 'Arcane scholars with innate magical affinity. Race 2 hits harder with spells and gains bonus intelligence.',
+  'Marchborn': 'Folk of the Lantern March, raised under the beacon of Lantern\'s Reach. Steady hands, stubborn hearts.',
+  'Briarkin': 'Wanderers from the deep Briarwild who hear the old whispers in the trees and follow them home.',
 };
 
 var CLASS_LORE = {
-  'Class Name': 'A balanced fighter trained in the arts of blade, shield, and command. Ready for any challenge.',
+  'Vanguard': 'A shield-bearing guardian of the March. Strikes true, hits hard when it counts, and holds the line with Guard.',
 };
 
 var CLASS_ICONS = {
-  'Class Name': '/cdn/icon-fantasy-generic-class-sword-shield-emblem.png',
+  'Vanguard': '/cdn/value.063462cc9e460847ae17aea8a9ba80fbdb90fd847808c9fe3e53c1122bc5975a.png',
 };
 
 var CLASS_COLORS = {
-  'Class Name': '#8b8b8b',
+  'Vanguard': '#AF8951',
 };
 
 // 2 race backgrounds
@@ -67,15 +67,15 @@ var FACIAL_HAIR = [
 ];
 
 var WARRIOR_MODEL = '/cdn/model-humanoid-fantasy-warrior-male-black-robes.glb?animations=Idle,Walk,Run,Sprint,Jump,BeHit_FlyUp,Dead,Skill_01,Basic_Jump,Combat_Stance,Left_Slash,Reaping_Swing,Roll_Dodge_1';
-var WARRIOR_PORTRAIT = '/cdn/image-fantasy-painted-portrait-warrior-male-face-closeup-dark-frame-black-background.png';
+var WARRIOR_PORTRAIT = '/cdn/value.c4c67311858819ab9e86ef81f51da99f69509138567a3eabdcc3d984547459f6.png';
 
 var MAGE_MODEL = '/cdn/model-humanoid-fantasy-mage-male-dark-robes.glb?animations=Idle,Walk,Run,Sprint,Jump,BeHit_FlyUp,Dead,Skill_01,Basic_Jump,Combat_Stance,Left_Slash,Reaping_Swing,Roll_Dodge_1';
-var MAGE_PORTRAIT = '/cdn/image-fantasy-painted-portrait-mage-male-face-closeup-dark-frame-black-background.png';
+var MAGE_PORTRAIT = '/cdn/value.95a07d181d4a68b47e7b0a8bb46cf1769f5776bc254f0976ed6a10af4f5f9a4e.png';
 
 var RACES = [
   {
-    name: 'Race 1',
-    classes: ['Class Name'],
+    name: 'Marchborn',
+    classes: ['Vanguard'],
     malePortrait: WARRIOR_PORTRAIT,
     femalePortrait: WARRIOR_PORTRAIT,
     maleAnimatedPortrait: WARRIOR_PORTRAIT,
@@ -84,8 +84,8 @@ var RACES = [
     femaleModel: WARRIOR_MODEL,
   },
   {
-    name: 'Race 2',
-    classes: ['Class Name'],
+    name: 'Briarkin',
+    classes: ['Vanguard'],
     malePortrait: MAGE_PORTRAIT,
     femalePortrait: MAGE_PORTRAIT,
     maleAnimatedPortrait: MAGE_PORTRAIT,

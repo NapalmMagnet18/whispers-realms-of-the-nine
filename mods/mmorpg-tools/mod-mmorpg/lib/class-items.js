@@ -1,9 +1,9 @@
 // Class-specific starting items for MMORPG Tools Mod
-// One entry for "Class Name" with a generic sword and robes
+// One entry for "Vanguard" with a generic sword and robes
 // Export interface matches scripts/lib/class-items.js exactly
 
 var CLASS_STARTING_ITEMS = {
-  'Class Name': [
+  'Vanguard': [
     { id: 'starter-sword', name: 'Sword', icon: '/cdn/icon-fantasy-generic-sword.png', slot: 'mainHand', stats: { damage: { min: 4, max: 10 } } },
     { id: 'starter-robes', name: 'Robes', icon: '/cdn/icon-fantasy-generic-robes.png', slot: 'chest', stats: { defence: 6 } },
   ],
