@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 543,
-  "updatedAt": "2026-10-08T04:16:35.419Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO centered on the streamed Lantern March continent, reached through a realm-gate menu and character creation. MMORPG Tools coordinates character persistence and UI around an ordered player behavior chain; world scripts provide combat, quests, gathering, NPCs and procedural scenery. The Gavi mod adds a builder-facing crew panel and a large command/skills doctrine alongside the game systems.",
+  "basedOnSpecVersion": 571,
+  "updatedAt": "2026-10-08T04:34:37.880Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO set across the streamed Lantern March continent, entered through a realm-gate menu and character creation. MMORPG Tools coordinates character persistence, lifecycle and modular UI; the ordered player behavior chain drives movement, classes, quests, commerce and now gryphon travel. Procedural terrain and builders shape the continent, while regions, roost data and UI present its expanded frontiers.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -55,6 +55,7 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-chat.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-cursed-item-dialog.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-door-panel.js",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-flight.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-frames.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-gnome-tip.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-guild.js",
@@ -74,6 +75,7 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-vendor.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-welcome.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-popup.js",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-splash.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/version.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/weapon-data.js",
     "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js",
@@ -92,6 +94,7 @@
     "scripts/db.js",
     "scripts/elric.js",
     "scripts/flat-starter-terrain.js",
+    "scripts/flight.js",
     "scripts/flower-look.js",
     "scripts/flower.js",
     "scripts/gen/arrow.js",
@@ -108,6 +111,7 @@
     "scripts/gen/reach-watchtower.js",
     "scripts/gen/realm-gate.js",
     "scripts/gen/rock.js",
+    "scripts/gen/roost.js",
     "scripts/gen/shape.js",
     "scripts/gen/spire.js",
     "scripts/gen/stone-bridge.js",
@@ -118,6 +122,7 @@
     "scripts/gen/wolf.js",
     "scripts/grass-look.js",
     "scripts/grass.js",
+    "scripts/gryphon-flight.js",
     "scripts/humanoid-locomotion.js",
     "scripts/leaf-fall-look.js",
     "scripts/lib/economy.js",
@@ -154,81 +159,81 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main-menu-land/ - realm-gate title/front door, roster and menu UI; Enter World and Create are the transitions onward.",
+    "places/main-menu-land/ - realm-gate title/front door, roster and menu UI; Enter World and Create lead to gameplay or character creation.",
     "places/character-creation-land/ - race/class/appearance creation scene with preview model, lighting and creation camera.",
-    "places/main/ - streamed Lantern March continent; config owns terrain, coast, regional scatter, roads, atmosphere and start clearings.",
-    "places/main/cells/x0z0.scene - Lantern's Reach hub: square, inn, smith/merchant services, residents, quest interactions and a newly furnished armory display.",
-    "places/main/cells/ - other continent cells hold Briarwild, Emberstone Quarry, Windmill Farm, outlying settlements, race starts and landmarks including the far spire and Elderveil great tree."
+    "places/main/ - streamed Lantern March continent, now about 19 km east-west and 9 km north of town, bounded by Shrouded Sea; config owns procedural terrain/coast, roads, scatter, atmosphere and clearings.",
+    "places/main/cells/x0z0.scene - Lantern's Reach hub: square, inn, smith/merchant services, residents, quest interactions and armory display.",
+    "places/main/cells/ - regional cells hold Briarwild, Emberstone Quarry, Windmill Farm, settlements, race starts, landmarks and the expanded Ninth Veil/Ashfall frontiers; new cells extend terrain and gryphon-roost sites."
   ],
   "roots": [
     "world.config.yaml - main-menu-land default entry; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
-    "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, camera, character and interaction behaviors plus UI actions.",
-    "templates/player.js#player - ordered locomotion, core movement, Vanguard, Arcanist, Pathfinder, quest-player and vendor behaviors.",
-    "templates/camera.js#camera - core camera template; MMORPG gameplay/creation/menu cameras and wow-camera-controls provide separate framing and control paths.",
-    "places/main/config.yaml - main continent spawn, gravity, terrain/coast, material layers, flattening, roads and scatter bindings.",
-    "mods/gavi/mod.json - registers Gavi's god-mode equipe.js behavior and Crew tab rendered by painel-equipe.js; companion commands and skills define its builder doctrine."
+    "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, camera, character and interaction behaviors plus UI actions including flyTo/flightClose.",
+    "templates/player.js#player - ordered locomotion, movement, Vanguard, Arcanist, Pathfinder, quests, vendor, then flight behavior.",
+    "templates/camera.js#camera - core camera template; MMORPG gameplay/creation/menu cameras and wow-camera-controls provide separate framing/control paths.",
+    "places/main/config.yaml - continent spawn, gravity, expanded terrain/coast, material layers, roads, flattening and scatter bindings.",
+    "mods/gavi/mod.json - registers Gavi's crew behavior and panel; companion commands and skills define builder-facing tools."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency and UI panels consumed by mod behaviors, gameplay scripts and ui.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency and UI panels reused by mod behaviors, gameplay scripts and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - per-realm character load/upsert/delete and roster population shared by menu and player lifecycle.",
     "scripts/lib/data/realms.yml - routing and realm-pulse room registry; realm-save.js separately defines room IDs that must align.",
-    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and availability/progress/status shared by quest-player, quest giver UI and HUD.",
-    "scripts/lib/economy.js + MMORPG lib/currency.js - copper movements/ledger and denomination formatting shared by quests, vendor and UI.",
-    "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and terrain-height/coast logic for continent systems and region display.",
-    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-* and elder-tree.js - reusable procedural geometry builders.",
-    "mods/gavi/commands/ and mods/gavi/skills/ - Gavi slash-command entry points and reusable builder playbooks; equipe.js/painel-equipe.js back the in-world crew panel."
+    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions/status shared by quest-player, quest-giver UI and HUD.",
+    "scripts/lib/economy.js + MMORPG lib/currency.js - copper movements/ledger and denomination formatting shared by quests, vendor, flight and UI.",
+    "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and terrain/coast generation used by continent systems and region display.",
+    "scripts/lib/data/flights.yml - shared roost coordinates, region labels, discovery radius, fare/speed limits and flight clearance read by scripts/flight.js and flight UI data.",
+    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-* and elder-tree.js - reusable procedural geometry builders."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
-    "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js - roster selection/hydration, update, onSpawn and onInput; character-select.js - preview lifecycle, update, onInput and onSpawn.",
+    "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle and input handling.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - character build/save/load and gameplay lifecycle; scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait behavior.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-quest.js - quest and turn-in dialogs/tracker; lib/ui-vendor.js - vendor renderer; lib/version.js - GAME_VERSION (0.9.5 Alpha), GAME_TITLE, versionTag.",
-    "scripts/quest-player.js - onInput/update; scripts/elric.js and scripts/townsfolk.js - onSpawn/update resident turn/greeting behavior.",
-    "scripts/lib/economy.js - realmOf, ledger, feedback, move; scripts/vendor.js - ears, onInput, update; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
-    "scripts/gen/elder-tree.js - geometry, collider; scripts/wolves.js, vanguard.js, arcanist.js and pathfinder.js - combat/creature behaviors.",
-    "mods/gavi/equipe.js - agora, alvo, vizinhos, lugarAtual, mandarRecado, onSpawn, onInput, update; painel-equipe.js - panel render."
+    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-flight.js - renderFlightMap; lib/ui-zone-splash.js - renderZoneSplash, resetZoneSplash, zoneSplashActive, zoneArtFor; lib/version.js - GAME_VERSION 0.9.7 Alpha, GAME_TITLE, versionTag.",
+    "scripts/flight.js - onInput/update; scripts/gryphon-flight.js - at/update for deterministic gryphon path and rider landing; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
+    "scripts/quest-player.js - onInput/update; scripts/elric.js and scripts/townsfolk.js - resident behavior; scripts/lib/economy.js - realmOf, ledger, feedback, move.",
+    "scripts/gen/elder-tree.js - geometry/collider; scripts/wolves.js, vanguard.js, arcanist.js and pathfinder.js - creature/combat behaviors.",
+    "mods/gavi/equipe.js - crew-watch/target behavior; mods/gavi/painel-equipe.js - panel renderer."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw and animation channels; gait samples prior-tick movement velocity.",
-    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records; main-menu-mgr/character-select own front-door state/transitions.",
+    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including discovered roost IDs; menu/character-select own front-door transitions.",
     "scripts/vanguard.js, arcanist.js and pathfinder.js - class action/cooldown/combat state; scripts/wolves.js owns pack AI and den/death timers.",
-    "scripts/quest-player.js - per-player quest, tally, inventory/xp/dialog/cache state and timber interaction; woodcutting.js owns tree fall/regrowth presentation.",
-    "scripts/lib/economy.js - coin movement, purse floor and ledger writes; scripts/vendor.js owns shop UI state and buy/sell handling.",
-    "scripts/elric.js and townsfolk.js - resident idle, facing and greeting animation state; quest-player owns player dialogue and quest progression.",
-    "MMORPG ui.js/lib/ui-* render from player/mod state; mods/gavi/equipe.js owns its crew-watch/target state while painel-equipe.js renders it."
+    "scripts/quest-player.js - player quest, tally, inventory/xp/dialog/cache state; scripts/woodcutting.js owns tree fall/regrowth presentation.",
+    "scripts/lib/economy.js - coin movement, purse floor and ledger writes; scripts/vendor.js owns shop state and transaction handling.",
+    "scripts/flight.js - per-player discovered roosts, flightMap, flying/landing state and nearby-roost hint; scripts/gryphon-flight.js owns spawned mount route and rider landing.",
+    "MMORPG ui.js/lib/ui-* render player/mod state; ui-zone-splash.js owns transient client zone-splash state; Gavi equipe.js owns crew-watch/target state."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → main gameplay lifecycle.",
-    "Any arrival outside main-menu-land without a fresh _worldEnterAt or creation-place _creationEnterAt stamp → scripts/arrival.js redirects to main-menu-land and resets menu phase/view; menu Enter/Create stamp those exceptions.",
-    "main-menu-mgr loads the current room SQL roster, refreshes population/character counts, and api.enterPlace routes selected character to saved place/position; routing validates requested room, then last room, then main.",
-    "scripts/routing.js and crons/realm-pulse.js read realms.yml; each room cron writes player count to realm_pulse, which realm-save reads for roster UI.",
-    "Character creation race/class → lib/races.js race start and character state → player.js/realm-save upsert to realm characters table; identity is keyed by user, realm and slot.",
-    "templates/player.js → humanoid-locomotion → player → Vanguard → Arcanist → Pathfinder → quest-player → vendor; preserve behavior order and shared inputs.",
+    "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to main-menu-land; menu Enter/Create stamp the transition exceptions.",
+    "main-menu-mgr loads current room SQL roster and population; api.enterPlace routes selected character to saved place/position; routing validates requested room, then last room, then main.",
+    "scripts/routing.js and crons/realm-pulse.js read realms.yml; room cron writes player count to realm_pulse, which realm-save reads for roster UI.",
+    "Character creation race/class → lib/races.js race start and character state → MMORPG player.js/realm-save upsert to realm characters table, keyed by user, realm and slot.",
+    "templates/player.js → humanoid-locomotion → player → Vanguard → Arcanist → Pathfinder → quest-player → vendor → flight; preserve behavior order and shared inputs.",
     "moveX/moveZ/jump and orbit/steer/autorun → player.js and wow-move.js room-local intent → body motion under place gravity; camera controls consume camera/player state separately.",
     "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/wolves; wolf slow/hit state is consumed by wolves.js.",
-    "Interact/E → quest-player resolves quest NPCs, talkers, readable props, caches and timber; quests.yml via quest-data drives accept/turn-in/progress and UI.",
-    "Quest UI accept/complete actions → scripts/quest-player.js; completion marks quest claimed before reward, saves character state and pays copper via economy.move.",
-    "Vendor UI vendorBuy/vendorSell/vendorTab/vendorClose → scripts/vendor.js; purchases/sales route coin changes through scripts/lib/economy.js.",
-    "ui.js composes lib/ui-* renderers; quest HUD tracks NPC status and suppresses occluded NPCs via npcHidden; versionTag appears on menu/settings/pause, not every screen."
+    "Interact/E → quest-player resolves NPCs, talkers, readable props, caches and timber; quests.yml via quest-data drives accept/turn-in/progress and UI.",
+    "Quest accept/complete UI → quest-player; completion records claim before reward, saves character state and pays copper through economy.move; vendor UI actions similarly route purchases/sales through economy.",
+    "scripts/flight.js discovers nearby roosts into state.roosts → MMORPG player persistence saves/loads them; E at a roost writes flightMap, rendered by ui.js/lib/ui-flight.js.",
+    "flightMap flyTo {id} action → scripts/flight.js validates discovered destination, charges economy.move, spawns scripts/gryphon-flight.js mount and parents rider → mount lands rider and clears flying; ui-zone-splash waits until landing."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-* and elder-tree.js - procedural builders recur across placed instances, varied by kind, seed and dimensions.",
+    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js and roost.js - procedural builders recur across placed instances, varied by kind, seed and dimensions.",
     "scripts/grass.js, flower.js, mushroom.js and pebble.js - terrain scatter geometry reused by place bindings, varied by layer density, scale, seed or per-item params.",
     "scripts/gen/tree.js with scripts/tree-look.js - painted bark/alpha-cut foliage recur in forest layers and placed scatters, varied by tree kind and LOD.",
     "scripts/flower.js and mushroom.js with their look materials - painted wildflower frames and mushroom caps vary by frame/cap parameters in terrain scatter.",
     "MMORPG player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle registered by mod.json.",
     "MMORPG camera.js/camera-creation.js and menu-camera.js - gameplay, creation-preview and per-screen menu camera paths with phase/place guards.",
-    "MMORPG lib/ui-*.js - modular renderers composed by ui.js for HUD, menu/roster, quests, vendor, inventory, map, character and settings; shared frame styling varies by panel.",
-    "scripts/vanguard.js, arcanist.js and pathfinder.js; wolves.js, quest-player.js, townsfolk.js, vendor.js and woodcutting.js - combat and interaction behaviors vary by class, target tags and per-player/NPC state."
+    "MMORPG lib/ui-*.js - modular renderers composed by ui.js for HUD, menu/roster, quests, vendor, flight map, zone splashes, inventory, map, character and settings.",
+    "scripts/vanguard.js, arcanist.js and pathfinder.js; wolves.js, quest-player.js, townsfolk.js, vendor.js, woodcutting.js and flight.js - gameplay behaviors vary by class, target tags and per-player/NPC state."
   ],
   "probableOrphans": [],
   "migrationNotes": [
-    "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route all transactions through scripts/lib/economy.js to preserve nonnegative purse, ledger and UI feedback.",
-    "templates/player.js behavior order is significant: locomotion before movement, then classes, quests and vendor; gait samples prior-tick velocity.",
+    "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route flight and all other transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
+    "templates/player.js behavior order is significant: locomotion before movement, then classes, quests, vendor and flight; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
-    "Realm sources differ: routing and pulse read scripts/lib/data/realms.yml, while realm-save.js separately defines room IDs; keep roster, route and save identifiers aligned.",
-    "Arrival redirects to the gate unless the menu has just stamped _worldEnterAt or character creation has _creationEnterAt; keep both 20-second grace checks and the enter/create transition stamps coupled.",
-    "Quest turn-in NPC can differ from giver: quest-player uses turnInNpcId || giverNpcId; completion is idempotent because completedQuests is recorded before rewards and _questSave carries durable character fields."
+    "Flight roost ids in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is the discovery record, with coordinates in place-main meters.",
+    "Terrain region priority and zone art/banner tables are separate mirrors; keep names/bounds in regions.js, ui-zone-splash.js and ui-hud.js aligned as frontiers change.",
+    "Realm routing/pulse and realm-save use separate room-ID sources; arrival also depends on paired _worldEnterAt/_creationEnterAt transition stamps and grace checks."
   ]
 }
