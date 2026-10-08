@@ -901,6 +901,48 @@ hay-3:
   primitive: {kind: scripted, params: {kind: hay}, script: scripts/gen/farm.js}
   rotation: 70
   tags: [farm]
+hc-mar-flame:
+  feetPosition: {x: 6.4, z: -34}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-mar-flame
+  primitive: {kind: scripted, params: {kind: lantern, seed: 9}, script: scripts/gen/fen.js}
+  state: {mark: mar_ninth_flame, quest: MAR-20, say: The flame settles in. For a breath every light at home burns a little brighter., title: The Ninth Flame, verb: Set the flame}
+  tags: [quest-mark, homecoming]
+hc-mar-mark-0:
+  feetPosition: {x: -8.7, z: -34.6}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.85,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.85,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-mar-mark-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost, seed: 50}, script: scripts/gen/props.js}
+  rotation: {yaw: 0}
+  state: {mark: snuffed_lamp, quest: MAR-11, say: The wick takes. Somewhere across the Ward a dog stops barking., title: Snuffed Ward Lamp, verb: Relight}
+  tags: [quest-mark, homecoming]
+hc-mar-mark-1:
+  feetPosition: {x: -2.8, z: -31.4}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.85,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.85,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-mar-mark-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost, seed: 51}, script: scripts/gen/props.js}
+  rotation: {yaw: 97}
+  state: {mark: snuffed_lamp, quest: MAR-11, say: The wick takes. Somewhere across the Ward a dog stops barking., title: Snuffed Ward Lamp, verb: Relight}
+  tags: [quest-mark, homecoming]
+hc-mar-mark-2:
+  feetPosition: {x: 20.4, z: -46.5}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.85,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.85,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-mar-mark-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost, seed: 52}, script: scripts/gen/props.js}
+  rotation: {yaw: 194}
+  state: {mark: snuffed_lamp, quest: MAR-11, say: The wick takes. Somewhere across the Ward a dog stops barking., title: Snuffed Ward Lamp, verb: Relight}
+  tags: [quest-mark, homecoming]
+hc-mar-summons:
+  feetPosition: {x: 18, z: -30.7}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.92,.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-mar-summons
+  physics: static
+  primitive: {kind: scripted, params: {kind: questboard, seed: 31}, script: scripts/gen/props.js}
+  state: {mark: mar_summons, quest: MAR-10, say: "'Come home. Lamps going out. Not the wind.' Bram's hand, pressed hard.", title: Bram's Nailed Notice, verb: Examine}
+  tags: [quest-mark, homecoming]
 inn:
   children: [{feetPosition: {x: -3, y: 0.12, z: 3}, physics: static, primitive: {kind: scripted, params: {kind: counter}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -6.4, y: 0.12, z: 4.3}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -5.6, y: 0.12, z: 4.6}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -6.2, y: 0.12, z: 3.5}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -1.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -2.4}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -0.6}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 4.8, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: 3.9, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: 5.7, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: -2.5, y: 0.12, z: -2.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -2.5, y: 0.12, z: -3.4}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 6.6, y: 1, z: 1.1}, light: {color: oklch(0.75 0.17 50), distance: 10, intensity: 22, kind: point}}, {feetPosition: {x: 0, y: 4.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 14, intensity: 5, kind: point}}]
   feetPosition: {x: 0, y: 4, z: -24}

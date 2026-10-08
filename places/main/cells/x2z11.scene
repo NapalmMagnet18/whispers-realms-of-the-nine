@@ -4,6 +4,48 @@ amb-gullrest:
   feetPosition: {x: 250, y: {terrain: 3}, z: 1430}
   id: amb-gullrest
   tags: [ambience]
+hc-nam-flame:
+  feetPosition: {x: 233.7, z: 1419.7}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-nam-flame
+  primitive: {kind: scripted, params: {kind: lantern, seed: 9}, script: scripts/gen/fen.js}
+  state: {mark: nam_ninth_flame, quest: NAM-20, say: The flame settles in. For a breath every light at home burns a little brighter., title: The Ninth Flame, verb: Set the flame}
+  tags: [quest-mark, homecoming]
+hc-nam-mark-0:
+  feetPosition: {x: 249.1, z: 1435}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<.5,.9,1.2>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.5,.9,1.2>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-nam-mark-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: chime, seed: 50}, script: scripts/gen/fen.js}
+  rotation: {yaw: 0}
+  state: {mark: drift_bell, quest: NAM-11, say: "You still the clapper with your palm. The sea goes on, quieter, listening.", title: Tolling Drift-Bell, verb: Silence}
+  tags: [quest-mark, homecoming]
+hc-nam-mark-1:
+  feetPosition: {x: 224.5, z: 1422.3}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<.5,.9,1.2>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.5,.9,1.2>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-nam-mark-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: chime, seed: 51}, script: scripts/gen/fen.js}
+  rotation: {yaw: 97}
+  state: {mark: drift_bell, quest: NAM-11, say: "You still the clapper with your palm. The sea goes on, quieter, listening.", title: Tolling Drift-Bell, verb: Silence}
+  tags: [quest-mark, homecoming]
+hc-nam-mark-2:
+  feetPosition: {x: 249.6, z: 1441.6}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<.5,.9,1.2>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.5,.9,1.2>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-nam-mark-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: chime, seed: 52}, script: scripts/gen/fen.js}
+  rotation: {yaw: 194}
+  state: {mark: drift_bell, quest: NAM-11, say: "You still the clapper with your palm. The sea goes on, quieter, listening.", title: Tolling Drift-Bell, verb: Silence}
+  tags: [quest-mark, homecoming]
+hc-nam-summons:
+  feetPosition: {x: 246.4, z: 1427}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.92,.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-nam-summons
+  physics: static
+  primitive: {kind: scripted, params: {kind: boat, seed: 31}, script: scripts/gen/fen.js}
+  state: {mark: nam_summons, quest: NAM-10, say: The mooring rope is wet. Fresh-wet. The Wake tied up here last night., title: The Empty Mooring, verb: Examine}
+  tags: [quest-mark, homecoming]
 nam-buoy-0:
   feetPosition: {x: 214, y: 0.1, z: 1405}
   fx: {script: "fx\npop glow n=1 pos=<0,1.5,0> r=light(<1,.75,.4>,2,7)"}

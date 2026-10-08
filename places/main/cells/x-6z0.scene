@@ -1,4 +1,26 @@
 # spawn-scene v2 yaml x-6z0
+hc-thr-boss:
+  behavior: scripts/boss.js
+  feetPosition: {x: -741, z: 7}
+  id: hc-thr-boss
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  physics: character
+  rotation: 180
+  scale: 2.1
+  state: {arena: {r: 13, x: -741, z: 7}, boss: hollowsong, home: {x: -741, z: 7}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: "Hollowsong, the Rotted Warden", unhurt: true, yaw: 180}
+  tags: [enemy, boss, homecoming]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Hollowsong, the Rotted Warden</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+hc-thr-mark-1:
+  feetPosition: {x: -730.5, z: 50.5}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<.6,1,.3>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.6,1,.3>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-thr-mark-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 51}, script: scripts/gen/fen.js}
+  rotation: {yaw: 97}
+  state: {mark: rot_bloom, quest: THR-11, say: The bloom hisses and folds. The soil under it smells like rain again., title: Weeping Rot-Bloom, verb: Burn out}
+  tags: [quest-mark, homecoming]
 start-thornhollow/start-thornhollow-bridge:
   feetPosition: {x: -8.200000000000045, y: 2.2140801868688627, z: -10.899999999999999}
   id: start-thornhollow/start-thornhollow-bridge

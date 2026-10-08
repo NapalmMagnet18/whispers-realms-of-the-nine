@@ -1,4 +1,48 @@
 # spawn-scene v2 yaml x-3z4
+hc-reh-boss:
+  behavior: scripts/boss.js
+  feetPosition: {x: -392, z: 555}
+  id: hc-reh-boss
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-reed-sentry-tall-guardian-woven-from-black-reeds-and-chapel-iron-glowing-teal-lantern-head.glb
+  physics: character
+  rotation: 180
+  scale: 1.7
+  state: {arena: {r: 13, x: -392, z: 555}, boss: the_unbraided, home: {x: -392, z: 555}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: The Unbraided, unhurt: true, yaw: 180}
+  tags: [enemy, boss, homecoming]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Unbraided</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+hc-reh-flame:
+  feetPosition: {x: -430.8, z: 566.2}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-reh-flame
+  primitive: {kind: scripted, params: {kind: lantern, seed: 9}, script: scripts/gen/fen.js}
+  state: {mark: reh_ninth_flame, quest: REH-20, say: The flame settles in. For a breath every light at home burns a little brighter., title: The Ninth Flame, verb: Set the flame}
+  tags: [quest-mark, homecoming]
+hc-reh-mark-1:
+  feetPosition: {x: -441.5, z: 560.6}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<.55,.9,1>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-reh-mark-1
+  primitive: {kind: scripted, params: {kind: reeds, seed: 51}, script: scripts/gen/fen.js}
+  rotation: {yaw: 97}
+  state: {mark: loose_braid, quest: REH-11, say: "Over, under, through. You say the name as you knot it.", title: Loosened Name-Braid, verb: Retie}
+  tags: [quest-mark, homecoming]
+hc-reh-mark-2:
+  feetPosition: {x: -416.8, z: 553.7}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<.55,.9,1>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-reh-mark-2
+  primitive: {kind: scripted, params: {kind: reeds, seed: 52}, script: scripts/gen/fen.js}
+  rotation: {yaw: 194}
+  state: {mark: loose_braid, quest: REH-11, say: "Over, under, through. You say the name as you knot it.", title: Loosened Name-Braid, verb: Retie}
+  tags: [quest-mark, homecoming]
+hc-reh-summons:
+  feetPosition: {x: -419.2, z: 569.5}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.92,.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-reh-summons
+  physics: static
+  primitive: {kind: scripted, params: {kind: shrine, seed: 31}, script: scripts/gen/fen.js}
+  state: {mark: reh_summons, quest: REH-10, say: Dark to the bottom. No wisps tonight. Not one., title: "The Memorial Pool, Gone Dark", verb: Examine}
+  tags: [quest-mark, homecoming]
 reh-willow-2:
   feetPosition: {x: -378.2, y: {terrain: 0}, z: 544.8}
   id: reh-willow-2

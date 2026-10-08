@@ -1,4 +1,20 @@
 # spawn-scene v2 yaml x-2z-9
+hc-vey-flame:
+  feetPosition: {x: -202.8, z: -1107.8}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-vey-flame
+  primitive: {kind: scripted, params: {kind: lantern, seed: 9}, script: scripts/gen/fen.js}
+  state: {mark: vey_ninth_flame, quest: VEY-20, say: The flame settles in. For a breath every light at home burns a little brighter., title: The Ninth Flame, verb: Set the flame}
+  tags: [quest-mark, homecoming]
+hc-vey-mark-1:
+  feetPosition: {x: -213.5, z: -1113.4}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.7,1.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.7,1.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-vey-mark-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone, seed: 51}, script: scripts/gen/fen.js}
+  rotation: {yaw: 97}
+  state: {mark: lens_shard, quest: VEY-11, say: "The shard is warm. In it, a constellation that is in no chart.", title: Fallen Lens Shard, verb: Recover}
+  tags: [quest-mark, homecoming]
 roost-starfall:
   children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:60px;line-height:1.1;color:#f2b04a;text-shadow:0 0 12px #000\">STARFALL EYRIE</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
   feetPosition: {x: -218, y: 120, z: -1102}

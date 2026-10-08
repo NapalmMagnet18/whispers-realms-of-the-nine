@@ -23,6 +23,19 @@ ashen-tavern:
   primitive: {kind: scripted, params: {chimney: 0, chimneyZ: 4.05, d: 9, doorX: -1.6, h1: 3.2, h2: 2.6, kind: townhouse, open: true, pitch: 0.75, w: 7}, script: scripts/gen/ashen-village.js, seed: 9}
   rotation: {yaw: 0}
   tags: [ashen, building, tavern]
+hc-mar-boss:
+  behavior: scripts/boss.js
+  feetPosition: {x: 45, z: -132}
+  id: hc-mar-boss
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 180
+  scale: 1.7
+  state: {arena: {r: 13, x: 45, z: -132}, boss: lampless_reeve, home: {x: 45, z: -132}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: "Reeve Ashcombe, the Lampless", unhurt: true, yaw: 180}
+  tags: [enemy, boss, homecoming]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Reeve Ashcombe, the Lampless</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
 node-sunleaf-15:
   behavior: scripts/gather-node.js
   feetPosition: {x: 38.1, y: {terrain: 0}, z: -80.9}

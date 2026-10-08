@@ -1,0 +1,40 @@
+# spawn-scene v2 yaml x-1z-9
+hc-vey-boss:
+  behavior: scripts/boss.js
+  feetPosition: {x: -164, z: -1093}
+  id: hc-vey-boss
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-veil-witness-faceless-robed-figure-violet-crystal-shards-floating-around-head.glb
+  physics: character
+  rotation: 180
+  scale: 1.8
+  state: {arena: {r: 13, x: -164, z: -1093}, boss: star_that_answered, home: {x: -164, z: -1093}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: The Star That Answered, unhurt: true, yaw: 180}
+  tags: [enemy, boss, homecoming]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Star That Answered</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+hc-vey-mark-0:
+  feetPosition: {x: -187.4, z: -1092.5}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.7,1.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.7,1.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-vey-mark-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone, seed: 50}, script: scripts/gen/fen.js}
+  rotation: {yaw: 0}
+  state: {mark: lens_shard, quest: VEY-11, say: "The shard is warm. In it, a constellation that is in no chart.", title: Fallen Lens Shard, verb: Recover}
+  tags: [quest-mark, homecoming]
+hc-vey-mark-2:
+  feetPosition: {x: -188.8, z: -1120.3}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.7,1.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.7,1.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-vey-mark-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone, seed: 52}, script: scripts/gen/fen.js}
+  rotation: {yaw: 194}
+  state: {mark: lens_shard, quest: VEY-11, say: "The shard is warm. In it, a constellation that is in no chart.", title: Fallen Lens Shard, verb: Recover}
+  tags: [quest-mark, homecoming]
+hc-vey-summons:
+  feetPosition: {x: -191.2, z: -1104.5}
+  fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.92,.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: hc-vey-summons
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost, seed: 31}, script: scripts/gen/props.js}
+  state: {mark: vey_summons, quest: VEY-10, say: Split corner to corner. Something looked back out of the ninth place., title: "The Great Lens, Cracked", verb: Examine}
+  tags: [quest-mark, homecoming]
