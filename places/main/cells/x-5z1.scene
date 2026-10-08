@@ -82,4 +82,5 @@ thr-quiet-beast:
   primitive: {kind: scripted, params: {}, script: scripts/gen/wolf.js, seed: 7}
   rotation: 135
   scale: 0.9
+  state: {after: bramble_beast, afterText: "First: drive off the two that still fight", mark: spare_beast, quest: THR-03, say: "It flinches, then lowers its head into your hand. The thorns in its coat loosen. It slips away into the trees, unhurt.", title: The Quiet One, verb: Calm}
   tags: [quest-mark, rootwake-glade]
