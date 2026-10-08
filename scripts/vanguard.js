@@ -3,6 +3,7 @@
 // target's state (target.state.hp -= d). Anything tagged "enemy" with state.hp is struck.
 import V from './lib/data/vanguard.yml'
 import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
+import { classOf } from './lib/kit.js'
 
 const WHOOSH = '/cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3'
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
@@ -15,6 +16,7 @@ pop dust burst=3 life=.5..0.8 v=up(.4)+sdir()*.4 size=.15..0.25 acc=drag(1.5) co
 function me(ctx) { return (ctx.session.vg ??= {})[ctx.self.id] ??= { ready: {} } }
 
 export function onInput(ctx, input) {
+  if (classOf(ctx) !== 'vanguard') return
   if (ctx.self.place !== 'main' || ctx.self.state.phase === 'creating') return
   const p = input.pressed || {}
   if (p.attack) act(ctx, 'strike')

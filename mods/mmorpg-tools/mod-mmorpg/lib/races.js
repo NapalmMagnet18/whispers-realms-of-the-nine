@@ -14,6 +14,8 @@ var CLASS_ABILITIES = {
   'Vanguard': ['Strike', 'Heavy Strike', 'Guard'],
   'Arcanist': ['Firebolt', 'Frost Shard', 'Ward'],
   'Pathfinder': ['Arrow', 'Volley', 'Dodge Roll'],
+  'Arcanist': ['Firebolt', 'Frost Shard', 'Ward'],
+  'Pathfinder': ['Arrow', 'Volley', 'Dodge Roll'],
 };
 
 var RACE_DESCRIPTIONS = {

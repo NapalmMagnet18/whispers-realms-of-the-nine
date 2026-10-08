@@ -40,6 +40,7 @@ function gait(ctx, w, m, name, speed = 1) {
 }
 
 function move(ctx, w, m, to, speed, dt) {
+  if ((w.state?.slowUntil ?? 0) > ctx.now()) speed *= w.state.slowMult ?? 1; // Frost Shard
   const p = w.feetPosition, dx = to.x - p.x, dz = to.z - p.z, d = Math.hypot(dx, dz) || 1;
   const vy = w.grounded ? -2 : Math.max(-30, (w.velocity?.y ?? 0) - 20 * dt);
   w.velocity = { x: (dx / d) * speed, y: vy, z: (dz / d) * speed };
