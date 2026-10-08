@@ -1,0 +1,41 @@
+# Boss loot: the endgame's reason to go back. A boss kill rolls ONE piece from its table for each hero who fought,
+# once per boss per hero per week (lockout key = boss, week = floor(now / 7 days)). Read by scripts/quest-player.js (kill ear).
+# stats: power = % more damage from every class ability (scripts/lib/kit.js power()); stamina = + max health (quest-player gear sync).
+# ilvl: dungeons 25-30, Pale Choir / Emberheart 62-66, Ninth Assembly 70-72. A level-60 hero has 4540 health with no gear.
+lockoutDays: 7
+tiers:
+  dungeon: { label: "Dungeon", color: "oklch(0.75 0.14 250)" }
+  raid1:   { label: "Raid I",  color: "oklch(0.72 0.18 300)" }
+  raid2:   { label: "Raid II", color: "oklch(0.8 0.16 70)" }
+items:
+  choirmother_hood:   { name: "Choirmother's Silt Hood",      slot: head,    tier: dungeon, ilvl: 25, stats: { power: 2, stamina: 90 },  icon: /cdn/icon-helmet-u9bjftt8q.webp,     description: "Still damp. It hums one low note when you are brave." }
+  drowned_bell_ring:  { name: "Ring of the Drowned Bell",     slot: ring1,   tier: dungeon, ilvl: 25, stats: { power: 3, stamina: 40 },  icon: /cdn/icon-ringmagic-u6z0dou5e.webp,  description: "A bell-clapper bent into a ring." }
+  custodian_gauntlets: { name: "Thorn Custodian's Grips",     slot: hands,   tier: dungeon, ilvl: 28, stats: { power: 2, stamina: 110 }, icon: /cdn/icon-glove-u01jhmrh8.webp,      description: "Bark-lined. The thorns point outward now." }
+  archive_greaves:    { name: "Root Archive Greaves",         slot: legs,    tier: dungeon, ilvl: 28, stats: { power: 1, stamina: 160 }, icon: /cdn/icon-legarmor-u1z2ehbh1.webp,   description: "Living root, grown to fit." }
+  deacon_cowl:        { name: "Unlit Deacon's Cowl",          slot: head,    tier: raid1,   ilvl: 62, stats: { power: 4, stamina: 260 }, icon: /cdn/icon-helmet-u9bjftt8q.webp,     description: "No candle has ever burned near it. None will." }
+  acolyte_treads:     { name: "Pale Acolyte Treads",          slot: feet,    tier: raid1,   ilvl: 62, stats: { power: 3, stamina: 240 }, icon: /cdn/icon-boots-u93i261td.webp,      description: "They make no sound on stone." }
+  organ_pipe_maul:    { name: "Organ-Pipe Maul",              slot: mainHand, tier: raid1,  ilvl: 64, stats: { power: 8, stamina: 120 }, icon: /cdn/icon-hammerheavy-u5ndnaxuu.webp, description: "A bone pipe capped in iron. It plays when swung." }
+  hymnbone_shield:    { name: "Hymnbone Bulwark",             slot: offHand, tier: raid1,   ilvl: 64, stats: { power: 2, stamina: 360 }, icon: /cdn/icon-shield2-u7ym8ql7u.webp,     description: "Ribs of a choir, stretched with vellum." }
+  ilvane_vestments:   { name: "Vestments of the Candleless Saint", slot: chest, tier: raid1,  ilvl: 66, stats: { power: 5, stamina: 420 }, icon: /cdn/icon-armorgold-u8a59gm9a.webp,   description: "White as wax, cold as the far side of a window." }
+  saint_tome:         { name: "The Saint's Unread Hymnal",    slot: trinket, tier: raid1,   ilvl: 66, stats: { power: 7, stamina: 150 }, icon: /cdn/icon-bookholy-u1eqmu24i.webp,   description: "Every page is blank until you are alone." }
+  slagmaster_gauntlets: { name: "Kesh's Slag Gauntlets",      slot: hands,   tier: raid1,   ilvl: 62, stats: { power: 4, stamina: 250 }, icon: /cdn/icon-glove-u01jhmrh8.webp,      description: "Warm for a year after the forge went out." }
+  houndhide_greaves:  { name: "Slag-Hound Greaves",           slot: legs,    tier: raid1,   ilvl: 62, stats: { power: 3, stamina: 300 }, icon: /cdn/icon-legarmor-u1z2ehbh1.webp,   description: "Scorched, stitched, and never once cold." }
+  colossus_axe:       { name: "Bellglass Splitter",           slot: mainHand, tier: raid1,  ilvl: 64, stats: { power: 9, stamina: 100 }, icon: /cdn/icon-axe-u8trhlxsf.webp,        description: "Cut from the Colossus's own chest. It rings on every hit." }
+  ringing_band:       { name: "Band of the Ringing Glass",    slot: ring1,   tier: raid1,   ilvl: 64, stats: { power: 5, stamina: 140 }, icon: /cdn/icon-ringmagic-u6z0dou5e.webp,  description: "Hold it to your ear. Something is still counting." }
+  vharok_cuirass:     { name: "Cuirass of the Caldera Heart", slot: chest,   tier: raid1,   ilvl: 66, stats: { power: 5, stamina: 440 }, icon: /cdn/icon-armorgold-u8a59gm9a.webp,   description: "Vharok's last plate. The ember behind it never cooled." }
+  caldera_ember:      { name: "Ember of Vharok",              slot: trinket, tier: raid1,   ilvl: 66, stats: { power: 7, stamina: 160 }, icon: /cdn/icon-fireball-u1ns0jvs9.webp,   description: "A coal that beats, slowly, like a heart asleep." }
+  sealkeeper_blade:   { name: "Sealkeeper's Oathblade",       slot: mainHand, tier: raid2,  ilvl: 70, stats: { power: 11, stamina: 180 }, icon: /cdn/icon-swordblood-u1d0q7ruq.webp, description: "It was forged to keep a seal shut. It opens one now." }
+  ninth_seat_helm:    { name: "Helm of the Ninth Seat",       slot: head,    tier: raid2,   ilvl: 70, stats: { power: 6, stamina: 380 }, icon: /cdn/icon-helmet-u9bjftt8q.webp,     description: "Nine lantern-holes ring the brow. One is always lit." }
+  engine_aegis:       { name: "Aegis of Unmaking",            slot: offHand, tier: raid2,   ilvl: 72, stats: { power: 3, stamina: 560 }, icon: /cdn/icon-shield-u3qgy9lfm.webp,      description: "A gear from the Memory Engine, turned into a promise." }
+  lantern_of_nine:    { name: "The Lantern of Nine",          slot: trinket, tier: raid2,   ilvl: 72, stats: { power: 10, stamina: 220 }, icon: /cdn/value.3ff5682c08fdb5afc3a2a0a3f20711554e4381677aa3088cf8bfabca7a027433.png, description: "Nine flames in one glass. The ninth is yours." }
+loot:
+  choir_mother: [choirmother_hood, drowned_bell_ring]
+  thorn_custodian: [custodian_gauntlets, archive_greaves]
+  deacon_morrow: [deacon_cowl, acolyte_treads]
+  bone_organist: [organ_pipe_maul, hymnbone_shield]
+  saint_ilvane: [ilvane_vestments, saint_tome]
+  kesh_slagmaster: [slagmaster_gauntlets, houndhide_greaves]
+  bellglass_colossus: [colossus_axe, ringing_band]
+  vharok_caldera: [vharok_cuirass, caldera_ember]
+  seal_keeper: [sealkeeper_blade, ninth_seat_helm]
+  memory_engine: [engine_aegis, lantern_of_nine]
