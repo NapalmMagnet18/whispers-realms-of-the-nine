@@ -5,7 +5,7 @@ import E from './data/economy.yml';
 import { purse, formatText } from '../../mods/mmorpg-tools/mod-mmorpg/lib/currency.js';
 
 export function realmOf(ctx) {
-  try { const w = ctx.world; const r = (w && w.state && w.state.realm) || (w && w.room && (w.room.name || w.room)); return typeof r === 'string' && r ? r : 'main'; } catch (e) { return 'main'; }
+  try { const w = ctx.world; const r = (w && w.state && w.state.realm) || (ctx.self && ctx.self.state && ctx.self.state.realm); return typeof r === 'string' && r ? r : 'main'; } catch (e) { return 'main'; }
 }
 
 export function ledger(ctx, delta, reason, balance) {
