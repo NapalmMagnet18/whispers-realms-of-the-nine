@@ -147,7 +147,7 @@ export function renderQuestDialog(localPlayer) {
         + '<div style="position:relative;display:inline-block;">'
 
           // The parchment PNG — display block, the panel sizes to this
-          + '<img src="/cdn/value.f822af2a8d27ab331847b282e17124d0086dff161965879d0b1dd528bf9449e9.png" draggable="false" style="'
+          + '<img src="/cdn/ui-medieval-quest-dialog-frame-8ndltjdy.webp" draggable="false" style="'
             + 'display:block;max-height:170vh;pointer-events:none;-webkit-user-drag:none;user-select:none;'
           + '" />'
 
@@ -353,7 +353,7 @@ export function renderTurnInDialog(localPlayer) {
         + '<div style="position:relative;display:inline-block;">'
 
           // The parchment PNG
-          + '<img src="/cdn/value.f822af2a8d27ab331847b282e17124d0086dff161965879d0b1dd528bf9449e9.png" draggable="false" style="'
+          + '<img src="/cdn/ui-medieval-quest-dialog-frame-8ndltjdy.webp" draggable="false" style="'
             + 'display:block;max-height:170vh;pointer-events:none;-webkit-user-drag:none;user-select:none;'
           + '" />'
 
