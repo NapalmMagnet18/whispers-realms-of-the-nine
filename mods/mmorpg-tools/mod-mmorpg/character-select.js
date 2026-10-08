@@ -606,6 +606,8 @@ export function onInput(objectApi, input) {
       objectApi.patchState({ _nameCheckPending: false, nameError: 'Name check timed out. Please try again.' });
     });
 
+    // gate: Spawn's filter on the words, then the realm's unique (realm, name) in the characters table
+    var _claimRegistry = function () {
     try {
       objectApi.job('storage:get', { key: 'name-registry' }, function(getResult) {
         try {
@@ -688,5 +690,22 @@ export function onInput(objectApi, input) {
       });
       objectApi.playSound('/cdn/sfx-deep-ominous-thunder-boom-dark-fantasy-cinematic.mp3', { volume: 0.48 });
     }
+    };
+    var _realmNow = RS.realmOf(objectApi);
+    var _sqlGate = function () {
+      if (typeof objectApi.sql !== 'function') { _claimRegistry(); return; }
+      objectApi.sql`SELECT COUNT(*) AS n FROM characters WHERE realm = ${_realmNow} AND name = ${chosenName} COLLATE NOCASE AND user_id <> @caller`.then(function (r) {
+        var taken = r && r.rows && r.rows[0] && r.rows[0].n > 0;
+        if (taken) { objectApi.cancelTimer(_nameCheckTimeoutId); objectApi.patchState({ nameError: 'That name is taken on this realm.', _nameCheckPending: false }); return; }
+        _claimRegistry();
+      }, function () { _claimRegistry(); });
+    };
+    try {
+      objectApi.job('text:check', { text: chosenName, purpose: 'name' }, function (r) {
+        if (_nameCheckTimedOut) return;
+        if (r && r.ok && r.data && r.data.ok === false) { objectApi.cancelTimer(_nameCheckTimeoutId); objectApi.patchState({ nameError: 'That name cannot be used. Choose another.', _nameCheckPending: false }); return; }
+        _sqlGate();
+      });
+    } catch (e) { _sqlGate(); }
   }
 }
