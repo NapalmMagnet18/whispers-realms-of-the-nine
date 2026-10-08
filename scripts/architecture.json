@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 40,
-  "updatedAt": "2026-10-08T01:18:38.496Z",
-  "summary": "WHISPERS: Realms of the Nine is a multiplayer fantasy MMO prototype: its world starts in a character/menu flow and leads into Lantern's Reach, with Briarwild and Emberstone Quarry resource districts. World config provides shared player, camera, arrival and MMORPG UI wiring; place scenes and generator scripts build the environments, while the MMORPG Tools mod owns the menu, character, HUD and interaction systems.",
+  "basedOnSpecVersion": 64,
+  "updatedAt": "2026-10-08T01:28:35.559Z",
+  "summary": "WHISPERS: Realms of the Nine is a fantasy MMO prototype whose MMORPG Tools menu and character-creation flow lead into the Lantern March. Place configs and scenes define the hub and resource regions, procedural scripts supply geometry, and the MMORPG Tools mod owns character lifecycle, movement-facing RPG state, camera modes and UI.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -84,6 +84,7 @@
     "scripts/gen/rock.js",
     "scripts/gen/shape.js",
     "scripts/gen/spire.js",
+    "scripts/gen/stone-bridge.js",
     "scripts/gen/tree.js",
     "scripts/grass-look.js",
     "scripts/grass.js",
@@ -100,82 +101,80 @@
     "scripts/ui/nametag.js"
   ],
   "places": [
-    "places/main-menu-land/ - defaultPlace; 3D decorated menu scene using shared terrain decoration and scripts/look-default.js.",
-    "places/character-creation-land/ - 3D character-creation preview scene with off terrain, fixed spawn and creation lighting/effects.",
-    "places/main/ - Lantern March playable world; six scene cells hold Lantern's Reach, Briarwild west and Emberstone Quarry east, with gatherable timber/copper and shared heightmap terrain.",
-    "places/main/cells/x0z0.scene - Lantern's Reach hub buildings, inn, smithy, merchant, bank, cottages, well, quest board, props and lamplit scene pieces.",
-    "places/main/cells/x-1z0.scene - west forest timber trees tagged gatherable/resource timber.",
-    "places/main/cells/x1z0.scene - east quarry copper nodes tagged gatherable/resource copper, plus quarry props.",
-    "places/main-menu-land/cells/x0z0.scene and places/character-creation-land/cells/x1z0.scene - authored menu/creation scene objects and fire effects.",
-    "design.md and scripts/lib/data/01–05 *.md - creator-facing world/build notes and the fuller design, lore, systems, UX and technical references; not runtime owners."
+    "places/main-menu-land/ - default title/travel menu scene, with authored town art and shared terrain decoration.",
+    "places/character-creation-land/ - character preview scene with terrain off and a preview camera/lighting setup.",
+    "places/main/ - six-cell Lantern March world: Lantern's Reach hub at origin, Briarwild west, Emberstone Quarry east and the distant north spire landmark.",
+    "places/main/cells/x0z0.scene - Lantern's Reach buildings and props; briar-bridge sits at x -50.5, z -9 with deck origin y 4.4, using scripts/gen/stone-bridge.js.",
+    "places/main/cells/x-1z0.scene and places/main/cells/x1z0.scene - west tagged timber trees and east tagged copper nodes, respectively.",
+    "places/main/config.yaml - main terrain, cinematic atmosphere, scatter and bridge approaches flattened to y 4.4 near x -64 and -37."
   ],
   "roots": [
-    "world.config.yaml - multiplayer world entry; defaults to main-menu-land and binds shared player, custom camera, arrival behavior, MMORPG Tools HUD and nametag.",
-    "mods/mmorpg-tools/mod.json - mod template/behavior registration; player stack drives menu/character lifecycle and camera stack combines gameplay orbit with creation-camera behavior.",
-    "templates/player.js#player - native character body with humanoid locomotion then movement behavior.",
-    "templates/camera.js#camera - native custom camera using engine look orientation; currently has no listed behavior itself.",
-    "places/main/config.yaml - main's spawn, gravity, cinematic atmosphere, terrain materials/generator and vegetation scatter root.",
-    "sim.js - world simulation tick at 1s cadence; currently empty."
+    "world.config.yaml - world entry/defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
+    "mods/mmorpg-tools/mod.json - MMORPG Tools template/behavior registration for menu, player and gameplay/creation camera behaviors.",
+    "templates/player.js#player - native player template; runs humanoid locomotion then core movement behavior.",
+    "templates/camera.js#camera - native custom camera template; core scripts/camera.js consumes engine look orientation.",
+    "places/main-menu-land/config.yaml and places/character-creation-land/config.yaml - separate menu/preview place roots and atmosphere settings.",
+    "places/main/config.yaml - playable-world spawn, gravity, terrain generation/materials, vegetation scatter and cinematic look."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/ - integrated MMORPG gameplay/UI package: player and character selection, menus, camera, HUD and UI panels, quests, interaction helpers and game data.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared race/class/stat, item/shop/quest/music and reusable UI data/rendering modules consumed by mod behaviors and ui.js.",
-    "mods/codex/ - creator-facing read-only Codex panel, markdown views and split authored doc pages; its files describe/manage design content, not game runtime state.",
-    "mods/aaa-quality-kit/ - visual/audio/UI/model/animation guidance and optional look-cinema.js; main place selects the cinematic look, menu and creation places select scripts/look-default.js.",
-    "mods/wow-camera-controls/ - reusable third-person camera control implementation available alongside MMORPG Tools camera behaviors.",
-    "scripts/lib/data/player.yml, camera.yml, world.yml - shared movement defaults, camera eye height and terrain base height read by core scripts.",
-    "scripts/gen/house.js, props.js, tree.js, rock.js and spire.js - procedural scene geometry reused by authored place objects with per-instance params/seeds.",
-    "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain scatter geometry/material reused by place decoration layers."
+    "mods/mmorpg-tools/mod-mmorpg/ - integrated RPG package: lifecycle, character selection, gameplay/orbit camera, interaction, quests and UI.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data and panel renderers used by mod behaviors and ui.js; races now define Marchborn/Briarkin and Vanguard.",
+    "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js and stone-bridge.js - procedural geometry used by authored scene instances with parameters.",
+    "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometries/material reused by place scatter bindings.",
+    "scripts/lib/data/{player,camera,world}.yml - shared movement, camera-height and terrain-height values read by core scripts.",
+    "mods/aaa-quality-kit/look-cinema.js and scripts/look-default.js - alternative post-process looks selected by place atmosphere; main uses cinema.",
+    "mods/codex/ - creator-facing document panel and document operations; doc-<tab>.js pages are assembled by codex-doc.js, not runtime game state.",
+    "mods/wow-camera-controls/ - separately packaged reusable camera controls alongside the MMORPG mod's camera behaviors."
   ],
   "notableExports": [
-    "scripts/player.js - exports onInput, update; scripts/humanoid-locomotion.js - exports sit, onInput, update.",
-    "scripts/camera.js - exports finiteNumber, update; scripts/arrival.js - exports onArrive, onLeave; sim.js - exports cadence, tick.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js - exports character/state and place-music helpers, onSpawn, update, onInput, onDisconnect, handleLogout.",
-    "mods/mmorpg-tools/mod-mmorpg/character-select.js - exports race/model preview helpers and onSpawn, update, onInput; main-menu-mgr.js exports roster helpers, onSpawn, update, onInput.",
-    "mods/mmorpg-tools/mod-mmorpg/camera.js - exports camera math and onInput/update; camera-creation.js exports creation phase/input/update behavior.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - default renderer and menu, zone-banner, WASD and character-creation render helpers; lib/ui-*.js provide individual HUD/menu/quest/inventory/panel renderers.",
-    "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - exports onSpawn, update, onInteract; building-interact.js and interact-prompt.js provide building and nearby-interaction handlers.",
-    "mods/codex/lib/codex-ops.js - exports normalized Codex document operations/markdown serializers; codex-doc.js assembles DOC from doc-*.js pages."
+    "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
+    "scripts/camera.js - finiteNumber, update; scripts/arrival.js - onArrive, onLeave; sim.js - cadence, tick.",
+    "scripts/gen/stone-bridge.js - geometry, collider; scripts/gen/shape.js supplies box/quad helpers.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js - movement/state, avatar and roster/music helpers, saveCharacter, onSpawn and lifecycle handlers.",
+    "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview/model helpers, onSpawn, update, onInput; main-menu-mgr.js owns roster/menu handlers.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/stat-calc.js - statBonus, damage/power/crit/dodge calculations and calcBaseStats.",
+    "mods/mmorpg-tools/mod-mmorpg/ui.js - default renderer, main-menu settings, HUD layout, zone banner, WASD and character-creation renderers; lib/ui-hud.js exports renderTargetDisplay, renderHUD.",
+    "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - onSpawn, update, onInteract; mods/codex/lib/codex-ops.js - document operations/serializers."
   ],
   "ownership": [
-    "scripts/player.js - transient movement intent in room ctx.session keyed by body; writes character velocity from input and place gravity.",
-    "scripts/humanoid-locomotion.js - transient turn/gait working state; writes character yaw, animation channels and seated locomotion state.",
-    "scripts/camera.js - camera rig local-player hiding and eye pose; engine look contract supplies view orientation.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js and character-select.js - MMORPG character/roster lifecycle and character-specific state, preview, persistence and transitions.",
-    "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - orbit camera position/input and creation-phase framing; gameplay and creation use different camera modes.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js plus lib/ui-*.js - presentation of player state as HUD, menus, character creation, quest and inventory panels; UI renderer consumes rather than owns gameplay state.",
-    "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - NPC-side quest availability/proximity and dialog handoff; quest data module supplies quest definitions (currently empty database).",
-    "scripts/flat-starter-terrain.js + scripts/lib/data/world.yml - terrain height/material; sim.js owns no state yet."
+    "scripts/player.js - room-local movement intent keyed by body and writes core character velocity; place config owns gravity.",
+    "scripts/humanoid-locomotion.js - transient gait/turn state and character yaw, animation channels and seated locomotion.",
+    "scripts/camera.js - core camera rig eye pose and local-player hiding; engine view provides orientation.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js and character-select.js - MMORPG player/character creation state, roster transitions, persistence and preview lifecycle.",
+    "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - orbit input/pose and creation-phase framing for the mod camera path.",
+    "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - NPC proximity and quest-dialog handoff; quest definitions live in lib/quest-data.js.",
+    "mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-*.js - render presentation from player/world state; UI is not gameplay-state owner.",
+    "scripts/flat-starter-terrain.js plus scripts/lib/data/world.yml - core terrain height/material inputs; sim.js currently owns no state."
   ],
   "flows": [
-    "world.config.yaml defaultPlace main-menu-land → MMORPG Tools menu behaviors (player.js, character-select.js, main-menu-mgr.js, menu-camera.js) → character creation/main gameplay transitions.",
-    "world.config.yaml player template → scripts/humanoid-locomotion.js then scripts/player.js; gait samples body movement before this tick's movement velocity write.",
-    "moveX/moveZ/jump input → scripts/player.js onInput stores room-local per-body intent → update eases velocity and applies place gravity; grounded idle bodies sleep.",
-    "world.config.yaml camera template and mod camera behavior registration → orbit camera onInput/update; camera-creation.js frames preview while creation phase is active.",
-    "engine look orientation → scripts/camera.js reads ctx.self.view → camera rig sets eye position/rotation and hides controlled body locally.",
-    "world.config.yaml ui.render → mods/mmorpg-tools/mod-mmorpg/ui.js reads world/local player state → lib/ui-* renderers compose HUD, menus and panels; ui/nametag.js renders name tags separately.",
-    "mods/mmorpg-tools/mod-mmorpg/quest-giver.js proximity/interact → reads quest data and player activeQuests → writes showQuestDialog/questDialogData on player → ui.js/lib/ui-quest.js presents it.",
-    "places/main/config.yaml terrain.generator → scripts/flat-starter-terrain.js reads world.yml baseHeight; decoration bindings invoke grass/flower/pebble geometry and grass-look material.",
-    "places/main/cells/*.scene procedural primitive declarations → scripts/gen/{house,props,tree,rock,spire}.js geometry, varied through params, seeds, tags and transforms.",
-    "world.config.yaml lighting → scripts/lighting.js; each place atmosphere chooses its own look script (cinema for main, default for menu and creation).",
-    "world.config.yaml engine behavior → scripts/arrival.js onArrive/onLeave lifecycle hooks; both currently empty.",
-    "sim.js tick(ctx) runs each second; no current state reads or writes."
+    "world.config.yaml defaultPlace main-menu-land → MMORPG menu/player/character-select/main-menu-mgr behaviors → character creation and transition into main.",
+    "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading rather than leaving the form blocked.",
+    "Creation camera behavior path in mod.json → character-select.js installs mods/mmorpg-tools/mod-mmorpg/camera-creation.js → frames the preview; gameplay camera handles orbit outside creation.",
+    "world.config.yaml player template → scripts/humanoid-locomotion.js then scripts/player.js; gait samples movement before this tick's movement velocity write.",
+    "moveX/moveZ/jump input → scripts/player.js onInput stores room-local intent → update eases velocity and applies place gravity.",
+    "world.config.yaml UI renderer → mods/mmorpg-tools/mod-mmorpg/ui.js reads local player/world state → lib/ui-* renderers compose HUD, menu, quest and panels; nametag renders separately.",
+    "Character creation state → ui.js renderCharacterCreation and injected name input → setCharName/confirmCharacter actions; NAME_SWEEP removes the persistent DOM name box outside creation.",
+    "quest-giver.js proximity/interact → lib/quest-data.js and player activeQuests → showQuestDialog/questDialogData on player → ui.js/lib/ui-quest.js.",
+    "places/main/config.yaml terrain generator → scripts/flat-starter-terrain.js reads world.yml; scatter bindings use grass/flower/pebble geometry and grass-look material.",
+    "places/main/cells/*.scene scripted objects → scripts/gen geometry; briar-bridge specifically uses stone-bridge.js with geometry and collider exports.",
+    "stone bridge deck spans X with L=22, W=4.2 and rise=1.4; scene origin is y=4.4 and terrain flatten patches approach ends to the same height.",
+    "world.config.yaml lighting/arrival bindings → scripts/lighting.js and scripts/arrival.js; arrival hooks remain empty; sim.js ticks once per second without state work."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, props.js, tree.js, rock.js and spire.js - procedural geometry reused across place scene instances, varied by kind/shape params, scale, rotation and seed.",
-    "scripts/grass.js, flower.js, pebble.js - terrain scatter geometry reused by place bindings, varied by density, scale, seed and item params; grass-look.js separately supplies material.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle behaviors; mod.json registers them on its player/menu template stack.",
-    "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - paired gameplay orbit and creation preview camera modes; creation phase suppresses normal orbit input.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character, settings and related screens.",
-    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected per place atmosphere."
+    "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js and stone-bridge.js - procedural scene geometry reused by instances, varied by kind/shape parameters, dimensions, seed and transforms.",
+    "scripts/grass.js, flower.js and pebble.js - terrain scatter geometry reused by place bindings, varied by density, scale and seed; grass-look supplies material separately.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle behaviors registered by mod.json.",
+    "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - paired gameplay orbit and preview camera modes with creation-phase guards.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character and settings.",
+    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected per place."
   ],
   "probableOrphans": [],
   "migrationNotes": [
-    "Keep movement intent and locomotion scratch in room-local ctx.session, not replicated body state; scripts/player.js writes velocity while place config owns gravity.",
-    "templates/player.js runs humanoid-locomotion before player.js; changing behavior order changes which velocity sample drives gait that tick.",
-    "Core camera.js uses engine look orientation, places the rig at feetPosition plus eyeHeight × effectiveScale.y, and owns local-player hiding; the MMORPG orbit camera is a separate mod behavior path.",
-    "MMORPG Tools camera.js explicitly defers creation-phase handling to camera-creation.js and freezes orbit for open interaction dialogs; preserve these phase/panel guards when changing camera input.",
-    "Places use heightmap terrain in main/menu but character-creation-land has terrain off; generator/scatter assumptions are not universal across places.",
-    "Codex doc-<tab>.js files are assembled by codex-doc.js and exposed through a read-only panel; codex-ops.js serialization/normalization is shared with authoring, not game runtime."
+    "Keep core movement intent and locomotion scratch in room-local ctx.session; scripts/player.js writes velocity and place config owns gravity.",
+    "templates/player.js runs humanoid-locomotion before player.js; behavior order determines whether gait samples prior-tick or current movement velocity.",
+    "Core scripts/camera.js uses engine look orientation and feetPosition + eyeHeight × effectiveScale.y; MMORPG orbit/creation cameras are a distinct path.",
+    "MMORPG camera.js delegates creation framing to camera-creation.js and guards orbit during creation/dialog states; preserve these phase and panel guards.",
+    "Bridge scene origin is deck-end height y=4.4, while its mesh deck rises 1.4 toward midspan; terrain approach flatten centers at x=-64 and -37 also use y=4.4.",
+    "Character creation uses race indices 0/1 for Marchborn/Briarkin and Vanguard; starting stats, class items and HUD stat keys are cross-coupled across lib/stat-calc.js, class-items.js and player/UI state."
   ]
 }
