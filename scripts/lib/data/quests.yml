@@ -1562,3 +1562,91 @@ SOR-04:
     - { key: bellglass_chime, desc: "Recover sunken bellglass chimes", target: 2 }
     - { key: chime_turned, desc: "Turn the chimes face-down at the shrine", target: 1 }
   rewards: { copper: 6400, xp: 750 }
+
+# ── Sorrowfen, act two (SOR-05..09): the smuggler, the drowned chapel, the mirelurker, Eda's echo, the testimony carried home.
+SOR-05:
+  id: SOR-05
+  title: The Marsh Bargain
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-04]
+  giverNpcId: fen-npc-pell
+  giverName: Marsh Guide Pell
+  text: "There's a skiff run aground past the wisp deck, and a woman on it named Orla Reed. Smuggler. Up to her knees in the sucking mud, and her strongbox floating off on the tide. She'll beg you to save the box first. Do it however you like, but do both. I want her alive, and I want to read what she was carrying."
+  progressText: "At Orla's grounded skiff south-west of the Blue Wisp Marsh: pull the smuggler free and recover her manifest. Either order; both must be done."
+  turnInText: "Passenger names. Dozens. Ferried out of the March on Hollow Court silver, eleven years back... and then she just stopped. Look, her last line: 'No more. Not for any price.' Whatever she saw, it turned her."
+  doneText: "Iona wants to show you the old chapel. She's never told anyone why it has no graves."
+  objectives:
+    - { key: smuggler_rescued, desc: "Pull Orla free of the mud", target: 1 }
+    - { key: smuggler_manifest, desc: "Recover Orla's manifest", target: 1 }
+  rewards: { copper: 6600, xp: 800 }
+
+SOR-06:
+  id: SOR-06
+  title: A Chapel Without Graves
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-05]
+  giverNpcId: fen-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  text: "The drowned chapel, south across the boardwalk from the wisp deck. Every village in the March buries its dead by its chapel. Ours has stones but no names, and no graves under them. My grandmother told me never to ask. I'm asking you. Go inside, and read the three stones."
+  progressText: "Cross the south boardwalk to the drowned chapel, step inside, then read the three unmarked stones around it."
+  turnInText: "Volunteers. They walked into the water on purpose, because someone promised them they'd come back as lanterns to guide the rest. And then someone rubbed the names off so nobody would ask who made the promise."
+  doneText: "Tamsin came down from the Reach. Something's been killing the marsh goats near the chapel."
+  objectives:
+    - { key: chapel_entered, desc: "Explore the drowned chapel", target: 1 }
+    - { key: unmarked_stone, desc: "Read the unmarked stones", target: 3 }
+  rewards: { copper: 6800, xp: 820 }
+
+SOR-07:
+  id: SOR-07
+  title: The Mirelurker's Hunger
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-06]
+  giverNpcId: fen-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "I tracked it from the Reach road. A mirelurker, an old one, bigger than any I've seen. It's starving and it isn't right in the head: it bites at its own flank. It lairs in the pool by the chapel. Take it down, and bring me whatever's lodged in its side. Bring a friend if you have one. It hits like a cart."
+  progressText: "Defeat the elite Mirelurker in the pool east of the drowned chapel, then pull the bellglass splinter from its side."
+  turnInText: "Bellglass, like Vale's chimes. Driven in deep, years ago. It wasn't hunting us. It was trying to get away from the ringing in its own body. Poor thing."
+  doneText: "Vale went pale when she saw the splinter. Go to her."
+  objectives:
+    - { key: elite_mirelurker, desc: "Defeat the Mirelurker", target: 1 }
+    - { key: bellglass_splinter, desc: "Remove the bellglass splinter", target: 1 }
+  rewards: { copper: 8800, xp: 1000 }
+
+SOR-08:
+  id: SOR-08
+  title: The Visitor Beneath Water
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-07]
+  giverNpcId: fen-npc-vale
+  giverName: Sister Vale
+  text: "The splinter still rings. Hold it over Mourner Pool, where Wenna sits, and the reflection opens. I've done it once. I couldn't stay. Someone is in there, someone small. Go in, and speak to them. Be gentle."
+  progressText: "Hold the splinter over Mourner Pool to open the echo reflection, then speak to the child waiting inside it."
+  turnInText: "Eda Sable. She said Sable? ...Mareth Sable had a daughter. Everyone said the girl drowned. She's been waiting in the water eleven years for her mother to come back for her."
+  doneText: "Iona's writing down everything Eda said. Help her carry it."
+  objectives:
+    - { key: echo_entered, desc: "Open the echo reflection", target: 1 }
+    - { key: eda_spoken, desc: "Speak to the child in the echo", target: 1 }
+  rewards: { copper: 7400, xp: 900 }
+
+SOR-09:
+  id: SOR-09
+  title: Carry the Name Out
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-08]
+  giverNpcId: fen-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  turnInNpcId: reach-npc-vale
+  turnInName: Sister Vale
+  text: "A testimony means nothing if it stays in the marsh. Take Eda's words to Lantern's Reach. Lay them on the Shield Table, and ask two living people to stand and hear it, so it's witnessed. Then give it to Sister Vale. She'll know what to do."
+  progressText: "Carry Eda's testimony to Lantern's Reach: lay it at the Shield Table, ask two witnesses to hear it, then bring it to Sister Vale in the Reach."
+  turnInText: "Eda's mother is Mareth Sable. Everything the Court has done, the tethers, the turned chimes, the volunteers in the water, she did to bring one drowned girl home. She isn't a monster. But thousands are standing in the way of her grief. That's worse."
+  doneText: "Sorrowfen's names are carried out. The March will have to decide what it does with them."
+  objectives:
+    - { key: testimony_laid, desc: "Lay the testimony at the Shield Table", target: 1 }
+    - { key: witness_heard, desc: "Ask witnesses to hear it", target: 2 }
+  rewards: { copper: 9400, xp: 1100 }

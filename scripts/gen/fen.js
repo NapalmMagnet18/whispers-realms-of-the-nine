@@ -127,6 +127,22 @@ export function geometry(ctx) {
     ctx.emissive(null);
     return;
   }
+  if (k === "chapel") { // a drowned chapel, roofless, 8 x 14, door gap at -Z, walls broken down unevenly, standing in the water
+    ctx.albedo("cdn/texture-mossy-fieldstone-wall.png"); ctx.color("oklch(0.72 0.02 150)"); ctx.roughness(0.95);
+    const wh = (i) => 2.6 + rnd(seed + i) * 3.2;
+    for (let i = 0; i < 7; i++) { const z0 = -7 + i * 2, h1 = wh(i), h2 = wh(i + 20); box(ctx, -4, -0.5, z0, -3.4, h1, z0 + 2); box(ctx, 3.4, -0.5, z0, 4, h2, z0 + 2); }
+    box(ctx, -4, -0.5, 6.4, 4, 6.2, 7); quadN(ctx, [-4, 6.2, 6.4], [4, 6.2, 6.4], [0, 8.4, 6.4], [0, 8.4, 6.4], [0, 0, -1]);
+    box(ctx, -4, -0.5, -7, -1.2, 4.4, -6.4); box(ctx, 1.2, -0.5, -7, 4, 3.1, -6.4);
+    ctx.albedo(null); ctx.color("oklch(0.15 0.02 230)"); box(ctx, -0.5, 4.2, 6.38, 0.5, 5.6, 6.42); // the empty rose window
+    if (lod <= 2) { ctx.color("oklch(0.6 0.02 150)"); for (let i = 0; i < 9; i++) boxR(ctx, [(rnd(i * 4) - 0.5) * 6, 0.2, (rnd(i * 9) - 0.5) * 11], [0.6 + rnd(i) * 0.6, 0.4, 0.5], { yaw: rnd(i) * 90, roll: rnd(i * 2) * 30 }); } // fallen blocks
+    return { uvProjection: "triplanar" };
+  }
+  if (k === "stone") { // an unmarked memorial stone, its face rubbed smooth
+    ctx.albedo("cdn/texture-mossy-fieldstone-wall.png"); ctx.color("oklch(0.8 0.01 150)"); ctx.roughness(0.95);
+    boxR(ctx, [0, 0.55, 0], [0.7, 1.3, 0.22], { roll: (rnd(seed) - 0.5) * 12, pitch: (rnd(seed * 2) - 0.5) * 10 });
+    ctx.albedo(null); ctx.color("oklch(0.88 0.01 150)"); boxR(ctx, [0, 0.7, -0.115], [0.5, 0.7, 0.01], { roll: (rnd(seed) - 0.5) * 12 });
+    return;
+  }
   if (k === "reeds") { reedClump(ctx, 0, 0, lod <= 2 ? 22 : 8, p.h || 1.8, seed); return; }
   if (k === "stump") { ctx.color(WET); ctx.roughness(1); cyl(ctx, 0, -0.3, 0, 0.45, 0.32, 1.1 + rnd(seed) * 0.8, 8); return; }
 }
@@ -138,6 +154,8 @@ export function collider(ctx) {
   if (k === "hut") { box(ctx, -2, 0, -1.8, -1.85, 2.3, 1.8); box(ctx, 1.85, 0, -1.8, 2, 2.3, 1.8); box(ctx, -2, 0, 1.65, 2, 2.3, 1.8); box(ctx, -2, 0, -1.8, -0.55, 2.3, -1.65); box(ctx, 0.55, 0, -1.8, 2, 2.3, -1.65); box(ctx, -2, 2.3, -1.8, 2, 2.5, 1.8); return; }
   if (k === "lantern" || k === "pole") { box(ctx, -0.1, 0, -0.1, 0.1, 2.4, 0.1); return; }
   if (k === "shrine") { for (let i = 0; i < 7; i++) { const a = (i / 7) * 6.283 + 0.3; box(ctx, Math.cos(a) * 4.2 - 0.35, 0, Math.sin(a) * 4.2 - 0.35, Math.cos(a) * 4.2 + 0.35, 2.2, Math.sin(a) * 4.2 + 0.35); } box(ctx, -1.1, 0, -1.1, 1.1, 0.95, 1.1); return; }
+  if (k === "chapel") { for (let i = 0; i < 7; i++) { const z0 = -7 + i * 2; box(ctx, -4, -0.5, z0, -3.4, 2.6, z0 + 2); box(ctx, 3.4, -0.5, z0, 4, 2.6, z0 + 2); } box(ctx, -4, -0.5, 6.4, 4, 6.2, 7); box(ctx, -4, -0.5, -7, -1.2, 4.4, -6.4); box(ctx, 1.2, -0.5, -7, 4, 3.1, -6.4); return; }
+  if (k === "stone") { box(ctx, -0.35, 0, -0.11, 0.35, 1.2, 0.11); return; }
   if (k === "stump") { box(ctx, -0.35, 0, -0.35, 0.35, 1.2, 0.35); return; }
   return null;
 }

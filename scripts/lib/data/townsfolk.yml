@@ -213,3 +213,24 @@ wenna-fen:
   lines:
     - "Shh. They're nearly here. They always come at dusk."
     - "Look at the water, not at me."
+tamsin-fen:
+  name: Tamsin the Ranger
+  lines:
+    - "Tracks don't lie. People do, marshes do, but tracks don't."
+    - "Keep your boots on the planks. The mud here holds on."
+orla-fen:
+  name: Orla Reed
+  lines:
+    - "I said I was done with that work. I meant it."
+eda-fen:
+  name: Eda
+  lines:
+    - "Is it dusk yet? Mama said she'd come at dusk."
+corbin-reach:
+  name: Corbin the Lamplighter
+  lines:
+    - "Every lamp in the Reach, I've lit it a thousand times."
+ada-reach:
+  name: Ada Wren
+  lines:
+    - "Clerk of the Shield Table. If it isn't written, it didn't happen."
