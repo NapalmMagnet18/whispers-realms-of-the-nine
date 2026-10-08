@@ -149,9 +149,7 @@ export const PHASES = [
       },
       {
         "id": "steps-6",
-        "text": "A greeter NPC and one greeter quest per zone (claim once, same quest system as Q002)",
-        "done": false
-      },
+        "text": "A greeter NPC and one greeter quest per zone (claim once, same quest system as Q002)", "done": true, "notes": "0.8.8: Q101 Word for the Gatekeeper (Fennick), Q102 Ash on the Wind (Brenna), Q103 Salt and Lanternlight (Maren); each turned in to Elric after walking into the Reach (tally.reach_visits). E talks to any quest-npc; ! and name plates draw within 90 m of each greeter. Logic checked offline through quest-data (offer, active, ready at Elric, done); not yet played in a client"},
       {
         "id": "steps-7",
         "text": "Dress each zone with free, licence-checked assets (CC0) plus the creator's kits; record every source",
