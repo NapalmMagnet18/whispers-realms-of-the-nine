@@ -1,0 +1,66 @@
+# spawn-scene v2 yaml x-1z-30
+frontier-frostveil-altar:
+  feetPosition: {x: -66, y: {terrain: 0}, z: -3828}
+  id: frontier-frostveil-altar
+  physics: static
+  primitive: {kind: scripted, params: {h: 1.6, kind: stone, seed: 21}, script: scripts/gen/frontier.js, seed: 21}
+  rotation: {roll: 90, yaw: 0}
+  scale: 1
+frontier-frostveil-deadtree-5:
+  feetPosition: {x: -65.80140858079349, y: {terrain: -0.2}, z: -3796.7926155130767}
+  id: frontier-frostveil-deadtree-5
+  model: /cdn/model-dead-tree-bare-dark-oqgcbe9u.glb
+  physics: static
+  rotation: {pitch: -20, yaw: 97.09326357604272}
+  scale: 1.05
+  tags: [frostveil]
+frontier-frostveil-deadtree-6:
+  feetPosition: {x: -70.39620334487009, y: {terrain: -0.2}, z: -3812.8479890339813}
+  id: frontier-frostveil-deadtree-6
+  model: /cdn/model-dead-tree-bare-dark-q2myjsa2.glb
+  physics: static
+  rotation: {pitch: -10, yaw: 67.09193857604272}
+  scale: 1.2
+  tags: [frostveil]
+frontier-frostveil-stone-2:
+  feetPosition: {x: -64.2631126871428, y: {terrain: 0}, z: -3818.151993985459}
+  id: frontier-frostveil-stone-2
+  physics: static
+  primitive: {kind: scripted, params: {h: 5.4, kind: stone, seed: 2}, script: scripts/gen/frontier.js, seed: 2}
+  rotation: {roll: 4, yaw: 10.003096192014102}
+  tags: [frostveil]
+frontier-frostveil-stone-3:
+  feetPosition: {x: -70.9994650547117, y: {terrain: 0}, z: -3819.339437133378}
+  id: frontier-frostveil-stone-3
+  physics: static
+  primitive: {kind: scripted, params: {h: 4.2, kind: stone, seed: 3}, script: scripts/gen/frontier.js, seed: 3}
+  rotation: {roll: -4, yaw: -29.998670474652968}
+  tags: [frostveil]
+frontier-frostveil-stone-4:
+  feetPosition: {x: -75.39664449248714, y: {terrain: 0}, z: -3824.5790246592805}
+  id: frontier-frostveil-stone-4
+  physics: static
+  primitive: {kind: scripted, params: {h: 4.8, kind: stone, seed: 4}, script: scripts/gen/frontier.js, seed: 4}
+  rotation: {roll: 0, yaw: -70.00043714131954}
+  tags: [frostveil]
+frontier-frostveil-stone-5:
+  feetPosition: {x: -75.39727826244082, y: {terrain: 0}, z: -3831.419234016305}
+  id: frontier-frostveil-stone-5
+  physics: static
+  primitive: {kind: scripted, params: {h: 5.4, kind: stone, seed: 5}, script: scripts/gen/frontier.js, seed: 5}
+  rotation: {roll: 4, yaw: -110.0022038079853}
+  tags: [frostveil]
+frontier-frostveil-stone-6:
+  feetPosition: {x: -71.00106983334328, y: {terrain: 0}, z: -3836.6596362811624}
+  id: frontier-frostveil-stone-6
+  physics: static
+  primitive: {kind: scripted, params: {h: 4.2, kind: stone, seed: 6}, script: scripts/gen/frontier.js, seed: 6}
+  rotation: {roll: -4, yaw: -150.00397047465256}
+  tags: [frostveil]
+frontier-frostveil-stone-7:
+  feetPosition: {x: -64.26493762317273, y: {terrain: 0}, z: -3837.848327703144}
+  id: frontier-frostveil-stone-7
+  physics: static
+  primitive: {kind: scripted, params: {h: 4.8, kind: stone, seed: 7}, script: scripts/gen/frontier.js, seed: 7}
+  rotation: {roll: 0, yaw: 170.0207809600711}
+  tags: [frostveil]

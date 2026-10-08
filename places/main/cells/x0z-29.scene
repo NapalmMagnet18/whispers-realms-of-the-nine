@@ -1,0 +1,54 @@
+# spawn-scene v2 yaml x0z-29
+frontier-frostveil-deadtree-2:
+  feetPosition: {x: -36.67049584435389, y: {terrain: -0.2}, z: -3773.206075276706}
+  id: frontier-frostveil-deadtree-2
+  model: /cdn/model-dead-tree-bare-dark-q2myjsa2.glb
+  physics: static
+  rotation: {pitch: -20, yaw: -172.92927952534757}
+  scale: 1.2
+  tags: [frostveil]
+frontier-frostveil-deadtree-3:
+  feetPosition: {x: -53.23877285095902, y: {terrain: -0.2}, z: -3768.683312860382}
+  id: frontier-frostveil-deadtree-3
+  model: /cdn/model-dead-tree-bare-dark-oqgcbe9u.glb
+  physics: static
+  rotation: {pitch: -10, yaw: 157.0959135760427}
+  scale: 1.35
+  tags: [frostveil]
+frontier-frostveil-mere:
+  feetPosition: {x: -16, y: 58.63307495952423, z: -3774}
+  id: frontier-frostveil-mere
+  material: {color: oklch(0.95 0.025 220), metalness: 0.1, opacity: 0.85, roughness: 0.08, transparent: true}
+  physics: static
+  primitive: {height: 0.5, kind: cylinder, radialSegments: 40, radiusBottom: 11.4, radiusTop: 12}
+  tags: [frostveil]
+frontier-frostveil-rimrock-0:
+  feetPosition: {x: -3.962760237017365, y: {terrain: -0.3}, z: -3770.276445396067}
+  id: frontier-frostveil-rimrock-0
+  physics: static
+  primitive: {kind: scripted, params: {r: 0.6, tex: /cdn/rocks-diffuse-u03avi37y.webp, tint: oklch(0.9 0.015 240)}, script: scripts/gen/rock.js, seed: 40}
+  rotation: 0
+frontier-frostveil-rimrock-1:
+  feetPosition: {x: -8.210453668413354, y: {terrain: -0.3}, z: -3763.5921679515827}
+  id: frontier-frostveil-rimrock-1
+  physics: static
+  primitive: {kind: scripted, params: {r: 0.85, tex: /cdn/rocks-diffuse-u03avi37y.webp, tint: oklch(0.9 0.015 240)}, script: scripts/gen/rock.js, seed: 41}
+  rotation: 37
+frontier-frostveil-rimrock-2:
+  feetPosition: {x: -15.809775610599361, y: {terrain: -0.3}, z: -3760.6013502664755}
+  id: frontier-frostveil-rimrock-2
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.1, tex: /cdn/rocks-diffuse-u03avi37y.webp, tint: oklch(0.9 0.015 240)}, script: scripts/gen/rock.js, seed: 42}
+  rotation: 74
+frontier-frostveil-rimrock-3:
+  feetPosition: {x: -23.26045005313038, y: {terrain: -0.3}, z: -3763.7021426973374}
+  id: frontier-frostveil-rimrock-3
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.35, tex: /cdn/rocks-diffuse-u03avi37y.webp, tint: oklch(0.9 0.015 240)}, script: scripts/gen/rock.js, seed: 43}
+  rotation: 111
+frontier-frostveil-rimrock-4:
+  feetPosition: {x: -28.305305618099858, y: {terrain: -0.3}, z: -3769.8072140950007}
+  id: frontier-frostveil-rimrock-4
+  physics: static
+  primitive: {kind: scripted, params: {r: 0.6, tex: /cdn/rocks-diffuse-u03avi37y.webp, tint: oklch(0.9 0.015 240)}, script: scripts/gen/rock.js, seed: 44}
+  rotation: 148

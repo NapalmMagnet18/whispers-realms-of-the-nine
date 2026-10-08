@@ -1,0 +1,9 @@
+# spawn-scene v2 yaml x-1z-29
+frontier-frostveil-hut:
+  children: [{feetPosition: {x: 0, y: 2.3, z: 0.3}, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 4, kind: point}}, {feetPosition: {x: 1.2, y: 0.12, z: 1.2}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}}, {feetPosition: {x: -2.2, y: 0.12, z: 1.9}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}}, {feetPosition: {x: 2.4, y: 0.12, z: -1.6}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}}, {feetPosition: {x: -2.3, y: 0.12, z: -1.4}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}}, {children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2.5, kind: point}}], feetPosition: {x: 1.6, y: 0.12, z: -3.6}, physics: static, primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}, rotation: 180}, {feetPosition: {x: -1.6, y: 0, z: -3.4}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}}]
+  feetPosition: {x: -74, y: 58.407637667125826, z: -3770}
+  id: frontier-frostveil-hut
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 5.5, h: 2.9, rise: 2.1, roof: snow dusted dark slate roof tiles, w: 6.5, wall: timber, win: 1}, script: scripts/gen/house.js, seed: 7}
+  rotation: -90
+  tags: [frostveil, building]
