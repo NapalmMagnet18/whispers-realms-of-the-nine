@@ -1,0 +1,14 @@
+# Storms over the March (places/main/sim.js). Every periodMin minutes, a storm of stormMin minutes.
+periodMin: 30
+stormMin: 5
+offsetMin: 7
+storm:
+  fog: { near: 70, far: 520 }
+  clouds: { density: 0.95, opacity: 0.95, speed: 2.4 }
+thunder:
+  minGap: 18
+  maxGap: 45
+  clips:
+    - /cdn/moodboard-painterly-fantasy/sfx-distant-rolling-thunder-long-rumble-across-hills.mp3
+    - /cdn/moodboard-painterly-fantasy/sfx-close-thunder-crack-sharp-snap-then-deep-rumble.mp3
+rainBed: /cdn/moodboard-painterly-fantasy/ambience-steady-heavy-rain-on-leaves-and-grass-with-distant-wind-loop.mp3

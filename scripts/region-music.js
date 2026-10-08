@@ -1,6 +1,7 @@
 // Area themes: each player hears the theme of where they stand (menu, character select, the region of the March,
 // the crypt), crossfaded as they cross a border. Per player, so two heroes in two regions hear two songs.
 // Steps aside while the jukebox tab plays a chosen track, and stays silent when the player muted music.
+import WEATHER from "./lib/data/weather.yml";
 import MUSIC from "./lib/data/music.yml";
 import { isPlay } from './lib/places.js';
 export const updateSchedule = { every: { seconds: 0.5 } };
@@ -64,7 +65,9 @@ function ambience(ctx, self, area) {
   const key = MUSIC.places[self.place] ? self.place : area;
   if (!key) return;
   const theme = MUSIC.places[self.place] || area;
-  const bed = MUSIC.ambience?.[theme] ?? null;
+  const storm = self.place === "main" && ctx.place.state?.storm?.on;
+  rain(ctx, storm);
+  const bed = storm ? WEATHER.rainBed : (MUSIC.ambience?.[theme] ?? null);
   if (ctx.session._ambBed !== bed) { ctx.session._ambBed = bed; self.ambience = bed; }
   const S = MUSIC.stingers, set = S?.sets?.[theme];
   if (!set || !set.length) return;
@@ -88,4 +91,14 @@ function zoneSting(ctx, self, id) {
   const Z = MUSIC.zoneSting || {};
   const clip = fresh ? Z.discover : Z.enter;
   if (clip && !(st.flying)) ctx.emit("playSound", { clip, volume: fresh ? 0.55 : 0.35, bus: "Music" });
+}
+
+// the rain around this player alone, riding their camera, while the March storms
+const RAIN = `fx follow=camera
+pop rain rate=?mobile:350|900 on=disc(16).c(11) life=.8..1 v=<-1.5,-15,0>+sdir()*.3 size=.015..0.025 col=<.72,.76,.86> a=.4 floor=die r=sprite(stalk,alpha,velocity,.05)
+pop splash rate=?mobile:40|120 on=disc(9).c(.05) life=.25 v=up(.6..1.2)+sdir()*.5 size=.04..0.07 acc=grav() col=<.8,.84,.92> a=.45>0 r=sprite(soft-disc,alpha)`;
+function rain(ctx, on) {
+  const id = ctx.session._rainId;
+  if (on && !id) ctx.session._rainId = ctx.spawn({ audience: "local", scope: "session", feetPosition: { x: 0, y: 0, z: 0 }, fx: { script: RAIN } });
+  else if (!on && id) { ctx.destroy(id); ctx.session._rainId = null; }
 }
