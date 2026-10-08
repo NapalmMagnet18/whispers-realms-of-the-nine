@@ -202,7 +202,7 @@ export function spawnPreviewIfCreating(objectApi) {
     minPitch: -1.4,
     maxPitch: 1.4,
     terrainCollision: false,
-    behavior: 'scripts/mod-mmorpg/camera-creation.js',
+    behavior: 'mods/mmorpg-tools/mod-mmorpg/camera-creation.js',
   });
 }
 
@@ -249,7 +249,7 @@ export function update(objectApi, dt) {
     minPitch: -1.4,
     maxPitch: 1.4,
     terrainCollision: false,
-    behavior: 'scripts/mod-mmorpg/camera-creation.js',
+    behavior: 'mods/mmorpg-tools/mod-mmorpg/camera-creation.js',
   });
 
   // --- Loading screen progress ---

@@ -451,7 +451,8 @@ export function renderWASD(localPlayer, rightHudLayout) {
 
 export function renderCharacterCreation(localPlayer) {
   var s = localPlayer.state;
-  var raceIndex = s.raceIndex ?? 10;
+  var raceIndex = s.raceIndex ?? 0;
+  if (!RACES[raceIndex]) raceIndex = 0;
   var genderIndex = s.genderIndex ?? 0;
   var skinColor = s.skinColor ?? 0;
   var hairColor = s.hairColor ?? 0;
