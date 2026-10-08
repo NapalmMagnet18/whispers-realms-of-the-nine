@@ -32,13 +32,12 @@ function where(now) {
   return { ...at(STOPS[0]), moving: false, left: 1, stop: 0 };
 }
 
-export function onSpawn(ctx) {
-  const s = ctx.self.state, w = ctx.self.feetPosition, yaw = typeof ctx.self.rotation === "number" ? ctx.self.rotation : (s.homeYaw ?? -37);
-  if (!s.offsets) { // learned once, from where the camp was laid out by hand
-    s.offsets = {};
-    for (const id of RIDERS) { const o = ctx.place.objects[id]; if (!o) continue; const f = o.feetPosition; s.offsets[id] = rotate(-yaw, { x: f.x - w.x, y: f.y - w.y, z: f.z - w.z }); }
-  }
-}
+// Where each rider sits on the wagon, from the camp as laid out by hand in places/main/cells/x-2z2.scene (wagon at
+// -241.4, 11, 275.2, yaw -37). Constants in code, never a learned row, so a stray rider can never teach the wagon a wrong seat.
+const HOME = { x: -241.4, y: 11, z: 275.2, yaw: -37 };
+const LAID = { "march-caravan-goods": [-239.5, 10.6, 277], "march-caravan-lamp": [-242.6, 13.28, 276.8], "march-caravan-bells": [-241.4, 12.5, 275.2], "march-npc-mott": [-239.5, 10.52, 275.5] };
+const OFFSETS = Object.fromEntries(Object.entries(LAID).map(([id, [x, y, z]]) => [id, rotate(-HOME.yaw, { x: x - HOME.x, y: y - HOME.y, z: z - HOME.z })]));
+export function onSpawn(ctx) { if (ctx.self.state.offsets) delete ctx.self.state.offsets; }
 export const updateSchedule = { every: { seconds: 0.1 } };
 // A storm parks the caravan where the rain catches it: the route clock freezes (s.parkClock) and resumes after,
 // carrying the lost time as s.delay, so the walk picks up exactly where it stopped. Mott sells hot tea meanwhile.
@@ -57,7 +56,7 @@ export function update(ctx) {
   ctx.self.feetPosition = { x: here.x, y: gy, z: here.z };
   ctx.self.rotation = { yaw };
   for (const id of RIDERS) {
-    const o = ctx.place.objects[id], off = s.offsets && s.offsets[id]; if (!o || !off) continue;
+    const o = ctx.place.objects[id], off = OFFSETS[id]; if (!o || !off) continue;
     const r = rotate(yaw, off), px = here.x + r.x, pz = here.z + r.z, oy = id === "march-npc-mott" ? (terr.heightAt(px, pz) ?? gy) : gy + off.y;
     o.feetPosition = { x: px, y: oy, z: pz };
     if (id === "march-npc-mott") {

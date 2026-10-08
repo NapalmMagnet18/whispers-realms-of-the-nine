@@ -1,4 +1,4 @@
-// The game's update version: bump this line with each release (0.47.4: Mott's storm tea). Drawn only on the main menu, settings and pause screens.
+// The game's update version: bump this line with each release (0.47.5: Mott's bells and lamp ride the wagon). Drawn only on the main menu, settings and pause screens.
 var GAME_VERSION = '0.47.3 Alpha';
 var GAME_TITLE = 'WHISPERS: Realm of the Nine';
 function versionTag(extra) {
