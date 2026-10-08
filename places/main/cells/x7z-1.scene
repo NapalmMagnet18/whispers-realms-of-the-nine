@@ -5,6 +5,13 @@ start-cinderhold:
   physics: static
   primitive: {kind: scripted, params: {kind: plate}, script: scripts/gen/hamlet.js}
   tags: [start-zone, cinderhold]
+start-cinderhold-way-1:
+  feetPosition: {x: 852.3036579926459, y: 31.28004738879091, z: -167.4953318805774}
+  id: start-cinderhold-way-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 1}
+  rotation: {yaw: -45}
+  tags: [waystone, cinderhold]
 start-cinderhold/start-cinderhold-anvil:
   feetPosition: {x: -10.5, y: 0, z: 6.800000000000011}
   id: start-cinderhold/start-cinderhold-anvil

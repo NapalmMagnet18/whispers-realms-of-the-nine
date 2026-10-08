@@ -1,0 +1,15 @@
+# spawn-scene v2 yaml x-2z0
+start-thornhollow-way-8:
+  feetPosition: {x: -277.73329271757694, y: 11.455085560174835, z: -11.244770844117761}
+  id: start-thornhollow-way-8
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 8}
+  rotation: {yaw: 111.80140948635182}
+  tags: [waystone, thornhollow]
+start-thornhollow-way-9:
+  feetPosition: {x: -223.92750220727802, y: 9.923593609023962, z: -35.43552176711713}
+  id: start-thornhollow-way-9
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 9}
+  rotation: {yaw: 97.1250163489018}
+  tags: [waystone, thornhollow]

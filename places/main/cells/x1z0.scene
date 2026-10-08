@@ -279,3 +279,10 @@ quarry-track:
   id: quarry-track
   physics: none
   primitive: {kind: scripted, params: {kind: track, len: 13.5}, script: scripts/gen/quarry.js}
+start-cinderhold-way-13:
+  feetPosition: {x: 167.67946202868055, y: 7.392602666310971, z: 40.5938997284159}
+  id: start-cinderhold-way-13
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 13}
+  rotation: {yaw: -103.2405199151872}
+  tags: [waystone, cinderhold]

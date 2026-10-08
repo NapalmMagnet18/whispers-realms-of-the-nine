@@ -1,0 +1,15 @@
+# spawn-scene v2 yaml x5z-1
+start-cinderhold-way-4:
+  feetPosition: {x: 691.0014544492989, y: 22.559583254664034, z: -89.30204278639913}
+  id: start-cinderhold-way-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 4}
+  rotation: {yaw: -63.43494882292201}
+  tags: [waystone, cinderhold]
+start-cinderhold-way-5:
+  feetPosition: {x: 635.3014361422727, y: 27.759778667572775, z: -65.32071925379317}
+  id: start-cinderhold-way-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 5}
+  rotation: {yaw: -75.96375653207353}
+  tags: [waystone, cinderhold]

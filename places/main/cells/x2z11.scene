@@ -6,6 +6,13 @@ start-gullrest:
   physics: static
   primitive: {kind: scripted, params: {kind: plate}, script: scripts/gen/hamlet.js}
   tags: [start-zone, gullrest]
+start-gullrest-way-1:
+  feetPosition: {x: 255.95688509205942, y: 10.564706369300097, z: 1391.769445815075}
+  id: start-gullrest-way-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 1}
+  rotation: {yaw: -169.69515353123398}
+  tags: [waystone, gullrest]
 start-gullrest/start-gullrest-bench-1:
   feetPosition: {x: 7, y: 5.275836472788214, z: 7.599999999999909}
   id: start-gullrest/start-gullrest-bench-1

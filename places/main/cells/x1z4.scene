@@ -1,0 +1,22 @@
+# spawn-scene v2 yaml x1z4
+start-gullrest-way-15:
+  feetPosition: {x: 93.56693050502848, y: 13.816254564704714, z: 568.2862811472139}
+  id: start-gullrest-way-15
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 15}
+  rotation: {yaw: -165.96375653207352}
+  tags: [waystone, gullrest]
+start-gullrest-way-16:
+  feetPosition: {x: 85.61176200383676, y: 15.351299206360132, z: 508.428488888247}
+  id: start-gullrest-way-16
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 16}
+  rotation: {yaw: -165.96375653207352}
+  tags: [waystone, gullrest]
+start-gullrest-way-17:
+  feetPosition: {x: 64.46265550066853, y: 25.75608183774651, z: 451.8691811297742}
+  id: start-gullrest-way-17
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 17}
+  rotation: {yaw: -165.96375653207352}
+  tags: [waystone, gullrest]
