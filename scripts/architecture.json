@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1068,
-  "updatedAt": "2026-10-08T16:06:26.111Z",
+  "basedOnSpecVersion": 1079,
+  "updatedAt": "2026-10-08T16:13:59.181Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March and streamed frontier campaigns. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class kits, quests, trade, flight and vitality, while place bindings and YAML registries define content. Realms are separate rooms with per-realm character rosters backed by shared SQL persistence.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -90,6 +90,7 @@
     "mods/wow-camera-controls/lib/motion.js",
     "scripts/arcanist.js",
     "scripts/arrival.js",
+    "scripts/bob.js",
     "scripts/cache-chest.js",
     "scripts/camera.js",
     "scripts/candle-warden.js",
@@ -188,10 +189,11 @@
   "places": [
     "places/main-menu-land/ - realm selection and front door for entering the world or opening character creation.",
     "places/character-creation-land/ - race/class/appearance selection with preview character and creation camera.",
-    "places/main/config.yaml - Lantern March continent terrain, regional surfaces/scatter and atmosphere; current scatter layers are denser in flowers, ferns, oaks and mushrooms.",
-    "places/main/cells/x0z0.scene - Lantern's Reach hub, residents, services, quests and major chapter sites; now also has Copperlane residences, yards, hedgerow and foliage along the eastern road.",
-    "places/main/cells/x1z0.scene - eastern Copperlane extension, including an armsmith display with weapon rack/table and surrounding town dressing.",
-    "places/main/cells/ - streamed Briarwild, northern March, Emberstone, Saltmere, Sorrowfen, Tideglass and frontier landmarks/campaigns.",
+    "places/main/config.yaml - Lantern March continent terrain, regional surfaces/scatter and atmosphere.",
+    "places/main/cells/x0z0.scene - Lantern's Reach hub, residents, services, quests and major chapter sites.",
+    "places/main/cells/x1z0.scene - eastern Copperlane extension and armsmith display; spatial bird/hammer and woods ambience are placed here.",
+    "places/main/cells/x2z13.scene + x3z13.scene - Saltmere fishing jetty at about x328,z1665: dock, pier, lit gear, surf audio and bobbing rowboat; neighboring crate/log/barrel dressing.",
+    "places/main/cells/ - 96 streamed continent cells covering Briarwild, northern March, Emberstone, Saltmere, Sorrowfen, Tideglass and frontier landmarks/campaigns.",
     "places/hollowcrypt/ - underground dungeon entered from the mausoleum in main; cells hold crypt halls, archive, Warden, Vale/Elric, candles and echoes."
   ],
   "roots": [
@@ -216,12 +218,12 @@
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - getMenuRoster, getSelectedRosterIndex, hydrateMenuRoster, update, onSpawn, onInput; character-select.js - preview lifecycle, update/input and spawn handlers.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - quest dialog/tracker renderers; lib/version.js - GAME_VERSION 0.30.0 Alpha, GAME_TITLE, versionTag.",
+    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - quest dialog/tracker renderers; lib/version.js - GAME_VERSION 0.30.1 Alpha, GAME_TITLE, versionTag.",
     "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-character-roster.js - renderCharacterRoster.",
-    "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; class-aware action bar presents kit/cooldowns in slots 1–3 unless saved spellBar entries override.",
+    "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; class-aware action bar presents kit/cooldowns in slots 1-3 unless saved spellBar entries override.",
     "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise, mending and PvP zone/death handling.",
-    "scripts/quest-player.js - ears.kill, onInput, update (lazy quest-core delegate); scripts/quest-core.js - onInput, update; scripts/lib/quest-text.js - qt, withText, warm; scripts/lib/realm-firsts.js - questFirst, levelFirst; scripts/db.js - SQL helpers.",
-    "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class combat handlers; scripts/lib/kit.js - class/combat helpers; scripts/cursor-free.js - pointer-lock handling for open panels."
+    "scripts/quest-player.js - ears.kill, onInput, update (lazy quest-core delegate); scripts/quest-core.js - onInput, update; scripts/lib/quest-text.js - qt, withText, warm; scripts/lib/realm-firsts.js - questFirst, levelFirst; scripts/db.js - database helpers.",
+    "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class combat handlers; scripts/lib/kit.js - class/combat helpers; scripts/cursor-free.js - pointer-lock handling; scripts/bob.js - updateSchedule, update."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
@@ -230,8 +232,8 @@
     "main-menu-mgr.js - menu roster loading and selected roster slot; selection hydration prefers a valid activeCharIdx, falling back to selectedCharIdx and clamping to roster bounds.",
     "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; Shade stores veiledUntil on player state and transient readiness/ambush windows in session.",
     "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state and _questSave; scripts/quest-player.js ears.kill increments tally/XP and raises _questSave.",
-    "scripts/lib/realm-firsts.js - claims one realm/feat first in SQL; a winning claim writes room-wide world.state.herald announcement.",
-    "scripts/lib/quest-text.js owns the asynchronously imported dialogue book cache; scripts/cursor-free.js synchronizes local pointer lock to open panel state."
+    "scripts/lib/realm-firsts.js - claims one realm/feat first in SQL; a winning claim writes room-wide world.state.herald announcement; scripts/lib/quest-text.js owns the asynchronously imported dialogue book cache.",
+    "scripts/bob.js - rowboat state.baseY and state.yaw baseline, plus its animated feetPosition height and rotation roll/pitch."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → main gameplay lifecycle.",
@@ -244,8 +246,8 @@
     "New character creation writes activeCharIdx and selectedCharIdx to the new slot; on menu roster hydration, main-menu-mgr resumes activeCharIdx when valid, otherwise selectedCharIdx.",
     "templates/player.js order → locomotion → movement → class handlers including Shade → quest-player → vendor → flight → vitality → cursor-free; movement/camera intents are consumed by player.js/wow-move.js under place gravity.",
     "First in-world quest-player update/input for a created hero in main or hollowcrypt → dynamic import scripts/quest-core.js; subsequent input/update delegate there, while ears.kill is handled immediately by the lightweight wrapper.",
-    "Interact/E → quest-core resolves NPCs, talkers, readable props, caches, timber and quest marks; a mark gated by an unfinished prerequisite displays its afterText or 'First: <objective>' rather than a non-working action.",
-    "quests.yml + quest-data define mechanics; quest-text.yml is warmed via quest-text.js and read by quest-core/quest-giver; ui-quest renders dialog/tracker; scavengers.yml configures Q006 camp behavior consumed by scripts/scavengers.js."
+    "Interact/E → quest-core resolves NPCs, talkers, readable props, caches, timber and quest marks; quests.yml + quest-data define mechanics, quest-text.js supplies dialogue and ui-quest renders it.",
+    "places/main/cells/x3z13.scene attaches scripts/bob.js to saltmere-rowboat; scheduled update animates its heave/roll from state baseline, while jetty surf and x1z0 ambience are spatial looping scene audio."
   ],
   "behaviorFamilies": [
     "scripts/gen/ landmark builders reuse scripts/gen/shape.js procedural geometry helpers, varied by landmark and parameters; crypt.js supplies Hollowcrypt halls, rooms and furniture.",
@@ -264,6 +266,6 @@
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "state.xp remains cumulative while xpInto/xpToLevel are current-bar values; levels.yml owns total-XP anchors and progression cap 60, and class damage derives from configured damagePerLevel through lib/kit.js power.",
     "Monster managers target kill and coins events to the hero's own behaviors: quest-player ears.kill owns tally/XP persistence, vendor owns coin ledger/purse; do not mutate the remote hero save from the monster's machine.",
-    "Quest mechanics and YAML imports live in scripts/quest-core.js, dynamically loaded by quest-player only for created heroes in main/hollowcrypt; keep quest-player's ears.kill table-free for early targeted kill events. Game version is mods/mmorpg-tools/mod-mmorpg/lib/version.js; its GAME_VERSION is displayed only on main menu, settings and pause."
+    "Quest mechanics and YAML imports live in scripts/quest-core.js, dynamically loaded by quest-player only for created heroes in main/hollowcrypt; keep quest-player's ears.kill table-free for early targeted kill events. Game version is mods/mmorpg-tools/mod-mmorpg/lib/version.js and currently 0.30.1 Alpha; scene-attached bob.js animates the Saltmere boat from its saved baseline."
   ]
 }
