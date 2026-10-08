@@ -1,11 +1,28 @@
 # spawn-scene v2 yaml x7z-2
 kha-hall:
-  feetPosition: {x: 905, y: 40, z: -198}
+  feetPosition: {x: 914, y: {terrain: -0.3}, z: -207}
   id: kha-hall
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 11, height: 9, kind: box, width: 14}
-  tags: [blueprint]
+  model: /cdn/value.65ab69ae50c29de80ba35bdadc0dbd74ed2010325e83626ebc096fc3058b13be.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 146}
+  tags: [emberstone-cradle, kha-building]
+kha-hall-light:
+  feetPosition: {x: 912.9011177583607, y: 46.260977766705686, z: -208.94742337949654}
+  id: kha-hall-light
+  light: {color: oklch(0.8 0.14 60), distance: 8, intensity: 25, kind: point}
+  tags: [emberstone-cradle]
+kha-home-0:
+  feetPosition: {x: 874.4, y: {terrain: -0.3}, z: -197.9}
+  id: kha-home-0
+  model: /cdn/value.981a47348b4ddf4902733736ac1bd947a0f5090cad10ef017281d14be11054b7.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -140}
+  tags: [emberstone-cradle, kha-building]
+kha-home-0-light:
+  feetPosition: {x: 874.0786061951567, y: 40.33455254027022, z: -198.2830222215595}
+  id: kha-home-0-light
+  light: {color: oklch(0.8 0.14 60), distance: 8, intensity: 25, kind: point}
+  tags: [emberstone-cradle]
 kha-old-seal:
   feetPosition: {x: 899, y: {terrain: 0}, z: -216}
   id: kha-old-seal
@@ -42,6 +59,48 @@ kha-tunnel:
   primitive: {kind: scripted, params: {kind: cave}, script: scripts/gen/quarry.js}
   rotation: {yaw: 180}
   tags: [emberstone-cradle]
+kha-yard-0:
+  feetPosition: {x: 913.2473740660806, y: {terrain: -0.05}, z: -196.048582091638}
+  id: kha-yard-0
+  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 163}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-1:
+  feetPosition: {x: 905.8754317889606, y: {terrain: -0.05}, z: -212.48009045401332}
+  id: kha-yard-1
+  model: /cdn/value.b18da9f01c0c114ff2106aed1363f59994660980a1101f5e9bd6c784089a6e12.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 150}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-2:
+  feetPosition: {x: 923.2429540179809, y: {terrain: -0.05}, z: -203.17798469109675}
+  id: kha-yard-2
+  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 137}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-4:
+  feetPosition: {x: 881.092814403993, y: {terrain: -0.05}, z: -198.94701258526553}
+  id: kha-yard-4
+  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -115}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-8:
+  feetPosition: {x: 919.8877965971565, y: {terrain: -0.05}, z: -198.2037592557665}
+  id: kha-yard-8
+  model: /cdn/value.54ae9d955191660ad244358c4bf2a740380ee303d502fbadf6dae6ac20b1bb47.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 119}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-9:
+  feetPosition: {x: 902.5202743681361, y: {terrain: -0.05}, z: -207.50586501868307}
+  id: kha-yard-9
+  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 166}
+  tags: [emberstone-cradle, kha-yard]
 node-iron-5:
   behavior: scripts/gather-node.js
   children: [{feetPosition: {x: -0.12488027193573849, y: 0.3413129544310798, z: 0.35929344979442684}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 11.979321610172894, roll: 36.45830217583957, yaw: 157.46009852618914}}, {feetPosition: {x: -0.47544707976074047, y: 0.603116056161521, z: -0.2528264577693716}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 52.01648491062991, roll: 41.061892956989766, yaw: 177.24472534714485}}, {feetPosition: {x: 0.36771325728222737, y: 0.5813322404079755, z: 0.3475779634704423}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 34.796098887359776, roll: 58.03399985564594, yaw: 320.77162947541643}}, {feetPosition: {x: -0.15051516689457434, y: 0.26684395997638066, z: 0.5794778697708629}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 18.463221936702368, roll: 51.37109015666464, yaw: 37.14825842396741}}, {feetPosition: {x: 0.4256800293603778, y: 0.49601104587596423, z: -0.3171812827109095}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 32.07512298229855, roll: 46.59196349167822, yaw: 86.11842986481192}}]

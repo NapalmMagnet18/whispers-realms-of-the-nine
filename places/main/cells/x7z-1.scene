@@ -152,6 +152,30 @@ kha-crucible:
   rotation: 0
   state: {gain: "+1 Copper Bar", mark: copper_bar, quest: KHA-05, sound: /cdn/moodboard-painterly-fantasy/sfx-anvil-hammer-clang.mp3, title: Forge Crucible, verb: Smelt a bar}
   tags: [quest-mark, emberstone-cradle]
+kha-home-1:
+  feetPosition: {x: 899.5, y: {terrain: -0.3}, z: -150.8}
+  id: kha-home-1
+  model: /cdn/value.981a47348b4ddf4902733736ac1bd947a0f5090cad10ef017281d14be11054b7.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 14}
+  tags: [emberstone-cradle, kha-building]
+kha-home-1-light:
+  feetPosition: {x: 899.6209609477999, y: 42.1, z: -150.31485213686202}
+  id: kha-home-1-light
+  light: {color: oklch(0.8 0.14 60), distance: 8, intensity: 25, kind: point}
+  tags: [emberstone-cradle]
+kha-home-2:
+  feetPosition: {x: 918.2, y: {terrain: -0.3}, z: -164.8}
+  id: kha-home-2
+  model: /cdn/value.981a47348b4ddf4902733736ac1bd947a0f5090cad10ef017281d14be11054b7.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 66}
+  tags: [emberstone-cradle, kha-building]
+kha-home-2-light:
+  feetPosition: {x: 918.6567727288214, y: 42.1, z: -164.5966316784621}
+  id: kha-home-2-light
+  light: {color: oklch(0.8 0.14 60), distance: 8, intensity: 25, kind: point}
+  tags: [emberstone-cradle]
 kha-lintel:
   feetPosition: {x: 884, y: {terrain: 0}, z: -180}
   id: kha-lintel
@@ -269,6 +293,34 @@ kha-tuning-hammer:
   rotation: -30
   state: {after: cracked_pillar, afterText: "First: inspect the cracked pillars", mark: pillar_tone, quest: KHA-02, say: "Three pillars, three tones. Read in order they make a word in a script older than the quarry.", sound: /cdn/moodboard-painterly-fantasy/sfx-tuning-fork-stone-ring.mp3, title: Tuning Hammer, verb: Strike the pillars}
   tags: [quest-mark, emberstone-cradle]
+kha-yard-3:
+  feetPosition: {x: 872.2066988638128, y: {terrain: -0.05}, z: -191.49067631290166}
+  id: kha-yard-3
+  model: /cdn/value.b18da9f01c0c114ff2106aed1363f59994660980a1101f5e9bd6c784089a6e12.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -162}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-5:
+  feetPosition: {x: 893.0255581530004, y: {terrain: -0.05}, z: -152.79288804748793}
+  id: kha-yard-5
+  model: /cdn/value.b18da9f01c0c114ff2106aed1363f59994660980a1101f5e9bd6c784089a6e12.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 26}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-6:
+  feetPosition: {x: 917.3616634280905, y: {terrain: -0.05}, z: -171.52214190509238}
+  id: kha-yard-6
+  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 65}
+  tags: [emberstone-cradle, kha-yard]
+kha-yard-7:
+  feetPosition: {x: 912.6435183684113, y: {terrain: -0.05}, z: -160.92501459643822}
+  id: kha-yard-7
+  model: /cdn/value.54ae9d955191660ad244358c4bf2a740380ee303d502fbadf6dae6ac20b1bb47.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 52}
+  tags: [emberstone-cradle, kha-yard]
 node-iron-2:
   behavior: scripts/gather-node.js
   children: [{feetPosition: {x: 0.15749548556451004, y: 0.306442165843417, z: 0.4850511524711361}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 0.09580213581016386, roll: 50.14649656142411, yaw: 18.785064247802396}}, {feetPosition: {x: 0.2455715643585981, y: 0.5956680669429097, z: -0.2647519393015377}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 24.139613902261303, roll: 54.4908553056842, yaw: 114.56088758751791}}, {feetPosition: {x: 0.10132308558925525, y: 0.69700675133942, z: -0.33804197940415875}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 38.57116997175439, roll: 25.653715275998092, yaw: 73.97580930682636}}, {feetPosition: {x: 0.38465736859957944, y: 0.589896426508155, z: 0.08140927458474496}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 14.946834824488887, roll: 51.45289518472408, yaw: 271.39225804777453}}, {feetPosition: {x: 0.16579355528995654, y: 0.45665404268384635, z: -0.3961916695709299}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 15.1968163136378, roll: 52.891783310515706, yaw: 107.59630992431022}}]
