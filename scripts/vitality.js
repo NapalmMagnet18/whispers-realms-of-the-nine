@@ -9,6 +9,34 @@ const SND = {
   fall: "/cdn/moodboard-gothic-horror/sfx-death-sting-dark-low-brass-swell-and-deep-bell-toll.mp3",
   rise: "/cdn/moodboard-painterly-fantasy/sfx-resurrection-soft-angelic-choir-swell-warm-shimmer.mp3",
 };
+// Food (the bag's useFood { index }): WoW-style, heal across eatSeconds, broken the moment you are struck
+const MNS = 'mmorpg-tools:';
+const pressed = (input, n) => !!((input.pressed && (input.pressed[n] || input.pressed[MNS + n])) || (input.actions && (input.actions[n] || input.actions[MNS + n])));
+const FOOD = { bite: "/cdn/moodboard-painterly-fantasy/sfx-eating-a-bite-of-cooked-fish-soft-chew-and-crunch.mp3", done: "/cdn/moodboard-painterly-fantasy/sfx-satisfied-content-sigh-after-a-meal.mp3" };
+export function onInput(ctx, input) {
+  if (!pressed(input, 'useFood')) return;
+  const me = ctx.self, s = me.state; if (!s.characterCreated || s.dying) return;
+  const d = (input.actionData && (input.actionData.useFood || input.actionData[MNS + 'useFood'])) || {};
+  const inv = (s.inventory || []).slice(), i = Number(d.index), it = inv[i];
+  if (!it || !it.stats || !it.stats.healOverTime) return;
+  const fp = me.feetPosition, to = { audience: { player: me.id } };
+  if ((s.health ?? 0) >= (s.maxHealth || 1000)) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'You are not hungry', color: '#c8b890', size: 0.9, lifetime: 1.4 }, to); return; }
+  if ((it.count || 1) <= 1) inv[i] = null; else inv[i] = { ...it, count: it.count - 1 };
+  s.inventory = inv; s._questSave = true;
+  const secs = it.stats.eatSeconds || 10;
+  ctx.session.food = { perSec: it.stats.healOverTime / secs, until: ctx.now() + secs * 1000, name: it.name, biteAt: 0 };
+  ctx.session.lastHp = s.health;
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'Eating ' + it.name, color: '#f2d48a', size: 1, lifetime: 1.8 }, to);
+}
+function eat(ctx, me, s, now, dt, hurt) {
+  const f = ctx.session.food; if (!f) return;
+  const fp = me.feetPosition, to = { audience: { player: me.id } };
+  if (hurt) { ctx.session.food = null; ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'Meal interrupted', color: '#e2876a', size: 0.95, lifetime: 1.4 }, to); return; }
+  const max = s.maxHealth || 1000;
+  if (now >= f.until || (s.health ?? 0) >= max) { ctx.session.food = null; ctx.emit('playSound', { clip: FOOD.done, volume: 0.4 }, to); return; }
+  s.health = Math.min(max, (s.health ?? 0) + Math.round(f.perSec * dt)); ctx.session.lastHp = s.health;
+  if (now >= f.biteAt) { f.biteAt = now + 2500; ctx.emit('playSound', { clip: FOOD.bite, volume: 0.45, pitch: 0.92 + ctx.random() * 0.16 }, to); }
+}
 export const updateSchedule = { every: { seconds: 0.25 } };
 export function update(ctx, dt) {
   const me = ctx.self, s = me.state, mem = ctx.session, now = ctx.now();
@@ -26,6 +54,7 @@ export function update(ctx, dt) {
   }
   const max = s.maxHealth || 1000, hp = s.health ?? max;
   if (mem.vitPlace !== me.place) { mem.vitPlace = me.place; mem.safe = null; }
+  eat(ctx, me, s, now, dt, hp < (mem.lastHp ?? hp));
   if (hp < (mem.lastHp ?? hp)) {
     mem.hurtAt = now;
     if ((mem.lastHp - hp) > max * 0.08 && hp > 0 && now - (mem.gruntAt || 0) > 1200) { mem.gruntAt = now; ctx.emit("playSound", { clip: SND.grunt[Math.floor(ctx.random() * SND.grunt.length)], volume: 0.5, pitch: 0.95 + ctx.random() * 0.1, mode: "restart" }); }

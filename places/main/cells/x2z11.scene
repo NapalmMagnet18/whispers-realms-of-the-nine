@@ -205,8 +205,8 @@ nam-npc-hask:
   model: /cdn/model-humanoid-fantasy-fishmonger-male-oilskin-apron-rolled-sleeves-sea-cap-weathered.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 0}
-  state: {homeYaw: 0, idle: idle, npcName: hask, who: hask, yaw: 0}
-  tags: [npc, talker, townsfolk]
+  state: {homeYaw: 0, idle: idle, npcName: "Hask Brinewell, Fishmonger", shop: hask, who: hask, yaw: 0}
+  tags: [npc, vendor, interactable, merchant-npc, townsfolk]
 nam-phantom-camp:
   behavior: scripts/scavengers.js
   feetPosition: {x: 249, y: {terrain: 0}, z: 1408}

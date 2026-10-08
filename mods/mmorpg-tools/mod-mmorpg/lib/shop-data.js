@@ -68,6 +68,14 @@ SHOP_INVENTORIES['armsmith'] = [
   { id: 'iron-rim-shield', name: 'Iron-Rim Shield', icon: '/cdn/value.059e0a3c752a1f5677c284f9e44ecd1b50d6772be2de92a240b3e91a534361ef.png', slot: 'offHand', price: 160, description: 'Oak boards bound in a hammered iron rim.', stats: { defence: 14 } },
 ];
 
+// Hask Brinewell's fish stall in Saltmere: cooked catch, the Saltborn health potion. Eaten from the bag (useFood, scripts/vitality.js):
+// heals healOverTime HP across eatSeconds, broken by a hit
+SHOP_INVENTORIES['hask'] = [
+  { id: 'grilled-silverbelly', name: 'Grilled Silverbelly', icon: '/cdn/value.7d9b5ece69d3c22b6514a615191c76c6edf017b65f48d1f4e73302904b04c178.png', slot: 'bag', price: 15, stackable: true, consumable: true, description: 'Charred on a driftwood stick. Restores 300 health over 10 sec. Eating stops if you are struck.', stats: { healOverTime: 300, eatSeconds: 10 } },
+  { id: 'red-snapper-steak', name: 'Red Snapper Steak', icon: '/cdn/value.6976256f86c25dae12b0aac525e76026730e4982c6a919bff75f0bd0369b574a.png', slot: 'bag', price: 40, stackable: true, consumable: true, description: 'Pan-seared with sea herbs. Restores 700 health over 12 sec. Eating stops if you are struck.', stats: { healOverTime: 700, eatSeconds: 12 } },
+  { id: 'saltborn-fish-stew', name: 'Saltborn Fish Stew', icon: '/cdn/value.6f70b3531cdca8f325a168e649b5e0125b2c2b0b36fd10fa38e1ee2c22abbd1a.png', slot: 'bag', price: 90, stackable: true, consumable: true, description: 'Hask\'s grandmother\'s pot. Restores 1400 health over 15 sec. Eating stops if you are struck.', stats: { healOverTime: 1400, eatSeconds: 15 } },
+];
+
 // what a vendor pays for a bag good it never sells (copper)
 var SELL_ONLY = { 'iron-ore': 12, 'sunleaf': 4, 'briarroot': 10, 'gravebloom': 22, 'copper-bar': 14, 'iron-bar': 30, 'ghostlight-oil': 70, 'copper-ore': 5, 'log': 3, 'timber-logs': 3, 'empty-vial': 1 };
 var SELL_RATE = 0.25;
