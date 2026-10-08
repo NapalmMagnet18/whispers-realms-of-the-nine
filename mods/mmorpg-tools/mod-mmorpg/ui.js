@@ -152,6 +152,7 @@ export function getRightHudLayout() {
 var __faEverPlayed = false;
 
 export default function(world, localPlayer) {
+  _warmHud();
   var characterCreated = localPlayer.state.characterCreated === true;
   var phase = localPlayer.state.phase;
   var isCreating = phase === 'creating';
