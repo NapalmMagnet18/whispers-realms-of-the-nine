@@ -37,9 +37,8 @@ function hurt(ctx, p, dmg, color) {
   ctx.emit("screenShake", { intensity: 0.4, duration: 0.25 }, { audience: { player: p.id } });
   ctx.emit("flash", { target: p.id, color: "#ff6a2a", duration: 0.15 }, { audience: near(at) });
 }
-function credit(ctx, p, key, text) {
-  p.state.tally = { ...(p.state.tally || {}), [key]: (p.state.tally?.[key] || 0) + 1 };
-  p.state._questSave = true;
+function credit(ctx, p, key, text, xp = 0) {
+  ctx.emit("kill", { tally: key, xp }, { to: p.id }); // the hero's own machine counts it (scripts/quest-player.js ear)
   if (text) ctx.emit("damageNumber", { position: { x: p.feetPosition.x, y: p.feetPosition.y + 2.1, z: p.feetPosition.z }, text, color: "oklch(0.86 0.15 85)", size: 1.1, lifetime: 1.6 }, { audience: { player: p.id } });
 }
 
@@ -66,8 +65,7 @@ export function update(ctx, dt) {
     ctx.emit("shockwave", { position: at, speed: 14, thickness: 1.2, intensity: 0.6 }, { audience: near(at) });
     ctx.emit("slowMo", { scale: 0.4, duration: 0.8 }, { audience: near(at) });
     for (const p of fighters) {
-      credit(ctx, p, "candle_warden", "The Warden kneels");
-      if (typeof p.state.xp === "number") p.state.xp += W.reward.xp; else p.state.xp = W.reward.xp;
+      credit(ctx, p, "candle_warden", "The Warden kneels", W.reward.xp);
       ctx.emit("coins", { delta: W.reward.copper, reason: "kill:candle_warden" }, { to: p.id });
     }
     return;
