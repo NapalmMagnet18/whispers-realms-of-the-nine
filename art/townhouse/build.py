@@ -25,7 +25,7 @@ def piece(name, X, Y, Z, rot=0):
         for i, s in enumerate(o.material_slots):
             nm = s.material.name.split(".")[0] if s.material else "MI_Plaster"
             o.material_slots[i].material = mat(nm)
-        o.location = (X, -Z, Y); o.rotation_euler = (0, 0, math.radians(rot)); parts.append(o)
+        o.location = (X, -Z, Y); o.rotation_euler = (math.radians(90), 0, math.radians(rot)); parts.append(o)
 def box(mname, x0, x1, y0, y1, z0, z1):
     bm = bmesh.new(); bmesh.ops.create_cube(bm, size=1)
     me = bpy.data.meshes.new("b"); bm.to_mesh(me); o = bpy.data.objects.new("b", me); bpy.context.collection.objects.link(o)
@@ -54,7 +54,7 @@ side(0, [(B+"straight", None, None), (B+"window-wide-flat", "window-wide-flat1",
 side(0, [(B+"straight", None, None), (B+"window-wide-round", "window-wide-round1", "windowshutters-wide-round-open"), (B+"straight", None, None)], "right")
 # upper storey: limewash and timber
 side(H, [(P+"window-wide-flat", "window-wide-flat1", "windowshutters-wide-flat-open"), (P+"woodgrid", None, None),
-         (P+"woodgrid", None, None), (P+"window-wide-round", "window-wide-round1", "windowshutters-wide-round-open")], "front")
+         (P+"door-flat", None, None), (P+"window-wide-round", "window-wide-round1", "windowshutters-wide-round-open")], "front")
 side(H, [(P+"woodgrid", None, None), (P+"window-wide-flat", "window-wide-flat1", "windowshutters-wide-flat-closed"), (P+"woodgrid", None, None), (P+"straight", None, None)], "back")
 side(H, [(P+"woodgrid", None, None), (P+"window-wide-round", "window-wide-round1", None), (P+"woodgrid", None, None)], "left")
 side(H, [(P+"straight", None, None), (P+"window-wide-flat", "window-wide-flat1", "windowshutters-wide-flat-open"), (P+"woodgrid", None, None)], "right")
@@ -64,20 +64,36 @@ piece("window-roof-thin", 1, 0, D2 - 0.09, 0)
 # timber jetty band between storeys
 for i in range(4): piece("wall-bottomcover", -3 + 2 * i, H, D2 - 0.09, 0); piece("wall-bottomcover", 3 - 2 * i, H, -D2 + 0.09, 180)
 for i in range(3): piece("wall-bottomcover", -W2 + 0.09, H, 2 - 2 * i, -90); piece("wall-bottomcover", W2 - 0.09, H, -2 + 2 * i, 90)
-# corner posts
-for sx in (-1, 1):
-    for sz in (-1, 1): box("MI_WoodTrim", sx * W2 - 0.16, sx * W2 + 0.16, -0.1, 2 * H, sz * D2 - 0.16, sz * D2 + 0.16)
-# plinth, floors (stair hole upstairs), door leaf swung in
+# corners: fieldstone quoins below, oak posts above
+for (cx, cz, r) in ((-W2, D2, 0), (W2, D2, 90), (W2, -D2, 180), (-W2, -D2, -90)):
+    piece("corner-exteriorwide-brick", cx, 0, cz, r)
+    piece("corner-exteriorwide-wood", cx, H, cz, r)
+# door frames
+piece("doorframe-round-brick", -1, 0, D2 - 0.09, 0)
+piece("doorframe-flat-brick", -1, 0, -D2 + 0.09, 180)
+piece("doorframe-flat-wooddark", 1, H, D2 - 0.09, 0)
+# plinth and floors: kit boards over solid slabs; the stair hole is the back-left bay pair
 box("MI_RockTrim", -W2 - 0.25, W2 + 0.25, -0.8, 0.06, -D2 - 0.25, D2 + 0.25)
 box("MI_Floor", -W2 + 0.3, W2 - 0.3, 0.06, 0.12, -D2 + 0.3, D2 - 0.3)
-U0, U1 = H - 0.02, H + 0.12
-box("MI_Floor", -1.65, W2 - 0.3, U0, U1, -D2 + 0.3, D2 - 0.3)
-box("MI_Floor", -W2 + 0.3, -1.65, U0, U1, 0.6, D2 - 0.3)
-box("MI_WoodTrim", -1.62, -1.5, U1, U1 + 1.0, -D2 + 0.3, 0.6)  # landing rail
-piece("stair-interior-rails", -2.6, 0.1, 1.6, 0)
-d = box("MI_WoodTrim_Wear", 0, 1.1, 0.12, 2.25, -0.04, 0.04)  # door leaf hinged at the bay's left jamb, open inward
-d.location = (-1.55 + 0.55 * math.cos(math.radians(-70)) , -(D2 - 0.25 - 0.55 * math.sin(math.radians(70))), d.location.z)
-d.rotation_euler = (0, 0, math.radians(70)); d.location.x = -1.55 + 0.55 * math.cos(math.radians(70)); d.location.y = -(D2 - 0.25) + 0.55 * math.sin(math.radians(70))
+U0, U1 = H - 0.12, H - 0.01
+box("MI_Floor", -2.0, W2 - 0.3, U0, U1, -D2 + 0.3, D2 - 0.3)
+box("MI_Floor", -W2 + 0.3, -2.0, U0, U1, 1.0, D2 - 0.3)
+for X in (-3, -1, 1, 3):
+    for Z in (-2, 0, 2):
+        piece("floor-woodlight", X, 0.125, Z, 0)
+        if not (X == -3 and Z in (-2, 0)): piece("floor-wooddark-half3", X, H, Z + 1, 0); piece("floor-wooddark-half3", X, H, Z, 180)
+box("MI_WoodTrim", -2.02, -1.9, H, H + 1.0, -D2 + 0.3, 1.0)  # landing rail
+piece("stair-interior-rails", -3.0, 0.12, 1.55, 0)
+d = box("MI_WoodTrim_Wear", -0.55, 0.55, 0.12, 2.35, -0.04, 0.04)  # door leaf, swung in on its left hinge
+d.rotation_euler = (0, 0, math.radians(-75)); d.location.x = -1.62 + 0.55 * math.cos(math.radians(75)); d.location.y = -(D2 - 0.35 - 0.55 * math.sin(math.radians(75)))
+# balcony over the street: two kit board tiles on a beam deck, cross rails
+for X in (-1, 1):
+    piece("floor-woodlight", X, H + 0.0, D2 + 1, 0)
+    piece("balcony-cross-straight", X, H, D2 + 1, 0)
+box("MI_WoodTrim", -2.0, 2.0, H - 0.22, H - 0.01, D2, D2 + 2.0)
+piece("balcony-cross-straight", 1, H, D2 + 1, 90)
+piece("balcony-cross-straight", -1, H, D2 + 1, -90)
+for X in (-1.9, 1.9): box("MI_WoodTrim", X - 0.08, X + 0.08, H - 1.1, H - 0.2, D2, D2 + 1.6).rotation_euler = (math.radians(-40), 0, 0)
 # gable roof, ridge along X
 R0, RY, OV = 2 * H, 2 * H + 3.0, 0.55
 xa, xb = -W2 - OV, W2 + OV; ze = D2 + OV; ye = R0 - OV * (3.0 / D2)
@@ -88,8 +104,6 @@ for s in (1, -1):
 for sx in (-1, 1):  # plaster gables + barge boards
     x = sx * (W2 - 0.05)
     poly("MI_Plaster", [(x, R0, D2), (x, R0, -D2), (x, RY, 0)], [(0, 1, 2), (2, 1, 0)])
-    for s in (1, -1):
-        box("MI_WoodTrim", sx * (W2 + OV) - 0.06, sx * (W2 + OV) + 0.06, 0, 0.001, 0, 0.001).scale = (0.12, 0.001, 0.001)
 box("MI_WoodTrim", xa, xb, RY + T - 0.05, RY + T + 0.12, -0.12, 0.12)  # ridge beam
 box("MI_Brick", 1.8, 2.7, R0 - 0.5, RY + 1.3, -1.9, -1.0)  # chimney
 box("MI_RockTrim", 1.7, 2.8, RY + 1.3, RY + 1.45, -2.0, -0.9)
