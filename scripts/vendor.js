@@ -6,8 +6,10 @@ import { move, purse, formatText } from './lib/economy.js';
 import { migrateCopper } from '../mods/mmorpg-tools/mod-mmorpg/lib/currency.js';
 import { getShopItems, findShopItem, sellPrice } from '../mods/mmorpg-tools/mod-mmorpg/lib/shop-data.js';
 
-const on = (input, name) => !!((input.pressed && input.pressed[name]) || (input.actions && input.actions[name]));
-const dataOf = (input, name) => (input.actionData && input.actionData[name]) || {};
+const MNS = 'mmorpg-tools:'; // a button in the mod's ui.js arrives namespaced
+const on1 = (input, n) => !!((input.pressed && input.pressed[n]) || (input.actions && input.actions[n]));
+const on = (input, name) => on1(input, name) || on1(input, MNS + name);
+const dataOf = (input, name) => (input.actionData && (input.actionData[name] || input.actionData[MNS + name])) || {};
 const playing = (ctx) => ctx.self.place === 'main' && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
 const dist2 = (a, b) => (a.x - b.x) ** 2 + (a.z - b.z) ** 2;
 
