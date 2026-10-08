@@ -194,7 +194,7 @@ export function renderQuestDialog(localPlayer) {
 
             // Accept / Decline buttons — absolute bottom, centered, gap 130px
             + '<div style="position:absolute;bottom:155px;left:0;right:0;display:flex;justify-content:center;gap:130px;">'
-              + '<button data-interactive onclick="sendAction(\'acceptQuest\',{questId:\'' + quest.id + '\'})" style="' + btnBase + '" onmouseenter="' + btnHoverIn + '" onmouseleave="' + btnHoverOut + '">'
+              + '<button data-interactive onclick="sendAction(\'acceptQuest\',{questId:\'' + quest.id + '\'})" class="brass-plate" style="' + btnBase + '" onmouseenter="' + btnHoverIn + '" onmouseleave="' + btnHoverOut + '">'
                 + 'Accept'
               + '</button>'
               + '<button data-interactive onclick="sendAction(\'declineQuest\')" style="' + btnBase + '" onmouseenter="' + btnHoverIn + '" onmouseleave="' + btnHoverOut + '">'
@@ -397,7 +397,7 @@ export function renderTurnInDialog(localPlayer) {
 
             // Complete Quest / Close buttons — absolute bottom, close shifted left
             + '<div style="position:absolute;bottom:155px;left:0;right:0;display:flex;justify-content:center;gap:130px;">'
-              + '<button data-interactive onclick="sendAction(\'completeQuest\',{questId:\'' + questId + '\'})" style="' + completeBtnBase + '" onmouseenter="' + completeBtnHoverIn + '" onmouseleave="' + completeBtnHoverOut + '">'
+              + '<button data-interactive onclick="sendAction(\'completeQuest\',{questId:\'' + questId + '\'})" class="brass-plate" style="' + completeBtnBase + '" onmouseenter="' + completeBtnHoverIn + '" onmouseleave="' + completeBtnHoverOut + '">'
                 + 'Complete Quest'
               + '</button>'
               + '<button data-interactive onclick="sendAction(\'closeQuestDialog\')" style="margin-left:-60px;' + btnBase + '" onmouseenter="' + btnHoverIn + '" onmouseleave="' + btnHoverOut + '">'
