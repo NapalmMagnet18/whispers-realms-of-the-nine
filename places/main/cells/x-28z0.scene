@@ -1,0 +1,8 @@
+# spawn-scene v2 yaml x-28z0
+frontier-elderveil:
+  feetPosition: {x: -3600, y: 40, z: -60}
+  id: frontier-elderveil
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 20, height: 40, kind: box, width: 20}
+  tags: [blueprint]

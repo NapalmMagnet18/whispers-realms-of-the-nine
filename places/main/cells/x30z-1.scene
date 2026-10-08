@@ -1,0 +1,8 @@
+# spawn-scene v2 yaml x30z-1
+frontier-sunscar:
+  feetPosition: {x: 3800, y: 40, z: -180}
+  id: frontier-sunscar
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 30, height: 10, kind: box, width: 30}
+  tags: [blueprint]

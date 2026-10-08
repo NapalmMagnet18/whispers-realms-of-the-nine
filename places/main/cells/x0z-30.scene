@@ -1,0 +1,8 @@
+# spawn-scene v2 yaml x0z-30
+frontier-frostveil:
+  feetPosition: {x: -40, y: 50, z: -3800}
+  id: frontier-frostveil
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 30, height: 14, kind: box, width: 30}
+  tags: [blueprint]
