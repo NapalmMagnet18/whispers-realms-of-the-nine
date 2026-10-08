@@ -65,7 +65,7 @@ const K = {
 const HH = { lodge: 6, sign: 2, beacon: 1.9, marker: 0.9, lure: 2.4, ropeposts: 1.3, bridge: 2, stake: 1.2, tracks: 0.02, trialpost: 2.2 };
 const WW = { lodge: 5, bridge: 0.8, lure: 0.6 };
 export function geometry(ctx) { const p = ctx.params || {}; ctx.flat();
-  if ((ctx.lod || 1) >= 4) { if (p.kind === "tracks") return; P(ctx, null, "oklch(0.5 0.04 60)"); const w = WW[p.kind] || 0.2; if (p.kind === "lodge") { box(ctx, -5, 0, -3, 5, 3, 3); P(ctx, null, "oklch(0.66 0.08 80)"); box(ctx, -5.3, 3, -3.3, 5.3, 5.3, 3.3); } else if (p.kind === "bridge") box(ctx, -0.6, 0.4, -7, 0.6, 0.9, 7); else box(ctx, -w, 0, -w, w, HH[p.kind] || 1, w); return; }
+  if ((ctx.lod || 1) >= 4) { P(ctx, null, "oklch(0.5 0.04 60)"); if (p.kind === "tracks") { P(ctx, null, "oklch(0.3 0.03 60)", 1); box(ctx, -0.2, 0, -1.1, 0.2, 0.01, 1.2); return; } const w = WW[p.kind] || 0.2; if (p.kind === "lodge") { box(ctx, -5, 0, -3, 5, 3, 3); P(ctx, null, "oklch(0.66 0.08 80)"); box(ctx, -5.3, 3, -3.3, 5.3, 5.3, 3.3); } else if (p.kind === "bridge") box(ctx, -0.6, 0.4, -7, 0.6, 0.9, 7); else box(ctx, -w, 0, -w, w, HH[p.kind] || 1, w); return; }
   (K[p.kind] || K.marker)(ctx, rng((ctx.seed ?? 1) + 31)); ctx.emissive(null); }
 export function collider(ctx) { const k = (ctx.params || {}).kind;
   if (k === "lodge") { box(ctx, -5, 0, -3, 5, 3.2, 3); box(ctx, -3.5, 0, 2.9, 3.5, 0.6, 4.6); return; }
