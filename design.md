@@ -146,3 +146,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Mott is a vendor; shop follows stop: mott-reach / mott-fen / mott-reed (food items, healOverTime).
 
 - 2026-10-08: Discipline trainers (trainer-<race> at each race start): E trains your class rank I–VII at levels 5/10/20/30/40/50/60 for a copper fee; each rank +6% ability damage (scripts/lib/data/trainers.yml, kit.js power()). Saved as state.trained. Asked for in the creator's "class trainers… to upgrade as you level" note.
+- 2026-10-08: Party Finder boards (finder-<race> beside each trainer, finder-sorrowfen on the hub): click QUEUE for a dungeon (group 3) or raid (group 5); places/main/sim.js pops a full group, or 2+ after 90 s, or solo after 180 s, and carries them through the gate link (scripts/lib/data/finder.yml).
