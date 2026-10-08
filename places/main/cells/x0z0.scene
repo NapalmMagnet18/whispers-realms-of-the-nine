@@ -1,0 +1,31 @@
+# spawn-scene v2 yaml x0z0
+bank:
+  feetPosition: {x: -16, y: 4, z: 22}
+  id: bank
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 9, height: 7, kind: box, width: 11}
+inn:
+  feetPosition: {x: 0, y: 4, z: -24}
+  id: inn
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 11, height: 9, kind: box, width: 16}
+merchant:
+  feetPosition: {x: -24, y: 4, z: 4}
+  id: merchant
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 8, height: 6, kind: box, width: 10}
+plaza-well:
+  feetPosition: {x: 0, y: 4, z: 0}
+  id: plaza-well
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 3, height: 3, kind: box, width: 3}
+smithy:
+  feetPosition: {x: 24, y: 4, z: 2}
+  id: smithy
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 9, height: 6, kind: box, width: 10}

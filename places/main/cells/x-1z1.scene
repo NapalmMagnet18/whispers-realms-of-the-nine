@@ -1,0 +1,7 @@
+# spawn-scene v2 yaml x-1z1
+quarry-bp:
+  feetPosition: {x: -110, y: 4, z: 90}
+  id: quarry-bp
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 70, height: 14, kind: box, width: 70}

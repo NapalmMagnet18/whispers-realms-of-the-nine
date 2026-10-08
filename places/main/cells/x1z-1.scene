@@ -1,0 +1,7 @@
+# spawn-scene v2 yaml x1z-1
+forest-bp:
+  feetPosition: {x: 120, y: 4, z: -90}
+  id: forest-bp
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 90, height: 14, kind: box, width: 90}
