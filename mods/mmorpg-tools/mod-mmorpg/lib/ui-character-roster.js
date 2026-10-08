@@ -8,8 +8,8 @@ function b(label, onclick, hot, w) {
   return '<div class="wm-btn" data-interactive onclick="' + onclick + '" style="' + ART.frame(hot ? 'buttonHot' : 'button', 12, hot ? 'rgba(122,46,34,.96)' : 'rgba(80,30,22,.94)') + 'width:' + (w || 150) + 'px;height:32px;font-size:14px">' + label + '</div>';
 }
 function modal(inner, width) {
-  return '<div data-modal style="position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;pointer-events:auto;background:rgba(0,0,0,.55)">'
-    + '<div style="width:min(' + width + 'px,calc(100vw - 2 * (var(--spawn-chrome-reservation-right-inset,50px) + 24px)));max-height:calc(100vh - 60px);overflow:auto;' + ART.frame('window', 18, 'rgba(14,11,8,.95)') + 'padding:12px 16px;color:' + INK + '">' + inner + '</div></div>';
+  return '<div data-modal style="position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;pointer-events:auto;background:radial-gradient(ellipse at 50% 50%,rgba(8,5,3,.35) 30%,rgba(8,5,3,.15) 100%)">'
+    + '<div style="width:min(' + width + 'px,calc(100vw - 2 * (var(--spawn-chrome-reservation-right-inset,50px) + 24px)));max-height:calc(100vh - 60px);overflow:auto;' + ART.frame('window', 18, 'rgba(14,11,8,.95)') + 'padding:12px 16px;color:' + INK + ';box-shadow:0 18px 60px rgba(0,0,0,.6),0 0 40px rgba(242,176,74,.12)">' + inner + '</div></div>';
 }
 function realmList(s) {
   var list = s.realmList || [], cur = s.realmCurrent || 'main', pick = s.realmPick || cur;

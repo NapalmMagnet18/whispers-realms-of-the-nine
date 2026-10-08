@@ -103,7 +103,7 @@ export function renderMainMenu(localPlayer) {
       + ART.rule('title', '80%', 18)
       + '<div style="font-family:Cinzel,Georgia,serif;color:' + INK + ';font-size:clamp(13px,1.6vw,18px);letter-spacing:.4em;text-transform:uppercase;text-shadow:2px 2px 0 #1a0f08">Realm of the Nine</div></div>'
     : '';
-  var shade = '<div style="position:fixed;inset:0;z-index:49;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 35%,rgba(0,0,0,.55) 100%)"></div>';
+  var shade = '<div style="position:fixed;inset:0;z-index:49;pointer-events:none;background:linear-gradient(90deg,rgba(8,5,3,.55) 0,rgba(8,5,3,.18) 30%,rgba(0,0,0,0) 55%),radial-gradient(ellipse at 60% 45%,rgba(0,0,0,0) 45%,rgba(0,0,0,.35) 100%)"></div>';
   var body = view === 'select' ? selectView(s, chars, sel) : view === 'credits' ? creditsView() : titleView(s, hasChar, loading);
   var err = s.realmError ? '<div style="position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:70;' + ART.frame('notice', 10, 'rgba(60,20,14,.95)') + 'padding:6px 14px;color:' + INK + '">' + esc(s.realmError) + '</div>' : '';
   return CSS + shade + logo + realmBadge(s) + body + err;
