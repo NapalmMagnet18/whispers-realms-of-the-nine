@@ -6,383 +6,304 @@
 # kinds: sweep (get out) · nova (get in to safe) · pools (step off) · cleave (get behind) · summon (adds).
 # from: hp% at which an ability joins. color: fire frost void tide gold blood.
 
-# ── Dungeon: The Drowned Bell (lv 23-25, Tideglass/Sorrowfen coast) ──
-drowned_deckhand:
-  name: Drowned Deckhand
+# ── Dungeon: The Drowned Bell (lv 23-27, beneath the drowned chapel in Sorrowfen; DSB-01..04) ──
+drowned_echo:
+  name: Drowned Echo
   hp: 220
-  melee: { damage: 55, reach: 2.2, every: 2.0, windup: 0.5 }
+  melee: {damage: 55, reach: 2.2, every: 2.0, windup: 0.5}
   walk: 2.4
   aggro: 40
-  tally: drowned_deckhand
-  reward: { xp: 15 }
+  tally: drowned_echo
+  reward: {xp: 15}
   model: /cdn/model-humanoid-fantasy-drowned-sailor-ghoul-barnacled-rags-seaweed-hair-pale-bloated.glb
   scale: 1.0
-bell_bosun:
-  name: Bosun Kell Tidewrack
-  hp: 1400
+reed_sentry:
+  name: Corrupted Reed Sentry
+  hp: 1100
   raidScale: 0.6
-  melee: { damage: 85, reach: 2.8, every: 2.4, windup: 0.6 }
+  melee: {damage: 80, reach: 2.8, every: 2.3, windup: 0.6}
   walk: 1.8
+  aggro: 12
   abilities:
-    - { kind: sweep, every: 11, telegraph: 1.8, radius: 6, damage: 520, color: tide, call: "Get clear of the bosun!" }
-    - { kind: summon, every: 22, first: 10, telegraph: 1.4, add: drowned_deckhand, count: 3, max: 6, color: tide, call: "All hands!", from: 80 }
-  tally: bell_bosun
-  reward: { xp: 450, copper: 2200 }
+  - {kind: sweep, every: 10, telegraph: 1.7, radius: 5.5, damage: 480, color: tide, call: 'The sentry thrashes, get clear!'}
+  tally: reed_sentry
+  reward: {xp: 250, copper: 900}
   respawn: 300
-  wakeLine: "Another crew for the deep!"
-  model: /cdn/model-humanoid-fantasy-drowned-bosun-captain-hulking-barnacle-armor-anchor-chain-glowing-teal-eyes.glb
+  wakeLine: Intruders in the drowned stair!
+  model: /cdn/model-humanoid-fantasy-reed-sentry-tall-guardian-woven-from-black-reeds-and-chapel-iron-glowing-teal-lantern-head.glb
   scale: 1.5
   height: 3
-  sounds: { wake: /cdn/moodboard-gothic-horror/sfx-drowned-bell-toll-underwater.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-burst.mp3, die: /cdn/moodboard-gothic-horror/sfx-chain-collapse-splash.mp3 }
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-burst.mp3,
+    die: /cdn/moodboard-gothic-horror/sfx-choir-fades-sigh.mp3}
 choir_mother:
-  name: The Choir Mother
-  hp: 1500
+  name: The Choirmother Projection
+  hp: 2200
   raidScale: 0.6
-  melee: { damage: 75, reach: 2.6, every: 2.2, windup: 0.6 }
+  melee: {damage: 75, reach: 2.6, every: 2.2, windup: 0.6}
   walk: 1.5
   abilities:
-    - { kind: pools, every: 9, telegraph: 1.6, radius: 2.8, damage: 480, color: tide, call: "Her song pools at your feet" }
-    - { kind: nova, every: 17, first: 12, telegraph: 2.2, safe: 4, damage: 600, color: tide, call: "Come close, or drown in the hymn", from: 70 }
-  enrage: { below: 25, speed: 1.3, line: "The choir screams" }
+  - {kind: pools, every: 9, telegraph: 1.6, radius: 2.8, damage: 480, color: tide, call: Her song pools at your feet}
+  - {kind: summon, every: 22, first: 12, telegraph: 1.4, add: drowned_echo, count: 3, max: 6, color: tide, call: The drowned choir rises, from: 80}
+  - {kind: sweep, every: 13, first: 16, telegraph: 1.8, radius: 6, damage: 520, color: tide, call: 'The tethering chords snap, get out!', from: 60}
+  - {kind: nova, every: 18, first: 22, telegraph: 2.2, safe: 4, damage: 640, color: tide, call: 'Come close, or drown in the hymn', from: 40}
+  enrage: {below: 25, speed: 1.3, line: The choir screams}
   tally: choir_mother
-  reward: { xp: 480, copper: 2400 }
+  reward: {xp: 700, copper: 4200}
   respawn: 300
-  wakeLine: "Sing with us. Forever."
+  wakeLine: Hush. The choir is nearly whole.
   model: /cdn/model-humanoid-fantasy-drowned-choir-mother-tall-pale-woman-flooded-robes-lantern-coral-crown.glb
   scale: 1.45
-  sounds: { wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-burst.mp3, die: /cdn/moodboard-gothic-horror/sfx-choir-fades-sigh.mp3 }
-drowned_bellwright:
-  name: The Drowned Bellwright
-  hp: 1900
-  raidScale: 0.6
-  melee: { damage: 95, reach: 3.0, every: 2.5, windup: 0.7 }
-  walk: 1.6
-  abilities:
-    - { kind: cleave, every: 8, telegraph: 1.5, radius: 9, cone: 100, damage: 560, color: tide, call: "The bell swings, get behind him" }
-    - { kind: sweep, every: 13, first: 9, telegraph: 1.8, radius: 6.5, damage: 520, color: tide, call: "The bell tolls, get out!" }
-    - { kind: pools, every: 15, first: 14, telegraph: 1.6, radius: 3, damage: 460, color: tide, from: 50 }
-  enrage: { below: 30, speed: 1.3, line: "The bell cracks and rings wild" }
-  tally: drowned_bellwright
-  killText: "The Drowned Bell falls silent"
-  reward: { xp: 700, copper: 4200 }
-  respawn: 300
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-burst.mp3,
+    die: /cdn/moodboard-gothic-horror/sfx-choir-fades-sigh.mp3}
+  killText: The Choirmother sings a lullaby, and lets go
   milestone: 30
-  wakeLine: "Who rings my bell?"
-  model: /cdn/model-humanoid-fantasy-drowned-bellwright-giant-smith-carrying-cracked-bronze-bell-kelp-beard-rusted-plate.glb
-  scale: 1.7
-  height: 3.4
-  sounds: { wake: /cdn/moodboard-gothic-horror/sfx-drowned-bell-toll-underwater.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-bell-hum-rising.mp3, burst: /cdn/moodboard-gothic-horror/sfx-great-bell-strike-shockwave.mp3, die: /cdn/moodboard-gothic-horror/sfx-bell-crack-collapse.mp3 }
 
-# ── Dungeon: The Root Archive (lv 28-30, under Briarwild Deepgrove) ──
+# ── Dungeon: The Root Archive (lv 29-33, below Briarwild Deepgrove; DRT-01..04) ──
 root_lasher:
   name: Root Lasher
   hp: 320
-  melee: { damage: 70, reach: 2.6, every: 2.2, windup: 0.5 }
+  melee: {damage: 70, reach: 2.6, every: 2.2, windup: 0.5}
   walk: 2.2
   aggro: 40
   tally: root_lasher
-  reward: { xp: 20 }
+  reward: {xp: 20}
   model: /cdn/model-humanoid-fantasy-root-lasher-twisted-wooden-creature-thorn-whips-glowing-sap-eyes.glb
   scale: 1.1
-archivist_thorne:
-  name: Archivist Thorne
-  hp: 1900
-  raidScale: 0.6
-  melee: { damage: 95, reach: 2.6, every: 2.3, windup: 0.6 }
-  walk: 1.7
-  abilities:
-    - { kind: pools, every: 9, telegraph: 1.5, radius: 3, damage: 560, color: frost, call: "Frost blooms beneath you" }
-    - { kind: summon, every: 24, first: 12, telegraph: 1.4, add: root_lasher, count: 2, max: 5, color: frost, call: "The roots wake", from: 85 }
-  tally: archivist_thorne
-  reward: { xp: 560, copper: 3000 }
-  respawn: 300
-  wakeLine: "These memories are not for borrowing."
-  model: /cdn/model-humanoid-fantasy-archivist-thorne-gaunt-scholar-bark-skin-antler-crown-frost-tome.glb
-  scale: 1.4
-  sounds: { wake: /cdn/moodboard-painterly-fantasy/sfx-ancient-tree-groan.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-frost-crackle-gathering.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-ice-shatter-burst.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-wood-split-collapse.mp3 }
-frost_memory:
-  name: The Frost-Bound Memory
-  hp: 2100
-  raidScale: 0.6
-  melee: { damage: 90, reach: 2.8, every: 2.2, windup: 0.6 }
-  walk: 1.5
-  abilities:
-    - { kind: nova, every: 14, first: 8, telegraph: 2.2, safe: 4.5, damage: 700, color: frost, call: "Stand in its warmth or freeze" }
-    - { kind: sweep, every: 11, first: 15, telegraph: 1.7, radius: 6, damage: 600, color: frost, call: "It exhales frost, get out!" }
-  enrage: { below: 25, speed: 1.3, line: "The memory shatters into rage" }
-  tally: frost_memory
-  reward: { xp: 600, copper: 3200 }
-  respawn: 300
-  model: /cdn/model-humanoid-fantasy-frost-bound-memory-ghostly-ice-knight-translucent-blue-cracked-crown.glb
-  scale: 1.6
-  sounds: { wake: /cdn/moodboard-painterly-fantasy/sfx-ice-wind-howl.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-frost-crackle-gathering.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-ice-shatter-burst.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-ice-shatter-burst.mp3 }
-ysolde_root_heart:
-  name: Old Ysolde of the Root Heart
+thorn_custodian:
+  name: The Thorn Custodian
   hp: 2600
   raidScale: 0.6
-  melee: { damage: 110, reach: 3.2, every: 2.5, windup: 0.7 }
+  melee: {damage: 110, reach: 3.2, every: 2.5, windup: 0.7}
   walk: 1.4
   abilities:
-    - { kind: cleave, every: 8, telegraph: 1.5, radius: 9, cone: 110, damage: 650, color: frost, call: "The great root swings" }
-    - { kind: pools, every: 11, first: 6, telegraph: 1.5, radius: 3, damage: 560, color: frost }
-    - { kind: summon, every: 26, first: 20, telegraph: 1.4, add: root_lasher, count: 3, max: 6, color: frost, from: 60 }
-    - { kind: nova, every: 18, first: 16, telegraph: 2.2, safe: 4.5, damage: 750, color: frost, from: 40, call: "To her feet, or be crushed" }
-  enrage: { below: 25, speed: 1.35, line: "The Root Heart bleeds sap and fury" }
-  tally: ysolde_root_heart
-  killText: "The Root Heart sleeps again"
-  reward: { xp: 900, copper: 5500 }
+  - {kind: cleave, every: 8, telegraph: 1.5, radius: 9, cone: 110, damage: 650, color: frost, call: The great root swings}
+  - {kind: pools, every: 11, first: 6, telegraph: 1.5, radius: 3, damage: 560, color: frost}
+  - {kind: summon, every: 26, first: 20, telegraph: 1.4, add: root_lasher, count: 3, max: 6, color: frost, from: 60}
+  - {kind: nova, every: 18, first: 16, telegraph: 2.2, safe: 4.5, damage: 750, color: frost, from: 40, call: 'To her feet, or be crushed'}
+  enrage: {below: 25, speed: 1.35, line: The Root Heart bleeds sap and fury}
+  tally: thorn_custodian
+  killText: The Custodian lowers its thorns
+  reward: {xp: 900, copper: 5500}
   respawn: 300
   milestone: 34
-  wakeLine: "I kept every memory this forest had. I will keep yours."
-  model: /cdn/model-humanoid-fantasy-old-ysolde-giant-dryad-matriarch-ancient-bark-body-frosted-leaves-root-staff.glb
+  wakeLine: Show me your oath. I will know if it is false.
+  model: /cdn/model-humanoid-fantasy-thorn-custodian-giant-guardian-of-living-briar-and-bellglass-thorns-amber-heart-glowing-through-bark.glb
   scale: 1.9
   height: 3.8
-  sounds: { wake: /cdn/moodboard-painterly-fantasy/sfx-ancient-tree-groan.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-roots-rumble-gathering.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-earth-root-eruption.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-great-tree-falls.mp3 }
+  sounds: {wake: /cdn/moodboard-painterly-fantasy/sfx-ancient-tree-groan.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-roots-rumble-gathering.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-earth-root-eruption.mp3,
+    die: /cdn/moodboard-painterly-fantasy/sfx-great-tree-falls.mp3}
 
-# ── Raid I: The Pale Choir (lv 60, the undercroft beneath Ashen Close cathedral) ──
+# ── Raid I: The Pale Choir (lv 60, 5-10 heroes, the undercroft beneath Ashen Close cathedral; RPC-01..03) ──
 pale_acolyte:
   name: Pale Acolyte
   hp: 1400
-  melee: { damage: 180, reach: 2.4, every: 2.0, windup: 0.5 }
+  melee: {damage: 180, reach: 2.4, every: 2.0, windup: 0.5}
   walk: 2.6
   aggro: 60
   tally: pale_acolyte
-  reward: { xp: 60 }
+  reward: {xp: 60}
   model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
 deacon_morrow:
   name: Deacon Morrow, the Unlit
   hp: 7000
   raidScale: 0.9
-  melee: { damage: 320, reach: 3.0, every: 2.5, windup: 0.7 }
+  melee: {damage: 320, reach: 3.0, every: 2.5, windup: 0.7}
   walk: 1.7
   abilities:
-    - { kind: sweep, every: 10, telegraph: 1.8, radius: 7, damage: 2200, color: void, call: "The Deacon snuffs the light, get out!" }
-    - { kind: summon, every: 20, first: 12, telegraph: 1.4, add: pale_acolyte, count: 3, max: 8, color: void, call: "Acolytes, to the nave!" }
-    - { kind: pools, every: 14, first: 18, telegraph: 1.6, radius: 3.2, damage: 1900, color: void, from: 60 }
-  enrage: { below: 20, speed: 1.3, line: "Morrow tears off his mask" }
+  - {kind: sweep, every: 10, telegraph: 1.8, radius: 7, damage: 2200, color: void, call: 'The Deacon snuffs the light, get out!'}
+  - {kind: summon, every: 20, first: 12, telegraph: 1.4, add: pale_acolyte, count: 3, max: 8, color: void, call: 'Acolytes, to the nave!'}
+  - {kind: pools, every: 14, first: 18, telegraph: 1.6, radius: 3.2, damage: 1900, color: void, from: 60}
+  enrage: {below: 20, speed: 1.3, line: Morrow tears off his mask}
   tally: deacon_morrow
-  reward: { xp: 3000, copper: 25000 }
+  reward: {xp: 3000, copper: 25000}
   respawn: 900
   milestone: 60
-  wakeLine: "Kneel. The candles are counting you."
+  wakeLine: Kneel. The candles are counting you.
   model: /cdn/model-humanoid-fantasy-deacon-morrow-towering-priest-iron-mask-black-vestments-chained-censer.glb
   scale: 1.8
   height: 3.6
-  sounds: { wake: /cdn/moodboard-gothic-horror/sfx-cathedral-organ-dread-chord.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-darkness-whoosh-rising.mp3, burst: /cdn/moodboard-gothic-horror/sfx-void-burst-low-boom.mp3, die: /cdn/moodboard-gothic-horror/sfx-iron-mask-clang-collapse.mp3 }
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-cathedral-organ-dread-chord.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-darkness-whoosh-rising.mp3, burst: /cdn/moodboard-gothic-horror/sfx-void-burst-low-boom.mp3,
+    die: /cdn/moodboard-gothic-horror/sfx-iron-mask-clang-collapse.mp3}
 bone_organist:
   name: The Bone Organist
   hp: 8000
   raidScale: 0.9
-  melee: { damage: 300, reach: 3.0, every: 2.3, windup: 0.6 }
+  melee: {damage: 300, reach: 3.0, every: 2.3, windup: 0.6}
   walk: 1.5
   abilities:
-    - { kind: pools, every: 8, telegraph: 1.5, radius: 3.2, damage: 2000, color: blood, call: "The organ's notes fall on you" }
-    - { kind: nova, every: 16, first: 11, telegraph: 2.2, safe: 5, damage: 2600, color: blood, call: "The pipes roar, under the organ!" }
-    - { kind: cleave, every: 12, first: 20, telegraph: 1.5, radius: 10, cone: 100, damage: 2300, color: blood, from: 50 }
-  enrage: { below: 20, speed: 1.35, line: "The hymn becomes a scream" }
+  - {kind: pools, every: 8, telegraph: 1.5, radius: 3.2, damage: 2000, color: blood, call: The organ's notes fall on you}
+  - {kind: nova, every: 16, first: 11, telegraph: 2.2, safe: 5, damage: 2600, color: blood, call: 'The pipes roar, under the organ!'}
+  - {kind: cleave, every: 12, first: 20, telegraph: 1.5, radius: 10, cone: 100, damage: 2300, color: blood, from: 50}
+  enrage: {below: 20, speed: 1.35, line: The hymn becomes a scream}
   tally: bone_organist
-  reward: { xp: 3200, copper: 27000 }
+  reward: {xp: 3200, copper: 27000}
   respawn: 900
   milestone: 61
-  wakeLine: "A hymn needs bones. Yours will do."
+  wakeLine: A hymn needs bones. Yours will do.
   model: /cdn/model-humanoid-fantasy-bone-organist-skeletal-giant-in-tattered-choir-robes-ribcage-organ-pipes-on-back.glb
   scale: 1.8
   height: 3.6
-  sounds: { wake: /cdn/moodboard-gothic-horror/sfx-cathedral-organ-dread-chord.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-organ-pipes-rising-drone.mp3, burst: /cdn/moodboard-gothic-horror/sfx-organ-blast-shockwave.mp3, die: /cdn/moodboard-gothic-horror/sfx-bones-collapse-pile.mp3 }
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-cathedral-organ-dread-chord.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-organ-pipes-rising-drone.mp3, burst: /cdn/moodboard-gothic-horror/sfx-organ-blast-shockwave.mp3,
+    die: /cdn/moodboard-gothic-horror/sfx-bones-collapse-pile.mp3}
 saint_ilvane:
   name: Saint Ilvane the Candleless
   hp: 10000
   raidScale: 0.9
   mind: true
-  mindNote: "Which hero does Saint Ilvane turn on next? She hunts whoever wounds her most, punishes the weakest, and scorns the ones who guard."
-  melee: { damage: 360, reach: 3.2, every: 2.4, windup: 0.6 }
+  mindNote: Which hero does Saint Ilvane turn on next? She hunts whoever wounds her most, punishes the weakest, and scorns the ones who guard.
+  melee: {damage: 360, reach: 3.2, every: 2.4, windup: 0.6}
   walk: 1.8
   abilities:
-    - { kind: cleave, every: 9, telegraph: 1.4, radius: 10, cone: 110, damage: 2400, color: gold, call: "Her blade of light, get behind!" }
-    - { kind: sweep, every: 13, first: 7, telegraph: 1.7, radius: 7, damage: 2400, color: gold, call: "Holy fire, get out!" }
-    - { kind: summon, every: 25, first: 18, telegraph: 1.4, add: pale_acolyte, count: 4, max: 8, color: void, from: 75 }
-    - { kind: pools, every: 11, first: 14, telegraph: 1.5, radius: 3.4, damage: 2100, color: void, from: 50 }
-    - { kind: nova, every: 19, first: 22, telegraph: 2.2, safe: 5, damage: 3000, color: void, from: 30, call: "The last candle, stand with her or burn" }
-  enrage: { below: 15, speed: 1.4, line: "The Saint's halo goes out" }
+  - {kind: cleave, every: 9, telegraph: 1.4, radius: 10, cone: 110, damage: 2400, color: gold, call: 'Her blade of light, get behind!'}
+  - {kind: sweep, every: 13, first: 7, telegraph: 1.7, radius: 7, damage: 2400, color: gold, call: 'Holy fire, get out!'}
+  - {kind: summon, every: 25, first: 18, telegraph: 1.4, add: pale_acolyte, count: 4, max: 8, color: void, from: 75}
+  - {kind: pools, every: 11, first: 14, telegraph: 1.5, radius: 3.4, damage: 2100, color: void, from: 50}
+  - {kind: nova, every: 19, first: 22, telegraph: 2.2, safe: 5, damage: 3000, color: void, from: 30, call: 'The last candle, stand with her or burn'}
+  enrage: {below: 15, speed: 1.4, line: The Saint's halo goes out}
   tally: saint_ilvane
-  killText: "The Pale Choir is silenced"
-  reward: { xp: 5000, copper: 60000 }
+  killText: The Pale Choir is silenced
+  reward: {xp: 5000, copper: 60000}
   respawn: 900
   milestone: 62
-  wakeLine: "I gave this city its light. I can take it back."
+  wakeLine: I gave this city its light. I can take it back.
   model: /cdn/model-humanoid-fantasy-saint-ilvane-fallen-saint-tall-pale-woman-broken-halo-white-armor-black-veil-greatsword.glb
   scale: 1.9
   height: 3.8
-  sounds: { wake: /cdn/moodboard-gothic-horror/sfx-angelic-choir-turns-sinister.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-holy-light-gathering-hum.mp3, burst: /cdn/moodboard-gothic-horror/sfx-holy-fire-burst.mp3, die: /cdn/moodboard-gothic-horror/sfx-halo-shatters-choir-dies.mp3 }
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-angelic-choir-turns-sinister.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-holy-light-gathering-hum.mp3, burst: /cdn/moodboard-gothic-horror/sfx-holy-fire-burst.mp3,
+    die: /cdn/moodboard-gothic-horror/sfx-halo-shatters-choir-dies.mp3}
 
-# ── Raid II: Emberheart Caldera (lv 60, the volcano past Emberstone Bastion, Ashfall Reaches) ──
+# ── Raid II: Emberheart Caldera (lv 60, 5-10 heroes, the volcano past Emberstone Bastion; RCE-01..03) ──
 slag_hound:
   name: Slag Hound
   hp: 1500
-  melee: { damage: 190, reach: 2.4, every: 1.8, windup: 0.4 }
+  melee: {damage: 190, reach: 2.4, every: 1.8, windup: 0.4}
   walk: 3.2
   aggro: 60
   tally: slag_hound
-  reward: { xp: 60 }
+  reward: {xp: 60}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
 kesh_slagmaster:
   name: Kesh the Slagmaster
   hp: 7500
   raidScale: 0.9
-  melee: { damage: 330, reach: 3.0, every: 2.4, windup: 0.6 }
+  melee: {damage: 330, reach: 3.0, every: 2.4, windup: 0.6}
   walk: 1.8
   abilities:
-    - { kind: cleave, every: 9, telegraph: 1.5, radius: 10, cone: 100, damage: 2300, color: fire, call: "Kesh swings the slag ladle" }
-    - { kind: summon, every: 18, first: 8, telegraph: 1.3, add: slag_hound, count: 3, max: 8, color: fire, call: "Loose the hounds!" }
-    - { kind: pools, every: 13, first: 16, telegraph: 1.6, radius: 3.2, damage: 2000, color: fire, from: 60 }
-  enrage: { below: 20, speed: 1.3, line: "Kesh pours the crucible" }
+  - {kind: cleave, every: 9, telegraph: 1.5, radius: 10, cone: 100, damage: 2300, color: fire, call: Kesh swings the slag ladle}
+  - {kind: summon, every: 18, first: 8, telegraph: 1.3, add: slag_hound, count: 3, max: 8, color: fire, call: Loose the hounds!}
+  - {kind: pools, every: 13, first: 16, telegraph: 1.6, radius: 3.2, damage: 2000, color: fire, from: 60}
+  enrage: {below: 20, speed: 1.3, line: Kesh pours the crucible}
   tally: kesh_slagmaster
-  reward: { xp: 3000, copper: 25000 }
+  reward: {xp: 3000, copper: 25000}
   respawn: 900
   milestone: 63
-  wakeLine: "Fresh ore for the caldera!"
+  wakeLine: Fresh ore for the caldera!
   model: /cdn/model-humanoid-fantasy-kesh-slagmaster-massive-forge-overseer-molten-iron-apron-horned-helm-giant-ladle.glb
   scale: 1.8
   height: 3.6
-  sounds: { wake: /cdn/moodboard-realistic-gritty/sfx-forge-roar-bellows.mp3, telegraph: /cdn/moodboard-realistic-gritty/sfx-molten-metal-bubbling-rise.mp3, burst: /cdn/moodboard-realistic-gritty/sfx-lava-splash-burst.mp3, die: /cdn/moodboard-realistic-gritty/sfx-heavy-armor-fall-sizzle.mp3 }
+  sounds: {wake: /cdn/moodboard-realistic-gritty/sfx-forge-roar-bellows.mp3, telegraph: /cdn/moodboard-realistic-gritty/sfx-molten-metal-bubbling-rise.mp3, burst: /cdn/moodboard-realistic-gritty/sfx-lava-splash-burst.mp3,
+    die: /cdn/moodboard-realistic-gritty/sfx-heavy-armor-fall-sizzle.mp3}
 bellglass_colossus:
   name: The Bellglass Colossus
   hp: 9000
   raidScale: 0.9
-  melee: { damage: 340, reach: 3.4, every: 2.6, windup: 0.8 }
+  melee: {damage: 340, reach: 3.4, every: 2.6, windup: 0.8}
   walk: 1.3
   abilities:
-    - { kind: nova, every: 14, first: 9, telegraph: 2.2, safe: 5, damage: 2700, color: fire, call: "The glass rings, under its feet!" }
-    - { kind: pools, every: 9, telegraph: 1.5, radius: 3.4, damage: 2000, color: gold, call: "Molten glass falls" }
-    - { kind: sweep, every: 16, first: 20, telegraph: 1.8, radius: 7.5, damage: 2500, color: fire, from: 50, call: "It burns white, get out!" }
-  enrage: { below: 20, speed: 1.3, line: "The Colossus cracks and glows white" }
+  - {kind: nova, every: 14, first: 9, telegraph: 2.2, safe: 5, damage: 2700, color: fire, call: 'The glass rings, under its feet!'}
+  - {kind: pools, every: 9, telegraph: 1.5, radius: 3.4, damage: 2000, color: gold, call: Molten glass falls}
+  - {kind: sweep, every: 16, first: 20, telegraph: 1.8, radius: 7.5, damage: 2500, color: fire, from: 50, call: 'It burns white, get out!'}
+  enrage: {below: 20, speed: 1.3, line: The Colossus cracks and glows white}
   tally: bellglass_colossus
-  reward: { xp: 3200, copper: 27000 }
+  reward: {xp: 3200, copper: 27000}
   respawn: 900
   milestone: 64
-  wakeLine: "(a sound like a cathedral bell breathing)"
+  wakeLine: (a sound like a cathedral bell breathing)
   model: /cdn/model-humanoid-fantasy-bellglass-colossus-giant-golem-of-amber-glass-and-bronze-molten-core-visible-in-chest.glb
   scale: 2.2
   height: 4.4
-  sounds: { wake: /cdn/moodboard-realistic-gritty/sfx-glass-golem-awakens-resonant-hum.mp3, telegraph: /cdn/moodboard-realistic-gritty/sfx-glass-ringing-rise.mp3, burst: /cdn/moodboard-realistic-gritty/sfx-glass-shatter-explosion.mp3, die: /cdn/moodboard-realistic-gritty/sfx-glass-golem-shatters.mp3 }
+  sounds: {wake: /cdn/moodboard-realistic-gritty/sfx-glass-golem-awakens-resonant-hum.mp3, telegraph: /cdn/moodboard-realistic-gritty/sfx-glass-ringing-rise.mp3, burst: /cdn/moodboard-realistic-gritty/sfx-glass-shatter-explosion.mp3,
+    die: /cdn/moodboard-realistic-gritty/sfx-glass-golem-shatters.mp3}
 vharok_caldera:
   name: Vharok, Heart of the Caldera
   hp: 11000
   raidScale: 0.9
   mind: true
-  mindNote: "Which hero does Vharok, a volcanic tyrant, turn on next? He crushes whoever wounds him most, burns the weakest, and ignores those who guard."
-  melee: { damage: 380, reach: 3.4, every: 2.5, windup: 0.7 }
+  mindNote: Which hero does Vharok, a volcanic tyrant, turn on next? He crushes whoever wounds him most, burns the weakest, and ignores those who guard.
+  melee: {damage: 380, reach: 3.4, every: 2.5, windup: 0.7}
   walk: 1.6
   abilities:
-    - { kind: cleave, every: 9, telegraph: 1.4, radius: 11, cone: 110, damage: 2500, color: fire, call: "Vharok's magma fist, get behind!" }
-    - { kind: pools, every: 10, first: 5, telegraph: 1.5, radius: 3.4, damage: 2100, color: fire }
-    - { kind: summon, every: 24, first: 16, telegraph: 1.3, add: slag_hound, count: 4, max: 8, color: fire, from: 70 }
-    - { kind: sweep, every: 14, first: 12, telegraph: 1.7, radius: 7.5, damage: 2600, color: fire, from: 50, call: "Eruption, get out!" }
-    - { kind: nova, every: 20, first: 24, telegraph: 2.2, safe: 5, damage: 3200, color: fire, from: 30, call: "The caldera floods, stand at his feet!" }
-  enrage: { below: 15, speed: 1.4, line: "The caldera answers its heart" }
+  - {kind: cleave, every: 9, telegraph: 1.4, radius: 11, cone: 110, damage: 2500, color: fire, call: 'Vharok''s magma fist, get behind!'}
+  - {kind: pools, every: 10, first: 5, telegraph: 1.5, radius: 3.4, damage: 2100, color: fire}
+  - {kind: summon, every: 24, first: 16, telegraph: 1.3, add: slag_hound, count: 4, max: 8, color: fire, from: 70}
+  - {kind: sweep, every: 14, first: 12, telegraph: 1.7, radius: 7.5, damage: 2600, color: fire, from: 50, call: 'Eruption, get out!'}
+  - {kind: nova, every: 20, first: 24, telegraph: 2.2, safe: 5, damage: 3200, color: fire, from: 30, call: 'The caldera floods, stand at his feet!'}
+  enrage: {below: 15, speed: 1.4, line: The caldera answers its heart}
   tally: vharok_caldera
-  killText: "The Caldera's heart goes cold"
-  reward: { xp: 5000, copper: 60000 }
+  killText: The Caldera's heart goes cold
+  reward: {xp: 5000, copper: 60000}
   respawn: 900
   milestone: 65
-  wakeLine: "The mountain was mine before your gods were named."
+  wakeLine: The mountain was mine before your gods were named.
   model: /cdn/model-humanoid-fantasy-vharok-volcanic-titan-obsidian-plate-lava-veins-crown-of-flame-giant-maul.glb
   scale: 2.2
   height: 4.4
-  sounds: { wake: /cdn/moodboard-realistic-gritty/sfx-volcano-rumble-roar.mp3, telegraph: /cdn/moodboard-realistic-gritty/sfx-magma-gathering-rumble.mp3, burst: /cdn/moodboard-realistic-gritty/sfx-lava-eruption-blast.mp3, die: /cdn/moodboard-realistic-gritty/sfx-titan-falls-rock-crumble.mp3 }
+  sounds: {wake: /cdn/moodboard-realistic-gritty/sfx-volcano-rumble-roar.mp3, telegraph: /cdn/moodboard-realistic-gritty/sfx-magma-gathering-rumble.mp3, burst: /cdn/moodboard-realistic-gritty/sfx-lava-eruption-blast.mp3,
+    die: /cdn/moodboard-realistic-gritty/sfx-titan-falls-rock-crumble.mp3}
 
-# ── Raid III: Assembly of the Ninth (lv 60, the finale, Veilgate Aerie on the Ninth Veil; RAC-01..05) ──
+# ── Raid III, the season finale: Assembly of the Ninth (lv 60, Veilgate Aerie; RAC-01..05) ──
 veil_witness:
   name: Veil Witness
   hp: 1600
-  melee: { damage: 200, reach: 2.4, every: 2.0, windup: 0.5 }
+  melee: {damage: 200, reach: 2.4, every: 2.0, windup: 0.5}
   walk: 2.8
   aggro: 60
   tally: veil_witness
-  reward: { xp: 70 }
+  reward: {xp: 70}
   model: /cdn/model-humanoid-fantasy-veil-witness-faceless-robed-figure-violet-crystal-shards-floating-around-head.glb
 seal_keeper:
   name: The First Seal-Keeper
   hp: 8000
   raidScale: 0.9
-  melee: { damage: 330, reach: 3.0, every: 2.4, windup: 0.6 }
+  melee: {damage: 330, reach: 3.0, every: 2.4, windup: 0.6}
   walk: 1.7
   abilities:
-    - { kind: pools, every: 8, telegraph: 1.5, radius: 3.4, damage: 2100, color: void, call: "A seal opens beneath you" }
-    - { kind: sweep, every: 12, first: 10, telegraph: 1.7, radius: 7, damage: 2400, color: void, call: "The seal bursts, get out!" }
-    - { kind: nova, every: 18, first: 22, telegraph: 2.2, safe: 5, damage: 2800, color: void, from: 50 }
-  enrage: { below: 20, speed: 1.3, line: "The eight seals scream" }
+  - {kind: pools, every: 8, telegraph: 1.5, radius: 3.4, damage: 2100, color: void, call: A seal opens beneath you}
+  - {kind: sweep, every: 12, first: 10, telegraph: 1.7, radius: 7, damage: 2400, color: void, call: 'The seal bursts, get out!'}
+  - {kind: nova, every: 18, first: 22, telegraph: 2.2, safe: 5, damage: 2800, color: void, from: 50}
+  enrage: {below: 20, speed: 1.3, line: The eight seals scream}
   tally: seal_keeper
-  reward: { xp: 3200, copper: 27000 }
+  reward: {xp: 3200, copper: 27000}
   respawn: 900
   milestone: 66
-  wakeLine: "Eight seals. Eight debts. Which will you pay?"
+  wakeLine: Eight seals. Eight debts. Which will you pay?
   model: /cdn/model-humanoid-fantasy-seal-keeper-armored-warden-eight-glowing-violet-seals-on-chains-around-body-faceless-helm.glb
   scale: 1.9
   height: 3.8
-  sounds: { wake: /cdn/moodboard-scifi-neon/sfx-cosmic-hum-awakening.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-void-implosion-burst.mp3, die: /cdn/moodboard-scifi-neon/sfx-crystal-shatter-echo.mp3 }
-witness_judge:
-  name: The Judge at the Witness Tables
-  hp: 9500
-  raidScale: 0.9
-  melee: { damage: 340, reach: 3.2, every: 2.4, windup: 0.6 }
-  walk: 1.5
-  abilities:
-    - { kind: cleave, every: 9, telegraph: 1.5, radius: 10, cone: 100, damage: 2400, color: void, call: "The verdict falls, get behind!" }
-    - { kind: summon, every: 20, first: 10, telegraph: 1.4, add: veil_witness, count: 3, max: 8, color: void, call: "Witnesses, stand!" }
-    - { kind: pools, every: 12, first: 16, telegraph: 1.6, radius: 3.4, damage: 2100, color: gold, from: 60 }
-  enrage: { below: 20, speed: 1.3, line: "The Judge strikes the tables apart" }
-  tally: witness_judge
-  reward: { xp: 3400, copper: 29000 }
-  respawn: 900
-  milestone: 67
-  wakeLine: "The record will show you were here. Briefly."
-  model: /cdn/model-humanoid-fantasy-witness-judge-tall-robed-arbiter-gilded-mask-scales-of-violet-glass-ledger-floating.glb
-  scale: 1.9
-  height: 3.8
-  sounds: { wake: /cdn/moodboard-scifi-neon/sfx-cosmic-gavel-boom.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-void-implosion-burst.mp3, die: /cdn/moodboard-scifi-neon/sfx-crystal-shatter-echo.mp3 }
-engine_voice:
-  name: The Engine's Voice
-  hp: 10000
-  raidScale: 0.9
-  melee: { damage: 350, reach: 3.2, every: 2.4, windup: 0.6 }
-  walk: 1.4
-  abilities:
-    - { kind: nova, every: 13, first: 8, telegraph: 2.2, safe: 5, damage: 2900, color: void, call: "The Engine pulls, stand at its core!" }
-    - { kind: pools, every: 9, first: 4, telegraph: 1.5, radius: 3.4, damage: 2100, color: void }
-    - { kind: sweep, every: 15, first: 18, telegraph: 1.7, radius: 7.5, damage: 2500, color: gold, from: 50, call: "The Voice shouts, get out!" }
-  enrage: { below: 20, speed: 1.35, line: "The Engine overloads" }
-  tally: engine_voice
-  reward: { xp: 3600, copper: 31000 }
-  respawn: 900
-  milestone: 68
-  wakeLine: "THE WHISPERS WERE ALWAYS MINE."
-  model: /cdn/model-humanoid-fantasy-engine-voice-hovering-construct-of-brass-rings-and-violet-light-human-face-in-the-core.glb
-  scale: 2.0
-  height: 4
-  sounds: { wake: /cdn/moodboard-scifi-neon/sfx-engine-voice-booming-whisper.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-machine-charge-whine.mp3, burst: /cdn/moodboard-scifi-neon/sfx-void-implosion-burst.mp3, die: /cdn/moodboard-scifi-neon/sfx-machine-power-down-collapse.mp3 }
-ninth_chair:
-  name: The Ninth Chair
+  sounds: {wake: /cdn/moodboard-scifi-neon/sfx-cosmic-hum-awakening.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-void-implosion-burst.mp3, die: /cdn/moodboard-scifi-neon/sfx-crystal-shatter-echo.mp3}
+memory_engine:
+  name: The Memory Engine
   hp: 13000
   raidScale: 0.9
   mind: true
-  mindNote: "Which hero does the Ninth Chair, the realm's last tyrant, turn on next? It hunts whoever wounds it most, finishes the weakest, and tests those who guard last."
-  melee: { damage: 400, reach: 3.4, every: 2.4, windup: 0.6 }
+  mindNote: Which hero does the Memory Engine, a machine that hoards memories, turn on next? It siphons whoever wounds it most, drowns the weakest in echoes, and tests those who guard last.
+  melee: {damage: 400, reach: 3.4, every: 2.4, windup: 0.6}
   walk: 1.7
   abilities:
-    - { kind: cleave, every: 8, telegraph: 1.4, radius: 11, cone: 110, damage: 2600, color: void, call: "The Chair's decree, get behind!" }
-    - { kind: pools, every: 10, first: 5, telegraph: 1.5, radius: 3.5, damage: 2200, color: void }
-    - { kind: summon, every: 24, first: 15, telegraph: 1.3, add: veil_witness, count: 4, max: 8, color: void, from: 80 }
-    - { kind: sweep, every: 13, first: 11, telegraph: 1.7, radius: 7.5, damage: 2700, color: gold, from: 60, call: "Eight seals flare, get out!" }
-    - { kind: nova, every: 19, first: 22, telegraph: 2.2, safe: 5, damage: 3400, color: void, from: 35, call: "The Veil collapses, stand with the Chair!" }
-  enrage: { below: 12, speed: 1.45, line: "The Ninth Veil tears open" }
-  tally: ninth_chair
-  killText: "The Ninth Chair stands empty"
-  reward: { xp: 8000, copper: 100000 }
+  - {kind: cleave, every: 8, telegraph: 1.4, radius: 11, cone: 110, damage: 2600, color: void, call: 'The Chair''s decree, get behind!'}
+  - {kind: pools, every: 10, first: 5, telegraph: 1.5, radius: 3.5, damage: 2200, color: void}
+  - {kind: summon, every: 24, first: 15, telegraph: 1.3, add: veil_witness, count: 4, max: 8, color: void, from: 80}
+  - {kind: sweep, every: 13, first: 11, telegraph: 1.7, radius: 7.5, damage: 2700, color: gold, from: 60, call: 'Eight seals flare, get out!'}
+  - {kind: nova, every: 19, first: 22, telegraph: 2.2, safe: 5, damage: 3400, color: void, from: 35, call: 'The Veil collapses, stand with the Chair!'}
+  enrage: {below: 12, speed: 1.45, line: The Ninth Veil tears open}
+  tally: memory_engine
+  killText: The Memory Engine falls quiet. The witnesses are free.
+  reward: {xp: 8000, copper: 100000}
   respawn: 900
   milestone: 70
-  wakeLine: "Nine realms. Nine thrones. I am the one you forgot."
-  model: /cdn/model-humanoid-fantasy-ninth-chair-tyrant-crowned-figure-fused-to-a-floating-throne-of-violet-crystal-eight-shattered-seals-orbiting.glb
+  wakeLine: EVERY NAME. EVERY DEBT. RETURNED TO ME.
+  model: /cdn/model-humanoid-fantasy-memory-engine-hovering-colossus-of-brass-rings-violet-glass-and-thousands-of-tiny-floating-names-a-face-in-the-core.glb
   scale: 2.2
   height: 4.4
-  sounds: { wake: /cdn/moodboard-scifi-neon/sfx-cosmic-throne-awakens-choir.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-reality-tear-explosion.mp3, die: /cdn/moodboard-scifi-neon/sfx-throne-shatters-silence.mp3 }
+  sounds: {wake: /cdn/moodboard-scifi-neon/sfx-cosmic-throne-awakens-choir.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-reality-tear-explosion.mp3,
+    die: /cdn/moodboard-scifi-neon/sfx-throne-shatters-silence.mp3}
