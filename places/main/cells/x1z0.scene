@@ -591,3 +591,21 @@ start-cinderhold-way-13:
   primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 13}
   rotation: {yaw: -103.2405199151872}
   tags: [waystone, cinderhold]
+unseen-post-1:
+  feetPosition: {x: 69, y: {terrain: 0}, z: -48}
+  fx: {script: "fx\npop mote rate=2 on=sphere(.2).c(2.3) life=1..1.6 v=up(.2) size=.04..0.07 col=hdr(1.4,.7,2.4) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: unseen-post-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stepost}, script: scripts/gen/unseen.js}
+  rotation: 40
+  state: {blockText: Trial post 2/3, need: step, quest: SHA-07, tallyKey: shade_trial}
+  tags: [shade-drill, unseen]
+unseen-post-2:
+  feetPosition: {x: 73, y: {terrain: 0}, z: -38}
+  fx: {script: "fx\npop mote rate=2 on=sphere(.2).c(2.3) life=1..1.6 v=up(.2) size=.04..0.07 col=hdr(1.4,.7,2.4) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: unseen-post-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: stepost}, script: scripts/gen/unseen.js}
+  rotation: 80
+  state: {blockText: Trial post 3/3, need: step, quest: SHA-07, tallyKey: shade_trial}
+  tags: [shade-drill, unseen]

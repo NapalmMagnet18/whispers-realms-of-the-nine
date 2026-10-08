@@ -414,3 +414,5 @@ terrain:
     roost-tideglass: {center: {x: -1070, z: 1830}, falloff: 14, height: 3.4, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
     roost-tideglass-clear: {center: {x: -1070, z: 1830}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
     tide-quay-clear: {center: {x: -1010, z: 1880}, kind: clear-scatter, shape: {kind: circle, radius: 46}}
+    unseen-yard: {center: {x: 46, z: -47}, falloff: 8, height: 0.6, kind: flatten, shape: {kind: circle, radius: 15}}
+    unseen-yard-clear: {center: {x: 46, z: -47}, kind: clear-scatter, shape: {kind: circle, radius: 16}}

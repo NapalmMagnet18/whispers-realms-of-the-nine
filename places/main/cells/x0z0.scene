@@ -2043,6 +2043,250 @@ training-yard-lantern:
   feetPosition: {x: 12, y: 4, z: 12.5}
   id: training-yard-lantern
   model: /cdn/model-lantern-grey-metal-candle-4ur9lj8p.glb
+unseen-bondhouse:
+  children: [{feetPosition: {x: 0, y: 4.7, z: -4.3}, light: {color: oklch(0.84 0.13 70), distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: 46, y: 0.6, z: -52}
+  id: unseen-bondhouse
+  physics: static
+  primitive: {kind: scripted, params: {kind: bondhouse}, script: scripts/gen/unseen.js}
+  rotation: 0
+  tags: [building, unseen]
+unseen-case:
+  feetPosition: {x: 46, y: {terrain: 0}, z: -44}
+  id: unseen-case
+  physics: static
+  primitive: {kind: scripted, params: {kind: case}, script: scripts/gen/unseen.js}
+  rotation: 0
+  state: {after: sentry_passed, afterText: "First: slip past both sentries veiled (3)", mark: case_opened, quest: SHA-01, say: "Three locks, three clicks. Inside: a slip of paper. 'Nobody got hurt. Good.'", sound: /cdn/moodboard-painterly-fantasy/sfx-brass-compass-click.mp3, title: Practice Case, verb: Pick the locks}
+  tags: [quest-mark, unseen]
+unseen-dead-drop:
+  feetPosition: {x: 41, y: {terrain: 0}, z: -37.2}
+  id: unseen-dead-drop
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/unseen.js}
+  rotation: 15
+  state: {mark: letter_taken, quest: SHA-02, say: "A letter sealed in red wax, Mira's name in a careful hand. You don't turn it over.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Dead Drop, verb: Lift the loose board}
+  tags: [quest-mark, unseen]
+unseen-desk:
+  feetPosition: {x: 52.4, y: {terrain: 0}, z: -50}
+  id: unseen-desk
+  physics: static
+  primitive: {kind: scripted, params: {kind: desk}, script: scripts/gen/unseen.js}
+  rotation: 90
+  state: {mark: names_struck, quest: SHA-05, say: One careful line through one name. Everything else stays true., sound: /cdn/moodboard-painterly-fantasy/sfx-quill-scratch-signature.mp3, title: Arlo's Draft, verb: Strike the name}
+  tags: [quest-mark, unseen]
+unseen-front-sign:
+  feetPosition: {x: -28.5, y: {terrain: 0}, z: 27}
+  id: unseen-front-sign
+  physics: static
+  primitive: {kind: scripted, params: {kind: sign}, script: scripts/gen/unseen.js}
+  rotation: 90
+  state: {after: payment_followed, afterText: "First: follow all three payments", mark: front_marked, quest: SHA-03, say: "A neat chalk ring under the gilt letters. Anyone who knows, knows.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Gilt Lantern Relief Society, verb: Chalk the sign}
+  tags: [quest-mark, unseen]
+unseen-hatch:
+  feetPosition: {x: 40, y: {terrain: 0}, z: -47.5}
+  id: unseen-hatch
+  physics: static
+  primitive: {kind: scripted, params: {kind: hatch}, script: scripts/gen/unseen.js}
+  rotation: 0
+  state: {after: records_slipped, afterText: "First: slip past the hatch watcher veiled (3)", mark: badge_found, quest: SHA-06, say: "Dust, damp ledgers, and in a drawer: a brass badge, three circles, a name scratched off the back.", sound: /cdn/moodboard-painterly-fantasy/sfx-paper-unfold.mp3, title: Cellar Hatch, verb: Search the records room}
+  tags: [quest-mark, unseen]
+unseen-hatch-watcher:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 38.2, y: 0.6, z: -49.5}
+  id: unseen-hatch-watcher
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-scout-male-hooded-leather-bow.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {blockText: Past the watcher, homeYaw: 120, idle: Idle_Lantern_Loop, need: veil, npcName: Yard Sentry, quest: SHA-06, tallyKey: records_slipped, who: sentry, yaw: 120}
+  tags: [npc, talker, townsfolk, shade-drill]
+unseen-informant:
+  feetPosition: {x: 46, y: 0.6, z: -57.3}
+  id: unseen-informant
+  layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-weary-refugee-woman-travel-cloak-bundle-on-back.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 0}
+  state: {after: mirror_disabled, afterText: "First: turn down all three mirrors", mark: informant_freed, npcName: Informant, quest: SHA-04, say: "The rope parts. She doesn't say thank you, or her name. She just runs for the river.", sound: /cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3, title: Informant, verb: Cut her loose, who: informant}
+  tags: [quest-mark, unseen, npc]
+unseen-lamp-0:
+  children: [{feetPosition: {x: 0.46, y: 2.2, z: 0}, light: {color: oklch(0.84 0.13 70), distance: 10, intensity: 2.2, kind: point}}]
+  feetPosition: {x: 42, y: 0.6, z: -38}
+  id: unseen-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/unseen.js}
+  rotation: 0
+  tags: [unseen]
+unseen-lamp-1:
+  children: [{feetPosition: {x: -0.46, y: 2.2, z: 0}, light: {color: oklch(0.84 0.13 70), distance: 10, intensity: 2.2, kind: point}}]
+  feetPosition: {x: 50, y: 0.6, z: -38}
+  id: unseen-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/unseen.js}
+  rotation: 180
+  tags: [unseen]
+unseen-letter-mira:
+  feetPosition: {x: 19.4, y: {terrain: 0}, z: 4.6}
+  id: unseen-letter-mira
+  physics: none
+  primitive: {kind: scripted, params: {kind: pouch}, script: scripts/gen/unseen.js}
+  rotation: 0
+  state: {after: letter_taken, afterText: "First: take the letter from the dead drop", mark: letter_delivered, quest: SHA-02, say: "Mira sees the seal and goes very still. 'Unopened,' she says. 'Thank you. Truly.'", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Mira, verb: Hand over the letter}
+  tags: [quest-mark, unseen]
+unseen-mirror-0:
+  feetPosition: {x: 38, y: {terrain: 0}, z: -57}
+  id: unseen-mirror-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: mirror}, script: scripts/gen/unseen.js}
+  rotation: 30
+  state: {mark: mirror_disabled, quest: SHA-04, say: "The glass tips down into the grass. Across the river, a light waits for an answer that never comes.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Signal Mirror, verb: Turn it to the ground}
+  tags: [quest-mark, unseen]
+unseen-mirror-1:
+  feetPosition: {x: 54, y: {terrain: 0}, z: -58}
+  id: unseen-mirror-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: mirror}, script: scripts/gen/unseen.js}
+  rotation: -30
+  state: {mark: mirror_disabled, quest: SHA-04, say: "The glass tips down into the grass. Across the river, a light waits for an answer that never comes.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Signal Mirror, verb: Turn it to the ground}
+  tags: [quest-mark, unseen]
+unseen-mirror-2:
+  feetPosition: {x: 59, y: {terrain: 0}, z: -50}
+  id: unseen-mirror-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: mirror}, script: scripts/gen/unseen.js}
+  rotation: -80
+  state: {mark: mirror_disabled, quest: SHA-04, say: "The glass tips down into the grass. Across the river, a light waits for an answer that never comes.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Signal Mirror, verb: Turn it to the ground}
+  tags: [quest-mark, unseen]
+unseen-npc-arlo:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 44.5, y: 0.6, z: -46.2}
+  id: unseen-npc-arlo
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-spymaster-male-grey-temples-charcoal-coat-hood-down-thin-scar.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {homeYaw: 180, idle: Idle_FoldArms_Loop, npcName: Keeper Sen Arlo, who: arlo, yaw: 180}
+  tags: [npc, talker, townsfolk, quest-npc]
+unseen-payment-0:
+  feetPosition: {x: -16, y: {terrain: 0}, z: 19.5}
+  id: unseen-payment-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: pouch}, script: scripts/gen/unseen.js}
+  rotation: 0
+  state: {mark: payment_followed, quest: SHA-03, say: "The bank steps: a pouch of silver changes hands, heavier than any lamp-oil order.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Suspicious Payment, verb: Follow the coin}
+  tags: [quest-mark, unseen]
+unseen-payment-1:
+  feetPosition: {x: 2, y: {terrain: 0}, z: -30.5}
+  id: unseen-payment-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: pouch}, script: scripts/gen/unseen.js}
+  rotation: 70
+  state: {mark: payment_followed, quest: SHA-03, say: "Behind the inn: the same man, the same pouch, a ledger slipped under it.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Suspicious Payment, verb: Follow the coin}
+  tags: [quest-mark, unseen]
+unseen-payment-2:
+  feetPosition: {x: -17.5, y: {terrain: 0}, z: 6.8}
+  id: unseen-payment-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: pouch}, script: scripts/gen/unseen.js}
+  rotation: 140
+  state: {mark: payment_followed, quest: SHA-03, say: "Dren's stall: a coin marked with a lantern stamp. Not the Reach's mint.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Suspicious Payment, verb: Follow the coin}
+  tags: [quest-mark, unseen]
+unseen-post-0:
+  feetPosition: {x: 62, y: {terrain: 0}, z: -56}
+  fx: {script: "fx\npop mote rate=2 on=sphere(.2).c(2.3) life=1..1.6 v=up(.2) size=.04..0.07 col=hdr(1.4,.7,2.4) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: unseen-post-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stepost}, script: scripts/gen/unseen.js}
+  rotation: 0
+  state: {blockText: Trial post 1/3, need: step, quest: SHA-07, tallyKey: shade_trial}
+  tags: [shade-drill, unseen]
+unseen-report-box:
+  feetPosition: {x: 5.4, y: {terrain: 0}, z: -15}
+  id: unseen-report-box
+  physics: static
+  primitive: {kind: scripted, params: {kind: reportbox}, script: scripts/gen/unseen.js}
+  rotation: 180
+  state: {after: names_struck, afterText: "First: strike the witness's name from Arlo's draft", mark: report_filed, quest: SHA-05, say: The report drops through the brass slot. It can't be unsaid now., sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Guild Report Box, verb: Post the report}
+  tags: [quest-mark, unseen]
+unseen-return-deed:
+  feetPosition: {x: 3.5, y: {terrain: 0}, z: -29}
+  id: unseen-return-deed
+  physics: none
+  primitive: {kind: scripted, params: {kind: pouch}, script: scripts/gen/unseen.js}
+  rotation: 0
+  state: {after: shade_trial, afterText: "First: Shadowstep (2) to the three trial posts", mark: evidence_returned, quest: SHA-07, say: "Pinned in plain sight. The shelters keep their roof, and now everyone knows whose it is.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Inn Notice Board, verb: Pin the shelter deed}
+  tags: [quest-mark, unseen]
+unseen-return-ledger:
+  feetPosition: {x: -13.5, y: {terrain: 0}, z: 21}
+  id: unseen-return-ledger
+  physics: static
+  primitive: {kind: scripted, params: {kind: case}, script: scripts/gen/unseen.js}
+  rotation: 0
+  state: {after: shade_trial, afterText: "First: Shadowstep (2) to the three trial posts", mark: evidence_returned, quest: SHA-07, say: "The clerk counts the pages twice, then looks up at you. You're already gone.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Bank Strongbox, verb: Return the ledger}
+  tags: [quest-mark, unseen]
+unseen-sentry-0:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 39, y: 0.6, z: -41}
+  id: unseen-sentry-0
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-scout-male-hooded-leather-bow.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 90}
+  state: {blockText: Slipped past unseen, homeYaw: 90, idle: Idle_Lantern_Loop, need: veil, npcName: Yard Sentry, quest: SHA-01, tallyKey: sentry_passed, who: sentry, yaw: 90}
+  tags: [npc, talker, townsfolk, shade-drill]
+unseen-sentry-1:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 53, y: 0.6, z: -41}
+  id: unseen-sentry-1
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-scout-male-hooded-leather-bow.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -90}
+  state: {blockText: Slipped past unseen, homeYaw: -90, idle: Idle_Lantern_Loop, need: veil, npcName: Yard Sentry, quest: SHA-01, tallyKey: sentry_passed, who: sentry, yaw: -90}
+  tags: [npc, talker, townsfolk, shade-drill]
+unseen-wall-0:
+  feetPosition: {x: 34.5, y: 0.6, z: -46}
+  id: unseen-wall-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: wall}, script: scripts/gen/unseen.js}
+  rotation: 90
+  tags: [unseen]
+unseen-wall-1:
+  feetPosition: {x: 34.5, y: 0.6, z: -40}
+  id: unseen-wall-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: wall}, script: scripts/gen/unseen.js}
+  rotation: 90
+  tags: [unseen]
+unseen-wall-2:
+  feetPosition: {x: 57.5, y: 0.6, z: -46}
+  id: unseen-wall-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: wall}, script: scripts/gen/unseen.js}
+  rotation: 90
+  tags: [unseen]
+unseen-wall-3:
+  feetPosition: {x: 57.5, y: 0.6, z: -40}
+  id: unseen-wall-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: wall}, script: scripts/gen/unseen.js}
+  rotation: 90
+  tags: [unseen]
+unseen-wall-4:
+  feetPosition: {x: 40, y: 0.6, z: -36}
+  id: unseen-wall-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: wall}, script: scripts/gen/unseen.js}
+  rotation: 0
+  tags: [unseen]
+unseen-wall-5:
+  feetPosition: {x: 52, y: 0.6, z: -36}
+  id: unseen-wall-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: wall}, script: scripts/gen/unseen.js}
+  rotation: 180
+  tags: [unseen]
 van-evacuee-0:
   feetPosition: {x: 54.8, y: {terrain: 0}, z: 8.6}
   id: van-evacuee-0
