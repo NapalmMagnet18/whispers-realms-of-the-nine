@@ -1,0 +1,19 @@
+# A boss's wakeLine, spoken. scripts/boss.js plays it when the fight begins, beside the floating text.
+reed_sentry: /cdn/voice-hollow-metallic-echoing-construct-guardian-saying-intruders-in-the-drowned-stair.mp3
+choir_mother: /cdn/voice-cold-ethereal-whispering-drowned-woman-reverb-saying-hush-the-choir-is-nearly-whole.mp3
+thorn_custodian: /cdn/voice-deep-creaking-ancient-tree-giant-saying-show-me-your-oath-i-will-know-if-it-is-false.mp3
+deacon_morrow: /cdn/voice-deep-sinister-priest-muffled-iron-mask-saying-kneel-the-candles-are-counting-you.mp3
+bone_organist: /cdn/voice-rasping-skeletal-gleeful-ghoul-saying-a-hymn-needs-bones-yours-will-do.mp3
+saint_ilvane: /cdn/voice-regal-sorrowful-fallen-saint-woman-echoing-saying-i-gave-this-city-its-light-i-can-take-it-back.mp3
+kesh_slagmaster: /cdn/voice-gravel-voiced-brutish-dwarf-overseer-bellowing-saying-fresh-ore-for-the-caldera.mp3
+vharok_caldera: /cdn/voice-colossal-rumbling-volcanic-titan-booming-saying-the-mountain-was-mine-before-your-gods-were-named.mp3
+seal_keeper: /cdn/voice-stern-hollow-armored-warden-reverb-saying-eight-seals-eight-debts-which-will-you-pay.mp3
+memory_engine: /cdn/voice-layered-distorted-chorus-of-many-voices-mechanical-saying-every-name-every-debt-returned-to-me.mp3
+bellforged_sentinel: /cdn/voice-booming-bronze-bell-resonant-golem-saying-no-hand-touches-the-coil.mp3
+engine_manifestation: /cdn/voice-hissing-clockwork-wraith-whisper-saying-you-carry-so-many-memories-give-them.mp3
+lampless_reeve: /cdn/voice-weary-hoarse-old-lamplighter-bitter-saying-you-came-home-too-late.mp3
+hollowsong: /cdn/voice-creaking-rotten-wood-voice-mournful-saying-you-came-home-too-late.mp3
+gharn_unbanked: /cdn/voice-grinding-stone-gravel-brute-growl-saying-you-came-home-too-late.mp3
+captain_merrow: /cdn/voice-waterlogged-gurgling-old-sea-captain-saying-you-came-home-too-late.mp3
+the_unbraided: /cdn/voice-dry-rustling-reed-whisper-unsettling-saying-you-came-home-too-late.mp3
+star_that_answered: /cdn/voice-distant-shimmering-celestial-woman-echo-saying-you-came-home-too-late.mp3

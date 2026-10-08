@@ -13,6 +13,7 @@
 // Class scripts write hp / lastHitBy / lastHitAt like any enemy. At 0 hp every hero in the arena is credited
 // (tally = the def's tally, XP, copper). It rises again after respawn seconds; an empty arena walks it home and heals it.
 import BOSSES from "./lib/data/bosses.yml";
+import VOICES from "./lib/data/boss-voices.yml";
 
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const arcd = (from, to) => ((((to - from) % 360) + 540) % 360) - 180;
@@ -100,6 +101,7 @@ export function update(ctx, dt) {
     for (const [i, a] of (D.abilities || []).entries()) m.clocks[i] = now + (a.first ?? a.every * 0.6) * 1000;
     m.nextSwing = now + 1500;
     if (D.sounds?.wake) ctx.emit("playSound", { clip: D.sounds.wake, position: w.feetPosition, volume: 0.9, maxDistance: 80 }, { audience: near(w.feetPosition, 90) });
+    if (VOICES[s.boss] && !s.add) ctx.emit("playSound", { clip: VOICES[s.boss], position: w.feetPosition, volume: 1, maxDistance: 90, refDistance: 12, bus: "Voice", mode: "restart" }, { audience: near(w.feetPosition, 95) });
     if (D.wakeLine && !s.add) for (const p of fighters) ctx.emit("damageNumber", { position: { x: w.feetPosition.x, y: w.feetPosition.y + (D.height ?? 3) + 0.5, z: w.feetPosition.z }, text: D.wakeLine, color: "oklch(0.85 0.12 60)", size: 1.2, lifetime: 3 }, { audience: { player: p.id } });
     ctx.emit("screenShake", { intensity: 0.25, duration: 0.6 }, { audience: near(w.feetPosition) });
   }

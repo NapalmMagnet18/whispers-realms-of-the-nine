@@ -370,7 +370,7 @@ lampless_reeve:
   milestone: 30
   killText: Reeve Ashcombe is laid to rest
   wakeLine: You came home. Too late.
-  sounds: {}
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-lantern-glass-shattering-cold-wind-gust.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-darkness-whoosh-rising.mp3, burst: /cdn/moodboard-gothic-horror/sfx-ghostly-flame-snuffed-out-burst.mp3, die: /cdn/moodboard-gothic-horror/sfx-last-ember-hiss-and-dying-sigh.mp3}
 hollowsong:
   name: Hollowsong, the Rotted Warden
   hp: 5200
@@ -391,7 +391,7 @@ hollowsong:
   milestone: 30
   killText: Hollowsong is laid to rest
   wakeLine: You came home. Too late.
-  sounds: {}
+  sounds: {wake: /cdn/moodboard-painterly-fantasy/sfx-ancient-tree-groan.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-roots-rumble-gathering.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-rotten-wood-splinter-burst-spore-puff.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-great-tree-cracking-falling-crash.mp3}
 gharn_unbanked:
   name: Gharn the Unbanked
   hp: 5200
@@ -412,7 +412,7 @@ gharn_unbanked:
   milestone: 30
   killText: Gharn the Unbanked is laid to rest
   wakeLine: You came home. Too late.
-  sounds: {}
+  sounds: {wake: /cdn/moodboard-painterly-fantasy/sfx-rock-brute-roar-grinding-stone.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-boulder-grinding-rumble-rising.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-ground-slam-rock-shatter-heavy.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-stone-body-crumbling-collapse.mp3}
 captain_merrow:
   name: Captain Merrow of the Gull's Wake
   hp: 5200
@@ -433,7 +433,7 @@ captain_merrow:
   milestone: 30
   killText: Captain Merrow of the Gull's Wake is laid to rest
   wakeLine: You came home. Too late.
-  sounds: {}
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-heavy-splash.mp3, die: /cdn/moodboard-gothic-horror/sfx-drowned-ghoul-gurgling-death-sink.mp3}
 the_unbraided:
   name: The Unbraided
   hp: 5200
@@ -475,4 +475,4 @@ star_that_answered:
   milestone: 30
   killText: The Star That Answered is laid to rest
   wakeLine: You came home. Too late.
-  sounds: {}
+  sounds: {wake: /cdn/moodboard-painterly-fantasy/sfx-celestial-chime-swell-starlight-hum.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-starlight-energy-gathering-rising-shimmer.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-falling-star-impact-crystal-burst.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-star-fading-out-shimmering-sigh.mp3}
