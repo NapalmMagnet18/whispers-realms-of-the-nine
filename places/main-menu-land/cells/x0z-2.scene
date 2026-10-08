@@ -1,0 +1,10 @@
+# spawn-scene v2 yaml x0z-2
+rg-ridge-near:
+  castShadow: true
+  feetPosition: {x: 60, y: {terrain: 0}, z: -230}
+  id: rg-ridge-near
+  physics: none
+  primitive: {kind: scripted, params: {height: 38, kind: ridge, length: 800}, script: scripts/gen/realm-gate.js, seed: 42}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]

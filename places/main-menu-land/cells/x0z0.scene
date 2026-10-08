@@ -1,1 +1,176 @@
 # spawn-scene v2 yaml x0z0
+rg-arch:
+  castShadow: true
+  feetPosition: {x: 0, y: {terrain: 0}, z: -26}
+  id: rg-arch
+  physics: none
+  primitive: {kind: scripted, params: {kind: arch}, script: scripts/gen/realm-gate.js, seed: 9}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-brazier-l:
+  castShadow: true
+  feetPosition: {x: -6, y: {terrain: 0}, z: -18.5}
+  id: rg-brazier-l
+  physics: none
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/realm-gate.js, seed: 7}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-brazier-r:
+  castShadow: true
+  feetPosition: {x: 6, y: {terrain: 0}, z: -18.5}
+  id: rg-brazier-r
+  physics: none
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/realm-gate.js, seed: 8}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-causeway:
+  castShadow: true
+  feetPosition: {x: 0, y: {terrain: 0}, z: -7}
+  id: rg-causeway
+  physics: none
+  primitive: {kind: scripted, params: {halfWidth: 2.6, kind: causeway, zBack: -15, zFront: 15}, script: scripts/gen/realm-gate.js, seed: 15}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-gatelight:
+  feetPosition: {x: 0, y: 6, z: -23.2}
+  id: rg-gatelight
+  light: {color: "#f2b04a", distance: 70, intensity: 420, kind: point, shadow: {enabled: false}}
+  tags: [realm-gate]
+rg-lantern-l1:
+  castShadow: true
+  feetPosition: {x: -3.6, y: {terrain: 0}, z: 1}
+  id: rg-lantern-l1
+  physics: none
+  primitive: {kind: scripted, params: {kind: lantern}, script: scripts/gen/realm-gate.js, seed: 21}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-lantern-l2:
+  castShadow: true
+  feetPosition: {x: -3.6, y: {terrain: 0}, z: -7}
+  id: rg-lantern-l2
+  physics: none
+  primitive: {kind: scripted, params: {kind: lantern}, script: scripts/gen/realm-gate.js, seed: 22}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-lantern-l3:
+  castShadow: true
+  feetPosition: {x: -3.6, y: {terrain: 0}, z: -14}
+  id: rg-lantern-l3
+  physics: none
+  primitive: {kind: scripted, params: {kind: lantern}, script: scripts/gen/realm-gate.js, seed: 23}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-lantern-r1:
+  castShadow: true
+  feetPosition: {x: 3.6, y: {terrain: 0}, z: 1}
+  id: rg-lantern-r1
+  physics: none
+  primitive: {kind: scripted, params: {kind: lantern}, script: scripts/gen/realm-gate.js, seed: 31}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 180}
+  tags: [realm-gate]
+rg-lantern-r2:
+  castShadow: true
+  feetPosition: {x: 3.6, y: {terrain: 0}, z: -7}
+  id: rg-lantern-r2
+  physics: none
+  primitive: {kind: scripted, params: {kind: lantern}, script: scripts/gen/realm-gate.js, seed: 32}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 180}
+  tags: [realm-gate]
+rg-lantern-r3:
+  castShadow: true
+  feetPosition: {x: 3.6, y: {terrain: 0}, z: -14}
+  id: rg-lantern-r3
+  physics: none
+  primitive: {kind: scripted, params: {kind: lantern}, script: scripts/gen/realm-gate.js, seed: 33}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 180}
+  tags: [realm-gate]
+rg-pillar-1:
+  castShadow: true
+  feetPosition: {x: -11, y: {terrain: 0}, z: -7}
+  id: rg-pillar-1
+  physics: none
+  primitive: {kind: scripted, params: {h: 5.5, kind: pillar}, script: scripts/gen/realm-gate.js, seed: 11}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 0}
+  tags: [realm-gate]
+rg-pillar-2:
+  castShadow: true
+  feetPosition: {x: 12.5, y: {terrain: 0}, z: -10}
+  id: rg-pillar-2
+  physics: none
+  primitive: {kind: scripted, params: {h: 7.5, kind: pillar}, script: scripts/gen/realm-gate.js, seed: 12}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 40}
+  tags: [realm-gate]
+rg-pillar-3:
+  castShadow: true
+  feetPosition: {x: -19, y: {terrain: 0}, z: -24}
+  id: rg-pillar-3
+  physics: none
+  primitive: {kind: scripted, params: {h: 9, kind: pillar}, script: scripts/gen/realm-gate.js, seed: 13}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 70}
+  tags: [realm-gate]
+rg-pillar-4:
+  castShadow: true
+  feetPosition: {x: 20, y: {terrain: 0}, z: -28}
+  id: rg-pillar-4
+  physics: none
+  primitive: {kind: scripted, params: {h: 4.5, kind: pillar}, script: scripts/gen/realm-gate.js, seed: 14}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 15}
+  tags: [realm-gate]
+rg-veil:
+  castShadow: false
+  feetPosition: {x: 0, y: 7, z: -26}
+  id: rg-veil
+  material: {kind: scripted, params: {centreY: -0.6, glow: 1, height: 11.6, width: 7.8}, script: scripts/material-realm-veil.js}
+  physics: none
+  primitive: {height: 11.6, kind: plane, width: 7.8}
+  tags: [realm-gate]
+rg-warden-l1:
+  castShadow: true
+  feetPosition: {x: -9.5, y: {terrain: 0}, z: -22}
+  id: rg-warden-l1
+  physics: none
+  primitive: {kind: scripted, params: {kind: warden}, script: scripts/gen/realm-gate.js, seed: 3}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 18}
+  tags: [realm-gate]
+rg-warden-l2:
+  castShadow: true
+  feetPosition: {x: -15.5, y: {terrain: 0}, z: -17}
+  id: rg-warden-l2
+  physics: none
+  primitive: {kind: scripted, params: {kind: warden}, script: scripts/gen/realm-gate.js, seed: 5}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: 28}
+  tags: [realm-gate]
+rg-warden-r1:
+  castShadow: true
+  feetPosition: {x: 9.5, y: {terrain: 0}, z: -22}
+  id: rg-warden-r1
+  physics: none
+  primitive: {kind: scripted, params: {kind: warden}, script: scripts/gen/realm-gate.js, seed: 4}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: -18}
+  tags: [realm-gate]
+rg-warden-r2:
+  castShadow: true
+  feetPosition: {x: 15.5, y: {terrain: 0}, z: -17}
+  id: rg-warden-r2
+  physics: none
+  primitive: {kind: scripted, params: {kind: warden}, script: scripts/gen/realm-gate.js, seed: 6}
+  receiveShadow: true
+  rotation: {pitch: 0, roll: 0, yaw: -28}
+  tags: [realm-gate]
