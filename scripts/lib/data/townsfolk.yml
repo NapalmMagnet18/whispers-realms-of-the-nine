@@ -356,3 +356,82 @@ ada-ashen:
     - "Are you a knight? You've got mud on you like a knight. Ser Halric has mud on him too."
     - "Mama says don't go past the iron fence after the braziers burn low. I go anyway. The ghosts are nice."
     - "If you find a silver button in the graveyard it's mine. I lost it. Don't tell Osric."
+
+# ── Dungeons and raids (2026-10-08) ──
+pell-drowned-bell:
+  name: Marsh Guide Pell
+  lines:
+    - "Mind the third step. It isn't there anymore."
+    - "I've led folk across that marsh thirty years. Never once led anyone down."
+    - "Hear that? The bell. It rings when nobody touches it."
+iona-drowned-bell:
+  name: Reedkeeper Iona Sedge
+  lines:
+    - "The reeds down here were planted. Somebody wanted guards that never sleep."
+    - "Breathe slow. The air pockets don't last."
+kele-drowned-bell:
+  name: Wisp Tender Kele
+  lines:
+    - "My wisps won't go past the second hall. They're scared of her singing."
+    - "She was a choir mother once. Somebody taught her the wrong hymn."
+fenna-root-archive:
+  name: Elder Fenna Rootwake
+  lines:
+    - "The orchard keeps records the way a tree keeps rings. Slowly, and forever."
+    - "Walk softly. Everything down here is listening, and most of it is old."
+ell-root-archive:
+  name: Grove Singer Ell
+  lines:
+    - "The glyphs aren't words. They're how the branch grew. Follow the growing."
+    - "The lashers used to be gardeners. I don't want to think about it."
+tamsin-root-archive:
+  name: Tamsin the Ranger
+  lines:
+    - "That thing at the bottom isn't evil. It's loyal to the wrong oath."
+    - "Arrows don't bite the bark. Go for the glass."
+vale-pale-choir:
+  name: Sister Vale
+  lines:
+    - "This undercroft was walled up before the Close had a name. Now the candles here burn backwards."
+    - "Bring every hand you can. The Choir sings louder for a crowd."
+    - "If I fall, light my candle on the way out. That's all I ask."
+wenna-pale-choir:
+  name: Wenna Ashgrave
+  lines:
+    - "I sold wax to these people for twenty years. I never asked where they took it."
+    - "The organ's pipes are bone. I'd rather not know whose."
+yurra-emberheart:
+  name: Yurra Flint-Eye
+  lines:
+    - "The caldera's been warm my whole life. It was never this awake."
+    - "Kesh broke his own crew to feed that furnace. I worked under him once."
+kiv-emberheart:
+  name: Foreman Kiv
+  lines:
+    - "Right. I owe the quarry a debt. Paying it here, in heat."
+    - "The valves still turn if you put your back into it. I know. I built them."
+leth-ninth-assembly:
+  name: Magister Leth Sen
+  lines:
+    - "Nine seats, and the stars say none of them was ever meant to be a throne."
+    - "Everyone in this hall is either a witness or a debt. Some are both."
+witness-ninth-assembly:
+  name: The Ninth Witness
+  lines:
+    - "I am what is left when a memory is taken and not returned."
+    - "Sit in the seats. Not to rule. To listen."
+mareth-ninth-assembly:
+  name: Regent Mareth Sable
+  lines:
+    - "I signed the first seal. I'll stand here until it's broken."
+    - "The Engine keeps every name it took. We are going to make it give them back."
+vale-ninth-assembly:
+  name: Sister Vale
+  lines:
+    - "Victory isn't the end of a debt. It's where you start paying."
+    - "Every lantern in the March is lit tonight. For them."
+elric-ninth-assembly:
+  name: Gatekeeper Elric
+  lines:
+    - "Thirty years at a gate. Never thought I'd see the one at the end of the world."
+    - "When this is done, I'm going home to ring the bell properly."
