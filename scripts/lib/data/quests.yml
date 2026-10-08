@@ -15,6 +15,56 @@ Q002:
     - { key: log, desc: Logs, target: 5 }
   rewards: { copper: 2500, xp: 150 }   # 25 silver
 
+# Greeter quests: one per race start, claimed once. Given by the zone's greeter, turned in to Gatekeeper Elric at the Reach.
+# reach_visits counts each time the hero walks into Lantern's Reach (quest-player.js), so the walk after accepting is the objective.
+Q101:
+  id: Q101
+  title: Word for the Gatekeeper
+  giverNpcId: start-thornhollow/start-thornhollow-greeter
+  giverName: Elder Fennick Thornwhisper
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  text: "The old trees have been whispering of wolves on the Briarwild road, sapling. Carry this acorn-sealed letter east along the lanterns to Gatekeeper Elric at Lantern's Reach. He will know what to make of it."
+  progressText: "The Reach lies east, little sapling. Follow the lanterns."
+  turnInText: "An acorn seal. Fennick's hand, I'd know it anywhere. Wolves on the Briarwild road... aye, that tallies with my watch. Welcome to the Reach, Briarkin."
+  doneText: "Go well, sapling. The roots remember you."
+  refusedText: "That letter's already been read, friend."
+  objectives:
+    - { key: reach_visits, desc: "Walk the lantern road to Lantern's Reach", target: 1 }
+  rewards: { copper: 600, xp: 80 }
+
+Q102:
+  id: Q102
+  title: Ash on the Wind
+  giverNpcId: start-cinderhold/start-cinderhold-greeter
+  giverName: Forgemother Brenna Ashvein
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  text: "You're fresh from the anvil, ember-child, and already I've a task. Take this ash-sealed writ west down the lantern road to Gatekeeper Elric. Cinderhold stands with the Reach, and he should hear it from one of us."
+  progressText: "West, ember-child, along the lanterns. Elric waits at the gate."
+  turnInText: "A writ in Brenna's ash-seal. So Cinderhold stands with us. Good. The Reach is glad of Emberforged hands. Welcome."
+  doneText: "Keep your fire banked, ember-child."
+  refusedText: "That writ's already been read, friend."
+  objectives:
+    - { key: reach_visits, desc: "Walk the lantern road to Lantern's Reach", target: 1 }
+  rewards: { copper: 600, xp: 80 }
+
+Q103:
+  id: Q103
+  title: Salt and Lanternlight
+  giverNpcId: start-gullrest/start-gullrest-greeter
+  giverName: Old Maren Tidewell
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  text: "Tide brought you, tide'll take you on, love. Before it does, run this salt-wrapped parcel north up the lantern road to Gatekeeper Elric. It's the gulls' word on the weather, and he's owed it."
+  progressText: "North, love. The lantern road from the green, can't miss it."
+  turnInText: "Salt-wrapped, smells of the bay. Maren's weather word, bless her. Storms off the Saltmere... I'll warn the watch. Welcome to the Reach, Saltborn."
+  doneText: "Mind the nets, love."
+  refusedText: "That parcel's already been opened, friend."
+  objectives:
+    - { key: reach_visits, desc: "Walk the lantern road to Lantern's Reach", target: 1 }
+  rewards: { copper: 600, xp: 80 }
+
 npc:
   talkReach: 3.5        # metres from Elric's feet that E talks
   greetReach: 7         # metres at which he salutes a passer-by

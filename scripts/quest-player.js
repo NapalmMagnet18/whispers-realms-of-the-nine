@@ -19,8 +19,8 @@ const dataOf = (input, name) => (input.actionData && input.actionData[name]) || 
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const playing = (ctx) => ctx.self.place === 'main' && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
 
-function say(ctx, text) {
-  ctx.self.state.npcSay = { text, id: ctx.now() };
+function say(ctx, text, anchor) {
+  ctx.self.state.npcSay = anchor && anchor !== ELRIC ? { text, id: ctx.now(), anchor, offset: '0 2.35 0' } : { text, id: ctx.now() };
   ctx.session.sayUntil = ctx.now() + N.sayLength * 1000;
 }
 function near(ctx, tag, reach) {
@@ -78,29 +78,37 @@ function addLog(st) {
   return true;
 }
 
-function talk(ctx) {
-  const st = ctx.self.state;
-  const q = getQuest('Q002');
-  const avail = getAvailableQuests(ELRIC, st);
-  const pos = ctx.place.objects[ELRIC]?.feetPosition ?? ctx.self.feetPosition;
+// any quest-npc: a ready turn-in first, then a quest on offer, then progress talk, then their own line
+const npcName = (npc) => (npc.state && npc.state.npcName) || (npc.id === ELRIC ? 'Elric' : 'them');
+function talk(ctx, npc) {
+  const st = ctx.self.state, id = npc.id;
+  const pos = ctx.place.objects[id]?.feetPosition ?? ctx.self.feetPosition;
+  const actives = (st.activeQuests || []).filter(Boolean);
+  for (const aq of actives) {
+    const q = getQuest(aq.questId); if (!q || (q.turnInNpcId || q.giverNpcId) !== id) continue;
+    const p = questProgress(aq, st);
+    if (p.done) {
+      st.questDialogData = { id: q.id, title: q.title, giverName: q.turnInName || q.giverName, giverNpcId: id, text: q.turnInText, objectives: p.objectives, rewards: q.rewards, turnIn: true };
+      st.showQuestDialog = true;
+      ctx.emit('playSound', { clip: '/cdn/sfx-scroll-open-magic-parchment-yk3iu4k0.mp3', position: pos, volume: 0.3 }, { audience: { player: ctx.self.id } });
+      return;
+    }
+  }
+  const avail = getAvailableQuests(id, st);
   if (avail.length) {
     const a = avail[0];
-    st.questDialogData = { id: a.id, title: a.title, giverName: a.giverName, giverNpcId: ELRIC, text: a.text, objectives: a.objectives, rewards: a.rewards };
+    st.questDialogData = { id: a.id, title: a.title, giverName: a.giverName, giverNpcId: id, text: a.text, objectives: a.objectives, rewards: a.rewards };
     st.showQuestDialog = true;
     ctx.emit('playSound', { clip: '/cdn/question-prompt-chime-notification-jtcgt1r9.mp3', position: pos, volume: 0.3 }, { audience: { player: ctx.self.id } });
     return;
   }
-  const aq = (st.activeQuests || []).find((x) => x && x.questId === q.id);
-  if (aq) {
-    const p = questProgress(aq, st);
-    if (p.done) {
-      st.questDialogData = { id: q.id, title: q.title, giverName: q.giverName, giverNpcId: ELRIC, text: q.turnInText, objectives: p.objectives, rewards: q.rewards, turnIn: true };
-      st.showQuestDialog = true;
-      ctx.emit('playSound', { clip: '/cdn/sfx-scroll-open-magic-parchment-yk3iu4k0.mp3', position: pos, volume: 0.3 }, { audience: { player: ctx.self.id } });
-    } else say(ctx, q.progressText);
-    return;
+  for (const aq of actives) {
+    const q = getQuest(aq.questId); if (!q) continue;
+    if ((q.turnInNpcId || q.giverNpcId) === id || q.giverNpcId === id) return say(ctx, q.progressText, id);
   }
-  say(ctx, q.doneText);
+  if (id === ELRIC) return say(ctx, getQuest('Q002').doneText, id);
+  const mine = Object.values(Q).find((q) => q && q.giverNpcId === id && (st.completedQuests || []).includes(q.id));
+  say(ctx, (mine && mine.doneText) || (npc.state && npc.state.line) || '...', id);
 }
 
 function accept(ctx, questId) {
@@ -127,12 +135,12 @@ function complete(ctx, questId) {
   st.xp = (st.xp || 0) + (q.rewards.xp || 0);
   st._questSave = true;
   if (q.rewards.copper) move(ctx, q.rewards.copper, 'quest:' + questId, { feedback: false });
-  say(ctx, q.doneText);
+  say(ctx, q.doneText, q.turnInNpcId || q.giverNpcId);
   const head = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 2.2, z: ctx.self.feetPosition.z };
   ctx.emit('damageNumber', { position: head, text: `+${formatText(q.rewards.copper || 0)}  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: 'cdn/sfx-reward.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3', position: ctx.self.feetPosition, volume: 0.6 }, { audience: { player: ctx.self.id } });
-  ctx.emit('milestone', { step: 2, name: 'Q002 complete' });
+  ctx.emit('milestone', { step: questId === 'Q002' ? 2 : 1, name: questId + ' complete' });
 }
 
 function startChop(ctx, tree) {
@@ -186,7 +194,7 @@ export function onInput(ctx, input) {
   if (on(input, 'declineQuest') || on(input, 'closeQuestDialog')) { st.showQuestDialog = false; st.questDialogData = null; return; }
   if (!on(input, 'interact') || st.showQuestDialog || st.showDoorPanel) return;
   if (ctx.session.chop) return stopChop(ctx);
-  if (near(ctx, 'quest-npc', N.talkReach)) return talk(ctx);
+  { const qn = near(ctx, 'quest-npc', N.talkReach); if (qn) return talk(ctx, qn); }
   const folk = near(ctx, 'talker', N.talkReach);
   if (folk) return chat(ctx, folk);
   const page = near(ctx, 'readable', R.reach);
@@ -214,10 +222,14 @@ export function update(ctx) {
     return aq;
   });
   if (moved) { st.activeQuests = next; st._questSave = true; }
+  // each walk into Lantern's Reach counts once (the greeter quests' objective)
+  const fp = ctx.self.feetPosition, inReach = Math.abs(fp.x) < 70 && Math.abs(fp.z) < 70;
+  if (inReach && !ctx.session.inReach) { st.tally = { ...(st.tally || {}), reach_visits: ((st.tally || {}).reach_visits || 0) + 1 }; st._questSave = true; }
+  ctx.session.inReach = inReach;
   // the prompt: the mod HUD draws state.interactHint; this script clears only the hint it wrote
   let hint = null;
   if (ctx.session.chop) hint = 'Chopping…';
-  else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to Elric';
+  else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to ' + npcName(near(ctx, 'quest-npc', N.talkReach));
   else if (!st.showQuestDialog && near(ctx, 'talker', N.talkReach)) { const f = near(ctx, 'talker', N.talkReach); hint = 'E  Talk to ' + ((TF[f.state && f.state.who] || {}).name || 'them'); }
   else if (near(ctx, 'readable', R.reach)) { const r = near(ctx, 'readable', R.reach); hint = 'E  Read ' + ((r.state && r.state.title) || 'note'); }
   else if (nearCache(ctx)) { const c = nearCache(ctx); hint = (st.caches || {})[c.state.cache || c.id] ? 'Empty chest' : 'E  Open ' + (c.state.title || 'chest'); }

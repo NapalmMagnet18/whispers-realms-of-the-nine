@@ -422,6 +422,10 @@ var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' },
   // the Reach's townsfolk (scripts/lib/data/townsfolk.yml): a nameplate each, no quest marker
   { id: 'reach-npc-mira', name: 'Mira the Forgekeeper' }, { id: 'reach-npc-dren', name: 'Quartermaster Dren' }, { id: 'reach-npc-bram', name: 'Bram Alder' },
   { id: 'reach-npc-tamsin', name: 'Tamsin the Ranger' }, { id: 'reach-npc-vale', name: 'Sister Vale' }, { id: 'reach-npc-rowan', name: 'Rowan the Ferryman' }];
+// the race starts' greeters: drawn only while the hero stands within 90 m of them
+var GREETERS = [{ id: 'start-thornhollow/start-thornhollow-greeter', name: 'Elder Fennick Thornwhisper', x: -717, z: 71 },
+  { id: 'start-cinderhold/start-cinderhold-greeter', name: 'Forgemother Brenna Ashvein', x: 898, z: -172 },
+  { id: 'start-gullrest/start-gullrest-greeter', name: 'Old Maren Tidewell', x: 252, z: 1432 }];
 export function renderQuestTracker(localPlayer, world) {
   var s = localPlayer.state || {};
   var out = '<style>@keyframes qbob{50%{transform:translateY(-6px)}}@keyframes qpop{0%{transform:scale(1.5)}100%{transform:scale(1)}}'
@@ -452,13 +456,15 @@ export function renderQuestTracker(localPlayer, world) {
   var _t = (typeof performance !== 'undefined' ? performance.now() : 0);
   if (!nearReach) _reachSince = 0; else if (!_reachSince) _reachSince = _t || 1;
   if (_t && _t - _reachSince < 6000) nearReach = false; // the town's people stream in first: an anchor before them finds nobody // the townsfolk all stand in Lantern's Reach: anchors elsewhere find nobody
-  for (var n = 0; nearReach && n < QUEST_NPCS.length; n++) {
-    var st = _qd.questStatus(QUEST_NPCS[n].id, s);
+  var _list = nearReach ? QUEST_NPCS.slice() : [];
+  for (var g = 0; g < GREETERS.length; g++) if (Math.abs(fp.x - GREETERS[g].x) < 90 && Math.abs(fp.z - GREETERS[g].z) < 90) _list.push(GREETERS[g]);
+  for (var n = 0; n < _list.length; n++) {
+    var st = _qd.questStatus(_list[n].id, s);
     var mark = st === 'available' ? '!' : st === 'ready' ? '?' : '';
     var markCol = st === 'ready' ? 'oklch(0.86 0.15 85)' : 'oklch(0.9 0.17 90)';
-    out += '<div data-world-anchor="' + QUEST_NPCS[n].id + '" data-anchor-offset="0 2.25 0" style="pointer-events:none;text-align:center;transform:translate(-50%,-100%);opacity:clamp(0,calc((40 - var(--anchor-depth,0)) / 10),1)">'
+    out += '<div data-world-anchor="' + _list[n].id + '" data-anchor-offset="0 2.25 0" style="pointer-events:none;text-align:center;transform:translate(-50%,-100%);opacity:clamp(0,calc((40 - var(--anchor-depth,0)) / 10),1)">'
       + (mark ? '<div style="font-size:52px;line-height:1;font-weight:900;color:' + markCol + ';-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;text-shadow:0 0 14px oklch(0.85 0.17 85 / .8);animation:qbob 1.2s ease-in-out infinite">' + mark + '</div>' : '')
-      + '<div style="font-size:18px;color:oklch(0.94 0.04 90);-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;white-space:nowrap">' + QUEST_NPCS[n].name + '</div></div>';
+      + '<div style="font-size:18px;color:oklch(0.94 0.04 90);-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;white-space:nowrap">' + _list[n].name + '</div></div>';
   }
   if (s.npcSay && s.npcSay.text) {
     out += '<div data-world-anchor="' + (s.npcSay.anchor || 'gatekeeper-elric') + '" data-anchor-offset="' + (s.npcSay.offset || '0 2.9 0') + '" style="pointer-events:none;transform:translate(-50%,-100%)"><div id="say-' + s.npcSay.id + '" class="qt-plate" style="max-width:' + (s.npcSay.anchor ? 400 : 340) + 'px;font-size:17px;line-height:1.35;animation:qpop .2s">' + s.npcSay.text + '</div></div>';

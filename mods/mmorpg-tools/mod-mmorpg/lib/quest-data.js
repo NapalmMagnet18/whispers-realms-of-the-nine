@@ -30,7 +30,7 @@ export function questToActiveFormat(quest, playerState) {
     baseline[o.key] = tally[o.key] || 0;
     objs.push({ key: o.key, desc: o.desc, target: o.target, current: 0 });
   }
-  return { questId: quest.id, title: quest.title, giverNpcId: quest.giverNpcId, giverName: quest.giverName, objectives: objs, rewards: quest.rewards, baseline: baseline };
+  return { questId: quest.id, title: quest.title, giverNpcId: quest.giverNpcId, giverName: quest.giverName, turnInNpcId: quest.turnInNpcId || quest.giverNpcId, objectives: objs, rewards: quest.rewards, baseline: baseline };
 }
 
 // Fresh objective counts from the tally: min(target, tally − baseline).
@@ -48,18 +48,20 @@ export function questProgress(aq, playerState) {
   return { objectives: objs, done: done };
 }
 
-// What an NPC means to this player: 'available' (!), 'ready' (?), 'active', 'done' or null.
+// What an NPC means to this player: 'ready' (?), 'available' (!), 'active', 'done' or null.
+// A quest may be turned in to another NPC (turnInNpcId): that NPC shows its '?', the giver its '!'.
 export function questStatus(npcId, playerState) {
-  var any = null;
+  var any = null, avail = false;
   for (var id in QUEST_DATABASE) {
-    var q = QUEST_DATABASE[id];
-    if (q.giverNpcId !== npcId) continue;
+    var q = QUEST_DATABASE[id], giver = q.giverNpcId, taker = q.turnInNpcId || giver;
+    if (giver !== npcId && taker !== npcId) continue;
     var aq = activeOf(playerState, id);
-    if (aq) { if (questProgress(aq, playerState).done) return 'ready'; any = 'active'; continue; }
+    if (aq) { if (taker === npcId && questProgress(aq, playerState).done) return 'ready'; any = 'active'; continue; }
+    if (giver !== npcId) continue;
     if (has(playerState && playerState.completedQuests, id)) { if (!any) any = 'done'; continue; }
-    return 'available';
+    avail = true;
   }
-  return any;
+  return avail ? 'available' : any;
 }
 
 export function getQuest(id) { return QUEST_DATABASE[id] || null; }
