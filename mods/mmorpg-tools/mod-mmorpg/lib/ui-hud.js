@@ -584,7 +584,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
   }
   _vis.sort(function (a, b) { return a.d - b.d; });
   const _boxes = _vis.map(function (v) { return { x0: v.mx - 10, x1: v.mx + 10, y0: v.my - 10, y1: v.my + 10, own: v }; });
-  const _hit = function (r, skip) { return _boxes.some(function (b) { return b.own !== skip && r.x0 < b.x1 && r.x1 > b.x0 && r.y0 < b.y1 && r.y1 > b.y0; }); };
+  const _hit = function (r, skip) { return _boxes.some(function (bx) { return bx.own !== skip && r.x0 < bx.x1 && r.x1 > bx.x0 && r.y0 < bx.y1 && r.y1 > bx.y0; }); };
   for (const v of _vis) {
     const _w = v.lm.label.length * 7 + 6;
     const r = { x0: v.mx - _w / 2, x1: v.mx + _w / 2, y0: v.my + 11, y1: v.my + 24 };
