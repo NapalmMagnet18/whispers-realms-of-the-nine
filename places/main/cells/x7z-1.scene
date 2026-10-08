@@ -1,4 +1,204 @@
 # spawn-scene v2 yaml x7z-1
+cradle-npc-dren:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 905, y: {terrain: 0}, z: -160}
+  id: cradle-npc-dren
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-quartermaster-male-stout-leather-apron-beard.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle_Rail_Loop, npcName: Quartermaster Dren, who: dren, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, emberstone-cradle]
+cradle-npc-kiv:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 912, y: {terrain: 0}, z: -172}
+  id: cradle-npc-kiv
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-quarry-foreman-male-burly-leather-cap-soot-beard-ledger.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -90}
+  state: {homeYaw: -90, idle: Idle_FoldArms_Loop, npcName: Quarry Foreman Kiv, who: kiv, yaw: -90}
+  tags: [npc, talker, townsfolk, quest-npc, emberstone-cradle]
+cradle-npc-mira:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 884, y: {terrain: 0}, z: -161}
+  id: cradle-npc-mira
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-blacksmith-female-forgekeeper-leather-apron-braids.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 110}
+  state: {homeYaw: 110, idle: Idle_FoldArms_Loop, npcName: Mira the Forgekeeper, who: mira, yaw: 110}
+  tags: [npc, talker, townsfolk, quest-npc, emberstone-cradle]
+cradle-npc-yurra:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 893, y: {terrain: 0}, z: -176}
+  id: cradle-npc-yurra
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-mason-female-stout-grey-braids-stone-dust-leather-apron-ledger.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 160}
+  state: {homeYaw: 160, idle: Idle, npcName: Mason Yurra Flint-Eye, who: yurra, yaw: 160}
+  tags: [npc, talker, townsfolk, quest-npc, emberstone-cradle]
+kha-bellglass:
+  feetPosition: {x: 891.5, y: {terrain: 0}, z: -161.6}
+  fx: {script: "fx\npop glow n=1 at=<0,.2,0> r=light(<.8,.5,1>,2,4)"}
+  id: kha-bellglass
+  physics: none
+  primitive: {kind: scripted, params: {kind: shard}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {after: copper_bar, afterText: "First: smelt a copper bar", mark: bellglass_compare, quest: KHA-05, say: "The bar is heavy and dull. The shard is light as a held breath, and when you lift it, it sighs.", sound: /cdn/moodboard-painterly-fantasy/sfx-glass-chime-soft.mp3, title: Bellglass Shard, verb: Weigh it}
+  tags: [quest-mark, emberstone-cradle]
+kha-chisel-bench:
+  feetPosition: {x: 896, y: {terrain: 0}, z: -181}
+  fx: {script: "fx\npop glint rate=1.5 on=disc(.2) life=.6..1 v=up(.2) size=.05..0.09 col=hdr(3,2.4,1) a=0>1:.3>0 r=sprite(soft-disc,add)"}
+  id: kha-chisel-bench
+  physics: static
+  primitive: {kind: scripted, params: {kind: chisel}, script: scripts/gen/cradle.js}
+  rotation: 20
+  state: {after: copper_node, afterText: "First: mine the copper seams", mark: novice_chisel, quest: KHA-01, say: "You strike the mended chisel on the bench. It rings once. Then, a breath later, a second time, from somewhere under your feet.", sound: /cdn/moodboard-painterly-fantasy/sfx-anvil-hammer-clang.mp3, title: Stump Bench, verb: Mend the chisel}
+  tags: [quest-mark, emberstone-cradle]
+kha-copper-0:
+  feetPosition: {x: 922, y: {terrain: -0.2}, z: -150}
+  id: kha-copper-0
+  physics: static
+  primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
+  rotation: 0
+  state: {gain: "+1 Copper Ore", mark: copper_node, quest: KHA-01, repeat: true, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Seam, verb: Mine, waitText: The seam needs a moment...}
+  tags: [quest-mark, emberstone-cradle, ore, copper]
+kha-copper-1:
+  feetPosition: {x: 928, y: {terrain: -0.2}, z: -158}
+  id: kha-copper-1
+  physics: static
+  primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
+  rotation: 70
+  state: {gain: "+1 Copper Ore", mark: copper_node, quest: KHA-01, repeat: true, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Seam, verb: Mine, waitText: The seam needs a moment...}
+  tags: [quest-mark, emberstone-cradle, ore, copper]
+kha-crucible:
+  feetPosition: {x: 887.6, y: {terrain: 0}, z: -164.2}
+  fx: {script: "fx\npop glow n=1 at=<0,1,0> r=light(<1,.5,.2>,4,5)"}
+  id: kha-crucible
+  physics: none
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 0
+  state: {gain: "+1 Copper Bar", mark: copper_bar, quest: KHA-05, sound: /cdn/moodboard-painterly-fantasy/sfx-anvil-hammer-clang.mp3, title: Forge Crucible, verb: Smelt a bar}
+  tags: [quest-mark, emberstone-cradle]
+kha-lintel:
+  feetPosition: {x: 884, y: {terrain: 0}, z: -180}
+  id: kha-lintel
+  physics: static
+  primitive: {kind: scripted, params: {kind: lintel}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {mark: lintel_names, quest: KHA-07, say: "Twelve names from the tokens, in plain letters. You leave a hand's width of blank stone after the last one.", sound: /cdn/moodboard-painterly-fantasy/sfx-chisel-on-stone-taps.mp3, title: The New Lintel, verb: Cut the names}
+  tags: [quest-mark, emberstone-cradle]
+kha-pillar-0:
+  feetPosition: {x: 925, y: {terrain: -0.3}, z: -180}
+  id: kha-pillar-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: pillar}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {mark: cracked_pillar, quest: KHA-02, say: "The crack runs straight, then hooks. Like the downstroke of a letter.", sound: /cdn/moodboard-painterly-fantasy/sfx-stone-pillar-low-hum-double-ring.mp3, title: Cracked Pillar, verb: Inspect}
+  tags: [quest-mark, emberstone-cradle]
+kha-pillar-1:
+  feetPosition: {x: 929, y: {terrain: -0.3}, z: -188}
+  id: kha-pillar-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: pillar}, script: scripts/gen/cradle.js}
+  rotation: 37
+  state: {mark: cracked_pillar, quest: KHA-02, say: "Your palm on the stone. It is warm, and very faintly humming.", sound: /cdn/moodboard-painterly-fantasy/sfx-stone-pillar-low-hum-double-ring.mp3, title: Cracked Pillar, verb: Inspect}
+  tags: [quest-mark, emberstone-cradle]
+kha-roster:
+  feetPosition: {x: 902, y: {terrain: 0}, z: -184}
+  id: kha-roster
+  physics: static
+  primitive: {kind: scripted, params: {kind: board}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {after: shift_token, afterText: "First: find the three shift tokens", mark: missing_crew, quest: KHA-03, say: "Every crew, every name, every week for forty years. Night Crew Nine is on none of them. Twelve tags' worth of empty nails.", title: Shift Roster, verb: Check the roster}
+  tags: [quest-mark, emberstone-cradle]
+kha-shrine:
+  feetPosition: {x: 887, y: {terrain: 0}, z: -150}
+  fx: {script: "fx\npop glow n=1 at=<0,1.6,-.3> r=light(<1,.7,.35>,2.5,6)"}
+  id: kha-shrine
+  physics: static
+  primitive: {kind: scripted, params: {kind: shrine}, script: scripts/gen/cradle.js}
+  rotation: 180
+  state: {mark: shrine_chisel, quest: KHA-08, say: "You lay the novice chisel with the others. It rings once, and for the first time, only once.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Miners' Shrine, verb: Leave your chisel}
+  tags: [quest-mark, emberstone-cradle]
+kha-spoil-0:
+  feetPosition: {x: 878, y: {terrain: -0.6}, z: -150}
+  id: kha-spoil-0
+  material: {color: oklch(0.42 0.04 45), roughness: 1, texture: cdn/texture-dark-volcanic-basalt-blocks.png}
+  physics: static
+  primitive: {kind: sphere, radius: 1.6}
+  scale: {x: 1.3, y: 0.45, z: 1}
+  tags: [emberstone-cradle]
+kha-spoil-1:
+  feetPosition: {x: 915, y: {terrain: -0.6}, z: -146}
+  id: kha-spoil-1
+  material: {color: oklch(0.42 0.04 45), roughness: 1, texture: cdn/texture-dark-volcanic-basalt-blocks.png}
+  physics: static
+  primitive: {kind: sphere, radius: 1.6}
+  scale: {x: 1.3, y: 0.45, z: 1}
+  tags: [emberstone-cradle]
+kha-spoil-2:
+  feetPosition: {x: 931, y: {terrain: -0.6}, z: -168}
+  id: kha-spoil-2
+  material: {color: oklch(0.42 0.04 45), roughness: 1, texture: cdn/texture-dark-volcanic-basalt-blocks.png}
+  physics: static
+  primitive: {kind: sphere, radius: 1.6}
+  scale: {x: 1.3, y: 0.45, z: 1}
+  tags: [emberstone-cradle]
+kha-token-0:
+  feetPosition: {x: 878.4, y: {terrain: 0.05}, z: -149.1}
+  fx: {script: "fx\npop glint rate=1.5 on=disc(.2) life=.6..1 v=up(.2) size=.05..0.09 col=hdr(3,2.4,1) a=0>1:.3>0 r=sprite(soft-disc,add)"}
+  id: kha-token-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: token}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {gain: "+1 Shift Token", mark: shift_token, quest: KHA-03, say: Stamped 'Night Crew Nine'. There is no night crew., sound: /cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3, title: Shift Token, verb: Pick up}
+  tags: [quest-mark, emberstone-cradle]
+kha-token-1:
+  feetPosition: {x: 915.4, y: {terrain: 0.05}, z: -145.1}
+  fx: {script: "fx\npop glint rate=1.5 on=disc(.2) life=.6..1 v=up(.2) size=.05..0.09 col=hdr(3,2.4,1) a=0>1:.3>0 r=sprite(soft-disc,add)"}
+  id: kha-token-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: token}, script: scripts/gen/cradle.js}
+  rotation: 50
+  state: {gain: "+1 Shift Token", mark: shift_token, quest: KHA-03, say: "Stamped 'Night Crew Nine'. Warm, like it was just held.", sound: /cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3, title: Shift Token, verb: Pick up}
+  tags: [quest-mark, emberstone-cradle]
+kha-token-2:
+  feetPosition: {x: 931.4, y: {terrain: 0.05}, z: -167.1}
+  fx: {script: "fx\npop glint rate=1.5 on=disc(.2) life=.6..1 v=up(.2) size=.05..0.09 col=hdr(3,2.4,1) a=0>1:.3>0 r=sprite(soft-disc,add)"}
+  id: kha-token-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: token}, script: scripts/gen/cradle.js}
+  rotation: 100
+  state: {gain: "+1 Shift Token", mark: shift_token, quest: KHA-03, say: Stamped 'Night Crew Nine'. The cloth smells faintly of bread., sound: /cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3, title: Shift Token, verb: Pick up}
+  tags: [quest-mark, emberstone-cradle]
+kha-tuning-0:
+  feetPosition: {x: 877, y: {terrain: -0.1}, z: -181}
+  id: kha-tuning-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: tuning}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {mark: tuning_stone, quest: KHA-04, say: "The stone answers. Then the floor answers the stone, in a second voice.", sound: /cdn/moodboard-painterly-fantasy/sfx-tuning-stone-resonant-chime.mp3, title: Tuning Stone, verb: Wake}
+  tags: [quest-mark, emberstone-cradle]
+kha-tuning-1:
+  feetPosition: {x: 891, y: {terrain: -0.1}, z: -183}
+  id: kha-tuning-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: tuning}, script: scripts/gen/cradle.js}
+  rotation: 90
+  state: {mark: tuning_stone, quest: KHA-04, say: "A duet, low and impossible. One of the voices says your name.", sound: /cdn/moodboard-painterly-fantasy/sfx-tuning-stone-resonant-chime.mp3, title: Tuning Stone, verb: Wake}
+  tags: [quest-mark, emberstone-cradle]
+kha-tuning-hammer:
+  feetPosition: {x: 917, y: {terrain: 0}, z: -178}
+  fx: {script: "fx\npop glint rate=1.5 on=disc(.2) life=.6..1 v=up(.2) size=.05..0.09 col=hdr(3,2.4,1) a=0>1:.3>0 r=sprite(soft-disc,add)"}
+  id: kha-tuning-hammer
+  physics: static
+  primitive: {kind: scripted, params: {kind: hammer}, script: scripts/gen/cradle.js}
+  rotation: -30
+  state: {after: cracked_pillar, afterText: "First: inspect the cracked pillars", mark: pillar_tone, quest: KHA-02, say: "Three pillars, three tones. Read in order they make a word in a script older than the quarry.", sound: /cdn/moodboard-painterly-fantasy/sfx-tuning-fork-stone-ring.mp3, title: Tuning Hammer, verb: Strike the pillars}
+  tags: [quest-mark, emberstone-cradle]
 roost-cinderhold:
   children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:52px;color:#f2b04a;text-shadow:0 0 12px #000\">CINDERHOLD</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
   feetPosition: {x: 912, y: 40.4, z: -156}

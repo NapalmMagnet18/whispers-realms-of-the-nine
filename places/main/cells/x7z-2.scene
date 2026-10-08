@@ -1,4 +1,40 @@
 # spawn-scene v2 yaml x7z-2
+kha-old-seal:
+  feetPosition: {x: 899, y: {terrain: 0}, z: -216}
+  id: kha-old-seal
+  physics: static
+  primitive: {kind: scripted, params: {kind: seal}, script: scripts/gen/cradle.js}
+  rotation: 180
+  state: {after: tunnel_scavenger, afterText: "First: drive off the scavengers", gain: "+1 Rust Seal", mark: old_seal, quest: KHA-06, say: "Nine points, rust-red. Hammered shut from the outside. Behind it, very faint, someone taps twice.", sound: /cdn/moodboard-painterly-fantasy/sfx-iron-scrape-heavy.mp3, title: The Old Seal, verb: Pry loose}
+  tags: [quest-mark, emberstone-cradle]
+kha-pillar-2:
+  feetPosition: {x: 921, y: {terrain: -0.3}, z: -193}
+  id: kha-pillar-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: pillar}, script: scripts/gen/cradle.js}
+  rotation: 74
+  state: {mark: cracked_pillar, quest: KHA-02, say: "Silver dust in the crack, fine as flour. It spells nothing you can read.", sound: /cdn/moodboard-painterly-fantasy/sfx-stone-pillar-low-hum-double-ring.mp3, title: Cracked Pillar, verb: Inspect}
+  tags: [quest-mark, emberstone-cradle]
+kha-scav-camp:
+  behavior: scripts/scavengers.js
+  feetPosition: {x: 898, y: {terrain: 0}, z: -210}
+  id: kha-scav-camp
+  state: {crew: [{id: kha-scav-1, x: 893, yaw: 20, z: -206}, {id: kha-scav-2, x: 902, yaw: 200, z: -212}, {id: kha-scav-3, x: 906, yaw: -60, z: -205}], respawnAt: {}, tallyKey: tunnel_scavenger}
+  tags: [kha-scavenger-camp]
+kha-scav-fire:
+  feetPosition: {x: 895, y: {terrain: 0}, z: -210}
+  fx: {script: "fx\npop flame rate=26 on=disc(.25) life=.4..0.8 v=up(1.3)+cone(24)*(.3..0.7) size=.16..0.3 acc=curl(.5)+buoy(2)+drag(1.5) sz=$size*(.5>1:.7>.2) col=hdr(3.6,1.6,.4)>hdr(1.6,.4,.08) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)\npop glow n=1 at=<0,.6,0> r=light(<1,.55,.25>,5,10)"}
+  id: kha-scav-fire
+  material: {color: oklch(0.3 0.02 50), roughness: 1}
+  primitive: {height: 0.12, kind: cylinder, radiusBottom: 0.6, radiusTop: 0.55}
+  tags: [emberstone-cradle]
+kha-tunnel:
+  feetPosition: {x: 900, y: {terrain: -0.5}, z: -222}
+  id: kha-tunnel
+  physics: static
+  primitive: {kind: scripted, params: {kind: cave}, script: scripts/gen/quarry.js}
+  rotation: {yaw: 180}
+  tags: [emberstone-cradle]
 start-cinderhold/start-cinderhold-hall-2:
   children: [{feetPosition: {x: 0, y: 3.4, z: 8.25}, light: {color: oklch(0.78 0.14 55), distance: 12, intensity: 3, kind: point}}, {feetPosition: {x: -2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}, {feetPosition: {x: 2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}]
   feetPosition: {x: 6, y: -0.1, z: -23}
