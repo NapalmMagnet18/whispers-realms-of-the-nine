@@ -1,7 +1,7 @@
 // Emberstone Cradle set pieces (Kharic origin KHA-01..08). params.kind: chisel | pillar | hammer | token | board | tuning | shard | seal | lintel | shrine
 import { box, boxR, cyl, blob } from "./shape.js";
 const T = (n) => "cdn/texture-" + n + ".png";
-const ASHLAR = T("chiselled-red-sandstone-ashlar-block"), WOOD = T("dark-oak-timber-beam-hand-painted"), IRON = T("rusted-black-iron-hammered"), BASALT = T("rough-dark-basalt-rock");
+const ASHLAR = T("chiselled-red-sandstone-ashlar-block"), WOOD = T("dark-oak-timber-beam-hand-painted"), IRON = T("rusted-black-iron-hammered"), BASALT = T("dark-volcanic-basalt-blocks");
 const rng = (s) => { let h = (s * 9301 + 49297) % 233280; return () => { h = (h * 9301 + 49297) % 233280; return h / 233280; }; };
 const P = (ctx, tex, col, r = 0.85, m = 0) => { ctx.albedo(tex); ctx.color(col); ctx.roughness(r); ctx.metalness(m); ctx.emissive(null); };
 const glowCut = (ctx, col, e) => { ctx.albedo(null); ctx.color(col); ctx.emissive(...e); };
