@@ -14,9 +14,9 @@ MAR-01:
   group: "Marchfolk Origin: Names on a Census"
   giverNpcId: gatekeeper-elric
   giverName: Gatekeeper Elric
-  text: "Up before the bell, Marchborn? Good. Every soul in the Ward is written on the census board by the north road. Go and find your own name on it. Tell me if anything there looks... wrong."
+  text: "Up before the bell, Marchborn? Good. The bell struck eight at noon yesterday. Every soul in the Ward is written on the census board by the gate. Go and find your own name on it. Tell me if anything there looks... wrong."
   progressText: "The census board stands by the north road, inside the Ward wall."
-  turnInText: "A whole row rubbed out, you say? Ten homes on Bellward Lane. I walked that lane as a boy. I... don't remember any houses there. That's what frightens me."
+  turnInText: "Rubbed out past Eleven? Bellward Lane ends at Eleven. It always has. ...Then why do I know the next house had blue shutters? That's what frightens me."
   doneText: "Dren's short of hands this morning. Ask him at his rail by the west gate."
   refusedText: "You've read the board already, friend."
   objectives:
@@ -31,14 +31,14 @@ MAR-02:
   requires: [MAR-01]
   giverNpcId: reach-npc-dren
   giverName: Quartermaster Dren
-  text: "Elric sent you? Then earn your boots. Three parcels for the Ward, crates stacked at the doorsteps on Bellward Lane. While you're there, ask the neighbours about number nine. Nobody ever answers me straight."
-  progressText: "Three parcels to the Ward doorsteps, and two neighbours asked about number nine."
-  turnInText: "Blue, said one. Green, said the other. A house nobody lived in, painted two colours. Here, your wages. And mind the coin: copper's how the March keeps its word."
+  text: "Elric sent you? Then earn your boots. Three parcels for the Ward, crates stacked at the doorsteps on Bellward Lane. And a courier's been trying to deliver bread to Number Thirteen for three days. Ask the neighbours about Thirteen. Nobody ever answers me straight."
+  progressText: "Three parcels to the Ward doorsteps, and two neighbours asked about Number Thirteen."
+  turnInText: "The cobbler described a whole family, then swore he never spoke. A house that isn't there, and people who remember its supper table. Here, your wages. And mind the coin: copper's how the March keeps its word."
   doneText: "Bram's been chalking walls up in the Ward. Find him by the Bell tower."
   refusedText: "Already paid you for those parcels."
   objectives:
     - { key: ward_parcel, desc: "Deliver supply parcels on Bellward Lane", target: 3 }
-    - { key: ward_neighbour, desc: "Ask the neighbours about number nine", target: 2 }
+    - { key: ward_neighbour, desc: "Ask the neighbours about Number Thirteen", target: 2 }
   rewards: { copper: 120, xp: 25 }
 
 MAR-03:
@@ -49,14 +49,14 @@ MAR-03:
   requires: [MAR-02]
   giverNpcId: reach-npc-bram
   giverName: Bram Alder
-  text: "Someone's been chalking arrows in the Ward at night. Not me. They lead to the east wall, to a door that was bricked up before I was born. Follow them, and look at the latch. Tell me it's rusted shut."
+  text: "Children's chalk on the paving, arrows all the way down Bellward Lane. They end at the brick wall past Eleven, where there's a door that was bricked up before I was born. Follow them and try the handle. Tell me it's cold."
   progressText: "Chalk arrows in the Ward lead to the bricked door in the east wall. Check its latch."
-  turnInText: "Warm? The latch was warm? And the hinges sit on the inside... as if the door opens from a street we don't have. Keep this. A scrap of the old lamp that hung over it."
+  turnInText: "Warm. And a voice asked, polite as you please, if you'd leave the bread with a neighbour? The door opens inward... from a street we don't have. Keep this. A scrap of the old lamp that hung over it."
   doneText: "Sister Vale has been finding notices nailed up in the Ward. Speak with her."
   refusedText: "You've seen the door already."
   objectives:
     - { key: walled_door, desc: "Follow the chalk marks to the walled door", target: 1 }
-    - { key: door_latch, desc: "Inspect the latch", target: 1 }
+    - { key: door_latch, desc: "Try the warm handle", target: 1 }
   rewards: { copper: 60, xp: 30, items: [lantern_scrap] }
 
 MAR-04:
@@ -67,9 +67,9 @@ MAR-04:
   requires: [MAR-03]
   giverNpcId: reach-npc-vale
   giverName: Sister Vale
-  text: "Lost-notices, nailed up in the Ward overnight. 'Have you seen...' and then a name I don't know. Bring me three, then read them against the bell roll at the foot of the tower. The bell roll names every soul it ever rang for."
+  text: "Lost-notices, nailed up in the Ward overnight. 'Have you seen...' and then a name nobody living knows. Bring me three, then read them against the bell roll at the foot of the tower. The bell roll names every soul it ever rang for."
   progressText: "Three lost notices in the Ward, then compare them with the bell roll at the tower."
-  turnInText: "Dated tomorrow. All three. Signed by people the bell rang for... and nobody living can find. I'll keep a copy. You keep this note."
+  turnInText: "Eda Sable. The Sables of Number Thirteen. All on the bell roll, rung for on one night, the First Silence. And the notices are dated tomorrow. I'll keep a copy. You keep this note."
   doneText: "Elric wants the storm lamps lit before dusk. Go to him."
   refusedText: "You've brought me the notices already."
   objectives:
