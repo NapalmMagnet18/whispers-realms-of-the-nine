@@ -109,6 +109,7 @@ export function geometry(ctx) {
   }
   if (kind === "twisted") {
     // a leaning, kinked trunk, four writhing limbs, a broad flat red crown with tufts at the limb ends
+    ctx.color("oklch(1 0 0)");
     const seg = lod > 2 ? 6 : 9, k = [[0, -0.4, 0]];
     for (let i = 1; i <= 3; i++) k.push([(r() - 0.5) * 1.4, i * 1.8, (r() - 0.5) * 1.4]);
     for (let i = 0; i < 3; i++) tube(k[i], k[i + 1], 0.85 - i * 0.2, 0.65 - i * 0.2, seg);
