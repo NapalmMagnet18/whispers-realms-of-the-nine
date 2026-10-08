@@ -92,7 +92,12 @@ export function update(api, dt) {
       api.setProperty('visible', false);
     }
 
+    // at the gate the hero is a roster row, not a body in play: a characterCreated left over from the last session drew the game HUD over the title
     var menuState = api.getState();
+    if (menuState.characterCreated === true && !menuState._leavingMenu && menuState.phase !== 'creating' && menuState.phase !== 'playing') {
+      api.patchState({ characterCreated: false, _hasCharacter: true, _dataLoaded: true, menuView: menuState.menuView || 'title' });
+      menuState = api.getState();
+    }
     if (menuState.inMainMenu && menuState.characterCreated !== true) {
       hydrateMenuRoster(api, menuState);
     }
