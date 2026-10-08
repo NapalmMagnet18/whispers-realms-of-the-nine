@@ -121,8 +121,8 @@ module.exports = {
 // Starting stats for a fresh character: Vanguard leans strength and endurance.
 export function calcBaseStats(raceIndex, classIndex, level) {
   var lv = Math.max(1, level || 1);
-  var s = { strength: 14, agility: 10, intellect: 10, stamina: 13, endurance: 13, spirit: 10, vitality: 10 };
-  if (raceIndex === 1) { s.agility += 2; s.spirit += 1; s.strength -= 1; }
+  var s = { strength: 14, dexterity: 10, intelligence: 10, endurance: 13, spirit: 10, vitality: 12, luck: 10 };
+  if (raceIndex === 1) { s.dexterity += 2; s.spirit += 1; s.strength -= 1; }
   for (var k in s) s[k] += lv - 1;
   return s;
 }
