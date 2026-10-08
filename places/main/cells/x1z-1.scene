@@ -390,6 +390,16 @@ ashen-npc-halric:
   rotation: {yaw: 270}
   state: {homeYaw: 270, idle: Idle, npcName: Ser Halric of the Nine, who: halric-ashen, yaw: 270}
   tags: [npc, talker, townsfolk, ashen]
+ashen-npc-marta:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 95.38, y: 5.45, z: -175.79}
+  id: ashen-npc-marta
+  layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-innkeeper-woman-stout-linen-apron-rolled-sleeves-auburn-braid-tankard.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 82}
+  state: {homeYaw: 82, idle: Idle, npcName: Marta Wick, who: marta-ashen, yaw: 82}
+  tags: [npc, talker, townsfolk, ashen]
 ashen-npc-nyssa:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: 96, y: {terrain: 0}, z: -172}
