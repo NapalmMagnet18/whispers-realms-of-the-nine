@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 737,
-  "updatedAt": "2026-10-08T05:30:59.760Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March, where the Reach hub connects race-origin stories, wilderness and distant landmarks. MMORPG Tools owns character/realm lifecycle and modular UI; the ordered player template composes movement, class combat, quests, commerce and flight, while streamed scenes and YAML data provide world content.",
+  "basedOnSpecVersion": 745,
+  "updatedAt": "2026-10-08T05:35:13.151Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March, where Lantern's Reach connects race-origin stories, wilderness and distant landmarks. MMORPG Tools owns character/realm lifecycle and modular UI; the ordered player template composes movement, class combat, quests, commerce and flight, while streamed scenes and YAML data supply content. The new Vanguard path, A Shield is Not a Crown, is centered on the Shield Table beside the Reach training yard.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -117,6 +117,7 @@
     "scripts/gen/rock.js",
     "scripts/gen/roost.js",
     "scripts/gen/shape.js",
+    "scripts/gen/shieldtable.js",
     "scripts/gen/spire.js",
     "scripts/gen/stone-bridge.js",
     "scripts/gen/strand.js",
@@ -169,11 +170,11 @@
     "places/main-menu-land/ - realm roster and entry point for Enter World and character creation.",
     "places/character-creation-land/ - race/class/appearance selection, preview character and creation camera.",
     "places/main/config.yaml - streamed Lantern March terrain, coast, roads, scatter and atmosphere; scene cells add landmarks including Veilgate Aerie.",
-    "places/main/cells/x0z0.scene - Lantern's Reach hub, services, residents, quest interactions and Corin at the dock watch.",
-    "places/main/cells/x0z-1.scene and x-5z0.scene, x-5z1.scene, x-6z0.scene, x-6z1.scene - Lantern Ward Marchfolk origin and Rootwake Glade Briarkin origin, their residents and quest marks.",
-    "places/main/cells/x1z0.scene - Emberstone Quarry camp, scavenger manager and quarry objectives.",
-    "places/main/cells/x7z-1.scene and x7z-2.scene - Cinderhold's Emberstone Cradle Kharic origin: Yurra, Kiv, Dren and Mira, quest-mark set pieces and north tunnel scavengers.",
-    "places/main/cells/x2z11.scene - Gullrest's Breakwater Strand Saltborn origin: Sena, Ruun, Sari, tide posts, coast lamps, wreck, phantom current and ferry buoys."
+    "places/main/cells/x0z0.scene - Lantern's Reach hub, services, residents, quest interactions and the new Shield Table, Marshal Oren and Vanguard-path set pieces east of the training yard.",
+    "places/main/cells/x-1z0.scene - Briarwild west of the Reach; now holds VAN-03 battlefield register, VAN-06 shield-plates and the bridge-raider camp.",
+    "places/main/cells/x0z-1.scene and x-5z0.scene, x-5z1.scene, x-6z0.scene, x-6z1.scene - Lantern Ward Marchfolk origin and Rootwake Glade Briarkin origin, residents and quest marks.",
+    "places/main/cells/x1z0.scene, x7z-1.scene and x7z-2.scene - Emberstone Quarry camp and Cinderhold's Emberstone Cradle Kharic origin content.",
+    "places/main/cells/x2z11.scene - Gullrest's Breakwater Strand Saltborn origin: residents, tide posts, coast lamps, wreck, phantom current and ferry buoys."
   ],
   "roots": [
     "world.config.yaml - main-menu-land default entry; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
@@ -187,27 +188,27 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, realm persistence, currency and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character load/upsert/delete and roster population shared by menu and player lifecycle.",
     "scripts/lib/data/realms.yml - routing and realm-pulse room registry; room IDs must align with realm-save.js.",
-    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and eligibility/progress/status shared by quest-player, quest-giver and quest UI.",
+    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and eligibility/progress/status shared by quest-player, quest-giver and quest UI; definitions now include class-restricted VAN-01..07.",
     "scripts/lib/economy.js + MMORPG lib/currency.js - copper transactions/ledger and denomination formatting shared by quests, vendor, flight and UI.",
     "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and terrain/coast generation used by continent systems and region display.",
     "scripts/lib/data/flights.yml - roost coordinates, region labels, discovery radius, fare/speed limits and clearance read by flight behavior and UI.",
-    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js, stone-bridge.js, veil.js, glade.js, ashfall.js, cradle.js and strand.js - procedural builders shared by place-cell bindings."
+    "scripts/gen/shape.js and scripts/gen/* landmark builders - shared primitive helpers and procedural geometry reused by place scene bindings, including the Shield Table set pieces."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle and input handling.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - character build/save/load and gameplay lifecycle; scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait behavior.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - GAME_VERSION 0.14.0 Alpha and GAME_TITLE.",
+    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - GAME_VERSION 0.15.0 Alpha and GAME_TITLE.",
     "scripts/flight.js - onInput/update; scripts/gryphon-flight.js - at/update; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
     "scripts/quest-player.js - onInput/update; scripts/elric.js and scripts/townsfolk.js - resident behavior; scripts/lib/economy.js - realmOf, ledger, feedback, move.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - getAvailableQuests, questToActiveFormat, questProgress, questStatus, getQuest; scripts/gen/glade.js, veil.js, cradle.js and strand.js - geometry, collider.",
-    "scripts/scavengers.js and scripts/wolves.js - update; scripts/gen/props.js, rock.js and stone-bridge.js - geometry, collider."
+    "scripts/vanguard.js - onInput, endAction, land; scripts/gen/shieldtable.js - geometry, collider; MMORPG lib/quest-data.js - getAvailableQuests, questToActiveFormat, questProgress, questStatus, getQuest.",
+    "scripts/scavengers.js and scripts/wolves.js - update; scripts/gen/glade.js, veil.js, cradle.js, strand.js, props.js, rock.js and stone-bridge.js - geometry/collider."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw and animation channels; gait samples prior-tick movement velocity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including discovered roosts and quest state.",
-    "scripts/vanguard.js, arcanist.js and pathfinder.js - class action/cooldown/combat state; scripts/wolves.js and scripts/scavengers.js - creature AI, health, targets and death/respawn state.",
+    "scripts/vanguard.js, arcanist.js and pathfinder.js - class action/cooldown/combat state; Vanguard guarding also advances active shield-drill objective tally; wolves.js/scavengers.js own creature AI and death/respawn state.",
     "scripts/quest-player.js - quest/tally, inventory/xp/dialog/cache state, quest marks/flags and deferred owedItems; woodcutting owns tree fall/regrowth presentation.",
     "scripts/lib/economy.js - coin movement, purse floor and ledger writes; scripts/vendor.js owns shop state and transaction handling.",
     "scripts/flight.js - per-player discovered roosts, flightMap, flying/landing state and nearby-roost hint; scripts/gryphon-flight.js owns spawned mount route and rider landing.",
@@ -224,11 +225,11 @@
     "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/enemies; wolves.js and scavengers.js consume hit/slow state written by class behaviors.",
     "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest-mark objects; marks increment tally only for active incomplete objectives.",
     "townsfolk.yml keyed by who + placed npc/talker state.who → scripts/townsfolk.js supplies greetings/lines; quest-player E advances dialogue and quest-giver/UI handles available quests.",
-    "scripts/lib/data/quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI; accept baselines objective tally, completion pays once via economy.move and items enter inventory or owedItems.",
-    "Race-origin chains MAR-01..08, THR-01..08, KHA-01..08 and NAM-01..08 → race-restricted quest data and quest-mark interactions; origin finale/turn-ins lead heroes toward Lantern's Reach."
+    "quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI; VAN-01..07 require Q001, Vanguard class and sequential predecessors, with rewards paid once through economy.move.",
+    "Vanguard guard input → scripts/vanguard.js query of nearby shield-drill props → active matching quest tally/_questSave → quest-player tracker; scene state supplies VAN-01 guard_drill and VAN-07 guardian_trial keys."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js, stone-bridge.js, veil.js, glade.js, ashfall.js, cradle.js and strand.js - procedural builders recur across place scenes, varied by kind and geometry parameters.",
+    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js, stone-bridge.js, veil.js, glade.js, ashfall.js, cradle.js, strand.js and shieldtable.js - procedural landmark/prop geometry reused by scenes and terrain, varied by params.kind, seed and LOD.",
     "scripts/grass.js, flower.js, mushroom.js and pebble.js - terrain scatter geometry reused by place bindings, varied by layer density, scale, seed or per-item params.",
     "scripts/gen/tree.js with scripts/tree-look.js - painted bark/alpha-cut foliage recur in forest layers and placed scatters, varied by tree kind and LOD.",
     "scripts/flower.js and mushroom.js with their look materials - painted wildflower frames and mushroom caps vary by frame/cap parameters in terrain scatter.",
@@ -243,7 +244,7 @@
     "templates/player.js behavior order is significant: locomotion before movement, then classes, quests, vendor and flight; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "Flight roost IDs in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is discovery record, coordinates use place-main meters.",
-    "Quest marks are scene entities tagged quest-mark with state.quest/state.mark; E counts only an active quest's incomplete objective. Wolf den or scavenger camp state may override pack/crew and tallyKey.",
-    "Quest records are race-restricted via race indices; quest chains use requires for their sequence and origin finals may specify turn-in NPCs. The introductory quests.yml comment still says origins are unbuilt/Q001 open to every hero despite the implemented origin chains."
+    "Quest marks are scene entities tagged quest-mark with state.quest/state.mark; E counts only an active quest's incomplete objective. Shield drills instead use shield-drill tags, matching state.quest/tallyKey, a 3.5m guard query and 1.5s per-session cooldown.",
+    "Quest data may restrict race by race index and class by player.state.className (class check falls back to vanguard when unset); VAN-01..07 require Q001 then chain sequentially, and placed drill props' quest/tallyKey must match their objective keys."
   ]
 }
