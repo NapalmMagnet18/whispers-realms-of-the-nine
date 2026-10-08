@@ -21,7 +21,7 @@ const on1 = (input, n) => !!((input.pressed && input.pressed[n]) || (input.actio
 const on = (input, name) => on1(input, name) || on1(input, MNS + name);
 const dataOf = (input, name) => (input.actionData && (input.actionData[name] || input.actionData[MNS + name])) || {};
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
-const playing = (ctx) => ctx.self.place === 'main' && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
+const playing = (ctx) => (ctx.self.place === 'main' || ctx.self.place === 'hollowcrypt') && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
 
 function say(ctx, text, anchor) {
   ctx.self.state.npcSay = anchor && anchor !== ELRIC ? { text, id: ctx.now(), anchor, offset: '0 2.35 0' } : { text, id: ctx.now() };

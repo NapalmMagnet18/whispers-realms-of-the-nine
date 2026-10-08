@@ -3,6 +3,7 @@
 
 var PLACE_MUSIC = {
   'main': '/cdn/music-instrumental-fantasy-adventure-orchestral.mp3',
+  'hollowcrypt': '/cdn/moodboard-gothic-horror/music-hollowcrypt-candlelit-vault-low-choir-slow-bells.mp3',
 };
 
 export function getPlaceMusic(placeId) {

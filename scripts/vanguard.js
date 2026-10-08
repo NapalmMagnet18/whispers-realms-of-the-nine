@@ -17,7 +17,7 @@ function me(ctx) { return (ctx.session.vg ??= {})[ctx.self.id] ??= { ready: {} }
 
 export function onInput(ctx, input) {
   if (classOf(ctx) !== 'vanguard') return
-  if (ctx.self.place !== 'main' || ctx.self.state.phase === 'creating') return
+  if ((ctx.self.place !== 'main' && ctx.self.place !== 'hollowcrypt') || ctx.self.state.phase === 'creating') return
   const p = input.pressed || {}
   if (p.attack) act(ctx, 'strike')
   else if (p.castSlot2) act(ctx, 'heavy')

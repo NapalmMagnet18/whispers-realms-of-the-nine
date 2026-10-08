@@ -1,0 +1,22 @@
+# The Candle Warden (DHC-03), run by scripts/candle-warden.js on itself. Seconds, metres, hit points.
+# A cut lands on player.state.health (HUD max 1000). Sweep: a ring of flame around the Warden; standing inside when it
+# lands burns, standing in the chamber outside it counts as a dodge (tally warden_sweep).
+hp: 900
+chamber: { x: 0, z: -67, r: 13 }   # who counts as "in the fight"
+aggro: 11
+walk: 1.6
+turn: 140
+melee: { damage: 90, reach: 2.8, every: 2.4, windup: 0.7 }
+sweep: { every: 8, telegraph: 1.8, radius: 6.5, damage: 220 }
+respawn: 45
+reward: { xp: 400, copper: 150 }
+model: /cdn/model-humanoid-fantasy-candle-warden-towering-armored-knight-crown-of-candles-wax-draped-cloak.glb
+scale: 1.6
+clips: { idle: Idle, walk: Walk, attack: cdn/clip-attack.glb, hit: cdn/clip-hit-react.glb, die: cdn/clip-die.glb }
+sounds:
+  wake: /cdn/moodboard-gothic-horror/sfx-candle-warden-wakes-deep-bell-toll.mp3
+  telegraph: /cdn/moodboard-gothic-horror/sfx-flame-gathering-whoosh-rising.mp3
+  sweep: /cdn/moodboard-gothic-horror/sfx-fire-ring-burst-roar.mp3
+  swing: /cdn/moodboard-painterly-fantasy/sfx-rusty-pick-swing-whoosh.mp3
+  hit: /cdn/moodboard-painterly-fantasy/sfx-blunt-hit-thud.mp3
+  die: /cdn/moodboard-gothic-horror/sfx-armor-collapse-candles-snuffed.mp3

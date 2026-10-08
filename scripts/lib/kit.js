@@ -5,7 +5,7 @@ import { MISSILES, impactFx } from './missiles.js'
 
 // state.className is the character's class name ("Arcanist"); a hero saved before classes counts as a Vanguard.
 export function classOf(ctx) { return String(ctx.self.state.className || 'vanguard').toLowerCase() }
-export function canAct(ctx) { const s = ctx.self.state; return ctx.self.place === 'main' && s.phase !== 'creating' && !s.dying && (s.health ?? 1) > 0 }
+export function canAct(ctx) { const s = ctx.self.state; return (ctx.self.place === 'main' || ctx.self.place === 'hollowcrypt') && s.phase !== 'creating' && !s.dying && (s.health ?? 1) > 0 }
 export function forward(self) { const f = rotate(self.rotation, { x: 0, y: 0, z: -1 }); const l = Math.hypot(f.x, f.z) || 1; return { x: f.x / l, y: 0, z: f.z / l } }
 export function alive(t) { return !!t && !!t.state && (t.state.hp ?? 0) > 0 && !t.state.dead && !t.state.down }
 export function aimPoint(t) {
