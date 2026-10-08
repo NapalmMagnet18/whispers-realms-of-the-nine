@@ -285,7 +285,7 @@ function syncLevel(ctx, st) {
   ctx.session.levelSeen = true;
 }
 const LEVEL_FX = `fx
-pop ring burst=1 life=1.1 pos=<0,.1,0> size=1 sz=$size*(.3>3.2) col=hdr(3,2.2,.8) a=.9>0 r=sprite(soft-ring,add)
+pop ring burst=1 life=1.1 pos=<0,.1,0> size=1 sz=$size*(.3>3.2) col=hdr(3,2.2,.8) a=.9>0 r=sprite(soft-disc,add)
 pop rise burst=40 on=disc(.7) life=.9..1.6 v=up(2.5..4.5) size=.05..0.1 acc=drag(.6) col=hdr(4,2.8,1)>hdr(1.6,.8,.2) a=1>0 r=sprite(ember,add,velocity,.03)
 pop glow burst=1 life=1 pos=<0,1,0> r=light(<1,.8,.4>,25>0,8)`;
 
