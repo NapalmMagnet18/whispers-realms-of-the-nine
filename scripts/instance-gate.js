@@ -1,5 +1,5 @@
 // A dungeon or raid door (and its twin inside): walking into the glass carries the hero to state.link ("+place#gate").
-// state.minLevel: heroes below it are turned back with a line saying why. state.enterTally: a quest step counted on entry.
+// state.minLevel: heroes below it are turned back with a line saying why. state.enterTally: a quest step counted on entry, only while state.enterQuest is active.
 // The world's doorway (scripts/arrival.js) sends any un-stamped arrival back to the menu, so the gate stamps _worldEnterAt first.
 export function onTriggerEnter(ctx, other) {
   if (!other || !(other.tags || []).includes("player")) return;
@@ -16,7 +16,7 @@ export function onTriggerEnter(ctx, other) {
     return;
   }
   s._worldEnterAt = now;
-  if (g.enterTally) { s.tally = { ...(s.tally || {}), [g.enterTally]: (s.tally?.[g.enterTally] || 0) + 1 }; s._questSave = true; }
+  if (g.enterTally && (!g.enterQuest || (s.activeQuests || []).some((q) => q && q.questId === g.enterQuest))) { s.tally = { ...(s.tally || {}), [g.enterTally]: (s.tally?.[g.enterTally] || 0) + 1 }; s._questSave = true; }
   ctx.cross(other, g.link);
 }
 export function onCross(ctx) {
