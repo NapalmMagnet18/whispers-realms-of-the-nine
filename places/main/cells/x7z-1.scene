@@ -1,4 +1,11 @@
 # spawn-scene v2 yaml x7z-1
+start-cinderhold:
+  feetPosition: {x: 900, y: 30, z: -170}
+  id: start-cinderhold
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 40, height: 12, kind: box, width: 40}
+  tags: [blueprint]
 waystone-highlands:
   feetPosition: {x: 844, y: {terrain: 0}, z: -157}
   id: waystone-highlands

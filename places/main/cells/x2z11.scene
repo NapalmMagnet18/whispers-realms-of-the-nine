@@ -1,0 +1,8 @@
+# spawn-scene v2 yaml x2z11
+start-gullrest:
+  feetPosition: {x: 250, y: 2, z: 1430}
+  id: start-gullrest
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 40, height: 10, kind: box, width: 40}
+  tags: [blueprint]

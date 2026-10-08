@@ -1,0 +1,8 @@
+# spawn-scene v2 yaml x-6z1
+start-thornhollow:
+  feetPosition: {x: -720, y: 20, z: 70}
+  id: start-thornhollow
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 40, height: 10, kind: box, width: 40}
+  tags: [blueprint]
