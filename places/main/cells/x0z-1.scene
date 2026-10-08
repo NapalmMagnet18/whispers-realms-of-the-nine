@@ -15,7 +15,7 @@ qm-ward-bell-roll:
   physics: static
   primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}
   rotation: 35
-  state: {after: lost_notice, mark: bell_roll, quest: MAR-04, say: "Orren Tallow. The Wen family. Ash Correy. All three, rung for, a hundred and one years ago. Same night.", title: The Bell Roll, verb: Read}
+  state: {after: lost_notice, mark: bell_roll, quest: MAR-04, say: "Eda Sable. The Sables of Thirteen. The household at Twelve. All rung for on a single night: the First Silence.", title: The Bell Roll, verb: Read}
   tags: [quest-mark, lantern-ward]
 qm-ward-census:
   feetPosition: {x: 5, y: {terrain: 0}, z: -79}
@@ -24,14 +24,14 @@ qm-ward-census:
   physics: static
   primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
   rotation: 200
-  state: {mark: census_board, quest: MAR-01, say: "Bellward Lane, Nos. 1 to 12. Numbers 9 to 12 are rubbed away so hard the board is bare wood. Your own name is there, near the bottom, in fresh chalk.", title: Ward Census Board, verb: Examine}
+  state: {mark: census_board, quest: MAR-01, say: "Bellward Lane, Nos. 1 to 11, every name in Elric's hand. Below Eleven, two lines scraped to bare wood. Your own name is there too, near the bottom, in fresh chalk.", title: Ward Census Board, verb: Examine}
   tags: [quest-mark, lantern-ward]
 qm-ward-door-latch:
   feetPosition: {x: 29.4, y: {terrain: 0}, z: -100.8}
   id: qm-ward-door-latch
   material: {color: oklch(0.95 0.01 90), opacity: 0, transparent: true}
   primitive: {depth: 0.3, height: 0.05, kind: box, width: 0.3}
-  state: {after: walled_door, mark: door_latch, quest: MAR-03, say: "The latch is warm, like a hand let go of it a moment ago.", title: Iron Latch, verb: Inspect}
+  state: {after: walled_door, mark: door_latch, quest: MAR-03, say: "The handle is warm. Behind the brick a voice says, very politely, that the bread may be left with a neighbour if no one wishes to come in.", title: The Handle, verb: Inspect}
   tags: [quest-mark, lantern-ward]
 qm-ward-furnace:
   feetPosition: {x: -26, y: {terrain: 0}, z: -106}
@@ -50,7 +50,7 @@ qm-ward-hesk:
   model: /cdn/model-humanoid-fantasy-woodcutter-male-flannel-tunic-axe-belt.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 180}
-  state: {homeYaw: 180, idle: Idle_FoldArms_Loop, mark: ward_neighbour, npcName: Old Hesk, quest: MAR-02, say: "Number nine? Blue door. Blue as a jay. Lived next to it sixty years... funny, I cannot picture who lived there.", title: Old Hesk, verb: Ask, who: hesk, yaw: 180}
+  state: {__onSpawnRan: true, homeYaw: 180, idle: Idle_FoldArms_Loop, mark: ward_neighbour, npcName: Hesk the Cobbler, quest: MAR-02, say: "Thirteen? Never such a house. ...Dark-haired girl, mother worked late, father made toys from chair legs. What? I said nothing. Nothing at all.", title: Hesk the Cobbler, verb: Ask, who: hesk, yaw: 180}
   tags: [quest-mark, npc, lantern-ward]
 qm-ward-maker-mark:
   feetPosition: {x: -24.6, y: {terrain: 0}, z: -108}
@@ -85,7 +85,7 @@ qm-ward-notice-0:
   material: {color: oklch(0.4 0.05 50)}
   physics: static
   primitive: {depth: 0.1, height: 1.6, kind: box, width: 0.1}
-  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN ORREN TALLOW, No. 9. Dated the 14th of Harrowmonth. Tomorrow.", title: A nailed notice, verb: Take}
+  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN EDA SABLE, No. 13. A narrow girl, ink on her fingers. Dated tomorrow.", title: A nailed notice, verb: Take}
   tags: [quest-mark, lantern-ward]
 qm-ward-notice-1:
   children: [{feetPosition: {x: 0, y: 1.25, z: -0.07}, material: {color: oklch(0.9 0.03 90), emissive: oklch(0.5 0.05 90), emissiveIntensity: 0.3}, primitive: {depth: 0.02, height: 0.6, kind: box, width: 0.45}}]
@@ -95,7 +95,7 @@ qm-ward-notice-1:
   material: {color: oklch(0.4 0.05 50)}
   physics: static
   primitive: {depth: 0.1, height: 1.6, kind: box, width: 0.1}
-  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN THE WEN FAMILY, No. 10. Dated tomorrow.", title: A notice on the well post, verb: Take}
+  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN THE SABLE FAMILY, No. 13, Bellward Lane. Dated tomorrow.", title: A notice on the well post, verb: Take}
   tags: [quest-mark, lantern-ward]
 qm-ward-notice-2:
   children: [{feetPosition: {x: 0, y: 1.25, z: -0.07}, material: {color: oklch(0.9 0.03 90), emissive: oklch(0.5 0.05 90), emissiveIntensity: 0.3}, primitive: {depth: 0.02, height: 0.6, kind: box, width: 0.45}}]
@@ -105,7 +105,7 @@ qm-ward-notice-2:
   material: {color: oklch(0.4 0.05 50)}
   physics: static
   primitive: {depth: 0.1, height: 1.6, kind: box, width: 0.1}
-  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN ASH CORREY, No. 11. Dated tomorrow, in a hand you almost know.", title: A notice on the fence, verb: Take}
+  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN No. 12? Its people were here. Dated tomorrow, in a hand you almost know.", title: A notice on the fence, verb: Take}
   tags: [quest-mark, lantern-ward]
 qm-ward-parcel-0:
   feetPosition: {x: -20, y: {terrain: 0}, z: -104.6}
@@ -142,7 +142,7 @@ qm-ward-pell:
   model: /cdn/model-humanoid-fantasy-scholar-female-violet-robes-hood-tome.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 0}
-  state: {homeYaw: 0, idle: Idle_Lantern_Loop, mark: ward_neighbour, npcName: Widow Pell, quest: MAR-02, say: "Nine? Green shutters, always open. I brought them bread every week. ...Who did I bring it to?", title: Widow Pell, verb: Ask, who: pell, yaw: 0}
+  state: {__onSpawnRan: true, homeYaw: 0, idle: Idle_Lantern_Loop, mark: ward_neighbour, npcName: Widow Pell, quest: MAR-02, say: Thirteen had blue shutters. I brought them bread on feast days. ...Who did I bring it to?, title: Widow Pell, verb: Ask, who: pell, yaw: 0}
   tags: [quest-mark, npc, lantern-ward]
 qm-ward-plaque:
   children: [{feetPosition: {x: 0, y: 0.25, z: -0.14}, material: {color: oklch(0.55 0.09 70), metalness: 0.8, roughness: 0.4}, primitive: {depth: 0.03, height: 0.6, kind: box, width: 1}, ui: "<div face='front' class='w-full h-full flex flex-col items-center justify-center font-serif text-center' style='color:#2a1e16'><div style='font-size:70px'>BELLWARD LANE</div><div style='font-size:46px'>Nos. 9 to 12</div><div style='font-size:40px'>Sealed in the Year of the First Silence</div></div>"}]
@@ -152,7 +152,7 @@ qm-ward-plaque:
   physics: static
   primitive: {depth: 0.25, height: 1.2, kind: box, width: 1.4}
   rotation: 20
-  state: {mark: memorial_plaque, quest: MAR-07, say: "BELLWARD LANE, Nos. 9 to 12. SEALED FOR THE SAFETY OF THE WARD. Below, scratched small: signed, E.", title: Forgotten Plaque, verb: Read}
+  state: {mark: memorial_plaque, quest: MAR-07, say: "BELLWARD LANE, Nos. 12 and 13. SEALED FOR THE SAFETY OF THE WARD. Below, scratched small: signed, E.", title: Forgotten Plaque, verb: Read}
   tags: [quest-mark, lantern-ward]
 qm-ward-shade-0:
   feetPosition: {x: -19.5, y: {terrain: 0}, z: -112.5}
@@ -161,7 +161,7 @@ qm-ward-shade-0:
   material: {color: oklch(0.85 0.06 220), emissive: oklch(0.7 0.1 220), emissiveIntensity: 1.2, opacity: 0.35, transparent: true}
   primitive: {halfHeight: 0.55, kind: capsule, radius: 0.32}
   rotation: -40
-  state: {after: storm_lamp, afterText: "First: light the storm lamps", mark: echo_shade, quest: MAR-05, say: "It flickers toward you and speaks, very softly: Tallow, Orren. Number nine. Then it is gone.", title: Echo Shade, verb: Steady}
+  state: {after: storm_lamp, afterText: "First: light the storm lamps", mark: echo_shade, quest: MAR-05, say: "It flickers toward you and whispers: Sable, Eda. Number thirteen. The ship has three sails, not two. Then it is gone.", title: Echo Shade, verb: Steady}
   tags: [quest-mark, lantern-ward]
 qm-ward-shade-1:
   feetPosition: {x: -13, y: {terrain: 0}, z: -119.5}
@@ -170,7 +170,7 @@ qm-ward-shade-1:
   material: {color: oklch(0.85 0.06 220), emissive: oklch(0.7 0.1 220), emissiveIntensity: 1.2, opacity: 0.35, transparent: true}
   primitive: {halfHeight: 0.55, kind: capsule, radius: 0.32}
   rotation: 120
-  state: {after: storm_lamp, afterText: "First: light the storm lamps", mark: echo_shade, quest: MAR-05, say: "It does not strike. It whispers: Wen. Wen. Wen. Then it is only lamplight.", title: Echo Shade, verb: Steady}
+  state: {after: storm_lamp, afterText: "First: light the storm lamps", mark: echo_shade, quest: MAR-05, say: "It does not strike. It counts chairs, softly, and stops at fifteen. Then it is only lamplight.", title: Echo Shade, verb: Steady}
   tags: [quest-mark, lantern-ward]
 qm-ward-storm-lamp-0:
   children: [{feetPosition: {x: 0, y: 3, z: 0}, light: {color: oklch(0.85 0.12 75), distance: 10, intensity: 3, kind: point}}]
@@ -193,7 +193,7 @@ qm-ward-walled-door:
   id: qm-ward-walled-door
   material: {color: oklch(0.95 0.01 90), opacity: 0, transparent: true}
   primitive: {depth: 0.3, height: 0.05, kind: box, width: 0.3}
-  state: {mark: walled_door, quest: MAR-03, say: "Old brick, older door. The hinges sit on the far side, as if it opens from a street beyond the wall.", title: Bricked Doorway, verb: Examine}
+  state: {mark: walled_door, quest: MAR-03, say: "The brick runs unbroken past Eleven, wet from last night's rain. Set in the mortar: a row of small painted boats, each with four sails.", title: Bricked Doorway, verb: Examine}
   tags: [quest-mark, lantern-ward]
 ward-arrival-plate:
   feetPosition: {x: -1, y: {terrain: 0}, z: -84}
@@ -333,12 +333,20 @@ ward-lamp-3:
   tags: [lantern-ward]
 ward-lot9-sign:
   children: [{feetPosition: {x: 0, y: 0.95, z: 0}, material: {color: oklch(0.62 0.06 70)}, primitive: {depth: 0.04, height: 0.4, kind: box, width: 0.7}, ui: "<div face='front' class='w-full h-full flex items-center justify-center text-[60px] font-serif' style='color:#2a1e16'>No. 9</div>"}]
-  feetPosition: {x: -11, y: {terrain: 0}, z: -96.2}
+  feetPosition: {x: 26.5, y: 0.8, z: -97.6}
   id: ward-lot9-sign
   material: {color: oklch(0.4 0.05 50)}
   physics: static
   primitive: {depth: 0.08, height: 1.1, kind: box, width: 0.08}
+  rotation: {yaw: -90}
   tags: [lantern-ward]
+ward-lot9-sign/plate:
+  feetPosition: {x: 0, y: 0.95, z: -0.03}
+  id: ward-lot9-sign/plate
+  material: {color: oklch(0.62 0.06 70)}
+  parent: ward-lot9-sign
+  primitive: {depth: 0.02, height: 0.42, kind: box, width: 0.72}
+  ui: "<div face='front' class='w-full h-full flex items-center justify-center font-serif' style='color:#2a1e16;font-size:56px'>No. 13 ?</div>"
 ward-lot9-stone-0:
   feetPosition: {x: -12.5, y: {terrain: 0}, z: -90.5}
   id: ward-lot9-stone-0
@@ -374,6 +382,12 @@ ward-lot9-stone-4:
   primitive: {kind: scripted, params: {seed: 44, size: 0.5}, script: scripts/gen/rock.js}
   scale: 0.6
   tags: [lantern-ward]
+ward-mortar-boats:
+  feetPosition: {x: 29.8, y: 3.55, z: -98.1}
+  id: ward-mortar-boats
+  rotation: {yaw: -90}
+  tags: [lantern-ward]
+  vector: "<svg viewBox='0 0 300 40' width='2.6m'><g fill='#f2b04a' stroke='#2a1e16' stroke-width='1.5'><g transform='translate(10,4)'><path d='M2 26 L44 26 L38 34 L8 34 Z'/><path d='M8 24 L14 4 L14 24Z M17 24 L23 2 L23 24Z M26 24 L32 4 L32 24Z M35 24 L40 8 L40 24Z'/></g><g transform='translate(68,4)'><path d='M2 26 L44 26 L38 34 L8 34 Z'/><path d='M8 24 L14 4 L14 24Z M17 24 L23 2 L23 24Z M26 24 L32 4 L32 24Z M35 24 L40 8 L40 24Z'/></g><g transform='translate(126,4)'><path d='M2 26 L44 26 L38 34 L8 34 Z'/><path d='M8 24 L14 4 L14 24Z M17 24 L23 2 L23 24Z M26 24 L32 4 L32 24Z M35 24 L40 8 L40 24Z'/></g><g transform='translate(184,4)'><path d='M2 26 L44 26 L38 34 L8 34 Z'/><path d='M8 24 L14 4 L14 24Z M17 24 L23 2 L23 24Z M26 24 L32 4 L32 24Z M35 24 L40 8 L40 24Z'/></g><g transform='translate(242,4)'><path d='M2 26 L44 26 L38 34 L8 34 Z'/><path d='M8 24 L14 4 L14 24Z M17 24 L23 2 L23 24Z M26 24 L32 4 L32 24Z M35 24 L40 8 L40 24Z'/></g></g></svg>"
 ward-north-post-e:
   feetPosition: {x: 3, y: {terrain: 0}, z: -131}
   id: ward-north-post-e
