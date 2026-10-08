@@ -52,7 +52,7 @@ export function renderVendor(player) {
       '<div style="display:flex;align-items:center;gap:8px;padding:2px 4px 0">' +
         '<img src="' + icons.UI_ICONS.bag + '" style="width:28px;height:28px;filter:sepia(.3)">' +
         '<div style="flex:1"><div style="font-family:Cinzel,serif;color:#f2b04a;font-size:17px;letter-spacing:1px">' + esc(vo.name) + '</div><div style="font-size:11px;color:#a8977a">Merchant stall · Lantern\'s Reach</div></div>' +
-        '<button onclick="' + act('vendorClose') + '" style="width:26px;height:26px;border:1px solid #c9a46a;background:#7a2e22;color:#f2b04a;border-radius:3px;cursor:pointer;font-weight:bold">✕</button></div>' +
+        '<button onclick="' + act('vendorClose') + '" style="width:26px;height:26px;border:1px solid #c9a46a;background:#7a2e22;color:#f2b04a;border-radius:3px;cursor:pointer;font-weight:bold;font-family:Arial,sans-serif;font-size:14px;line-height:1">&times;</button></div>' +
       rule('title', '100%', 16) + '<div style="display:flex;gap:6px;margin:4px 0 4px">' + tabBtn('buy', 'BUY') + tabBtn('sell', 'SELL') + '</div>' +
       '<div style="flex:1;overflow-y:auto;padding-right:2px">' + body + '</div>' + msg +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:6px;border-top:1px solid #6b4a2f;font-size:13px"><span style="color:#a8977a">' + (tab === 'sell' ? 'Click a stack to sell it' : 'Click to buy') + '</span><span>' + cur.formatHtml(wallet) + '</span></div>' +
