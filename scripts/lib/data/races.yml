@@ -1,7 +1,7 @@
 # Playable races and where each wakes at level 1. start = feet position on the Lantern March (place main).
 # zone = the starting zone name shown in character creation and the region banner.
 races:
-  - { id: marchborn,   name: Marchborn,   zone: "Lantern's Reach",       start: { x: 0,    z: 8 },    blurb: "Folk of the frontier towns, stubborn as the lanterns they keep lit." }
+  - { id: marchborn,   name: Marchborn,   zone: "Lantern Ward, Lantern's Reach", start: { x: -1, z: -86 },    blurb: "Folk of the frontier towns, stubborn as the lanterns they keep lit." }
   - { id: briarkin,    name: Briarkin,    zone: "Thornhollow, Briarwild Deepwood", start: { x: -720, z: 70 },   blurb: "Forest-born wanderers who hear the old trees whisper." }
   - { id: emberforged, name: Emberforged, zone: "Cinderhold, Emberstone Highlands", start: { x: 900,  z: -170 }, blurb: "Stone-shouldered smiths of the red mesas, warm as their forges." }
   - { id: saltborn,    name: Saltborn,    zone: "Gullrest, Saltmere Coast",  start: { x: 244,  z: 1430 }, blurb: "Tide-weathered sailors and net-menders of the southern bay." }
