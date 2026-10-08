@@ -548,3 +548,10 @@ wenna:
     - "I rode with the March Wardens nine summers. The kite shield on that wall? I carried its twin."
     - "Never buy plate in a hurry. Buy it the way you'd pick a horse: watch how it moves."
     - "If you're bound for the Drowned Bell, take something that doesn't rust. The water there remembers iron."
+ysolde:
+  name: Old Ysolde, Fen Apothecary
+  lines:
+    - "Green one's for wounds, blue one's for the head, red one's for when you've made a choice you regret. Don't mix them."
+    - "Everything in the fen heals something, child. The trick is learning what it poisons first."
+    - "Iona keeps the pool. I keep the cures. Between us, the Refuge keeps breathing."
+    - "That cauldron's been on the boil since before your grandmother's grandmother. Don't let it go cold on my watch."
