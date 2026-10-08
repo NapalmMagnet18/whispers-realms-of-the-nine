@@ -7,6 +7,7 @@ const { renderMenuPanel, renderWorldMapOverlay } = require('./lib/ui-menu-panel.
 const { renderWelcomeWindow } = require('./lib/ui-welcome.js');
 const { renderQuestDialog, renderTurnInDialog, renderQuestTracker } = require('./lib/ui-quest.js');
 const { renderDoorPanel } = require('./lib/ui-door-panel.js');
+const { renderVendor } = require('./lib/ui-vendor.js');
 const { renderGnomeTipJar } = require('./lib/ui-gnome-tip.js');
 const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
 const { renderBuffIcons } = require('./lib/ui-buff-icons.js');
@@ -179,6 +180,7 @@ export default function(world, localPlayer) {
       try { _hudParts.push(renderQuestTracker(localPlayer, world)); } catch(e7b) { _hudParts.push(''); }
       if (localPlayer.state.showQuestDialog) { try { _hudParts.push(localPlayer.state.questDialogData && localPlayer.state.questDialogData.turnIn ? renderTurnInDialog(localPlayer) : renderQuestDialog(localPlayer)); } catch(e8) { _hudParts.push(''); } }
       try { _hudParts.push(renderDoorPanel(localPlayer)); } catch(e9) { _hudParts.push(''); }
+      try { if (localPlayer.state && localPlayer.state.vendorOpen) _hudParts.push(renderVendor(localPlayer)); } catch(e9v) { _hudParts.push(''); }
       try { _hudParts.push(renderBuffIcons(localPlayer, rightHudLayout)); } catch(e10) { _hudParts.push(''); }
       try { _hudParts.push(renderGuildPanel(localPlayer, world)); } catch(e11) { _hudParts.push(''); }
       try { _hudParts.push(renderGuildInvitePopup(localPlayer)); } catch(e12) { _hudParts.push(''); }
