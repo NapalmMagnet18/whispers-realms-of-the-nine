@@ -1,4 +1,8 @@
 # spawn-scene v2 yaml x1z-1
+ashen-bed-graves:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-cold-wind-over-graves-crows-cawing-iron-gate-creak-loop.mp3, gain: 0.18, loop: true, maxDistance: 48, spatial: true}
+  feetPosition: {x: 128, y: {terrain: 2}, z: -185}
+  id: ashen-bed-graves
 ashen-cathedral:
   feetPosition: {x: 130, y: 5, z: -185}
   id: ashen-cathedral
