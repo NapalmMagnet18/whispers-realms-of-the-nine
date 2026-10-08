@@ -190,7 +190,7 @@ function renderGameMenu() {
     + b('Log Out', "whT('menu',false);sendAction('logout')")
     + RULE('fadeDouble', '100%', 8)
     + b('Return to Game', "whT('menu',false)")
-    + '</div>' + versionTag() + '</div>';
+    + '</div>' + versionTag('bottom:96px') + '</div>';
 }
 
 module.exports = { CSS: CSS, rootClasses: rootClasses, renderUnitFrames: renderUnitFrames, renderDock: renderDock, renderBackpack: renderBackpack, renderGameMenu: renderGameMenu, itemTooltip: itemTooltip, QUALITY: QUALITY };

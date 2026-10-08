@@ -319,8 +319,8 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         + dropHandlers
         + 'style="'
         + 'width:40px;height:40px;box-sizing:border-box;position:relative;pointer-events:auto;cursor:default;'
-        + _frame('slot', 3, 'rgba(8,6,5,0.92)')
-        + 'box-shadow:inset 0 2px 6px rgba(0,0,0,0.9);opacity:0.85;'
+        + 'border:1px solid rgba(201,164,106,0.28);border-radius:3px;background:radial-gradient(circle at 50% 40%,rgba(42,30,22,0.92),rgba(10,8,6,0.95));'
+        + 'box-shadow:inset 0 2px 6px rgba(0,0,0,0.9);opacity:0.9;'
         + 'transition:all 0.15s;'
         + '">'
         + '<div style="position:absolute;top:0px;left:2px;font:700 10px/1.1 Arial,sans-serif;color:#e8d9b5;text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;pointer-events:none;z-index:6;">' + slotLabel + '</div>'
@@ -573,6 +573,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
 
   // Build landmark icons + labels via foreignObject
   let landmarkSvg = '';
+  const _placed = []; // label boxes already drawn: a name that would overlap one is left off, its icon stays
   for (const lm of LANDMARKS) {
     const { mx, my } = toMini(lm.x, lm.z);
     if (inCircle(mx, my)) {
@@ -581,7 +582,10 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         + '<img xmlns="http://www.w3.org/1999/xhtml" src="' + lm.icon + '" style="width:32px;height:32px;display:block;filter:drop-shadow(0 0 3px rgba(200,175,120,0.6));pointer-events:none;" />'
         + '</foreignObject>';
       // Zone label below icon — 13px bold with dark outline for readability
-      landmarkSvg += '<text x="' + mx.toFixed(1) + '" y="' + (my + 26).toFixed(1) + '" fill="rgba(220,200,140,0.9)" font-size="13" font-family="Cinzel,serif" text-anchor="middle" font-weight="bold" stroke="rgba(0,0,0,0.95)" stroke-width="3" paint-order="stroke fill">' + lm.label + '</text>';
+      const _w = lm.label.length * 7 + 6, _clash = _placed.some(function (b) { return Math.abs(b.x - mx) < (b.w + _w) / 2 && Math.abs(b.y - my) < 15; });
+      if (_clash) continue;
+      _placed.push({ x: mx, y: my, w: _w });
+      landmarkSvg += '<text x="' + mx.toFixed(1) + '" y="' + (my + 24).toFixed(1) + '" fill="rgba(232,217,181,0.95)" font-size="11" font-family="Cinzel,serif" text-anchor="middle" font-weight="bold" stroke="rgba(0,0,0,0.95)" stroke-width="3" paint-order="stroke fill">' + lm.label + '</text>';
     }
   }
 
