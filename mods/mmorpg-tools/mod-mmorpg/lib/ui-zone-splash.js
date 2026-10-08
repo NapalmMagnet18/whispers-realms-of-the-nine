@@ -35,6 +35,7 @@ var HOLD_FULL = 2200, END_FULL = 4800, END_CARD = 4500, REPEAT = 180000;
 
 export function renderZoneSplash(localPlayer) {
   var fp = localPlayer.feetPosition; if (!fp) return '';
+  if (localPlayer.state && localPlayer.state.flying) return ''; // on the wing: the card waits for the landing
   var now = typeof performance !== 'undefined' ? performance.now() : 0;
   if (!_since) _since = now || 1;
   if (_first && now - _since < 350) return ''; // the body settles at its destination first
