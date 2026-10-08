@@ -8,9 +8,75 @@ roost-ninthveil:
   state: {roost: ninthveil}
   tags: [roost]
 veilgate-blueprint:
-  feetPosition: {x: 30, y: 130, z: -7580}
+  feetPosition: {x: 30, y: {terrain: 0}, z: -7605}
+  fx: {script: "fx\npop motes rate=?mobile:10|22 on=box(4.2,5.5,.3).c(6) life=2.5..4.5 v=up(.25..0.6)+sdir()*.2 size=.04..0.09 acc=curl(.6)*.8+drag(.4) col=hdr(1.6,.6,3) a=0>.15:1>.7:.8>0 sz=$size*flick(3,.4) r=sprite(mote,add)\npop wisps rate=?mobile:3|6 on=box(3.5,5,.1).c(6) life=1.5..2.5 v=sdir()*.4 size=.8..1.6 acc=curl(.3)+drag(1) col=<.5,.2,1> a=0>.2:.25>.8:.15>0 sz=$size*(.6>1.4) rot=spin(.1) r=sprite(smoke-puff,add)\npop glow n=1 at=point().c(6) glo=.8+.2*flick(.6,.6) r=light(<.7,.35,1>,$glo*18,26)"}
   id: veilgate-blueprint
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 100, height: 16, kind: box, width: 120}
-  tags: [blueprint]
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: arch, w: 10}, script: scripts/gen/veil.js}
+  tags: [veilgate]
+veilgate-brazier-0:
+  children: [{feetPosition: {x: 0, y: 1.25, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.18) size=.06..0.12 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*39 on=disc(.18) life=.45..0.85 v=up(1.5)+cone(24)*(.3..0.8) size=0.14..0.27 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5) sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.18) life=.7..1.4 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.16..0.26 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.2) col=<.3,.28,.26>><.15,.15,.16> a=0>.22:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop hearth n=1 at=disc(.18).c(.45) glo=fire()*(#flame/25)~ r=light(<1,.55,.24>,$glo*11,14)"}}]
+  feetPosition: {x: -3.6, y: {terrain: 0}, z: -7552}
+  id: veilgate-brazier-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/veil.js}
+  tags: [veilgate]
+veilgate-brazier-1:
+  children: [{feetPosition: {x: 0, y: 1.25, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.18) size=.06..0.12 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*39 on=disc(.18) life=.45..0.85 v=up(1.5)+cone(24)*(.3..0.8) size=0.14..0.27 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5) sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.18) life=.7..1.4 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.16..0.26 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.2) col=<.3,.28,.26>><.15,.15,.16> a=0>.22:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop hearth n=1 at=disc(.18).c(.45) glo=fire()*(#flame/25)~ r=light(<1,.55,.24>,$glo*11,14)"}}]
+  feetPosition: {x: 12.5, y: {terrain: 0}, z: -7577}
+  id: veilgate-brazier-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/veil.js}
+  tags: [veilgate]
+veilgate-brazier-2:
+  children: [{feetPosition: {x: 0, y: 1.25, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.18) size=.06..0.12 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*39 on=disc(.18) life=.45..0.85 v=up(1.5)+cone(24)*(.3..0.8) size=0.14..0.27 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5) sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.18) life=.7..1.4 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.16..0.26 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.2) col=<.3,.28,.26>><.15,.15,.16> a=0>.22:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop hearth n=1 at=disc(.18).c(.45) glo=fire()*(#flame/25)~ r=light(<1,.55,.24>,$glo*11,14)"}}]
+  feetPosition: {x: 24, y: {terrain: 0}, z: -7598}
+  id: veilgate-brazier-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/veil.js}
+  tags: [veilgate]
+veilgate-brazier-3:
+  children: [{feetPosition: {x: 0, y: 1.25, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.18) size=.06..0.12 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*39 on=disc(.18) life=.45..0.85 v=up(1.5)+cone(24)*(.3..0.8) size=0.14..0.27 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5) sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.18) life=.7..1.4 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.16..0.26 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.2) col=<.3,.28,.26>><.15,.15,.16> a=0>.22:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop hearth n=1 at=disc(.18).c(.45) glo=fire()*(#flame/25)~ r=light(<1,.55,.24>,$glo*11,14)"}}]
+  feetPosition: {x: 36, y: {terrain: 0}, z: -7598}
+  id: veilgate-brazier-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/veil.js}
+  tags: [veilgate]
+veilgate-hall:
+  children: [{feetPosition: {x: -0.5, y: 3.4, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 14, intensity: 4, kind: point}}, {feetPosition: {x: 0, y: 3.2, z: -5.2}, light: {color: oklch(0.83 0.13 70), distance: 10, intensity: 2, kind: point}}]
+  feetPosition: {x: -8, y: {terrain: 0}, z: -7572}
+  id: veilgate-hall
+  physics: static
+  primitive: {kind: scripted, params: {kind: hall}, script: scripts/gen/veil.js}
+  rotation: {yaw: -90}
+  tags: [veilgate]
+veilgate-obelisk-0:
+  feetPosition: {x: -4.6, y: {terrain: 0}, z: -7530}
+  id: veilgate-obelisk-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: obelisk}, script: scripts/gen/veil.js}
+  rotation: {yaw: 4}
+  tags: [veilgate]
+veilgate-obelisk-1:
+  feetPosition: {x: 4.6, y: {terrain: 0}, z: -7530}
+  id: veilgate-obelisk-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: obelisk}, script: scripts/gen/veil.js}
+  rotation: {yaw: -6}
+  tags: [veilgate]
+veilgate-sign:
+  children: [{feetPosition: {x: 0.63, y: 2.1, z: -0.12}, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:1340px;text-align:center;font-family:serif;font-size:150px;line-height:300px;color:#f2b04a;text-shadow:0 0 14px #000\">VEILGATE AERIE</div>"}, {feetPosition: {x: -0.63, y: 1.65, z: -0.12}, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:1340px;text-align:center;font-family:serif;font-size:120px;line-height:300px;color:#c9a0ff;text-shadow:0 0 14px #000\">THE NINTH VEIL</div>"}]
+  feetPosition: {x: 4.5, y: {terrain: 0}, z: -7548}
+  id: veilgate-sign
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/props.js}
+  rotation: {yaw: 180}
+  tags: [veilgate]
+veilgate-tower:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 10, intensity: 3, kind: point}}, {feetPosition: {x: 0, y: 12.3, z: 0}, light: {color: oklch(0.85 0.14 70), distance: 18, intensity: 4, kind: point}}]
+  feetPosition: {x: 52, y: {terrain: 0}, z: -7562}
+  id: veilgate-tower
+  physics: static
+  primitive: {kind: scripted, params: {h: 18, kind: tower}, script: scripts/gen/veil.js}
+  rotation: {yaw: 90}
+  tags: [veilgate]
