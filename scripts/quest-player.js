@@ -14,8 +14,11 @@ const CHIPS = `fx
 pop chips burst=10..16 life=.5..0.9 v=<%normal|0,1,0>*(2..3.5)+up(1.5)+sdir()*(.6..1.2) size=.05..0.1 spin=-8..8 acc=grav()+drag(1.2) col=<.62,.45,.26> a=1>.7:1>0 sz=$size rot=$age*$spin floor=stick r=sprite(stalk,alpha,velocity,.02)
 pop dust burst=3..5 life=.4..0.8 v=up(.4..0.8)+sdir()*.4 size=.2..0.35 acc=buoy(.3)+drag(1.4) col=<.6,.52,.4> a=0>.3:.3>.7:.15>0 sz=$size*(.6>1.8) r=sprite(smoke-puff,alpha)`;
 
-const on = (input, name) => !!((input.pressed && input.pressed[name]) || (input.actions && input.actions[name]));
-const dataOf = (input, name) => (input.actionData && input.actionData[name]) || {};
+// a button in the mod's ui.js arrives namespaced (mmorpg-tools:acceptQuest); a key binding arrives bare
+const MNS = 'mmorpg-tools:';
+const on1 = (input, n) => !!((input.pressed && input.pressed[n]) || (input.actions && input.actions[n]));
+const on = (input, name) => on1(input, name) || on1(input, MNS + name);
+const dataOf = (input, name) => (input.actionData && (input.actionData[name] || input.actionData[MNS + name])) || {};
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const playing = (ctx) => ctx.self.place === 'main' && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
 
@@ -187,7 +190,6 @@ function stepChop(ctx) {
 }
 
 export function onInput(ctx, input) {
-  if (input.actionData && Object.keys(input.actionData).length) ctx.log('qdbg', { p: playing(ctx), ad: Object.keys(input.actionData), pr: Object.keys(input.pressed || {}), place: ctx.self.place });
   if (!playing(ctx)) return;
   const st = ctx.self.state;
   if (on(input, 'acceptQuest')) return accept(ctx, dataOf(input, 'acceptQuest').questId);
