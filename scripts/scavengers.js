@@ -17,8 +17,8 @@ function spawnOne(ctx, def, cs = {}) {
   ctx.spawn(def.id, {
     tags: ["enemy", "scavenger", "quarry-scavenger"], physics: "character", model: cs.model || S.model, ...(cs.look ? { material: { ...cs.look, dissolve: 0 } } : {}),
     layout: { minExtents: { x: -0.4, y: 0, z: -0.3 }, maxExtents: { x: 0.4, y: 1.8, z: 0.3 } },
-    ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: cs.floorY != null ? cs.floorY : { terrain: 0 } }, rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
-    state: { hp: S.hp, maxHp: S.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: 0.45, hpPct: 100, unhurt: true },
+    ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: cs.floorY != null ? cs.floorY : { terrain: 0 } }, ...(cs.scale ? { scale: cs.scale } : {}), rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
+    state: { hp: cs.hp || S.hp, maxHp: cs.hp || S.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: 0.45, hpPct: 100, unhurt: true },
   });
 }
 function gait(w, m, name, speed = 1) {
@@ -61,9 +61,10 @@ function die(ctx, w, s, m) {
   if (p && (p.tags || []).includes("player")) {
     const tk = ctx.self.state.tallyKey || "quarry_scavenger"; // a camp names its own kill (KHA-06's tunnel_scavenger)
     p.state.tally = { ...(p.state.tally || {}), [tk]: (p.state.tally?.[tk] || 0) + 1 };
-    if (typeof p.state.xp === "number") p.state.xp += S.reward.xp; else p.state.xp = S.reward.xp;
-    if (S.reward.copper) ctx.emit("coins", { delta: S.reward.copper, reason: "kill:quarry_scavenger" }, { to: p.id });
-    ctx.emit("damageNumber", { position: pos, text: `+${S.reward.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
+    const RW = ctx.self.state.reward || S.reward; // a camp may pay its own (an elite pays more)
+    if (typeof p.state.xp === "number") p.state.xp += RW.xp; else p.state.xp = RW.xp;
+    if (RW.copper) ctx.emit("coins", { delta: RW.copper, reason: "kill:" + tk }, { to: p.id });
+    ctx.emit("damageNumber", { position: pos, text: `+${RW.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
   }
 }
 function strike(ctx, w, s, m, p, dist) {
@@ -73,7 +74,7 @@ function strike(ctx, w, s, m, p, dist) {
   ctx.emit("playSound", { clip: S.sounds.swing, position: w.feetPosition, volume: 0.6, maxDistance: 25 }, { audience: near(w.feetPosition) });
   if (dist > S.strike.reach || !p) return;
   const ps = p.state, guarded = (ps.guardUntil ?? 0) > now, health = ps.health ?? 1000;
-  const dmg = Math.min(health, Math.round(S.strike.damage * (guarded ? 1 - (ps.guardReduce ?? 0) : 1)));
+  const dmg = Math.min(health, Math.round((ctx.self.state.damage || S.strike.damage) * (guarded ? 1 - (ps.guardReduce ?? 0) : 1)));
   if (dmg > 0) ps.health = health - dmg;
   const hit = { x: p.feetPosition.x, y: p.feetPosition.y + 1.1, z: p.feetPosition.z };
   ctx.emit("playSound", { clip: S.sounds.hit, position: hit, volume: 0.75, maxDistance: 30 }, { audience: near(hit) });
@@ -102,7 +103,7 @@ export function update(ctx, dt) {
       continue;
     }
     if ((s.hp ?? 0) <= 0) { die(ctx, w, s, m); continue; }
-    if (m.hp !== s.hp) { m.hp = s.hp; s.hpPct = Math.max(0, Math.round((100 * s.hp) / (s.maxHp || S.hp))); s.unhurt = s.hp >= (s.maxHp || S.hp); }
+    if (m.hp !== s.hp) { m.hp = s.hp; s.hpPct = Math.max(0, Math.round((100 * s.hp) / (s.maxHp || cs.hp || S.hp))); s.unhurt = s.hp >= (s.maxHp || S.hp); }
     if ((s.lastHitAt ?? 0) !== m.seen) {
       m.seen = s.lastHitAt ?? 0;
       once(w, S.clips.hit, 1.3);
