@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1576,
-  "updatedAt": "2026-10-08T21:15:11.639Z",
-  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, homelands and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, survival and per-player audio, while streamed scenes and shared YAML data define places and encounters.",
+  "basedOnSpecVersion": 1590,
+  "updatedAt": "2026-10-08T21:44:18.773Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, survival and per-player audio, while streamed scenes and shared YAML data define places, encounters and progression systems.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -217,13 +217,13 @@
   ],
   "places": [
     "places/main/config.yaml and places/main/cells/ - the Lantern March continent; streamed scenes hold towns, regions, quest sites, encounters, gates, landmarks and spatial emitters.",
+    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns now each place a Discipline Trainer NPC and matching banner (Veylori, Reedbound, Briarkin, Marchborn, Saltborn, Emberforged).",
     "places/main/cells/x-1z-5.scene - fallen giant on the Starfall road (-80,-680): skull/heart quest marks and looping spatial heartbeat beneath the ribs.",
     "places/main/cells/x-6z1.scene and x-7z0.scene - Rootwake Glade bounty board at (-742,72) and Deepgrove Raider crew/camp at (-943,45).",
     "places/main/cells/x0z-4.scene - Starfall road blood shrine: blood-shrine tag, offer sign and shrine audio/effects; vitality.js handles the E pact interaction.",
     "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's moving caravan on the Reedhaven road; Mott's stock follows Reach/fen/Reedhaven stops.",
-    "places/hollowcrypt/ - underground crypt campaign with halls, Archive, Candle Warden and paired gate.",
-    "places/drowned-bell/ and places/root-archive/ - themed dungeons with encounter scenes, paired gates and ambience; places/pale-choir/, emberheart/ and ninth-assembly/ are themed raids.",
-    "places/character-creation-land/ and places/main-menu-land/ - character creation and realm/menu entry scenes."
+    "places/hollowcrypt/ - underground crypt campaign with halls, Archive, Candle Warden and paired gate; places/drowned-bell/ and places/root-archive/ are themed dungeons with encounters and paired gates.",
+    "places/pale-choir/, emberheart/ and ninth-assembly/ are themed raids; places/character-creation-land/ and places/main-menu-land/ are character creation and realm/menu entry scenes."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse; audio gains set Music .85 and Ambience .55.",
@@ -242,28 +242,28 @@
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose; quest-data lazily warms or is seeded by quest-core.",
     "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for dungeon, raid and open-world bosses; IDs also key gear and voice data.",
-    "scripts/lib/data/boss-voices.yml and boss-taunts.yml - boss wake/arena voice clips keyed by boss id; scripts/boss.js emits them on Voice bus.",
-    "scripts/lib/data/music.yml, weather.yml, greet-voices.yml + scripts/region-music.js, quest-core.js - area/audio schedules and voice mappings shared by player behaviors and place weather."
+    "scripts/lib/data/music.yml, weather.yml, greet-voices.yml + scripts/region-music.js, quest-core.js - area/audio schedules and voice mappings shared by player behaviors and place weather.",
+    "scripts/lib/data/trainers.yml + scripts/vendor.js + scripts/lib/kit.js - trainer rank/fee/bonus data drives E-to-train interactions and shared ability damage scaling; trainer placements recur in race-start scenes."
   ],
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
+    "scripts/lib/kit.js - power, gearPower, classOf, canAct, forward, alive, aimPoint, softTargets, launch, materialOf, meleeFoley, applyHit.",
     "scripts/gen/homeland.js - geometry, collider; params.kind selects hollow, vault, reedcage or bloom geometry.",
     "scripts/gen/roothome.js and scripts/gen/stilt.js - geometry, collider for Thornhollow root-homes and Saltborn stilt fish-houses.",
     "scripts/gen/ruin.js and scripts/gen/hamlet.js - geometry, collider; ruin kinds dress the Ward Lamphouse, hamlet includes race-hamlet structures.",
     "scripts/gen/armory.js, waystone.js, apothecary.js, caravan.js and harbor.js - geometry/collider generators for settlement props and landmarks.",
     "scripts/gen/camp.js, giant.js and shrine.js - geometry, collider; kind/seed vary camp and giant, shrine builds the blood-shrine piece.",
-    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; places/main/sim.js - cadence, tick.",
-    "scripts/caravan-route.js - onSpawn, updateSchedule, update; MMORPG lib/quest-data.js - quest APIs; scripts/quest-core.js - onInput, update."
+    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; places/main/sim.js - cadence, tick."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
-    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment and quest state.",
+    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment, quest state and trained rank.",
     "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, gear power and melee foley.",
     "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth; quest-data.js owns quest database state.",
     "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch (including arena-taunt cooldown) live in boss ctx.session.",
     "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; stamps player's _worldEnterAt and conditionally increments tally.",
-    "scripts/vitality.js - player health/dying/rise, regen, bloodUntil pact and per-session food-over-time; enemies write state.health. places/main/sim.js owns place.state.storm/calm/thunderAt and atmosphere; region-music.js owns per-player theme, rain FX and transition session.",
-    "scripts/caravan-route.js - wagon route timing and learned rider offsets on wagon state; it moves wagon/goods/lamp/bells/Mott and writes Mott's shop, traveling and walk/idle state."
+    "scripts/vitality.js - player health/dying/rise, regen, bloodUntil pact and per-session food-over-time; enemies write state.health. places/main/sim.js owns place.state.storm/calm/thunderAt and atmosphere; region-music.js owns per-player audio state.",
+    "scripts/vendor.js - writes player state.trained on successful rank purchase; scripts/lib/economy.js moves copper, while MMORPG player.js restores and serializes trained with character data."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -277,7 +277,7 @@
     "BNT-01: Deepgrove Bounty Board quest giver → quests.yml objective deepgrove_bandit → scripts/scavengers.js crew tally; GNT-01: Neris → ordered giant skull/heart quest-mark interactions → rewards and Giant's Heart Shard.",
     "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
     "Instance scenes bind scripts/gen/instance.js with layout/kind params; LAYOUTS and roomsOf produce shared room shells, corridors, floors and furnishings while scenes supply encounters and props.",
-    "Boss state.boss → boss.js reads bosses.yml, boss-voices.yml and boss-taunts.yml; credited kills feed quest-player tally/XP and gear. places/main/sim.js ticks weather.yml into storm/atmosphere → region-music rain FX/bed; vitality handles food and blood pact."
+    "A nearby vendor-tagged NPC with state.trainer handles E in scripts/vendor.js → trainers.yml checks next rank's level/fee → economy debits copper and player state.trained increments; MMORPG player save/load persists it, and kit.power applies the configured damage bonus to class ability hits."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
@@ -287,7 +287,7 @@
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
     "scripts/gen/tide.js - Tideglass structures and props share shape helpers; kind/LOD/length/width vary each piece.",
     "scripts/gen/hamlet.js, scripts/gen/roothome.js and scripts/gen/stilt.js - reused in race hamlets and March settlements, varied by kind, seed, dimensions and stilt/deck height.",
-    "scripts/gen/lumber.js - Thornwood lumber-camp sawpit, log piles, stumps, cart and shed share procedural geometry, varied by kind, seed and stump axe detail."
+    "scripts/lib/data/trainers.yml - one seven-rank discipline ladder shared by six race-start trainers; rank level, copper fee, title and fixed per-rank damage bonus vary through data rather than per-NPC behavior."
   ],
   "probableOrphans": [
     "scripts/gen/grave-weeds.js - no scene or other package reference; graveyard cover is currently placed through grave-ground.js instead."
@@ -297,7 +297,7 @@
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest before crossing, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml, gear.yml, boss-voices.yml and boss-taunts.yml.",
-    "Quest marks use mark/quest state on quest-mark objects; keep objective keys aligned with quests.yml and tally writers. GNT-01 heart mark's after: giant_skull_echo enforces listening before prying; quest-data lazy loading and quest-core seeding must keep their database interface aligned.",
-    "Caravan route position is derived from ctx.now() and ROAD/STOP arc distances; rider offsets are learned from the hand-placed scene, shop ids must match SHOP_INVENTORIES, and townsfolk.js suppresses greeting turns while Mott is traveling."
+    "Quest marks use mark/quest state on quest-mark objects; keep objective keys aligned with quests.yml and tally writers. GNT-01 heart mark's after: giant_skull_echo enforces listening before prying; quest data is lazily loaded/seeded, and ui-quest waits 10 s after a new neighborhood streams before drawing giver anchors.",
+    "Trainer purchases advance state.trained one rank at a time; preserve alignment among trainers.yml ranks, vendor.js level/fee checks, kit.js damage scaling, trainer-tagged scene NPCs and MMORPG character save/load."
   ]
 }
