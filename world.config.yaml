@@ -26,6 +26,13 @@ inputs:
     jump:
       keys:
       - space
+    interact:
+      keys:
+      - e
+    acceptQuest: {}
+    declineQuest: {}
+    completeQuest: {}
+    closeQuestDialog: {}
   axes:
     moveX:
       keys: a/d
