@@ -8,6 +8,7 @@ assets:
     "/cdn/value.1f72a5571a665069b6c49155d21308addc0b6327f0077484838f67d8ef0099f2.glb": {bytes: 71452, kind: model, name: ashen-staff, uploadedAt: "2026-10-08T17:58:40.802Z"}
     "/cdn/value.20bbcf4598c625d01d3d53c064d3b85aabca89979ccccb3cedc7feecd2f787a4.glb": {bytes: 370916, kind: model, name: vey-crater-rubble, uploadedAt: "2026-10-08T19:23:02.387Z"}
     "/cdn/value.21c52ecac7b7723cd5de4a54b0fbfaabc05458f88d2ff65390e4d8f6b9f901cf.glb": {bytes: 701544, kind: model, name: vey-crater-telescope, uploadedAt: "2026-10-08T19:22:52.319Z"}
+    "/cdn/value.21d34d0802c976ba380708eb9cb00f0d56a1b7cb0c63d8d008d07186e171465d.glb": {bytes: 1930336, kind: model, name: lamphouse, uploadedAt: "2026-10-08T19:25:41.952Z"}
     "/cdn/value.2258a0b8e01aebc37647299aabbbcf0192ad76a3bfc60fff0bac423c2527ff99.glb": {bytes: 3625820, kind: model, name: vey-crater-hc-vey-crater, uploadedAt: "2026-10-08T19:22:49.058Z"}
     "/cdn/value.2d96b58403d6647bebd2140268afc438fb02fe3c180aa57e1631a361dd5bd160.glb": {bytes: 113668, kind: model, name: ashen-rack, uploadedAt: "2026-10-08T17:58:57.901Z"}
     "/cdn/value.33dab4065950a5257a004810962e5997cb619e3981bb9d1f7d93a48d6712a666.glb": {bytes: 34348, kind: model, name: wreck-bones, uploadedAt: "2026-10-08T19:25:08.190Z"}

@@ -5,7 +5,7 @@ TEX = "/workspace/kit/tex/t-"
 PARTS = []
 MATS = {}
 SPEC = {  # name: (color linear, texture set, rough-kind, tint, rough, metal, emission, scale m/tile)
-    "plaster": ((0.8, 0.76, 0.66), "plaster", "orm", (0.92, 0.88, 0.8), 0.9, 0, None, 2.0),
+    "plaster": ((0.8, 0.76, 0.66), "plaster", "orm", (0.8, 0.73, 0.62), 0.9, 0, None, 2.0),
     "scorch": ((0.05, 0.04, 0.035), "plaster", "orm", (0.13, 0.105, 0.09), 0.95, 0, None, 2.0),
     "oak": ((0.2, 0.12, 0.07), "woodtrim", "orm", (0.45, 0.36, 0.3), 0.8, 0, None, 1.5),
     "planks": ((0.3, 0.2, 0.12), "woodtrim", "orm", (0.62, 0.5, 0.4), 0.85, 0, None, 1.5),
