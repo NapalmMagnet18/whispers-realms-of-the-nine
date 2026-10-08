@@ -1,0 +1,25 @@
+# spawn-scene v2 yaml x7z-2
+start-cinderhold/start-cinderhold-hall-2:
+  children: [{feetPosition: {x: 0, y: 3.4, z: 8.25}, light: {color: oklch(0.78 0.14 55), distance: 12, intensity: 3, kind: point}}, {feetPosition: {x: -2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}, {feetPosition: {x: 2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}]
+  feetPosition: {x: 6, y: -0.1, z: -23}
+  id: start-cinderhold/start-cinderhold-hall-2
+  parent: start-cinderhold
+  physics: static
+  primitive: {kind: scripted, params: {H: 14, d: 15, kind: rockhall, w: 12}, script: scripts/gen/hamlet.js}
+  rotation: {yaw: 165.37912601136836}
+start-cinderhold/start-cinderhold-rock-2:
+  feetPosition: {x: 25, y: 7.0001148197408565, z: -26}
+  id: start-cinderhold/start-cinderhold-rock-2
+  parent: start-cinderhold
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 72}
+  rotation: {yaw: 134}
+  scale: 4
+start-cinderhold/start-cinderhold-rock-5:
+  feetPosition: {x: -3, y: 0.16843575103903985, z: -35}
+  id: start-cinderhold/start-cinderhold-rock-5
+  parent: start-cinderhold
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 75}
+  rotation: {yaw: 335}
+  scale: 3.6
