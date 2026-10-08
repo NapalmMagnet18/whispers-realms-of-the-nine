@@ -5,7 +5,7 @@ import Q from './lib/data/quests.yml';
 const N = Q.npc;
 
 export function onSpawn(ctx) {
-  ctx.self.anim.base = { clip: 'cdn/clip-idle-loop.glb', weight: 1, loop: 'loop' };
+  ctx.self.anim.base = { clip: 'Idle_FoldArms_Loop', weight: 1, loop: 'loop' }; // the mannequin's own guard-at-ease idle
   ctx.self.state.homeYaw ??= ctx.self.state.yaw ?? -90;
 }
 export const updateSchedule = { every: { seconds: 0.25 } };
