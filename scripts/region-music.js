@@ -3,7 +3,7 @@
 // Steps aside while the jukebox tab plays a chosen track, and stays silent when the player muted music.
 import MUSIC from "./lib/data/music.yml";
 import { isPlay } from './lib/places.js';
-export const updateSchedule = { every: { seconds: 2 } };
+export const updateSchedule = { every: { seconds: 0.5 } };
 
 // per-machine module cache: the region table is code, not shared state
 let regionsMod = null, loading = false;
