@@ -49,28 +49,28 @@ veilgate-crystal-7:
   tags: [veilgate]
 veilgate-floatrock-2:
   feetPosition: {x: 30, y: 186, z: -7625}
-  fx: {params: {r: 4.4, reach: 33}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
+  fx: {params: {r: 4.4, reach: 33}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-2
   primitive: {kind: scripted, params: {kind: floatrock, r: 5.5}, script: scripts/gen/veil.js, seed: 22}
   rotation: {roll: 6, yaw: 94}
   tags: [veilgate]
 veilgate-floatrock-3:
   feetPosition: {x: 12, y: 162, z: -7618}
-  fx: {params: {r: 2, reach: 15}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
+  fx: {params: {r: 2, reach: 15}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-3
   primitive: {kind: scripted, params: {kind: floatrock, r: 2.5}, script: scripts/gen/veil.js, seed: 23}
   rotation: {roll: -6, yaw: 141}
   tags: [veilgate]
 veilgate-floatrock-6:
   feetPosition: {x: 18, y: 172, z: -7640}
-  fx: {params: {r: 3.6, reach: 27}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
+  fx: {params: {r: 3.6, reach: 27}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-6
   primitive: {kind: scripted, params: {kind: floatrock, r: 4.5}, script: scripts/gen/veil.js, seed: 26}
   rotation: {roll: -6, yaw: 282}
   tags: [veilgate]
 veilgate-floatrock-7:
   feetPosition: {x: 46, y: 180, z: -7640}
-  fx: {params: {r: 2.4000000000000004, reach: 18}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
+  fx: {params: {r: 2.4000000000000004, reach: 18}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-7
   primitive: {kind: scripted, params: {kind: floatrock, r: 3}, script: scripts/gen/veil.js, seed: 27}
   rotation: {roll: 0, yaw: 329}
