@@ -90,16 +90,17 @@ export function land(ctx) {
   }
   const wasVeiled = veiled(ctx)
   if (wasVeiled) unveil(ctx)
-  if (!hit) return
-  const t = ctx.getObject(hit.id); if (!t) return
+  let pvp = null
+  if (!hit) { pvp = meleePlayer(ctx, a.reach, cosArc); if (!pvp) return }
+  const t = pvp || ctx.getObject(hit.id); if (!t) return
   const tf = rotate(t.rotation || 0, { x: 0, y: 0, z: -1 }), tl = Math.hypot(tf.x, tf.z) || 1
   const bx = self.feetPosition.x - t.feetPosition.x, bz = self.feetPosition.z - t.feetPosition.z, bl = Math.hypot(bx, bz) || 1
   const behind = (tf.x * bx + tf.z * bz) / (tl * bl) < -0.35
   const ambush = wasVeiled || now < (m.ambushUntil || 0) || behind
   const dmg = Math.round(a.damage * (ambush ? a.ambush : 1))
   m.ambushUntil = 0
-  t.state.hp -= dmg
-  t.state.lastHitBy = self.id; t.state.lastHitAt = now; t.state.lastHitKind = ambush ? 'ambush' : 'strike'
+  if (pvp) strikePlayer(ctx, t, dmg, ambush ? 'ambush' : 'strike')
+  else { t.state.hp -= dmg; t.state.lastHitBy = self.id; t.state.lastHitAt = now; t.state.lastHitKind = ambush ? 'ambush' : 'strike' }
   const pos = aimPoint(t), n = normalize({ x: -bx, y: 0.4, z: -bz }), near = { nearby: pos, radius: 40 }
   ctx.emit('damageNumber', { position: pos, value: dmg, crit: ambush, color: ambush ? '#d9a6ff' : undefined }, { audience: near })
   if (ambush) ctx.emit('damageNumber', { position: { ...pos, y: pos.y + 0.6 }, text: 'Ambush!', color: '#c890ff', size: 1.2, lifetime: 1.2 }, { audience: { player: self.id } })

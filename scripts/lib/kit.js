@@ -2,12 +2,13 @@
 // which class a body plays, soft targeting, launching a missile and landing a hit into target.state.hp.
 import { rotate, rotationFromDirection } from 'builtin/vec3'
 import { MISSILES, impactFx } from './missiles.js'
+import { pvpTargets, isPlayer, strikePlayer, canPvp } from './pvp.js'
 
 // state.className is the character's class name ("Arcanist"); a hero saved before classes counts as a Vanguard.
 export function classOf(ctx) { return String(ctx.self.state.className || 'vanguard').toLowerCase() }
 export function canAct(ctx) { const s = ctx.self.state; return (ctx.self.place === 'main' || ctx.self.place === 'hollowcrypt') && s.phase !== 'creating' && !s.dying && (s.health ?? 1) > 0 }
 export function forward(self) { const f = rotate(self.rotation, { x: 0, y: 0, z: -1 }); const l = Math.hypot(f.x, f.z) || 1; return { x: f.x / l, y: 0, z: f.z / l } }
-export function alive(t) { return !!t && !!t.state && (t.state.hp ?? 0) > 0 && !t.state.dead && !t.state.down }
+export function alive(t) { if (!t || !t.state) return false; if (isPlayer(t)) return (t.state.health ?? 1) > 0 && !t.state.dying && !t.state.pvpDead; return (t.state.hp ?? 0) > 0 && !t.state.dead && !t.state.down }
 export function aimPoint(t) {
   const b = t.bounds
   if (b && b.center) return { x: b.center.x, y: Math.min(b.center.y, b.min.y + 1.3), z: b.center.z }
@@ -22,6 +23,10 @@ export function softTargets(ctx, range, arcDeg, n = 1) {
     const dx = r.feetPosition.x - p.x, dz = r.feetPosition.z - p.z, d = Math.hypot(dx, dz) || 0.01
     const c = (dx * f.x + dz * f.z) / d
     if (c >= cosArc) front.push({ id: r.id, score: d * (1.6 - c) }); else if (d < range / 2) near.push({ id: r.id, score: d })
+  }
+  if (!front.length) for (const r of pvpTargets(ctx, range)) { // PvP realms: a hostile hero, only when no monster stands in front
+    const dx = r.feetPosition.x - p.x, dz = r.feetPosition.z - p.z, d = Math.hypot(dx, dz) || 0.01, c = (dx * f.x + dz * f.z) / d
+    if (c >= cosArc) front.push({ id: r.id, score: d * (1.6 - c) })
   }
   front.sort((a, b) => a.score - b.score); near.sort((a, b) => a.score - b.score)
   return (front.length ? front : near).slice(0, n).map((r) => r.id)
@@ -45,6 +50,7 @@ export function materialOf(t) { return t.state?.material || ((t.tags || []).incl
 // the hit, judged on the shooter's machine: hp, the hit marks the dummy and wolves read, a slow, and the payoff
 export function applyHit(ctx, ownerId, t, h) {
   const now = ctx.now(), s = t.state
+  if (isPlayer(t)) return hitPlayer(ctx, ownerId, t, h)
   s.hp -= h.damage
   s.lastHitBy = ownerId; s.lastHitAt = now; s.lastHitKind = h.kind
   const near = { nearby: h.at, radius: 50 }
@@ -71,3 +77,31 @@ export function drill(ctx, tag) {
     return
   }
 }
+
+// a missile reaching a hero on a PvP realm (the missile runs on the shooter's machine: ctx.self is the missile)
+function hitPlayer(ctx, ownerId, t, h) {
+  const owner = ownerId ? ctx.getObject(ownerId) : null
+  if (!owner) return
+  const dmg = Math.max(1, Math.round(h.damage * (PVP_MULT())))
+  t.state.health = (t.state.health ?? t.state.maxHealth ?? 1000) - dmg
+  t.state.lastPvpBy = ownerId; t.state.lastPvpName = owner.state.charName || 'a hero'; t.state.lastPvpAt = ctx.now(); t.state.lastPvpKind = h.kind
+  if (h.slow > 0) { t.state.slowUntil = ctx.now() + h.slowFor * 1000; t.state.slowMult = 1 - h.slow }
+  const near = { nearby: h.at, radius: 50 }
+  ctx.emit('damageNumber', { position: { x: h.at.x, y: h.at.y + 0.4, z: h.at.z }, value: dmg, color: '#ff6a55' }, { audience: near })
+  ctx.emit('squash', { target: t.id, axis: 'y', intensity: 0.1, duration: 0.18 }, { audience: near })
+  if (h.missile) impactFx(ctx, h.missile, 'fur', h.at, h.normal)
+  ctx.emit('hitstop', { duration: 0.03 }, { audience: { player: ownerId } })
+}
+import PV from './data/pvp.yml'
+function PVP_MULT() { return PV.damageMult || 1 }
+// melee on a PvP realm (vanguard, shade): the nearest hostile hero inside reach and arc
+export function meleePlayer(ctx, reach, cosArc) {
+  const self = ctx.self, f = forward(self)
+  for (const o of pvpTargets(ctx, reach + 0.6)) {
+    const dx = o.feetPosition.x - self.feetPosition.x, dz = o.feetPosition.z - self.feetPosition.z, d = Math.hypot(dx, dz)
+    if (d > 0.3 && (dx * f.x + dz * f.z) / d < cosArc) continue
+    return ctx.getObject(o.id)
+  }
+  return null
+}
+export { strikePlayer, canPvp, isPlayer }

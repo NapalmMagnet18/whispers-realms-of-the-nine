@@ -59,7 +59,18 @@ export function land(ctx, { kind }) {
     if (dist > 0.3 && dot(normalize(d), { x: fwd.x, y: 0, z: fwd.z }) < cosArc) continue
     hit = t; break
   }
-  if (!hit) return
+  if (!hit) {
+    const pt = meleePlayer(ctx, a.reach, cosArc)
+    if (!pt) return
+    const dmg = strikePlayer(ctx, pt, a.damage, kind), pos = { x: pt.feetPosition.x, y: pt.feetPosition.y + 1.2, z: pt.feetPosition.z }
+    const n = normalize({ x: pt.feetPosition.x - self.feetPosition.x, y: 0.4, z: pt.feetPosition.z - self.feetPosition.z }), near = { nearby: pos, radius: 40 }
+    ctx.emit('damageNumber', { position: pos, value: dmg, crit: kind === 'heavy', color: '#ff6a55' }, { audience: near })
+    ctx.emit('fx', { position: pos, script: SPARKS, params: { normal: n } }, { audience: near })
+    ctx.emit('playSound', { clip: THUD, position: pos, volume: 0.6 }, { audience: near })
+    ctx.emit('hitstop', { duration: 0.05 }, { audience: { player: self.id } })
+    ctx.emit('cameraPunch', { direction: n, intensity: 0.25 }, { audience: { player: self.id } })
+    return
+  }
   const target = ctx.getObject(hit.id)
   if (!target) return
   target.state.hp -= a.damage

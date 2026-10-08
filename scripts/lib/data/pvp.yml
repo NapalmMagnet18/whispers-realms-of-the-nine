@@ -1,0 +1,15 @@
+# Open-world PvP rules for PvP realms (realms.yml type: PvP). Read by scripts/lib/pvp.js.
+rooms: [realm-hollowmere]
+damageMult: 5          # class damage was tuned on 60-300 hp monsters; a level-1 hero has 1000 hp. x5 = ~10 s to fall to one attacker
+minLevel: 5            # heroes below this level can neither strike nor be struck (the first steps stay safe)
+shieldSeconds: 15      # after rising from a PvP fall: untouchable, and cannot strike, for this long
+creditSeconds: 8       # a fall within this long of a player's hit is that player's kill
+# Sanctuaries: towns, the Ward, every roost (radius 35) and the Deepgrove camp. Hollowcrypt is never PvP.
+sanctuaries:
+  - { name: "Lantern's Reach", x: 0, z: 0, r: 110 }
+  - { name: "Lantern Ward", x: 0, z: -100, r: 70 }
+  - { name: "Thornhollow", x: -720, z: 70, r: 70 }
+  - { name: "Cinderhold", x: 900, z: -170, r: 70 }
+  - { name: "Gullrest", x: 250, z: 1430, r: 70 }
+  - { name: "Deepgrove Camp", x: -1085, z: 64, r: 50 }
+roostRadius: 35
