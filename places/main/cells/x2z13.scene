@@ -1,0 +1,17 @@
+# spawn-scene v2 yaml x2z13
+saltmere-crate-1:
+  feetPosition: {x: 319.6, y: {terrain: 0}, z: 1658.2}
+  id: saltmere-crate-1
+  layout: {maxExtents: {y: 0.8}, minExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 20}
+  tags: [saltmere, kit]
+saltmere-logs:
+  feetPosition: {x: 317.5, y: {terrain: 0}, z: 1661.5}
+  id: saltmere-logs
+  layout: {maxExtents: {y: 0.9}, minExtents: {y: 0.9}}
+  model: {id: /cdn/value.b50e8ad41a09d38b7dd0c0728666d62743012edc7dfbec1a35d4bbf5e15750f5.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 30}
+  tags: [saltmere, kit]

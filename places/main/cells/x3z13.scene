@@ -1,0 +1,61 @@
+# spawn-scene v2 yaml x3z13
+saltmere-barrel-1:
+  feetPosition: {x: 321.2, y: {terrain: 0}, z: 1659}
+  id: saltmere-barrel-1
+  layout: {maxExtents: {y: 1.1}, minExtents: {y: 1.1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [saltmere, kit]
+saltmere-barrel-2:
+  feetPosition: {x: 320.4, y: {terrain: 0}, z: 1660.1}
+  id: saltmere-barrel-2
+  layout: {maxExtents: {y: 1.1}, minExtents: {y: 1.1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 50}
+  tags: [saltmere, kit]
+saltmere-dock:
+  feetPosition: {x: 334.6, y: -2.1943294400952946, z: 1672.6}
+  id: saltmere-dock
+  model: {id: /cdn/value.fb40dfd3e44c571cf41e288e28298dd32a565f9405bf73cea64e645f3b62fb57.glb}
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 45}
+  scale: 2.438419419920072
+  tags: [saltmere, kit]
+saltmere-jetty:
+  children: [{feetPosition: {x: -1.1, y: -0.9636874841196172, z: -5.75}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 1.7636874841196173, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: 1.1, y: -0.9633649904325616, z: -5.75}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 1.763364990432562, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: -1.1, y: -1.0124860473238955, z: -2.75}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 1.8124860473238955, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: 1.1, y: -1.0236225154475342, z: -2.75}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 1.8236225154475343, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: -1.1, y: -1.2895857955744399, z: 0.25}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 2.0895857955744397, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: 1.1, y: -1.352825090327863, z: 0.25}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 2.152825090327863, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: -1.1, y: -2.0775559960413963, z: 3.25}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 2.877555996041396, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: 1.1, y: -2.189366099103595, z: 3.25}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 2.989366099103595, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: -1.1, y: -2.869480191845094, z: 6.25}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 3.669480191845094, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: 1.1, y: -2.973582887598358, z: 6.25}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {height: 3.773582887598358, kind: cylinder, radiusBottom: 0.15, radiusTop: 0.13}}, {feetPosition: {x: -1.15, y: 0.15, z: 0}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {depth: 12.7, height: 0.08, kind: box, width: 0.1}}, {feetPosition: {x: 1.15, y: 0.15, z: 0}, material: {color: oklch(0.36 0.04 55), roughness: 0.95}, primitive: {depth: 12.7, height: 0.08, kind: box, width: 0.1}}]
+  feetPosition: {x: 327.5, y: 0.85, z: 1665.5}
+  id: saltmere-jetty
+  material: {color: oklch(0.5 0.05 60), roughness: 0.9}
+  physics: {body: static, collider: box}
+  primitive: {depth: 12.7, height: 0.15, kind: box, width: 2.4}
+  rotation: {yaw: 45}
+  tags: [saltmere]
+saltmere-jetty-lamp:
+  children: [{feetPosition: {x: 0, y: 2.4, z: 0}, light: {color: oklch(0.84 0.14 65), distance: 12, intensity: 1.8, kind: point}}]
+  feetPosition: {x: 325, y: 1, z: 1665.4}
+  id: saltmere-jetty-lamp
+  layout: {maxExtents: {y: 2.6}, minExtents: {y: 2.6}}
+  model: {id: /cdn/value.60d6adc4a3ffc6da11ed696eee515c6131da08ebdea52002320fb092459c37e1.glb}
+  tags: [saltmere]
+saltmere-rowboat:
+  behavior: scripts/bob.js
+  feetPosition: {x: 331.5, y: -0.35, z: 1673.5}
+  id: saltmere-rowboat
+  model: {id: /cdn/value.0ecbdb6d997b0ad174c82c5b1bd441c4abfcf0cd5c47c4643b5d63be02e90bfc.glb}
+  rotation: {yaw: 45}
+  state: {bob: 0}
+  tags: [saltmere, kit]
+saltmere-sacks:
+  feetPosition: {x: 330.2, y: 1, z: 1667.2}
+  id: saltmere-sacks
+  layout: {maxExtents: {y: 0.5}, minExtents: {y: 0.5}}
+  model: {id: /cdn/value.91b326be54d57beb35456b5fb5d4532dd21dc0802e3394aff229865a32ade248.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 45}
+  tags: [saltmere, kit]
+saltmere-surf:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-gentle-waves-lapping-shore-loop.mp3, gain: 0.18, loop: true, maxDistance: 40, spatial: true}
+  feetPosition: {x: 328, y: 0.5, z: 1664}
+  id: saltmere-surf
