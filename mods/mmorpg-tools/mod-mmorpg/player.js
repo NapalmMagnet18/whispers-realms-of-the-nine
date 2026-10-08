@@ -737,7 +737,7 @@ export function update(objectApi, dt) {
   var vitStats = (s.stats || {});
   var vitBonus = Math.max(0, ((vitStats.vitality || 10) - 10)) * 0.005;
   // Auto-attack is passive — never zero speed due to isAttacking
-  var baseSpeed = s.walkSpeed * (1 + vitBonus);
+  var baseSpeed = (Number.isFinite(s.walkSpeed) ? s.walkSpeed : 6) * (1 + vitBonus);
   // Freeze movement during mine deploy
   if (s.isDeployingMine) baseSpeed = 0;
   var speed = mv.sprint ? baseSpeed * 1.5 : baseSpeed;
@@ -754,7 +754,8 @@ export function update(objectApi, dt) {
   var _spawnAge = (s._spawnAge ?? 0) + dt;
   if (_spawnAge < 0.5) { vy = 0; patch._spawnAge = _spawnAge; }
   else { patch._spawnAge = _spawnAge; }
-  vy += s.gravity * dt;
+  if (!Number.isFinite(vy)) vy = 0;
+  vy += (Number.isFinite(s.gravity) ? s.gravity : -24) * dt;
   // Terminal velocity cap — prevent tunneling through thin geometry
   if (vy < -50) vy = -50;
 
@@ -762,7 +763,7 @@ export function update(objectApi, dt) {
   if (mv.jump) {
     if (grounded) {
       var jumpMult = (s.raceIndex === 2) ? 2.0 : 1.0;
-      vy = s.jumpSpeed * jumpMult;
+      vy = (Number.isFinite(s.jumpSpeed) ? s.jumpSpeed : 9) * jumpMult;
     }
     mv.jump = false;
   }
