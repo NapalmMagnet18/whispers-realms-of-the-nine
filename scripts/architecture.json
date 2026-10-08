@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1499,
-  "updatedAt": "2026-10-08T20:14:35.584Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March, six peoples' homelands and themed dungeon/raid instances. MMORPG Tools owns realm, character and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight and survival, while streamed scenes and shared YAML data define the world and its encounters.",
+  "basedOnSpecVersion": 1513,
+  "updatedAt": "2026-10-08T20:28:29.964Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March, six peoples' homelands and themed dungeon/raid instances. MMORPG Tools owns realm, character and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight and survival, while streamed scenes and shared YAML data define the world, encounters and layered audio.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -214,13 +214,13 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main/config.yaml and places/main/cells/ - Lantern March continent, its homelands and roads; streamed scenes hold hubs, quests, encounters and landmarks.",
+    "places/main/config.yaml and places/main/cells/ - Lantern March continent, its homelands and roads; streamed scenes hold hubs, quests, encounters, landmarks and newly placed spatial loops for fires, forges, wells and shrines.",
     "places/main/cells/x-1z-1.scene - Thornwood lumber camp at (-117,-108): sawpit, log piles, cart, shed, stumps and talk-only Bryn Oakhewn; static generator props and one townsfolk NPC.",
     "places/main/cells/x-7z0.scene - Deepgrove bandit camp at (-943,45): palisade, tents, lookout, loot, cookfire and Scab NPC; scenery and talk only, no hostile bandits wired.",
     "places/main/cells/x-1z-5.scene - fallen giant over Road-Starfall at (-80,-680), with scripted rib arches, skull, sword and arm bone; road passes between rib colliders.",
     "places/hollowcrypt/ - underground crypt campaign entered from Hollowcrypt Vale; halls, Archive, Candle Warden and paired gate.",
-    "places/drowned-bell/ and places/root-archive/ - themed instanced dungeons with encounter scenes and paired entry/return gates.",
-    "places/pale-choir/, places/emberheart/ and places/ninth-assembly/ - themed raid places with encounter bosses and paired gates; endgame path branches through Pale Choir and Emberheart.",
+    "places/drowned-bell/ and places/root-archive/ - themed instanced dungeons with encounter scenes, paired entry/return gates and placed ambient audio for braziers, forges, wells and shrines.",
+    "places/pale-choir/, places/emberheart/ and places/ninth-assembly/ - themed raid places with encounter bosses, paired gates and scene-placed ambience; endgame path branches through Pale Choir and Emberheart.",
     "places/character-creation-land/ and places/main-menu-land/ - character-creation and realm/menu entry scenes, respectively."
   ],
   "roots": [
@@ -228,7 +228,7 @@
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
-    "places/main/config.yaml - owns March terrain, roads, regional surfaces/scatter and atmosphere; cell scenes bind structures, quest marks, bosses and NPCs.",
+    "places/main/config.yaml - owns March terrain, roads, regional surfaces/scatter and atmosphere; cell scenes bind structures, quest marks, bosses, NPCs and spatial sound emitters.",
     "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - terrain, gravity and spawn environment for crypt and instance play.",
     "places/main/cells/x-10z7.scene - Sorrowfen hub and instance entrances; each gate pairs with an inside gate in its dungeon/raid scene.",
     "mods/gavi/mod.json - registers Gavi crew behavior and panel, the builder-facing companion tools."
@@ -239,9 +239,9 @@
     "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry shared by quests, class actions, vitality and regional music; playable places are listed here.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid places; scenes select layout and kind via params.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics and lookup shared by quest-core, quest-giver and quest UI; quest-text.js supplies prose.",
-    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common boss behavior for dungeon, raid and open-world bosses; boss IDs also key gear loot tables.",
+    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common boss behavior for dungeon, raid and open-world bosses; boss IDs also key gear loot tables and boss-voices.yml wake clips.",
     "scripts/lib/data/gear.yml - boss loot tables, item stats and tier data consumed by quest-player, quest-core and kit.js; tier data also selects loot-drop sound.",
-    "scripts/lib/data/music.yml + scripts/region-music.js - shared themes, per-area ambience beds and stinger sets for player-region audio."
+    "scripts/lib/data/music.yml + scripts/region-music.js - shared themes, per-area ambience beds and stingers, including enter/discover zone clips; boss-voices.yml supplies boss voice clips to boss.js."
   ],
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
@@ -251,17 +251,17 @@
     "scripts/gen/armory.js, scripts/gen/waystone.js, scripts/gen/apothecary.js, scripts/gen/caravan.js and scripts/gen/harbor.js - geometry/collider generators for varied settlement props and landmarks.",
     "scripts/gen/camp.js, scripts/gen/giant.js and scripts/gen/shrine.js - geometry, collider; kind/seed params vary camp and giant, shrine builds the blood-shrine piece.",
     "scripts/lib/kit.js - power, gearPower, gearHealth, materialOf, meleeFoley and shared combat helpers; materialOf and meleeFoley route contact sounds through foley.yml.",
-    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update; MMORPG lib/version.js - GAME_VERSION, GAME_TITLE, versionTag (0.41.3 Alpha)."
+    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update; MMORPG lib/version.js - GAME_VERSION, GAME_TITLE, versionTag (0.41.9 Alpha)."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment and quest state.",
     "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, drill, gear power and melee foley.",
-    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
+    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth; quest-core emits turn-in fanfare and public level-up FX/chord/music duck.",
     "scripts/boss.js - placed boss hp/mode/cast/enrage/target-related fields; encounter clocks, damage attribution and target scratch live in boss ctx.session.",
     "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; on entry stamps player's _worldEnterAt and conditionally increments tally.",
-    "scripts/region-music.js - per-player theme/music transition and ambience bed (player.ambience); region-music session tracks current bed and next stinger time.",
-    "world.config.yaml - global audio bus gains and maxVoices; scripts/lib/data/foley.yml and music.yml own sound clip mappings, not runtime player state."
+    "scripts/region-music.js - per-player theme/music transition and ambience bed (player.ambience); region-music session tracks current bed, zone transition and next stinger time; player.state.discoveredZones records first visits.",
+    "world.config.yaml - global audio bus gains and maxVoices; scripts/lib/data/foley.yml, music.yml and boss-voices.yml own clip mappings, not runtime player state."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -274,8 +274,8 @@
     "scripts/townsfolk.js greets placed talker NPCs; quest-player.js reads scripts/lib/data/townsfolk.yml by state.who for dialogue, including Scab and Bryn.",
     "Main-place entrance gate (state.link, minLevel, enterQuest/enterTally) → instance-gate checks player/level and active quest, stamps _worldEnterAt and ctx.crosses to paired +place#gate; inside twin returns through its link.",
     "Instance scenes bind scripts/gen/instance.js with layout/kind params; LAYOUTS and roomsOf produce shared themed room shells, corridors, floors and furnishings while scene placements supply encounters and props.",
-    "Boss scene state.boss → scripts/boss.js reads bosses.yml; class scripts write hp/lastHitBy/lastHitAt, abilities telegraph then land, and credited kills emit to hero quest-player for tally/XP and gear rolls/sounds.",
-    "Player-region update → region-music.js selects music.yml theme, sets the player's ambience bed, and schedules per-player stingers; kit.js meleeFoley selects foley.yml material clips, while gear.yml tier.sound feeds quest-player loot audio."
+    "Boss scene state.boss → scripts/boss.js reads bosses.yml and boss-voices.yml; class scripts write hp/lastHitBy/lastHitAt, wake voice/text and abilities play, and credited kills emit to hero quest-player for tally/XP and gear rolls/sounds.",
+    "Player-region update → region-music.js selects music.yml theme, sets the player's ambience bed and schedules stingers; first-ever zone crossing records discoveredZones; flight.js adds rider-only gryphon loop, scene audio fields add spatial prop loops, and quest-core level-up FX/chord reach nearby players."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
@@ -294,8 +294,8 @@
     "Adding a playable place requires a row in scripts/lib/places.js PLAY; dying heroes rise at SAFE_HOME for listed dungeons/raids. Quest and class logic uses isPlay rather than hard-coded place names.",
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest before crossing, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
-    "Boss combat writes shared hp/lastHitBy/lastHitAt fields; boss.js emits kills to each hero's behavior machine so quest-player owns tally/XP and gear rolls. Keep scene state.boss IDs aligned with bosses.yml and gear.yml.",
+    "Boss combat writes shared hp/lastHitBy/lastHitAt fields; boss.js emits kills to each hero's behavior machine so quest-player owns tally/XP and gear rolls. Keep scene state.boss IDs aligned with bosses.yml and gear.yml; boss-voices.yml is keyed by the same boss IDs.",
     "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
-    "Melee material selection is state.material first, then boss mapping, wolf fur/dummy wood, otherwise flesh; foley.yml hit rows and heavy layer are consumed by kit.meleeFoley. Gear tier sound is read at reward time; music ambience is player-specific and configured separately from music buses."
+    "Melee material selection is state.material first, then boss mapping, wolf fur/dummy wood, otherwise flesh; foley.yml hit rows and heavy layer are consumed by kit.meleeFoley. Scene emitter audio uses spatial loops and maxDistance; region music owns zone-sting selection while flight audio is rider-local."
   ]
 }
