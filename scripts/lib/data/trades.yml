@@ -1,0 +1,65 @@
+# WHISPERS trades: professions, gathering nodes, recipes, the auction house. Copper amounts (100c = 1s).
+maxTrades: 2                  # trades one hero may know at once
+maxSkill: 150
+learnCost: 100                # copper to learn a trade at a trade station (1s)
+reach: 3.2                    # metres from a node or station that E works it
+gatherSeconds: 2.2
+cancelMove: 1.2
+craftSeconds: 1.6
+# skill-up odds: orange (req+0..24) always, yellow (+25..49) 60%, green (+50..74) 25%, grey (+75) never
+skillBands: [[25, 1.0], [50, 0.6], [75, 0.25]]
+
+trades:
+  Mining:        { kind: gather,  station: forge,   blurb: "Break ore from veins in the hills. Smelt it into bars at a forge." }
+  Herblore:      { kind: gather,  station: alchemy, blurb: "Pick reagents from the wild. Sunleaf by the roads, gravebloom where the dead lie." }
+  Blacksmithing: { kind: craft,   station: forge,   blurb: "Hammer bars into blades and plate." }
+  Alchemy:       { kind: craft,   station: alchemy, blurb: "Brew draughts and oils from what the herbalists bring." }
+
+# what a node gives: item id, the trade, the skill it needs, regrow seconds
+nodes:
+  copper-vein: { item: copper-ore, trade: Mining,   req: 0,   regrow: 45, verb: Mine, title: Copper Vein, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3 }
+  iron-vein:   { item: iron-ore,   trade: Mining,   req: 50,  regrow: 60, verb: Mine, title: Iron Vein,   sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3 }
+  sunleaf:     { item: sunleaf,    trade: Herblore, req: 0,   regrow: 40, verb: Pick, title: Sunleaf,     sound: /cdn/moodboard-painterly-fantasy/sfx-herb-pick-rustle.mp3 }
+  briarroot:   { item: briarroot,  trade: Herblore, req: 40,  regrow: 50, verb: Pull, title: Briarroot,   sound: /cdn/moodboard-painterly-fantasy/sfx-herb-pick-rustle.mp3 }
+  gravebloom:  { item: gravebloom, trade: Herblore, req: 90,  regrow: 70, verb: Pick, title: Gravebloom,  sound: /cdn/moodboard-painterly-fantasy/sfx-herb-pick-rustle.mp3 }
+
+# every trade good; sell = what a vendor pays for one
+items:
+  copper-ore: { name: Copper Ore,     sell: 5,   stackable: true, description: "Green-streaked ore. Smelt two into a bar." }
+  iron-ore:   { name: Iron Ore,       sell: 12,  stackable: true, description: "Heavy and dark. Smelt two into a bar." }
+  sunleaf:    { name: Sunleaf,        sell: 4,   stackable: true, description: "Warm to the touch, even at night." }
+  briarroot:  { name: Briarroot,      sell: 10,  stackable: true, description: "Thorned root with bitter blue berries." }
+  gravebloom: { name: Gravebloom,     sell: 22,  stackable: true, description: "A pale lily that only opens over the dead." }
+  copper-bar: { name: Copper Bar,     sell: 14,  stackable: true, description: "Smelted copper, ready for the anvil." }
+  iron-bar:   { name: Iron Bar,       sell: 30,  stackable: true, description: "Smelted iron, ready for the anvil." }
+  ghostlight-oil: { name: Ghostlight Oil, sell: 70, stackable: true, description: "Quenching oil that glows violet. Smiths pay well for it." }
+  empty-vial: { name: Empty Vial,     sell: 1,   stackable: true, description: "Glass, stoppered. Sold by general merchants." }
+  log:        { name: Oak Log,        sell: 3,   stackable: true, description: "Split oak from the March." }
+
+# recipes: station, trade, req skill, inputs { id: n }, out { id, count } or out item inline (gear)
+recipes:
+  - { id: smelt-copper, name: Smelt Copper,    trade: Mining,        station: forge,   req: 0,   in: { copper-ore: 2 }, out: { id: copper-bar, count: 1 } }
+  - { id: smelt-iron,   name: Smelt Iron,      trade: Mining,        station: forge,   req: 50,  in: { iron-ore: 2 },   out: { id: iron-bar, count: 1 } }
+  - { id: copper-shortsword, name: Copper Shortsword, trade: Blacksmithing, station: forge, req: 0, in: { copper-bar: 3, log: 1 },
+      gear: { id: copper-shortsword, name: Copper Shortsword, slot: mainHand, icon: /cdn/icon-sword-u16jp5yx9.webp, sell: 60, description: "Forged in the Reach. Handmade.", stats: { damage: { min: 5, max: 10 } } } }
+  - { id: copper-gauntlets, name: Copper Gauntlets, trade: Blacksmithing, station: forge, req: 15, in: { copper-bar: 2 },
+      gear: { id: copper-gauntlets, name: Copper Gauntlets, slot: hands, icon: /cdn/icon-glove-u01jhmrh8.webp, sell: 45, description: "Riveted copper over leather.", stats: { defence: 6 } } }
+  - { id: forged-iron-helm, name: Forged Iron Helm, trade: Blacksmithing, station: forge, req: 60, in: { iron-bar: 3 },
+      gear: { id: forged-iron-helm, name: Forged Iron Helm, slot: head, icon: /cdn/icon-helmet-u9bjftt8q.webp, sell: 110, description: "Plain iron, cold-hammered.", stats: { defence: 12 } } }
+  - { id: forged-iron-greaves, name: Forged Iron Greaves, trade: Blacksmithing, station: forge, req: 80, in: { iron-bar: 4 },
+      gear: { id: forged-iron-greaves, name: Forged Iron Greaves, slot: legs, icon: /cdn/icon-legarmor-u1z2ehbh1.webp, sell: 140, description: "Iron plates on a leather skirt.", stats: { defence: 16 } } }
+  - { id: ghostlit-warblade, name: Ghostlit Warblade, trade: Blacksmithing, station: forge, req: 110, in: { iron-bar: 6, ghostlight-oil: 1, log: 2 },
+      gear: { id: ghostlit-warblade, name: Ghostlit Warblade, slot: mainHand, icon: /cdn/icon-swordblood-u1d0q7ruq.webp, sell: 420, description: "Quenched in ghostlight. The edge hums.", stats: { damage: { min: 12, max: 21 } } } }
+  - { id: brew-health, name: Health Potion,    trade: Alchemy,       station: alchemy, req: 0,   in: { sunleaf: 2, empty-vial: 1 }, out: { id: health-potion, count: 1 } }
+  - { id: brew-mana,   name: Mana Potion,      trade: Alchemy,       station: alchemy, req: 25,  in: { sunleaf: 1, briarroot: 1, empty-vial: 1 }, out: { id: mana-potion, count: 1 } }
+  - { id: ghostlight-oil, name: Ghostlight Oil, trade: Alchemy,      station: alchemy, req: 90,  in: { gravebloom: 1, briarroot: 1, empty-vial: 1 }, out: { id: ghostlight-oil, count: 1 } }
+
+auction:
+  hours: 48                   # a listing lasts this long, then returns to its seller
+  cutPct: 5                   # the house keeps 5% of a sale (a coin sink)
+  depositPct: 2               # paid on listing, lost on cancel or expiry; at least 1c
+  minPrice: 1
+  maxPrice: 1000000           # 100 gold
+  maxListings: 12             # per hero
+  pageSize: 30
+  steps: [1, 10, 100, 1000, 10000]
