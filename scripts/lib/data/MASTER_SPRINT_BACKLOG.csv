@@ -1,0 +1,26 @@
+ID,Phase,Priority,Task,Effort,Acceptance Criteria,Owner,Status
+SP-001,0,P0,Set up original Spawn world and inspect AGENTS.md / docs,S,World starts; docs referenced; source preserved,Unassigned,Not Started
+SP-002,0,P0,Third-person avatar movement and orbital camera,M,Movement/camera work with collisions,Unassigned,Not Started
+SP-003,0,P0,Join world with two independent clients,S,Both see movement in same shared world,Unassigned,Not Started
+SP-004,0,P0,Persistent per-player item and coin award,M,Disconnect/reconnect yields exactly one saved reward,Unassigned,Not Started
+SP-005,1,P0,Lantern Reach low-poly blockout and roads,L,"Spawn-to-market traversable, no collision traps",Unassigned,Not Started
+SP-006,1,P0,Briarwild and quarry traversable paths,M,"Two route exits, visible wayfinding",Unassigned,Not Started
+SP-007,1,P0,Quest-giver NPC and quest state machine,M,Quest completes once across reconnect,Unassigned,Not Started
+SP-008,1,P0,"Wolf AI, combat and reward",L,Enemy aggro/leash/death/respawn works,Unassigned,Not Started
+SP-009,1,P0,Compact desktop HUD and interact prompts,M,Hotbar/HP/objectives legible at 1366x768,Unassigned,Not Started
+SP-010,1,P0,"Ore node, furnace and first weapon recipe",L,Inventory consumes ingredients once,Unassigned,Not Started
+SP-011,1,P0,First 20-minute player journey,M,Playthrough from fresh spawn to craft and rejoin,Unassigned,Not Started
+SP-012,2,P1,"Three combat disciplines, basic skills",L,Stats visibly change damage/range,Unassigned,Not Started
+SP-013,2,P1,Inventory and equipment panels,M,"Equip/unequip, slots and tooltips correct",Unassigned,Not Started
+SP-014,2,P1,"XP, professions, skills panel",L,"Independent skill XP saved, unlock shown",Unassigned,Not Started
+SP-015,2,P1,Fishing-to-cooking loop,M,Caught fish cooked/eaten with correct consume,Unassigned,Not Started
+SP-016,2,P1,NPC bank/vendor and coin safeguards,L,Buy fails without negative currency,Unassigned,Not Started
+SP-017,3,P1,Party and two-player mini-boss,L,"Independent loot, graceful disconnect",Unassigned,Not Started
+SP-018,3,P1,Cooperative quest credit,M,Each party member gets correct credit,Unassigned,Not Started
+SP-019,4,P1,Hollowcrypt instance proof,L,Separate groups cannot see shared dungeon actors,Unassigned,Not Started
+SP-020,4,P1,Dungeon boss telegraphs and checkpoint,L,Clear hazard warning + correct restart,Unassigned,Not Started
+SP-021,5,P2,Sorrowfen and faction questline,L,Area has distinct gameplay and shortcuts,Unassigned,Not Started
+SP-022,5,P1,Performance and scalability measurement,M,Profiles from busy hub and mob encounter,Unassigned,Not Started
+SP-023,6,P0,Exploit regression test suite,L,Quest/vendor/crafting duplicate bugs absent,Unassigned,Not Started
+SP-024,6,P1,Accessibility and 3 viewport test,M,UI interactions legible and accessible,Unassigned,Not Started
+SP-025,6,P1,Private beta and telemetry review,M,Known critical bugs resolved before publish,Unassigned,Not Started
