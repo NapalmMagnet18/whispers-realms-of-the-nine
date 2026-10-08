@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 342,
-  "updatedAt": "2026-10-08T02:51:14.654Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype with a brass-framed menu, realm roster and character-creation flow leading to the Lantern March continent. MMORPG Tools owns front-door and character lifecycle/UI; ordered player behaviors compose movement, class combat, quests and trade, while scene builders provide the world and its landmarks.",
+  "basedOnSpecVersion": 380,
+  "updatedAt": "2026-10-08T02:55:21.699Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype whose menu and character-creation places lead into the streamed Lantern March continent. MMORPG Tools owns the front door and character lifecycle; ordered player behaviors compose movement, class combat, quests and trade, while procedural builders and terrain bindings supply settlements, landmarks and painted vegetation.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -90,6 +90,7 @@
     "scripts/db.js",
     "scripts/elric.js",
     "scripts/flat-starter-terrain.js",
+    "scripts/flower-look.js",
     "scripts/flower.js",
     "scripts/gen/arrow.js",
     "scripts/gen/briar.js",
@@ -112,10 +113,10 @@
     "scripts/gen/windmill-sails.js",
     "scripts/gen/windmill.js",
     "scripts/gen/wolf.js",
-    "scripts/gen/zz-cardtest.js",
     "scripts/grass-look.js",
     "scripts/grass.js",
     "scripts/humanoid-locomotion.js",
+    "scripts/leaf-fall-look.js",
     "scripts/lib/economy.js",
     "scripts/lib/kit.js",
     "scripts/lib/missiles.js",
@@ -126,6 +127,8 @@
     "scripts/look-wayshrine.js",
     "scripts/material-realm-veil.js",
     "scripts/missile.js",
+    "scripts/mushroom-look.js",
+    "scripts/mushroom.js",
     "scripts/pathfinder.js",
     "scripts/pebble.js",
     "scripts/player.js",
@@ -139,6 +142,7 @@
     "scripts/terrain-reach.js",
     "scripts/townsfolk.js",
     "scripts/training-dummy.js",
+    "scripts/tree-look.js",
     "scripts/ui.js",
     "scripts/ui/nametag.js",
     "scripts/vanguard.js",
@@ -147,85 +151,81 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main-menu-land/ - title/front door with the monumental Realm Gate, lanterns and realm-list/character UI backdrop.",
-    "places/character-creation-land/ - character preview and creation at the Wayshrine; its look and scene are separate from gameplay lighting.",
-    "places/main/ - streamed Lantern March continent; config owns its terrain, coast, roads, scatter and atmosphere.",
-    "places/main/cells/x0z0.scene - Lantern's Reach hub and many town buildings, NPCs, services and interactions.",
-    "places/main/cells/x-6z1.scene, x7z-1.scene and x2z11.scene - Thornhollow, Cinderhold and Gullrest starting settlements; region names are also classified in scripts/lib/regions.js and the HUD.",
-    "places/main/cells/ - Briarwild, Emberstone Quarry, farms, distant landmarks and race-start regions distributed across streamed continent cells."
+    "places/main-menu-land/ - title/front door, Realm Gate backdrop, realm roster and character UI.",
+    "places/character-creation-land/ - Wayshrine character preview/create scene, with its own evening atmosphere and look.",
+    "places/main/ - streamed Lantern March continent; config owns terrain/coast, roads, scatter, atmosphere and start-zone clearings.",
+    "places/main/cells/x0z0.scene - Lantern's Reach hub, buildings, services, residents and local interactions.",
+    "places/main/cells/ - continent cells hold Briarwild, Emberstone Quarry, farms, settlements, race starts and distant landmarks; recent cells extend town-side coverage and tree scatter.",
+    "places/main/cells/x-6z1.scene, x7z-1.scene and x2z11.scene - Thornhollow, Cinderhold and Gullrest starting settlements; region display is classified by scripts/lib/regions.js."
   ],
   "roots": [
-    "world.config.yaml - main-menu-land default entry; binds player/camera, MMORPG UI, nametag, arrival behavior, realm routing and once-a-minute realm pulse.",
+    "world.config.yaml - main-menu-land default entry; binds player/camera, MMORPG UI, nametag, arrival behavior, routing and realm pulse.",
     "mods/mmorpg-tools/mod.json - registers MMORPG player/menu, character creation, camera and interaction behaviors.",
-    "templates/player.js#player - ordered behavior chain: humanoid locomotion, core movement, Vanguard, Arcanist, Pathfinder, quest-player and vendor.",
-    "templates/camera.js#camera - core camera template using scripts/camera.js; MMORPG orbit and creation preview cameras are distinct.",
-    "places/main/config.yaml - continent spawn, gravity, terrain/coast, material, road/flattening marks and scatter configuration."
+    "templates/player.js#player - ordered chain: humanoid locomotion, core movement, Vanguard, Arcanist, Pathfinder, quest-player and vendor.",
+    "templates/camera.js#camera - core camera template using scripts/camera.js; MMORPG orbit and creation-preview cameras are separate paths.",
+    "places/main/config.yaml - continent spawn, gravity, terrain/coast, material layers, roads, flattening and terrain scatter bindings."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, save helpers, UI panels and front-door modules consumed by mod behaviors and ui.js.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - per-realm character SQL load/upsert/delete and realm-roster population helper; used by menu and player lifecycle.",
-    "scripts/lib/data/realms.yml - room roster consumed by scripts/routing.js and crons/realm-pulse.js; realm-save.js separately defines its roster in code.",
-    "scripts/lib/economy.js and MMORPG lib/currency.js - copper transaction/ledger and currency formatting shared by gameplay, vendor and UI.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG data registries, persistence helpers and UI panels consumed by mod behaviors and ui.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - per-realm character SQL load/upsert/delete and roster population used by menu and player lifecycle.",
+    "scripts/lib/data/realms.yml - room roster read by scripts/routing.js and crons/realm-pulse.js; realm-save.js separately defines its roster in code.",
+    "scripts/lib/economy.js and MMORPG lib/currency.js - copper transactions/ledger and currency formatting shared by gameplay, vendor and UI.",
     "scripts/lib/data/quests.yml, townsfolk.yml and wolves.yml - quest, dialogue and pack definitions read by their gameplay behaviors.",
-    "scripts/lib/regions.js and scripts/terrain-reach.js - continent regions and height/coast functions used by terrain and region display.",
-    "scripts/gen/shape.js plus gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js and reach-* - procedural scene geometry reused by placed instances.",
-    "scripts/lib/kit.js, scripts/lib/missiles.js and scripts/gen/arrow.js - shared asset-kit and projectile/arrow infrastructure for builders and class abilities."
+    "scripts/lib/regions.js and scripts/terrain-reach.js - continent region classification and height/coast functions used by terrain and region display.",
+    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js and reach-* - shared procedural geometry builders.",
+    "scripts/tree-look.js, flower-look.js, mushroom-look.js, grass-look.js and leaf-fall-look.js - scripted materials for terrain plants/trees and the leaf particle; geometry or particle UVs select painted sheet regions."
   ],
   "notableExports": [
     "scripts/routing.js - pickRoom; crons/realm-pulse.js - cron; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
     "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js - roster selection/hydration, update, onSpawn and onInput; lib/ui-character-roster.js - renderCharacterRoster.",
-    "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview lifecycle, onSpawn, update and onInput; lib/version.js - GAME_VERSION, GAME_TITLE, versionTag.",
+    "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview lifecycle, onSpawn, update and onInput; lib/version.js - GAME_VERSION, GAME_TITLE, versionTag (GAME_VERSION is 0.7.4 Alpha).",
     "mods/mmorpg-tools/mod-mmorpg/player.js - character build/save/load, lifecycle, movement helpers, logout and onLeave.",
-    "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - sit/onInput/update; class scripts expose their combat handlers.",
+    "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - sit/onInput/update; class scripts expose combat handlers.",
     "scripts/quest-player.js - onInput/update; scripts/vendor.js - coin-event/vendor interaction; scripts/townsfolk.js - resident behavior.",
     "scripts/lib/economy.js - move and formatting; MMORPG lib/realm-save.js - realm persistence and roster helpers.",
-    "scripts/gen/hamlet.js, realm-gate.js and wayshrine.js - geometry/collider; scripts/material-realm-veil.js - material; scripts/look-wayshrine.js - look."
+    "scripts/gen/tree.js - geometry/collider; scripts/tree-look.js - material; flower.js and mushroom.js - geometry; their *-look scripts - material."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
-    "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw and animation channels; behavior ordering lets gait sample movement velocity.",
-    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots, persisted character records; character-select and main-menu-mgr own front-door transitions.",
+    "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw and animation channels; gait samples prior-tick movement velocity.",
+    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records; character-select and main-menu-mgr own front-door transitions.",
     "scripts/vanguard.js, arcanist.js and pathfinder.js - class action/cooldown/combat state; scripts/wolves.js owns pack AI and den/death timers.",
     "scripts/quest-player.js - per-player quest, tally, inventory/xp/dialog/cache state and timber interaction; woodcutting.js owns tree fall/regrowth presentation.",
-    "scripts/vendor.js and scripts/lib/economy.js - purse transactions and coin ledger movement; vendor also handles incoming coin events.",
+    "scripts/vendor.js and scripts/lib/economy.js - purse transactions and coin ledger movement; vendor handles incoming coin events.",
     "scripts/townsfolk.js - resident idle/facing state; quest-player owns per-player dialogue sequence and quest progress.",
     "MMORPG ui.js and lib/ui-*.js - render from player/mod state; panels do not own persistent character data."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → main gameplay lifecycle.",
-    "Fresh MMORPG player load resets to title; main-menu-mgr loads the current room's SQL roster, opens the realm list on first realm visit and refreshes population/character counts.",
-    "Realm menu pick/join → main-menu-mgr api.cross to the selected room's main-menu-land; world routing validates requested room, then last room, then main using realms.yml.",
-    "scripts/routing.js and crons/realm-pulse.js read realms.yml; each room cron writes player count to realm_pulse, which realm-save reads for the roster UI.",
-    "Character creation race/class → mod lib/races.js race start and character state → player.js/realm-save upsert to realm characters table; saves retain the realm/slot identity.",
+    "Fresh MMORPG player load resets to title; main-menu-mgr loads the current room's SQL roster, opens realm list on first realm visit and refreshes population/character counts.",
+    "Realm menu pick/join → main-menu-mgr api.cross to selected room's main-menu-land; routing validates requested room, then last room, then main using realms.yml.",
+    "scripts/routing.js and crons/realm-pulse.js read realms.yml; each room cron writes player count to realm_pulse, which realm-save reads for roster UI.",
+    "Character creation race/class → mod lib/races.js race start and character state → player.js/realm-save upsert to realm characters table; saves retain realm/slot identity.",
     "templates/player.js → humanoid-locomotion → player → Vanguard → Arcanist → Pathfinder → quest-player → vendor; preserve this order and shared inputs.",
     "moveX/moveZ/jump and orbit/steer/autorun → player.js and wow-move.js room-local intent → body motion under place gravity.",
-    "attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/wolves; wolf slow/hit state is consumed by wolves.js.",
-    "wolves.js reads wolves.yml and spawns gen/wolf entities → AI/combat/death/respawn; kills award XP and emit coins events to player vendor behavior.",
-    "interact/quest inputs → quest-player resolves quest NPC, talker, readable, cache or timber; quest-data/quests.yml drives accept/complete and UI actions.",
+    "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/wolves; wolf slow/hit state is consumed by wolves.js.",
+    "wolves.js reads wolves.yml and spawns gen/wolf entities → AI/combat/death/respawn; kills award XP and emit coin events to player vendor behavior.",
+    "Interact/quest inputs → quest-player resolves quest NPC, talker, readable, cache or timber; quest-data/quests.yml drives accept/complete and UI actions.",
     "Quest reward/vendor/loot → economy copper move and ledger/purse updates → vendor/UI; character changes are snapshotted and saved through MMORPG player.js/realm-save.js.",
-    "main-menu-land scene uses gen/realm-gate.js plus material-realm-veil; character-creation-land uses gen/wayshrine.js and look-wayshrine.js for its distinct backdrop."
+    "main/config.yaml terrain layers bind geometry scripts to scripted looks: tree/flower/mushroom UVs select painted sheets; fx/leaf-fall.fx.js uses leaf-fall-look.js for its cutout card."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js and reach-* - builders recur across scene instances, varied by kind, seed and dimensions.",
-    "scripts/grass.js, flower.js and pebble.js - terrain scatter reused by place bindings, varied by density/scale/seed; grass-look supplies its material separately.",
+    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js and reach-* - builders recur across placed instances, varied by kind, seed and dimensions.",
+    "scripts/grass.js, flower.js, mushroom.js and pebble.js - terrain scatter geometry reused by place bindings, varied by layer density, scale, seed or per-item params.",
+    "scripts/gen/tree.js with scripts/tree-look.js - painted bark and alpha-cut foliage recur in forest layers and placed scatters, varied by pine/oak/giantpine/twisted/dead kind and LOD.",
+    "scripts/flower.js and mushroom.js with their look materials - painted wildflower frames and mushroom caps are varied by frame/cap params in terrain scatter.",
     "MMORPG player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle registered by mod.json.",
     "MMORPG camera.js/camera-creation.js and menu-camera.js - gameplay, creation-preview and menu framing camera paths with phase/place guards.",
     "MMORPG lib/ui-*.js - modular renderers composed by ui.js for HUD, menu/roster, quests, vendor, inventory, map, character and settings.",
-    "scripts/vanguard.js, arcanist.js and pathfinder.js with class data - class-selected combat actions share targets and projectile infrastructure.",
-    "scripts/wolves.js with wolves.yml and gen/wolf.js - configured pack manager reuses AI/combat behavior, varied by spawn row and hit/slow state.",
-    "scripts/quest-player.js, elric.js, townsfolk.js, vendor.js and woodcutting.js - interaction behaviors vary by target tags and per-player/NPC state."
+    "scripts/vanguard.js, arcanist.js and pathfinder.js; wolves.js, quest-player.js, townsfolk.js, vendor.js and woodcutting.js - combat and interaction behaviors vary by class, target tags and per-player/NPC state."
   ],
-  "probableOrphans": [
-    "scripts/db.js - schema migration helper; realm-save refers to its schema, but current callers of migrate are not identified.",
-    "scripts/lib/data/races.yml - race/start data is mirrored in MMORPG lib/races.js and appears to have no runtime reader.",
-    "scripts/gen/zz-cardtest.js - temporary-looking card-test geometry with no reference found in the current package."
-  ],
+  "probableOrphans": [],
   "migrationNotes": [
     "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route transactions through economy/coin handling to keep purse, ledger and UI aligned.",
     "templates/player.js behavior order is significant: locomotion before movement, then classes, quests and vendor; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
-    "Realm sources differ: routing and pulse read scripts/lib/data/realms.yml, while realm-save.js hardcodes room IDs (including realm-prefixed non-main IDs); keep roster, route and save room identifiers aligned.",
+    "Realm sources differ: routing and pulse read scripts/lib/data/realms.yml, while realm-save.js hardcodes room IDs (including realm-prefixed non-main IDs); keep roster, route and save identifiers aligned.",
     "Persisted character fields must travel through player.js build/load data and realm-save signatures while preserving the (user, realm, slot) key; legacy storage import is main-realm-only.",
-    "lib/version.js owns the displayed game version; the menu, settings and pause version tag consume it, not gameplay HUD."
+    "Procedural tree/flower/mushroom geometry returns UVs consumed by its scripted material; preserve the assigned UV bands/frame regions and match params.kind/cap/frame between geometry and material bindings."
   ]
 }
