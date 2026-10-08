@@ -338,3 +338,21 @@ marta-ashen:
     - "My grandmother lit that fire the year the cathedral bells stopped. We've fed it every night since. It's the last candle, see?"
     - "Osric drinks here after he's done with the yard. Don't ask him which graves are quiet tonight. He'll tell you."
     - "The pilgrims come for the cathedral. They stay for the stew. Nobody stays for the singing, that's Halric."
+wenna-ashen:
+  name: Wenna the Chandler
+  lines:
+    - "Tallow for the poor, beeswax for the rich, black wax for the graves. Every candle in Ashen Close came off this counter."
+    - "Light one on a stone and the dead sleep easier. Light two and they come and thank you. Most folk buy one."
+    - "Marta at the Last Candle buys my thickest tapers. Her fire's never out, but she likes a backup. Smart woman."
+jory-ashen:
+  name: Jory Pell, Coffinwright
+  lines:
+    - "Measure twice, plane once. The customer never complains, but his widow does."
+    - "Busy season since the Veil thinned. Osric keeps digging, I keep building, and the Close keeps shrinking."
+    - "That lid? Pine. Oak's for knights. Ser Halric's already paid for his, the old fool. Said he wanted it ready."
+ada-ashen:
+  name: Little Ada
+  lines:
+    - "Are you a knight? You've got mud on you like a knight. Ser Halric has mud on him too."
+    - "Mama says don't go past the iron fence after the braziers burn low. I go anyway. The ghosts are nice."
+    - "If you find a silver button in the graveyard it's mine. I lost it. Don't tell Osric."

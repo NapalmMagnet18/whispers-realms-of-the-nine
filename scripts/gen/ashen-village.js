@@ -3,7 +3,7 @@
 //   timber-and-plaster upper floor on carved corbels, steep slate gable to the street with finials, a chimney.
 // laundry {L}: two leaning posts, a sagging line, washing hung · lanternpost {h}: crooked iron post, caged lantern
 // woodpile {L}: split logs stacked against a lean-to rail
-import { boxR, triN, quadN, cyl, rot } from "./shape.js";
+import { boxR, triN, quadN, cyl, rot, blob } from "./shape.js";
 const T = (n) => "cdn/texture-" + n + ".png";
 const FIELD = T("rough-fieldstone-wall-mossy"), ASHLAR = T("weathered-grey-ashlar-stone"), LIME = T("warm-limewash-plaster-hand-painted");
 const OAK = T("dark-oak-timber-beam-hand-painted"), SLATE = T("dark-slate-roof-tiles-weathered"), IRON = T("rusted-black-iron-hammered");
@@ -270,12 +270,80 @@ function woodpile(ctx, p, s) {
   }
 }
 
+
+// chandler {}: a black-canvas stall, tiers of candles in every height (lit ones glow), hanging tapers, skull charms, a ledger
+function chandler(ctx, p, s) {
+  const lod = s ? 5 : ctx.lod;
+  paint(ctx, s, DOOR, "oklch(0.82 0.03 55)");
+  boxR(ctx, [0, 0.42, 0], [3, 0.85, 0.9]);
+  if (s) { boxR(ctx, [0, 1.3, 0.45], [3.2, 2.6, 0.2]); return; }
+  paint(ctx, s, OAK, "oklch(0.72 0.03 45)");
+  for (const x of [-1.55, 1.55]) for (const z of [-0.55, 0.6]) boxR(ctx, [x, z < 0 ? 1.15 : 1.35, z], [0.12, z < 0 ? 2.3 : 2.7, 0.12]);
+  boxR(ctx, [0, 1.25, 0.55], [3, 0.06, 0.4]); boxR(ctx, [0, 1.75, 0.55], [3, 0.06, 0.4]); // back shelves
+  paint(ctx, s, CLOTH, "oklch(0.55 0.04 20)", 0.95);
+  boxR(ctx, [0, 2.48, 0.03], [3.5, 0.04, 1.7], { pitch: 12 });
+  if (lod <= 2) for (let i = 0; i < 7; i++) boxR(ctx, [-1.5 + i * 0.5, 2.22, -0.8], [0.46, 0.32, 0.02], { pitch: 4 }); // scalloped valance
+  // candles: a pseudo-random field on the counter and shelves
+  const h = (i) => { const v = Math.sin(i * 91.7 + 13.1) * 43758.5; return v - Math.floor(v); };
+  const spots = [];
+  for (let i = 0; i < 26; i++) spots.push([-1.35 + h(i) * 2.7, 0.85, -0.35 + h(i + 50) * 0.55]);
+  for (let i = 0; i < 14; i++) spots.push([-1.35 + h(i + 99) * 2.7, 1.28, 0.45 + h(i + 7) * 0.2]);
+  for (let i = 0; i < 12; i++) spots.push([-1.35 + h(i + 199) * 2.7, 1.78, 0.45 + h(i + 17) * 0.2]);
+  const wax = ["oklch(0.95 0.03 90)", "oklch(0.9 0.05 80)", "oklch(0.8 0.08 30)", "oklch(0.35 0.03 300)"];
+  spots.forEach(([x, y, z], i) => {
+    if (lod > 2 && i % 3) return;
+    const ht = 0.08 + h(i + 300) * 0.32, r = 0.025 + h(i + 400) * 0.03;
+    paint(ctx, s, null, wax[i % 4], 0.6);
+    cyl(ctx, x, y, z, r, r * 0.92, ht, 6);
+    if (lod <= 2) { paint(ctx, s, null, wax[i % 4], 0.6); cyl(ctx, x, y, z, r * 1.5, r * 1.1, 0.02, 6); } // wax pool
+    if (i % 3 === 0) { glow(ctx, s, "oklch(0.95 0.1 80)", "oklch(0.95 0.18 70)"); cyl(ctx, x, y + ht, z, 0.012, 0.0, 0.05, 4); }
+  });
+  if (lod <= 2) {
+    paint(ctx, s, null, "oklch(0.9 0.04 85)", 0.6); // hanging taper bundles
+    for (let b = 0; b < 4; b++) { const x = -1.2 + b * 0.8; for (let k = 0; k < 5; k++) cyl(ctx, x + (k - 2) * 0.04, 1.75 - h(b * 7 + k) * 0.15, -0.6, 0.012, 0.012, 0.4, 4); }
+    paint(ctx, s, null, "oklch(0.88 0.02 85)", 0.7); // bone skull charms on the counter
+    for (const [x, z] of [[-0.9, -0.3], [0.7, -0.32]]) { blob(ctx, x, 0.95, z, 0.08, 0.09, 0.09, x * 10, 0.05, 5, 7); paint(ctx, s, null, "oklch(0.15 0 0)"); boxR(ctx, [x - 0.03, 0.97, z - 0.085], [0.025, 0.025, 0.01]); boxR(ctx, [x + 0.03, 0.97, z - 0.085], [0.025, 0.025, 0.01]); paint(ctx, s, null, "oklch(0.88 0.02 85)", 0.7); }
+    paint(ctx, s, CLOTH, "oklch(0.45 0.05 30)"); boxR(ctx, [1.1, 0.88, -0.2], [0.3, 0.05, 0.22], { yaw: 12 }); // ledger
+    paint(ctx, s, null, "oklch(0.9 0.04 85)"); boxR(ctx, [1.1, 0.91, -0.2], [0.28, 0.01, 0.2], { yaw: 12 });
+  }
+}
+// coffins {}: a trestle bench with a coffin half-planed, two finished coffins leaning on a back board, shavings, tools
+function coffins(ctx, p, s) {
+  const lod = s ? 5 : ctx.lod;
+  const coffin = (c, r, len = 2.0, open = false) => { // hexagonal coffin lying along X, c = base centre
+    const pts = [[-len / 2, 0.22], [-len / 2 + 0.55, 0.32], [len / 2, 0.2]];
+    const ring = (y) => [[pts[0][0], -pts[0][1]], [pts[1][0], -pts[1][1]], [pts[2][0], -pts[2][1]], [pts[2][0], pts[2][1]], [pts[1][0], pts[1][1]], [pts[0][0], pts[0][1]]].map(([x, z]) => { const q = rot([x, y, z], r); return [c[0] + q[0], c[1] + q[1], c[2] + q[2]]; });
+    const A = ring(0), B = ring(open ? 0.32 : 0.42);
+    for (let i = 0; i < 6; i++) { const j = (i + 1) % 6; const mx = (A[i][0] + A[j][0]) / 2 - c[0], mz = (A[i][2] + A[j][2]) / 2 - c[2]; quadN(ctx, A[i], A[j], B[j], B[i], [mx, 0, mz]); }
+    const cA = [0, 0, 0].map((_, k) => A.reduce((a, v) => a + v[k], 0) / 6), cB = [0, 0, 0].map((_, k) => B.reduce((a, v) => a + v[k], 0) / 6);
+    const up = rot([0, 1, 0], r);
+    for (let i = 0; i < 6; i++) { triN(ctx, cA, A[i], A[(i + 1) % 6], up.map((v) => -v)); if (!open) triN(ctx, cB, B[i], B[(i + 1) % 6], up); }
+  };
+  paint(ctx, s, OAK, "oklch(0.78 0.03 50)");
+  for (const x of [-0.8, 0.8]) { boxR(ctx, [x, 0.38, 0], [0.1, 0.76, 0.7], {}); boxR(ctx, [x, 0.76, 0], [0.16, 0.06, 0.8]); }
+  if (s) { boxR(ctx, [0, 0.5, 0], [2.2, 1, 0.9]); boxR(ctx, [0, 1, 1.0], [2.6, 2, 0.6]); return; }
+  paint(ctx, s, T("worn-oak-floor-boards"), "oklch(0.9 0.04 70)");
+  coffin([0, 0.79, 0], {}, 2.0, true);
+  paint(ctx, s, DOOR, "oklch(0.7 0.03 45)");
+  boxR(ctx, [0, 1.0, 1.2], [2.8, 2.0, 0.08]);
+  coffin([-0.6, 1.0, 1.0], { roll: 90, yaw: 0, pitch: -8 }, 1.9);
+  coffin([0.65, 0.95, 1.0], { roll: 90, pitch: -6 }, 1.8);
+  if (lod <= 2) {
+    paint(ctx, s, null, "oklch(0.85 0.06 80)"); // shavings
+    for (let i = 0; i < 18; i++) { const a = i * 2.39, r = 0.3 + (i % 5) * 0.12; boxR(ctx, [Math.cos(a) * r * 1.6, 0.02, -0.6 + Math.sin(a) * r * 0.5], [0.12, 0.02, 0.04], { yaw: i * 37 }); }
+    paint(ctx, s, IRON, "oklch(0.8 0 0)", 0.5, 0.6); boxR(ctx, [0.4, 1.13, 0.12], [0.24, 0.06, 0.07]); // plane
+    paint(ctx, s, OAK, "oklch(0.8 0.03 50)"); boxR(ctx, [-0.5, 1.13, 0.15], [0.3, 0.04, 0.04], { yaw: 30 }); // mallet handle
+  }
+}
+
 function build(ctx, p, s) {
   const k = p.kind || "townhouse";
   if (k === "townhouse") townhouse(ctx, p, s);
   else if (k === "laundry") laundry(ctx, p, s);
   else if (k === "lanternpost") lanternpost(ctx, p, s);
   else if (k === "woodpile") woodpile(ctx, p, s);
+  else if (k === "chandler") chandler(ctx, p, s);
+  else if (k === "coffins") coffins(ctx, p, s);
 }
 export function geometry(ctx) { build(ctx, ctx.params || {}, false); }
 export function collider(ctx) { build(ctx, ctx.params || {}, true); }
