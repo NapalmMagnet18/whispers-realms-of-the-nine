@@ -1,6 +1,7 @@
 // Character creation behavior — MMORPG Tools Mod
 // Race/class/gender selection, colors, confirm
 // Stripped: no voice lines, no sword preview, empty spellbar
+var RS = require('./lib/realm-save.js'); // the live save: lib/realm-save.js (characters table)
 
 const { RACES, CLASSES, CLASS_COLORS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAIR_STYLES, FACIAL_HAIR } = require('./lib/races.js');
 const { CLASS_STARTING_ITEMS } = require('./lib/class-items.js');

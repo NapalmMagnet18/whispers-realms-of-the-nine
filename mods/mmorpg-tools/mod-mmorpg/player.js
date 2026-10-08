@@ -4,6 +4,7 @@
 // Multi-character roster stored under roster_<playerId>
 // NOTE: char_<playerId> writes removed — roster_ is the single source of truth
 // Active character index tracked in state as activeCharIdx
+var RS = require('./lib/realm-save.js'); // the live save: lib/realm-save.js (characters table)
 
 var { TRACKS } = require('./lib/music-tracks.js');
 var { getPlaceMusic } = require('./lib/place-music.js');
@@ -261,8 +262,8 @@ export function saveCharacter(objectApi, callback) {
   var data = buildCharData(objectApi);
   var activeIdx = s.activeCharIdx;
   var characters = s.characters;
-  try { require('./lib/realm-save.js').upsert(objectApi, typeof activeIdx === 'number' && activeIdx >= 0 ? activeIdx : 0, data); } catch (e) {}
-  objectApi.patchState({ _saveSig: require('./lib/realm-save.js').signature(s), _saveAt: objectApi.now ? objectApi.now() : 0 });
+  try { RS.upsert(objectApi, typeof activeIdx === 'number' && activeIdx >= 0 ? activeIdx : 0, data); } catch (e) {}
+  objectApi.patchState({ _saveSig: RS.signature(s), _saveAt: objectApi.now ? objectApi.now() : 0 });
 
   // Save to roster array if we have a valid roster and active index
   if (Array.isArray(characters) && typeof activeIdx === 'number' && activeIdx >= 0 && activeIdx < characters.length) {
@@ -536,7 +537,7 @@ export function update(objectApi, dt) {
   if (s.characterCreated && s.phase === 'playing' && !isMetaPlace && !s._saveInFlight) {
     var nowMs = objectApi.now ? objectApi.now() : 0;
     if (nowMs - (s._saveAt || 0) >= 2000) {
-      var sig = require('./lib/realm-save.js').signature(s);
+      var sig = RS.signature(s);
       if (sig !== s._saveSig) saveCharacter(objectApi);
     }
   }
@@ -1957,5 +1958,5 @@ export function handleLogout(objectApi) {
 export function onLeave(objectApi) {
   var s = objectApi.getState();
   if (!s.characterCreated || !s._rosterLoaded) return;
-  try { require('./lib/realm-save.js').upsert(objectApi, typeof s.activeCharIdx === 'number' ? s.activeCharIdx : 0, buildCharData(objectApi)); } catch (e) {}
+  try { RS.upsert(objectApi, typeof s.activeCharIdx === 'number' ? s.activeCharIdx : 0, buildCharData(objectApi)); } catch (e) {}
 }

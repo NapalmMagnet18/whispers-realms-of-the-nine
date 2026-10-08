@@ -2,6 +2,7 @@
 // Player behavior for main-menu-land
 // Sets inMainMenu flag, handles menu button actions (Continue, Create Character)
 // Multi-character roster: loads/saves array of characters to roster_<playerId>
+var RS = require('./lib/realm-save.js'); // the live save: lib/realm-save.js (characters table)
 
 var { getPlaceMusic } = require('./lib/place-music.js');
 
