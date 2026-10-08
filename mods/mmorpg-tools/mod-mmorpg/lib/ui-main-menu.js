@@ -89,7 +89,7 @@ function newsBoard() {
       + '<div style="font-size:12.5px;line-height:1.5;color:rgba(232,217,181,.78);margin-top:4px">' + esc(n[2]) + '</div></div>';
   }).join('');
   return '<div class="wl-news" style="position:fixed;left:56px;top:210px;width:330px;z-index:60;pointer-events:none;' + ART.frame('dialog', 14, 'linear-gradient(180deg,rgba(20,14,9,.86),rgba(12,9,6,.9))') + 'padding:10px 16px 6px;box-shadow:0 14px 40px rgba(0,0,0,.5);animation:wm-in .8s ease-out">'
-    + '<div style="display:flex;align-items:center;justify-content:space-between"><div class="wm-title" style="font-size:15px;letter-spacing:3px">Herald of the Realm</div><img src="' + UI_ICONS.quest + '" style="width:20px;height:20px;opacity:.85" onerror="this.style.display=\'none\'"></div>'
+    + '<div style="display:flex;align-items:center;justify-content:space-between"><div class="wm-title" style="font-size:15px;letter-spacing:3px">Herald of the Realm</div><img src="' + UI_ICONS.journal + '" style="width:22px;height:22px;opacity:.9"></div>'
     + ART.rule('fadeBoth', '100%', 12) + items + '</div>';
 }
 function heroCard(s, hasChar) {
