@@ -7,3 +7,10 @@ roost-ninthveil:
   primitive: {kind: scripted, script: scripts/gen/roost.js}
   state: {roost: ninthveil}
   tags: [roost]
+veilgate-blueprint:
+  feetPosition: {x: 30, y: 130, z: -7580}
+  id: veilgate-blueprint
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 100, height: 16, kind: box, width: 120}
+  tags: [blueprint]
