@@ -439,7 +439,7 @@ var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' },
   // the Reach's townsfolk (scripts/lib/data/townsfolk.yml): a nameplate each, no quest marker
   { id: 'reach-npc-mira', name: 'Mira the Forgekeeper' }, { id: 'reach-npc-dren', name: 'Quartermaster Dren' }, { id: 'reach-npc-bram', name: 'Bram Alder' },
   { id: 'reach-npc-tamsin', name: 'Tamsin the Ranger' }, { id: 'reach-npc-vale', name: 'Sister Vale' }, { id: 'reach-npc-rowan', name: 'Rowan the Ferryman' },
-  { id: 'qm-ward-hesk', name: 'Hesk the Cobbler' }, { id: 'qm-ward-pell', name: 'Widow Pell' }, { id: 'qm-dock-watch', name: 'Corin of the Dock Watch' }];
+  { id: 'qm-ward-hesk', name: 'Hesk the Cobbler' }, { id: 'qm-ward-pell', name: 'Widow Pell' }, { id: 'qm-dock-watch', name: 'Corin of the Dock Watch' }, { id: 'glade-npc-fenna', name: 'Elder Fenna Rootwake' }, { id: 'glade-npc-ell', name: 'Grove Singer Ell' }, { id: 'glade-npc-tamsin', name: 'Tamsin the Ranger' }];
 // the race starts' greeters: drawn only while the hero stands within 90 m of them
 var GREETERS = [{ id: 'start-thornhollow/start-thornhollow-greeter', name: 'Elder Fennick Thornwhisper', x: -717, z: 71 },
   { id: 'start-cinderhold/start-cinderhold-greeter', name: 'Forgemother Brenna Ashvein', x: 898, z: -172 },
