@@ -43,7 +43,7 @@ const K = {
     P(ctx, WOOD, "oklch(0.6 0.02 70)"); for (let i = 0; i < 6; i++) boxR(ctx, [(q() - 0.5) * 4, 0.2, (q() - 0.2) * 8], [0.2, 0.06, 2 + q() * 2], { yaw: q() * 60 - 30 }); // abandoned planks
   },
   beacon(ctx, q, far) { // a harbour beacon: fieldstone cairn, iron basket, a glass lens bowl (the fx lights it)
-    P(ctx, STONE, "oklch(0.6 0.02 120)"); cyl(ctx, 0, 0, 0, 0.9, 0.6, 1.8, 8, true, far ? null : 0.12);
+    P(ctx, STONE, "oklch(0.6 0.02 120)"); cyl(ctx, 0, 0, 0, 0.9, 0.6, 1.8, 8, true, far ? null : (i, k) => 1 + ((i * 7 + k * 3) % 5) * 0.03);
     P(ctx, IRON, "oklch(0.3 0.01 60)", 0.5, 0.7); cyl(ctx, 0, 1.8, 0, 0.12, 0.12, 0.8, 6); cyl(ctx, 0, 2.5, 0, 0.55, 0.7, 0.5, 8, false);
     glow(ctx, "oklch(0.8 0.06 210)", [0.2, 0.35, 0.45]); ctx.roughness(0.1); blob(ctx, 0, 2.75, 0, 0.42, 0.25, 0.42, 3, 0.05, 4, 8);
   },
