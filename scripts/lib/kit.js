@@ -54,3 +54,20 @@ export function applyHit(ctx, ownerId, t, h) {
   if (h.missile) impactFx(ctx, h.missile, materialOf(t), h.at, h.normal)
   if (ownerId) ctx.emit('hitstop', { duration: 0.03 }, { audience: { player: ownerId } })
 }
+
+// A class drill: a guard or ward raised beside a thing tagged `tag` while its quest (state.quest) is active counts one (state.tallyKey).
+// The Shield Table's pells and trial stones, the Observatory's forge and plinths.
+export function drill(ctx, tag) {
+  const st = ctx.self.state, now = ctx.now(), aqs = st.activeQuests || []
+  for (const r of ctx.query({ tags: [tag], radius: 3.5 })) {
+    const d = r.state || {}; if (!aqs.some((q) => q && q.questId === d.quest)) continue
+    if (now < (ctx.session.drillCd || 0)) return
+    ctx.session.drillCd = now + 1500
+    st.tally = { ...(st.tally || {}), [d.tallyKey]: ((st.tally || {})[d.tallyKey] || 0) + 1 }; st._questSave = true
+    const at = { x: r.feetPosition.x, y: r.feetPosition.y + 1.6, z: r.feetPosition.z }
+    ctx.emit('damageNumber', { position: at, text: d.blockText || 'Blocked!', color: 'oklch(0.86 0.12 85)', size: 1.1, lifetime: 1.2 }, { audience: { player: ctx.self.id } })
+    ctx.emit('shake', { target: r.id, intensity: 0.25, duration: 0.25 }, { audience: { nearby: r.feetPosition, radius: 30 } })
+    ctx.emit('playSound', { clip: d.sound || '/cdn/moodboard-painterly-fantasy/sfx-wooden-shield-block-thud.mp3', position: at, volume: 0.6 }, { audience: { nearby: r.feetPosition, radius: 25 } })
+    return
+  }
+}

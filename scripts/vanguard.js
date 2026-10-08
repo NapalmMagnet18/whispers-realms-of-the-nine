@@ -3,7 +3,7 @@
 // target's state (target.state.hp -= d). Anything tagged "enemy" with state.hp is struck.
 import V from './lib/data/vanguard.yml'
 import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
-import { classOf } from './lib/kit.js'
+import { drill, classOf } from './lib/kit.js'
 
 const WHOOSH = '/cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3'
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
@@ -36,7 +36,7 @@ function act(ctx, kind) {
   if (kind === 'guard') {
     ctx.self.state.guardUntil = now + a.length * 1000
     ctx.self.state.guardReduce = a.reduce
-    drill(ctx)
+    drill(ctx, 'shield-drill')
     ctx.emit('playSound', { clip: GUARD_SND, position: ctx.self.feetPosition, volume: 0.4 }, { audience: { nearby: ctx.self.feetPosition, radius: 25 } })
     return
   }
@@ -77,18 +77,3 @@ export function land(ctx, { kind }) {
   ctx.emit('cameraPunch', { direction: n, intensity: kind === 'heavy' ? 0.5 : 0.2 }, { audience: { player: self.id } })
 }
 
-// The Shield Table's drills: a guard raised beside a pell (or a trial stone) while its quest asks for it counts one block.
-function drill(ctx) {
-  const st = ctx.self.state, now = ctx.now(), aqs = st.activeQuests || []
-  for (const r of ctx.query({ tags: ['shield-drill'], radius: 3.5 })) {
-    const d = r.state || {}; if (!aqs.some((q) => q && q.questId === d.quest)) continue
-    if (now < (ctx.session.drillCd || 0)) return
-    ctx.session.drillCd = now + 1500
-    st.tally = { ...(st.tally || {}), [d.tallyKey]: ((st.tally || {})[d.tallyKey] || 0) + 1 }; st._questSave = true
-    const at = { x: r.feetPosition.x, y: r.feetPosition.y + 1.6, z: r.feetPosition.z }
-    ctx.emit('damageNumber', { position: at, text: d.blockText || 'Blocked!', color: 'oklch(0.86 0.12 85)', size: 1.1, lifetime: 1.2 }, { audience: { player: ctx.self.id } })
-    ctx.emit('shake', { target: r.id, intensity: 0.25, duration: 0.25 }, { audience: { nearby: r.feetPosition, radius: 30 } })
-    ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-wooden-shield-block-thud.mp3', position: at, volume: 0.6 }, { audience: { nearby: r.feetPosition, radius: 25 } })
-    return
-  }
-}
