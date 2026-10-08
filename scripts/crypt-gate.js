@@ -6,6 +6,9 @@ export function onTriggerEnter(ctx, other) {
   const s = other.state || {};
   if (!s.characterCreated || s.phase === "creating") return;
   s._worldEnterAt = ctx.now();
+  if (String(ctx.self.state.link || "").startsWith("+hollowcrypt") && (s.activeQuests || []).some((q) => q && q.questId === "DHC-01")) {
+    s.tally = { ...(s.tally || {}), crypt_entered: (s.tally?.crypt_entered || 0) + 1 }; s._questSave = true; // DHC-01's first step
+  }
   ctx.cross(other, ctx.self.state.link);
 }
 export function onCross(ctx, other) {
