@@ -560,6 +560,246 @@ inn:
   primitive: {kind: scripted, params: {chimney: 1, d: 11, h: 6, rise: 3.4, stories: 2, w: 16, win: 3}, script: scripts/gen/house.js}
   rotation: 180
   tags: [building, inn]
+kit-anvil:
+  feetPosition: {x: 24, y: {terrain: 0}, z: -8.8}
+  id: kit-anvil
+  layout: {maxExtents: {y: 0.9}}
+  model: {id: /cdn/value.c0b9e1d8ba7bbb070ee6b77824770006d772ef8a94e737ba79f0664664bedebf.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 20}
+  tags: [kit]
+kit-barrel-1:
+  feetPosition: {x: 19.8, y: {terrain: 0}, z: -11.6}
+  id: kit-barrel-1
+  layout: {maxExtents: {y: 1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-barrel-2:
+  feetPosition: {x: 21.6, y: {terrain: 0}, z: -12.4}
+  id: kit-barrel-2
+  layout: {maxExtents: {y: 1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 40}
+  tags: [kit]
+kit-barrel-3:
+  feetPosition: {x: -18.4, y: {terrain: 0}, z: -11}
+  id: kit-barrel-3
+  layout: {maxExtents: {y: 1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 10}
+  tags: [kit]
+kit-barrel-4:
+  feetPosition: {x: 29.3, y: {terrain: 0}, z: -12}
+  id: kit-barrel-4
+  layout: {maxExtents: {y: 1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 70}
+  tags: [kit]
+kit-bench-1:
+  feetPosition: {x: -2, y: {terrain: 0}, z: 13.9}
+  id: kit-bench-1
+  layout: {maxExtents: {y: 0.9}}
+  model: {id: /cdn/value.96a90469e6faf950058cfd55e59e406c93efbe0f255fe20a5ba8a83f8432f620.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 180}
+  tags: [kit]
+kit-bench-2:
+  feetPosition: {x: 6.1, y: {terrain: 0}, z: -15.4}
+  id: kit-bench-2
+  layout: {maxExtents: {y: 0.9}}
+  model: {id: /cdn/value.96a90469e6faf950058cfd55e59e406c93efbe0f255fe20a5ba8a83f8432f620.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-boulder-west:
+  feetPosition: {x: -62.54, y: {terrain: 0}, z: -18.5}
+  id: kit-boulder-west
+  layout: {maxExtents: {y: 1.8}}
+  model: {id: /cdn/value.36109b69ca852aff31dea9e11f88feac492d6456f06129e6545d87020f2e1825.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 120}
+  tags: [kit]
+kit-cart-east:
+  feetPosition: {x: 55, y: {terrain: 0}, z: -10.23}
+  id: kit-cart-east
+  layout: {maxExtents: {y: 1.5}}
+  model: {id: /cdn/value.c191493ec15547ab15cc840595c47f09a7045420a0e92032349600799902ec5a.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 100}
+  tags: [kit]
+kit-cart-market:
+  feetPosition: {x: 14.5, y: {terrain: 0}, z: -18}
+  id: kit-cart-market
+  layout: {maxExtents: {y: 1.5}}
+  model: {id: /cdn/value.c191493ec15547ab15cc840595c47f09a7045420a0e92032349600799902ec5a.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 150}
+  tags: [kit]
+kit-crate-1:
+  feetPosition: {x: 24.2, y: {terrain: 0}, z: -11.6}
+  id: kit-crate-1
+  layout: {maxExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 15}
+  tags: [kit]
+kit-crate-2:
+  feetPosition: {x: -23.6, y: {terrain: 0}, z: -11}
+  id: kit-crate-2
+  layout: {maxExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: -20}
+  tags: [kit]
+kit-crate-3:
+  feetPosition: {x: -23.6, y: {terrain: 0.8}, z: -11}
+  id: kit-crate-3
+  layout: {maxExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 25}
+  tags: [kit]
+kit-crate-4:
+  feetPosition: {x: 15.2, y: {terrain: 0}, z: -12}
+  id: kit-crate-4
+  layout: {maxExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 35}
+  tags: [kit]
+kit-crate-east:
+  feetPosition: {x: 53.5, y: {terrain: 0}, z: -9.5}
+  id: kit-crate-east
+  layout: {maxExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 10}
+  tags: [kit]
+kit-fence-east-2:
+  feetPosition: {x: 63.6, y: {terrain: 0}, z: -4.6}
+  id: kit-fence-east-2
+  layout: {maxExtents: {y: 1}}
+  model: {id: /cdn/value.ced267e5baa5099e2806ddc01d0df0b053c925e19763e326ca1c7655d63539c0.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 70}
+  tags: [kit]
+kit-hay-1:
+  feetPosition: {x: -24.5, y: {terrain: 0}, z: -12.5}
+  id: kit-hay-1
+  layout: {maxExtents: {y: 1.1}}
+  model: {id: /cdn/value.042fe3bfa737bc03cecab2172e1b0340def12da2b8a37b83dfe6728d5e2adeed.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-hay-2:
+  feetPosition: {x: 13, y: {terrain: 0}, z: -19.5}
+  id: kit-hay-2
+  layout: {maxExtents: {y: 1.1}}
+  model: {id: /cdn/value.042fe3bfa737bc03cecab2172e1b0340def12da2b8a37b83dfe6728d5e2adeed.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-hay-east:
+  feetPosition: {x: 58.5, y: {terrain: 0}, z: -9.5}
+  id: kit-hay-east
+  layout: {maxExtents: {y: 1.1}}
+  model: {id: /cdn/value.042fe3bfa737bc03cecab2172e1b0340def12da2b8a37b83dfe6728d5e2adeed.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-lantern-east:
+  feetPosition: {x: 48, y: {terrain: 0}, z: -8.6}
+  id: kit-lantern-east
+  layout: {maxExtents: {y: 2.6}}
+  model: {id: /cdn/value.60d6adc4a3ffc6da11ed696eee515c6131da08ebdea52002320fb092459c37e1.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-lantern-west:
+  feetPosition: {x: -36, y: {terrain: 0}, z: -3}
+  id: kit-lantern-west
+  layout: {maxExtents: {y: 2.6}}
+  model: {id: /cdn/value.60d6adc4a3ffc6da11ed696eee515c6131da08ebdea52002320fb092459c37e1.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-sacks-1:
+  feetPosition: {x: -18, y: {terrain: 0}, z: -13.8}
+  id: kit-sacks-1
+  layout: {maxExtents: {y: 0.7}}
+  model: {id: /cdn/value.91b326be54d57beb35456b5fb5d4532dd21dc0802e3394aff229865a32ade248.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit]
+kit-sacks-2:
+  feetPosition: {x: 23.5, y: {terrain: 0}, z: -17.87}
+  id: kit-sacks-2
+  layout: {maxExtents: {y: 0.7}}
+  model: {id: /cdn/value.91b326be54d57beb35456b5fb5d4532dd21dc0802e3394aff229865a32ade248.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 30}
+  tags: [kit]
+kit-signpost-east:
+  feetPosition: {x: 42, y: {terrain: 0}, z: -11.5}
+  id: kit-signpost-east
+  layout: {maxExtents: {y: 2.2}}
+  model: {id: /cdn/value.d238a1cf7386f551ac851ecc843d064f77f4a4932dcf77f1722f5327aa775092.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 75}
+  tags: [kit]
+kit-signpost-west:
+  feetPosition: {x: -31, y: {terrain: 0}, z: -9.5}
+  id: kit-signpost-west
+  layout: {maxExtents: {y: 2.2}}
+  model: {id: /cdn/value.d238a1cf7386f551ac851ecc843d064f77f4a4932dcf77f1722f5327aa775092.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: -75}
+  tags: [kit]
+kit-stall-a:
+  feetPosition: {x: 17.5, y: {terrain: 0}, z: -14}
+  id: kit-stall-a
+  layout: {maxExtents: {y: 3}}
+  model: {id: /cdn/value.ee9c2273aae7a013db726f49011fff95a840034ddef9f6344b353420c6c4a10f.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 180}
+  tags: [kit]
+kit-stall-b:
+  feetPosition: {x: 22, y: {terrain: 0}, z: -15}
+  id: kit-stall-b
+  layout: {maxExtents: {y: 3}}
+  model: {id: /cdn/value.443e541a345409de9eaf9164ae09f0d6a583d31bf4e2d34b4bfa3063a9980d06.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 180}
+  tags: [kit]
+kit-stall-green:
+  feetPosition: {x: -21, y: {terrain: 0}, z: -12}
+  id: kit-stall-green
+  layout: {maxExtents: {y: 2.6}}
+  model: {id: /cdn/value.101866381d2c02d3bae3cdd2a70e3913a70940c0d7880a5ea0d96836e27fdc0f.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 180}
+  tags: [kit]
+kit-stall-red:
+  feetPosition: {x: 26.87, y: {terrain: 0}, z: -12.5}
+  id: kit-stall-red
+  layout: {maxExtents: {y: 2.6}}
+  model: {id: /cdn/value.e95ef6280b3bc094b601ffbb764b97cb2f725398dfccde4121c5a9c79352aaf2.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 180}
+  tags: [kit]
+kit-wagon-east:
+  feetPosition: {x: 34, y: {terrain: 0}, z: -11.5}
+  id: kit-wagon-east
+  layout: {maxExtents: {y: 2}}
+  model: {id: /cdn/value.33df6d693e2e9855af584dce169cf7becb4c0e6a03b435c20e9437e68b02e6dc.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 80}
+  tags: [kit]
 lamp-0:
   children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
   feetPosition: {x: 12.02381777814507, y: {terrain: 0}, z: 4.9424493966010985}
