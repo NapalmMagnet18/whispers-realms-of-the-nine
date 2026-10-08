@@ -95,12 +95,14 @@ function race(id, name, model, portrait, zone, tint, defaultSkin) {
     malePortrait: portrait, femalePortrait: portrait, maleAnimatedPortrait: portrait, femaleAnimatedPortrait: portrait,
     maleModel: model, femaleModel: model };
 }
-var START = { marchborn: { x: -1, y: 1.6, z: -86 }, briarkin: { x: -720, y: 20.2, z: 70 }, emberforged: { x: 900, y: 41, z: -170 }, saltborn: { x: 244, y: 3.6, z: 1430 } };
+var START = { marchborn: { x: -1, y: 1.6, z: -86 }, briarkin: { x: -720, y: 20.2, z: 70 }, emberforged: { x: 900, y: 41, z: -170 }, saltborn: { x: 244, y: 3.6, z: 1430 }, reedbound: { x: -426, y: 15, z: 574 }, veylori: { x: -200, y: 123, z: -1094 } };
 var RACES = [
   race('marchborn', 'Marchborn', WARRIOR_MODEL, WARRIOR_PORTRAIT, "Lantern's Reach", '#e8cfae', 1),
   race('briarkin', 'Briarkin', MAGE_MODEL, MAGE_PORTRAIT, 'Thornhollow, Briarwild Deepwood', '#b8d0a0', 10),
   race('emberforged', 'Emberforged', WARRIOR_MODEL, WARRIOR_PORTRAIT, 'Cinderhold, Emberstone Highlands', '#d49a78', 12),
   race('saltborn', 'Saltborn', MAGE_MODEL, MAGE_PORTRAIT, 'Gullrest, Saltmere Coast', '#a9c4d6', 11),
+  race('reedbound', 'Reedbound', MAGE_MODEL, '/cdn/value.c7d8f016563efa52e6a4b5d1a5c83f904d43ead86312830999296aedd938d914.png', 'Reedhaven Refuge, the Western Fen', '#a8b89a', 10),
+  race('veylori', 'Veylori', WARRIOR_MODEL, '/cdn/value.72b25fe1393fbe5d1293fde14e53ff4c4360b7b9d2788ded9522c849b165ff94.png', 'Starfall Eyrie, the Greyspine', '#c4bcd8', 11),
 ];
 RACES.forEach(function (r) { r.start = START[r.id]; });
 

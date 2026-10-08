@@ -5,6 +5,8 @@ races:
   - { id: briarkin,    name: Briarkin,    zone: "Rootwake Glade, Thornhollow", start: { x: -720, z: 70 },   blurb: "Forest-born wanderers who hear the old trees whisper." }
   - { id: emberforged, name: Emberforged, zone: "Cinderhold, Emberstone Highlands", start: { x: 900,  z: -170 }, blurb: "Stone-shouldered smiths of the red mesas, warm as their forges." }
   - { id: saltborn,    name: Saltborn,    zone: "Gullrest, Saltmere Coast",  start: { x: 244,  z: 1430 }, blurb: "Tide-weathered sailors and net-menders of the southern bay." }
+  - { id: reedbound,   name: Reedbound,   zone: "Reedhaven Refuge, the Western Fen", start: { x: -426, z: 574 }, blurb: "Fen-folk of the boardwalks who braid the names of the drowned into reed." }
+  - { id: veylori,     name: Veylori,     zone: "Starfall Eyrie, the Greyspine", start: { x: -200, z: -1094 }, blurb: "Sky-watchers of the mountain shelf who count nine places where the charts show eight." }
 classes:
   - { id: vanguard,   name: Vanguard,   role: "melee: strike, heavy strike, guard" }
   - { id: arcanist,   name: Arcanist,   role: "magic: firebolt, frost shard, ward" }
