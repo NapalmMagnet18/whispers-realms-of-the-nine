@@ -259,10 +259,6 @@ function stepChop(ctx) {
 // "kill": a monster's manager runs on whatever machine simulates it, so it never writes this hero's save itself;
 // it rings this ear and the hero's own machine counts the tally and the XP: ctx.emit("kill", { tally, xp }, { to: heroId })
 
-    if (xp) st.xp = (typeof st.xp === 'number' ? st.xp : 0) + xp;
-    st._questSave = true;
-  },
-};
 
 export function onInput(ctx, input) {
   if (!playing(ctx)) return;
