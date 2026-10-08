@@ -3,10 +3,20 @@ const { RACES, CLASSES, CLASS_LORE, CLASS_ICONS, CLASS_COLORS, RACE_DESCRIPTIONS
 const { RACIAL_ABILITIES } = require('./lib/racial-abilities.js');
 const { renderHUD } = require('./lib/ui-hud.js');
 const { renderChat } = require('./lib/ui-chat.js');
-const { renderMenuPanel, renderWorldMapOverlay } = require('./lib/ui-menu-panel.js');
+// The game windows (146 KB) and the door panel are not needed to stand: they load on first draw in the world, and the HUD draws them the frame they land.
+var _lazy = {};
+function _lazyMod(key, path) {
+  var e = _lazy[key] || (_lazy[key] = { m: null, p: null });
+  if (!e.m && !e.p) {
+    e.p = (key === 'menu' ? import('./lib/ui-menu-panel.js') : import('./lib/ui-door-panel.js')).then(function (m) { e.m = (m && (m.renderMenuPanel || m.renderDoorPanel)) ? m : ((m && m.default) || m); }, function () { e.p = null; });
+  }
+  return e.m;
+}
+function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
+function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
 const { renderWelcomeWindow } = require('./lib/ui-welcome.js');
 const { renderQuestDialog, renderTurnInDialog, renderQuestTracker } = require('./lib/ui-quest.js');
-const { renderDoorPanel } = require('./lib/ui-door-panel.js');
+function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
 const { renderVendor } = require('./lib/ui-vendor.js');
 const WHF = require('./lib/ui-frames.js');
 const { versionTag } = require('./lib/version.js');
