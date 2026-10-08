@@ -1,0 +1,17 @@
+# WHISPERS economy. Every amount is copper (100c = 1s, 100s = 1g). sell = 25% of buy unless an item names its own.
+sellRate: 0.25
+clink: /cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3
+bagSlots: 30
+stackMax: 20
+vendorReach: 3.5        # metres from a vendor's feet that E opens the window
+vendorLeave: 6          # walk this far away and the window closes
+# rewards paid through the one coin writer (scripts/lib/economy.js): a wolf, a chest, a quest (quests.yml)
+rewards:
+  briar_wolf: 3         # copper per Briar Wolf
+  briar_hidden_chest: 1500   # the Briarwild hidden chest: 15 silver; emit("coins", { delta: 1500, reason: "chest:briar-hidden-chest" }, { to: playerId })
+# bag goods a vendor buys but never sells: sell price only
+sellOnly:
+  copper-ore: 5
+  log: 3
+  timber-logs: 3
+  empty-vial: 1
