@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 662,
-  "updatedAt": "2026-10-08T05:06:27.327Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March, from Lantern's Reach to the Ninth Veil and Ashfall Reaches. MMORPG Tools owns realm and character lifecycle, persistence and modular UI; the player template composes movement, class combat, quests, commerce and gryphon travel. Streamed cells, procedural builders and YAML content registries supply the world and its stories.",
+  "basedOnSpecVersion": 696,
+  "updatedAt": "2026-10-08T05:16:41.800Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO set across the Lantern March, with the Lantern's Reach hub, race origins, regional wilderness and distant landmarks. MMORPG Tools owns character/realm lifecycle and modular UI; the ordered player template composes movement, class combat, quests, commerce and flight, while streamed scenes and YAML data supply places, NPCs, enemies and quest content.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -104,6 +104,7 @@
     "scripts/gen/elder-tree.js",
     "scripts/gen/farm.js",
     "scripts/gen/frontier.js",
+    "scripts/gen/glade.js",
     "scripts/gen/hamlet.js",
     "scripts/gen/house.js",
     "scripts/gen/props.js",
@@ -147,6 +148,7 @@
     "scripts/quest-player.js",
     "scripts/routing.js",
     "scripts/sails-spin.js",
+    "scripts/scavengers.js",
     "scripts/sim.js",
     "scripts/templates/camera.js",
     "scripts/templates/player.js",
@@ -162,52 +164,52 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main-menu-land/ - realm roster and front door; Enter World and Create route into gameplay or creation.",
-    "places/character-creation-land/ - race/class/appearance creation scene with preview model and creation camera.",
-    "places/main/ - streamed Lantern March continent; config owns terrain, coast, roads, scatter, atmosphere and flattening.",
-    "places/main/cells/x0z0.scene - Lantern's Reach hub, services, residents and quest interactions; Dren is tagged quest-npc.",
-    "places/main/cells/x0z-1.scene - Lantern Ward north of the Reach: origin quest marks include plaque display/archive choice and Ward objectives.",
-    "places/main/cells/ - 82 streamed regional cells contain Briarwild, Emberstone Quarry, settlements, landmarks, frontiers and gryphon roosts.",
-    "places/main/cells/x59z-1.scene and x59z-2.scene - Emberstone Bastion at (7560,-170), built through bastion-blueprint placements.",
-    "places/main/cells/x0z-59.scene and x0z-60.scene - Ninth Veil Veilgate Aerie structures, crystals and plateau."
+    "places/main-menu-land/ - realm roster and entry point for Enter World and character creation.",
+    "places/character-creation-land/ - race/class/appearance selection, preview character and creation camera.",
+    "places/main/config.yaml - streamed Lantern March continent terrain, coast, roads, scatter, atmosphere and flattening.",
+    "places/main/cells/x0z0.scene - Lantern's Reach hub, services, residents, quest interactions and Corin at the dock watch.",
+    "places/main/cells/x0z-1.scene - Lantern Ward north of the Reach; Marchborn MAR-01..MAR-08 objectives, residents and origin choices.",
+    "places/main/cells/x-5z0.scene, x-5z1.scene, x-6z0.scene and x-6z1.scene - Rootwake Glade/Thornhollow Thren origin: Fenna, Ell, Tamsin, Maudry, bramble wolves and THR-01..THR-08 quest marks.",
+    "places/main/cells/x1z0.scene - Emberstone Quarry camp, scavenger manager and Q006 stash/lamp objectives.",
+    "places/main/cells/ - 82 streamed regional cells also hold settlements, Briarwild, Emberstone, Bastion, Veilgate Aerie, roosts and other landmarks."
   ],
   "roots": [
     "world.config.yaml - main-menu-land default entry; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
-    "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, camera, character and interaction behaviors plus UI actions including flight.",
-    "templates/player.js#player - ordered locomotion, movement, Vanguard, Arcanist, Pathfinder, quests, vendor, then flight behavior.",
-    "templates/camera.js#camera - camera template; MMORPG gameplay/creation/menu cameras and wow-camera-controls provide separate framing/control paths.",
-    "places/main/config.yaml - continent terrain, roads, materials and scatter; includes Lantern Ward flatten/clear and Bellward Lane, plus Bastion court.",
-    "mods/gavi/mod.json - registers Gavi crew behavior and panel; companion commands and skills define builder-facing tools."
+    "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, camera, character and interaction behaviors and UI actions.",
+    "templates/player.js#player - ordered locomotion, movement, Vanguard, Arcanist, Pathfinder, quest, vendor and flight behaviors.",
+    "templates/camera.js#camera - camera template used by gameplay controls and separate MMORPG creation/menu camera paths.",
+    "places/main/config.yaml - owns continent terrain and regional surface/scatter configuration; scene cells add local landmarks and interactions.",
+    "mods/gavi/mod.json - registers Gavi crew behavior and panel, the builder-facing companion tools."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency and UI panels reused by mod behaviors, gameplay scripts and ui.js.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - per-realm character load/upsert/delete and roster population shared by menu and player lifecycle.",
-    "scripts/lib/data/realms.yml - routing and realm-pulse room registry; realm-save.js separately defines room IDs that must align.",
-    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and eligibility/status/progress shared by quest-player, quest-giver and HUD.",
-    "scripts/lib/economy.js + MMORPG lib/currency.js - copper movements/ledger and denomination formatting shared by quests, vendor, flight and UI.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, realm persistence, currency and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character load/upsert/delete and roster population shared by menu and player lifecycle.",
+    "scripts/lib/data/realms.yml - routing and realm-pulse room registry; room IDs must align with realm-save.js.",
+    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and eligibility/progress/status shared by quest-player, quest-giver and quest UI.",
+    "scripts/lib/economy.js + MMORPG lib/currency.js - copper transactions/ledger and denomination formatting shared by quests, vendor, flight and UI.",
     "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and terrain/coast generation used by continent systems and region display.",
-    "scripts/lib/data/flights.yml - roost coordinates, region labels, discovery radius, fare/speed limits and flight clearance read by flight behavior and UI.",
-    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, stone-bridge.js, veil.js and ashfall.js - reusable procedural geometry builders."
+    "scripts/lib/data/flights.yml - roost coordinates, region labels, discovery radius, fare/speed limits and clearance read by flight behavior and UI.",
+    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js, stone-bridge.js, veil.js, glade.js and ashfall.js - procedural geometry helpers/builders instantiated by place scenes."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle and input handling.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - character build/save/load and gameplay lifecycle; scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait behavior.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-creation.js - renderCharacterCreation; lib/version.js - GAME_VERSION 0.11.0 Alpha and GAME_TITLE.",
+    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - GAME_VERSION 0.12.0 Alpha and GAME_TITLE.",
     "scripts/flight.js - onInput/update; scripts/gryphon-flight.js - at/update; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
     "scripts/quest-player.js - onInput/update; scripts/elric.js and scripts/townsfolk.js - resident behavior; scripts/lib/economy.js - realmOf, ledger, feedback, move.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - getAvailableQuests, questToActiveFormat, questProgress, questStatus, getQuest; scripts/gen/veil.js and scripts/gen/ashfall.js - geometry, collider.",
-    "scripts/gen/props.js, rock.js and stone-bridge.js - geometry, collider; scripts/gen/elder-tree.js - geometry/collider; scripts/wolves.js, vanguard.js, arcanist.js and pathfinder.js - creature/combat behaviors."
+    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - getAvailableQuests, questToActiveFormat, questProgress, questStatus, getQuest; scripts/gen/glade.js and scripts/gen/veil.js - geometry, collider.",
+    "scripts/scavengers.js and scripts/wolves.js - update; scripts/gen/props.js, rock.js and stone-bridge.js - geometry, collider."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw and animation channels; gait samples prior-tick movement velocity.",
-    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including discovered roost IDs and quest state.",
-    "scripts/vanguard.js, arcanist.js and pathfinder.js - class action/cooldown/combat state; scripts/wolves.js owns pack AI and den/death timers.",
+    "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including discovered roosts and quest state.",
+    "scripts/vanguard.js, arcanist.js and pathfinder.js - class action/cooldown/combat state; scripts/wolves.js and scripts/scavengers.js - creature AI, health, targets and death/respawn state.",
     "scripts/quest-player.js - quest/tally, inventory/xp/dialog/cache state, quest marks/flags and deferred owedItems; woodcutting owns tree fall/regrowth presentation.",
     "scripts/lib/economy.js - coin movement, purse floor and ledger writes; scripts/vendor.js owns shop state and transaction handling.",
     "scripts/flight.js - per-player discovered roosts, flightMap, flying/landing state and nearby-roost hint; scripts/gryphon-flight.js owns spawned mount route and rider landing.",
-    "MMORPG ui.js/lib/ui-* render player/mod state; ui-zone-splash.js owns transient client splash timing and location-based art selection; Gavi equipe.js owns crew-watch/target state."
+    "MMORPG ui.js/lib/ui-* render player/mod state; ui-zone-splash.js owns transient client splash timing; Gavi equipe.js owns crew-watch/target state."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → main gameplay lifecycle.",
@@ -215,31 +217,31 @@
     "main-menu-mgr loads current room SQL roster and population; api.enterPlace routes selected character to saved place/position; routing validates requested room, then last room, then main.",
     "scripts/routing.js and crons/realm-pulse.js read realms.yml; room cron writes player count to realm_pulse, which realm-save reads for roster UI.",
     "Character creation race/class → lib/races.js race start and character state → MMORPG player.js/realm-save upsert to realm characters table, keyed by user, realm and slot.",
-    "templates/player.js → humanoid-locomotion → player → Vanguard → Arcanist → Pathfinder → quest-player → vendor → flight; preserve behavior order and shared inputs.",
+    "templates/player.js → humanoid-locomotion → player → Vanguard → Arcanist → Pathfinder → quest-player → vendor → flight; behavior order and shared inputs are significant.",
     "moveX/moveZ/jump and orbit/steer/autorun → player.js and wow-move.js room-local intent → body motion under place gravity; camera controls consume camera/player state separately.",
-    "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/wolves; wolf slow/hit state is consumed by wolves.js.",
-    "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest-mark-tagged objects; marks increment tally only for active quest objectives.",
-    "townsfolk.yml keyed by who + placed npc/talker state.who → scripts/townsfolk.js supplies greetings/lines; quest-player E advances dialogue; Dren and others also give quests.",
-    "scripts/lib/data/quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI; accept baselines objective tally, completion pays once via economy.move and item rewards enter inventory or owedItems.",
-    "Marchborn raceIndex 0 start → Lantern Ward MAR-01..MAR-08 → Q001 eligibility requires MAR-08; quest-mark choice stores personal questFlags, then Ward entry and quest tracker/NPC UI reflect local objectives."
+    "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/enemies; wolves.js and scavengers.js consume hit/slow state written by class behaviors.",
+    "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest-mark objects; marks increment tally only for active incomplete objectives.",
+    "townsfolk.yml keyed by who + placed npc/talker state.who → scripts/townsfolk.js supplies greetings/lines; quest-player E advances dialogue and quest-giver/UI handles available quests.",
+    "scripts/lib/data/quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI; accept baselines objective tally, completion pays once via economy.move and items enter inventory or owedItems.",
+    "Race-specific origins → Marchborn MAR-01..08 in Ward or Briarkin THR-01..08 in Rootwake Glade; quest-data gates Q001 on MAR-08 or THR-08 for those races, while other races pass the origin gate."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js, stone-bridge.js, veil.js and ashfall.js - procedural builders recur across place cells, with Ashfall builders supplying Bastion geometry/colliders.",
+    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js, stone-bridge.js, veil.js, glade.js and ashfall.js - procedural builders recur across places, varied by parameters and seeds.",
     "scripts/grass.js, flower.js, mushroom.js and pebble.js - terrain scatter geometry reused by place bindings, varied by layer density, scale, seed or per-item params.",
     "scripts/gen/tree.js with scripts/tree-look.js - painted bark/alpha-cut foliage recur in forest layers and placed scatters, varied by tree kind and LOD.",
     "scripts/flower.js and mushroom.js with their look materials - painted wildflower frames and mushroom caps vary by frame/cap parameters in terrain scatter.",
     "MMORPG player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle registered by mod.json.",
     "MMORPG camera.js/camera-creation.js and menu-camera.js - gameplay, creation-preview and per-screen menu camera paths with phase/place guards.",
     "MMORPG lib/ui-*.js, including ui-creation.js and ui-zone-splash.js - modular renderers composed/lazily loaded by ui.js for HUD, menus, creation, quests, travel and region presentation.",
-    "scripts/vanguard.js, arcanist.js and pathfinder.js; wolves.js, quest-player.js, townsfolk.js, vendor.js, woodcutting.js and flight.js - gameplay behaviors vary by class, target tags and per-player/NPC state."
+    "scripts/wolves.js and scripts/scavengers.js - enemy managers share roam/chase/attack/leash/death patterns, varied by YAML stats, enemy content and den/camp state; wolf dens may override pack and tally key."
   ],
   "probableOrphans": [],
   "migrationNotes": [
     "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
     "templates/player.js behavior order is significant: locomotion before movement, then classes, quests, vendor and flight; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
-    "Flight roost ids in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is discovery record, coordinates use place-main meters.",
-    "Quest marks are scene entities tagged quest-mark with state.quest/state.mark; E counts only an active quest's incomplete objective. Non-repeat marks persist by entity id; repeat-mark cooldown is room-session state.",
-    "Q001 origin eligibility uses raceIndex 0 and MAR-08; keep existing active/completed Q001 saves unaffected. Reward items pay after completedQuests is set; full bags defer IDs in owedItems, and memorial choice flags are per-character, not shared world state."
+    "Flight roost IDs in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is discovery record, coordinates use place-main meters.",
+    "Quest marks are scene entities tagged quest-mark with state.quest/state.mark; E counts only an active quest's incomplete objective. Wolf den state may override pack and tallyKey; THR-03 uses bramble_beast.",
+    "Quest-data uses quest.race to restrict an origin chain and quest.origin entries to gate Q001 after MAR-08 for raceIndex 0 or THR-08 for raceIndex 1; other races pass. The quests.yml introductory comment saying Q001 is open to every hero is stale relative to this logic."
   ]
 }
