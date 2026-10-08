@@ -580,6 +580,7 @@ export function update(objectApi, dt) {
   var s = objectApi.getState();
   var currentPlace = objectApi.getEntityPlace(objectApi.id);
   var isMetaPlace = META_PLACES.indexOf(currentPlace) !== -1;
+  if (!isMetaPlace && s.characterCreated && !_panelM && !_panelP) _loadPanels().catch(function () {}); // warm the panels as the hero stands
 
   // ── Quest / gathering save: scripts/quest-player.js raises _questSave after accept, claim, progress or a log ──
   if (s._questSave && !s._saveInFlight && s.characterCreated) {
