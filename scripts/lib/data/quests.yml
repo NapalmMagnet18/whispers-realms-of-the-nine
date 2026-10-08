@@ -952,7 +952,146 @@ VAN-07:
     - { key: open_shield_vow, desc: "Sign the vow", target: 1 }
   rewards: { xp: 250, copper: 200, items: [open_shield_sigil] }
 
+
+# ── Arcanist Path: The Listening Flame (Quest Bible ARC-01..ARC-07; the Quiet Observatory on the Reach's north-west shoulder) ──
+ARC-01:
+  id: ARC-01
+  group: "Arcanist Path: The Listening Flame"
+  zone: The Quiet Observatory
+  cls: arcanist   # Arcanists only
+  requires: [Q001]
+  title: Listen Without Taking
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "Up on the north-west shoulder, above the river, is the Quiet Observatory. Around it the old memories pool like rainwater: echoes. Go and hold your focus over three of them. Listen. Then let each one go. An Arcanist who keeps every echo becomes a thief with good manners."
+  progressText: "Find three memory echoes around the Quiet Observatory, listen, and release each."
+  turnInText: "You let them go. Most first-years pocket at least one. Good. Leth Sen will want to meet you."
+  doneText: "The Observatory door is open to you now."
+  refusedText: "You've learned it. Don't unlearn it."
+  objectives:
+    - { key: echo_released, desc: "Listen to and release memory echoes", target: 3 }
+  rewards: { xp: 120, copper: 80, items: [resonance_lens] }
+
+ARC-02:
+  id: ARC-02
+  group: "Arcanist Path: The Listening Flame"
+  zone: The Quiet Observatory
+  cls: arcanist   # Arcanists only
+  requires: [ARC-01]
+  title: The Lamp That Lies
+  giverNpcId: obs-npc-leth
+  giverName: Magister Leth Sen
+  text: "Two lamps by my door, both humming the same note. One of them is reading the memory of a lamp that was smashed forty years ago. Listen to both, then put your hand on the liar. Quickly, before it learns your face."
+  progressText: "Listen to both resonance lamps by the Observatory door, then mark the false one."
+  turnInText: "The left. The light's correct, the shadow's forty years late. Your ward will be steadier for having seen that."
+  doneText: "Sister Vale has something harder. Not difficult. Harder."
+  refusedText: "The lamp's behaving now. Mostly."
+  objectives:
+    - { key: resonance_signal, desc: "Listen to the resonance lamps", target: 2 }
+    - { key: false_lamp, desc: "Mark the false lamp", target: 1 }
+  rewards: { xp: 140, copper: 100 }
+
+ARC-03:
+  id: ARC-03
+  group: "Arcanist Path: The Listening Flame"
+  zone: The Quiet Observatory
+  cls: arcanist   # Arcanists only
+  requires: [ARC-02]
+  title: A Lesson in Consent
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "Reading a trace off a person is easy. Asking first is the craft. Three folk in the Reach have agreed to let a student read them: Mira at the smithy, Bryn at the well, and old Hesk. Ask each of them properly. Then go up to the Observatory. There's a device on the bench that reads without asking. Refuse it."
+  progressText: "Ask Mira, Bryn and Hesk for permission to read a trace, then refuse the forced-reading device at the Observatory."
+  turnInText: "You turned it away. Good. A device that doesn't ask will be built again and again. Arcanists are the ones who say no to it."
+  doneText: "Curator Ossa's ink won't sit still. Go and help her."
+  refusedText: "You know the lesson. Keep it."
+  objectives:
+    - { key: consent_asked, desc: "Ask permission to read a trace", target: 3 }
+    - { key: forced_refused, desc: "Refuse the forced-reading device", target: 1 }
+  rewards: { xp: 150, copper: 110, items: [focus_tonic] }
+
+ARC-04:
+  id: ARC-04
+  group: "Arcanist Path: The Listening Flame"
+  zone: The Quiet Observatory
+  cls: arcanist   # Arcanists only
+  requires: [ARC-03]
+  title: What the Ink Remembered
+  giverNpcId: obs-npc-ossa
+  giverName: Curator Ossa
+  text: "The page on my desk was written by someone nobody remembers, and the ink knows it. It slides. Three fragments of it have crawled off onto the stones around the tower. Copy each one where it lies, then come back and pin the page still."
+  progressText: "Copy the three shifting ink fragments around the Observatory, then stabilize the page on Ossa's desk."
+  turnInText: "It's holding. 'Here, by our own hands, we kept the lamps.' That's all it says. That's enough."
+  doneText: "Vale is at the forge. She'll want a steady pair of hands."
+  refusedText: "The page is bound. Don't breathe on it."
+  objectives:
+    - { key: ink_fragment, desc: "Copy shifting fragments", target: 3 }
+    - { key: page_stabilized, desc: "Stabilize the page", target: 1 }
+  rewards: { xp: 160, copper: 120, items: [bound_page] }
+
+ARC-05:
+  id: ARC-05
+  group: "Arcanist Path: The Listening Flame"
+  zone: The Quiet Observatory
+  cls: arcanist   # Arcanists only
+  requires: [ARC-04]
+  title: The Heat of a Small Star
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "The forge behind the tower holds a star the size of a plum. Echoes gather to it like moths and try to break free through it. Stand by the forge and raise your Ward (3) when they press: hold them twice."
+  progressText: "Stand at the small-star forge and raise your Ward (3) to hold the echoes back, twice."
+  turnInText: "Two held, nobody burned. Your ward will run a little warmer now. Mind your eyebrows."
+  doneText: "Leth Sen has a sigil he can't finish. On purpose."
+  refusedText: "The forge is calm."
+  objectives:
+    - { key: forge_ward, desc: "Hold the echoes at the forge", target: 2 }
+  rewards: { xp: 170, copper: 130 }
+
+ARC-06:
+  id: ARC-06
+  group: "Arcanist Path: The Listening Flame"
+  zone: The Quiet Observatory
+  cls: arcanist   # Arcanists only
+  requires: [ARC-05]
+  title: The Unfinished Sentence
+  giverNpcId: obs-npc-leth
+  giverName: Magister Leth Sen
+  text: "The slab beside the tower carries a sigil with its last line missing. Translate what's there. Then decide to leave the last line empty. Not forget. Decide. Some sentences belong to the people who haven't arrived yet."
+  progressText: "Translate the half-cut sigil on the slab, then leave its final line unsigned."
+  turnInText: "You left it open. Most can't bear to. That's the Arcanist's staff: a tool you don't always use."
+  doneText: "Vale is waiting for your trial."
+  refusedText: "The slab is as it should be."
+  objectives:
+    - { key: sigil_translated, desc: "Translate the partial sigil", target: 1 }
+    - { key: line_unsigned, desc: "Leave the final line unsigned", target: 1 }
+  rewards: { xp: 180, copper: 140, items: [arcane_staff_cosmetic] }
+
+ARC-07:
+  id: ARC-07
+  group: "Arcanist Path: The Listening Flame"
+  zone: The Quiet Observatory
+  cls: arcanist   # Arcanists only
+  requires: [ARC-06]
+  title: The Reader's Oath
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "Three plinths ring the tower. Stand at each and raise your Ward (3). Hold your focus while the old voices test it. Then come to the reading bench and decide how the unknown author of Ossa's page is credited. There's no right answer. There is a careless one."
+  progressText: "Raise your Ward (3) at the three focus plinths, then decide the author's credit at the reading bench."
+  turnInText: "'Written by those who kept the lamps, names unknown, honored.' Yes. Welcome, Arcanist. You listen now. That's the oath."
+  doneText: "The road to the Hollowcrypt is open to you whenever you're ready."
+  refusedText: "You're one of us."
+  objectives:
+    - { key: focus_trial, desc: "Hold your focus at the trial plinths", target: 3 }
+    - { key: author_credited, desc: "Credit the unknown author", target: 1 }
+  rewards: { xp: 250, copper: 200, items: [listening_flame_sigil] }
+
+
 items:
+  resonance_lens: { id: resonance_lens, name: Resonance Lens, slot: bag, description: "Hold it up: what's remembered shimmers." }
+  focus_tonic: { id: focus_tonic, name: Focus Tonic, slot: bag, description: "Bitter, clear, a little cold going down." }
+  bound_page: { id: bound_page, name: Bound Page, slot: bag, description: "Here, by our own hands, we kept the lamps." }
+  arcane_staff_cosmetic: { id: arcane_staff_cosmetic, name: Staff of the Open Line, slot: bag, description: "A plain ash staff. One rune left uncarved." }
+  listening_flame_sigil: { id: listening_flame_sigil, name: Listening Flame Sigil, slot: bag, description: "A small flame that leans toward voices." }
   practice_buckler: { id: practice_buckler, name: Practice Buckler, slot: bag, description: "Dented in exactly two places." }
   shield_pattern: { id: shield_pattern, name: Shield Pattern of the Table, slot: bag, description: "A grey shield on deep red. Nine rivets, one left empty." }
   legacy_shield_cosmetic: { id: legacy_shield_cosmetic, name: Ide's Legacy Shield, slot: bag, description: "Old company paint under new. The names show through in rain." }
