@@ -33,6 +33,7 @@ function renderTurnInDialog(a, b) { var f = _hf('quest', 'renderTurnInDialog'); 
 function renderQuestTracker(a, b) { var f = _hf('quest', 'renderQuestTracker'); return f ? f(a, b) : ''; }
 function renderVendor(a, b) { var f = _hf('vendor', 'renderVendor'); return f ? f(a, b) : ''; }
 function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : ''; }
+function zoneSplashActive() { var f = _hf('splash', 'zoneSplashActive'); return f ? f() : false; }
 function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
 function _warmHud() { _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('welcome'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
@@ -214,8 +215,8 @@ export default function(world, localPlayer) {
       try { _hudParts.push(renderMenuPanel(localPlayer, world, rightHudLayout)); } catch(e4) { _hudParts.push(''); }
       try { _hudParts.push(renderWorldMapOverlay(localPlayer.state, localPlayer.feetPosition, localPlayer.state._lastAnnouncedPlace)); } catch(e5) { _hudParts.push(''); }
       if (localPlayer.state.showWelcome) { try { _hudParts.push(renderWelcomeWindow()); } catch(e6) { _hudParts.push(''); } }
-      try { _hudParts.push(renderZoneBanner(localPlayer)); } catch(e7) { _hudParts.push(''); }
       try { if (phase === 'playing' && !localPlayer.state.inMainMenu) _hudParts.push(renderZoneSplash(localPlayer)); else resetZoneSplash(); } catch(e7z) { _hudParts.push(''); }
+      try { if (!zoneSplashActive()) _hudParts.push(renderZoneBanner(localPlayer)); } catch(e7) { _hudParts.push(''); }
       try { _hudParts.push(renderQuestTracker(localPlayer, world)); } catch(e7b) { _hudParts.push(''); }
       if (localPlayer.state.showQuestDialog) { try { _hudParts.push(localPlayer.state.questDialogData && localPlayer.state.questDialogData.turnIn ? renderTurnInDialog(localPlayer) : renderQuestDialog(localPlayer)); } catch(e8) { _hudParts.push(''); } }
       try { _hudParts.push(renderDoorPanel(localPlayer)); } catch(e9) { _hudParts.push(''); }

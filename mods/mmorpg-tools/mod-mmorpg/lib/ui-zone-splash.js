@@ -30,7 +30,7 @@ function artAt(x, z) {
   return null;
 }
 var _cur = null, _shown = {}, _splash = null, _first = true, _since = 0;
-var HOLD_FULL = 1200, END_FULL = 3600, END_CARD = 4500, REPEAT = 180000;
+var HOLD_FULL = 2200, END_FULL = 4800, END_CARD = 4500, REPEAT = 180000;
 
 export function renderZoneSplash(localPlayer) {
   var fp = localPlayer.feetPosition; if (!fp) return '';
@@ -61,5 +61,6 @@ export function renderZoneSplash(localPlayer) {
     + '<img src="' + src + '" style="width:100%;height:100%;object-fit:cover;display:block" /></div>';
 }
 export function resetZoneSplash() { _first = true; _splash = null; _cur = null; _since = 0; }
+export function zoneSplashActive() { return !!_splash; }
 export function zoneArtFor(x, z) { return ART[artAt(x, z) || 'ninthveil']; }
-module.exports = { renderZoneSplash: renderZoneSplash, resetZoneSplash: resetZoneSplash, zoneArtFor: zoneArtFor };
+module.exports = { renderZoneSplash: renderZoneSplash, resetZoneSplash: resetZoneSplash, zoneSplashActive: zoneSplashActive, zoneArtFor: zoneArtFor };
