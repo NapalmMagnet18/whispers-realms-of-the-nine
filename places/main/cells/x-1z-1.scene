@@ -43,3 +43,104 @@ qm-vei-09-2-0:
   rotation: {yaw: 330}
   state: {after: vei9_carve_the_names, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.0,1.0)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Attend the bell ceremony, mark: vei9_attend_the_bell, quest: VEI-09, say: The first season closes with the world changed but still imperfect and inhabitable., title: Attend the bell ceremony, verb: Use}
   tags: [quest-mark, spine, vei]
+thorn-lumber-cart:
+  feetPosition: {x: -112, y: 0.94, z: -104}
+  id: thorn-lumber-cart
+  physics: static
+  primitive: {kind: scripted, params: {kind: cart}, script: scripts/gen/lumber.js}
+  rotation: {yaw: -30}
+  tags: [lumber-camp]
+thorn-lumber-chop:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-distant-axe-chopping-wood-and-sawing-forest-loop.mp3, gain: 0.16, loop: true, maxDistance: 40, spatial: true}
+  feetPosition: {x: -117, y: 3.19, z: -108}
+  id: thorn-lumber-chop
+thorn-lumber-dust:
+  feetPosition: {x: -117, y: 3.39, z: -108}
+  fx: {script: "fx\npop dust rate=3 on=box(<1.8,.1,.4>) life=2..3 v=up(.2..0.4)+sdir()*.2 size=.03..0.06 acc=curl(.3)+drag(1) col=<.9,.8,.55> a=0>.15:.6>.7:.4>0 r=sprite(soft-disc,alpha)"}
+  id: thorn-lumber-dust
+thorn-lumber-pile-0:
+  feetPosition: {x: -123, y: 0.99, z: -105}
+  id: thorn-lumber-pile-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: logpile, seed: 1}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 80}
+  tags: [lumber-camp]
+thorn-lumber-pile-1:
+  feetPosition: {x: -124, y: 1.49, z: -111}
+  id: thorn-lumber-pile-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: logpile, seed: 2}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 95}
+  tags: [lumber-camp]
+thorn-lumber-sawpit:
+  feetPosition: {x: -117, y: 1.64, z: -108}
+  id: thorn-lumber-sawpit
+  physics: static
+  primitive: {kind: scripted, params: {kind: sawpit}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 15}
+  tags: [lumber-camp]
+thorn-lumber-shed:
+  feetPosition: {x: -115, y: 2.29, z: -114}
+  id: thorn-lumber-shed
+  physics: static
+  primitive: {kind: scripted, params: {kind: shed}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 160}
+  tags: [lumber-camp]
+thorn-lumber-stump-0:
+  feetPosition: {x: -120, y: 0.92, z: -100}
+  id: thorn-lumber-stump-0
+  physics: static
+  primitive: {kind: scripted, params: {axe: true, kind: stump, seed: 1}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 0}
+  tags: [lumber-camp]
+thorn-lumber-stump-1:
+  feetPosition: {x: -113, y: 0.72, z: -99}
+  id: thorn-lumber-stump-1
+  physics: static
+  primitive: {kind: scripted, params: {axe: false, kind: stump, seed: 2}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 47}
+  tags: [lumber-camp]
+thorn-lumber-stump-2:
+  feetPosition: {x: -109, y: 1.94, z: -110}
+  id: thorn-lumber-stump-2
+  physics: static
+  primitive: {kind: scripted, params: {axe: false, kind: stump, seed: 3}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 94}
+  tags: [lumber-camp]
+thorn-lumber-stump-3:
+  feetPosition: {x: -127, y: 0.82, z: -100}
+  id: thorn-lumber-stump-3
+  physics: static
+  primitive: {kind: scripted, params: {axe: false, kind: stump, seed: 4}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 141}
+  tags: [lumber-camp]
+thorn-lumber-stump-4:
+  feetPosition: {x: -107, y: 0.82, z: -102}
+  id: thorn-lumber-stump-4
+  physics: static
+  primitive: {kind: scripted, params: {axe: false, kind: stump, seed: 5}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 188}
+  tags: [lumber-camp]
+thorn-lumber-stump-5:
+  feetPosition: {x: -121, y: 1.82, z: -117}
+  id: thorn-lumber-stump-5
+  physics: static
+  primitive: {kind: scripted, params: {axe: false, kind: stump, seed: 6}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 235}
+  tags: [lumber-camp]
+thorn-lumber-stump-6:
+  feetPosition: {x: -110, y: 0.6, z: -96}
+  id: thorn-lumber-stump-6
+  physics: static
+  primitive: {kind: scripted, params: {axe: false, kind: stump, seed: 7}, script: scripts/gen/lumber.js}
+  rotation: {yaw: 282}
+  tags: [lumber-camp]
+thorn-npc-bryn:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -118.6, y: 1.37, z: -105.8}
+  id: thorn-npc-bryn
+  model: /cdn/model-humanoid-fantasy-timberwright-woman-braided-hair-leather-apron-rolled-sleeves-sturdy-boots.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: idle, npcName: bryn, who: bryn, yaw: 200}
+  tags: [npc, talker, townsfolk]
