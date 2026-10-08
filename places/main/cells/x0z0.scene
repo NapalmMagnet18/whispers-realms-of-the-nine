@@ -1028,6 +1028,45 @@ townhouse/water-bucket:
   model: /cdn/value.1c0e074f65407dbd717aa67a12a78a52f25003e32e10da8348493eabd593c954.glb
   parent: townhouse
   rotation: 20
+training-dummy-1:
+  behavior: scripts/training-dummy.js
+  feetPosition: {x: 14, y: 4, z: 14}
+  id: training-dummy-1
+  model: /cdn/model-humanoid-mannequin-female-purple-a71rld2m.glb
+  physics: {body: static, collider: capsule}
+  rotation: 180
+  scale: 0.95
+  state: {hp: 120, maxHp: 120, name: Training Dummy, radius: 0.4}
+  tags: [enemy, dummy]
+training-dummy-2:
+  behavior: scripts/training-dummy.js
+  feetPosition: {x: 16.5, y: 4, z: 15}
+  id: training-dummy-2
+  model: /cdn/model-humanoid-mannequin-female-purple-a71rld2m.glb
+  physics: {body: static, collider: capsule}
+  rotation: 180
+  scale: 0.95
+  state: {hp: 120, maxHp: 120, name: Training Dummy, radius: 0.4}
+  tags: [enemy, dummy]
+training-dummy-3:
+  behavior: scripts/training-dummy.js
+  feetPosition: {x: 19, y: 4, z: 14}
+  id: training-dummy-3
+  model: /cdn/model-humanoid-mannequin-female-purple-a71rld2m.glb
+  physics: {body: static, collider: capsule}
+  rotation: 180
+  scale: 0.95
+  state: {hp: 120, maxHp: 120, name: Training Dummy, radius: 0.4}
+  tags: [enemy, dummy]
+training-yard-fence:
+  feetPosition: {x: 16.5, y: 4, z: 13}
+  id: training-yard-fence
+  spline: {kind: fence, points: [[-4.5, 0, -1.2], [-4.5, 0, 3.5], [4.5, 0, 3.5], [4.5, 0, -1.2]]}
+training-yard-lantern:
+  children: [{feetPosition: {x: 0, y: 0.25, z: 0}, light: {color: oklch(0.82 0.13 70), distance: 9, intensity: 2, kind: point}}]
+  feetPosition: {x: 12, y: 4, z: 12.5}
+  id: training-yard-lantern
+  model: /cdn/model-lantern-grey-metal-candle-4ur9lj8p.glb
 windmill:
   children: [{feetPosition: {x: 0, y: 3.8, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 3, kind: point}}]
   feetPosition: {x: -30, y: {terrain: 0}, z: 50}
