@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1636,
-  "updatedAt": "2026-10-08T22:02:57.181Z",
-  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, guilds, flight, survival and per-player audio, while streamed scenes and shared YAML data define places, encounters and progression systems.",
+  "basedOnSpecVersion": 1654,
+  "updatedAt": "2026-10-08T22:10:36.107Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO across the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors provide combat, quests, trade, guilds, flight and survival, while streamed scenes and shared YAML data define places and progression.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -223,34 +223,34 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main/config.yaml and places/main/cells/ - the Lantern March continent; streamed scenes hold towns, regions, quest sites, encounters, gates, landmarks and spatial emitters.",
-    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns place matching Discipline Trainers and banners; race hamlets and March settlements reuse procedural structures.",
-    "places/main/cells/x-10z7.scene and other board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon/raid/battleground queues.",
-    "places/main/cells/x-1z-5.scene - fallen giant on the Starfall road (-80,-680): skull/heart quest marks and looping spatial heartbeat beneath the ribs.",
-    "places/main/cells/x-6z1.scene and x-7z0.scene - Rootwake Glade bounty board at (-742,72) and Deepgrove Raider crew/camp at (-943,45).",
-    "places/main/cells/x0z-4.scene - Starfall road blood shrine: blood-shrine tag, offer sign and shrine audio/effects; vitality.js handles the E pact interaction.",
-    "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's moving caravan on the Reedhaven road; Mott's stock follows Reach/fen/Reedhaven stops.",
-    "places/banner-vale/ - 5v5 capture-the-banner battleground; terrain/config, referee sim and three scenes place bases, flags and boards; main finder queues carry groups here. hollowcrypt/, drowned-bell/ and root-archive/ are dungeons; pale-choir/, emberheart/ and ninth-assembly/ are raids; menu and character-creation places provide entry."
+    "places/main/config.yaml and places/main/cells/ - Lantern March continent; streamed scenes hold towns, regions, quest sites, encounters, gates, landmarks and spatial emitters.",
+    "places/main/cells/x0z0.scene - Lantern's Reach and its Hall of Banners at (5,24); Registrar Ambrose Quill (guild-registrar) offers guild charter/join interaction through the guild UI.",
+    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with matching Discipline Trainers and banners; race hamlets and settlements reuse procedural structures.",
+    "places/main/cells/x-10z7.scene and other board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
+    "places/main/cells/x-1z-5.scene, x-6z1.scene, x-7z0.scene and x0z-4.scene - Starfall giant quest site, Rootwake Glade bounty/raider camp, and blood shrine handled by quest and vitality behaviors.",
+    "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's moving caravan on the Reedhaven road.",
+    "places/banner-vale/ - 5v5 capture-the-banner battleground; terrain/config, referee sim and scenes place bases, flags and boards; main finder queues groups here.",
+    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - dungeon/raid instance places; paired gates connect them with the main world."
   ],
   "roots": [
-    "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse; audio gains set Music .85 and Ambience .55.",
+    "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION is 0.47.1 Alpha; version tag is rendered on main menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml - March terrain, roads, surfaces/scatter and atmosphere; places/main/sim.js runs room weather and Party Finder matching.",
-    "places/banner-vale/config.yaml and places/banner-vale/sim.js - battleground terrain and 100ms match referee; sim selects teams, manages flags, scores, awards results and returns players.",
-    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - terrain, gravity and spawn environment for crypt and instances.",
-    "mods/gavi/mod.json - registers Gavi crew behavior and panel, the builder-facing companion tools."
+    "places/banner-vale/config.yaml and places/banner-vale/sim.js - battleground terrain and referee; sim assigns teams, manages flags, scores, awards results and returns players.",
+    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - terrain, gravity and spawn environment for instances."
   ],
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency, shop data and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population and realm list/detail shared by menu and player lifecycle.",
     "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry shared by quests, class actions, vitality and regional music; includes banner-vale.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
-    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose; quest-data lazily warms or is seeded by quest-core.",
-    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for dungeon, raid and open-world bosses; IDs also key gear and voice data.",
+    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose.",
+    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for instance and open-world bosses; IDs also key gear and voice data.",
     "scripts/lib/data/music.yml, weather.yml, greet-voices.yml + scripts/region-music.js, quest-core.js - area/audio schedules and voice mappings shared by player behaviors and place weather.",
-    "scripts/lib/data/{finder,battleground}.yml, scripts/party-finder.js, places/main/sim.js and places/banner-vale/sim.js - shared queue/match rules; scripts/lib/guild-core.js is loaded on demand by scripts/guild.js for realm guild SQL and vault."
+    "scripts/lib/data/{finder,battleground}.yml, scripts/party-finder.js, places/main/sim.js and places/banner-vale/sim.js - queue and match rules; scripts/guild.js lazily loads guild-core for SQL guild/vault operations."
   ],
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
@@ -260,17 +260,17 @@
     "scripts/gen/ruin.js and scripts/gen/hamlet.js - geometry, collider; ruin kinds dress the Ward Lamphouse, hamlet includes race-hamlet structures.",
     "scripts/gen/armory.js, waystone.js, apothecary.js, caravan.js and harbor.js - geometry/collider generators for settlement props and landmarks.",
     "scripts/gen/camp.js, giant.js, shrine.js and war-banner.js - geometry/collider generators; war-banner varies flag color or stand form.",
-    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; places/main/sim.js and places/banner-vale/sim.js - cadence, tick."
+    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; scripts/scavengers.js - update."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment, quest state and trained rank.",
     "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, gear power and melee foley.",
-    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth; quest-data.js owns quest database cache.",
-    "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch (including arena-taunt cooldown) live in boss ctx.session.",
+    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth; quest-data.js owns quest records.",
+    "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch live in boss ctx.session.",
     "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; stamps player's _worldEnterAt and conditionally increments tally.",
     "scripts/vitality.js - player health/dying/rise, regen, bloodUntil pact and per-session food-over-time; enemies write state.health. places/main/sim.js owns weather and world.state.lfg; region-music.js owns per-player audio state.",
-    "scripts/guild.js delegates to guild-core, which owns player guildName/guildRole/guildRoster/invite and banker guild-vault state backed by SQL; places/banner-vale/sim.js owns place.state.bg match/flags/score and player bgTeam/bgMatch/results."
+    "scripts/guild.js delegates to guild-core, which owns player guildName/guildRole/guildRoster/invite and banker guild-vault state backed by SQL; banner-vale sim owns match/flags/score and player battleground state."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -281,20 +281,20 @@
     "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → guild → trades → flight → vitality → cursor-free → region-music; movement/camera intents consumed by player.js/wow-move.js.",
     "First eligible quest-player input/update in a scripts/lib/places.js isPlay place → dynamic import quest-core; quest-core seeds quest-data's database from quests.yml; quest-text.js warms dialogue and ui-quest renders it.",
     "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
-    "Party Finder board scripts/party-finder.js queues a hero in world.state.lfg; places/main/sim.js prunes absent players and pops full/aged queues from finder.yml, then stamps _worldEnterAt, updates eligible quest tallies and crosses to dungeon/raid links or +banner-vale.",
-    "Banner Vale arrivals → places/banner-vale/sim.js assigns the smaller team and bases; battleground.yml configures flags, score/time/rewards; scripts/lib/pvp.js allows enemy-team combat only, and sim returns players to +main after match.",
-    "Guild UI actions → scripts/guild.js lazy-loads scripts/lib/guild-core.js; guild SQL stores realm rosters and shared vault, character state carries membership/invites, and banker tab actions deposit/withdraw with version-conditional updates.",
-    "A nearby vendor-tagged NPC with state.trainer handles E in scripts/vendor.js → trainers.yml checks next rank's level/fee → economy debits copper and player state.trained increments; MMORPG player save/load persists it, and kit.power applies rank damage bonus."
+    "Party Finder board scripts/party-finder.js queues a hero in world.state.lfg; places/main/sim.js prunes absent players and matches from finder.yml, stamps _worldEnterAt, updates eligible quest tallies and crosses to dungeon/battleground.",
+    "Banner Vale arrivals → places/banner-vale/sim.js assigns teams and bases; battleground.yml configures flags, score/time/rewards; scripts/lib/pvp.js allows enemy-team combat and sim returns players to +main.",
+    "Guild UI actions → scripts/guild.js lazy-loads scripts/lib/guild-core.js; guild SQL stores realm rosters/shared vault, character state carries membership/invites; E near guild-registrar in vendor.js opens guild panel, whose create/join actions are handled by guild-core.",
+    "quest-core opens a cache → legacy gold converts at 100 copper each unless explicit copper is present → economy writer credits purse; st.caches claim keys save/load with the character and start empty on new character."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
-    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and sound/clips; boss-taunts.yml adds per-id sleep/ward rules.",
-    "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed; scene binds static colliders for landmark structures.",
+    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and sound/clips; boss-taunts.yml adds per-id settings.",
+    "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed; scenes bind static colliders.",
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and consolidated graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
     "scripts/gen/tide.js - Tideglass structures and props share shape helpers; kind/LOD/length/width vary each piece.",
     "scripts/gen/hamlet.js, scripts/gen/roothome.js and scripts/gen/stilt.js - reused in race hamlets and March settlements, varied by kind, seed, dimensions and stilt/deck height.",
-    "scripts/gen/war-banner.js - Banner Vale's gold/crimson flags and team stands share one generator; color and stand parameter vary the placed object."
+    "scripts/gen/war-banner.js - Banner Vale team flags/stands and Hall of Banners guild standards share one generator; color and stand parameter vary the placed object."
   ],
   "probableOrphans": [
     "scripts/gen/grave-weeds.js - no scene or other package reference; graveyard cover is currently placed through grave-ground.js instead."
@@ -304,7 +304,7 @@
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml, gear.yml, boss-voices.yml and boss-taunts.yml.",
-    "Quest marks use mark/quest state on quest-mark objects; keep objective keys aligned with quests.yml and tally writers. GNT-01 heart mark's after: giant_skull_echo enforces listening before prying; quest data is lazily loaded/seeded, and ui-quest renders it.",
-    "Party Finder queue lives in main room world.state.lfg and the main sim owns matching/crosses; battleground team/match state is separate from that queue. Guild vault moves must preserve the SQL ver conditional update to avoid duplicate items."
+    "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save (new character initializes it empty). Guild vault moves use SQL ver conditional updates to avoid duplicate items.",
+    "Quarry scavenger camps wake crews within wakeRadius (default 60) and sleep eligible non-dead, non-chasing bodies beyond sleepRadius (default 110); keep persistent camp respawn metadata distinct from transient spawned bodies."
   ]
 }
