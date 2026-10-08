@@ -304,7 +304,7 @@ qm-equ-stake:
   state: {gain: Stake inspected, mark: survey_stake, quest: EQU-01, say: "Snapped, not rotted. Fresh boot prints around it, and the ribbon torn off toward the east road.", title: Broken Survey Stake, verb: Inspect}
   tags: [quest-mark, quarry-chapter]
 qm-equ-tally:
-  feetPosition: {x: 132.6, y: {terrain: 0}, z: 42}
+  feetPosition: {x: 136.5, y: {terrain: 0}, z: 44.5}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-equ-tally
   physics: static
