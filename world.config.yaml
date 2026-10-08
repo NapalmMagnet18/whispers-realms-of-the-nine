@@ -18,6 +18,7 @@ engine:
 inputs:
   actions:
     vendorBuy: {}
+    useFood: {}
     vendorSell: {}
     vendorTab: {}
     vendorClose: {}
