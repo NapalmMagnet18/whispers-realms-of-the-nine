@@ -58,12 +58,10 @@ function die(ctx, w, s, m) {
   try { animate(ctx, w.id, { "material.dissolve": 1 }, { duration: S.corpse - S.fadeAt, delay: S.fadeAt }); } catch (e) {}
   ctx.emit("playSound", { clip: S.sounds.die, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
-  ctx.log("scav-die", { id: w.id, by: s.lastHitBy || null, found: !!p, tags: p ? p.tags : null });
   if (p && (p.tags || []).includes("player")) {
     const tk = ctx.self.state.tallyKey || "quarry_scavenger"; // a camp names its own kill (KHA-06's tunnel_scavenger)
-    p.state.tally = { ...(p.state.tally || {}), [tk]: (p.state.tally?.[tk] || 0) + 1 };
     const RW = ctx.self.state.reward || S.reward; // a camp may pay its own (an elite pays more)
-    if (typeof p.state.xp === "number") p.state.xp += RW.xp; else p.state.xp = RW.xp;
+    ctx.emit("kill", { tally: tk, xp: RW.xp }, { to: p.id }); // the hero's own machine counts it (scripts/quest-player.js ear)
     if (RW.copper) ctx.emit("coins", { delta: RW.copper, reason: "kill:" + tk }, { to: p.id });
     ctx.emit("damageNumber", { position: pos, text: `+${RW.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
   }

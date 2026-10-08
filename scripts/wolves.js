@@ -76,8 +76,7 @@ function die(ctx, w, s, m) {
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
   if (p && (p.tags || []).includes("player")) {
     const tk = ctx.self.state.tallyKey || "briar_wolf"; // a den names its own kill (THR-03's bramble_beast)
-    p.state.tally = { ...(p.state.tally || {}), [tk]: (p.state.tally?.[tk] || 0) + 1 };
-    if (typeof p.state.xp === "number") p.state.xp += W.reward.xp; else p.state.xp = W.reward.xp;
+    ctx.emit("kill", { tally: tk, xp: W.reward.xp }, { to: p.id }); // the hero's own machine counts it (scripts/quest-player.js ear)
     if (W.reward.copper) ctx.emit("coins", { delta: W.reward.copper, reason: "kill:briar_wolf" }, { to: p.id }); // scripts/vendor.js ear: ledger, clink, purse
     ctx.emit("damageNumber", { position: pos, text: `+${W.reward.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
   }
