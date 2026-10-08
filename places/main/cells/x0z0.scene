@@ -7,6 +7,27 @@ bank:
   primitive: {kind: scripted, params: {chimney: 0, d: 9, h: 4.4, rise: 2.4, roof: dark grey slate roof tiles, w: 11, wall: stone, win: 2}, script: scripts/gen/house.js}
   rotation: -36
   tags: [building, bank]
+boulder-f1:
+  feetPosition: {x: -34, y: {terrain: -0.3}, z: 40}
+  id: boulder-f1
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: -198}
+  scale: 1.6
+  tags: [rock]
+boulder-f2:
+  feetPosition: {x: 2, y: {terrain: -0.3}, z: 62}
+  id: boulder-f2
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 76}
+  scale: 1.2
+  tags: [rock]
+boulder-f3:
+  feetPosition: {x: -28, y: {terrain: -0.3}, z: 63}
+  id: boulder-f3
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: -133}
+  scale: 0.9
+  tags: [rock]
 briar-bridge:
   feetPosition: {x: -50.5, y: 4.4, z: -9}
   id: briar-bridge
@@ -236,6 +257,36 @@ lamp-9:
   primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
   rotation: 0
   tags: [lamp]
+lamp-farm-1:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.82 0.14 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: -9.5, y: {terrain: 0}, z: 41}
+  id: lamp-farm-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: 90
+  tags: [lamp]
+lamp-farm-2:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.82 0.14 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: -14.5, y: {terrain: 0}, z: 41}
+  id: lamp-farm-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: 90
+  tags: [lamp]
+lanefence-a:
+  feetPosition: {x: -1.5, y: {terrain: 0}, z: 37}
+  id: lanefence-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: fence, len: 8}, script: scripts/gen/farm.js}
+  rotation: -45
+  tags: [farm]
+lanefence-b:
+  feetPosition: {x: 5.5, y: {terrain: 0}, z: 41}
+  id: lanefence-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: fence, len: 8}, script: scripts/gen/farm.js}
+  rotation: -45
+  tags: [farm]
 meadow-oaks:
   feetPosition: {x: 0, y: {terrain: 0}, z: 0}
   id: meadow-oaks
