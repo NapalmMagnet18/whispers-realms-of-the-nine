@@ -1,0 +1,49 @@
+# spawn-scene v2 yaml x-6z15
+qm-tid-lens-a:
+  feetPosition: {x: -733, y: {terrain: 0}, z: 1969}
+  id: qm-tid-lens-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon}, script: scripts/gen/tide.js}
+  state: {burstAt: 2.7, burstFx: "fx\npop spark burst=30 life=.5..1 v=sdir()*(1.5..3) size=.04..0.08 acc=grav()*.5+drag(1) col=hdr(4,2.4,.8)>hdr(1.5,.4,.1) a=1>0 r=sprite(ember,add,velocity,.02)\npop glow burst=1 life=.6 r=light(<1,.7,.4>,12*(1>0),12)", gain: Beacon lit, mark: lighthouse_lens, quest: TID-02, say: "The beacon's bowl of tideglass catches and glows pale blue, then gold.", title: a headland beacon, verb: Light}
+  tags: [quest-mark, tideglass]
+qm-tid-lens-b:
+  feetPosition: {x: -779, y: {terrain: 0}, z: 1965}
+  id: qm-tid-lens-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon}, script: scripts/gen/tide.js}
+  state: {burstAt: 2.7, burstFx: "fx\npop spark burst=30 life=.5..1 v=sdir()*(1.5..3) size=.04..0.08 acc=grav()*.5+drag(1) col=hdr(4,2.4,.8)>hdr(1.5,.4,.1) a=1>0 r=sprite(ember,add,velocity,.02)\npop glow burst=1 life=.6 r=light(<1,.7,.4>,12*(1>0),12)", gain: Beacon lit, mark: lighthouse_lens, quest: TID-02, say: "The beacon's bowl of tideglass catches and glows pale blue, then gold.", title: a headland beacon, verb: Light}
+  tags: [quest-mark, tideglass]
+qm-tid-lens-great:
+  feetPosition: {x: -753.4, y: {terrain: 0}, z: 1950}
+  id: qm-tid-lens-great
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon}, script: scripts/gen/tide.js}
+  state: {burstAt: 2.7, burstFx: "fx\npop spark burst=30 life=.5..1 v=sdir()*(1.5..3) size=.04..0.08 acc=grav()*.5+drag(1) col=hdr(4,2.4,.8)>hdr(1.5,.4,.1) a=1>0 r=sprite(ember,add,velocity,.02)\npop glow burst=1 life=.6 r=light(<1,.7,.4>,12*(1>0),12)", gain: Lens lit, mark: lighthouse_lens, quest: TID-02, say: "The wick takes. High above, the great lens wakes with it, throwing its gold across the dunes behind you, not out to sea.", title: the great lens, verb: Light}
+  tags: [quest-mark, tideglass]
+qm-tid-lens-turn:
+  feetPosition: {x: -749, y: {terrain: 0}, z: 1951}
+  id: qm-tid-lens-turn
+  material: {color: oklch(0.4 0.01 60), metalness: 0.7, roughness: 0.5}
+  physics: static
+  primitive: {height: 0.12, kind: cylinder, radiusBottom: 0.5, radiusTop: 0.5}
+  rotation: {pitch: 90}
+  state: {after: lighthouse_lens, afterText: "First: light all three lenses", burstAt: 21, burstFx: "fx\npop ray burst=1 life=2.5 size=3 sz=$size*(.3>8) col=hdr(2.4,1.9,.9) a=.8>0 r=sprite(soft-disc,add)", gain: Lens turned inland, mark: lens_turned, quest: TID-02, say: "The rail groans, chain by chain. The beam swings off the dunes and settles, dead straight, on a dry valley inland where the old maps show a sea.", title: the lens rail, verb: Turn the crank of}
+  tags: [quest-mark, tideglass]
+tide-lighthouse:
+  children: [{feetPosition: {x: 0, y: 21.2, z: -2.6}, light: {aim: {x: 0, y: -0.15, z: -1}, angle: 12, color: oklch(0.9 0.1 85), distance: 260, intensity: 40, kind: spot, penumbra: 0.5}}, {feetPosition: {x: 0, y: 21.2, z: 0}, light: {color: oklch(0.88 0.1 80), distance: 30, intensity: 6, kind: point}}]
+  feetPosition: {x: -755, y: 18.87, z: 1955}
+  id: tide-lighthouse
+  physics: static
+  primitive: {kind: scripted, params: {kind: lighthouse}, script: scripts/gen/tide.js}
+  rotation: {yaw: 0}
+  tags: [tideglass]
+tide-npc-ruun:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -758, y: 17.2, z: 1948}
+  id: tide-npc-ruun
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-old-shellkeeper-male-white-beard-shell-necklace-knit-sweater.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 0}
+  state: {homeYaw: 0, idle: Idle, npcName: Shellkeeper Ruun, who: ruun-tide, yaw: 0}
+  tags: [npc, talker, townsfolk, quest-npc, tideglass]

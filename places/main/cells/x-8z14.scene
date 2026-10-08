@@ -1,0 +1,17 @@
+# spawn-scene v2 yaml x-8z14
+tide-cottage-b:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -1010, y: 3, z: 1846}
+  id: tide-cottage-b
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 6, h: 3.2, rise: 2.2, roof: weathered red clay roof shingles, w: 7, win: 1}, script: scripts/gen/house.js}
+  rotation: -180
+  tags: [tideglass]
+tide-inn:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -985, y: 3, z: 1852}
+  id: tide-inn
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 9, h: 4.6, rise: 2.8, roof: weathered red clay roof shingles, w: 12, win: 3}, script: scripts/gen/house.js}
+  rotation: 138.23970029610214
+  tags: [tideglass]

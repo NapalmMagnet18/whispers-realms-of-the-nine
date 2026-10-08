@@ -1,0 +1,70 @@
+# spawn-scene v2 yaml x-7z15
+qm-tid-hale:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -902, y: {terrain: 0}, z: 1894}
+  id: qm-tid-hale
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-fisherman-male-young-cable-knit-sweater-rolled-cap-rubber-boots.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {after: melody_fragment, afterText: "First: gather the three phrases from the singing shells", gain: Refrain taught, homeYaw: 180, idle: Idle, mark: crew_taught, npcName: Jory Hale, quest: TID-03, say: "You hum it through. Jory frowns, tries it, gets the middle wrong, tries again. By the third time his brothers have stopped mending to join in.", title: the Hale crew, verb: Teach the refrain to, who: hale-tide, yaw: 180}
+  tags: [quest-mark, townsfolk, tideglass]
+qm-tid-inlet-cove:
+  feetPosition: {x: -955, y: {terrain: 0}, z: 1925}
+  id: qm-tid-inlet-cove
+  physics: static
+  primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/tide.js}
+  state: {gain: Inlet surveyed, mark: tide_inlet, quest: TID-01, say: You drive the stake in at the tide line. Sena's chart shows water here. The Crown survey shows nothing at all., title: an uncharted inlet, verb: Plant a stake at}
+  tags: [quest-mark, tideglass]
+qm-tid-melody-a:
+  feetPosition: {x: -940, y: {terrain: 0}, z: 1903}
+  id: qm-tid-melody-a
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: -100
+  state: {burstAt: 0.4, burstFx: "fx\npop note burst=12 life=1..1.8 on=disc(.2) v=up(.6..1)+sdir()*.3 size=.06..0.1 acc=drag(.6)+curl(.4) col=hdr(.9,1.4,2.4) a=0>.2:1>.7:.8>0 r=sprite(soft-disc,add)", gain: Melody fragment, mark: melody_fragment, quest: TID-03, say: "A thin voice in the whorl: three rising notes, like a rope pulled hand over hand.", title: a singing shell, verb: Listen to}
+  tags: [quest-mark, tideglass]
+qm-tid-melody-b:
+  feetPosition: {x: -870, y: {terrain: 0}, z: 1981}
+  id: qm-tid-melody-b
+  primitive: {kind: scripted, params: {kind: conch}, script: scripts/gen/strand.js}
+  rotation: -330
+  state: {burstAt: 0.4, burstFx: "fx\npop note burst=12 life=1..1.8 on=disc(.2) v=up(.6..1)+sdir()*.3 size=.06..0.1 acc=drag(.6)+curl(.4) col=hdr(.9,1.4,2.4) a=0>.2:1>.7:.8>0 r=sprite(soft-disc,add)", gain: Melody fragment, mark: melody_fragment, quest: TID-03, say: "The conch hums the middle phrase, low and slow, the way a crew sings at the oars.", title: a singing shell, verb: Listen to}
+  tags: [quest-mark, tideglass]
+tide-hale-2:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -899, y: {terrain: 0}, z: 1942.5}
+  id: tide-hale-2
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-fisherman-male-young-cable-knit-sweater-rolled-cap-rubber-boots.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle_FoldArms_Loop, npcName: Bran Hale, who: hale-tide, yaw: 200}
+  tags: [npc, talker, townsfolk, tideglass]
+tide-netrack-0:
+  feetPosition: {x: -912, y: {terrain: 0}, z: 1883}
+  id: tide-netrack-0
+  primitive: {kind: scripted, params: {kind: netrack, seed: 0}, script: scripts/gen/tide.js}
+  rotation: 10
+  tags: [tideglass]
+tide-netrack-1:
+  feetPosition: {x: -896, y: {terrain: 0}, z: 1951}
+  id: tide-netrack-1
+  primitive: {kind: scripted, params: {kind: netrack, seed: 1}, script: scripts/gen/tide.js}
+  rotation: 10
+  tags: [tideglass]
+tide-npc-sari:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -905, y: {terrain: 0}, z: 1895}
+  id: tide-npc-sari
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-netmaker-female-headscarf-rolled-sleeves-net-over-shoulder.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 160}
+  state: {homeYaw: 160, idle: Idle_Rail_Loop, npcName: Netmaker Sari, who: sari-tide, yaw: 160}
+  tags: [npc, talker, townsfolk, quest-npc, tideglass]
+tide-wreck-1:
+  feetPosition: {x: -925, y: {terrain: -0.2}, z: 1889}
+  id: tide-wreck-1
+  primitive: {kind: scripted, params: {kind: wreck}, script: scripts/gen/strand.js}
+  rotation: 110
+  tags: [tideglass]

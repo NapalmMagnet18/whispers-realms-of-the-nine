@@ -1,0 +1,29 @@
+# spawn-scene v2 yaml x-9z15
+qm-tid-drydock-a:
+  feetPosition: {x: -1195.4551156035936, y: {terrain: 0.1}, z: 1945.9845158979037}
+  id: qm-tid-drydock-a
+  primitive: {depth: 1, height: 1, kind: box, width: 1}
+  state: {gain: Dry dock searched, mark: drydock_searched, quest: TID-04, say: "The cradle timbers are dark with salt water, and the slipway's still dripping. Nothing has launched here in eleven years.", title: the empty dry dock, verb: Search}
+  tags: [quest-mark, tideglass]
+  visible: false
+qm-tid-drydock-b:
+  feetPosition: {x: -1213.904748240736, y: {terrain: 0.1}, z: 1969.1322781687254}
+  id: qm-tid-drydock-b
+  primitive: {depth: 1, height: 1, kind: box, width: 1}
+  state: {gain: Dry dock searched, mark: drydock_searched, quest: TID-04, say: "Fresh rope-burn scores the bollard at the head of the slip, the fibres still caught in the iron.", title: the empty dry dock, verb: Search}
+  tags: [quest-mark, tideglass]
+  visible: false
+tide-drydock-a:
+  feetPosition: {x: -1192, y: 0.66, z: 1948}
+  id: tide-drydock-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: drydock, seed: 97}, script: scripts/gen/tide.js}
+  rotation: 59.74356283647074
+  tags: [tideglass]
+tide-drydock-b:
+  feetPosition: {x: -1210, y: 0.49, z: 1970}
+  id: tide-drydock-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: drydock, seed: 98}, script: scripts/gen/tide.js}
+  rotation: 77.47119229084849
+  tags: [tideglass]

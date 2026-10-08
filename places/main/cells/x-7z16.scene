@@ -1,0 +1,14 @@
+# spawn-scene v2 yaml x-7z16
+qm-tid-melody-c:
+  feetPosition: {x: -835, y: {terrain: 0}, z: 1997}
+  id: qm-tid-melody-c
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: -85
+  state: {burstAt: 0.4, burstFx: "fx\npop note burst=12 life=1..1.8 on=disc(.2) v=up(.6..1)+sdir()*.3 size=.06..0.1 acc=drag(.6)+curl(.4) col=hdr(.9,1.4,2.4) a=0>.2:1>.7:.8>0 r=sprite(soft-disc,add)", gain: Melody fragment, mark: melody_fragment, quest: TID-03, say: "The last phrase is a woman's voice, alone: a note held out, and then let go.", title: a singing shell, verb: Listen to}
+  tags: [quest-mark, tideglass]
+tide-wreck-0:
+  feetPosition: {x: -860, y: {terrain: -0.2}, z: 1987}
+  id: tide-wreck-0
+  primitive: {kind: scripted, params: {kind: wreck}, script: scripts/gen/strand.js}
+  rotation: 40
+  tags: [tideglass]

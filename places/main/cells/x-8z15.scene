@@ -1,0 +1,108 @@
+# spawn-scene v2 yaml x-8z15
+qm-tid-inlet-mouth:
+  feetPosition: {x: -1080, y: {terrain: 0}, z: 1897}
+  id: qm-tid-inlet-mouth
+  physics: static
+  primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/tide.js}
+  state: {gain: Inlet surveyed, mark: tide_inlet, quest: TID-01, say: You drive the stake in at the tide line. Sena's chart shows water here. The Crown survey shows nothing at all., title: an uncharted inlet, verb: Plant a stake at}
+  tags: [quest-mark, tideglass]
+qm-tid-registry:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1021.6, y: {terrain: 0}, z: 1915}
+  id: qm-tid-registry
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-harbour-clerk-female-middle-aged-ink-stained-cuffs-ledger-under-arm.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 90}
+  state: {gain: Registry questioned, homeYaw: 90, idle: Idle, mark: dock_registry, npcName: Clerk Hesper Vane, quest: TID-01, say: "Hesper sighs and unchains the oldest ledger. \"Forty ships, one morning. Every berth signed out, every passenger marked 'volunteer, return at will'. None returned. I was told to stop keeping this book. I didn't.\"", title: Clerk Hesper Vane, verb: Question, who: sena-tide, yaw: 90}
+  tags: [quest-mark, townsfolk, tideglass]
+tide-cottage-a:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -975, y: 3, z: 1895}
+  id: tide-cottage-a
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 6, h: 3.2, rise: 2.2, roof: golden straw thatch roof, w: 8, win: 1}, script: scripts/gen/house.js}
+  rotation: 66.80140948635182
+  tags: [tideglass]
+tide-cottage-c:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -962, y: 3, z: 1872}
+  id: tide-cottage-c
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 6, h: 3.2, rise: 2.1, roof: dark grey slate roof tiles, w: 7, win: 1}, script: scripts/gen/house.js}
+  rotation: 99.46232220802563
+  tags: [tideglass]
+tide-harbormaster:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -1036, y: 3, z: 1856}
+  id: tide-harbormaster
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 8, h: 4.4, rise: 2.4, roof: dark grey slate roof tiles, w: 10, wall: stone, win: 2}, script: scripts/gen/house.js}
+  rotation: -132.70938995736148
+  tags: [tideglass]
+tide-lamp-0:
+  feetPosition: {x: -1022, y: 3, z: 1870}
+  fx: {script: "fx\npop glow n=1 pos=<0,2.6,0> r=light(<1,.75,.4>,2.4,10)\npop flame rate=10 on=disc(.05) pos=<0,2.5,0> life=.3..0.5 v=up(.4) size=.06..0.1 acc=buoy(1.2)+drag(1.5) col=hdr(3.6,2,.6)>hdr(1.6,.5,.1) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: tide-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamp}, script: scripts/gen/strand.js}
+  tags: [tideglass]
+tide-lamp-1:
+  feetPosition: {x: -996, y: 3, z: 1868}
+  fx: {script: "fx\npop glow n=1 pos=<0,2.6,0> r=light(<1,.75,.4>,2.4,10)\npop flame rate=10 on=disc(.05) pos=<0,2.5,0> life=.3..0.5 v=up(.4) size=.06..0.1 acc=buoy(1.2)+drag(1.5) col=hdr(3.6,2,.6)>hdr(1.6,.5,.1) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: tide-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamp}, script: scripts/gen/strand.js}
+  tags: [tideglass]
+tide-lamp-2:
+  feetPosition: {x: -1018, y: 3, z: 1904}
+  fx: {script: "fx\npop glow n=1 pos=<0,2.6,0> r=light(<1,.75,.4>,2.4,10)\npop flame rate=10 on=disc(.05) pos=<0,2.5,0> life=.3..0.5 v=up(.4) size=.06..0.1 acc=buoy(1.2)+drag(1.5) col=hdr(3.6,2,.6)>hdr(1.6,.5,.1) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: tide-lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamp}, script: scripts/gen/strand.js}
+  tags: [tideglass]
+tide-lamp-3:
+  feetPosition: {x: -1000, y: 3, z: 1906}
+  fx: {script: "fx\npop glow n=1 pos=<0,2.6,0> r=light(<1,.75,.4>,2.4,10)\npop flame rate=10 on=disc(.05) pos=<0,2.5,0> life=.3..0.5 v=up(.4) size=.06..0.1 acc=buoy(1.2)+drag(1.5) col=hdr(3.6,2,.6)>hdr(1.6,.5,.1) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: tide-lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamp}, script: scripts/gen/strand.js}
+  tags: [tideglass]
+tide-netstore:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -1043, y: 3, z: 1893}
+  id: tide-netstore
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 0, d: 6, h: 3.4, rise: 2, roof: weathered grey wood shingles, w: 8, win: 1}, script: scripts/gen/house.js}
+  rotation: -68.4985656759521
+  tags: [tideglass]
+tide-npc-sena:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1004, y: {terrain: 0}, z: 1918}
+  id: tide-npc-sena
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-sea-pilot-female-weathered-oilskin-coat-braided-hair-spyglass.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle_FoldArms_Loop, npcName: Pilot Sena Wavebound, who: sena-tide, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, tideglass]
+tide-quay:
+  feetPosition: {x: -1010, y: 3, z: 1924}
+  id: tide-quay
+  physics: static
+  primitive: {kind: scripted, params: {kind: quay, len: 56, w: 5}, script: scripts/gen/tide.js}
+  tags: [tideglass]
+tide-quay-arm:
+  feetPosition: {x: -1012, y: 3, z: 1972}
+  id: tide-quay-arm
+  physics: static
+  primitive: {kind: scripted, params: {kind: quay, len: 26, w: 4}, script: scripts/gen/tide.js}
+  rotation: {yaw: -90}
+  tags: [tideglass]
+tide-registry:
+  feetPosition: {x: -1020, y: 3, z: 1915}
+  id: tide-registry
+  physics: static
+  primitive: {kind: scripted, params: {kind: registry}, script: scripts/gen/tide.js}
+  rotation: 90
+  tags: [tideglass]

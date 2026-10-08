@@ -1,0 +1,25 @@
+# spawn-scene v2 yaml x-5z16
+qm-tid-ferry:
+  feetPosition: {x: -700, y: {terrain: 0}, z: 2077}
+  id: qm-tid-ferry
+  physics: static
+  primitive: {kind: scripted, params: {kind: ferrypost}, script: scripts/gen/tide.js}
+  rotation: 180
+  state: {gain: Rope repaired, mark: ferry_rope, quest: TID-04, say: "You unpick the frayed ends and work a long splice, tucking each strand three times. Rowan tests it with his whole weight. It holds.", title: the ferry rope, verb: Splice}
+  tags: [quest-mark, tideglass]
+tide-buoy-0:
+  children: [{feetPosition: {x: 0, y: 1.5, z: 0}, light: {color: oklch(0.85 0.1 80), distance: 8, intensity: 1.5, kind: point}}]
+  feetPosition: {x: -700, y: 0.2, z: 2095}
+  id: tide-buoy-0
+  primitive: {kind: scripted, params: {kind: buoy}, script: scripts/gen/strand.js}
+  tags: [tideglass]
+tide-npc-rowan:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -703, y: {terrain: 0}, z: 2071}
+  id: tide-npc-rowan
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-ferryman-male-old-oilskin-coat-lantern.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 160}
+  state: {homeYaw: 160, idle: Idle, npcName: Rowan the Ferryman, who: rowan-tide, yaw: 160}
+  tags: [npc, talker, townsfolk, quest-npc, tideglass]
