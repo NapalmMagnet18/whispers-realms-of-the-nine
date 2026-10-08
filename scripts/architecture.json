@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1513,
-  "updatedAt": "2026-10-08T20:28:29.964Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March, six peoples' homelands and themed dungeon/raid instances. MMORPG Tools owns realm, character and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight and survival, while streamed scenes and shared YAML data define the world, encounters and layered audio.",
+  "basedOnSpecVersion": 1525,
+  "updatedAt": "2026-10-08T20:36:55.456Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, homelands and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, survival and per-player audio, while streamed scenes and shared YAML data define places and encounters.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -187,6 +187,7 @@
     "scripts/mushroom.js",
     "scripts/pathfinder.js",
     "scripts/pebble.js",
+    "scripts/places/main/sim.js",
     "scripts/player.js",
     "scripts/quarry-sway.js",
     "scripts/quest-core.js",
@@ -214,68 +215,67 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main/config.yaml and places/main/cells/ - Lantern March continent, its homelands and roads; streamed scenes hold hubs, quests, encounters, landmarks and newly placed spatial loops for fires, forges, wells and shrines.",
-    "places/main/cells/x-1z-1.scene - Thornwood lumber camp at (-117,-108): sawpit, log piles, cart, shed, stumps and talk-only Bryn Oakhewn; static generator props and one townsfolk NPC.",
-    "places/main/cells/x-7z0.scene - Deepgrove bandit camp at (-943,45): palisade, tents, lookout, loot, cookfire and Scab NPC; scenery and talk only, no hostile bandits wired.",
-    "places/main/cells/x-1z-5.scene - fallen giant over Road-Starfall at (-80,-680), with scripted rib arches, skull, sword and arm bone; road passes between rib colliders.",
-    "places/hollowcrypt/ - underground crypt campaign entered from Hollowcrypt Vale; halls, Archive, Candle Warden and paired gate.",
-    "places/drowned-bell/ and places/root-archive/ - themed instanced dungeons with encounter scenes, paired entry/return gates and placed ambient audio for braziers, forges, wells and shrines.",
-    "places/pale-choir/, places/emberheart/ and places/ninth-assembly/ - themed raid places with encounter bosses, paired gates and scene-placed ambience; endgame path branches through Pale Choir and Emberheart.",
-    "places/character-creation-land/ and places/main-menu-land/ - character-creation and realm/menu entry scenes, respectively."
+    "places/main/config.yaml and places/main/cells/ - the Lantern March continent; streamed scenes hold towns, regions, quest sites, encounters, gates, landmarks and spatial emitters.",
+    "places/main/cells/x0z-4.scene - Starfall road's blood shrine: blood-shrine tag, offer sign and shrine audio/effects; vitality.js handles the E pact interaction.",
+    "places/main/cells/x2z11.scene - Saltmere Hask Brinewell is a vendor as well as townsfolk; shop id hask selects his cooked fish stock.",
+    "places/hollowcrypt/ - underground crypt campaign with halls, Archive, Candle Warden and paired gate.",
+    "places/drowned-bell/ and places/root-archive/ - themed dungeons with encounter scenes, paired gates and placed ambience.",
+    "places/pale-choir/, places/emberheart/ and places/ninth-assembly/ - themed raids with encounter bosses, paired gates and scene ambience.",
+    "places/character-creation-land/ and places/main-menu-land/ - character creation and realm/menu entry scenes."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse; audio gains set Music .85 and Ambience .55.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
-    "places/main/config.yaml - owns March terrain, roads, regional surfaces/scatter and atmosphere; cell scenes bind structures, quest marks, bosses, NPCs and spatial sound emitters.",
-    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - terrain, gravity and spawn environment for crypt and instance play.",
+    "places/main/config.yaml - March terrain, roads, surfaces/scatter and atmosphere; places/main/sim.js runs the room weather clock.",
+    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - terrain, gravity and spawn environment for crypt and instances.",
     "places/main/cells/x-10z7.scene - Sorrowfen hub and instance entrances; each gate pairs with an inside gate in its dungeon/raid scene.",
     "mods/gavi/mod.json - registers Gavi crew behavior and panel, the builder-facing companion tools."
   ],
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population and realm list/detail shared by menu and player lifecycle.",
-    "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry shared by quests, class actions, vitality and regional music; playable places are listed here.",
-    "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid places; scenes select layout and kind via params.",
+    "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry shared by quests, class actions, vitality and regional music.",
+    "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics and lookup shared by quest-core, quest-giver and quest UI; quest-text.js supplies prose.",
-    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common boss behavior for dungeon, raid and open-world bosses; boss IDs also key gear loot tables and boss-voices.yml wake clips.",
-    "scripts/lib/data/gear.yml - boss loot tables, item stats and tier data consumed by quest-player, quest-core and kit.js; tier data also selects loot-drop sound.",
-    "scripts/lib/data/music.yml + scripts/region-music.js - shared themes, per-area ambience beds and stingers, including enter/discover zone clips; boss-voices.yml supplies boss voice clips to boss.js."
+    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for dungeon, raid and open-world bosses; IDs also key gear and voice data.",
+    "scripts/lib/data/gear.yml - boss loot tables, item stats and tier data consumed by quest-player, quest-core and kit.js.",
+    "scripts/lib/data/music.yml, weather.yml, greet-voices.yml + scripts/region-music.js, quest-core.js - area/audio schedules and voice mappings shared by player behaviors and place weather."
   ],
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
     "scripts/gen/homeland.js - geometry, collider; params.kind selects hollow, vault, reedcage or bloom geometry.",
     "scripts/gen/roothome.js and scripts/gen/stilt.js - geometry, collider for Thornhollow root-homes and Saltborn stilt fish-houses.",
     "scripts/gen/ruin.js and scripts/gen/hamlet.js - geometry, collider; ruin kinds dress the Ward Lamphouse, hamlet includes race-hamlet structures.",
-    "scripts/gen/armory.js, scripts/gen/waystone.js, scripts/gen/apothecary.js, scripts/gen/caravan.js and scripts/gen/harbor.js - geometry/collider generators for varied settlement props and landmarks.",
-    "scripts/gen/camp.js, scripts/gen/giant.js and scripts/gen/shrine.js - geometry, collider; kind/seed params vary camp and giant, shrine builds the blood-shrine piece.",
-    "scripts/lib/kit.js - power, gearPower, gearHealth, materialOf, meleeFoley and shared combat helpers; materialOf and meleeFoley route contact sounds through foley.yml.",
-    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update; MMORPG lib/version.js - GAME_VERSION, GAME_TITLE, versionTag (0.41.9 Alpha)."
+    "scripts/gen/armory.js, waystone.js, apothecary.js, caravan.js and harbor.js - geometry/collider generators for settlement props and landmarks.",
+    "scripts/gen/camp.js, giant.js and shrine.js - geometry, collider; kind/seed vary camp and giant, shrine builds the blood-shrine piece.",
+    "scripts/lib/kit.js - power, gearPower, classOf, canAct, forward, alive, aimPoint, softTargets, launch, materialOf, meleeFoley, applyHit.",
+    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; places/main/sim.js - cadence, tick."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment and quest state.",
-    "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, drill, gear power and melee foley.",
-    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth; quest-core emits turn-in fanfare and public level-up FX/chord/music duck.",
-    "scripts/boss.js - placed boss hp/mode/cast/enrage/target-related fields; encounter clocks, damage attribution and target scratch live in boss ctx.session.",
-    "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; on entry stamps player's _worldEnterAt and conditionally increments tally.",
-    "scripts/region-music.js - per-player theme/music transition and ambience bed (player.ambience); region-music session tracks current bed, zone transition and next stinger time; player.state.discoveredZones records first visits.",
-    "world.config.yaml - global audio bus gains and maxVoices; scripts/lib/data/foley.yml, music.yml and boss-voices.yml own clip mappings, not runtime player state."
+    "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, gear power and melee foley.",
+    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
+    "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch live in boss ctx.session.",
+    "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; stamps player's _worldEnterAt and conditionally increments tally.",
+    "scripts/vitality.js - player health/dying/rise and regen handling plus bloodUntil pact and per-session food-over-time; enemies write state.health.",
+    "places/main/sim.js owns place.state.storm/calm/thunderAt and atmosphere storm changes; region-music.js owns per-player theme, ambience, rain FX and transition session."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
-    "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu and scripts/crypt-gate.js/instance-gate.js stamp allowed transitions.",
+    "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu and crypt/instance gates stamp allowed transitions.",
     "main-menu-mgr loads current-room SQL roster; api.enterPlace routes selected character to saved place/position; routing validates requested room, then last room, then main.",
-    "scripts/lib/data/realms.yml → scripts/routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads pulses and refreshes realmList/realmDetail.",
+    "scripts/lib/data/realms.yml → routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads pulses and refreshes realmList/realmDetail.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot.",
-    "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → trades → flight → vitality → cursor-free → region-music; player.js/wow-move.js consume movement/camera intents.",
+    "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → trades → flight → vitality → cursor-free → region-music; movement/camera intents consumed by player.js/wow-move.js.",
     "First eligible quest-player input/update in a scripts/lib/places.js isPlay place → dynamic import quest-core; quests.yml + quest-data define mechanics, quest-text.js supplies prose, ui-quest renders it.",
-    "scripts/townsfolk.js greets placed talker NPCs; quest-player.js reads scripts/lib/data/townsfolk.yml by state.who for dialogue, including Scab and Bryn.",
-    "Main-place entrance gate (state.link, minLevel, enterQuest/enterTally) → instance-gate checks player/level and active quest, stamps _worldEnterAt and ctx.crosses to paired +place#gate; inside twin returns through its link.",
-    "Instance scenes bind scripts/gen/instance.js with layout/kind params; LAYOUTS and roomsOf produce shared themed room shells, corridors, floors and furnishings while scene placements supply encounters and props.",
-    "Boss scene state.boss → scripts/boss.js reads bosses.yml and boss-voices.yml; class scripts write hp/lastHitBy/lastHitAt, wake voice/text and abilities play, and credited kills emit to hero quest-player for tally/XP and gear rolls/sounds.",
-    "Player-region update → region-music.js selects music.yml theme, sets the player's ambience bed and schedules stingers; first-ever zone crossing records discoveredZones; flight.js adds rider-only gryphon loop, scene audio fields add spatial prop loops, and quest-core level-up FX/chord reach nearby players."
+    "quest-core talks/interacts with townsfolk → greet-voices.yml matches resident base name and barks to the pressing player; quest-core also emits quest dialogue and quest audio feedback.",
+    "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
+    "Instance scenes bind scripts/gen/instance.js with layout/kind params; LAYOUTS and roomsOf produce shared room shells, corridors, floors and furnishings while scenes supply encounters and props.",
+    "Boss state.boss → boss.js reads bosses.yml/voice data; class scripts write hp/lastHitBy/lastHitAt, credited kills feed quest-player tally/XP and gear; voiced wakes set player _hushUntil for region-music.",
+    "places/main/sim.js ticks weather.yml into place.state.storm/atmosphere and emits thunder/flash → region-music.js reads storm for rain FX/bed; vitality.js handles useFood healing and blood-shrine interact, while kit.power reads bloodUntil."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
@@ -294,8 +294,8 @@
     "Adding a playable place requires a row in scripts/lib/places.js PLAY; dying heroes rise at SAFE_HOME for listed dungeons/raids. Quest and class logic uses isPlay rather than hard-coded place names.",
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest before crossing, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
-    "Boss combat writes shared hp/lastHitBy/lastHitAt fields; boss.js emits kills to each hero's behavior machine so quest-player owns tally/XP and gear rolls. Keep scene state.boss IDs aligned with bosses.yml and gear.yml; boss-voices.yml is keyed by the same boss IDs.",
-    "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
-    "Melee material selection is state.material first, then boss mapping, wolf fur/dummy wood, otherwise flesh; foley.yml hit rows and heavy layer are consumed by kit.meleeFoley. Scene emitter audio uses spatial loops and maxDistance; region music owns zone-sting selection while flight audio is rider-local."
+    "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and gear.yml; voiced boss _hushUntil is consumed by region-music.",
+    "Blood pact power is time-gated by player.state.bloodUntil in kit.power; vitality owns its expiry/effects. Food inventory items carry healOverTime/eatSeconds, are consumed via useFood index and healing is interrupted by damage.",
+    "March weather stores a saved calm atmosphere before storm overrides it; sim.js restores that baseline, while region-music samples storm state for per-player rain and ambience. Money remains integer copper; route transactions through scripts/lib/economy.js."
   ]
 }
