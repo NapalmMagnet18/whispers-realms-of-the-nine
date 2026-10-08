@@ -2,6 +2,7 @@
 // vendorBuy { itemId } / vendorSell { slot } / vendorTab { tab } / vendorClose land here. Coins move through scripts/lib/economy.js.
 // The "coins" ear: any machine pays this player, ctx.emit("coins", { delta, reason }, { to: playerId }) (a chest, a bounty).
 import E from './lib/data/economy.yml';
+import TR from './lib/data/trainers.yml';
 import { move, purse, formatText } from './lib/economy.js';
 import { migrateCopper } from '../mods/mmorpg-tools/mod-mmorpg/lib/currency.js';
 import { getShopItems, findShopItem, sellPrice } from '../mods/mmorpg-tools/mod-mmorpg/lib/shop-data.js';
@@ -74,6 +75,28 @@ function sell(ctx, slot) {
   say(ctx, 'Sold ' + (n > 1 ? n + ' × ' : '') + (it.name || it.id) + ' for ' + formatText(each * n) + '.');
 }
 
+// A discipline trainer (state.trainer): E learns the next rank if the level and the fee allow, else says what's missing.
+const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+const TRAIN_FX = `fx
+pop motes burst=40 on=disc(.7) life=1..1.8 v=up(1.6..3.2)+sdir()*.3 size=.05..0.11 acc=curl(.6)+drag(.6) col=hdr(4,2.8,1)>hdr(1.6,.8,.2) a=0>.1:1>.7:.8>0 r=sprite(ember,add)
+pop column burst=6 on=disc(.4) life=.9..1.3 v=up(2..3) size=.5..0.8 acc=drag(1) col=hdr(2.6,1.8,.6) a=0>.2:.6>1:0 sz=$size*(.6>1.6) r=sprite(soft-disc,add)
+pop glow burst=1 life=1.2 at=disc(.1).c(1) r=light(<1,.8,.4>,8,6)`;
+function train(ctx, v) {
+  const st = ctx.self.state, cls = String(st.className || 'Hero'), rank = st.trained ?? 0, next = TR.ranks[rank];
+  const at = { x: v.feetPosition.x, y: v.feetPosition.y + 2.3, z: v.feetPosition.z };
+  const tell = (text, color) => ctx.emit('damageNumber', { position: at, text, color: color || '#e8d9b5', size: 1.1, lifetime: 2.6 }, { audience: { player: ctx.self.id } });
+  const nm = (v.state && v.state.npcName) || 'Trainer';
+  if (!next) return tell(nm + ': there is nothing left I can teach you.');
+  if ((st.level ?? 1) < next.level) return tell(nm + ': come back at level ' + next.level + ' for ' + next.title + ' training.');
+  if (purse(st) < next.copper || move(ctx, -next.copper, 'train:' + next.rank) === null) return tell(next.title + ' training costs ' + formatText(next.copper) + '.', '#ff8a70');
+  st.trained = next.rank;
+  const me = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 0.05, z: ctx.self.feetPosition.z };
+  ctx.emit('fx', { position: me, script: TRAIN_FX }, { audience: { nearby: me, radius: 40 } });
+  ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-class-trainer-rank-learned-choir-chime-swell.mp3', position: me, volume: 0.7 }, { audience: { nearby: me, radius: 30 } });
+  ctx.emit('damageNumber', { position: { x: me.x, y: me.y + 2.4, z: me.z }, text: cls + ' ' + next.title + ' (Rank ' + ROMAN[next.rank] + '): +' + Math.round(next.rank * TR.bonus * 100) + '% damage', color: '#f2b04a', size: 1.4, lifetime: 3.2 }, { audience: { player: ctx.self.id } });
+  ctx.emit('stat', { name: 'trained_rank_' + next.rank }, { audience: { player: ctx.self.id } });
+}
+
 export function onInput(ctx, input) {
   if (!playing(ctx)) return;
   const st = ctx.self.state;
@@ -84,6 +107,7 @@ export function onInput(ctx, input) {
   if (on(input, 'interact') && !st.showQuestDialog && !st.showDoorPanel) {
     if (st.vendorOpen) { st.vendorOpen = null; return; }
     const v = nearVendor(ctx);
+    if (v && v.state && v.state.trainer) return train(ctx, v);
     if (v) open(ctx, v);
   }
 }
