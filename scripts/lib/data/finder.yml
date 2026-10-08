@@ -1,0 +1,12 @@
+# Party Finder (2026-10-08): boards (tag party-finder) in each race town and the Sorrowfen hub. A click queues the hero
+# room-wide (world.state.lfg); places/main/sim.js pops a queue when it fills, or when the first in line has waited `fillSec`
+# with at least `minGroup`, or alone after `soloSec`. A pop carries every queued hero in the March through the dungeon's link.
+fillSec: 90
+soloSec: 180
+minGroup: 2
+dungeons:
+  - { id: drowned-bell,   name: "The Drowned Bell",      kind: dungeon, size: 3, minLevel: 22, link: "+drowned-bell#bell-gate-in",        tally: bell_entered,       quest: DSB-01 }
+  - { id: root-archive,   name: "The Root Archive",      kind: dungeon, size: 3, minLevel: 28, link: "+root-archive#root-gate-in",        tally: root_entered,       quest: DRT-01 }
+  - { id: pale-choir,     name: "The Pale Choir",        kind: raid,    size: 5, minLevel: 60, link: "+pale-choir#choir-gate-in",         tally: pale_choir_entered, quest: END-01 }
+  - { id: emberheart,     name: "Emberheart Caldera",    kind: raid,    size: 5, minLevel: 60, link: "+emberheart#caldera-gate-in",       tally: emberheart_entered, quest: END-01 }
+  - { id: ninth-assembly, name: "Assembly of the Ninth", kind: raid,    size: 5, minLevel: 60, link: "+ninth-assembly#assembly-gate-in",  tally: assembly_entered,   quest: END-01 }
