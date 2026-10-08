@@ -1,4 +1,12 @@
 # spawn-scene v2 yaml x-6z15
+qm-tid-chart:
+  feetPosition: {x: -764, y: {terrain: 0}, z: 1964}
+  id: qm-tid-chart
+  physics: static
+  primitive: {kind: scripted, params: {kind: chart}, script: scripts/gen/strand.js}
+  rotation: 200
+  state: {after: lens_ground, afterText: "First: grind the tideglass lens at the bench in the quay plaza", gain: Crossing charted, mark: fleet_charted, quest: TID-05, say: "Through the lens the bay fills with masts, forty of them, under sail in a long bending line that runs straight past the headland and away. Lower the lens and the water is empty. You ink the line before it fades.", title: the headland chart, verb: Chart the crossing at}
+  tags: [quest-mark, tideglass]
 qm-tid-lens-a:
   feetPosition: {x: -733, y: {terrain: 0}, z: 1969}
   id: qm-tid-lens-a

@@ -30,6 +30,22 @@ qm-tid-melody-b:
   rotation: -330
   state: {burstAt: 0.4, burstFx: "fx\npop note burst=12 life=1..1.8 on=disc(.2) v=up(.6..1)+sdir()*.3 size=.06..0.1 acc=drag(.6)+curl(.4) col=hdr(.9,1.4,2.4) a=0>.2:1>.7:.8>0 r=sprite(soft-disc,add)", gain: Melody fragment, mark: melody_fragment, quest: TID-03, say: "The conch hums the middle phrase, low and slow, the way a crew sings at the oars.", title: a singing shell, verb: Listen to}
   tags: [quest-mark, tideglass]
+qm-tid-shard-c:
+  feetPosition: {x: -888, y: {terrain: 0}, z: 1974}
+  fx: {script: "fx\npop glint n=3 on=disc(.3) life=.8..1.6 size=.04..0.08 col=hdr(1,2,2.4) a=0>.5:1>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 pos=<0,.3,0> r=light(<.5,.9,1>,1.2,4)"}
+  id: qm-tid-shard-c
+  primitive: {kind: scripted, params: {kind: shard, seed: -888}, script: scripts/gen/tide.js}
+  rotation: -24
+  state: {gain: Tideglass gathered, mark: tide_shard, quest: TID-05, say: "Cold, smooth, faintly lit from inside, like a lamp seen through deep water.", title: tideglass, verb: Pick up}
+  tags: [quest-mark, tideglass]
+qm-tid-song-cove:
+  children: [{feetPosition: {x: 0, y: 2.8, z: 0}, light: {color: oklch(0.8 0.08 205), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: -945, y: {terrain: 0}, z: 1908}
+  id: qm-tid-song-cove
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon}, script: scripts/gen/tide.js}
+  state: {burstAt: 2.8, burstFx: "fx\npop note burst=30 life=1.5..2.5 on=disc(.3) v=up(1..2)+sdir()*.6 size=.06..0.12 acc=drag(.5)+curl(.6) col=hdr(2.4,1.9,.9)>hdr(1,1.6,2.4) a=0>.1:1>0 r=sprite(soft-disc,add)\npop glow burst=1 life=2 r=light(<1,.85,.5>,14*(1>0),16)", gain: Song played, mark: song_beacon, quest: TID-08, say: "You hum the refrain, Orin's verse riding under it. The beacon's tideglass bowl picks up the tune and holds it, ringing softly long after you stop.", title: a song beacon, verb: Play the harbour song at}
+  tags: [quest-mark, tideglass]
 tide-hale-2:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -899, y: {terrain: 0}, z: 1942.5}

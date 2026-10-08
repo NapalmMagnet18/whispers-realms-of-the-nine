@@ -7,6 +7,15 @@ qm-tid-ferry:
   rotation: 180
   state: {gain: Rope repaired, mark: ferry_rope, quest: TID-04, say: "You unpick the frayed ends and work a long splice, tucking each strand three times. Rowan tests it with his whole weight. It holds.", title: the ferry rope, verb: Splice}
   tags: [quest-mark, tideglass]
+qm-tid-skiff:
+  children: [{feetPosition: {x: 0, y: 0.8, z: -2.2}, light: {color: oklch(0.88 0.1 80), distance: 8, intensity: 1.5, kind: point}}]
+  feetPosition: {x: -695.5, y: 0.15, z: 2079.5}
+  id: qm-tid-skiff
+  physics: static
+  primitive: {kind: scripted, params: {kind: relayskiff}, script: scripts/gen/tide.js}
+  rotation: 10
+  state: {gain: Skiff boarded, mark: skiff_boarded, quest: TID-09, say: "Rowan casts off. The skiff finds the gold road past the white headland and runs it fast and quiet, and the March slides by. You step off at the Reach with the captain's record dry under your coat.", title: the relay skiff, travel: {x: -24, y: 4.1, z: -28}, verb: Board}
+  tags: [quest-mark, tideglass]
 tide-buoy-0:
   children: [{feetPosition: {x: 0, y: 1.5, z: 0}, light: {color: oklch(0.85 0.1 80), distance: 8, intensity: 1.5, kind: point}}]
   feetPosition: {x: -700, y: 0.2, z: 2095}

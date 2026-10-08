@@ -1,4 +1,12 @@
 # spawn-scene v2 yaml x-8z15
+qm-tid-estuary:
+  feetPosition: {x: -1062, y: {terrain: -0.2}, z: 1922}
+  fx: {script: "fx\npop spray rate=4 on=disc(2) life=.8..1.4 v=up(1..2)+sdir()*.5 size=.08..0.15 acc=grav()*.6+drag(.6) col=<.85,.92,.95> a=.6>0 r=sprite(soft-disc,alpha)\npop glow n=1 pos=<0,2.4,0> glo=flick(1.5,.6) r=light(<.6,.85,1>,$glo*2.5,10)"}
+  id: qm-tid-estuary
+  physics: static
+  primitive: {kind: scripted, params: {kind: pillar}, script: scripts/gen/tide.js}
+  state: {after: song_beacon, afterText: "First: play the harbour song at the three song beacons", burstAt: 0.3, burstFx: "fx\npop ring burst=1 life=2 size=2 sz=$size*(.2>12) col=hdr(1.6,2,2.4) a=.7>0 r=sprite(soft-disc,add)\npop glow burst=1 life=2 r=light(<.7,.9,1>,20*(1>0),30)", gain: Estuary stabilized, mark: estuary_stilled, quest: TID-08, say: "You lay both palms on the cracked column and sing the last phrase into it. The guttering light evens out, and the chop in the bay lies down flat as glass. Out past the headland, a faint gold line appears on the water.", title: the estuary stone, verb: Stabilize}
+  tags: [quest-mark, tideglass]
 qm-tid-inlet-mouth:
   feetPosition: {x: -1080, y: {terrain: 0}, z: 1897}
   id: qm-tid-inlet-mouth
@@ -6,6 +14,33 @@ qm-tid-inlet-mouth:
   primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/tide.js}
   state: {gain: Inlet surveyed, mark: tide_inlet, quest: TID-01, say: You drive the stake in at the tide line. Sena's chart shows water here. The Crown survey shows nothing at all., title: an uncharted inlet, verb: Plant a stake at}
   tags: [quest-mark, tideglass]
+qm-tid-lensbench:
+  feetPosition: {x: -1029, y: 3, z: 1873}
+  id: qm-tid-lensbench
+  physics: static
+  primitive: {kind: scripted, params: {kind: lensbench}, script: scripts/gen/tide.js}
+  rotation: 60
+  state: {after: tide_shard, afterText: "First: gather three pieces of tideglass on the shore", burstAt: 1.1, burstFx: "fx\npop spark burst=24 life=.3..0.7 v=sdir()*(1..2) size=.03..0.05 acc=grav()*.4 col=hdr(1.2,2.4,2.8) a=1>0 r=sprite(ember,add,velocity,.02)", gain: Lens ground, mark: lens_ground, quest: TID-05, say: "You set the three pieces in the vice and work the wheel until they fuse into one pale disc. Held to your eye, the harbour looks the same. Mostly.", title: the tideglass lens, verb: Grind}
+  tags: [quest-mark, tideglass]
+qm-tid-oath:
+  feetPosition: {x: -1007.6, y: 3, z: 1977}
+  id: qm-tid-oath
+  material: {color: oklch(0.32 0.01 60), metalness: 0.6, roughness: 0.5}
+  physics: static
+  primitive: {height: 0.5, kind: cylinder, radiusBottom: 0.2, radiusTop: 0.16}
+  state: {after: fleet_echo_met, afterText: "First: speak with Captain Orin", gain: Oath refused, mark: oath_refused, quest: TID-07, say: "\"Keep your word as your own, Captain.\" Orin looks at you a long moment, then laughs, a real sailor's laugh, and the light round her steadies. \"Then I'll tell you freely.\" She tells you everything.", title: the binding oath, verb: Refuse}
+  tags: [quest-mark, tideglass]
+qm-tid-orin:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1010, y: 3, z: 1976}
+  fx: {script: "fx\npop haze n=1 pos=<0,1,0> life=3 size=1.6 sz=$size*flick(.4,.1) col=hdr(.5,.8,1.1) a=.18 r=sprite(soft-disc,add)\npop mote rate=8 on=box(.35,.9,.25) pos=<0,.9,0> life=1.5..2.5 v=up(.15..0.35) size=.03..0.06 acc=curl(.25) col=hdr(.9,1.3,1.8) a=0>.7:1>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,1.4,0> r=light(<.6,.8,1>,1.6,6)"}
+  id: qm-tid-orin
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-sea-captain-female-ghostly-pale-long-captains-coat-tricorn-hat.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {gain: Echo met, homeYaw: 180, idle: Idle_FoldArms_Loop, mark: fleet_echo_met, npcName: Captain Orin, quest: TID-07, say: "\"Forty ships, and I said I'd hold the door so they could come home. The Court took my name for it.\" She turns her hat in her pale hands. \"Bind me to an oath and I'll serve you, the way echoes can be made to. Folk have done it here.\"", title: Captain Orin, verb: Speak with, who: orin-tide, yaw: 180}
+  tags: [quest-mark, townsfolk, tideglass]
 qm-tid-registry:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -1021.6, y: {terrain: 0}, z: 1915}
@@ -16,6 +51,14 @@ qm-tid-registry:
   rotation: {yaw: 90}
   state: {gain: Registry questioned, homeYaw: 90, idle: Idle, mark: dock_registry, npcName: Clerk Hesper Vane, quest: TID-01, say: "Hesper sighs and unchains the oldest ledger. \"Forty ships, one morning. Every berth signed out, every passenger marked 'volunteer, return at will'. None returned. I was told to stop keeping this book. I didn't.\"", title: Clerk Hesper Vane, verb: Question, who: sena-tide, yaw: 90}
   tags: [quest-mark, townsfolk, tideglass]
+qm-tid-shard-b:
+  feetPosition: {x: -965, y: {terrain: 0}, z: 1932}
+  fx: {script: "fx\npop glint n=3 on=disc(.3) life=.8..1.6 size=.04..0.08 col=hdr(1,2,2.4) a=0>.5:1>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 pos=<0,.3,0> r=light(<.5,.9,1>,1.2,4)"}
+  id: qm-tid-shard-b
+  primitive: {kind: scripted, params: {kind: shard, seed: -965}, script: scripts/gen/tide.js}
+  rotation: -305
+  state: {gain: Tideglass gathered, mark: tide_shard, quest: TID-05, say: "Cold, smooth, faintly lit from inside, like a lamp seen through deep water.", title: tideglass, verb: Pick up}
+  tags: [quest-mark, tideglass]
 tide-cottage-a:
   children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
   feetPosition: {x: -975, y: 3, z: 1895}

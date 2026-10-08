@@ -1,15 +1,8 @@
-# spawn-scene v2 yaml x-10z15
-qm-tid-inlet-west:
-  feetPosition: {x: -1228, y: {terrain: 0}, z: 1925}
-  id: qm-tid-inlet-west
-  physics: static
-  primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/tide.js}
-  state: {gain: Inlet surveyed, mark: tide_inlet, quest: TID-01, say: You drive the stake in at the tide line. Sena's chart shows water here. The Crown survey shows nothing at all., title: an uncharted inlet, verb: Plant a stake at}
-  tags: [quest-mark, tideglass]
-qm-tid-song-west:
+# spawn-scene v2 yaml x-6z16
+qm-tid-song-ferry:
   children: [{feetPosition: {x: 0, y: 2.8, z: 0}, light: {color: oklch(0.8 0.08 205), distance: 7, intensity: 1.2, kind: point}}]
-  feetPosition: {x: -1236, y: {terrain: 0}, z: 1927}
-  id: qm-tid-song-west
+  feetPosition: {x: -714, y: {terrain: 0}, z: 2069}
+  id: qm-tid-song-ferry
   physics: static
   primitive: {kind: scripted, params: {kind: beacon}, script: scripts/gen/tide.js}
   state: {burstAt: 2.8, burstFx: "fx\npop note burst=30 life=1.5..2.5 on=disc(.3) v=up(1..2)+sdir()*.6 size=.06..0.12 acc=drag(.5)+curl(.6) col=hdr(2.4,1.9,.9)>hdr(1,1.6,2.4) a=0>.1:1>0 r=sprite(soft-disc,add)\npop glow burst=1 life=2 r=light(<1,.85,.5>,14*(1>0),16)", gain: Song played, mark: song_beacon, quest: TID-08, say: "You hum the refrain, Orin's verse riding under it. The beacon's tideglass bowl picks up the tune and holds it, ringing softly long after you stop.", title: a song beacon, verb: Play the harbour song at}

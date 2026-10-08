@@ -1,4 +1,14 @@
 # spawn-scene v2 yaml x-9z15
+qm-tid-collector:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-arcane-siphon-machine-low-hum-loop.mp3, gain: 0.15, loop: true, maxDistance: 30, spatial: true}
+  feetPosition: {x: -1175, y: 1.05, z: 1891}
+  fx: {script: "fx\npop steam rate=5 on=disc(.1) pos=<0,4,0> life=1.5..2.5 v=up(1..1.6) size=.25..0.4 acc=buoy(.4)+curl(.3)+drag(.8) sz=$size*(.6>2.4) col=<.55,.45,.6> a=0>.3:.4>0 r=sprite(smoke-puff,alpha)\npop glow n=1 pos=<0,2,0> r=light(<.75,.35,1>,4,14)"}
+  id: qm-tid-collector
+  physics: static
+  primitive: {kind: scripted, params: {kind: collector}, script: scripts/gen/tide.js}
+  rotation: 160
+  state: {after: memory_freed, afterText: "First: free the memory-forms from the Court nets", burstAt: 2, burstFx: "fx\npop puff burst=30 life=.8..1.6 on=disc(.6) v=up(1..2)+sdir()*.8 size=.3..0.5 acc=buoy(.3)+drag(1) sz=$size*(.5>2) col=<.4,.3,.45> a=.5>0 r=sprite(smoke-puff,alpha)", gain: Collector shut down, mark: brine_collector, quest: TID-06, say: "You wrench the valve shut. The violet glow chokes and drains out of the tank, and the hoses go slack in the surf. The sand around it stays black.", title: the brine collector, verb: Shut down}
+  tags: [quest-mark, tideglass]
 qm-tid-drydock-a:
   feetPosition: {x: -1195.4551156035936, y: {terrain: 0.1}, z: 1945.9845158979037}
   id: qm-tid-drydock-a
@@ -13,6 +23,52 @@ qm-tid-drydock-b:
   state: {gain: Dry dock searched, mark: drydock_searched, quest: TID-04, say: "Fresh rope-burn scores the bollard at the head of the slip, the fibres still caught in the iron.", title: the empty dry dock, verb: Search}
   tags: [quest-mark, tideglass]
   visible: false
+qm-tid-net-0:
+  feetPosition: {x: -1120, y: {terrain: 0}, z: 1879}
+  fx: {script: "fx\npop form n=1 pos=<0,.9,0> life=2 size=.9 sz=$size*flick(.6,.15) col=hdr(.9,1.2,1.6) a=.35 r=sprite(soft-disc,add)\npop mote rate=6 on=sphere(.4) pos=<0,.9,0> life=1..2 v=up(.2..0.4) size=.04..0.07 acc=curl(.3) col=hdr(1,1.5,2) a=0>.6:1>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,.9,0> r=light(<.6,.8,1>,1.4,5)"}
+  id: qm-tid-net-0
+  primitive: {kind: scripted, params: {kind: memnet, seed: 0}, script: scripts/gen/tide.js}
+  rotation: 0
+  state: {burstAt: 0.9, burstFx: "fx\npop free burst=20 life=1..1.8 on=sphere(.3) v=up(1.5..2.5)+sdir()*.4 size=.06..0.12 acc=drag(.6)+curl(.5) col=hdr(1,1.6,2.4) a=0>.1:1>0 r=sprite(soft-disc,add)", gain: Memory freed, mark: memory_freed, quest: TID-06, say: "The form in the mesh shakes loose and drifts up, a sailor's shape for one breath, then just light.", title: a Court net, verb: Cut open}
+  tags: [quest-mark, tideglass]
+qm-tid-net-1:
+  feetPosition: {x: -1133, y: {terrain: 0}, z: 1880}
+  fx: {script: "fx\npop form n=1 pos=<0,.9,0> life=2 size=.9 sz=$size*flick(.6,.15) col=hdr(.9,1.2,1.6) a=.35 r=sprite(soft-disc,add)\npop mote rate=6 on=sphere(.4) pos=<0,.9,0> life=1..2 v=up(.2..0.4) size=.04..0.07 acc=curl(.3) col=hdr(1,1.5,2) a=0>.6:1>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,.9,0> r=light(<.6,.8,1>,1.4,5)"}
+  id: qm-tid-net-1
+  primitive: {kind: scripted, params: {kind: memnet, seed: 1}, script: scripts/gen/tide.js}
+  rotation: 37
+  state: {burstAt: 0.9, burstFx: "fx\npop free burst=20 life=1..1.8 on=sphere(.3) v=up(1.5..2.5)+sdir()*.4 size=.06..0.12 acc=drag(.6)+curl(.5) col=hdr(1,1.6,2.4) a=0>.1:1>0 r=sprite(soft-disc,add)", gain: Memory freed, mark: memory_freed, quest: TID-06, say: "A girl's laugh, from nowhere, and the net is empty.", title: a Court net, verb: Cut open}
+  tags: [quest-mark, tideglass]
+qm-tid-net-2:
+  feetPosition: {x: -1146, y: {terrain: 0}, z: 1891}
+  fx: {script: "fx\npop form n=1 pos=<0,.9,0> life=2 size=.9 sz=$size*flick(.6,.15) col=hdr(.9,1.2,1.6) a=.35 r=sprite(soft-disc,add)\npop mote rate=6 on=sphere(.4) pos=<0,.9,0> life=1..2 v=up(.2..0.4) size=.04..0.07 acc=curl(.3) col=hdr(1,1.5,2) a=0>.6:1>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,.9,0> r=light(<.6,.8,1>,1.4,5)"}
+  id: qm-tid-net-2
+  primitive: {kind: scripted, params: {kind: memnet, seed: 2}, script: scripts/gen/tide.js}
+  rotation: 74
+  state: {burstAt: 0.9, burstFx: "fx\npop free burst=20 life=1..1.8 on=sphere(.3) v=up(1.5..2.5)+sdir()*.4 size=.06..0.12 acc=drag(.6)+curl(.5) col=hdr(1,1.6,2.4) a=0>.1:1>0 r=sprite(soft-disc,add)", gain: Memory freed, mark: memory_freed, quest: TID-06, say: "Hands pulling a rope, over and over, then gone like breath on glass.", title: a Court net, verb: Cut open}
+  tags: [quest-mark, tideglass]
+qm-tid-net-3:
+  feetPosition: {x: -1159, y: {terrain: 0}, z: 1890}
+  fx: {script: "fx\npop form n=1 pos=<0,.9,0> life=2 size=.9 sz=$size*flick(.6,.15) col=hdr(.9,1.2,1.6) a=.35 r=sprite(soft-disc,add)\npop mote rate=6 on=sphere(.4) pos=<0,.9,0> life=1..2 v=up(.2..0.4) size=.04..0.07 acc=curl(.3) col=hdr(1,1.5,2) a=0>.6:1>0 r=sprite(soft-disc,add)\npop glow n=1 pos=<0,.9,0> r=light(<.6,.8,1>,1.4,5)"}
+  id: qm-tid-net-3
+  primitive: {kind: scripted, params: {kind: memnet, seed: 3}, script: scripts/gen/tide.js}
+  rotation: 111
+  state: {burstAt: 0.9, burstFx: "fx\npop free burst=20 life=1..1.8 on=sphere(.3) v=up(1.5..2.5)+sdir()*.4 size=.06..0.12 acc=drag(.6)+curl(.5) col=hdr(1,1.6,2.4) a=0>.1:1>0 r=sprite(soft-disc,add)", gain: Memory freed, mark: memory_freed, quest: TID-06, say: "The form looks back at the sea, then at you, and goes out like a blown candle.", title: a Court net, verb: Cut open}
+  tags: [quest-mark, tideglass]
+qm-tid-shard-a:
+  feetPosition: {x: -1140, y: {terrain: 0}, z: 1890}
+  fx: {script: "fx\npop glint n=3 on=disc(.3) life=.8..1.6 size=.04..0.08 col=hdr(1,2,2.4) a=0>.5:1>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 pos=<0,.3,0> r=light(<.5,.9,1>,1.2,4)"}
+  id: qm-tid-shard-a
+  primitive: {kind: scripted, params: {kind: shard, seed: -1140}, script: scripts/gen/tide.js}
+  rotation: -60
+  state: {gain: Tideglass gathered, mark: tide_shard, quest: TID-05, say: "Cold, smooth, faintly lit from inside, like a lamp seen through deep water.", title: tideglass, verb: Pick up}
+  tags: [quest-mark, tideglass]
+tid-brine-camp:
+  behavior: scripts/scavengers.js
+  feetPosition: {x: -1175, y: 1.1, z: 1891}
+  id: tid-brine-camp
+  state: {crew: [{id: tid-brine-1, x: -1169, yaw: 30, z: 1887}, {id: tid-brine-2, x: -1181, yaw: 320, z: 1888}, {id: tid-brine-3, x: -1174, yaw: 180, z: 1883}], damage: 85, hp: 300, model: /cdn/model-humanoid-fantasy-court-brine-taker-male-violet-hooded-robe-brass-respirator-mask-hooked-pole.glb, name: Court Brine-Taker, reward: {copper: 40, xp: 110}, scale: 1, tallyKey: brine_taker}
+  tags: [tideglass]
 tide-drydock-a:
   feetPosition: {x: -1192, y: 0.66, z: 1948}
   id: tide-drydock-a
@@ -27,3 +83,13 @@ tide-drydock-b:
   primitive: {kind: scripted, params: {kind: drydock, seed: 98}, script: scripts/gen/tide.js}
   rotation: 77.47119229084849
   tags: [tideglass]
+tide-npc-iona:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1108, y: 1.32, z: 1865}
+  id: tide-npc-iona
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-reedkeeper-female-elder-grey-braids-green-cloak-reed-staff.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Reedkeeper Iona Sedge, who: iona-tide, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, tideglass]
