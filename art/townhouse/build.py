@@ -7,11 +7,32 @@ COL = {"MI_Plaster": (0.86, 0.80, 0.66), "MI_WoodTrim": (0.19, 0.12, 0.07), "MI_
        "MI_Brick": (0.50, 0.32, 0.22), "MI_UnevenBrick": (0.52, 0.48, 0.42), "MI_RockTrim": (0.45, 0.42, 0.38),
        "MI_WindowGlass": (1.0, 0.62, 0.25), "MI_Shingle": (0.50, 0.20, 0.13), "MI_Floor": (0.36, 0.24, 0.14)}
 MATS = {}
+TEX = "/workspace/kit/tex/t-"
+SET = {"MI_Plaster": ("plaster", "orm"), "MI_WoodTrim": ("woodtrim", "orm"), "MI_WoodTrim_Wear": ("woodtrim", "orm"), "MI_Floor": ("woodtrim", "orm"),
+       "MI_UnevenBrick": ("unevenbrick", "roughness"), "MI_RockTrim": ("rocktrim", "orm"), "MI_Brick": ("brick", "roughness"), "MI_Shingle": ("roundtiles", "roughness")}
+TINT = {"MI_WoodTrim": (0.62, 0.55, 0.5), "MI_Floor": (0.8, 0.72, 0.65)}
+def img(path, data=False):
+    im = bpy.data.images.load(path, check_existing=True)
+    if data: im.colorspace_settings.name = "Non-Color"
+    return im
 def mat(n):
     if n in MATS: return MATS[n]
     m = bpy.data.materials.get(n) or bpy.data.materials.new(n); m.use_nodes = True
-    b = m.node_tree.nodes["Principled BSDF"]; c = COL.get(n, (0.6, 0.6, 0.6))
+    nt = m.node_tree; b = nt.nodes["Principled BSDF"]; c = COL.get(n, (0.6, 0.6, 0.6))
     b.inputs["Base Color"].default_value = (*c, 1); b.inputs["Roughness"].default_value = 0.85
+    if n in SET:
+        k, rk = SET[n]
+        t = nt.nodes.new("ShaderNodeTexImage"); t.image = img(f"{TEX}{k}-basecolor.png")
+        if n in TINT:
+            mix = nt.nodes.new("ShaderNodeMix"); mix.data_type = "RGBA"; mix.blend_type = "MULTIPLY"; mix.inputs[0].default_value = 1
+            nt.links.new(t.outputs["Color"], mix.inputs[6]); mix.inputs[7].default_value = (*TINT[n], 1); nt.links.new(mix.outputs[2], b.inputs["Base Color"])
+        else: nt.links.new(t.outputs["Color"], b.inputs["Base Color"])
+        nm = nt.nodes.new("ShaderNodeTexImage"); nm.image = img(f"{TEX}{k}-normal.png", True)
+        nn = nt.nodes.new("ShaderNodeNormalMap"); nt.links.new(nm.outputs["Color"], nn.inputs["Color"]); nt.links.new(nn.outputs["Normal"], b.inputs["Normal"])
+        r = nt.nodes.new("ShaderNodeTexImage"); r.image = img(f"{TEX}{k}-{rk}.png", True)
+        if rk == "orm":
+            sp = nt.nodes.new("ShaderNodeSeparateColor"); nt.links.new(r.outputs["Color"], sp.inputs["Color"]); nt.links.new(sp.outputs["Green"], b.inputs["Roughness"])
+        else: nt.links.new(r.outputs["Color"], b.inputs["Roughness"])
     if n == "MI_WindowGlass":
         b.inputs["Emission Color"].default_value = (1.0, 0.55, 0.2, 1); b.inputs["Emission Strength"].default_value = 2.5
     MATS[n] = m; return m
@@ -107,13 +128,32 @@ for sx in (-1, 1):  # plaster gables + barge boards
 box("MI_WoodTrim", xa, xb, RY + T - 0.05, RY + T + 0.12, -0.12, 0.12)  # ridge beam
 box("MI_Brick", 1.8, 2.7, R0 - 0.5, RY + 1.3, -1.9, -1.0)  # chimney
 box("MI_RockTrim", 1.7, 2.8, RY + 1.3, RY + 1.45, -2.0, -0.9)
+# UVs for the hand-built pieces (boxes, roof, gables): box projection, 1 tile per 2 m (roof 1 per 1.6 m)
+own = [o for o in parts if o.name.startswith(("b", "p")) and not o.name.startswith("ba")]
+for o in own:
+    bpy.ops.object.select_all(action="DESELECT"); o.select_set(True); bpy.context.view_layer.objects.active = o
+    bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+    me = o.data
+    if not me.uv_layers: me.uv_layers.new()
+    uv = me.uv_layers.active.data; roof = me.materials[0].name == "MI_Shingle"; S = 1.6 if roof else 2.0
+    for poly in me.polygons:
+        nx, ny, nz = (abs(v) for v in poly.normal)
+        for li in poly.loop_indices:
+            co = o.matrix_world @ me.vertices[me.loops[li].vertex_index].co
+            if roof: u, v = co.x / S, (co.z - co.y * 0.0) / S if nz > 0.5 else co.z / S
+            if roof and nz > 0.3: u, v = co.x / S, (co.y if abs(poly.normal.y) > abs(poly.normal.z) else co.z) / S
+            if roof and nz > 0.3: v = (co.y ** 2 + (co.z) ** 2) ** 0.5 / S
+            elif nz >= nx and nz >= ny: u, v = co.x / S, co.y / S
+            elif nx >= ny: u, v = co.y / S, co.z / S
+            else: u, v = co.x / S, co.z / S
+            uv[li].uv = (u, v)
 # join, export
 bpy.ops.object.select_all(action="DESELECT")
 for o in parts: o.select_set(True)
 bpy.context.view_layer.objects.active = parts[0]; bpy.ops.object.join()
 house = bpy.context.active_object; house.name = "townhouse"
 bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
-bpy.ops.export_scene.gltf(filepath=f"{OUT}/townhouse.glb", export_apply=True)
+bpy.ops.export_scene.gltf(filepath=f"{OUT}/townhouse.glb", export_apply=True, export_image_format="JPEG", export_jpeg_quality=82)
 # proof
 sc = bpy.context.scene; sc.render.engine = "CYCLES"; sc.cycles.device = "CPU"; sc.cycles.samples = 24
 sc.render.resolution_x, sc.render.resolution_y = 1200, 800
