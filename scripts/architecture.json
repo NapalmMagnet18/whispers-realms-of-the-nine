@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 152,
-  "updatedAt": "2026-10-08T02:13:33.906Z",
+  "basedOnSpecVersion": 162,
+  "updatedAt": "2026-10-08T02:19:10.860Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. The Lantern March is authored across place configs, hand-placed scenes and procedural terrain/prop scripts; the MMORPG Tools mod owns RPG lifecycle and UI, while core scripts own movement and the first Vanguard combat loop.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -112,7 +112,8 @@
     "places/main-menu-land/ - title/travel menu scene with authored town art and shared terrain decoration.",
     "places/character-creation-land/ - character preview scene with preview camera and lighting setup.",
     "places/main/ - Lantern March continent: Reach hub at origin, Windmill Farm SW, Briarwild west, quarry east and distant regions across 29 cells.",
-    "places/main/cells/x0z0.scene - Reach hub, including smithy armory and fenced training yard with three Vanguard training dummies; townhouse uses procedural/kit assets."
+    "places/main/cells/x0z0.scene - Reach hub with smithy armory, training yard and three Vanguard dummies; Briarwild edge now includes a twisted tree and mushroom from the nature kit.",
+    "places/main/cells/x-1z0.scene - Briarwild road/forest additions: twisted crimson trees, pine scatter, boulder scatter, undergrowth, mushrooms and stepping stones, tagged briar-kit/forest."
   ],
   "roots": [
     "world.config.yaml - defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
@@ -137,10 +138,10 @@
     "scripts/vanguard.js - onInput, endAction, land; scripts/training-dummy.js - onSpawn, update, settle, standUp.",
     "scripts/camera.js - finiteNumber, update; scripts/arrival.js - onArrive, onLeave; sim.js - cadence, tick.",
     "scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, heightAt, materialAt; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
+    "scripts/gen/tree.js - geometry, collider; tree kinds pine/oak/dead now use distinct creator-supplied bark textures and kind-specific tints.",
     "scripts/gen/stone-bridge.js, farm.js, windmill.js and windmill-sails.js - geometry, collider; scripts/gen/shape.js supplies box/quad helpers.",
     "scripts/sails-spin.js - onSpawn; animates the windmill sail assembly.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js - gameplay-character, roster, persistence, spatial-audio and character-data helpers; building-interact.js and quest-giver.js expose their building/quest handlers.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/shop-data.js - hasShop, getShopItems, findShopItem; lib/item-icons.js - ITEM_ICONS, iconFor; lib/ui-inventory.js - buildItemTooltip, eqSlot, eqSlotLarge, renderInventory."
+    "mods/mmorpg-tools/mod-mmorpg/player.js - gameplay-character, roster, persistence, spatial-audio and character-data helpers; building-interact.js and quest-giver.js expose building/quest handlers."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent keyed by body, core character velocity and terrain-dependent footstep timing/index; place config owns gravity.",
