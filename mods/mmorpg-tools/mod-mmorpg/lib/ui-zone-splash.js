@@ -23,6 +23,7 @@ var CIRCLES = [
 ];
 function artAt(x, z) {
   for (var i = 0; i < CIRCLES.length; i++) { var c = CIRCLES[i]; if (Math.hypot(x - c.x, z - c.z) < c.r) return c.art; }
+  if (z < -6400) return 'ninthveil';             // the Ninth Veil
   if (x < -3000) return 'velthraen';            // Elderveil Wilds, the World-Tree
   if (z < -800) return null;                    // Greyspine: no painting yet
   if (x > 650) return 'emberstone';             // Emberstone Highlands

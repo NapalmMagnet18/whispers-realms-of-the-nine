@@ -49,6 +49,8 @@ terrain:
       forest: [fern, pebble, woods, woodsoak, mushroom]
       gravel:
       - pebble
+      veil: [pebble]
+      ashrock: [pebble]
       blight: [deadwood, pebble]
       mud: [reeds]
       redrock: [pebble]
