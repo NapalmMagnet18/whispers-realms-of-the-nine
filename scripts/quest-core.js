@@ -88,7 +88,10 @@ function addItem(st, item) {
 function payOwed(ctx, st) {
   ctx.session.owedAt = ctx.now() + 500;
   const owed = st.owedItems.slice(), left = [];
+  const free = () => { const inv = st.inventory || []; return inv.length < W.bagSlots || inv.some((it) => !it); };
+  if (!free()) return;
   for (const id of owed) {
+    if (!free()) { left.push(id); continue; }
     const g = GEAR.items?.[id], def = g ? { id, name: g.name, slot: g.slot, ilvl: g.ilvl, tier: g.tier, stats: g.stats, icon: g.icon, description: g.description } : Q.items?.[id];
     if (!def || !addItem(st, def)) left.push(id);
   }
