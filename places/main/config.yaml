@@ -464,3 +464,5 @@ terrain:
     saltmere-hamlet: {center: {x: 301, z: 1659}, falloff: 8, height: 1.1, kind: flatten, shape: {kind: circle, radius: 13}}
     saltmere-hamlet-clear: {center: {x: 301, z: 1659}, kind: clear-scatter, shape: {kind: circle, radius: 15}}
     lane-saltmere-hamlet: {edgeMaterial: sand, grade: true, kind: path, material: dirt, maxGrade: 0.28, noise: 0.4, points: [[290, 1560], [294, 1598], [298, 1626], [300, 1648]], width: 2.6}
+    hc-nam-wreck-flat: {center: {x: 217, z: 1513}, falloff: 9, height: 24, kind: flatten, shape: {kind: circle, radius: 11}}
+    hc-nam-wreck-clear: {center: {x: 217, z: 1513}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
