@@ -664,7 +664,7 @@ items:
   tuning_stone: { id: tuning_stone, name: Tuning Stone, slot: bag, description: "A pocket of basalt that answers in a voice twenty years old." }
   novice_maul: { id: novice_maul, name: Cradle Novice Maul, slot: mainhand, description: "Mira's work: honest iron, no bellglass in it." }
   rust_seal: { id: rust_seal, name: Rust Seal, slot: bag, description: "Nine points, hammered shut from the outside." }
-  chisel_of_witness: { id: chisel_of_witness, name: Chisel of Witness, slot: offhand, description: "Plain iron. Room along the handle for names as they are found." }
+  chisel_of_witness: { id: chisel_of_witness, name: Chisel of Witness, slot: bag, description: "Plain iron. Room along the handle for names as they are found." }
   root_seed: { id: root_seed, name: Root Seed, slot: bag, description: "Warm as a hand. It turns in your palm toward water." }
   lore_glyph: { id: lore_glyph, name: Lore Glyph, slot: bag, description: "Three words in Ell's hand: water, road, grandmother." }
   pathfinder_tonic: { id: pathfinder_tonic, name: Pathfinder Tonic, slot: bag, description: "Bitter bark and honey. Tamsin swears by it." }
