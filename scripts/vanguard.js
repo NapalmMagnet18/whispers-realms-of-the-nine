@@ -81,7 +81,7 @@ export function land(ctx, { kind }) {
   const pos = { x: hit.feetPosition.x, y: hit.feetPosition.y + 1.2, z: hit.feetPosition.z }
   const n = normalize({ x: hit.feetPosition.x - self.feetPosition.x, y: 0.4, z: hit.feetPosition.z - self.feetPosition.z })
   const near = { nearby: pos, radius: 40 }
-  ctx.emit('damageNumber', { position: pos, value: a.damage, crit: kind === 'heavy' }, { audience: near })
+  ctx.emit('damageNumber', { position: pos, value: dealt, crit: kind === 'heavy' }, { audience: near })
   ctx.emit('fx', { position: pos, script: SPARKS, params: { normal: n } }, { audience: near })
   ctx.emit('playSound', { clip: THUD, position: pos, volume: kind === 'heavy' ? 0.7 : 0.5, pitch: kind === 'heavy' ? 0.8 : 1 }, { audience: near })
   ctx.emit('squash', { target: hit.id, axis: 'y', intensity: kind === 'heavy' ? 0.25 : 0.12, duration: 0.18 }, { audience: near })
