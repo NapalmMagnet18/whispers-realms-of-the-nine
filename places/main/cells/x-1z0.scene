@@ -164,6 +164,13 @@ briar-shelf-4:
   rotation: {pitch: 0, roll: -70, yaw: 90}
   scale: 1.6
   tags: [briar-kit]
+briar-shrine:
+  feetPosition: {x: -150, y: 9, z: -60}
+  id: briar-shrine
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 6, height: 4, kind: box, width: 6}
+  tags: [blueprint]
 briar-stone-0:
   feetPosition: {x: -104, y: {terrain: -0.04}, z: -26}
   id: briar-stone-0
