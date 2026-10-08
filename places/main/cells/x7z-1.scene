@@ -116,7 +116,7 @@ kha-roster:
   tags: [quest-mark, emberstone-cradle]
 kha-shrine:
   feetPosition: {x: 887, y: {terrain: 0}, z: -150}
-  fx: {script: "fx\npop glow n=1 at=<0,1.6,-.3> r=light(<1,.7,.35>,2.5,6)"}
+  fx: {script: "fx\npop glow n=1 at=<0,1.6,0> r=light(<1,.7,.35>,2.5,6)"}
   id: kha-shrine
   physics: static
   primitive: {kind: scripted, params: {kind: shrine}, script: scripts/gen/cradle.js}
