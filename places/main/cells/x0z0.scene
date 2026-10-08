@@ -54,6 +54,76 @@ cottage-w:
   primitive: {kind: scripted, params: {chimney: -1, d: 6, h: 3.2, rise: 2.2, roof: weathered red clay roof shingles, w: 6, win: 1}, script: scripts/gen/house.js}
   rotation: -121
   tags: [building, cottage]
+drywall-s:
+  feetPosition: {x: -30, y: {terrain: 0}, z: 60}
+  id: drywall-s
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 12}, script: scripts/gen/farm.js}
+  rotation: 20
+  tags: [farm]
+drywall-w:
+  feetPosition: {x: -37, y: {terrain: 0}, z: 47}
+  id: drywall-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 10}, script: scripts/gen/farm.js}
+  rotation: 80
+  tags: [farm]
+fence-e:
+  feetPosition: {x: 0, y: {terrain: 0}, z: 51.5}
+  id: fence-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: fence, len: 20}, script: scripts/gen/farm.js}
+  rotation: 90
+  tags: [farm]
+fence-n1:
+  feetPosition: {x: -19, y: {terrain: 0}, z: 41.5}
+  id: fence-n1
+  physics: static
+  primitive: {kind: scripted, params: {kind: fence, len: 10}, script: scripts/gen/farm.js}
+  rotation: 0
+  tags: [farm]
+fence-n2:
+  feetPosition: {x: -5, y: {terrain: 0}, z: 41.5}
+  id: fence-n2
+  physics: static
+  primitive: {kind: scripted, params: {kind: fence, len: 10}, script: scripts/gen/farm.js}
+  rotation: 0
+  tags: [farm]
+fence-s:
+  feetPosition: {x: -12, y: {terrain: 0}, z: 61.5}
+  id: fence-s
+  physics: static
+  primitive: {kind: scripted, params: {kind: fence, len: 24}, script: scripts/gen/farm.js}
+  rotation: 0
+  tags: [farm]
+fence-w:
+  feetPosition: {x: -24, y: {terrain: 0}, z: 47}
+  id: fence-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: fence, len: 11}, script: scripts/gen/farm.js}
+  rotation: 90
+  tags: [farm]
+hay-1:
+  feetPosition: {x: -26, y: {terrain: 0}, z: 57}
+  id: hay-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: hay}, script: scripts/gen/farm.js}
+  rotation: 15
+  tags: [farm]
+hay-2:
+  feetPosition: {x: -24.3, y: {terrain: 0}, z: 58.2}
+  id: hay-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: hay}, script: scripts/gen/farm.js}
+  rotation: -30
+  tags: [farm]
+hay-3:
+  feetPosition: {x: -25.2, y: {terrain: 0}, z: 57.6}
+  id: hay-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: hay}, script: scripts/gen/farm.js}
+  rotation: 70
+  tags: [farm]
 inn:
   children: [{feetPosition: {x: -3, y: 0.12, z: 3}, physics: static, primitive: {kind: scripted, params: {kind: counter}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -6.4, y: 0.12, z: 4.3}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -5.6, y: 0.12, z: 4.6}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -6.2, y: 0.12, z: 3.5}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -1.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -2.4}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -0.6}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 4.8, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: 3.9, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: 5.7, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: -2.5, y: 0.12, z: -2.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -2.5, y: 0.12, z: -3.4}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 6.6, y: 1, z: 1.1}, light: {color: oklch(0.75 0.17 50), distance: 10, intensity: 22, kind: point}}, {feetPosition: {x: 0, y: 4.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 14, intensity: 5, kind: point}}]
   feetPosition: {x: 0, y: 4, z: -24}
@@ -245,6 +315,34 @@ plaza-well:
   physics: static
   primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
   tags: [landmark]
+plot-cabbage:
+  feetPosition: {x: -16, y: {terrain: 0}, z: 51}
+  id: plot-cabbage
+  physics: none
+  primitive: {kind: scripted, params: {crop: cabbage, d: 4.2, kind: plot, w: 8}, script: scripts/gen/farm.js}
+  rotation: 0
+  tags: [farm]
+plot-carrot:
+  feetPosition: {x: -16, y: {terrain: 0}, z: 57}
+  id: plot-carrot
+  physics: none
+  primitive: {kind: scripted, params: {crop: carrot, d: 4.2, kind: plot, w: 8}, script: scripts/gen/farm.js}
+  rotation: 0
+  tags: [farm]
+plot-wheat-a:
+  feetPosition: {x: -16, y: {terrain: 0}, z: 45}
+  id: plot-wheat-a
+  physics: none
+  primitive: {kind: scripted, params: {crop: wheat, d: 4.2, kind: plot, w: 8}, script: scripts/gen/farm.js}
+  rotation: 0
+  tags: [farm]
+plot-wheat-b:
+  feetPosition: {x: -6, y: {terrain: 0}, z: 51}
+  id: plot-wheat-b
+  physics: none
+  primitive: {kind: scripted, params: {crop: wheat, d: 10, kind: plot, w: 5}, script: scripts/gen/farm.js}
+  rotation: 90
+  tags: [farm]
 quest-board:
   feetPosition: {x: 7.5, y: 4, z: -12}
   id: quest-board
@@ -252,6 +350,13 @@ quest-board:
   primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
   rotation: 160
   tags: [questboard, interactable]
+scarecrow:
+  feetPosition: {x: -17, y: {terrain: 0}, z: 45.5}
+  id: scarecrow
+  physics: static
+  primitive: {kind: scripted, params: {kind: scarecrow}, script: scripts/gen/farm.js}
+  rotation: 150
+  tags: [farm]
 smithy:
   children: [{feetPosition: {x: -2.2, y: 0.12, z: 2.4}, physics: static, primitive: {kind: scripted, params: {kind: forge}, script: scripts/gen/props.js}}, {feetPosition: {x: -1.4, y: 0.12, z: 0.2}, physics: static, primitive: {kind: scripted, params: {kind: anvil}, script: scripts/gen/props.js}, rotation: 20}, {feetPosition: {x: 2.8, y: 0.12, z: 2.6}, physics: static, primitive: {kind: scripted, params: {kind: trough}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.9, y: 0.12, z: -1.2}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.6, y: 0.12, z: -2.9}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: 15}, {feetPosition: {x: 2.8, y: 0.12, z: -3.1}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: -10}, {feetPosition: {x: -2.2, y: 1.6, z: 2}, light: {color: oklch(0.72 0.19 45), distance: 12, intensity: 30, kind: point}}]
   feetPosition: {x: 24, y: 4, z: 2}
@@ -268,3 +373,11 @@ windmill:
   primitive: {kind: scripted, script: scripts/gen/windmill.js}
   rotation: {lookAt: {x: 0, y: 4, z: 0}}
   tags: [building, windmill]
+windmill-sails:
+  behavior: scripts/sails-spin.js
+  feetPosition: {x: -28.2524, y: 15.399999999999999, z: 47.0862}
+  id: windmill-sails
+  pivot: center
+  primitive: {kind: scripted, script: scripts/gen/windmill-sails.js}
+  rotation: {pitch: 0, roll: 0, yaw: -30.96}
+  tags: [windmill]
