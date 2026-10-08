@@ -19,3 +19,11 @@ The full bible lives in scripts/lib/data/01–05 *.md and the backlog/QA csvs (t
 - 2026-10-08: map follows the creator's bible (Briarwild W, quarry E), set after their docs landed.
 
 - 2026-10-08: from @whispers reference photos (village w/ windmill, crop plots, fenced dirt lanes): Windmill Farm added south-west of the square (-30,50), fenced wheat/cabbage/carrot beds, hay, scarecrow, dry-stone walls, lane from the south lane. Original art, inspired only.
+
+## The Lantern March continent (2026-10-08)
+Creator asked for the world as big as it can be, room for story. The main place is now a continent ~6.4 km across, ringed by the Shrouded Sea.
+Lantern's Reach stays at the centre untouched. Regions (table in scripts/lib/regions.js, HUD names them over the minimap):
+Greyspine Mountains (north, snow peaks ~110 m, north pass road), Emberstone Highlands (east, stepped red mesas, highland road),
+Hollowcrypt Vale (NE sunken blighted bowl, ruined chapel spire: future dungeon hook), Briarwild Deepwood (west forested hills),
+Sorrowfen (SW marsh at sea level, drowned trees), Saltmere Coast (south bay, future harbor town), the river runs north mountains → town → south sea.
+Regions are ground, roads and landmarks only: no NPCs, quests or enemies there yet. Next story beats pick one region at a time.
