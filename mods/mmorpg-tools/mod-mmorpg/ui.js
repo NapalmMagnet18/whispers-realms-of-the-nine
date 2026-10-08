@@ -35,6 +35,7 @@ function renderFlightMap(a) { var f = _hf('flight', 'renderFlightMap'); return f
 function renderTradeWindow(a) { var f = _hf('trades', 'renderTradeWindow'); return f ? f(a) : ''; }
 function renderAuction(a) { var f = _hf('trades', 'renderAuction'); return f ? f(a) : ''; }
 function renderVendor(a, b) { var f = _hf('vendor', 'renderVendor'); return f ? f(a, b) : ''; }
+function renderBank(a) { var f = _hf('vendor', 'renderBank'); return f ? f(a) : ''; }
 function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : ''; }
 function zoneSplashActive() { var f = _hf('splash', 'zoneSplashActive'); return f ? f() : false; }
 function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
@@ -227,6 +228,7 @@ export default function(world, localPlayer) {
       if (localPlayer.state.showQuestDialog) { try { _hudParts.push(localPlayer.state.questDialogData && localPlayer.state.questDialogData.turnIn ? renderTurnInDialog(localPlayer) : renderQuestDialog(localPlayer)); } catch(e8) { _hudParts.push(''); } }
       try { _hudParts.push(renderDoorPanel(localPlayer)); } catch(e9) { _hudParts.push(''); }
       try { if (localPlayer.state && localPlayer.state.vendorOpen) _hudParts.push(renderVendor(localPlayer)); } catch(e9v) { _hudParts.push(''); }
+      try { if (localPlayer.state && localPlayer.state.bankOpen) _hudParts.push(renderBank(localPlayer)); } catch(e9b) { _hudParts.push(''); }
       try { if (localPlayer.state && localPlayer.state.tradeOpen) _hudParts.push(renderTradeWindow(localPlayer)); } catch(e9t) { _hudParts.push(''); }
       try { if (localPlayer.state && localPlayer.state.ahOpen) _hudParts.push(renderAuction(localPlayer)); } catch(e9a) { _hudParts.push(''); }
       try { if (localPlayer.state && localPlayer.state.flightMap) _hudParts.push(renderFlightMap(localPlayer)); } catch(e9f) { _hudParts.push(''); }

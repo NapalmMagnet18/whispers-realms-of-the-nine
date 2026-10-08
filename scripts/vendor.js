@@ -97,17 +97,47 @@ function train(ctx, v) {
   ctx.emit('stat', { name: 'trained_rank_' + next.rank }, { audience: { player: ctx.self.id } });
 }
 
+// A banker (state.bank): E opens the vault. bankDeposit { slot } moves a bag slot in, bankWithdraw { slot } a vault slot out;
+// stacks merge both ways. st.bank rides the character save (mods/mmorpg-tools/mod-mmorpg/player.js).
+function vault(st) { const b = (st.bank || []).slice(0, E.bankSlots); while (b.length < E.bankSlots) b.push(null); return b; }
+function shift(ctx, fromKey, toKey, slot, verb) {
+  const st = ctx.self.state; if (!st.bankOpen) return;
+  const from = fromKey === 'bank' ? vault(st) : bag(st), to = toKey === 'bank' ? vault(st) : bag(st), it = from[slot];
+  if (!it) return;
+  const all = it.stackable ? (it.count || 1) : 1;
+  let left = all;
+  if (it.stackable) for (let i = 0; i < to.length && left; i++) { const t = to[i]; if (t && t.id === it.id && (t.count || 1) < E.stackMax) { const n = Math.min(left, E.stackMax - (t.count || 1)); to[i] = { ...t, count: (t.count || 1) + n }; left -= n; } }
+  if (left) {
+    const free = to.findIndex((x) => !x);
+    if (free < 0) { if (left === all) return say(ctx, (toKey === 'bank' ? 'Your vault' : 'Your bag') + ' is full.', true); from[slot] = { ...it, count: left }; }
+    else { to[free] = it.stackable ? { ...it, count: left } : it; from[slot] = null; }
+  } else from[slot] = null;
+  st[fromKey === 'bank' ? 'bank' : 'inventory'] = from; st[toKey === 'bank' ? 'bank' : 'inventory'] = to; st._questSave = true;
+  ctx.emit('playSound', { clip: verb === 'in' ? '/cdn/moodboard-painterly-fantasy/sfx-iron-vault-drawer-slide-shut.mp3' : '/cdn/moodboard-painterly-fantasy/sfx-leather-pouch-pick-up-coins-shift.mp3', volume: 0.45 }, { audience: { player: ctx.self.id } });
+}
+function openBank(ctx, v) {
+  const st = ctx.self.state;
+  st.bankOpen = { npc: v.id, name: (v.state && v.state.npcName) || 'Banker' }; st.vendorMsg = null;
+  try { if (ctx.self.camera) ctx.self.camera.pointerLock = false; } catch (e) {}
+  ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-heavy-vault-door-unlock-and-swing.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
+}
+
 export function onInput(ctx, input) {
   if (!playing(ctx)) return;
   const st = ctx.self.state;
   if (on(input, 'vendorClose')) { st.vendorOpen = null; st.vendorMsg = null; return; }
+  if (on(input, 'bankClose')) { st.bankOpen = null; return; }
+  if (on(input, 'bankDeposit')) return shift(ctx, 'inv', 'bank', Number(dataOf(input, 'bankDeposit').slot), 'in');
+  if (on(input, 'bankWithdraw')) return shift(ctx, 'bank', 'inv', Number(dataOf(input, 'bankWithdraw').slot), 'out');
   if (on(input, 'vendorTab') && st.vendorOpen) { st.vendorOpen = { ...st.vendorOpen, tab: dataOf(input, 'vendorTab').tab === 'sell' ? 'sell' : 'buy' }; return; }
   if (on(input, 'vendorBuy')) return buy(ctx, dataOf(input, 'vendorBuy').itemId);
   if (on(input, 'vendorSell')) return sell(ctx, Number(dataOf(input, 'vendorSell').slot));
   if (on(input, 'interact') && !st.showQuestDialog && !st.showDoorPanel) {
     if (st.vendorOpen) { st.vendorOpen = null; return; }
+    if (st.bankOpen) { st.bankOpen = null; return; }
     const v = nearVendor(ctx);
     if (v && v.state && v.state.trainer) return train(ctx, v);
+    if (v && v.state && v.state.bank) return openBank(ctx, v);
     if (v) open(ctx, v);
   }
 }

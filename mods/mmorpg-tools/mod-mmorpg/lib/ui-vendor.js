@@ -58,3 +58,31 @@ export function renderVendor(player) {
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:6px;border-top:1px solid #6b4a2f;font-size:13px"><span style="color:#a8977a">' + (tab === 'sell' ? 'Click a stack to sell it' : 'Click to buy') + '</span><span>' + cur.formatHtml(wallet) + '</span></div>' +
     '</div>';
 }
+
+// The banker's vault: drawn while player.state.bankOpen is set. Left: your bag (click deposits), right: the vault (click withdraws).
+var BANK_SLOTS = 40;
+function cell(item, onclick) {
+  var src = item ? icons.iconFor(item) : null;
+  return '<div ' + (item ? 'onclick="' + onclick + '" ' : '') + 'title="' + esc(item ? (item.name || item.id) : '') + '" class="whv-cell" style="position:relative;width:42px;height:42px;border:1px solid #6b4a2f;border-radius:4px;background:#1d1610 center/cover no-repeat' + (src ? ' url(' + src + ')' : '') + ';box-shadow:inset 0 0 6px #000;' + (item ? 'cursor:pointer' : 'opacity:.55') + '">' +
+    (item && !src ? '<div style="font-size:9px;color:#c9a46a;padding:2px;line-height:1.1;overflow:hidden;height:38px">' + esc(item.name || item.id) + '</div>' : '') +
+    (item && item.count > 1 ? '<div style="position:absolute;right:2px;bottom:0;font-size:11px;color:#f2d48a;text-shadow:0 0 3px #000">' + item.count + '</div>' : '') + '</div>';
+}
+export function renderBank(player) {
+  var st = (player && player.state) || {}, bo = st.bankOpen;
+  if (!bo) return '';
+  var inv = st.inventory || [], bank = st.bank || [], a = '', b = '', used = 0;
+  for (var i = 0; i < 30; i++) a += cell(inv[i], act('bankDeposit', { slot: i }));
+  for (var j = 0; j < BANK_SLOTS; j++) { if (bank[j]) used++; b += cell(bank[j], act('bankWithdraw', { slot: j })); }
+  var msg = st.vendorMsg ? '<div style="margin-top:6px;text-align:center;font-size:13px;color:' + (st.vendorMsg.bad ? '#e0533d' : '#f2b04a') + '">' + esc(st.vendorMsg.text) + '</div>' : '';
+  function grid(title, sub, cells, cols) { return '<div><div style="font-family:Cinzel,serif;color:#c9a46a;font-size:13px;letter-spacing:1px;margin:2px 0 4px">' + title + ' <span style="color:#7d6d55;font-family:Georgia,serif;font-size:11px">' + sub + '</span></div><div style="display:grid;grid-template-columns:repeat(' + cols + ',42px);gap:4px">' + cells + '</div></div>'; }
+  return '<style>.whv-cell:hover{filter:brightness(1.35);border-color:#c9a46a!important}</style>' +
+    '<div style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:auto;z-index:40;background:rgba(14,11,8,.94);' + FRAME + 'box-shadow:0 8px 40px #000c;font-family:Georgia,serif;color:#e8d9b5;padding:6px 10px 10px">' +
+      '<div style="display:flex;align-items:center;gap:8px">' +
+        '<img src="' + icons.UI_ICONS.bag + '" style="width:28px;height:28px;filter:sepia(.3)">' +
+        '<div style="flex:1"><div style="font-family:Cinzel,serif;color:#f2b04a;font-size:18px;letter-spacing:1px">' + esc(bo.name) + '</div><div style="font-size:11px;color:#a8977a">The Lantern Vault · kept safe for this hero</div></div>' +
+        '<button onclick="' + act('bankClose') + '" style="width:26px;height:26px;border:1px solid #c9a46a;background:#7a2e22;color:#f2b04a;border-radius:3px;cursor:pointer;font-weight:bold;font-family:Arial,sans-serif;font-size:14px;line-height:1">&times;</button></div>' +
+      rule('title', '100%', 16) +
+      '<div style="display:flex;gap:18px;align-items:flex-start">' + grid('YOUR BAG', 'click to deposit', a, 5) + grid('VAULT', used + ' / ' + BANK_SLOTS + ' · click to withdraw', b, 8) + '</div>' + msg +
+      '<div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:6px;border-top:1px solid #6b4a2f;font-size:13px"><span style="color:#a8977a">E or &times; to close</span><span>' + cur.formatHtml(cur.purse(st)) + '</span></div>' +
+    '</div>';
+}
