@@ -322,6 +322,7 @@ export function onInput(api, input) {
       previewModelId: null,
       previewLightId: null,
     });
+    api.patchState({ _creationEnterAt: api.now ? api.now() : 0 });
     api.enterPlace(api.id, {
       placeId: 'character-creation-land',
       spawnPoint: { x: 83.168, y: 1.229, z: 10.812 },

@@ -674,6 +674,7 @@ export function update(objectApi, dt) {
           phase: 'creating',
           characterCreated: false,
           charName: '',
+          _creationEnterAt: objectApi.now ? objectApi.now() : 0,
         });
         objectApi.setProperty('visible', false);
         // Character creation only works in 'character-creation-land'
