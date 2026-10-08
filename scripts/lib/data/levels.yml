@@ -1,0 +1,9 @@
+# Levels 1–60. xp is the TOTAL a hero has earned (state.xp stays cumulative; the HUD shows the part inside the current level).
+# Anchors follow level_progression_1_to_60.json's bands against the quest XP that exists: origin (≈450 XP) ends near 5,
+# Q001–Q008 + class arc near 10, EQU near 16, DHC near 20, SOR near 24, TID near 30. Between anchors the cost is smoothed;
+# past 30 each level costs 9% more than the last. Tune here only.
+anchors: { 1: 0, 5: 420, 8: 1650, 11: 2900, 16: 5500, 20: 8000, 24: 15000, 30: 27000 }
+growth: 1.09
+cap: 60
+perLevel: { health: 60, mana: 25 }   # added to the 1000 / 500 a level-1 hero starts with
+base: { health: 1000, mana: 500 }

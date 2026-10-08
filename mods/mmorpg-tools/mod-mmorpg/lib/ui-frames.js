@@ -157,7 +157,7 @@ function renderBackpack(localPlayer) {
 // bottom centre: XP strip under the action bar, micro menu and purse to its right
 function renderDock(localPlayer) {
   var s = localPlayer.state || {};
-  var xp = s.xp || 0, need = s.xpToLevel || 1000, pct = Math.max(0, Math.min(100, xp / need * 100));
+  var xp = s.xpInto ?? s.xp ?? 0, need = s.xpToLevel || 1, pct = Math.max(0, Math.min(100, xp / need * 100));
   var ticks = '';
   for (var t = 1; t < 20; t++) ticks += '<i style="position:absolute;top:0;bottom:0;left:' + t * 5 + '%;width:1px;background:rgba(0,0,0,.6)"></i>';
   var mb = function (icon, title, click) { return '<div class="wh-mb" title="' + title + '" data-interactive onclick="' + click + '"><img src="' + icon + '" /></div>'; };

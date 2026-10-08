@@ -771,8 +771,8 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
   `;
 
   // --- XP BAR (full-width segmented bar across entire bottom) ---
-  const xp = s.xp ?? 0;
-  const xpToLevel = s.xpToLevel ?? 1000;
+  const xp = s.xpInto ?? s.xp ?? 0;
+  const xpToLevel = s.xpToLevel || 1;
   const xpPct = Math.min(1, xp / xpToLevel);
   const totalSegments = 20;
   const filledSegments = Math.floor(xpPct * totalSegments);

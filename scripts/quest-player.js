@@ -6,6 +6,7 @@ import Q from './lib/data/quests.yml';
 import { raycast } from 'builtin/physics';
 import TF from './lib/data/townsfolk.yml';
 import { move, formatText } from './lib/economy.js';
+import { levelInfo, statsFor } from './lib/leveling.js';
 import V from './lib/data/vanguard.yml';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 
@@ -264,6 +265,30 @@ export function onInput(ctx, input) {
   if (tree && !felled(ctx, tree)) startChop(ctx, tree);
 }
 
+// Level follows total XP from any source (quests, wolves, scavengers, the Warden): read here, written only when it moves.
+function syncLevel(ctx, st) {
+  const li = levelInfo(st.xp || 0), was = st.level || 1;
+  if (st.xpInto !== li.into || st.xpToLevel !== li.need) { st.xpInto = li.into; st.xpToLevel = li.need; }
+  if (li.level === was && st.maxHealth) return;
+  const S = statsFor(li.level);
+  st.level = li.level; st.maxHealth = S.maxHealth; st.maxMana = S.maxMana;
+  st._questSave = true;
+  if (li.level > was && ctx.session.levelSeen) { // a real gain this session, not a load of an old hero
+    st.health = S.maxHealth; st.mana = S.maxMana;
+    const fp = ctx.self.feetPosition, me = { audience: { player: ctx.self.id } };
+    ctx.emit('damageNumber', { position: { x: fp.x, y: fp.y + 2.6, z: fp.z }, text: 'LEVEL ' + li.level, color: 'oklch(0.88 0.16 85)', size: 2, lifetime: 3 }, me);
+    ctx.emit('screenFlash', { color: '#f2d38a', duration: 0.5, intensity: 0.35 }, me);
+    ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-level-up-fanfare.mp3', position: fp, volume: 0.7 }, me);
+    ctx.emit('fx', { position: fp, script: LEVEL_FX }, { audience: { nearby: fp, radius: 60 } });
+    ctx.emit('milestone', { step: li.level, name: 'level ' + li.level });
+  }
+  ctx.session.levelSeen = true;
+}
+const LEVEL_FX = `fx
+pop ring burst=1 life=1.1 pos=<0,.1,0> size=1 sz=$size*(.3>3.2) col=hdr(3,2.2,.8) a=.9>0 r=sprite(soft-ring,add)
+pop rise burst=40 on=disc(.7) life=.9..1.6 v=up(2.5..4.5) size=.05..0.1 acc=drag(.6) col=hdr(4,2.8,1)>hdr(1.6,.8,.2) a=1>0 r=sprite(ember,add,velocity,.03)
+pop glow burst=1 life=1 pos=<0,1,0> r=light(<1,.8,.4>,25>0,8)`;
+
 export function update(ctx) {
   if (!playing(ctx)) return;
   const st = ctx.self.state;
@@ -271,6 +296,7 @@ export function update(ctx) {
   if (st.npcSay && ctx.now() > (ctx.session.sayUntil || 0)) st.npcSay = null;
   if (ctx.now() < (ctx.session.nextScan || 0)) return;
   ctx.session.nextScan = ctx.now() + 200;
+  syncLevel(ctx, st);
   // nameplates: an NPC behind a wall loses its plate (the HUD reads st.npcHidden); written only when the set changes
   if (ctx.now() > (ctx.session.nextSight || 0)) {
     ctx.session.nextSight = ctx.now() + 500;
