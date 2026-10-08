@@ -1,0 +1,73 @@
+# spawn-scene v2 yaml x0z-1
+candle-warden:
+  behavior: scripts/candle-warden.js
+  feetPosition: {x: 0, y: 0.05, z: -71}
+  fx: {script: "fx\npop flame rate=40 on=ci(.35) life=.3..0.6 v=up(.7..1.2) size=.06..0.12 acc=curl(.5)+buoy(1) sz=$size*(1>.3) col=hdr(4,2.4,.8)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)\npop glow n=1 at=<0,2.9,0> r=light(<1,.62,.3>,5,10)"}
+  id: candle-warden
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-candle-warden-towering-armored-knight-crown-of-candles-wax-draped-cloak.glb
+  physics: character
+  rotation: 0
+  scale: 1.6
+  state: {home: {x: 0, z: -71}, hp: 900, hpPct: 100, maxHp: 900, mode: asleep, radius: 0.7, unhurt: true}
+  tags: [enemy, boss, hollowcrypt]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.2m\" class=\"flex flex-col items-center gap-[10px]\"><div class=\"text-[64px] font-bold text-amber-100 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Candle Warden</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[52px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[5px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+crypt-light-w3:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 18, intensity: 4, kind: point}}]
+  feetPosition: {x: -11.5, y: 0, z: -78}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-w3
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-w4:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 18, intensity: 4, kind: point}}]
+  feetPosition: {x: 11.5, y: 0, z: -78}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-w4
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-pillar-2:
+  feetPosition: {x: -9, y: 0, z: -67}
+  id: crypt-pillar-2
+  physics: static
+  primitive: {kind: scripted, params: {h: 10, kind: pillar}, script: scripts/gen/crypt.js}
+crypt-pillar-3:
+  feetPosition: {x: 9, y: 0, z: -67}
+  id: crypt-pillar-3
+  physics: static
+  primitive: {kind: scripted, params: {h: 10, kind: pillar}, script: scripts/gen/crypt.js}
+crypt-pillar-4:
+  feetPosition: {x: -9, y: 0, z: -76}
+  id: crypt-pillar-4
+  physics: static
+  primitive: {kind: scripted, params: {h: 10, kind: pillar}, script: scripts/gen/crypt.js}
+crypt-pillar-5:
+  feetPosition: {x: 9, y: 0, z: -76}
+  id: crypt-pillar-5
+  physics: static
+  primitive: {kind: scripted, params: {h: 10, kind: pillar}, script: scripts/gen/crypt.js}
+qm-dhc-index:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 9, intensity: 2, kind: point}}]
+  feetPosition: {x: 0, y: 0, z: -77.3}
+  id: qm-dhc-index
+  physics: static
+  primitive: {kind: scripted, params: {kind: altar}, script: scripts/gen/crypt.js}
+  state: {after: echo_testimony, afterText: "First: release the two echo testimonies in the archive", burstAt: 1.4, burstFx: "fx\npop flare burst=26 on=disc(.06) life=.4..0.9 v=up(1..2)+sdir()*.4 size=.05..0.1 acc=buoy(.6)+drag(1.2) col=hdr(4,2.6,.9)>hdr(1.6,.5,.1) a=1>0 r=sprite(flame-wisp,add)\npop glow n=1 life=1.2 r=light(<1,.6,.25>,8,8)", gain: Command restored, mark: warden_command, quest: DHC-04, say: "Under your palm the old words surface through the new: GUARD THE WITNESS. The Warden's crown burns steady and gold.", title: The Warden's index stone, verb: Restore}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-sigil-b:
+  children: [{feetPosition: {x: 0, y: 1.3, z: 0}, light: {color: oklch(0.62 0.2 300), distance: 7, intensity: 1.8, kind: point}}]
+  feetPosition: {x: -5.6, y: 0, z: -70.2}
+  id: qm-dhc-sigil-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: sigil}, script: scripts/gen/crypt.js}
+  rotation: {lookAt: {x: 0, y: 0, z: -67}}
+  state: {burstAt: 1.2, burstFx: "fx\npop shards burst=40 on=sphere(.3) life=.6..1.2 v=sdir()*(2..4)+up(1..2) size=.05..0.1 acc=grav()*.8 col=hdr(1.8,.8,2.8) a=1>0 floor=bounce(.3) r=sprite(soft-disc,add)\npop flash n=1 life=.3 r=light(<.7,.4,1>,12,10)", gain: Sigil broken, mark: warden_sigil, quest: DHC-03, say: "The rune cracks down its middle. Somewhere behind you, the Warden's crown gutters.", title: A sigil stone, verb: Break}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-sigil-c:
+  children: [{feetPosition: {x: 0, y: 1.3, z: 0}, light: {color: oklch(0.62 0.2 300), distance: 7, intensity: 1.8, kind: point}}]
+  feetPosition: {x: 5.6, y: 0, z: -70.2}
+  id: qm-dhc-sigil-c
+  physics: static
+  primitive: {kind: scripted, params: {kind: sigil}, script: scripts/gen/crypt.js}
+  rotation: {lookAt: {x: 0, y: 0, z: -67}}
+  state: {burstAt: 1.2, burstFx: "fx\npop shards burst=40 on=sphere(.3) life=.6..1.2 v=sdir()*(2..4)+up(1..2) size=.05..0.1 acc=grav()*.8 col=hdr(1.8,.8,2.8) a=1>0 floor=bounce(.3) r=sprite(soft-disc,add)\npop flash n=1 life=.3 r=light(<.7,.4,1>,12,10)", gain: Sigil broken, mark: warden_sigil, quest: DHC-03, say: "The rune cracks down its middle. Somewhere behind you, the Warden's crown gutters.", title: A sigil stone, verb: Break}
+  tags: [quest-mark, hollowcrypt]

@@ -1,0 +1,272 @@
+# spawn-scene v2 yaml x0z0
+crypt-gate-in:
+  behavior: scripts/crypt-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.75 0.01 70), roughness: 0.95}, physics: static, primitive: {depth: 0.5, height: 3.7, kind: archway, thickness: 0.4, width: 3.3}}]
+  feetPosition: {x: 0, y: 0.05, z: -0.75}
+  id: crypt-gate-in
+  material: {kind: scripted, script: engine/portal-glass, view: {link: "+main#crypt-gate", sound: 1, spill: 2}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 0
+  state: {link: "+main#crypt-gate"}
+  tags: [portal]
+crypt-halls:
+  feetPosition: {x: 0, y: 0, z: 0}
+  id: crypt-halls
+  physics: static
+  primitive: {kind: scripted, params: {kind: halls}, script: scripts/gen/crypt.js}
+crypt-light-a1:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: -9, y: 0, z: -25.5}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-a1
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-a2:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: 9, y: 0, z: -25.5}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-a2
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-a3:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: -1.6, y: 0, z: -35.5}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-a3
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-a4:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: 1.6, y: 0, z: -35.5}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-a4
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-a5:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: -9, y: 0, z: -44.5}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-a5
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-a6:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: 9, y: 0, z: -44.5}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-a6
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-c1:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: 0, y: 0, z: -19}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-c1
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-c2:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: 0, y: 0, z: -50}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-c2
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-v1:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: -6, y: 0, z: -1.6}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-v1
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-v2:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: 6, y: 0, z: -1.6}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-v2
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-v3:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: -6, y: 0, z: -12.6}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-v3
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-v4:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  feetPosition: {x: 6, y: 0, z: -12.6}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-v4
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-w1:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 18, intensity: 4, kind: point}}]
+  feetPosition: {x: -11.5, y: 0, z: -56}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-w1
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-light-w2:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 18, intensity: 4, kind: point}}]
+  feetPosition: {x: 11.5, y: 0, z: -56}
+  fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: crypt-light-w2
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+crypt-npc-elric:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 3.2, y: 0, z: -5}
+  id: crypt-npc-elric
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-gatekeeper-male-old-guard-captain-steel-armor-cloak.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 160}
+  state: {homeYaw: 160, idle: Idle_FoldArms_Loop, npcName: Gatekeeper Elric, who: elric-crypt, yaw: 160}
+  tags: [npc, talker, townsfolk, quest-npc, hollowcrypt]
+crypt-npc-vale:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -3.2, y: 0, z: -4}
+  id: crypt-npc-vale
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-priestess-female-sister-white-robes-blue-sash.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Sister Vale, who: vale-crypt, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, hollowcrypt]
+crypt-pillar-0:
+  feetPosition: {x: -9, y: 0, z: -58}
+  id: crypt-pillar-0
+  physics: static
+  primitive: {kind: scripted, params: {h: 10, kind: pillar}, script: scripts/gen/crypt.js}
+crypt-pillar-1:
+  feetPosition: {x: 9, y: 0, z: -58}
+  id: crypt-pillar-1
+  physics: static
+  primitive: {kind: scripted, params: {h: 10, kind: pillar}, script: scripts/gen/crypt.js}
+crypt-shelf-e0:
+  feetPosition: {x: 8.4, y: 0, z: -28}
+  id: crypt-shelf-e0
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 7}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-shelf-e1:
+  feetPosition: {x: 8.4, y: 0, z: -32.5}
+  id: crypt-shelf-e1
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 8}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-shelf-e2:
+  feetPosition: {x: 8.4, y: 0, z: -37.5}
+  id: crypt-shelf-e2
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 9}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-shelf-e3:
+  feetPosition: {x: 8.4, y: 0, z: -42}
+  id: crypt-shelf-e3
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 10}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-shelf-w0:
+  feetPosition: {x: -8.4, y: 0, z: -28}
+  id: crypt-shelf-w0
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 0}, script: scripts/gen/crypt.js}
+  rotation: -90
+crypt-shelf-w1:
+  feetPosition: {x: -8.4, y: 0, z: -32.5}
+  id: crypt-shelf-w1
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 1}, script: scripts/gen/crypt.js}
+  rotation: -90
+crypt-shelf-w2:
+  feetPosition: {x: -8.4, y: 0, z: -37.5}
+  id: crypt-shelf-w2
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 2}, script: scripts/gen/crypt.js}
+  rotation: -90
+crypt-shelf-w3:
+  feetPosition: {x: -8.4, y: 0, z: -42}
+  id: crypt-shelf-w3
+  physics: static
+  primitive: {kind: scripted, params: {kind: shelf, seed: 3}, script: scripts/gen/crypt.js}
+  rotation: -90
+crypt-tomb-a0:
+  feetPosition: {x: -4.5, y: 0, z: -30}
+  id: crypt-tomb-a0
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-tomb-a1:
+  feetPosition: {x: 4.5, y: 0, z: -40}
+  id: crypt-tomb-a1
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-tomb-a2:
+  feetPosition: {x: -4.5, y: 0, z: -40}
+  id: crypt-tomb-a2
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-tomb-a3:
+  feetPosition: {x: 4.5, y: 0, z: -30}
+  id: crypt-tomb-a3
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb}, script: scripts/gen/crypt.js}
+  rotation: 90
+crypt-tomb-v:
+  feetPosition: {x: 0, y: 0, z: -8.5}
+  id: crypt-tomb-v
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb}, script: scripts/gen/crypt.js}
+dhc-archive-crew:
+  behavior: scripts/scavengers.js
+  feetPosition: {x: 0, y: 0, z: -35}
+  id: dhc-archive-crew
+  state: {crew: [{id: dhc-archivist-1, x: -1.5, yaw: 180, z: -29}, {id: dhc-archivist-2, x: 1.8, yaw: 0, z: -34}, {id: dhc-archivist-3, x: -1.2, yaw: 90, z: -39}, {id: dhc-archivist-4, x: 1.5, yaw: 200, z: -43}], floorY: 0.05, model: /cdn/model-humanoid-fantasy-inkbound-archivist-gaunt-scribe-black-ink-stained-robes-quill.glb, name: Inkbound Archivist, tallyKey: inkbound_archivist}
+  tags: [hollowcrypt]
+qm-dhc-candle-a:
+  feetPosition: {x: -5.6, y: 0, z: -6.5}
+  id: qm-dhc-candle-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: candle}, script: scripts/gen/crypt.js}
+  state: {burstAt: 1.3, burstFx: "fx\npop flare burst=26 on=disc(.06) life=.4..0.9 v=up(1..2)+sdir()*.4 size=.05..0.1 acc=buoy(.6)+drag(1.2) col=hdr(4,2.6,.9)>hdr(1.6,.5,.1) a=1>0 r=sprite(flame-wisp,add)\npop glow n=1 life=1.2 r=light(<1,.6,.25>,8,8)", gain: Candle lit, mark: unclaimed_candle, quest: DHC-01, say: The wick takes. For a breath the dark leans away from it., title: An unclaimed candle, verb: Light}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-candle-b:
+  feetPosition: {x: 5.6, y: 0, z: -7.5}
+  id: qm-dhc-candle-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: candle}, script: scripts/gen/crypt.js}
+  state: {burstAt: 1.3, burstFx: "fx\npop flare burst=26 on=disc(.06) life=.4..0.9 v=up(1..2)+sdir()*.4 size=.05..0.1 acc=buoy(.6)+drag(1.2) col=hdr(4,2.6,.9)>hdr(1.6,.5,.1) a=1>0 r=sprite(flame-wisp,add)\npop glow n=1 life=1.2 r=light(<1,.6,.25>,8,8)", gain: Candle lit, mark: unclaimed_candle, quest: DHC-01, say: The wick takes. For a breath the dark leans away from it., title: An unclaimed candle, verb: Light}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-candle-c:
+  feetPosition: {x: -5.6, y: 0, z: -11}
+  id: qm-dhc-candle-c
+  physics: static
+  primitive: {kind: scripted, params: {kind: candle}, script: scripts/gen/crypt.js}
+  state: {burstAt: 1.3, burstFx: "fx\npop flare burst=26 on=disc(.06) life=.4..0.9 v=up(1..2)+sdir()*.4 size=.05..0.1 acc=buoy(.6)+drag(1.2) col=hdr(4,2.6,.9)>hdr(1.6,.5,.1) a=1>0 r=sprite(flame-wisp,add)\npop glow n=1 life=1.2 r=light(<1,.6,.25>,8,8)", gain: Candle lit, mark: unclaimed_candle, quest: DHC-01, say: The wick takes. For a breath the dark leans away from it., title: An unclaimed candle, verb: Light}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-echo-a:
+  feetPosition: {x: -3, y: 0, z: -45}
+  fx: {script: "fx\npop body rate=30 on=box(.35,1.7,.2) life=.8..1.4 v=up(.1..0.3) size=.08..0.16 acc=curl(.5)+drag(1) col=hdr(1,1.6,2.6) a=0>.3:.5>.7:.3>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,1.1,0> r=light(<.55,.75,1>,1.6,6)"}
+  id: qm-dhc-echo-a
+  state: {burstAt: 0.2, burstFx: "fx\npop rise burst=60 on=box(.35,1.7,.2) life=1.2..2 v=up(1.5..3) size=.06..0.12 acc=curl(.6) col=hdr(1.4,2,3) a=1>0 r=sprite(soft-disc,add)", gain: Testimony released, mark: echo_testimony, quest: DHC-04, say: "\"They asked my name for three days. I gave them my brother's. Tell him I'm sorry.\" The voice thins, and goes.", title: An echo testimony, verb: Listen}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-echo-b:
+  feetPosition: {x: 3, y: 0, z: -26.5}
+  fx: {script: "fx\npop body rate=30 on=box(.35,1.7,.2) life=.8..1.4 v=up(.1..0.3) size=.08..0.16 acc=curl(.5)+drag(1) col=hdr(1,1.6,2.6) a=0>.3:.5>.7:.3>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,1.1,0> r=light(<.55,.75,1>,1.6,6)"}
+  id: qm-dhc-echo-b
+  state: {burstAt: 0.2, burstFx: "fx\npop rise burst=60 on=box(.35,1.7,.2) life=1.2..2 v=up(1.5..3) size=.06..0.12 acc=curl(.6) col=hdr(1.4,2,3) a=1>0 r=sprite(soft-disc,add)", gain: Testimony released, mark: echo_testimony, quest: DHC-04, say: "\"I kept the east row's ledger. I wrote what they told me to strike. I'm done writing now.\" The light lets go of the shelf.", title: An echo testimony, verb: Listen}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-sigil-a:
+  children: [{feetPosition: {x: 0, y: 1.3, z: 0}, light: {color: oklch(0.62 0.2 300), distance: 7, intensity: 1.8, kind: point}}]
+  feetPosition: {x: 0, y: 0, z: -60.5}
+  id: qm-dhc-sigil-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: sigil}, script: scripts/gen/crypt.js}
+  rotation: {lookAt: {x: 0, y: 0, z: -67}}
+  state: {burstAt: 1.2, burstFx: "fx\npop shards burst=40 on=sphere(.3) life=.6..1.2 v=sdir()*(2..4)+up(1..2) size=.05..0.1 acc=grav()*.8 col=hdr(1.8,.8,2.8) a=1>0 floor=bounce(.3) r=sprite(soft-disc,add)\npop flash n=1 life=.3 r=light(<.7,.4,1>,12,10)", gain: Sigil broken, mark: warden_sigil, quest: DHC-03, say: "The rune cracks down its middle. Somewhere behind you, the Warden's crown gutters.", title: A sigil stone, verb: Break}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-strip-a:
+  feetPosition: {x: -7.2, y: 0, z: -34.9}
+  fx: {script: "fx\npop motes rate=4 on=disc(.4) life=1.4..2.2 v=up(.3..0.6) size=.04..0.07 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-dhc-strip-a
+  primitive: {kind: scripted, params: {kind: lectern}, script: scripts/gen/crypt.js}
+  rotation: -90
+  state: {gain: Census strip recovered, mark: census_strip, quest: DHC-02, say: "A strip torn from a census roll, the ink still wet: MARROW LANE, NINE HOUSEHOLDS. STRUCK.", title: A torn census strip, verb: Take}
+  tags: [quest-mark, hollowcrypt]
+qm-dhc-strip-b:
+  feetPosition: {x: 7.2, y: 0, z: -39.8}
+  fx: {script: "fx\npop motes rate=4 on=disc(.4) life=1.4..2.2 v=up(.3..0.6) size=.04..0.07 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-dhc-strip-b
+  primitive: {kind: scripted, params: {kind: lectern}, script: scripts/gen/crypt.js}
+  rotation: 90
+  state: {gain: Census strip recovered, mark: census_strip, quest: DHC-02, say: "Another strip: THE OSTLER FAMILIES OF THE EAST ROW. RESPONSIBILITY SURRENDERED.", title: A torn census strip, verb: Take}
+  tags: [quest-mark, hollowcrypt]
