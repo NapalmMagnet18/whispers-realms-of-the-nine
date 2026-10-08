@@ -144,3 +144,5 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: GNT-01 The Heart That Fell (lvl 28, Neris at Starfall Eyrie): skull listen + heart shard marks at the fallen giant, heartbeat loop, amulet giants_heart_shard.
 - 2026-10-08: Mott's caravan travels road-reedhaven (scripts/caravan-route.js on the wagon): stops Reach west edge / fen camp / Reedhaven, 240 s dwell, 1.6 m/s, clock-driven.
 - 2026-10-08: Mott is a vendor; shop follows stop: mott-reach / mott-fen / mott-reed (food items, healOverTime).
+
+- 2026-10-08: Discipline trainers (trainer-<race> at each race start): E trains your class rank I–VII at levels 5/10/20/30/40/50/60 for a copper fee; each rank +6% ability damage (scripts/lib/data/trainers.yml, kit.js power()). Saved as state.trained. Asked for in the creator's "class trainers… to upgrade as you level" note.
