@@ -126,8 +126,15 @@ for sx in (-1, 1):  # plaster gables + barge boards
     x = sx * (W2 - 0.05)
     poly("MI_Plaster", [(x, R0, D2), (x, R0, -D2), (x, RY, 0)], [(0, 1, 2), (2, 1, 0)])
 box("MI_WoodTrim", xa, xb, RY + T - 0.05, RY + T + 0.12, -0.12, 0.12)  # ridge beam
-box("MI_Brick", 1.8, 2.7, R0 - 0.5, RY + 1.3, -1.9, -1.0)  # chimney
-box("MI_RockTrim", 1.7, 2.8, RY + 1.3, RY + 1.45, -2.0, -0.9)
+box("MI_Brick", 1.8, 2.7, R0 - 0.5, RY - 1.5, -1.9, -1.0)  # chimney stack inside the attic
+piece("prop-chimney", 2.25, RY - 1.6, -1.45, 0)  # the kit's brick chimney breaks the roof
+# fieldstone border round the plinth, kit corners at each end
+for i in range(4): piece("prop-exteriorborder-straight" + ("1" if i % 2 else "2"), -3 + 2 * i, 0, D2 + 0.25, 0); piece("prop-exteriorborder-straight" + ("2" if i % 2 else "1"), 3 - 2 * i, 0, -D2 - 0.25, 180)
+for i in range(3): piece("prop-exteriorborder-straight1", -W2 - 0.25, 0, 2 - 2 * i, -90); piece("prop-exteriorborder-straight2", W2 + 0.25, 0, -2 + 2 * i, 90)
+for (cx, cz, r) in ((-W2 - 0.25, D2 + 0.25, 0), (W2 + 0.25, D2 + 0.25, 90), (W2 + 0.25, -D2 - 0.25, 180), (-W2 - 0.25, -D2 - 0.25, -90)): piece("prop-exteriorborder-corner", cx, 0, cz, r)
+# yard clutter: a kit crate by the right window, loose bricks by the left corner and the back door
+piece("prop-crate", 3.3, 0.0, D2 + 1.25, 14)
+for (n, x, z, r) in (("prop-brick1", -4.5, 3.9, 20), ("prop-brick2", -4.1, 4.2, -35), ("prop-brick3", -4.6, 4.35, 80), ("prop-brick4", -4.3, 3.95, 5), ("prop-brick2", -0.6, -3.9, 60), ("prop-brick1", -1.4, -4.1, -15)): piece(n, x, 0.1, z, r)
 # UVs for the hand-built pieces (boxes, roof, gables): box projection, 1 tile per 2 m (roof 1 per 1.6 m)
 own = [o for o in parts if o.name.startswith(("b", "p")) and not o.name.startswith("ba")]
 for o in own:
