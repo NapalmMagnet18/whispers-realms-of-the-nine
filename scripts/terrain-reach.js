@@ -12,6 +12,8 @@ export const FOREST = { x: -130, z: -30 };
 export const CRYPT = { x: 1350, z: -700 };
 export const FEN = { x: -1300, z: 950 };
 export const BAY = { x: 300, z: 1880 };
+export const TIDE = { x: -1000, z: 1900 }; // Tideglass Coast: a harbour shelf on the south-west shore
+export const HEAD = { x: -860, z: 1985 };  // the headland the inland lighthouse stands on
 // 2026-10-08 expansion: the continent now runs ~12 km east-west. Beyond the old coasts:
 // Frostveil Tundra (far north, past the Greyspine), Sunscar Expanse (far east, dunes and desert rock),
 // Elderveil Wilds (far west, an ancient high forest). The south coast and Saltmere bay stay where they were.
@@ -96,6 +98,11 @@ export function heightAt(ctx) {
   // Sorrowfen: flat marsh at the waterline; pools where the noise dips under 0
   const df = Math.hypot(x - FEN.x, z - FEN.z);
   if (df < 1100) { const v = Math.exp(-((df / 480) ** 2)); h = lerp(h, 0.5 + noise.fbm2({ x, z, frequency: 1 / 55, octaves: 3, seed: so(9) }) * 1.8, v); }
+  // Tideglass Coast: a low shelf to the sea, a headland at its east horn
+  const dt = Math.hypot(x - TIDE.x, (z - TIDE.z) * 1.4);
+  if (dt < 900) { const v = Math.exp(-((dt / 330) ** 2)); h = lerp(h, 2.6 + (z < TIDE.z ? (TIDE.z - z) * 0.03 : 0) + noise.fbm2({ x, z, frequency: 1 / 60, octaves: 2, seed: so(12) }) * 0.9, v); }
+  const dh = Math.hypot(x - HEAD.x, z - HEAD.z);
+  if (dh < 90) h = Math.max(h, 2.6 + 11 * sstep(90, 30, dh));
   h = quarryShape(x, z, h);
   // coast to the sea
   const land = landFactor(x, z, noise, so);
