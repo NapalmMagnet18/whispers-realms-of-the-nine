@@ -8,6 +8,21 @@
 // =====================================================================
 
 let inMenu = false;
+let drift = 0;
+// the title shot, drawn on this machine: a slow breathing drift on the causeway, the realm gate (0, 0, -26) right of the menu column
+function titleShot(api, dt) {
+  if (!api.view) return;
+  const me = api.self || null;
+  if (me && me.isLocal === false) return;
+  drift += dt || 0;
+  const a = (drift / 90) * Math.PI * 2;
+  const x = Math.sin(a) * 3.2;
+  api.view.camera = {
+    eye: { x, y: 3.4 + Math.sin(a * 1.5) * 0.4, z: 9 + Math.sin(a * 0.5) * 2.5 },
+    aim: { x: x * 0.25 - 5.5, y: 6.2, z: -26 },
+    fov: 58,
+  };
+}
 
 export function update(api, dt) {
   const place = api.getEntityPlace(api.id);
@@ -25,12 +40,15 @@ export function update(api, dt) {
     api.setProperty('feetPosition', { x: 0, y: 0.1, z: 0 });
     api.patchState({ velocity: { x: 0, y: 0, z: 0 } });
   } else if (nowInMenu && inMenu) {
+    const st = api.getState ? api.getState() : {};
+    if (st.phase !== 'creating') titleShot(api, dt);
     // Already in menu — just keep player parked so character controller doesn't drift
     api.setProperty('feetPosition', { x: 0, y: 0.1, z: 0 });
     api.patchState({ velocity: { x: 0, y: 0, z: 0 } });
   } else if (!nowInMenu && inMenu) {
     // Leaving main-menu-land — restore normal camera
     inMenu = false;
+    if (api.view) api.view.camera = null;
     api.patchState({ _cinematicOrbit: false, _cinematicTime: 0 });
     api.clearCamera({ transition: { duration: 0.6, ease: 'easeInOut' } });
     // Show the player model again
