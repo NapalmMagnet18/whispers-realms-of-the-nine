@@ -229,7 +229,22 @@
       "joinRealm": {},
       "confirmDeleteCharacter": {},
       "cancelDeleteCharacter": {},
-      "setMenuView": {}
+      "setMenuView": {},
+      "clearFriendsError": {},
+      "closeFriendPrompt": {},
+      "completeCottageQuest": {},
+      "completeWizardDelivery": {},
+      "cursedItemDialogChoice": {},
+      "cursedItemDialogClose": {},
+      "moveCursedItemPanel": {},
+      "moveVampirePanel": {},
+      "openCottageQuest": {},
+      "plantBanner": {},
+      "requestRunestone": {},
+      "requestWarBanner": {},
+      "showFriendPrompt": {},
+      "vampireDialogChoice": {},
+      "vampireDialogClose": {}
     },
     "axes": {
       "lookX": {
