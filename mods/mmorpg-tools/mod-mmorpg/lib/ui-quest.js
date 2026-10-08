@@ -438,7 +438,8 @@ var _reachSince = 0;
 var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' },
   // the Reach's townsfolk (scripts/lib/data/townsfolk.yml): a nameplate each, no quest marker
   { id: 'reach-npc-mira', name: 'Mira the Forgekeeper' }, { id: 'reach-npc-dren', name: 'Quartermaster Dren' }, { id: 'reach-npc-bram', name: 'Bram Alder' },
-  { id: 'reach-npc-tamsin', name: 'Tamsin the Ranger' }, { id: 'reach-npc-vale', name: 'Sister Vale' }, { id: 'reach-npc-rowan', name: 'Rowan the Ferryman' }];
+  { id: 'reach-npc-tamsin', name: 'Tamsin the Ranger' }, { id: 'reach-npc-vale', name: 'Sister Vale' }, { id: 'reach-npc-rowan', name: 'Rowan the Ferryman' },
+  { id: 'qm-ward-hesk', name: 'Old Hesk' }, { id: 'qm-ward-pell', name: 'Widow Pell' }];
 // the race starts' greeters: drawn only while the hero stands within 90 m of them
 var GREETERS = [{ id: 'start-thornhollow/start-thornhollow-greeter', name: 'Elder Fennick Thornwhisper', x: -717, z: 71 },
   { id: 'start-cinderhold/start-cinderhold-greeter', name: 'Forgemother Brenna Ashvein', x: 898, z: -172 },
@@ -459,7 +460,7 @@ export function renderQuestTracker(localPlayer, world) {
     var aq = aqs[i]; if (!aq || !aq.objectives) continue;
     var p = aq.baseline ? _qd.questProgress(aq, s) : { objectives: aq.objectives, done: false };
     rows += '<div class="qtk-q">' + (p.done ? '<div class="qtk-b">?</div>' : '') + '<div class="qtk-t">' + (aq.title || 'Quest') + '</div>';
-    if (p.done) rows += '<div class="qtk-o">- Return to ' + (aq.giverName || 'the quest giver') + '</div>';
+    if (p.done) rows += '<div class="qtk-o">- Return to ' + (aq.turnInName || aq.giverName || 'the quest giver') + '</div>';
     else for (var j = 0; j < p.objectives.length; j++) {
       var o = p.objectives[j], c = Math.min(o.current || 0, o.target), done = c >= o.target;
       rows += '<div class="qtk-o' + (done ? ' done' : '') + '">- <span id="qt-' + aq.questId + '-' + o.key + '-' + c + '" style="display:inline-block;animation:qpop .25s">' + c + '/' + o.target + '</span> ' + o.desc + '</div>';
@@ -469,7 +470,7 @@ export function renderQuestTracker(localPlayer, world) {
   if (rows) out += '<div class="fixed qtk" style="top:262px;right:calc(var(--spawn-chrome-reservation-right-inset, 50px) + 12px);pointer-events:none;z-index:40">'
     + '<div class="qtk-h">Quests</div>' + _rule('section', '100%', 8) + rows + '</div>';
   var fp = localPlayer.feetPosition || { x: 999, z: 999 };
-  var nearReach = Math.abs(fp.x) < 90 && Math.abs(fp.z) < 90;
+  var nearReach = Math.abs(fp.x) < 90 && fp.z < 90 && fp.z > -140; // the Reach and Lantern Ward north of it
   var _t = (typeof performance !== 'undefined' ? performance.now() : 0);
   if (!nearReach) _reachSince = 0; else if (!_reachSince) _reachSince = _t || 1;
   if (_t && _t - _reachSince < 6000) nearReach = false; // the town's people stream in first: an anchor before them finds nobody // the townsfolk all stand in Lantern's Reach: anchors elsewhere find nobody
