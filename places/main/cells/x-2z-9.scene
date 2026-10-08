@@ -41,6 +41,76 @@ vey-bench-2:
   physics: static
   primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
   rotation: {yaw: 330}
+vey-boulder-0:
+  feetPosition: {x: -183.8, y: {terrain: -0.3}, z: -1074.8}
+  id: vey-boulder-0
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 950}
+  rotation: {yaw: 130}
+  scale: 1.4
+vey-boulder-1:
+  feetPosition: {x: -243, y: {terrain: -0.3}, z: -1098.2}
+  id: vey-boulder-1
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 951}
+  rotation: {yaw: 201}
+  scale: 1.9
+vey-boulder-2:
+  feetPosition: {x: -185, y: {terrain: -0.3}, z: -1128.3}
+  id: vey-boulder-2
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 952}
+  rotation: {yaw: 272}
+  scale: 2.4
+vey-boulder-3:
+  feetPosition: {x: -176.3, y: {terrain: -0.3}, z: -1061.7}
+  id: vey-boulder-3
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 953}
+  rotation: {yaw: 343}
+  scale: 2.9
+vey-boulder-4:
+  feetPosition: {x: -234, y: {terrain: -0.3}, z: -1099.2}
+  id: vey-boulder-4
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 954}
+  rotation: {yaw: 54}
+  scale: 1.4
+vey-boulder-5:
+  feetPosition: {x: -177.3, y: {terrain: -0.3}, z: -1141.1}
+  id: vey-boulder-5
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 955}
+  rotation: {yaw: 125}
+  scale: 1.9
+vey-boulder-6:
+  feetPosition: {x: -181.6, y: {terrain: -0.3}, z: -1069.1}
+  id: vey-boulder-6
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 956}
+  rotation: {yaw: 196}
+  scale: 2.4
+vey-boulder-7:
+  feetPosition: {x: -249, y: {terrain: -0.3}, z: -1099.6}
+  id: vey-boulder-7
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 957}
+  rotation: {yaw: 267}
+  scale: 2.9
+vey-boulder-8:
+  feetPosition: {x: -181.1, y: {terrain: -0.3}, z: -1133}
+  id: vey-boulder-8
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 958}
+  rotation: {yaw: 338}
+  scale: 1.4
+vey-boulder-9:
+  feetPosition: {x: -174.6, y: {terrain: -0.3}, z: -1055.8}
+  id: vey-boulder-9
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 959}
+  rotation: {yaw: 49}
+  scale: 1.9
 vey-chart:
   feetPosition: {x: -194, y: {terrain: 0}, z: -1110}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1.8,1.6,2.4>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.8,1.6,2.4>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
@@ -207,6 +277,134 @@ vey-npc-otho:
   rotation: {yaw: 240}
   state: {homeYaw: 240, idle: Idle, npcName: Star Reader Otho, who: otho, yaw: 240}
   tags: [npc, talker, townsfolk, quest-npc, starfall]
+vey-pine-0:
+  feetPosition: {x: -164.9, y: {terrain: 0}, z: -1080.8}
+  id: vey-pine-0
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 900}
+  rotation: {yaw: 180}
+  scale: 1.2
+vey-pine-1:
+  feetPosition: {x: -249.5, y: {terrain: 0}, z: -1087.7}
+  id: vey-pine-1
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 901}
+  rotation: {yaw: 233}
+  scale: 1.5
+vey-pine-10:
+  feetPosition: {x: -168, y: {terrain: 0}, z: -1124}
+  id: vey-pine-10
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 910}
+  rotation: {yaw: 350}
+  scale: 1.5
+vey-pine-11:
+  feetPosition: {x: -209.4, y: {terrain: 0}, z: -1049.9}
+  id: vey-pine-11
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 911}
+  rotation: {yaw: 43}
+  scale: 1.7999999999999998
+vey-pine-12:
+  feetPosition: {x: -221.2, y: {terrain: 0}, z: -1134}
+  id: vey-pine-12
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 912}
+  rotation: {yaw: 96}
+  scale: 1.2
+vey-pine-13:
+  feetPosition: {x: -150.9, y: {terrain: 0}, z: -1086.3}
+  id: vey-pine-13
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 913}
+  rotation: {yaw: 149}
+  scale: 1.5
+vey-pine-14:
+  feetPosition: {x: -235.6, y: {terrain: 0}, z: -1081.8}
+  id: vey-pine-14
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 914}
+  rotation: {yaw: 202}
+  scale: 1.7999999999999998
+vey-pine-15:
+  feetPosition: {x: -182.2, y: {terrain: 0}, z: -1147.8}
+  id: vey-pine-15
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 915}
+  rotation: {yaw: 255}
+  scale: 1.2
+vey-pine-2:
+  feetPosition: {x: -177.9, y: {terrain: 0}, z: -1133.3}
+  id: vey-pine-2
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 902}
+  rotation: {yaw: 286}
+  scale: 1.7999999999999998
+vey-pine-3:
+  feetPosition: {x: -192, y: {terrain: 0}, z: -1049.6}
+  id: vey-pine-3
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 903}
+  rotation: {yaw: 339}
+  scale: 1.2
+vey-pine-4:
+  feetPosition: {x: -231.3, y: {terrain: 0}, z: -1124.9}
+  id: vey-pine-4
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 904}
+  rotation: {yaw: 32}
+  scale: 1.5
+vey-pine-5:
+  feetPosition: {x: -149.1, y: {terrain: 0}, z: -1103.6}
+  id: vey-pine-5
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 905}
+  rotation: {yaw: 85}
+  scale: 1.7999999999999998
+vey-pine-6:
+  feetPosition: {x: -227.5, y: {terrain: 0}, z: -1070.9}
+  id: vey-pine-6
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 906}
+  rotation: {yaw: 138}
+  scale: 1.2
+vey-pine-7:
+  feetPosition: {x: -199.3, y: {terrain: 0}, z: -1151}
+  id: vey-pine-7
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 907}
+  rotation: {yaw: 191}
+  scale: 1.5
+vey-pine-8:
+  feetPosition: {x: -173.4, y: {terrain: 0}, z: -1070.1}
+  id: vey-pine-8
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 908}
+  rotation: {yaw: 244}
+  scale: 1.7999999999999998
+vey-pine-9:
+  feetPosition: {x: -250.7, y: {terrain: 0}, z: -1105.1}
+  id: vey-pine-9
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 909}
+  rotation: {yaw: 297}
+  scale: 1.2
 vey-publish:
   feetPosition: {x: -206, y: {terrain: 0}, z: -1124}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1.8,1.6,2.4>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.8,1.6,2.4>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
