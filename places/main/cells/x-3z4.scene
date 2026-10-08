@@ -1,4 +1,13 @@
 # spawn-scene v2 yaml x-3z4
+banker-reedbound:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -434, y: 12, z: 570.8}
+  id: banker-reedbound
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: -90
+  state: {bank: true, homeYaw: -90, idle: Idle_FoldArms_Loop, npcName: "Banker Ilse Reedmarrow, Lantern Vault", who: banker, yaw: -90}
+  tags: [npc, vendor, interactable, banker-npc]
 hc-reh-boss:
   behavior: scripts/boss.js
   feetPosition: {x: -392, z: 555}

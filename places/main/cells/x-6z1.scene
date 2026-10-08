@@ -4,6 +4,15 @@ amb-thornhollow:
   feetPosition: {x: -720, y: {terrain: 3}, z: 70}
   id: amb-thornhollow
   tags: [ambience]
+banker-briarkin:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -715.7750406279207, y: 19.6, z: 76.6625609418811}
+  id: banker-briarkin
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: 56.309932474020215
+  state: {bank: true, homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Banker Fennick Burr, Lantern Vault", who: banker, yaw: 56.309932474020215}
+  tags: [npc, vendor, interactable, banker-npc]
 finder-briarkin:
   overrides:
     feetPosition: {x: -712.2249593720793, y: 19.6, z: 71.3374390581189}

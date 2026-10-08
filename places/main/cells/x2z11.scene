@@ -4,6 +4,15 @@ amb-gullrest:
   feetPosition: {x: 250, y: {terrain: 3}, z: 1430}
   id: amb-gullrest
   tags: [ambience]
+banker-saltborn:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 248.22495937207927, y: 3, z: 1436.662560941881}
+  id: banker-saltborn
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: 56.309932474020215
+  state: {bank: true, homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Banker Pell Tidewright, Lantern Vault", who: banker, yaw: 56.309932474020215}
+  tags: [npc, vendor, interactable, banker-npc]
 finder-saltborn:
   overrides:
     feetPosition: {x: 251.77504062792073, y: 3.8324276031947795, z: 1431.337439058119}

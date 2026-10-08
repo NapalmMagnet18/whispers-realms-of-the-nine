@@ -4,6 +4,15 @@ amb-cinderhold:
   feetPosition: {x: 900, y: {terrain: 3}, z: -170}
   id: amb-cinderhold
   tags: [ambience]
+banker-emberforged:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 892.2249593720793, y: 40.4, z: -168.6625609418811}
+  id: banker-emberforged
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: -56.309932474020215
+  state: {bank: true, homeYaw: -56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Banker Hroda Anvilsworn, Lantern Vault", who: banker, yaw: -56.309932474020215}
+  tags: [npc, vendor, interactable, banker-npc]
 cradle-npc-dren:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: 905, y: {terrain: 0}, z: -160}

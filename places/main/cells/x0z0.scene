@@ -495,6 +495,15 @@ bank:
   primitive: {kind: scripted, params: {chimney: 0, d: 9, h: 4.4, rise: 2.4, roof: dark grey slate roof tiles, w: 11, wall: stone, win: 2}, script: scripts/gen/house.js}
   rotation: -36
   tags: [building, bank]
+banker-reach:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -17.76335575687742, y: 4.12, z: 26.427050983124843}
+  id: banker-reach
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: -36
+  state: {bank: true, homeYaw: -36, idle: Idle_FoldArms_Loop, npcName: "Banker Osric Thale, Lantern Vault", who: banker, yaw: -36}
+  tags: [npc, vendor, interactable, banker-npc]
 boulder-f1:
   feetPosition: {x: -34, y: {terrain: -0.3}, z: 40}
   id: boulder-f1

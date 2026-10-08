@@ -23,6 +23,15 @@ ashen-tavern:
   primitive: {kind: scripted, params: {chimney: 0, chimneyZ: 4.05, d: 9, doorX: -1.6, h1: 3.2, h2: 2.6, kind: townhouse, open: true, pitch: 0.75, w: 7}, script: scripts/gen/ashen-village.js, seed: 9}
   rotation: {yaw: 0}
   tags: [ashen, building, tavern]
+banker-marchborn:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 3.2249593720792666, y: 0.8, z: -79.3374390581189}
+  id: banker-marchborn
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: 56.309932474020215
+  state: {bank: true, homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Banker Wenna Coin, Lantern Vault", who: banker, yaw: 56.309932474020215}
+  tags: [npc, vendor, interactable, banker-npc]
 finder-marchborn:
   overrides:
     feetPosition: {x: 6.775040627920733, y: 0.800048828125, z: -84.6625609418811}

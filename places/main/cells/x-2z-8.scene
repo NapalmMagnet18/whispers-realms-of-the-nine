@@ -1,4 +1,13 @@
 # spawn-scene v2 yaml x-2z-8
+banker-veylori:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -195.77504062792073, y: 120, z: -1087.337439058119}
+  id: banker-veylori
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: 56.309932474020215
+  state: {bank: true, homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Banker Seraphel Vey, Lantern Vault", who: banker, yaw: 56.309932474020215}
+  tags: [npc, vendor, interactable, banker-npc]
 vey-yard-crate-0:
   feetPosition: {x: -211, y: {terrain: -0.3}, z: -1084}
   id: vey-yard-crate-0
