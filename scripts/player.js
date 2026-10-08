@@ -8,6 +8,27 @@
 // mixer channel (anim.sit = "cdn/clip-sit-loop.glb": →animations).
 import PLAYER from './lib/data/player.yml'
 
+// Footsteps from the creator's foley pack: the ground under the foot picks the set, a floor above the terrain is hard.
+const STEPS = {
+  hard: ['/cdn/sfx-footstep-hard-surface-fvkz5mig.mp3', '/cdn/sfx-footstep-hard-surface-step-fodr77wl.mp3', '/cdn/footstep-04-hard-surface-step-5xkxucmi.mp3', '/cdn/footstep-hard-surface-walk-unyuz2k7.mp3'],
+  gravel: ['/cdn/footstep-07-gravel-walk-3xm4nwid.mp3'],
+  soft: ['/cdn/sfx-footstep-dirt-walk-9iixa3ms.mp3', '/cdn/sfx-footstep-walking-movement-po5miq4i.mp3', '/cdn/sfx-footstep-walking-movement-shoe-plqtyode.mp3'],
+}
+const HARD = { cobble: 1, rock: 1, redrock: 1 }
+function footstep(ctx, w, speed, dt) {
+  w.stepT = (w.stepT ?? 0) - dt
+  if (w.stepT > 0) return
+  w.stepT = Math.min(0.6, Math.max(0.27, 1.7 / speed))
+  const p = ctx.self.feetPosition
+  const t = ctx.place.terrain
+  const h = t?.heightAt?.(p.x, p.z)
+  let mat = t?.materialAt?.(p.x, p.z)
+  if (mat && typeof mat === 'object') mat = mat.id
+  const set = h == null || p.y > h + 0.35 ? STEPS.hard : HARD[mat] ? STEPS.hard : mat === 'gravel' ? STEPS.gravel : STEPS.soft
+  w.stepI = ((w.stepI ?? 0) + 1) % set.length
+  ctx.emit('playSound', { clip: set[w.stepI], position: p, volume: 0.16, pitch: 0.92 + ctx.random() * 0.16, maxDistance: 18 }, { audience: { nearby: p, radius: 18 } })
+}
+
 // The keys' intent is this machine's alone: onInput writes it, update() reads it, nobody else does:
 // and a value written to state rides the wire and the save on every tick it changes (the intent turns
 // with the camera, so a running player would send a row a tick). ctx.session is the room-life scratch:
@@ -63,6 +84,8 @@ export function update(ctx, dt) {
   const vz = v.z + dz * k
   // Gravity is yours: the held velocity walks the body; bend its y every tick.
   ctx.self.velocity = { x: vx, y: v.y + ctx.place.gravity.y * dt, z: vz }
+  const spd = Math.hypot(vx, vz)
+  if (ctx.self.grounded && spd > 1) footstep(ctx, walkOf(ctx), spd, dt)
   // Standing on the ground with no word to walk: nothing changes until something moves the body or a key
   // is pressed: both wake this update (a row of the body written, or onInput running).
   if (ctx.self.grounded && vx === 0 && vz === 0 && intent.x === 0 && intent.z === 0) ctx.sleep()

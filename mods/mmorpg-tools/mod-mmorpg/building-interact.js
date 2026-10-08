@@ -22,7 +22,7 @@ export function openDoorPanel(playerId, objectApi) {
     npcName: bs.npcName || 'Keeper',
     interactingBuildingId: objectApi.id,
   });
-  objectApi.playSound('cdn/sfx-wooden-door-creak-open.mp3', {
+  objectApi.playSound('/cdn/sfx-door-open-wooden-creak-wye5sbik.mp3', {
     position: objectApi.getProperty('feetPosition'),
     volume: 0.24,
     audience: { kind: 'player', id: playerId },

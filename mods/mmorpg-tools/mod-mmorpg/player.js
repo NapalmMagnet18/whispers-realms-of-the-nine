@@ -798,9 +798,13 @@ export function update(objectApi, dt) {
 // ─── INPUT ───────────────────────────────────────────────────────
 // UI sounds from the creator's pack: parchment for the book-like panels, a soft click for every other button
 var UI_SCROLL = ['toggleQuests', 'toggleSpellbook', 'toggleMap', 'toggleWorldMap', 'toggleTalents', 'toggleProfessions'];
-var UI_SND = { scroll: '/cdn/sfx-scroll-paper-unroll-magic-r41hu1b5.mp3', click: '/cdn/sfx-menu-select-click-hxtrmn8i.mp3', toggle: '/cdn/sfx-toggle-switch-ui-click-uz2we2q1.mp3' };
+var UI_SND = { scroll: '/cdn/sfx-scroll-paper-unroll-magic-r41hu1b5.mp3', click: '/cdn/sfx-menu-select-click-hxtrmn8i.mp3', toggle: '/cdn/sfx-toggle-switch-ui-click-uz2we2q1.mp3', equip: '/cdn/sfx-handle-small-leather-movement-rs0cnxf1.mp3', unequip: '/cdn/drop-leather-item-inventory-sound-g55w76vw.mp3', coins: '/cdn/handle-coins-currency-pickup-phoc2e1u.mp3', doorClose: '/cdn/sfx-door-close-mechanical-wood-2zwf6s21.mp3', draw: '/cdn/sfx-draw-knife-metal-blade-3xr007v1.mp3' };
 function uiSound(objectApi, input) {
   var acts = input.actions || {};
+  if (acts.equipItem) { objectApi.playSound(UI_SND.equip, { volume: 0.3 }); return; }
+  if (acts.unequipItem) { objectApi.playSound(UI_SND.unequip, { volume: 0.3 }); return; }
+  if (acts.buyShopItem || acts.sellItem) { objectApi.playSound(UI_SND.coins, { volume: 0.3 }); return; }
+  if (acts.clearTarget && (objectApi.getState().showDoorPanel)) { objectApi.playSound(UI_SND.doorClose, { volume: 0.25 }); return; }
   for (var i = 0; i < UI_SCROLL.length; i++) if (acts[UI_SCROLL[i]]) { objectApi.playSound(UI_SND.scroll, { volume: 0.25 }); return; }
   for (var k in acts) {
     if (!acts[k]) continue;
@@ -995,7 +999,7 @@ export function onInput(objectApi, input) {
         shopSelectedItem: null,
       });
       objectApi.toast('Purchased ' + item.name, { duration: 2, icon: item.icon, color: 'oklch(0.5 0.2 300)' });
-      objectApi.playSound('cdn/sfx-coin-collect-chime-pickup.mp3', { volume: 0.3 });
+      objectApi.playSound('/cdn/handle-coins-currency-pickup-phoc2e1u.mp3', { volume: 0.3 });
       return;
     }
     // ── Profession learning actions ──
