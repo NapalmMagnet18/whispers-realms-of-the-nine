@@ -1,0 +1,22 @@
+atmosphere:
+  sky:
+    kind: realistic
+    model: hosek
+  timeOfDay: 19
+  fog:
+    kind: linear
+    near: 20
+    far: 90
+  look:
+    script: scripts/look-default.js
+defaultSpawnPoint:
+  x: 83.168
+  y: 1.229
+  z: 10.812
+gravity:
+  x: 0
+  y: -24
+  z: 0
+mode: 3d
+terrain:
+  kind: "off"
