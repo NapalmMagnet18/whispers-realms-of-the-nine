@@ -301,7 +301,9 @@ THR-08:
   giverName: Elder Fenna Rootwake
   text: "The roots spoke a name at last. Eda. Speak it over the stream so the water carries it, then take the road east to Lantern's Reach. Their beacon books may know where she lived. Carry the seed sigil. It turns toward the bell."
   progressText: "Speak the lost name over the stream, then travel to Lantern's Reach."
-  turnInText: "Go on. The branches will bend over the path as you leave. Don't be frightened. That's only the grove saying goodbye."
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  turnInText: "A sigil that turns toward the bell. Fenna sent you, then. Eda... I know that name, and I wish I didn't. Rest, Briarkin. Lantern's Reach is yours to walk."
   doneText: "The Reach is east. Find Gatekeeper Elric."
   refusedText: "The road's open, child."
   objectives:
@@ -450,7 +452,9 @@ KHA-08:
   giverName: Mason Yurra Flint-Eye
   text: "Lay your old chisel on the shrine with the others. Then carry a copy of the marks west along the lantern road to Lantern's Reach. Sister Vale keeps the Accord books there. We record the cost of every miracle before we accept another. That's the vow."
   progressText: "Leave the novice chisel at the miners' shrine, then take the lantern road west to Lantern's Reach."
-  turnInText: "Go on. The wall will be quieter without you listening, but it won't be silent. It never will be again."
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  turnInText: "Stone dust and a chisel-hand. Yurra's, aren't you? Bring those marks to Sister Vale when you're ready. Rest first. Lantern's Reach is yours to walk."
   doneText: "The Reach is west. Find Gatekeeper Elric."
   refusedText: "The road's open, cutter."
   objectives:
@@ -458,9 +462,165 @@ KHA-08:
     - { key: reach_visits, desc: "Travel to Lantern's Reach", target: 1 }
   rewards: { copper: 200, xp: 80 }
 
+
+# ── Namar Origin: Harbor of the Uncharted (Quest Bible NAM-01..NAM-08, Breakwater Strand at Gullrest, levels 1-5) ──
+# Gullrest cove (start-gullrest 250,1430): Sena at the pier head, Ruun at the chart table, Sari at the net racks.
+NAM-01:
+  id: NAM-01
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  title: Tide on the Wrong Hour
+  giverNpcId: strand-npc-sena
+  giverName: Pilot Sena Wavebound
+  text: "The tide came in at noon and went out at dusk. Wrong hour, both times. Read the three tide posts along the strand for me, then stand at the pier end and watch which way the current runs. Write what you see, not what you expect."
+  progressText: "Read the three tide posts on the strand, then watch the current from the pier end."
+  turnInText: "Inland. The water's running inland, toward the orchards. Keep that chart. You'll want it before the week's out."
+  doneText: "Ruun's been hearing things in his shells. Humour him."
+  refusedText: "You've read the posts. They won't change their minds for you."
+  objectives:
+    - { key: tide_mark, desc: "Read the tide posts", target: 3 }
+    - { key: reversed_current, desc: "Watch the current from the pier end", target: 1 }
+  rewards: { xp: 40, copper: 60, items: [tide_chart] }
+
+NAM-02:
+  id: NAM-02
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  requires: [NAM-01]
+  title: A Shell That Answered
+  giverNpcId: strand-npc-ruun
+  giverName: Shellkeeper Ruun
+  text: "Shells keep the last sound they heard. Usually that's surf. Lately it's oars. Bring me four that still hum from the tideline, then put your ear to the great conch on my stand and tell me I'm a mad old man."
+  progressText: "Gather four humming shells from the tideline, then listen through the great conch."
+  turnInText: "Oars. Rope on cleats. A child counting. You heard it too. Then I'm not mad, or we both are. Keep the token."
+  doneText: "Sena's worried about the lighthouse. Go to her."
+  refusedText: "The conch has said what it has to say."
+  objectives:
+    - { key: shell_echo, desc: "Gather humming shells", target: 4 }
+    - { key: hollow_conch, desc: "Listen through the great conch", target: 1 }
+  rewards: { xp: 45, copper: 60, items: [conch_token] }
+
+NAM-03:
+  id: NAM-03
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  requires: [NAM-02]
+  title: The False Beacon
+  giverNpcId: strand-npc-sena
+  giverName: Pilot Sena Wavebound
+  text: "Our light sweeps inland now. Every night, out of the empty fields, a harbor answers it. Go up to the lighthouse and see what's under the lens, then relight the two coast lamps so the fishing boats have something honest to steer by."
+  progressText: "Inspect the lighthouse, then relight the two coast lamps."
+  turnInText: "A hymn with a verse cut out of it. Cut, not torn. Somebody wanted a harbor forgotten and knew exactly which words held it."
+  doneText: "Sari's nets came up empty again. She could use hands."
+  refusedText: "The lamps are lit. Thank you."
+  objectives:
+    - { key: false_beacon, desc: "Inspect the lighthouse lens", target: 1 }
+    - { key: coast_lamp, desc: "Relight the coast lamps", target: 2 }
+  rewards: { xp: 50, copper: 70, items: [lantern_oil] }
+
+NAM-04:
+  id: NAM-04
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  requires: [NAM-03]
+  title: The Nets Are Empty
+  giverNpcId: strand-npc-sari
+  giverName: Netmaker Sari
+  text: "Three days, empty nets. The fish are all swimming one way, same as the water. Take a line off the pier end and catch me two reef fish so I know they're still out there. And somebody's skiff is jammed on the rocks in the cove. Get it loose before the tide turns. Whichever way it turns."
+  progressText: "Catch two reef fish from the pier end, then free the skiff jammed in the cove."
+  turnInText: "Two fish, both facing inland in the bucket. Even dead. ...Keep the kit. You've a better hand for it than my nephew."
+  doneText: "Ruun found glass in the old wreck. He wants it washed."
+  refusedText: "Nets are mended. Thank you."
+  objectives:
+    - { key: reef_fish, desc: "Catch reef fish", target: 2 }
+    - { key: trapped_skiff, desc: "Free the trapped skiff", target: 1 }
+  rewards: { xp: 55, copper: 80, items: [fishing_kit_namar] }
+
+NAM-05:
+  id: NAM-05
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  requires: [NAM-04]
+  title: Salt Against Glass
+  giverNpcId: strand-npc-ruun
+  giverName: Shellkeeper Ruun
+  text: "The wreck on the south rocks. Nobody remembers her name, which is its own kind of answer. There's glass in her bilge, blue, that wasn't blown on this coast. Bring a piece out, then wash it in the tide pool by the cottages. Salt shows what glass is hiding."
+  progressText: "Recover glass from the south wreck, then wash it in the tide pool."
+  turnInText: "Look at it in the light. Nine lines, etched from inside. A harbor chart, small as a thumbnail. Somebody made this to be found."
+  doneText: "Sena's on the north sand. Something came up out of the water last night."
+  refusedText: "The glass is clean. Keep it."
+  objectives:
+    - { key: wreck_glass, desc: "Recover glass from the wreck", target: 1 }
+    - { key: tidal_wash, desc: "Wash the glass in the tide pool", target: 1 }
+  rewards: { xp: 60, copper: 90, items: [washed_glass] }
+
+NAM-06:
+  id: NAM-06
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  requires: [NAM-05]
+  title: Songs of the Lost Fleet
+  giverNpcId: strand-npc-sena
+  giverName: Pilot Sena Wavebound
+  text: "Three sailors washed up on the north sand at dawn, alive, and the water keeps standing up out of the surf to take them back. Drowned shapes, made of current. Drive them off. Then sit with the sailors. They're singing something, and I want the words."
+  progressText: "Drive off the phantom currents on the north sand, then learn the sailors' refrain."
+  turnInText: "'Between the ninth wave and the tenth, a harbor where the lost may rest.' That's the verse cut from our hymn. Word for word. Wear this. The coast should know you."
+  doneText: "Ruun is making something. He asked for you by name."
+  refusedText: "The sand's quiet now."
+  objectives:
+    - { key: phantom_current, desc: "Drive off phantom currents", target: 3 }
+    - { key: harbor_refrain, desc: "Learn the harbor refrain", target: 1 }
+  rewards: { xp: 70, copper: 100, items: [coast_mantle] }
+
+NAM-07:
+  id: NAM-07
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  requires: [NAM-06]
+  title: Compass for the Forgotten
+  giverNpcId: strand-npc-ruun
+  giverName: Shellkeeper Ruun
+  text: "Wash-glass, a chart, and the verse. That's a compass, if you set it right. Build it on my table. Then the hard part: our pilots hid a route once, to keep people safe. Mark which old route you'd show the world. The compass doesn't care. We should."
+  progressText: "Set the tideglass compass at Ruun's chart table, then choose which old route to mark."
+  turnInText: "You chose. That's more than our grandparents did. Whatever comes of it, it's ours to answer for now, not a secret's."
+  doneText: "Sena's waiting at the ferry buoys."
+  refusedText: "The compass is set. Mind it."
+  objectives:
+    - { key: tideglass_compass, desc: "Set the tideglass compass", target: 1 }
+    - { key: route_chosen, desc: "Choose a route to map", target: 1 }
+  rewards: { xp: 70, copper: 110, items: [tideglass_compass] }
+
+NAM-08:
+  id: NAM-08
+  group: "Namar Origin: Harbor of the Uncharted"
+  zone: Breakwater Strand
+  race: 3   # Saltborn (Namar) origin only
+  requires: [NAM-07]
+  title: A Road Made of Water
+  giverNpcId: strand-npc-sena
+  giverName: Pilot Sena Wavebound
+  turnInNpcId: reach-npc-rowan
+  turnInName: Rowan the Ferryman
+  text: "The rivers are carrying what the coast can't hold anymore. Swim out through the ferry lane, buoy to buoy, so you know it by feel. Then go up the north road to Lantern's Reach. Rowan the Ferryman keeps the river landing there. Tell him Sena sent you, and tell him the Ninth Landing is real."
+  progressText: "Pass the three ferry-lane buoys, then go north to Lantern's Reach and find Rowan the Ferryman at the docks."
+  turnInText: "Sena sent you? Then she heard them too. ...The Ninth Landing. I've rowed past where it should be for thirty years. Rest, Saltborn. The Reach is yours, and I'll need your ears."
+  doneText: "Gatekeeper Elric keeps the Reach's book of arrivals. Go and be written in."
+  refusedText: "You've told me. I won't sleep tonight."
+  objectives:
+    - { key: ferry_lane, desc: "Pass the ferry-lane buoys", target: 3 }
+    - { key: reach_visits, desc: "Travel to Lantern's Reach", target: 1 }
+  rewards: { copper: 200, xp: 80 }
+
 Q001:
   id: Q001
-  origin: [{ race: 0, quest: MAR-08 }, { race: 1, quest: THR-08 }, { race: 2, quest: KHA-08 }]   # Marchborn walk the Ward, Briarkin the Thren glade first; other peoples pass
+  origin: [{ race: 0, quest: MAR-08 }, { race: 1, quest: THR-08 }, { race: 2, quest: KHA-08 }, { race: 3, quest: NAM-08 }]   # Marchborn walk the Ward, Briarkin the Thren glade first; other peoples pass
   title: Welcome to Lantern's Reach
   giverNpcId: gatekeeper-elric
   giverName: Gatekeeper Elric
@@ -659,6 +819,13 @@ woodcutting:
   fallSound: /cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3
 
 items:
+  tide_chart: { id: tide_chart, name: Tide Chart, slot: bag, description: "The hours are written twice. One set runs backward." }
+  conch_token: { id: conch_token, name: Conch Token, slot: bag, description: "Hold it to your ear: oars, faint and patient." }
+  lantern_oil: { id: lantern_oil, name: Flask of Lantern Oil, slot: bag, description: "Whale-pale and slow-burning. Honest light." }
+  fishing_kit_namar: { id: fishing_kit_namar, name: Sari's Fishing Kit, slot: bag, description: "Hooks, a line, a cork float carved like a gull." }
+  washed_glass: { id: washed_glass, name: Washed Glass, slot: bag, description: "Blue tideglass, a nine-line harbor etched inside." }
+  coast_mantle: { id: coast_mantle, name: Coast Mantle, slot: bag, description: "Salt-stiff oilcloth. The strand knows its wearer." }
+  tideglass_compass: { id: tideglass_compass, name: Tideglass Compass, slot: bag, description: "Its needle points to a harbor no chart admits." }
   training_chisel: { id: training_chisel, name: Training Chisel, slot: bag, description: "Strike it once and it rings twice." }
   ore_chips: { id: ore_chips, name: Ore Chips, slot: bag, stackable: true, description: "Copper chips swept from the east cut. Some still hum." }
   tuning_stone: { id: tuning_stone, name: Tuning Stone, slot: bag, description: "A pocket of basalt that answers in a voice twenty years old." }
