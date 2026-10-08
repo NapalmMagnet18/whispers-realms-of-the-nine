@@ -31,7 +31,7 @@ slate = mix(slate, hexc('#1a1716'), cracks(4) * 0.9)
 slate = mix(slate, hexc('#3f5a3a'), np.clip((fnoise(1.3, 5) - 1.0) * 1.2, 0, 1) * 0.85)
 slate = mix(slate, hexc('#8a8c88'), (np.random.default_rng(6).random((N, N)) > 0.985) * 0.6)
 slate *= (0.8 + 0.12 * fnoise(2.6, 7))[..., None]
-earth = mix(hexc('#3a2e25'), hexc('#6b4a2f'), 0.5 + 0.3 * n2)
+earth = mix(hexc('#2e2a27'), hexc('#5a4634'), 0.45 + 0.25 * n2)
 earth = mix(earth, hexc('#3f5a3a'), np.clip((fnoise(1.6, 8) - 0.6), 0, 1) * 0.8)
 earth = mix(earth, hexc('#7d7468'), (np.random.default_rng(9).random((N, N)) > 0.97) * 0.5)
 earth = mix(earth, hexc('#1d1714'), np.clip(fnoise(2.4, 10) * 0.4, 0, 0.6))
@@ -185,12 +185,12 @@ for p in g.data.polygons:
     if math.hypot(cc.x / AX, cc.y / AY) < 0.6 + 0.04 * noise.noise(Vector((cc.x, cc.y, 7))): p.material_index = 1
 
 # upturned slate plates around the rim
-for k in range(30):
-    a = 6.283 * k / 30 + U(-.08, .08)
+for k in range(40):
+    a = 6.283 * k / 40 + U(-.08, .08)
     if abs(math.atan2(math.sin(a + math.pi / 2), math.cos(a + math.pi / 2))) < 0.3: continue
     rn = U(.64, .86); x, y = AX * rn * math.cos(a), AY * rn * math.sin(a)
-    L, W, T = U(.8, 1.7), U(.5, 1.0), U(.12, .24)
-    tilt = -U(20, 62) if rng.random() < .7 else U(15, 40)
+    L, W, T = U(1.0, 2.0), U(.6, 1.2), U(.16, .3)
+    tilt = -U(30, 70) if rng.random() < .7 else U(20, 45)
     m = Matrix.Translation((x, y, H(x, y) - .12)) @ Matrix.Rotation(a - math.pi / 2, 4, 'Z') @ Matrix.Rotation(math.radians(tilt), 4, 'X') @ Matrix.Rotation(U(-.25, .25), 4, 'Y')
     hull(f"plate{k}", xf(rock_pts(L / 2, W / 2, T / 2, .35), m), M["slate"], C, .7)
 for k in range(16):  # loose rubble on floor and rim
@@ -343,4 +343,4 @@ for k, o in props.items(): o.hide_render = True
 shoot((8, -15, 4.5), (0, -1, 1.8), "a")
 shoot((-11, 9, 8), (0, -1, 1.2), "b")
 for i, (k, o) in enumerate(props.items()): o.hide_render = False; o.location = (-4 + i * 2.2, -8, 0)
-main.hide_render = True; shoot((0.5, -12.5, 2.2), (0.5, -8, .3), "c", 35)
+main.hide_render = True; shoot((0.5, -14.5, 3.2), (0.5, -8, .3), "c", 28)
