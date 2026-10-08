@@ -13,12 +13,84 @@ hc-vey-boss:
   tags: [enemy, boss, homecoming]
   ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Star That Answered</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
 hc-vey-crater:
-  feetPosition: {x: -164, y: 120, z: -1108}
+  feetPosition: {x: -164, y: {terrain: -0.05}, z: -1108}
   id: hc-vey-crater
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 10, height: 6, kind: box, width: 12}
-  tags: [blueprint]
+  model: /cdn/value.06a62a6fc18eddb15c275865370cd4c5be3c65b97b67de6d727762fc4965677b.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 0}
+  tags: [landmark, starfall]
+hc-vey-crater-flagpole:
+  feetPosition: {x: -156.8, y: {terrain: -0.02}, z: -1104.2}
+  id: hc-vey-crater-flagpole
+  model: /cdn/value.c66ce5b39dc37d58306eca9cdd3de806ca3c3dce3ad01cbd1bdcc725df041be8.glb
+  physics: {body: static, collider: box}
+  rotation: {yaw: -20}
+  tags: [vey-crater-dressing]
+hc-vey-crater-glow:
+  feetPosition: {x: -163.8, y: 122.8, z: -1105.6}
+  id: hc-vey-crater-glow
+  light: {color: oklch(0.7 0.2 300), distance: 14, intensity: 5, kind: point}
+hc-vey-crater-rubble-0:
+  feetPosition: {x: -157.4, y: {terrain: -0.02}, z: -1110.2}
+  id: hc-vey-crater-rubble-0
+  model: /cdn/value.20bbcf4598c625d01d3d53c064d3b85aabca89979ccccb3cedc7feecd2f787a4.glb
+  rotation: {yaw: 0}
+  tags: [vey-crater-dressing]
+hc-vey-crater-rubble-1:
+  feetPosition: {x: -171.2, y: {terrain: -0.02}, z: -1106.6}
+  id: hc-vey-crater-rubble-1
+  model: /cdn/value.20bbcf4598c625d01d3d53c064d3b85aabca89979ccccb3cedc7feecd2f787a4.glb
+  rotation: {yaw: 60}
+  tags: [vey-crater-dressing]
+hc-vey-crater-rubble-2:
+  feetPosition: {x: -166.4, y: {terrain: -0.02}, z: -1116.2}
+  id: hc-vey-crater-rubble-2
+  model: /cdn/value.20bbcf4598c625d01d3d53c064d3b85aabca89979ccccb3cedc7feecd2f787a4.glb
+  rotation: {yaw: 130}
+  tags: [vey-crater-dressing]
+hc-vey-crater-scroll-0:
+  feetPosition: {x: -168.5, y: {terrain: -0.02}, z: -1102.8}
+  id: hc-vey-crater-scroll-0
+  model: /cdn/value.ad088299a02e337c9d14beb46fbbf111d86cdb7f1c289d4471a6e3b4681d7647.glb
+  rotation: {yaw: 25}
+  tags: [vey-crater-dressing]
+hc-vey-crater-scroll-1:
+  feetPosition: {x: -159.6, y: {terrain: -0.02}, z: -1103}
+  id: hc-vey-crater-scroll-1
+  model: /cdn/value.ad088299a02e337c9d14beb46fbbf111d86cdb7f1c289d4471a6e3b4681d7647.glb
+  rotation: {yaw: -70}
+  tags: [vey-crater-dressing]
+hc-vey-crater-scroll-2:
+  feetPosition: {x: -171.6, y: {terrain: -0.02}, z: -1109.5}
+  id: hc-vey-crater-scroll-2
+  model: /cdn/value.ad088299a02e337c9d14beb46fbbf111d86cdb7f1c289d4471a6e3b4681d7647.glb
+  rotation: {yaw: 140}
+  tags: [vey-crater-dressing]
+hc-vey-crater-shard-0:
+  feetPosition: {x: -158.2, y: {terrain: -0.02}, z: -1102.6}
+  id: hc-vey-crater-shard-0
+  model: /cdn/value.79446608a7a44fb28224cae3d0e12eedc330a71e84412f721c81774d60613424.glb
+  rotation: {yaw: 10}
+  tags: [vey-crater-dressing]
+hc-vey-crater-shard-1:
+  feetPosition: {x: -170.2, y: {terrain: -0.02}, z: -1112.5}
+  id: hc-vey-crater-shard-1
+  model: /cdn/value.79446608a7a44fb28224cae3d0e12eedc330a71e84412f721c81774d60613424.glb
+  rotation: {yaw: 200}
+  tags: [vey-crater-dressing]
+hc-vey-crater-shard-2:
+  feetPosition: {x: -160.5, y: {terrain: -0.02}, z: -1114.6}
+  id: hc-vey-crater-shard-2
+  model: /cdn/value.79446608a7a44fb28224cae3d0e12eedc330a71e84412f721c81774d60613424.glb
+  rotation: {yaw: 95}
+  tags: [vey-crater-dressing]
+hc-vey-crater-telescope:
+  feetPosition: {x: -170.5, y: {terrain: -0.02}, z: -1104.5}
+  id: hc-vey-crater-telescope
+  model: /cdn/value.21c52ecac7b7723cd5de4a54b0fbfaabc05458f88d2ff65390e4d8f6b9f901cf.glb
+  physics: {body: static, collider: box}
+  rotation: {yaw: 35}
+  tags: [vey-crater-dressing]
 hc-vey-mark-0:
   feetPosition: {x: -187.4, z: -1092.5}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.7,1.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.7,1.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
