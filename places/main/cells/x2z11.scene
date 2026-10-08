@@ -14,18 +14,19 @@ start-gullrest-way-1:
   rotation: {yaw: -169.69515353123398}
   tags: [waystone, gullrest]
 start-gullrest/start-gullrest-bench-1:
-  feetPosition: {x: 7, y: 5.275836472788214, z: 7.599999999999909}
+  feetPosition: {x: -9, y: -0.1200000000000001, z: 4}
   id: start-gullrest/start-gullrest-bench-1
   parent: start-gullrest
   physics: static
   primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
+  rotation: {yaw: 70}
 start-gullrest/start-gullrest-bench-2:
-  feetPosition: {x: 9.600000000000023, y: 7.71492937702617, z: 4}
+  feetPosition: {x: -4, y: -0.1200000000000001, z: 7}
   id: start-gullrest/start-gullrest-bench-2
   parent: start-gullrest
   physics: static
   primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
-  rotation: {yaw: 80}
+  rotation: {yaw: 20}
 start-gullrest/start-gullrest-boat-1:
   feetPosition: {x: -9, y: -0.07363696963338144, z: -7}
   id: start-gullrest/start-gullrest-boat-1
@@ -48,16 +49,18 @@ start-gullrest/start-gullrest-boat-3:
   primitive: {kind: scripted, params: {kind: boat, tint: oklch(0.85 0.08 150)}, script: scripts/gen/hamlet.js}
   rotation: {roll: 0, yaw: 10}
 start-gullrest/start-gullrest-campfire:
-  feetPosition: {x: 7, y: 5.159206332666784, z: 5}
+  feetPosition: {x: -6, y: -0.1200000000000001, z: 2}
   id: start-gullrest/start-gullrest-campfire
   parent: start-gullrest
   physics: static
   primitive: {kind: scripted, params: {kind: campfire}, script: scripts/gen/hamlet.js}
+  rotation: {yaw: 0}
 start-gullrest/start-gullrest-campfire-fx:
-  feetPosition: {x: 7, y: 5.259206332666784, z: 5}
+  feetPosition: {x: -6, y: -0.020000000000000018, z: 2}
   fx: {script: "fx\npop coals n=10 on=disc(.2) size=.07..0.15 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*70 on=disc(.22) life=.5..0.95 v=up(1.6)+cone(24)*(.35..0.9) size=.22..0.42 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5) sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=5 on=disc(.22) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.22 inh=p;v:$v*.4 life=1.8..3.2 size=.16..0.26 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.3,.28,.26>><.15,.15,.16> a=0>.25:.3>.7:.21>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop hearth n=1 at=disc(.22).c(.45) glo=fire()*(#flame/45)~ r=light(<1,.55,.24>,$glo*30,12)"}
   id: start-gullrest/start-gullrest-campfire-fx
   parent: start-gullrest
+  rotation: {yaw: 0}
 start-gullrest/start-gullrest-cottage-1:
   children: [{feetPosition: {x: 0, y: 2.3, z: 0.4}, light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 2.5, kind: point}}]
   feetPosition: {x: -14, y: -0.17363696963338143, z: 12}
@@ -115,12 +118,12 @@ start-gullrest/start-gullrest-netrack-1:
   primitive: {kind: scripted, params: {kind: netrack}, script: scripts/gen/hamlet.js}
   rotation: {yaw: 15}
 start-gullrest/start-gullrest-netrack-2:
-  feetPosition: {x: 6, y: 4.621396129885381, z: -5}
+  feetPosition: {x: -7, y: -0.1200000000000001, z: -16}
   id: start-gullrest/start-gullrest-netrack-2
   parent: start-gullrest
   physics: static
   primitive: {kind: scripted, params: {kind: netrack, w: 3.6}, script: scripts/gen/hamlet.js}
-  rotation: {yaw: -10}
+  rotation: {yaw: 90}
 start-gullrest/start-gullrest-pier:
   feetPosition: {x: -12, y: -0.12363696963338144, z: -12}
   id: start-gullrest/start-gullrest-pier
@@ -150,12 +153,12 @@ start-gullrest/start-gullrest-prop-3:
   primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
   rotation: {yaw: 87}
 start-gullrest/start-gullrest-prop-4:
-  feetPosition: {x: 16, y: 12.192665620438163, z: 10}
+  feetPosition: {x: -19, y: -0.1200000000000001, z: 7}
   id: start-gullrest/start-gullrest-prop-4
   parent: start-gullrest
   physics: static
   primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
-  rotation: {yaw: 116}
+  rotation: {yaw: 0}
 start-gullrest/start-gullrest-prop-5:
   feetPosition: {x: -10, y: -0.12363696963338144, z: -10}
   id: start-gullrest/start-gullrest-prop-5
@@ -165,7 +168,7 @@ start-gullrest/start-gullrest-prop-5:
   rotation: {yaw: 145}
 start-gullrest/start-gullrest-signpost:
   children: [{feetPosition: {x: 0.86, y: 2.02, z: 0}, material: {color: oklch(0.55 0.05 60), roughness: 0.9}, primitive: {depth: 0.08, height: 0.36, kind: box, width: 1.5}, ui: "<div face=\"front\" class=\"w-full h-full flex items-center justify-center\" style=\"background:#5a3f28;color:#f2d79a;font-family:Cinzel,serif;font-size:150px;font-weight:700\">Lantern's Reach</div>"}]
-  feetPosition: {x: 5, y: 3.8244881353614617, z: -8}
+  feetPosition: {x: -1, y: -0.11047146216018522, z: -6}
   id: start-gullrest/start-gullrest-signpost
   parent: start-gullrest
   physics: static
