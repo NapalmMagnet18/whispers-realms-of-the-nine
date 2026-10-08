@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1672,
-  "updatedAt": "2026-10-08T22:24:04.863Z",
+  "basedOnSpecVersion": 1680,
+  "updatedAt": "2026-10-08T22:32:20.453Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared YAML data provide combat, quests, trade, guilds, flight and progression, while streamed scenes define the world.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -235,14 +235,14 @@
     "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with matching Discipline Trainers and banners.",
     "places/main/cells/x-10z7.scene and board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
     "places/main/cells/x-1z-5.scene, x-6z1.scene, x-7z0.scene and x0z-4.scene - Starfall giant quest site, Rootwake Glade bounty/raider camp and blood shrine.",
-    "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's moving caravan on the Reedhaven road.",
+    "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's traveling caravan on the Reedhaven road; storm parking switches Mott to a hot-tea inventory.",
     "places/banner-vale/ - 5v5 capture-the-banner battleground; terrain/config, scenes and referee sim manage teams, flags, score and match return.",
     "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - dungeon/raid instances linked to the main world by paired gates."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.3 Alpha; shown on main menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION is displayed on main menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere plus room weather and Party Finder matching.",
@@ -277,7 +277,7 @@
     "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
     "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch live in boss ctx.session.",
     "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; stamps player's _worldEnterAt and conditionally increments tally.",
-    "scripts/elric.js and scripts/townsfolk.js - resident homeYaw/idle/nextGreet/yaw and greeting schedule; resident-animation helper uses session bow timer/pitch. Vitality owns player health/dying/rise; main sim owns weather/LFG; region-music owns player audio state."
+    "scripts/elric.js and scripts/townsfolk.js - resident homeYaw/idle/nextGreet/yaw and greeting schedule; resident-animation helper uses session bow timer/pitch. scripts/caravan-route.js owns caravan delay/parkClock and Mott's shop/stormTea state; vitality owns player health/dying/rise; main sim owns weather/LFG; region-music owns area music."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -286,12 +286,12 @@
     "scripts/lib/data/realms.yml → routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads pulses and refreshes realmList/realmDetail.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot.",
     "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → guild → trades → flight → vitality → cursor-free → region-music; movement/camera intents consumed by player.js/wow-move.js.",
-    "In a PLAY place, eligible class wrapper input/update → lazyBehavior dynamically imports the corresponding *-core.js on first need; forwarded releases/timed handlers run in the core. Flight wrapper similarly loads flight-core.js outside creation.",
+    "In a PLAY place, eligible class wrapper input/update → lazyBehavior dynamically imports the corresponding *-core.js on first need; forwarded releases/timed handlers run in the core. Flight wrapper similarly loads flight-core.js.",
     "First eligible quest-player input/update in a PLAY place → dynamic import quest-core; quest-core seeds quest-data's database from quests.yml; quest-text.js warms dialogue and ui-quest renders it.",
     "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
     "Party Finder board scripts/party-finder.js queues a hero in world.state.lfg; places/main/sim.js prunes absent players and matches from finder.yml, stamps _worldEnterAt, updates eligible quest tallies and crosses to dungeon/battleground.",
     "Banner Vale arrivals → places/banner-vale/sim.js assigns teams and bases; battleground.yml configures flags, score/time/rewards; scripts/lib/pvp.js allows enemy-team combat and sim returns players to +main.",
-    "quest-core opens a cache → legacy gold converts at 100 copper each unless explicit copper is present → economy writer credits purse; st.caches claim keys save/load with the character and start empty on new character."
+    "places/main/sim.js weather state storm.on → scripts/caravan-route.js freezes/resumes route clock and sets Mott's shop to mott-storm; vendor reads shop-data.js inventory and offers storm tea while parked."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
@@ -312,6 +312,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and associated gear/voice data.",
     "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save (new character initializes it empty). Guild vault moves use SQL version-conditional updates.",
-    "Class wrappers defer kit modules with dynamic import; keep core exports and wrapper forwarding names aligned with scheduled callbacks (release/land/endAction/wardEnd) so deferred class actions still resolve."
+    "Caravan route position is clock-derived; storm parkClock freezes the route clock and delay carries elapsed travel offset on resume. Keep Mott's mott-storm inventory ID aligned with caravan-route.js; storm tea costs 5 copper and heals 400 over 6 seconds unless hit."
   ]
 }
