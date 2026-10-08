@@ -114,8 +114,11 @@ export function onSpawn(api) {
     if (rows && rows.length) {
       var s0 = api.getState();
       api.patchState({ characters: rows, _menuRosterSnapshot: rows, selectedCharIdx: Math.min(s0.selectedCharIdx ?? 0, rows.length - 1), _hasCharacter: true, _dataLoaded: true, _rosterLoaded: true, realmName: realmName(api) });
+    } else if (RS.realmOf(api) === 'main') {
+      legacyLoad(api); // the old storage roster belongs to realm main alone
     } else {
-      legacyLoad(api);
+      // player.state rides every room: a roster carried in from another realm is not this realm's
+      api.patchState({ characters: [], _menuRosterSnapshot: [], selectedCharIdx: 0, _hasCharacter: false, _dataLoaded: true, _rosterLoaded: true, characterCreated: false, realmName: realmName(api) });
     }
     var sv = api.getState();
     if (!sv._realmSeen) api.patchState({ _realmSeen: true, realmListOpen: true });
