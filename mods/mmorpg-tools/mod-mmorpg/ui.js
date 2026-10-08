@@ -469,7 +469,7 @@ export function renderCharacterCreation(localPlayer) {
   var raceLore = RACE_DESCRIPTIONS[race.name] || '';
 
   var isLight = raceIndex < 8;
-  var allegiance = isLight ? '\u2694 LIGHT' : '\u2620 DARK';
+  var allegiance = '\u2694 WAYFARER';
 
   // --- SELECTION STYLES ---
   var selBorder = 'border:4px solid rgba(170,110,230,1);box-shadow:0 0 12px rgba(160,100,220,0.8),0 0 24px rgba(140,80,200,0.5),0 0 40px rgba(120,60,180,0.25);';
@@ -612,7 +612,7 @@ export function renderCharacterCreation(localPlayer) {
 
   // --- ALLEGIANCE ---
   var allegianceColor = isLight ? 'color:rgba(170,130,220,0.85);' : 'color:rgba(100,190,120,0.85);';
-  var allegianceText = isLight ? 'Light Allegiance' : 'Dark Allegiance';
+  var allegianceText = 'Wayfarer of the March';
 
   // --- BANNER STYLES ---
   var goldTopBar = 'height:4px;background:linear-gradient(90deg,rgba(60,50,35,0.5),rgba(90,75,50,0.8),rgba(75,60,40,0.6),rgba(90,75,50,0.8),rgba(60,50,35,0.5));border-radius:4px 4px 0 0;flex-shrink:0;';
