@@ -1,0 +1,7 @@
+# Vanguard, the first discipline: hotbar 1 strike, 2 heavy strike, 3 guard. Seconds, metres, hit points.
+strike: { damage: 8, cooldown: 0.6, hitAt: 0.22, reach: 2.6, clip: cdn/clip-vanguard-strike-8a43460b.glb, speed: 1.0, length: 0.5 }
+heavy:  { damage: 22, cooldown: 3.0, hitAt: 0.75, reach: 3.0, clip: cdn/clip-vanguard-heavy-3948fdf9.glb, speed: 2.2, length: 2.0 }
+guard:  { cooldown: 4.0, length: 1.5, reduce: 0.7, clip: cdn/clip-vanguard-guard-bf584840.glb, speed: 1.0 }
+arc: 75          # degrees either side of facing that a swing reaches
+dummyHp: 120
+dummyReset: 6    # seconds a felled dummy lies before it stands again
