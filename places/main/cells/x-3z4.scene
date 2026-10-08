@@ -35,6 +35,16 @@ hc-reh-mark-2:
   rotation: {yaw: 194}
   state: {mark: loose_braid, quest: REH-11, say: "Over, under, through. You say the name as you knot it.", title: Loosened Name-Braid, verb: Retie}
   tags: [quest-mark, homecoming]
+hc-reh-reedcage:
+  feetPosition: {x: -392, y: 11.85, z: 541}
+  id: hc-reh-reedcage
+  physics: static
+  primitive: {kind: scripted, params: {kind: reedcage}, script: scripts/gen/homeland.js, seed: 7}
+  rotation: {yaw: 180}
+hc-reh-reedcage-glow:
+  feetPosition: {x: -392, y: 13.2, z: 541}
+  id: hc-reh-reedcage-glow
+  light: {color: oklch(0.8 0.12 190), distance: 12, intensity: 4, kind: point}
 hc-reh-summons:
   feetPosition: {x: -419.2, z: 569.5}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.92,.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

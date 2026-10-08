@@ -99,6 +99,16 @@ hc-kha-summons:
   primitive: {kind: scripted, params: {kind: forge, seed: 31}, script: scripts/gen/props.js}
   state: {mark: kha_summons, quest: KHA-10, say: Cold as river stone. Something drank the heat out of the hearth., title: The Cradle's Cold Forge, verb: Examine}
   tags: [quest-mark, homecoming]
+hc-kha-vault:
+  feetPosition: {x: 874, y: 32.83125802632951, z: -147}
+  id: hc-kha-vault
+  physics: static
+  primitive: {kind: scripted, params: {kind: vault}, script: scripts/gen/homeland.js, seed: 7}
+  rotation: {yaw: 180}
+hc-kha-vault-glow:
+  feetPosition: {x: 874, y: 33.981258026329506, z: -146}
+  id: hc-kha-vault-glow
+  light: {color: oklch(0.7 0.2 45), distance: 14, intensity: 6, kind: point}
 kha-bellglass:
   feetPosition: {x: 891.5, y: {terrain: 0}, z: -161.6}
   fx: {script: "fx\npop glow n=1 at=<0,.2,0> r=light(<.8,.5,1>,2,4)"}
