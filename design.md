@@ -80,3 +80,9 @@ Correction to the earlier MAR/Q00x live report: Q002/Q006 kills were state write
 - DHC-01 needs Q008 + EQU-09 (from quest_database_300.json). Sister Vale in the Reach gives it; DHC-04 is turned in to her there. The index stone only takes the command after both echoes are released.
 - New rule, a core-loop fix: health 0 now means falling (screen dims, 2.5 s, no input), then rising where you last stood safe at 50% health. Health mends 3% a second after 8 s unhurt. Before this, a player at 0 stayed stuck forever (scripts/vitality.js).
 - Test (Savi's builder body, 2026-10-08): DHC-01→04 completed in order. Entry and exit went through the real gates. Each turn-in pressed twice and paid once: 4200 / 4600 / 9000 / 6000 copper. The archivist and Warden kills were written to state, not fought with class combat. The sweeps were dodged by teleport kiting, and the lowest hp was 65/1000. Fall and rise were checked: 0 → 500 in the vestibule → mending. Not tested: real class combat against the Warden, two players sharing the boss, reconnecting mid-dungeon.
+
+## 2026-10-08 · Sorrowfen act one (SOR-01..04)
+After DHC-04, Sorrowfen opens: a stilt-boardwalk village at Mourner Pool (-1240, 850), reached on foot from Sorrowfen Stilts roost (-1170, 760).
+Pools are nine small lake marks (level 0.42); mud grows reeds + sedge. Sites follow map_topology Sorrowfen nodes: Raised Entry (roost ramp), Mourner Pool (hub: Pell, Kele, Iona, Vale, Wenna), Sunken Boat (-1303, 804), Blue Wisp Marsh deck (-1318, 894) with 3 tether-spirits (scavengers.js crew, tally tether_spirit), Shrine Isle (-1402, 836).
+SOR-01 4 ward lanterns + 3 evac stakes · SOR-02 3 gentle wisps + 2 tether-spirits · SOR-03 Wenna then 4 reflected footsteps (gated after) · SOR-04 2 chimes then the shrine basin (gated after).
+Untested so far: no on-foot run, no real combat against tether-spirits, no journal or reconnect check. SOR-05..09 still to build.
