@@ -346,10 +346,11 @@ const K = {
     P(IRON, "oklch(0.5 0.01 60)", 0.5, 0.7); box(ctx, -0.36, 1.9, -0.02, 0.0, 1.95, 0.02);
   },
 };
-function build(ctx, s) {
+function build(ctx, s, paint = true) {
   const p = ctx.params || {};
-  const P = (tex, col, r = 0.9, m = 0) => { if (s) return; ctx.albedo(tex); ctx.color(col); ctx.roughness(r); ctx.metalness(m); };
+  // far levels keep their paint (colour, no texture): a skipped paint drew every distant hut white
+  const P = (tex, col, r = 0.9, m = 0) => { if (!paint) return; ctx.albedo(s ? null : tex); ctx.color(col); ctx.roughness(r); ctx.metalness(m); };
   (K[p.kind] || K.plate)(ctx, p, s, P);
 }
 export function geometry(ctx) { ctx.flat(); build(ctx, (ctx.lod || 1) >= 4); }
-export function collider(ctx) { build(ctx, true); }
+export function collider(ctx) { build(ctx, true, false); }
