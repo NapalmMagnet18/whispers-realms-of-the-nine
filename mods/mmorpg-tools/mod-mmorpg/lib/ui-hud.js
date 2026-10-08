@@ -685,10 +685,10 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         const _zoneBanner = (Date.now() - _zs.at < 4500)
           ? '<style>@keyframes zoneIn{0%{opacity:0;transform:translate(-50%,8px)}12%{opacity:1;transform:translate(-50%,0)}78%{opacity:1}100%{opacity:0}}</style>'
             + '<div id="zone-banner-' + _zs.n + '" style="position:fixed;top:17vh;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;pointer-events:none;z-index:50;animation:zoneIn 4.5s ease-out forwards;filter:sepia(1) saturate(2.4) brightness(1.1) drop-shadow(0 2px 4px rgba(0,0,0,.9));">'
-            + '<img src="/cdn/divider-004-u4y1dc107.webp" style="width:190px;height:28px;image-rendering:pixelated">'
+            + '<img src="/cdn/divider-fade-004-u0lc3elr5.webp" style="width:190px;height:28px;image-rendering:pixelated">'
             + '<div style="text-align:center;white-space:nowrap"><div style="font-family:Cinzel,Palatino,Georgia,serif;font-size:13px;letter-spacing:3px;color:#e8d9b5;text-transform:uppercase">' + (_zs.first ? 'You stand in' : 'Entering') + '</div>'
             + '<div style="font-family:Cinzel,Palatino,Georgia,serif;font-size:34px;font-weight:700;color:#f2d38a;letter-spacing:2px;line-height:1.1">' + placeName + '</div></div>'
-            + '<img src="/cdn/divider-004-u4y1dc107.webp" style="width:190px;height:28px;image-rendering:pixelated;transform:scaleX(-1)">'
+            + '<img src="/cdn/divider-fade-004-u0lc3elr5.webp" style="width:190px;height:28px;image-rendering:pixelated;transform:scaleX(-1)">'
             + '</div>'
           : '';
         return _zoneBanner + '<div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:rgba(8,6,12,0.9);border:1px solid rgba(90,70,35,0.5);border-radius:3px;padding:2px 10px;white-space:nowrap;z-index:1;"><span style="font-family:Cinzel,Palatino,Georgia,serif;font-size:18px;color:rgba(210,180,100,0.95);text-shadow:0 0 6px rgba(200,170,80,0.25),0 1px 2px rgba(0,0,0,0.9);letter-spacing:1px;">' + placeName + '</span></div>';
