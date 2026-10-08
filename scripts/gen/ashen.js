@@ -348,7 +348,9 @@ const HULL = {
 export function geometry(ctx) {
   const k = ctx.params.kind ?? "tomb", L = ctx.lod || 1, q = () => ctx.random();
   if (L >= 5 && HULL[k]) return HULL[k](ctx);
-  if (L >= 5 && (k === "bones" || k === "candles" || k === "yard")) return;
+  if (L >= 5 && k === "yard") { stone(ctx, GRAVE, SOOT); box(ctx, -34.4, -0.02, -2.6, -16.2, 0.04, 0.6); return; }
+  if (L >= 5 && k === "bones") { P(ctx, null, BONE, 0.85); frustum(ctx, 0, 0, 0, 0.25, 0.9, 0.3, 0.7, 0.2); return; }
+  if (L >= 5 && k === "candles") { stone(ctx, GRAVE, SOOT); frustum(ctx, 0, 0, 0, 0.3, 0.8, 0.4, 0.55, 0.3); return; }
   (K[k] ?? K.tomb)(ctx, L, q);
 }
 export function collider(ctx) {
