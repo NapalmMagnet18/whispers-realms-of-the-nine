@@ -1,0 +1,22 @@
+# Gryphon roosts of the Lantern March: walk within discoverRadius of one to learn it; E at its roostmaster opens the flight map.
+# pos = the roost's centre (place main); the pad lands you at pos + land. y is the ground there (the roost's flatten mark).
+discoverRadius: 22
+useRadius: 7
+copperPer100m: 0.25     # a 4 km flight costs 10 copper
+speed: 120              # m/s along the ground track
+minSeconds: 18
+maxSeconds: 80
+climb: 0.14             # share of the flight spent climbing (and descending)
+clearance: 55           # metres over the highest ground under the route
+roosts:
+  - { id: reach,       name: "Lantern's Reach",      region: "The Lantern March",      x: 30,    z: 36,    y: 3.8 }
+  - { id: thornhollow, name: "Thornhollow",          region: "Briarwild Deepwood",     x: -728,  z: 86,    y: 19.6 }
+  - { id: cinderhold,  name: "Cinderhold",           region: "Emberstone Highlands",   x: 912,   z: -156,  y: 40.4 }
+  - { id: gullrest,    name: "Gullrest",             region: "Saltmere Coast",         x: 255,   z: 1450,  y: 3 }
+  - { id: hollowcrypt, name: "Hollowcrypt Watch",    region: "Hollowcrypt Vale",       x: 1180,  z: -600,  y: 24 }
+  - { id: sorrowfen,   name: "Sorrowfen Stilts",     region: "Sorrowfen",              x: -1170, z: 760,   y: 2.4 }
+  - { id: frostveil,   name: "Frostveil Post",       region: "Frostveil Tundra",       x: -10,   z: -3760, y: 61 }
+  - { id: sunscar,     name: "Sunscar Oasis",        region: "Sunscar Expanse",        x: 3770,  z: -150,  y: 77 }
+  - { id: elderveil,   name: "Elderveil Bough",      region: "Elderveil Wilds",        x: -3540, z: -20,   y: 45 }
+  - { id: ninthveil,   name: "Veilgate Aerie",       region: "The Ninth Veil",         x: 30,    z: -7560, y: 130 }
+  - { id: bastion,     name: "Emberstone Bastion",   region: "Ashfall Reaches",        x: 7560,  z: -170,  y: 25 }

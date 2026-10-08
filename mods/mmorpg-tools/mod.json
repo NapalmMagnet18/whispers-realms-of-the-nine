@@ -126,6 +126,8 @@
       "vendorSell": {},
       "vendorTab": {},
       "vendorClose": {},
+      "flyTo": {},
+      "flightClose": {},
       "buyShopItem": {},
       "clearTarget": {
         "keys": [

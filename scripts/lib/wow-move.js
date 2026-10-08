@@ -7,7 +7,7 @@ import { wowMotion } from '../../mods/wow-camera-controls/lib/motion.js'
 export function modalOpen(s) {
   if (!s) return false
   if (s.phase && s.phase !== 'playing') return true
-  return !!(s.showQuestDialog || s.showDoorPanel || s.vendorOpen || s.gameMenuOpen || s.realmListOpen || s.vampireDialog || s.cursedItemDialog)
+  return !!(s.showQuestDialog || s.showDoorPanel || s.vendorOpen || s.gameMenuOpen || s.realmListOpen || s.vampireDialog || s.cursedItemDialog || s.flightMap)
 }
 
 // The mod's actions arrive under its name; a world binding of the same name also counts.
