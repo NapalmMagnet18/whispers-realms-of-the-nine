@@ -5,7 +5,8 @@ export function geometry(ctx) {
   const { kind = "pine", s = 1 } = ctx.params || {};
   const r = () => ctx.random();
   const lod = ctx.lod || 1;
-  ctx.albedo("cdn/texture-pine-bark-deep-furrows.png"); ctx.color(kind === "dead" ? "oklch(0.8 0.01 60)" : "oklch(0.92 0.02 50)"); ctx.roughness(0.95);
+  // the creator's hand-painted bark: warm ridged for living trees, charcoal cracked for dead ones
+  ctx.albedo(kind === "dead" ? "/cdn/bark-deadtree-u2s9hxqea.webp" : "/cdn/bark-normaltree-u9xpx2wlu.webp"); ctx.color(kind === "dead" ? "oklch(0.95 0 0)" : kind === "pine" ? "oklch(0.88 0.02 40)" : "oklch(0.97 0 0)"); ctx.roughness(0.95);
   if (kind === "pine") {
     const H = 9 + r() * 4;
     cyl(ctx, 0, -0.3, 0, 0.42, 0.08, H, lod > 2 ? 6 : 9);
