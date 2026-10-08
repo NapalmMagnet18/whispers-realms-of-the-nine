@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 860,
-  "updatedAt": "2026-10-08T06:49:21.658Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March continent, with Lantern's Reach as its hub and origin/class stories extending through streamed regions. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors combine movement, combat, quests, trade, flight and vitality, while scene bindings and YAML registries define world content.",
+  "basedOnSpecVersion": 870,
+  "updatedAt": "2026-10-08T06:58:41.023Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March, with Lantern's Reach as its hub and origin/class stories extending through streamed regions. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors combine movement, combat, quests, trade and flight, while scene bindings and YAML registries define world content. Tideglass Coast now includes the TID-05..09 act-two chain, from tideglass lens and fleet echoes to the relay skiff returning Orin's record to the Reach.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -180,9 +180,9 @@
     "places/character-creation-land/ - race/class/appearance selection with preview character and creation camera.",
     "places/main/config.yaml - continent terrain, regions, roads, scatter and atmosphere; streamed cells hold landmarks and interactions.",
     "places/main/cells/x0z0.scene - Lantern's Reach hub, services, residents, quests, Shield Table, Observatory and chapter sites.",
-    "places/main/cells/x-1z0.scene, x-5z0.scene, x-5z1.scene, x-6z0.scene, x0z-1.scene, x1z0.scene, x7z-1.scene, x7z-2.scene, x2z11.scene - Briarwild/Briarkin content, northern March landmarks, Emberstone Quarry/Cinderhold and Gullrest's Saltborn origin.",
-    "places/main/cells/x-9z6.scene, x-10z6..8.scene, x-11z6..7.scene - Sorrowfen around Mourner Pool: stilt village and act-one marks, plus drowned chapel, Orla's skiff, Mirelurker pool and echo-story sites.",
-    "places/main/cells/x-10z15.scene, x-5z16..17.scene, x-6z15.scene, x-7z15..16.scene, x-8z14..15.scene, x-9z15.scene - Tideglass Coast: Tideglass Quay, inland-facing lighthouse, Lost-Fleet shore, dry docks, survey sites and ferry landing; x-8z14 has the roost.",
+    "places/main/cells/x-1z0.scene, x-5z0.scene, x-5z1.scene, x-6z0.scene, x0z-1.scene, x1z0.scene, x7z-1.scene, x7z-2.scene, x2z11.scene - Briarwild/Briarkin content, northern March landmarks, Emberstone Quarry/Cinderhold and Gullrest's Saltbound content.",
+    "places/main/cells/x-9z6.scene, x-10z6..8.scene, x-11z6..7.scene - Sorrowfen around Mourner Pool: stilt village, act-one marks, drowned chapel, Orla's skiff, Mirelurker pool and echo-story sites.",
+    "places/main/cells/x-10z15.scene, x-5z16..17.scene, x-6z15..16.scene, x-7z15.scene, x-8z14..15.scene, x-9z15.scene - Tideglass Coast: quay, lighthouse, Lost-Fleet shore, lens bench, memory nets/brine collector, song beacons, estuary stone and ferry landing; x-6z16 adds the ferry-reach beacon.",
     "places/hollowcrypt/ - separate underground dungeon entered from the mausoleum in main cell x10z-5; crypt halls, archive, Warden, Vale/Elric, candles and echoes live in its cells."
   ],
   "roots": [
@@ -198,28 +198,28 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character load/upsert/delete and roster population shared by menu and player lifecycle.",
     "scripts/lib/data/realms.yml - room registry read by routing and realm-pulse; IDs align with realm-save.js.",
-    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions/eligibility/progress shared by quest-player, quest-giver and quest UI; includes origin, class, EQU/DHC, SOR-01..09 and TID-01..04 campaigns.",
+    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions, eligibility and progress shared by quest-player, quest-giver and quest UI; includes origin, class, EQU/DHC, SOR-01..09 and TID-01..09 campaigns.",
     "scripts/lib/economy.js + MMORPG lib/currency.js - integer-copper transactions/ledger and denomination formatting shared by quests, vendor, flight and UI.",
-    "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and terrain/coast generation used by continent systems and region display, including Sorrowfen and Tideglass Coast.",
+    "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and continent height/material generation used by terrain and region display, including Sorrowfen and Tideglass Coast.",
     "scripts/lib/data/flights.yml - roost coordinates, regions, discovery radius, fare/speed limits and clearance read by flight behavior and UI; includes Tideglass Quay.",
     "scripts/gen/shape.js and scripts/gen/* landmark builders - primitive helpers and procedural geometry reused by scene bindings, including crypt, quarry, fen and Tideglass set pieces."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle and input; player.js - character build/save/load lifecycle.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - GAME_VERSION, GAME_TITLE, versionTag.",
-    "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled update for fall/rise and health mending.",
+    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - game version/title/tag exports.",
+    "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise and health-mending update.",
     "scripts/quest-player.js - onInput/update; scripts/elric.js and scripts/townsfolk.js - resident behavior; scripts/lib/economy.js - realmOf, ledger, feedback, move.",
     "scripts/vanguard.js - onInput, endAction, land; scripts/arcanist.js - onInput, release, wardEnd, endAction; scripts/pathfinder.js - onInput, release, update, endAction; scripts/lib/kit.js - class/combat helpers.",
     "scripts/crypt-gate.js - onTriggerEnter, onCross, onRefuse; scripts/candle-warden.js - onSpawn, update; scripts/gen/crypt.js - HALLS, geometry, collider.",
-    "scripts/gen/fen.js and scripts/gen/tide.js - geometry, collider for procedural Sorrowfen and Tideglass set pieces; scripts/lib/regions.js - REGIONS, MARCH, regionAt; scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, TIDE, HEAD, COAST, VEIL, BASTION, coastD, heightAt."
+    "scripts/gen/fen.js and scripts/gen/tide.js - geometry, collider for procedural Sorrowfen and Tideglass props; scripts/lib/regions.js - REGIONS, MARCH, regionAt; scripts/terrain-reach.js - regional terrain constants and height/material exports."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw and animation channels; gait samples prior-tick movement velocity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including discovered roosts and quest state.",
     "scripts/vanguard.js, arcanist.js and pathfinder.js - class action/cooldown/combat state; scripts/lib/kit.js drill writes active quest tally and _questSave for matching props.",
-    "scripts/quest-player.js - quest/tally, inventory/xp/dialog/cache state, quest marks/flags and deferred owedItems; woodcutting owns tree fall/regrowth presentation.",
+    "scripts/quest-player.js - quest/tally, inventory/xp/dialog/cache state, quest marks/flags, deferred owedItems and quest travel transitions; woodcutting owns tree fall/regrowth presentation.",
     "scripts/lib/economy.js - coin movement, purse floor and ledger writes; scripts/vendor.js owns shop state and transaction handling.",
     "scripts/flight.js - per-player discovered roosts, flightMap, flying/landing state and nearby-roost hint; scripts/gryphon-flight.js owns spawned mount route and rider landing.",
     "scripts/vitality.js - player safe return position, dying timer and out-of-combat health recovery; scripts/candle-warden.js owns boss encounter state and credits boss/sweep/sigil quest tallies."
@@ -233,15 +233,15 @@
     "templates/player.js order → locomotion → movement → classes → quest-player → vendor → flight → vitality; moveX/moveZ/jump and camera intents are consumed by player.js/wow-move.js under place gravity.",
     "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/enemies; wolves.js, configurable scavengers.js and candle-warden.js consume combat state and issue damage/kill credits.",
     "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest-mark objects; quest marks count only active incomplete objectives; townsfolk.yml state.who supplies NPC dialogue.",
-    "quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI; Q008 + EQU-09 gate DHC-01..04, DHC-04 enables SOR-01..04, then SOR-05..09 carries Eda's testimony to the Shield Table and two witnesses.",
-    "Tideglass SOR-09 done text points to Tideglass Quay; TID-01..04 in quests.yml progress through stake/registry, lighthouse lens, shell-song, drydock and ferry marks via the coast NPCs and scene interactables.",
-    "flights.yml roost data + flattened place pads → scripts/flight.js discovers/opens flight map → scripts/gryphon-flight.js mounts route and lands player at the destination roost.",
+    "quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI; Q008 + EQU-09 gate DHC-01..04, DHC-04 enables SOR-01..04, and SOR-05..09 advances Eda's testimony through the Shield Table and witnesses.",
+    "TID-01..04 scene marks and coast NPCs → tideglass survey, registry, lighthouse, shells, drydocks/ferry rope; TID-05..09 then count tide_shard/lens_ground/fleet_charted, memory_freed/brine_collector, fleet_echo_met/oath_refused, song_beacon/estuary_stilled and skiff_boarded.",
+    "TID-09 quest mark on Rowan's relay skiff → quest-player applies ms.travel, zeroes velocity and flashes screen to move the hero to the Reach; turn-in at obs-npc-leth delivers Captain Orin's record.",
     "Procedural scene bindings pass kind/seed/LOD/shape parameters → scripts/gen/fen.js or scripts/gen/tide.js geometry/collider; scripts/terrain-reach.js and lib/regions.js provide continent height/material and region identity."
   ],
   "behaviorFamilies": [
     "scripts/gen/ landmark builders reuse scripts/gen/shape.js procedural geometry helpers, varied by landmark and parameters; crypt.js supplies Hollowcrypt halls, rooms and furniture.",
     "scripts/gen/fen.js - procedural marsh props reused by Sorrowfen cells, varied by kind/seed/LOD; boardwalk geometry and collider share length/width/elevation parameters.",
-    "scripts/gen/tide.js - Tideglass lighthouse, quay, drydock, beacon, stake, ferry post, registry and net rack share shape helpers; kind/LOD/length/width vary each piece.",
+    "scripts/gen/tide.js - Tideglass lighthouse, quay, drydock, beacon, stake, ferry post, registry, net rack, lens bench, shard, collector, memory net, estuary pillar and relay skiff share shape helpers; kind/LOD/length/width vary each piece.",
     "scripts/grass.js, flower.js, mushroom.js and pebble.js - terrain scatter geometry reused by place bindings, varied by layer density, scale, seed or per-item params.",
     "scripts/gen/tree.js with scripts/tree-look.js - painted bark/alpha-cut foliage recur in forest layers and placed scatters, varied by tree kind and LOD.",
     "MMORPG player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle registered by mod.json; camera phases and lib/ui-* renderers are modular and composed by ui.js.",
@@ -253,8 +253,8 @@
     "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
     "templates/player.js behavior order is significant: locomotion before movement, then classes, quests, vendor, flight and vitality; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
-    "Flight roost IDs in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is discovery record, coordinates use place-main meters, including tideglass.",
+    "Flight roost IDs in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is discovery record, coordinates use place-main meters, including Tideglass.",
     "Quest marks are scene entities tagged quest-mark with state.quest/state.mark; E counts only an active quest's incomplete objective. Crypt gate links are state.link place/entity targets and stamp _worldEnterAt before crossing.",
-    "Quest/NPC IDs and tally keys are exact joins across scenes, quests.yml and townsfolk.yml: preserve the SOR-05..09 and TID-01..04 requirements/marks, and match Tideglass townsperson state.who keys to dialogue rows."
+    "Quest/NPC IDs and tally keys are exact joins across scenes, quests.yml and townsfolk.yml: preserve TID-05..09 objective mark keys, TID-09 ms.travel destination behavior, and match Tideglass townsperson state.who keys to dialogue rows."
   ]
 }
