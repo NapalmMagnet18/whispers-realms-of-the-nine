@@ -123,7 +123,7 @@ export function materialAt(ctx) {
   if (dq < 60 + n * 10) return { rock: 0.4 + rock * 0.6, grass: 0.6 - rock * 0.6 };
   const dfen = Math.hypot(x - FEN.x, z - FEN.z);
   if (dfen < 600 + n * 40 && y < 3.5) { // Sorrowfen: black wet mud in the low ground, sedge on the banks, never beach sand
-    const bank = clamp01((y - 0.6 + n * 0.5) * 1.4);
+    const bank = clamp01((y - 1.45 + n * 0.6) * 1.6);
     return { mud: 1 - bank * 0.55, grass: bank * 0.55 };
   }
   if (y < 1.6 + n * 0.8) {
