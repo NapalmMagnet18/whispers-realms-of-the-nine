@@ -1,0 +1,73 @@
+# spawn-scene v2 yaml x0z-60
+veilgate-crystal-12:
+  children: []
+  feetPosition: {x: -20, y: {terrain: -0.3}, z: -7620}
+  id: veilgate-crystal-12
+  physics: static
+  primitive: {kind: scripted, params: {h: 4, kind: crystal, tint: oklch(0.65 0.22 295)}, script: scripts/gen/veil.js, seed: 15}
+  rotation: {yaw: 84}
+  tags: [veilgate]
+veilgate-crystal-13:
+  children: []
+  feetPosition: {x: 10, y: {terrain: -0.3}, z: -7655}
+  id: veilgate-crystal-13
+  physics: static
+  primitive: {kind: scripted, params: {h: 7.5, kind: crystal, tint: oklch(0.65 0.22 300)}, script: scripts/gen/veil.js, seed: 16}
+  rotation: {yaw: 151}
+  tags: [veilgate]
+veilgate-crystal-2:
+  children: []
+  feetPosition: {x: 20, y: {terrain: -0.3}, z: -7626}
+  id: veilgate-crystal-2
+  physics: static
+  primitive: {kind: scripted, params: {h: 5, kind: crystal, tint: oklch(0.65 0.22 305)}, script: scripts/gen/veil.js, seed: 5}
+  rotation: {yaw: 134}
+  tags: [veilgate]
+veilgate-crystal-3:
+  children: [{feetPosition: {x: 0, y: 2.7, z: 0}, light: {color: oklch(0.7 0.2 300), distance: 14, intensity: 3, kind: point}}]
+  feetPosition: {x: 42, y: {terrain: -0.3}, z: -7630}
+  id: veilgate-crystal-3
+  physics: static
+  primitive: {kind: scripted, params: {h: 6, kind: crystal, tint: oklch(0.65 0.22 300)}, script: scripts/gen/veil.js, seed: 6}
+  rotation: {yaw: 201}
+  tags: [veilgate]
+veilgate-crystal-6:
+  children: [{feetPosition: {x: 0, y: 4.05, z: 0}, light: {color: oklch(0.7 0.2 300), distance: 14, intensity: 3, kind: point}}]
+  feetPosition: {x: 30, y: {terrain: -0.3}, z: -7640}
+  id: veilgate-crystal-6
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: crystal, tint: oklch(0.65 0.22 300)}, script: scripts/gen/veil.js, seed: 9}
+  rotation: {yaw: 42}
+  tags: [veilgate]
+veilgate-crystal-7:
+  children: []
+  feetPosition: {x: 60, y: {terrain: -0.3}, z: -7622}
+  id: veilgate-crystal-7
+  physics: static
+  primitive: {kind: scripted, params: {h: 3, kind: crystal, tint: oklch(0.65 0.22 315)}, script: scripts/gen/veil.js, seed: 10}
+  rotation: {yaw: 109}
+  tags: [veilgate]
+veilgate-floatrock-2:
+  feetPosition: {x: 30, y: 186, z: -7625}
+  id: veilgate-floatrock-2
+  primitive: {kind: scripted, params: {kind: floatrock, r: 5.5}, script: scripts/gen/veil.js, seed: 22}
+  rotation: {roll: 6, yaw: 94}
+  tags: [veilgate]
+veilgate-floatrock-3:
+  feetPosition: {x: 12, y: 162, z: -7618}
+  id: veilgate-floatrock-3
+  primitive: {kind: scripted, params: {kind: floatrock, r: 2.5}, script: scripts/gen/veil.js, seed: 23}
+  rotation: {roll: -6, yaw: 141}
+  tags: [veilgate]
+veilgate-floatrock-6:
+  feetPosition: {x: 18, y: 172, z: -7640}
+  id: veilgate-floatrock-6
+  primitive: {kind: scripted, params: {kind: floatrock, r: 4.5}, script: scripts/gen/veil.js, seed: 26}
+  rotation: {roll: -6, yaw: 282}
+  tags: [veilgate]
+veilgate-floatrock-7:
+  feetPosition: {x: 46, y: 180, z: -7640}
+  id: veilgate-floatrock-7
+  primitive: {kind: scripted, params: {kind: floatrock, r: 3}, script: scripts/gen/veil.js, seed: 27}
+  rotation: {roll: 0, yaw: 329}
+  tags: [veilgate]

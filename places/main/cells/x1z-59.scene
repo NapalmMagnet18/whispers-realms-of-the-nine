@@ -1,0 +1,17 @@
+# spawn-scene v2 yaml x1z-59
+veilgate-crystal-10:
+  children: []
+  feetPosition: {x: 75, y: {terrain: -0.3}, z: -7580}
+  id: veilgate-crystal-10
+  physics: static
+  primitive: {kind: scripted, params: {h: 6.5, kind: crystal, tint: oklch(0.65 0.22 305)}, script: scripts/gen/veil.js, seed: 13}
+  rotation: {yaw: 310}
+  tags: [veilgate]
+veilgate-crystal-11:
+  children: []
+  feetPosition: {x: 70, y: {terrain: -0.3}, z: -7540}
+  id: veilgate-crystal-11
+  physics: static
+  primitive: {kind: scripted, params: {h: 3.5, kind: crystal, tint: oklch(0.65 0.22 300)}, script: scripts/gen/veil.js, seed: 14}
+  rotation: {yaw: 17}
+  tags: [veilgate]
