@@ -8,9 +8,9 @@ atmosphere:
     near: 16
     far: 190
   hemisphere:
-    skyColor: oklch(0.5 0.07 280)
-    groundColor: oklch(0.32 0.04 55)
-    intensity: 0.55
+    skyColor: oklch(0.58 0.07 280)
+    groundColor: oklch(0.4 0.05 55)
+    intensity: 1.15
   clouds:
     enabled: true
     density: 0.42
