@@ -79,7 +79,7 @@ function lancet(ctx, axis, c, t, out, h, v0, P, glass, trim) {
 }
 const K = {
   crystal(ctx, p, far, col, P, G) {
-    const h = p.h ?? 5, hue = p.tint ?? 300, r = rng((p.s ?? 1) * 31 + Math.round(h * 10));
+    const h = p.h ?? 5, hue = typeof p.tint === "string" ? (parseFloat(p.tint.replace(/\)\s*$/, "").trim().split(/\s+/).pop()) || 300) : (p.tint ?? 300), r = rng((p.s ?? 1) * 31 + Math.round(h * 10));
     const n = 3 + Math.floor(r() * 5), list = [{ base: [0, -0.3, 0], dir: [(r() - 0.5) * 0.2, 1, (r() - 0.5) * 0.2], rad: h * 0.12, len: h }];
     const a0 = r() * Math.PI * 2;
     for (let i = 1; i < n; i++) {
