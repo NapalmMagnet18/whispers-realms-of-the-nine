@@ -15,7 +15,12 @@ export const BAY = { x: 300, z: 1880 };
 // 2026-10-08 expansion: the continent now runs ~12 km east-west. Beyond the old coasts:
 // Frostveil Tundra (far north, past the Greyspine), Sunscar Expanse (far east, dunes and desert rock),
 // Elderveil Wilds (far west, an ancient high forest). The south coast and Saltmere bay stay where they were.
-export const COAST = { rx: 6200, rzN: 6000, rzS: 2050, rzS2: 3700 };
+// 2026-10-08 (2): grown again to ~19 km east-west and ~9 km north of town. Two new frontiers past the old edges:
+// the Ninth Veil (z < -6400: a violet crystal plateau of floating ruins, the realm's heart) and
+// the Ashfall Reaches (x > 6400: black volcanic shelves around Emberstone Bastion, the Stonewrought forgehold).
+export const COAST = { rx: 9600, rzN: 9200, rzS: 2050, rzS2: 3700 };
+export const VEIL = { x: 0, z: -7600 };
+export const BASTION = { x: 7600, z: -200 };
 export function coastD(x, z) {
   const rz = z > 0 ? COAST.rzS + (COAST.rzS2 - COAST.rzS) * sstep(1300, 2800, Math.abs(x)) : COAST.rzN;
   return Math.hypot(x / COAST.rx, z / rz);
@@ -63,8 +68,17 @@ export function heightAt(ctx) {
   // Frostveil Tundra, far north: a high cold plain with frozen meres
   const tundra = sstep(-3000, -3600, z);
   if (tundra > 0) h += tundra * (38 + noise.fbm2({ x, z, frequency: 1 / 500, octaves: 3, seed: so(12) }) * 14);
+  // the Ninth Veil, past the tundra: a raised violet plateau cut by ridged spines
+  const veil = sstep(-6200, -6900, z);
+  if (veil > 0) h += veil * (30 + noise.ridged({ x, z, frequency: 1 / 520, octaves: 4, seed: so(16) }) * 40);
+  // Ashfall Reaches, past the desert: black stepped shelves and cinder cones
+  const ash = sstep(6200, 6900, x) * (1 - tundra);
+  if (ash > 0) {
+    const m = 20 + noise.fbm2({ x, z, frequency: 1 / 360, octaves: 3, seed: so(17) }) * 30, t = Math.max(0, m) / 7, f = t - Math.floor(t);
+    h += ash * ((Math.floor(t) + sstep(0.7, 1, f)) * 7 - 4);
+  }
   // Sunscar Expanse, far east: long dunes over desert rock
-  const desert = sstep(2900, 3600, x) * (1 - tundra);
+  const desert = sstep(2900, 3600, x) * (1 - tundra) * (1 - ash);
   if (desert > 0) {
     const dn = noise.fbm2({ x, z, frequency: 1 / 700, octaves: 2, seed: so(13) });
     const dune = Math.abs(Math.sin((x * 0.6 + z * 0.8) / 46 + dn * 6)) * 7 + noise.ridged({ x, z, frequency: 1 / 900, octaves: 3, seed: so(14) }) * 26;
@@ -99,6 +113,8 @@ export function materialAt(ctx) {
     const df = Math.hypot(x - FEN.x, z - FEN.z);
     return df < 650 ? { mud: 1 } : { sand: 1 };
   }
+  if (z < -6500 + n * 160) return { veil: 0.7 - rock * 0.4, snow: 0.3 - rock * 0.1, rock: rock * 0.5 };
+  if (x > 6500 + n * 160) return slope > 0.3 ? { ashrock: 1 } : { ashrock: 0.55 + rock * 0.45, blight: 0.45 - rock * 0.45 };
   if (z < -3050 + n * 120) return { snow: 1 - rock * 0.5, rock: rock * 0.5 };
   if (x > 3000 + n * 150) return slope > 0.35 ? { desertrock: 1 } : { sand: 0.75 - rock * 0.3, desertrock: 0.25 + rock * 0.3 };
   if (x < -3000 + n * 150) return { forest: 1 - rock, rock };

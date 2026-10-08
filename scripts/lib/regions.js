@@ -13,6 +13,8 @@ export const REGIONS = [
   { id: "hollowcrypt", name: "Hollowcrypt Vale", x: 1350, z: -700, r: 330 },
   { id: "sorrowfen", name: "Sorrowfen", x: -1300, z: 950, r: 520 },
   { id: "saltmere", name: "Saltmere Coast", x: 300, z: 1650, r: 420 },
+  { id: "ninthveil", name: "The Ninth Veil", test: (x, z) => z < -6400 },
+  { id: "ashfall", name: "Ashfall Reaches", test: (x, z) => x > 6400 },
   { id: "frostveil", name: "Frostveil Tundra", test: (x, z) => z < -3000 },
   { id: "sunscar", name: "Sunscar Expanse", test: (x, z) => x > 3000 },
   { id: "elderveil", name: "Elderveil Wilds", test: (x, z) => x < -3000 },
