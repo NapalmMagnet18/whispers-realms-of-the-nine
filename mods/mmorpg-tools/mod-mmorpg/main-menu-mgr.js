@@ -121,7 +121,7 @@ export function onSpawn(api) {
       api.patchState({ characters: [], _menuRosterSnapshot: [], selectedCharIdx: 0, _hasCharacter: false, _dataLoaded: true, _rosterLoaded: true, characterCreated: false, realmName: realmName(api) });
     }
     var sv = api.getState();
-    if (!sv._realmSeen) api.patchState({ _realmSeen: true, realmListOpen: true });
+    if (!sv._realmSeen) { api.patchState({ _realmSeen: true, realmListOpen: true, realmPick: RS.realmOf(api) }); RS.refreshRealmDetail(api, RS.realmOf(api)); }
     RS.refreshRealmList(api);
   });
 }
@@ -212,13 +212,15 @@ export function onInput(api, input) {
 
   if (input.actions.setMenuView && input.actionData && input.actionData.setMenuView) { api.patchState({ menuView: input.actionData.setMenuView.view || 'title' }); return; }
   // ─── REALM LIST ───
-  if (input.actions.openRealmList) { api.patchState({ realmListOpen: true, realmPick: RS.realmOf(api) }); RS.refreshRealmList(api); return; }
+  if (input.actions.openRealmList) { api.patchState({ realmListOpen: true, realmPick: RS.realmOf(api), realmError: null }); RS.refreshRealmList(api); RS.refreshRealmDetail(api, RS.realmOf(api)); return; }
   if (input.actions.closeRealmList) { api.patchState({ realmListOpen: false }); return; }
-  if (input.actions.pickRealm && input.actionData && input.actionData.pickRealm) { api.patchState({ realmPick: input.actionData.pickRealm.room }); return; }
+  if (input.actions.pickRealm && input.actionData && input.actionData.pickRealm) { var pr = input.actionData.pickRealm.room; api.patchState({ realmPick: pr }); RS.refreshRealmDetail(api, pr); return; }
   if (input.actions.joinRealm) {
     var pick = s.realmPick || RS.realmOf(api);
     if (pick === RS.realmOf(api) || !RS.REALMS.some(function (r) { return r.room === pick; })) { api.patchState({ realmListOpen: false }); return; }
-    api.patchState({ realmListOpen: false });
+    var row = (s.realmList || []).find(function (r) { return r.room === pick; });
+    if (row && row.population === 'Full') { api.patchState({ realmError: row.name + ' is full right now. Pick another realm or try again soon.' }); return; }
+    api.patchState({ realmListOpen: false, realmError: null });
     var out = api.cross(api.self || api.id, 'world:' + api.world.id + '/room:' + pick + '+main-menu-land');
     if (out && out.crossed === false) api.patchState({ realmError: 'The way to that realm is shut. Try again.' });
     return;

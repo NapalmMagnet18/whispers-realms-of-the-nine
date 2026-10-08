@@ -2,13 +2,13 @@
 // one row per (user, realm, slot); `data` holds the whole hero (buildCharData) so a load is one SELECT.
 // Realm = the room this body stands in (scripts/lib/data/realms.yml lists them).
 var { RACES } = require('./races.js');
-var REALMS = [
-  { room: 'main', name: "Lantern's Rest", type: 'Normal', recommended: true },
-  { room: 'realm-emberfall', name: 'Emberfall', type: 'Normal' },
-  { room: 'realm-greyspine', name: 'Greyspine Watch', type: 'Normal' },
-  { room: 'realm-hollowmere', name: 'Hollowmere', type: 'PvP' },
-  { room: 'realm-saltwind', name: 'Saltwind', type: 'RP' },
-  { room: 'realm-nine-veils', name: 'The Nine Veils', type: 'Normal' },
+var REALMS = [ // mirrors scripts/lib/data/realms.yml (room ids must match)
+  { room: 'main', name: "Lantern's Rest", type: 'Normal', note: 'The first realm. Steady, friendly, busiest in the evenings.' },
+  { room: 'realm-emberfall', name: 'Emberfall', type: 'Normal', note: 'A quieter realm. Good for a fresh start.' },
+  { room: 'realm-greyspine', name: 'Greyspine Watch', type: 'Normal', note: 'For heroes who like the long road north.' },
+  { room: 'realm-hollowmere', name: 'Hollowmere', type: 'PvP', note: 'Player combat is open outside towns. Towns and roosts stay safe.' },
+  { room: 'realm-saltwind', name: 'Saltwind', type: 'RP', note: 'Roleplay realm: speak as your hero, keep names in the world.' },
+  { room: 'realm-nine-veils', name: 'The Nine Veils', type: 'Normal', note: 'The newest realm, far shores and fresh ledgers.' },
 ];
 var MAX_PER_REALM = 120, CHARS_PER_REALM = 6;
 
@@ -71,20 +71,44 @@ function population(players) {
   var f = (players || 0) / MAX_PER_REALM;
   return f >= 1 ? 'Full' : f >= 0.6 ? 'High' : f >= 0.25 ? 'Medium' : 'Low';
 }
-// realm list rows into player.state.realmList for the UI
+// the realm that new heroes are pointed at: the emptiest Normal realm awake or asleep; ties go to the first in the roster
+function pickRecommended(rows) {
+  var best = null;
+  rows.forEach(function (r) { if (r.type !== 'Normal' || r.population === 'Full') return; if (!best || r.players < best.players) best = r; });
+  return best ? best.room : 'main';
+}
+// realm list rows into player.state.realmList for the UI. A pulse older than 180 s (SQLite clock) is a realm asleep: 0 players.
 function refreshRealmList(api) {
   var cur = realmOf(api);
-  var base = REALMS.map(function (r) { return { room: r.room, name: r.name, type: r.type, recommended: !!r.recommended, population: 'Low', players: 0, chars: 0, current: r.room === cur }; });
+  var base = REALMS.map(function (r) { return { room: r.room, name: r.name, type: r.type, note: r.note || '', recommended: r.room === 'main', population: 'Low', players: 0, awake: false, chars: 0, current: r.room === cur }; });
   api.patchState({ realmList: base, realmCurrent: cur });
   if (!hasSql(api)) return;
   Promise.all([
-    api.sql`SELECT realm, players, at FROM realm_pulse`,
+    api.sql`SELECT realm, players, (at > CAST(strftime('%s','now') AS INTEGER) - 180) AS fresh FROM realm_pulse`,
     api.sql`SELECT realm, COUNT(*) AS n FROM characters WHERE user_id = @caller GROUP BY realm`,
+    api.sql`SELECT realm, COUNT(*) AS n FROM characters GROUP BY realm`,
   ]).then(function (out) {
-    var pulse = {}, mine = {};
-    (out[0].rows || []).forEach(function (r) { pulse[r.realm] = r.players; });
+    var pulse = {}, awake = {}, mine = {}, heroes = {};
+    (out[0].rows || []).forEach(function (r) { var f = !!r.fresh; pulse[r.realm] = f ? r.players : 0; awake[r.realm] = f && r.players > 0; });
     (out[1].rows || []).forEach(function (r) { mine[r.realm] = r.n; });
-    api.patchState({ realmList: base.map(function (r) { return Object.assign({}, r, { players: pulse[r.room] || 0, population: population(pulse[r.room]), chars: mine[r.room] || 0 }); }) });
+    (out[2].rows || []).forEach(function (r) { heroes[r.realm] = r.n; });
+    if (pulse[cur] == null || pulse[cur] < 1) { pulse[cur] = Math.max(1, pulse[cur] || 0); awake[cur] = true; } // you are standing in it
+    var rows = base.map(function (r) { return Object.assign({}, r, { players: pulse[r.room] || 0, awake: !!awake[r.room], population: population(pulse[r.room]), chars: mine[r.room] || 0, heroes: heroes[r.room] || 0 }); });
+    var rec = pickRecommended(rows);
+    api.patchState({ realmList: rows.map(function (r) { return Object.assign(r, { recommended: r.room === rec }); }) });
   }, function (e) { try { api.log('realm list read failed', String(e)); } catch (x) {} });
 }
-module.exports = { REALMS: REALMS, MAX_PER_REALM: MAX_PER_REALM, CHARS_PER_REALM: CHARS_PER_REALM, realmOf: realmOf, signature: signature, upsert: upsert, removeSlot: removeSlot, loadRoster: loadRoster, importLegacy: importLegacy, refreshRealmList: refreshRealmList, population: population, classOf: classOf };
+// the picked realm's ledger: its five highest heroes and its realm firsts, into player.state.realmDetail
+function refreshRealmDetail(api, room) {
+  if (!REALMS.some(function (r) { return r.room === room; })) return;
+  api.patchState({ realmDetail: { room: room, loading: true, top: [], firsts: [] } });
+  if (!hasSql(api)) { api.patchState({ realmDetail: { room: room, top: [], firsts: [] } }); return; }
+  var firsts = api.sql`SELECT feat, label, char_name, class FROM realm_firsts WHERE realm = ${room} ORDER BY at DESC LIMIT 6`.then(function (r) { return r.rows || []; }, function () { return []; });
+  var top = api.sql`SELECT name, race, class, level FROM characters WHERE realm = ${room} ORDER BY level DESC, updated_at ASC LIMIT 5`.then(function (r) { return r.rows || []; }, function () { return []; });
+  Promise.all([top, firsts]).then(function (out) {
+    var s = api.getState();
+    if ((s.realmPick || realmOf(api)) !== room) return; // a later pick won
+    api.patchState({ realmDetail: { room: room, top: out[0], firsts: out[1] } });
+  });
+}
+module.exports = { REALMS: REALMS, MAX_PER_REALM: MAX_PER_REALM, CHARS_PER_REALM: CHARS_PER_REALM, realmOf: realmOf, signature: signature, upsert: upsert, removeSlot: removeSlot, loadRoster: loadRoster, importLegacy: importLegacy, refreshRealmList: refreshRealmList, refreshRealmDetail: refreshRealmDetail, population: population, classOf: classOf };
