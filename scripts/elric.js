@@ -1,8 +1,8 @@
 // Gatekeeper Elric at the west gate: stands at ease, turns to whoever walks up and salutes them now and then,
 // and turns back to watch the square. Talk and the quest live in scripts/quest-player.js (the player's side);
 // his quest marker and nameplate are drawn by the HUD (lib/ui-quest.js renderQuestTracker).
-import Q from './lib/data/quests.yml';
-const N = Q.npc;
+// distances mirror quests.yml npc, inlined so the spawn cell's boot never carries the quest book
+const N = { talkReach: 3.5, greetReach: 7, greetCooldown: 20, sayLength: 5 };
 
 export function onSpawn(ctx) {
   ctx.self.anim.base = { clip: 'Idle_FoldArms_Loop', weight: 1, loop: 'loop' }; // the mannequin's own guard-at-ease idle
