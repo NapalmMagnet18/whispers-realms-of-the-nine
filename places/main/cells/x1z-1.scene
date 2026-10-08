@@ -6,6 +6,20 @@ ashen-cathedral:
   physics: none
   primitive: {depth: 16, height: 26, kind: box, width: 36}
   tags: [blueprint]
+ashen-relic-table:
+  feetPosition: {x: 102, y: 5, z: -177}
+  id: ashen-relic-table
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 1, height: 1, kind: box, width: 2}
+  tags: [blueprint]
+ashen-yard:
+  feetPosition: {x: 128, y: 5, z: -185}
+  id: ashen-yard
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 64, height: 3, kind: box, width: 64}
+  tags: [blueprint]
 node-sunleaf-5:
   behavior: scripts/gather-node.js
   feetPosition: {x: 113.8, y: {terrain: 0}, z: -108.9}
