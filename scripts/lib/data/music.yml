@@ -14,12 +14,22 @@ themes:
   wilds: /cdn/music-instrumental-fantasy-adventure-orchestral.mp3
   battle: /cdn/moodboard-painterly-fantasy/music-tense-fantasy-battle-war-drums-low-brass-staccato-strings-loop.mp3
   crypt: /cdn/moodboard-gothic-horror/music-hollowcrypt-candlelit-vault-low-choir-slow-bells.mp3
+  drownedbell: /cdn/moodboard-gothic-horror/music-drowned-bell-underwater-choir-muffled-bells-slow-dread-loop.mp3
+  rootarchive: /cdn/moodboard-painterly-fantasy/music-root-archive-ancient-underground-forest-low-woodwinds-heartbeat-drum-loop.mp3
+  palechoir: /cdn/moodboard-gothic-horror/music-pale-choir-raid-cathedral-organ-dark-choir-epic-loop.mp3
+  emberheart: /cdn/moodboard-painterly-fantasy/music-emberheart-caldera-raid-volcanic-war-drums-brass-choir-epic-loop.mp3
+  assembly: /cdn/moodboard-painterly-fantasy/music-assembly-of-the-ninth-finale-cosmic-choir-strings-bells-epic-loop.mp3
 combat: { holdSeconds: 10, radius: 35, fade: 1.2 }   # battle theme while you strike or are struck, then back
 places:
   main-menu-land: menu
   main-menu: menu
   character-creation-land: creation
   hollowcrypt: crypt
+  drowned-bell: drownedbell
+  root-archive: rootarchive
+  pale-choir: palechoir
+  emberheart: emberheart
+  ninth-assembly: assembly
 regions:
   reach: reach
   ashen: crypt
