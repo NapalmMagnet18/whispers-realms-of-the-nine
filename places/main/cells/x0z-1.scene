@@ -36,6 +36,13 @@ hc-mar-boss:
   state: {arena: {r: 13, x: 45, z: -132}, boss: lampless_reeve, home: {x: 45, z: -132}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: "Reeve Ashcombe, the Lampless", unhurt: true, yaw: 180}
   tags: [enemy, boss, homecoming]
   ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Reeve Ashcombe, the Lampless</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+hc-mar-lamphouse:
+  feetPosition: {x: 45, y: 0.7, z: -147}
+  id: hc-mar-lamphouse
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 7, height: 8, kind: box, width: 9}
+  tags: [blueprint]
 node-sunleaf-15:
   behavior: scripts/gather-node.js
   feetPosition: {x: 38.1, y: {terrain: 0}, z: -80.9}

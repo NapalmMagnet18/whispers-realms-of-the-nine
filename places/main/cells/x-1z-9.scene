@@ -12,6 +12,13 @@ hc-vey-boss:
   state: {arena: {r: 13, x: -164, z: -1093}, boss: star_that_answered, home: {x: -164, z: -1093}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: The Star That Answered, unhurt: true, yaw: 180}
   tags: [enemy, boss, homecoming]
   ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Star That Answered</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+hc-vey-crater:
+  feetPosition: {x: -164, y: 120, z: -1108}
+  id: hc-vey-crater
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 10, height: 6, kind: box, width: 12}
+  tags: [blueprint]
 hc-vey-mark-0:
   feetPosition: {x: -187.4, z: -1092.5}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1,.7,1.6>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.7,1.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
