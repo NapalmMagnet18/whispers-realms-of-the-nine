@@ -1,0 +1,28 @@
+# spawn-scene v2 yaml x10z-6
+hollowcrypt-dead-7:
+  feetPosition: {x: 1288.856712573892, y: {terrain: 0}, z: -718.9076281624201}
+  id: hollowcrypt-dead-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
+  rotation: 371
+  scale: 1.35
+hollowcrypt-dead-8:
+  feetPosition: {x: 1297.9868836009757, y: {terrain: 0}, z: -748.3284152695031}
+  id: hollowcrypt-dead-8
+  physics: static
+  primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
+  rotation: 424
+  scale: 0.9
+hollowcrypt-dead-9:
+  feetPosition: {x: 1332.4940889325364, y: {terrain: 0}, z: -744.6938818821777}
+  id: hollowcrypt-dead-9
+  physics: static
+  primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
+  rotation: 477
+  scale: 1.05
+hollowcrypt-stone-5:
+  feetPosition: {x: 1326.6627738431068, y: {terrain: 0}, z: -723.3318210884196}
+  id: hollowcrypt-stone-5
+  physics: static
+  primitive: {kind: scripted, params: {r: 2.5999999999999996}, script: scripts/gen/rock.js}
+  rotation: 355

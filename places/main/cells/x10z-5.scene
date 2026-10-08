@@ -1,0 +1,43 @@
+# spawn-scene v2 yaml x10z-5
+hollowcrypt-dead-4:
+  feetPosition: {x: 1313.4527372622006, y: {terrain: 0}, z: -636.8074562438395}
+  id: hollowcrypt-dead-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
+  rotation: 212
+  scale: 0.9
+hollowcrypt-dead-5:
+  feetPosition: {x: 1308.6673839794776, y: {terrain: 0}, z: -671.8643490763043}
+  id: hollowcrypt-dead-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
+  rotation: 265
+  scale: 1.05
+hollowcrypt-dead-6:
+  feetPosition: {x: 1293.6305299789362, y: {terrain: 0}, z: -691.5452469258771}
+  id: hollowcrypt-dead-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
+  rotation: 318
+  scale: 1.2
+hollowcrypt-stone-3:
+  feetPosition: {x: 1328.0812130827144, y: {terrain: 0}, z: -678.0781665895704}
+  id: hollowcrypt-stone-3
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.4}, script: scripts/gen/rock.js}
+  rotation: 213
+hollowcrypt-stone-4:
+  feetPosition: {x: 1318.000000137355, y: {terrain: 0}, z: -699.9970350851308}
+  id: hollowcrypt-stone-4
+  physics: static
+  primitive: {kind: scripted, params: {r: 2}, script: scripts/gen/rock.js}
+  rotation: 284
+waystone-crypt-road:
+  feetPosition: {x: 1224, y: {terrain: 0}, z: -577}
+  id: waystone-crypt-road
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.6}, script: scripts/gen/rock.js}
+waystone-crypt-road-glow:
+  feetPosition: {x: 1224, y: {terrain: 3.2}, z: -577}
+  id: waystone-crypt-road-glow
+  light: {color: oklch(0.82 0.14 70), distance: 14, intensity: 2.2, kind: point}

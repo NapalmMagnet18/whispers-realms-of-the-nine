@@ -1,0 +1,8 @@
+# spawn-scene v2 yaml x-11z8
+sorrowfen-dead-1:
+  feetPosition: {x: -1345.7184103635573, y: {terrain: 0}, z: 991.8787171941714}
+  id: sorrowfen-dead-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
+  rotation: 41
+  scale: 1
