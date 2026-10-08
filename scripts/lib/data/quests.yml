@@ -3131,3 +3131,14 @@ VEY-20:
     copper: 40000
     xp: 5000
     items: [ninth_lamp_star]
+
+# ── Deepgrove bounty: the board at Rootwake Glade pays for Scab's crew at the bandit camp (-943,45). Repeat-free, one-time.
+BNT-01:
+  id: BNT-01
+  title: "Bounty: The Deepgrove Redistributors"
+  minLevel: 8
+  giverNpcId: glade-bounty-board
+  giverName: Deepgrove Bounty Board
+  objectives:
+    - { key: deepgrove_bandit, desc: "Put down Deepgrove raiders west of the glade", target: 3 }
+  rewards: { copper: 1800, xp: 320 }

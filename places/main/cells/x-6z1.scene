@@ -4,6 +4,18 @@ amb-thornhollow:
   feetPosition: {x: -720, y: {terrain: 3}, z: 70}
   id: amb-thornhollow
   tags: [ambience]
+glade-bounty-board:
+  feetPosition: {x: -742, y: {terrain: 0}, z: 72}
+  id: glade-bounty-board
+  physics: static
+  primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
+  rotation: 90
+  state: {npcName: Deepgrove Bounty Board}
+  tags: [quest-npc, bounty-board, rootwake-glade]
+glade-bounty-board-lamp:
+  feetPosition: {x: -742, y: {terrain: 2.4}, z: 72}
+  id: glade-bounty-board-lamp
+  light: {color: "#f2b04a", distance: 9, intensity: 1.6, kind: point}
 glade-npc-ell:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -726, y: {terrain: 0}, z: 76}
