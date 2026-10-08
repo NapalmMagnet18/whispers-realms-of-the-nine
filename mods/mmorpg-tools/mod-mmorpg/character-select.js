@@ -28,9 +28,9 @@ export function getModelUrl(raceIndex, genderIndex) {
 export function getIdleClip(raceIndex, genderIndex) {
   const race = RACES[raceIndex ?? 0];
   if ((genderIndex ?? 0) === 0) {
-    return race.maleIdleClip || 'Idle_11';
+    return race.maleIdleClip || 'Idle';
   }
-  return race.femaleIdleClip || 'Idle_11';
+  return race.femaleIdleClip || 'Idle';
 }
 
 export function getPreviewModelUrl(raceIndex, genderIndex) {
