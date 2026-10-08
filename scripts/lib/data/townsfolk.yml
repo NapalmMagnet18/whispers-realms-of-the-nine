@@ -74,12 +74,12 @@ toma:
     - "Master Brannoc says I hammer like a woodpecker. Fast, he means. I'm fairly sure he means fast."
     - "Hold your hand over the channel a moment. Feel that? That's the whole Reaches, humming."
 hesk:
-  name: Old Hesk
+  name: Hesk the Cobbler
   lines:
-    - "Sixty years on Bellward Lane. Sixty. And now there's a gap I can't account for."
+    - "Sixty years mending boots on Bellward Lane. The lane ends at Eleven. Always has. Don't ask me twice."
     - "Mind the furnace by the west wall. It smokes when nobody lights it."
 pell:
   name: Widow Pell
   lines:
-    - "Bread on Sundays. I keep baking an extra loaf. I don't know for whom."
+    - "I keep baking an extra loaf. A courier came for it, three days running. For Thirteen, he said."
     - "The bell rings thirteen some nights. Nobody else hears it."
