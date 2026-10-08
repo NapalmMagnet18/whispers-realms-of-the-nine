@@ -125,3 +125,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Gullrest fish market at (238,1427) (nam-market-*, scripts/gen/harbor.js) + Hask Brinewell fishmonger (townsfolk). Decorative; no vendor wired.
 - 2026-10-08: Peddler's caravan beside road-reedhaven at (-241,275) (march-caravan-*, scripts/gen/caravan.js: wagon+hitched mule, goods rug) + Mott Farwander peddler (townsfolk, talk only). Decorative; no vendor wired.
 - 2026-10-08: Forsaken blood shrine beside road-starfall at (-49,-563) (wild-blood-shrine*, scripts/gen/shrine.js, clear-scatter mark shrine-clear). Decorative.
+- 2026-10-08: Bandit camp south of road-deepgrove at (-943,45) (deep-bandit-*, scripts/gen/camp.js: palisade, 3 tents, lookout, cookfire+spit, loot chest) + Scab (townsfolk talk). Decorative; no hostile bandits wired.
