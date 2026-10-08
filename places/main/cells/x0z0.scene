@@ -461,6 +461,13 @@ smithy/smithy-torch:
   parent: smithy
   rotation: {pitch: 0, roll: 14, yaw: 0}
   tags: [tool-prop]
+townhouse:
+  children: [{feetPosition: {x: 1.5, y: 1.6, z: -1}, id: townhouse-hearth, light: {color: oklch(0.82 0.14 60), distance: 9, intensity: 1.8, kind: point}}, {feetPosition: {x: 1, y: 4.8, z: 0}, id: townhouse-upstairs, light: {color: oklch(0.82 0.14 60), distance: 8, intensity: 1.4, kind: point}}, {feetPosition: {x: -2.1, y: 2.4, z: 3.3}, id: townhouse-door-lamp, light: {color: oklch(0.85 0.15 65), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: 14, y: 4, z: -38}
+  id: townhouse
+  model: /cdn/value.444ed3715c3d2e201e60f9e3f4cb0d79fa1f4f289a4f9ca558c57903baebd51c.glb
+  physics: {body: static, collider: mesh}
+  tags: [building]
 windmill:
   children: [{feetPosition: {x: 0, y: 3.8, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 3, kind: point}}]
   feetPosition: {x: -30, y: {terrain: 0}, z: 50}
