@@ -747,6 +747,12 @@ object/x8674eda7bebd3d98/0:
   id: object/x8674eda7bebd3d98/0
   state: {ability: firebolt, damage: 14, dir: {x: 0, y: 0, z: -1}, kind: fire, ownerId: null, range: 40, slow: 0, slowFor: 0, speed: 22, targetId: training-dummy-1, turn: 540}
   tags: [projectile, temp]
+object/xc806bdd459c909e3/0:
+  behavior: scripts/missile.js
+  feetPosition: {x: 14, y: 5.3, z: 16.9}
+  id: object/xc806bdd459c909e3/0
+  state: {ability: firebolt, damage: 14, dir: {x: 0, y: 0, z: -1}, kind: fire, ownerId: null, range: 40, slow: 0, slowFor: 0, speed: 22, targetId: training-dummy-1, turn: 540}
+  tags: [projectile, temp]
 object/xe7776f5552ea9196/0:
   behavior: scripts/missile.js
   castShadow: false
