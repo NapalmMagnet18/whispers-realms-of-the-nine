@@ -9,6 +9,7 @@
 # both gates; Dren, Bram, Vale and Mira come out from the Reach. MAR-08 opens Q001 for Marchborn heroes (see origin).
 MAR-01:
   id: MAR-01
+  race: 0   # Marchborn origin only
   title: The Bell Before Dawn
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -25,6 +26,7 @@ MAR-01:
 
 MAR-02:
   id: MAR-02
+  race: 0   # Marchborn origin only
   title: A Face in the Crowd
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -43,6 +45,7 @@ MAR-02:
 
 MAR-03:
   id: MAR-03
+  race: 0   # Marchborn origin only
   title: The Empty Door
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -61,6 +64,7 @@ MAR-03:
 
 MAR-04:
   id: MAR-04
+  race: 0   # Marchborn origin only
   title: Three Names Too Few
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -79,6 +83,7 @@ MAR-04:
 
 MAR-05:
   id: MAR-05
+  race: 0   # Marchborn origin only
   title: Keep the Light
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -97,6 +102,7 @@ MAR-05:
 
 MAR-06:
   id: MAR-06
+  race: 0   # Marchborn origin only
   title: A Ledger of Ash
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -115,6 +121,7 @@ MAR-06:
 
 MAR-07:
   id: MAR-07
+  race: 0   # Marchborn origin only
   title: No Grave, No Record
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -134,6 +141,7 @@ MAR-07:
 
 MAR-08:
   id: MAR-08
+  race: 0   # Marchborn origin only
   title: Open the Eastern Gate
   zone: Lantern Ward
   group: "Marchfolk Origin: Names on a Census"
@@ -152,6 +160,7 @@ MAR-08:
 
 THR-01:
   id: THR-01
+  race: 1   # Briarkin (Thren) origin only
   title: A Seed Without Spring
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
@@ -169,6 +178,7 @@ THR-01:
 
 THR-02:
   id: THR-02
+  race: 1   # Briarkin (Thren) origin only
   title: The Branch of Hands
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
@@ -186,6 +196,7 @@ THR-02:
 
 THR-03:
   id: THR-03
+  race: 1   # Briarkin (Thren) origin only
   title: Hungry Bark
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
@@ -204,6 +215,7 @@ THR-03:
 
 THR-04:
   id: THR-04
+  race: 1   # Briarkin (Thren) origin only
   title: Gatherer of Last Words
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
@@ -222,6 +234,7 @@ THR-04:
 
 THR-05:
   id: THR-05
+  race: 1   # Briarkin (Thren) origin only
   title: The Root Below
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
@@ -240,6 +253,7 @@ THR-05:
 
 THR-06:
   id: THR-06
+  race: 1   # Briarkin (Thren) origin only
   title: What We Do Not Burn
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
@@ -258,6 +272,7 @@ THR-06:
 
 THR-07:
   id: THR-07
+  race: 1   # Briarkin (Thren) origin only
   title: The Walk of Witnesses
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
@@ -277,6 +292,7 @@ THR-07:
 
 THR-08:
   id: THR-08
+  race: 1   # Briarkin (Thren) origin only
   title: Between Grove and Bell
   zone: Rootwake Glade
   group: "Thren Origin: The Root That Learned a Name"
