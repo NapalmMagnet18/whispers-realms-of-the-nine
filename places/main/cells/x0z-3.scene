@@ -1,0 +1,9 @@
+# spawn-scene v2 yaml x0z-3
+far-spire:
+  feetPosition: {x: 30, y: {terrain: -2}, z: -360}
+  id: far-spire
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/spire.js}
+  rotation: 20
+  tags: [landmark]
+  visibleRange: {max: 2000, min: 0}

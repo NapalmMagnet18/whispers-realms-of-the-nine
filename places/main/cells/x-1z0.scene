@@ -1,0 +1,70 @@
+# spawn-scene v2 yaml x-1z0
+thornwood-pines:
+  feetPosition: {x: -130, y: {terrain: 0}, z: -30}
+  id: thornwood-pines
+  scatter: {bounds: {radius: 72, shape: circle}, count: 420, templates: [{physics: static, primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 1}, weight: 3}, {physics: static, primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 2}, weight: 3}, {physics: static, primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 3}, weight: 2}, {physics: static, primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 4}, weight: 1}, {physics: static, primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js, seed: 5}, weight: 0.4}], variation: {scale: [0.8, 1.35], yaw: [0, 360]}}
+  tags: [forest]
+timber-0:
+  feetPosition: {x: -96, y: {terrain: 0}, z: 12}
+  id: timber-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 30}
+  rotation: 0
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-1:
+  feetPosition: {x: -104, y: {terrain: 0}, z: -4}
+  id: timber-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 31}
+  rotation: 47
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-2:
+  feetPosition: {x: -88, y: {terrain: 0}, z: -6}
+  id: timber-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 32}
+  rotation: 94
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-3:
+  feetPosition: {x: -114, y: {terrain: 0}, z: 2}
+  id: timber-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 33}
+  rotation: 141
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-4:
+  feetPosition: {x: -102, y: {terrain: 0}, z: -22}
+  id: timber-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 34}
+  rotation: 188
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-5:
+  feetPosition: {x: -120, y: {terrain: 0}, z: -12}
+  id: timber-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 35}
+  rotation: 235
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-6:
+  feetPosition: {x: -82, y: {terrain: 0}, z: 6}
+  id: timber-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 36}
+  rotation: 282
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-7:
+  feetPosition: {x: -110, y: {terrain: 0}, z: -32}
+  id: timber-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 37}
+  rotation: 329
+  state: {resource: timber}
+  tags: [timber, gatherable]
