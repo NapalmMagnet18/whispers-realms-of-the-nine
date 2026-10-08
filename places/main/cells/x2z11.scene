@@ -148,12 +148,47 @@ nam-lens:
   rotation: 0
   state: {mark: false_beacon, quest: NAM-03, say: "Under the great lens, a navigation hymn on oiled parchment. One verse has been cut away, neat as a knife makes it.", sound: /cdn/moodboard-painterly-fantasy/sfx-paper-unfold.mp3, title: Lighthouse Lens, verb: Inspect}
   tags: [quest-mark, breakwater-strand]
+nam-netpole-0:
+  feetPosition: {x: 202.4, y: 8.16, z: 1407.99}
+  id: nam-netpole-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: netpole}, script: scripts/gen/stilt.js}
+  rotation: {yaw: 197}
+  tags: [strand-dressing]
+nam-netpole-1:
+  feetPosition: {x: 241.5, y: 3.29, z: 1395.67}
+  id: nam-netpole-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: netpole}, script: scripts/gen/stilt.js}
+  rotation: {yaw: 18}
+  tags: [strand-dressing]
 nam-phantom-camp:
   behavior: scripts/scavengers.js
   feetPosition: {x: 249, y: {terrain: 0}, z: 1408}
   id: nam-phantom-camp
   state: {crew: [{id: nam-phantom-1, x: 243, yaw: 30, z: 1404}, {id: nam-phantom-2, x: 252, yaw: 210, z: 1410}, {id: nam-phantom-3, x: 249, yaw: -40, z: 1402}], look: {color: oklch(0.78 0.08 210), emissive: oklch(0.45 0.1 215), emissiveIntensity: 0.8, opacity: 0.7, transparent: true}, model: /cdn/model-humanoid-fantasy-drowned-sailor-ghost-tattered-coat-seaweed.glb, name: Phantom Current, respawnAt: {}, tallyKey: phantom_current}
   tags: [nam-phantom-camp]
+nam-rack-0:
+  feetPosition: {x: 205.91, y: 6.84, z: 1415.5}
+  id: nam-rack-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: rack, seed: 4}, script: scripts/gen/stilt.js}
+  rotation: {yaw: 220}
+  tags: [strand-dressing]
+nam-rack-1:
+  feetPosition: {x: 212.58, y: 7.83, z: 1421.32}
+  id: nam-rack-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: rack, seed: 7}, script: scripts/gen/stilt.js}
+  rotation: {yaw: 234}
+  tags: [strand-dressing]
+nam-rack-2:
+  feetPosition: {x: 242.88, y: 3.01, z: 1404.2}
+  id: nam-rack-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: rack, seed: 9}, script: scripts/gen/stilt.js}
+  rotation: {yaw: -1}
+  tags: [strand-dressing]
 nam-refrain:
   feetPosition: {x: 250.2, y: {terrain: 0}, z: 1413.4}
   id: nam-refrain
@@ -245,6 +280,39 @@ nam-skiff:
   rotation: -30
   state: {mark: trapped_skiff, quest: NAM-04, say: "Wood groans on rock, then gives. The skiff floats free and swings round, bow pointing inland.", sound: /cdn/moodboard-painterly-fantasy/sfx-wooden-boat-scrape-rocks.mp3, title: Trapped Skiff, verb: Shove free}
   tags: [quest-mark, breakwater-strand]
+nam-stilt-0:
+  feetPosition: {x: 206.46, y: 1.55, z: 1410.26}
+  id: nam-stilt-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: house, seed: 1}, script: scripts/gen/stilt.js}
+  rotation: {yaw: 118}
+  tags: [strand-dressing]
+nam-stilt-0-light:
+  feetPosition: {x: 209.7270284592609, y: 3.4028578327450285, z: 1408.5256547227239}
+  id: nam-stilt-0-light
+  light: {color: oklch(0.85 0.1 70), distance: 7, intensity: 6, kind: point}
+nam-stilt-1:
+  feetPosition: {x: 211.16, y: 1.37, z: 1415.87}
+  id: nam-stilt-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: house, seed: 2}, script: scripts/gen/stilt.js}
+  rotation: {yaw: 142}
+  tags: [strand-dressing]
+nam-stilt-1-light:
+  feetPosition: {x: 213.44230549297336, y: 3.2242589540949727, z: 1412.9533494751333}
+  id: nam-stilt-1-light
+  light: {color: oklch(0.85 0.1 70), distance: 7, intensity: 6, kind: point}
+nam-stilt-2:
+  feetPosition: {x: 239.5, y: 0.93, z: 1400.16}
+  id: nam-stilt-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: house, seed: 3}, script: scripts/gen/stilt.js}
+  rotation: {yaw: -84}
+  tags: [strand-dressing]
+nam-stilt-2-light:
+  feetPosition: {x: 235.823854345619, y: 2.7822303894131073, z: 1400.5470543605795}
+  id: nam-stilt-2-light
+  light: {color: oklch(0.85 0.1 70), distance: 7, intensity: 6, kind: point}
 nam-tidepool:
   feetPosition: {x: 234, y: {terrain: -0.15}, z: 1447}
   id: nam-tidepool
