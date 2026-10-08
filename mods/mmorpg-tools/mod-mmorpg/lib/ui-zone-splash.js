@@ -8,6 +8,7 @@ var ART = {
   deepwood: ['/cdn/04-briarwild-loading-u2dtrlb01.webp', '/cdn/chatgpt-image-oct-7-2026-10-01-09-pm-2-u43sdvpt1.webp'],
   hollowcrypt: ['/cdn/05-hollowcrypt-loading-u4vyudn4f.webp'],
   sorrowfen: ['/cdn/06-sorrowfen-loading-u1aqmb6c3.webp'],
+  tideglass: ['/cdn/value.48a63d4ebcc3070c23694e1f3497fc42e954e87a15d077f3e3755e10f52930d2.png'],
   emberstone: ['/cdn/07-emberstone-loading-u7mciofoy.webp'],
   ashfall: ['/cdn/07-emberstone-loading-u7mciofoy.webp'],
   saltmere: ['/cdn/chatgpt-image-oct-7-2026-10-01-08-pm-1-u11atau6r.webp'],
@@ -27,6 +28,7 @@ var CIRCLES = [
   { art: 'saltmere', x: 250, z: 1430, r: 60 },      // Gullrest
   { art: 'saltmere', x: 300, z: 1650, r: 420 },     // Saltmere Coast
   { art: 'hollowcrypt', x: 1350, z: -700, r: 330 },
+  { art: 'tideglass', x: -1000, z: 1920, r: 340 },
   { art: 'sorrowfen', x: -1300, z: 950, r: 520 },
 ];
 function artAt(x, z) {
