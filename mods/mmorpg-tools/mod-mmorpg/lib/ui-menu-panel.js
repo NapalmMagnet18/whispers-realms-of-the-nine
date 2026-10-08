@@ -11,6 +11,10 @@ const { renderSettingsTab } = require('./ui-settings.js');
 const { renderReputationTab } = require('./ui-reputation.js');
 const { ITEM_LOOKUP } = require('./class-items.js');
 const { QUEST_DATABASE } = require('./quest-data.js');
+const { frame: _frame, rule: _rule } = require('./ui-art.js');
+// brass kit pieces shared by every window in this panel
+var _PLATE = 'position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:3px 18px;background:linear-gradient(#3a2a1c,#1a120c);border:1px solid #c9a46a;box-shadow:inset 0 0 0 1px #6b4a2f,0 2px 6px #000;color:#f2b04a;font:600 14px Cinzel,serif;letter-spacing:1px;white-space:nowrap;text-shadow:0 1px 2px #000;z-index:30;pointer-events:none;';
+var _EMPTY_SLOT = 'border:1px solid rgba(201,164,106,.28);background:radial-gradient(rgba(42,30,22,.92),rgba(10,8,6,.95));';
 
 var STAT_NAMES = ['Strength','Dexterity','Intelligence','Wisdom','Vitality','Endurance','Luck','Spirit'];
 var STAT_KEYS  = ['strength','dexterity','intelligence','wisdom','vitality','endurance','luck','spirit'];
@@ -92,7 +96,7 @@ export function buildEqTooltip(item) {
 
 export function eqSlot(label, eqItem, slotKey, size) {
   var sz = size || 44;
-  var imgSz = sz - 8;
+  var imgSz = sz - 14;
   var content = '';
   var clickAttr = '';
   var tooltipHtml = '';
@@ -106,15 +110,15 @@ export function eqSlot(label, eqItem, slotKey, size) {
       content = '<img src="' + ph + '" style="width:' + imgSz + 'px;height:' + imgSz + 'px;object-fit:contain;-webkit-user-drag:none;user-select:none;pointer-events:none;opacity:0.15;filter:grayscale(1);" />';
     }
   }
-  var hoverEnter = "this.style.borderColor='rgba(200,175,120,0.6)';var t=this.querySelector('.eq-tooltip');if(t)t.style.display='block';";
-  var hoverLeave = "this.style.borderColor='rgba(55,45,35,0.5)';var t=this.querySelector('.eq-tooltip');if(t)t.style.display='none';";
+  var hoverEnter = "this.style.filter='brightness(1.3)';var t=this.querySelector('.eq-tooltip');if(t)t.style.display='block';";
+  var hoverLeave = "this.style.filter='';var t=this.querySelector('.eq-tooltip');if(t)t.style.display='none';";
   return '<div style="display:flex;flex-direction:column;align-items:center;gap:1px;">'
-    + '<div style="position:relative;width:' + sz + 'px;height:' + sz + 'px;background:rgba(80,75,70,0.35);border:2px solid rgba(55,45,35,0.5);border-radius:4px;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);"'
+    + '<div style="position:relative;width:' + sz + 'px;height:' + sz + 'px;box-sizing:border-box;' + _frame('equipSlot', 6, 'radial-gradient(rgba(42,30,22,.92),rgba(10,8,6,.95))') + 'display:flex;align-items:center;justify-content:center;transition:filter .15s;"'
     + clickAttr
     + ' onmouseenter="' + hoverEnter + '" onmouseleave="' + hoverLeave + '">'
     + tooltipHtml
     + content + '</div>'
-    + '<div style="font-size:14px;color:rgba(180,155,100,0.5);font-family:Cinzel,serif;letter-spacing:0.5px;text-transform:uppercase;">' + label + '</div></div>';
+    + '<div style="font-size:12px;color:rgba(201,164,106,0.75);font-family:Cinzel,serif;letter-spacing:0.5px;text-transform:uppercase;">' + label + '</div></div>';
 }
 
 // ─── TAB: CHARACTER ───
@@ -189,7 +193,7 @@ export function statTooltip(innerHtml, tipText) {
     + 'z-index:99999;background:rgba(8,5,2,0.97);border:1px solid rgba(160,130,60,0.5);'
     + 'border-radius:4px;padding:6px 10px;max-width:220px;min-width:140px;pointer-events:none;'
     + 'box-shadow:0 4px 18px rgba(0,0,0,0.85),0 0 8px rgba(160,130,60,0.15);'
-    + 'font-family:Cinzel,serif;font-size:11px;color:rgba(200,185,140,0.9);line-height:1.35;'
+    + 'font-family:Cinzel,serif;font-size:12px;color:rgba(200,185,140,0.9);line-height:1.35;'
     + 'text-align:center;letter-spacing:0.3px;white-space:normal;';
   return '<div data-interactive style="position:relative;cursor:default;" '
     + 'onmouseenter="var t=this.querySelector(\'.stat-tip\');if(t){var r=this.getBoundingClientRect();var vh=window.innerHeight;var tipH=t.offsetHeight||80;var ty=r.top;if(ty+tipH>vh-8){ty=vh-8-tipH;}if(ty<8){ty=8;}t.style.left=(r.left-230)+\'px\';if(r.left-230<4){t.style.left=(r.right+8)+\'px\';}t.style.top=ty+\'px\';t.style.display=\'block\';}" '
@@ -345,23 +349,23 @@ export function renderInvTab(s) {
         cc = '<img src="' + item.icon + '" draggable="true" ondragstart="window._dragSpellId=\'' + esc(item.id || '') + '\';event.dataTransfer.setData(\'text/plain\',\'' + esc(item.id || '') + '\')" ondragend="window._dragSpellId=null;" style="width:100%;height:100%;object-fit:contain;user-select:none;pointer-events:none;-webkit-user-drag:none;" />';
       }
       if (item.count && item.count > 1)
-        cc += '<div style="position:absolute;bottom:1px;right:2px;font-size:9px;color:rgba(220,190,100,0.9);font-family:Cinzel,serif;text-shadow:0 1px 3px rgba(0,0,0,0.95);pointer-events:none;font-weight:bold;">' + item.count + '</div>';
+        cc += '<div style="position:absolute;bottom:1px;right:2px;font-size:12px;color:rgba(220,190,100,0.9);font-family:Cinzel,serif;text-shadow:0 1px 3px rgba(0,0,0,0.95);pointer-events:none;font-weight:bold;">' + item.count + '</div>';
       var tooltipName = esc(item.name || 'Item');
       var tooltipDesc = (item.id === 'runestone' ? 'Left click to use. ' : item.id === 'war-banner' ? 'Left click to plant. ' : item.id === 'health-potion' ? 'Left click to consume. ' : item.id === 'mana-potion' ? 'Left click to consume. ' : (item.stats && (item.stats.healOverTime || item.stats.manaOverTime)) ? 'Left click to consume. ' : '') + esc(item.description || '');
-      var questItemLine = item.questItem ? '<div style="font-family:Cinzel,serif;font-size:11px;color:rgba(160,100,220,0.95);margin-top:2px;letter-spacing:0.5px;text-shadow:0 0 6px rgba(120,60,180,0.3);">Quest Item</div>' : '';
-      var sellLine = (item.sellable && item.sellPrice) ? '<div style="font-family:Cinzel,serif;font-size:10px;color:rgba(180,160,80,0.7);margin-top:3px;">Right click to sell (' + item.sellPrice + ' gold)</div>' : '';
+      var questItemLine = item.questItem ? '<div style="font-family:Cinzel,serif;font-size:12px;color:rgba(160,100,220,0.95);margin-top:2px;letter-spacing:0.5px;text-shadow:0 0 6px rgba(120,60,180,0.3);">Quest Item</div>' : '';
+      var sellLine = (item.sellable && item.sellPrice) ? '<div style="font-family:Cinzel,serif;font-size:12px;color:rgba(180,160,80,0.7);margin-top:3px;">Right click to sell (' + item.sellPrice + ' gold)</div>' : '';
       tooltipHtml = '<div class="inv-tooltip" style="display:none;position:absolute;top:calc(100% + 4px);left:0;z-index:500;background:rgba(8,6,12,0.96);border:1px solid rgba(120,100,60,0.5);border-radius:4px;padding:6px 10px;max-width:200px;min-width:120px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.8);">'
         + '<div style="font-family:Cinzel,Palatino,Georgia,serif;font-size:13px;color:rgba(220,190,100,0.95);letter-spacing:0.5px;">' + tooltipName + '</div>'
         + questItemLine
-        + '<div style="font-family:Cinzel,serif;font-size:10px;color:rgba(180,165,130,0.7);margin-top:3px;line-height:1.3;">' + tooltipDesc + '</div>'
+        + '<div style="font-family:Cinzel,serif;font-size:12px;color:rgba(180,165,130,0.7);margin-top:3px;line-height:1.3;">' + tooltipDesc + '</div>'
         + sellLine + '</div>';
     } else {
       cc = '<span style="font-size:14px;color:rgba(200,175,120,0.04);pointer-events:none;">' + r + '</span>';
     }
     var rightClickAttr = (item && item.sellable && item.sellPrice) ? ' oncontextmenu="event.preventDefault();sendAction(\'sellItem\',{index:' + i + '});return false;"' : '';
-    gridCells += '<div style="width:100%;aspect-ratio:1;background:rgba(12,10,8,0.95);border:2px solid rgba(55,45,35,0.5);border-radius:2px;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);transition:border-color 0.15s;"' + clickAttr + rightClickAttr
-      + ' onmouseenter="this.style.borderColor=\'rgba(200,175,120,0.5)\';var tt=this.querySelector(\'.inv-tooltip\');if(tt)tt.style.display=\'block\';"'
-      + ' onmouseleave="this.style.borderColor=\'rgba(55,45,35,0.5)\';var tt=this.querySelector(\'.inv-tooltip\');if(tt)tt.style.display=\'none\';">'
+    gridCells += '<div style="width:100%;aspect-ratio:1;box-sizing:border-box;' + (item ? _frame('slot', 5, 'radial-gradient(rgba(42,30,22,.92),rgba(10,8,6,.95))') : _EMPTY_SLOT + 'border-radius:2px;') + 'display:flex;align-items:center;justify-content:center;position:relative;box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);transition:filter 0.15s;"' + clickAttr + rightClickAttr
+      + ' onmouseenter="this.style.filter=\'brightness(1.3)\';var tt=this.querySelector(\'.inv-tooltip\');if(tt)tt.style.display=\'block\';"'
+      + ' onmouseleave="this.style.filter=\'\';var tt=this.querySelector(\'.inv-tooltip\');if(tt)tt.style.display=\'none\';">'
       + cc + tooltipHtml + '</div>';
   }
   var gold = s.gold ?? 0;
@@ -688,8 +692,8 @@ export function renderQuestsTab(s) {
         }
       }
       var summaryStyle = summaryIsReturn
-        ? 'font-family:Cinzel,serif;font-size:11px;color:rgba(100,220,130,0.95);margin-top:2px;line-height:1.3;text-shadow:0 0 6px rgba(100,220,130,0.2);'
-        : 'font-family:Cinzel,serif;font-size:10px;color:rgba(180,165,130,0.65);margin-top:2px;line-height:1.3;';
+        ? 'font-family:Cinzel,serif;font-size:12px;color:rgba(100,220,130,0.95);margin-top:2px;line-height:1.3;text-shadow:0 0 6px rgba(100,220,130,0.2);'
+        : 'font-family:Cinzel,serif;font-size:12px;color:rgba(180,165,130,0.65);margin-top:2px;line-height:1.3;';
       html += '<div style="position:relative;padding:6px 8px;margin-bottom:4px;background:rgba(40,30,20,0.4);border:1px solid rgba(80,65,40,0.3);border-radius:4px;cursor:default;transition:border-color 0.15s,background 0.15s;" data-interactive onmouseenter="' + hoverEnter + '" onmouseleave="' + hoverLeave + '">'
         + tooltip
         + '<div style="font-family:Cinzel,serif;font-size:13px;color:rgba(220,190,100,0.95);font-weight:bold;">' + esc(q.name || q.title || 'Quest') + '</div>'
@@ -735,23 +739,23 @@ export function wrapMapOverlay(title, subtitle, svgContent) {
     + 'background:rgba(0,0,0,0.6);pointer-events:auto;'
     + '">'
     + '<div style="'
-    + 'width:540px;padding:20px;'
-    + 'background:linear-gradient(135deg,rgba(12,6,18,0.96),rgba(8,4,14,0.94));'
-    + 'border:2px solid rgba(100,50,140,0.5);border-radius:8px;'
-    + 'box-shadow:0 8px 40px rgba(0,0,0,0.8),0 0 20px rgba(80,40,120,0.2);'
+    + 'width:540px;padding:18px 14px 10px;'
+    + _frame('window', 16, 'rgba(14,11,8,.94)')
+    + 'box-shadow:0 8px 40px rgba(0,0,0,0.8);'
     + 'position:relative;'
     + '">'
     // Close button
     + '<div data-interactive onclick="sendAction(\'toggleWorldMap\')" style="'
-    + 'position:absolute;top:8px;right:12px;cursor:pointer;font-size:18px;font-weight:bold;'
-    + 'color:rgba(160,100,220,0.9);text-shadow:0 0 6px rgba(160,100,220,0.4);transition:all 0.15s;'
-    + '" onmouseenter="this.style.color=\'rgba(200,140,255,1)\'" onmouseleave="this.style.color=\'rgba(160,100,220,0.9)\'">✕</div>'
+    + 'position:absolute;top:-6px;right:-6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;font-weight:bold;'
+    + 'background:#7a2e22;border:1px solid #c9a46a;color:#e8d9b5;box-shadow:0 2px 4px #000;transition:all 0.15s;z-index:31;'
+    + '" onmouseenter="this.style.background=\'#9a3e2e\'" onmouseleave="this.style.background=\'#7a2e22\'">✕</div>'
     // Title
-    + '<div style="font-family:Cinzel,Palatino,Georgia,serif;font-size:22px;color:rgba(220,190,100,0.95);text-shadow:0 0 8px rgba(200,170,80,0.2),0 2px 3px rgba(0,0,0,0.8);letter-spacing:2px;margin-bottom:12px;text-align:center;">' + title + '</div>'
+    + '<div style="' + _PLATE + 'font-size:16px;">' + title + '</div>'
+    + _rule('fadeCross', '70%', 18)
     // SVG Map content
     + svgContent
     // Subtitle hint
-    + '<div style="font-size:11px;color:rgba(180,155,100,0.4);font-family:Cinzel,serif;margin-top:6px;text-align:center;">' + subtitle + '</div>'
+    + '<div style="font-size:12px;color:rgba(232,217,181,0.6);font-family:Georgia,serif;margin-top:6px;text-align:center;">' + subtitle + '</div>'
     + '</div>'
     + '</div>';
 }
@@ -1024,7 +1028,7 @@ export function renderMusicTab(s) {
       + 'border:1px solid ' + (isActive ? 'rgba(140,80,200,0.4)' : 'transparent') + ';'
       + 'transition:all 0.15s;'
       + '" onmouseenter="this.style.background=\'rgba(80,30,120,0.2)\';this.style.borderColor=\'rgba(140,80,200,0.3)\'"'
-      + ' onmouseleave="this.style.background=\'' + (isActive ? 'linear-gradient(135deg,rgba(80,30,120,0.35),rgba(60,20,100,0.25))' : 'transparent') + '\';this.style.borderColor=\'' + (isActive ? 'rgba(140,80,200,0.4)' : 'transparent') + '\'">'
+      + ' onmouseleave="this.style.background=\'' + (isActive ? 'linear-gradient(135deg,rgba(80,30,120,0.35),rgba(60,20,100,0.25))' : 'transparent') + '\';this.style.outlineColor=\'' + (isActive ? 'rgba(140,80,200,0.4)' : 'transparent') + '\'">'
       + '<div style="font-family:Cinzel,serif;font-size:14px;color:' + (isActive ? 'rgba(220,180,255,0.95)' : 'rgba(180,150,210,0.75)') + ';'
       + 'text-shadow:0 1px 2px rgba(0,0,0,0.8);letter-spacing:0.5px;">' + (i + 1) + '. ' + t.name + '</div>'
       + '</div>';
@@ -1073,9 +1077,8 @@ export function renderProfessionsTab(s) {
   for (var i = 0; i < profs.length; i++) {
     var pname = profs[i];
     var info = PROF_INFO[pname] || { icon: '/cdn/icon-dark-gothic-painted-anvil-hammer.png', desc: 'A learned trade.' };
-    html += '<div style="display:flex;align-items:flex-start;gap:14px;padding:14px 16px;margin-bottom:10px;'
-      + 'background:linear-gradient(135deg,rgba(60,50,40,0.7),rgba(40,35,30,0.5));'
-      + 'border:1px solid rgba(180,160,120,0.25);border-radius:6px;">'
+    html += '<div style="display:flex;align-items:flex-start;gap:14px;padding:4px 6px;margin-bottom:10px;'
+      + _frame('skillRow', 10, 'linear-gradient(135deg,rgba(42,30,22,.92),rgba(20,14,10,.9))') + '">'
       + '<img src="' + info.icon + '" style="width:48px;height:48px;flex-shrink:0;-webkit-user-drag:none;user-select:none;'
       + 'filter:drop-shadow(0 0 6px rgba(200,180,120,0.3));" />'
       + '<div style="flex:1;min-width:0;">'
@@ -1087,7 +1090,7 @@ export function renderProfessionsTab(s) {
 
   if (slotsUsed < maxSlots) {
     html += '<div style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 16px;margin-bottom:10px;'
-      + 'border:1px dashed rgba(180,160,120,0.2);border-radius:6px;opacity:0.5;">'
+      + 'border:1px dashed rgba(201,164,106,.28);background:radial-gradient(rgba(42,30,22,.6),rgba(10,8,6,.6));border-radius:4px;opacity:0.7;">'
       + '<div style="font-family:Cinzel,serif;font-size:14px;color:rgba(180,170,150,0.5);">Empty Slot — Visit a master crafter to learn</div>'
       + '</div>';
   }
@@ -1148,7 +1151,7 @@ export function renderHighscoresTab(s) {
 
   // Race dropdown
   html += '<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;">'
-    + '<div style="font-size:10px;color:rgba(180,155,100,0.35);font-family:Cinzel,serif;letter-spacing:1px;">RACE</div>'
+    + '<div style="font-size:12px;color:rgba(180,155,100,0.35);font-family:Cinzel,serif;letter-spacing:1px;">RACE</div>'
     + '<select data-interactive onchange="sendAction(\'setHighscoreFilter\',{race:this.value})" '
     + 'style="' + selectStyle + '">'
     + raceOptions
@@ -1156,7 +1159,7 @@ export function renderHighscoresTab(s) {
 
   // Class dropdown
   html += '<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;">'
-    + '<div style="font-size:10px;color:rgba(180,155,100,0.35);font-family:Cinzel,serif;letter-spacing:1px;">CLASS</div>'
+    + '<div style="font-size:12px;color:rgba(180,155,100,0.35);font-family:Cinzel,serif;letter-spacing:1px;">CLASS</div>'
     + '<select data-interactive onchange="sendAction(\'setHighscoreFilter\',{class:this.value})" '
     + 'style="' + selectStyle + '">'
     + classOptions
@@ -1205,7 +1208,7 @@ export function renderHighscoresTab(s) {
       + '<div style="width:28px;font-size:14px;font-weight:bold;color:' + rankColor + ';font-family:Cinzel,serif;">' + rank + '</div>'
       + '<div style="flex:1;min-width:0;">'
       + '<div style="font-size:15px;color:' + nameColor + ';font-family:Cinzel,Palatino,Georgia,serif;letter-spacing:0.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + (p.charName || 'Unknown') + '</div>'
-      + '<div style="font-size:11px;color:rgba(180,155,100,0.4);font-family:Cinzel,serif;">' + (p.className || 'Unknown') + '</div>'
+      + '<div style="font-size:12px;color:rgba(180,155,100,0.4);font-family:Cinzel,serif;">' + (p.className || 'Unknown') + '</div>'
       + '</div>'
       + '<div style="width:100px;font-size:12px;color:rgba(180,155,100,0.55);font-family:Cinzel,serif;">' + (p.raceName || 'Unknown') + '</div>'
       + '<div style="width:40px;text-align:right;font-size:16px;font-weight:bold;color:rgba(220,195,140,0.95);font-family:Cinzel,serif;">' + (p.playerKills || 0) + '</div>'
@@ -1628,9 +1631,7 @@ export function renderTalentsTab(s) {
     tabBarHtml += '<div data-interactive onclick="sendAction(\'setTalentTab\',{tab:\'' + st.id + '\'})" style="'
       + 'flex:1;text-align:center;padding:6px 0;cursor:pointer;'
       + 'font-family:Cinzel,serif;font-size:13px;letter-spacing:1.2px;'
-      + 'border:1px solid ' + (isActiveSpec ? st.accent : st.dim) + ';'
-      + 'border-radius:3px;'
-      + 'background:linear-gradient(180deg,' + (isActiveSpec ? 'rgba(25,18,35,0.95)' : 'rgba(15,12,10,0.7)') + ',' + (isActiveSpec ? 'rgba(18,12,28,0.98)' : 'rgba(10,8,6,0.85)') + ');'
+      + _frame(isActiveSpec ? 'buttonHot' : 'button', 8, isActiveSpec ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
       + 'color:' + (isActiveSpec ? st.text : st.dimText) + ';'
       + (isActiveSpec ? 'box-shadow:0 0 8px ' + st.accent.replace(/[\d.]+\)$/, '0.25)') + ';' : '')
       + '">'
@@ -1694,7 +1695,7 @@ export function renderTalentsTab(s) {
     }
 
     // Nodes row — centered flex
-    html += '<div style="display:flex;justify-content:center;align-items:flex-start;gap:8px;padding:0 8px;">';
+    html += '<div style="display:flex;justify-content:center;align-items:flex-start;gap:8px;padding:2px 2px;' + _frame('skillRow', 10, 'rgba(20,14,10,.85)') + '">';
 
     for (var si = 0; si < tierSlots.length; si++) {
       var tIdx = tierSlots[si];
@@ -1773,7 +1774,7 @@ export function renderTalentsTab(s) {
 
       // Name pill — Times New Roman, 11-12px, dark void bg
       html += '<div style="margin-top:2px;padding:1px 5px;border-radius:3px;background:rgba(10,4,18,0.75);display:inline-block;max-width:' + (tierSlots.length === 2 ? '140' : '120') + 'px;">'
-        + '<div style="font-family:\'Times New Roman\',serif;font-size:10px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0.3px;line-height:1.2;'
+        + '<div style="font-family:\'Times New Roman\',serif;font-size:12px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0.3px;line-height:1.2;'
         + nameColor + '">' + esc(t.name) + '</div></div>';
 
       // Tooltip — void-purple themed, position:fixed
@@ -1824,11 +1825,11 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
     tabsHtml += '<div data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'' + tab.id + '\'})" title="' + tab.title + ' (' + tab.key + ')" style="'
       + 'width:48px;height:48px;display:flex;align-items:center;justify-content:center;'
       + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-      + 'border:2px solid ' + (isActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + ';'
-      + 'border-radius:4px;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
+      + _frame(isActive ? 'buttonHot' : 'button', 5, isActive ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+      + 'box-sizing:border-box;border-radius:0;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
       + (isActive ? 'box-shadow:0 0 12px rgba(140,80,200,0.5),0 0 24px rgba(120,60,180,0.2);' : 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);')
-      + '" onmouseenter="this.style.borderColor=\'' + (isActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + tab.title + '\';"'
-      + ' onmouseleave="this.style.borderColor=\'' + (isActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
+      + '" onmouseenter="this.style.outlineColor=\'' + (isActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + tab.title + '\';"'
+      + ' onmouseleave="this.style.outlineColor=\'' + (isActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
       + '<img src="' + tab.icon + '" data-interactive style="width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none;pointer-events:none;border-radius:2px;'
       + 'filter:' + (isActive ? 'brightness(1.2) sepia(0.1)' : 'brightness(0.8) saturate(0.7)') + ';" />'
       + '</div>';
@@ -1839,11 +1840,11 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
   var talentsBtn = '<div data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'talents\'})" title="Talents (T)" style="'
     + 'width:48px;height:48px;display:flex;align-items:center;justify-content:center;'
     + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-    + 'border:2px solid ' + (talentsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + ';'
-    + 'border-radius:4px;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
+    + _frame(talentsActive ? 'buttonHot' : 'button', 5, talentsActive ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+    + 'box-sizing:border-box;border-radius:0;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
     + (talentsActive ? 'box-shadow:0 0 12px rgba(140,80,200,0.5),0 0 24px rgba(120,60,180,0.2);' : 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);')
-    + '" onmouseenter="this.style.borderColor=\'' + (talentsActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Talents [N]\';"'
-    + ' onmouseleave="this.style.borderColor=\'' + (talentsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
+    + '" onmouseenter="this.style.outlineColor=\'' + (talentsActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Talents [N]\';"'
+    + ' onmouseleave="this.style.outlineColor=\'' + (talentsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
     + '<img src="/cdn/icon-painted-glowing-talent-tree-no-border-dark-bg.png" data-interactive style="width:100%;height:100%;object-fit:cover;border-radius:2px;-webkit-user-drag:none;user-select:none;pointer-events:none;filter:' + (talentsActive ? 'brightness(1.2) sepia(0.1)' : 'brightness(0.8) saturate(0.7)') + ';" />'
     + '</div>';
 
@@ -1852,11 +1853,11 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
   var statsBtn = '<div data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'stats\'})" title="Stats [J]" style="'
     + 'width:48px;height:48px;display:flex;align-items:center;justify-content:center;'
     + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-    + 'border:2px solid ' + (statsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + ';'
-    + 'border-radius:4px;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
+    + _frame(statsActive ? 'buttonHot' : 'button', 5, statsActive ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+    + 'box-sizing:border-box;border-radius:0;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
     + (statsActive ? 'box-shadow:0 0 12px rgba(140,80,200,0.5),0 0 24px rgba(120,60,180,0.2);' : 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);')
-    + '" onmouseenter="this.style.borderColor=\'' + (statsActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Stats [J]\';"'
-    + ' onmouseleave="this.style.borderColor=\'' + (statsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
+    + '" onmouseenter="this.style.outlineColor=\'' + (statsActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Stats [J]\';"'
+    + ' onmouseleave="this.style.outlineColor=\'' + (statsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
     + '<img src="/cdn/icon-painted-gothic-quill-ink-stat-scroll-no-border-dark-bg.png" data-interactive style="width:100%;height:100%;object-fit:cover;border-radius:2px;-webkit-user-drag:none;user-select:none;pointer-events:none;filter:' + (statsActive ? 'brightness(1.2) sepia(0.1)' : 'brightness(0.8) saturate(0.7)') + ';" />'
     + '</div>';
 
@@ -1865,11 +1866,11 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
   var mapBtn = '<div data-interactive onclick="sendAction(\'toggleWorldMap\')" title="World Map (M)" style="'
     + 'width:48px;height:48px;display:flex;align-items:center;justify-content:center;'
     + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-    + 'border:2px solid ' + (mapActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + ';'
-    + 'border-radius:4px;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
+    + _frame(mapActive ? 'buttonHot' : 'button', 5, mapActive ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+    + 'box-sizing:border-box;border-radius:0;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
     + (mapActive ? 'box-shadow:0 0 12px rgba(140,80,200,0.5),0 0 24px rgba(120,60,180,0.2);' : 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);')
-    + '" onmouseenter="this.style.borderColor=\'' + (mapActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'World Map\';"'
-    + ' onmouseleave="this.style.borderColor=\'' + (mapActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
+    + '" onmouseenter="this.style.outlineColor=\'' + (mapActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'World Map\';"'
+    + ' onmouseleave="this.style.outlineColor=\'' + (mapActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
     + '<img src="/cdn/icon-painted-folded-map-red-pin-no-border-dark-bg.png" data-interactive style="width:100%;height:100%;object-fit:cover;border-radius:2px;-webkit-user-drag:none;user-select:none;pointer-events:none;filter:brightness(0.85);" />'
     + '</div>';
 
@@ -1878,11 +1879,11 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
   var musicBtn = '<div data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'music\'})" title="Music" style="'
     + 'width:48px;height:48px;display:flex;align-items:center;justify-content:center;'
     + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-    + 'border:2px solid ' + (musicActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + ';'
-    + 'border-radius:4px;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
+    + _frame(musicActive ? 'buttonHot' : 'button', 5, musicActive ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+    + 'box-sizing:border-box;border-radius:0;cursor:pointer;pointer-events:auto;transition:all 0.15s;flex-shrink:0;'
     + (musicActive ? 'box-shadow:0 0 12px rgba(140,80,200,0.5),0 0 24px rgba(120,60,180,0.2);' : 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);')
-    + '" onmouseenter="this.style.borderColor=\'' + (musicActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Music\';"'
-    + ' onmouseleave="this.style.borderColor=\'' + (musicActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
+    + '" onmouseenter="this.style.outlineColor=\'' + (musicActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Music\';"'
+    + ' onmouseleave="this.style.outlineColor=\'' + (musicActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
     + '<img src="/cdn/icon-painted-wooden-lute-strings-no-border-dark-bg.png" data-interactive style="width:100%;height:100%;object-fit:cover;border-radius:2px;-webkit-user-drag:none;user-select:none;pointer-events:none;filter:sepia(0.3) brightness(0.9);" />'
     + '</div>';
 
@@ -1928,11 +1929,11 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
     bottomBarHtml += '<div data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'' + bIcon.id + '\'})" title="' + bIcon.title + '" style="'
       + 'width:44px;height:44px;display:flex;align-items:center;justify-content:center;'
       + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-      + 'border:2px solid ' + (bActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + ';'
-      + 'border-radius:4px;cursor:pointer;pointer-events:auto;transition:all 0.15s;'
+      + _frame(bActive ? 'buttonHot' : 'button', 5, bActive ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+      + 'box-sizing:border-box;border-radius:0;cursor:pointer;pointer-events:auto;transition:all 0.15s;'
       + (bActive ? 'box-shadow:0 0 12px rgba(140,80,200,0.5),0 0 24px rgba(120,60,180,0.2);' : 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);')
-      + '" onmouseenter="this.style.borderColor=\'' + (bActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + bIcon.title + '\';"'
-      + ' onmouseleave="this.style.borderColor=\'' + (bActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
+      + '" onmouseenter="this.style.outlineColor=\'' + (bActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + bIcon.title + '\';"'
+      + ' onmouseleave="this.style.outlineColor=\'' + (bActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
       + '<img src="' + bIcon.icon + '" style="width:100%;height:100%;object-fit:cover;border-radius:2px;-webkit-user-drag:none;user-select:none;pointer-events:none;'
       + 'filter:' + (bActive ? 'brightness(1.2) sepia(0.1)' : 'brightness(0.8) saturate(0.7)') + ';" />'
       + '</div>';
@@ -1946,11 +1947,11 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
   bottomBarHtml += '<div data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'settings\'})" title="Settings [K]" style="'
     + 'width:44px;height:44px;display:flex;align-items:center;justify-content:center;'
     + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-    + 'border:2px solid ' + (settingsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + ';'
-    + 'border-radius:4px;cursor:pointer;pointer-events:auto;transition:all 0.15s;'
+    + _frame(settingsActive ? 'buttonHot' : 'button', 5, settingsActive ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+    + 'box-sizing:border-box;border-radius:0;cursor:pointer;pointer-events:auto;transition:all 0.15s;'
     + (settingsActive ? 'box-shadow:0 0 12px rgba(140,80,200,0.5),0 0 24px rgba(120,60,180,0.2);' : 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);')
-    + '" onmouseenter="this.style.borderColor=\'' + (settingsActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Settings [K]\';"'
-    + ' onmouseleave="this.style.borderColor=\'' + (settingsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
+    + '" onmouseenter="this.style.outlineColor=\'' + (settingsActive ? 'rgba(170,110,230,1)' : 'rgba(200,175,120,0.6)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'Settings [K]\';"'
+    + ' onmouseleave="this.style.outlineColor=\'' + (settingsActive ? 'rgba(140,80,200,0.8)' : 'rgba(60,45,25,0.5)') + '\';var lbl=this.closest(\'[data-menu-panel]\').querySelector(\'[data-tab-label]\');if(lbl)lbl.textContent=\'' + activeTabTitle + '\';">'
     + '<img src="/cdn/icon-painted-iron-gear-cog-no-border-dark-bg.png" style="width:100%;height:100%;object-fit:cover;border-radius:2px;-webkit-user-drag:none;user-select:none;pointer-events:none;'
     + 'filter:' + (settingsActive ? 'brightness(1.2) sepia(0.1)' : 'brightness(0.8) saturate(0.7)') + ';" />'
     + '</div>';
@@ -1970,8 +1971,7 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
 
     // Inner panel — holds all content, creates its own stacking context
     + '<div style="position:absolute;inset:0;'
-    + 'background:rgba(8,8,10,0.92);'
-    + 'border:2px solid rgba(80,60,40,0.5);border-radius:6px;'
+    + _frame('window', 16, 'rgba(14,11,8,.94)')
     + 'box-shadow:0 4px 30px rgba(0,0,0,0.7),0 0 4px rgba(40,35,30,0.1),inset 0 1px 0 rgba(60,55,50,0.04);'
     + 'font-family:Cinzel,serif;display:flex;flex-direction:column;pointer-events:auto;'
     + (locked ? 'resize:none;overflow:visible;' : 'resize:both;overflow:visible;')
@@ -1979,17 +1979,18 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
     + '">'
 
     // Subtle texture overlay (neutral)
-    + '<div style="position:absolute;inset:0;background:url(/cdn/texture-purple-demonic-swirl-pattern-ypiknitn.webp) center/256px repeat;opacity:0.03;pointer-events:none;border-radius:4px;z-index:5;mix-blend-mode:luminosity;"></div>'
-
+    
     // Spike border
     + spikeSvg
 
+    // Title plate, centred on the top edge
+    + '<div data-tab-label style="' + _PLATE + '">' + activeTabTitle + '</div>'
     // Header: tabs + settings
-    + '<div style="display:flex;align-items:center;justify-content:space-evenly;padding:6px 8px;border-bottom:1px solid rgba(80,60,40,0.35);flex-shrink:0;position:relative;z-index:10;">'
+    + '<div style="display:flex;align-items:center;justify-content:space-evenly;padding:12px 4px 2px;flex-shrink:0;position:relative;z-index:10;">'
     + tabsHtml + statsBtn + musicBtn + talentsBtn + '</div>'
 
     // Hover label for tab names
-    + '<div data-tab-label style="height:22px;margin-top:4px;padding:0 12px;font-family:Cinzel,serif;font-size:16px;color:rgba(200,175,120,0.7);letter-spacing:1px;text-transform:uppercase;flex-shrink:0;position:relative;z-index:10;">' + activeTabTitle + '</div>'
+    + '<div style="flex-shrink:0;position:relative;z-index:10;">' + _rule('fadeCross', '86%', 18) + '</div>'
 
     // Content (scrollable)
     + '<div id="fa-menu-scroll" data-interactive onwheel="event.stopPropagation()" style="flex:1;overflow-y:auto;overflow-x:hidden;padding:10px 12px;scrollbar-width:thin;scrollbar-color:rgba(80,60,40,0.4) transparent;position:relative;z-index:10;">'
@@ -1997,14 +1998,13 @@ export function renderMenuPanel(localPlayer, world, rightHudLayout) {
     + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="(function(){var el=document.getElementById(\'fa-menu-scroll\');if(!el)return;if(window._faMenuTab===\'' + activeTab + '\'&&window._faMenuScroll){el.scrollTop=window._faMenuScroll;}else{window._faMenuTab=\'' + activeTab + '\';window._faMenuScroll=0;}el.onscroll=function(){window._faMenuScroll=el.scrollTop;};})()" style="display:none" />'
 
     // Bottom icon bar
-    + '<div style="display:flex;align-items:center;justify-content:space-evenly;padding:6px 8px;border-top:1px solid rgba(80,60,40,0.35);flex-shrink:0;position:relative;z-index:10;">'
+    + '<div style="display:flex;align-items:center;justify-content:space-evenly;padding:6px 4px 0;border-top:1px solid rgba(201,164,106,0.25);flex-shrink:0;position:relative;z-index:10;">'
     + bottomBarHtml + '</div>'
 
     + '</div>'
 
     // Gothic bronze corner frame overlay — OUTSIDE the inner panel, in the outer wrapper
     // This guarantees it paints above all panel content since it's a sibling with higher z-index
-    + '<img src="/cdn/ui-gothic-bronze-corner-frame-border-qylwbo5c.webp" style="position:absolute;top:41%;left:43%;transform:translate(-50%,-50%) scale(1.45);pointer-events:none;z-index:1;filter:drop-shadow(0 0 8px rgba(160,130,60,0.25));-webkit-user-drag:none;user-select:none;" />'
 
     + '</div>';
 }
