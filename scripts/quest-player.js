@@ -182,6 +182,12 @@ function nearMark(ctx) {
   }
   return best || waiting; // alone, the waiting step still answers with its 'First: …' line
 }
+// a mark whose step is live now (not waiting on an earlier one): it outranks a quest-giver's chat, so a delivery standing at the giver's elbow lands
+function readyMark(ctx) {
+  const r = nearMark(ctx); if (!r) return null;
+  const m = markFor(ctx, r); const pre = r.state && r.state.after && m && m.p.objectives.find((o) => o.key === r.state.after);
+  return pre && pre.current < pre.target ? null : r;
+}
 function useMark(ctx, r) {
   const st = ctx.self.state, ms = r.state || {}, m = markFor(ctx, r); if (!m) return;
   const head = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 2.1, z: ctx.self.feetPosition.z };
@@ -253,6 +259,7 @@ export function onInput(ctx, input) {
   if (on(input, 'declineQuest') || on(input, 'closeQuestDialog')) { st.showQuestDialog = false; st.questDialogData = null; return; }
   if (!on(input, 'interact') || st.showQuestDialog || st.showDoorPanel) return;
   if (ctx.session.chop) return stopChop(ctx);
+  { const rm = readyMark(ctx); if (rm) return useMark(ctx, rm); }
   { const qn = near(ctx, 'quest-npc', N.talkReach); if (qn) return talk(ctx, qn); }
   { const mk = nearMark(ctx); if (mk) return useMark(ctx, mk); }
   const folk = near(ctx, 'talker', N.talkReach);
@@ -329,6 +336,7 @@ export function update(ctx) {
   // the prompt: the mod HUD draws state.interactHint; this script clears only the hint it wrote
   let hint = null;
   if (ctx.session.chop) hint = 'Chopping…';
+  else if (!st.showQuestDialog && readyMark(ctx)) { const mk = readyMark(ctx); hint = 'E  ' + (mk.state.verb || 'Use') + ' ' + (mk.state.title || ''); }
   else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to ' + npcName(near(ctx, 'quest-npc', N.talkReach));
   else if (!st.showQuestDialog && nearMark(ctx)) { const mk = nearMark(ctx); hint = 'E  ' + (mk.state.verb || 'Use') + ' ' + (mk.state.title || ''); }
   else if (!st.showQuestDialog && near(ctx, 'talker', N.talkReach)) { const f = near(ctx, 'talker', N.talkReach); hint = 'E  Talk to ' + ((TF[f.state && f.state.who] || {}).name || 'them'); }
