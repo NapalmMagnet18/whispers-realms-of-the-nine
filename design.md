@@ -127,3 +127,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Forsaken blood shrine beside road-starfall at (-49,-563) (wild-blood-shrine*, scripts/gen/shrine.js, clear-scatter mark shrine-clear). Decorative.
 - 2026-10-08: Bandit camp south of road-deepgrove at (-943,45) (deep-bandit-*, scripts/gen/camp.js: palisade, 3 tents, lookout, cookfire+spit, loot chest) + Scab (townsfolk talk). Decorative; no hostile bandits wired.
 - 2026-10-08: Fallen giant straddling road-starfall at (-80,-680) (giant-*, scripts/gen/giant.js: 7 ribs arching over the path, horned skull, rusted sword, arm bone; clear-scatter giant-clear). Decorative; road passes between rib colliders.
+- 2026-10-08: Thornwood lumber camp at (-117,-108) (thorn-lumber-*, scripts/gen/lumber.js: sawpit, 2 log piles, log cart, tool shed, 7 stumps) + Bryn Oakhewn (talk-only). Decorative.
