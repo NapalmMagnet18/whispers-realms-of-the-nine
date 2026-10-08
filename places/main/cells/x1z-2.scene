@@ -1,8 +1,8 @@
 # spawn-scene v2 yaml x1z-2
 ashen-rack:
+  children: [{feetPosition: {x: -0.85, y: 0.21, z: 0.12}, id: ashen-item-staff, model: /cdn/value.1f72a5571a665069b6c49155d21308addc0b6327f0077484838f67d8ef0099f2.glb, tags: [ashen-relic]}, {feetPosition: {x: -0.4, y: 0.31, z: 0.13}, id: ashen-item-sword, model: /cdn/value.183f433a28f0d8000d2871ddd6ba7e5a135ec8ab99a3f493631b20bf876869a7.glb, tags: [ashen-relic]}, {feetPosition: {x: 0.3, y: 0.3, z: 0.24}, id: ashen-item-shield, model: /cdn/value.1993a89f3060c27a497903d2ab8a65e6eda465e1c444cd5590a616f93c7b94eb.glb, tags: [ashen-relic]}, {feetPosition: {x: 0.85, y: 0.22, z: 0.12}, id: ashen-item-bow, model: /cdn/value.0c3011771783a9f2cf4d9441cc6aab928025abfa2ae4a3d9a71a682753966126.glb, tags: [ashen-relic]}, {feetPosition: {x: 0, y: 2.7, z: 0.9}, id: ashen-rack-lamp, light: {color: oklch(0.82 0.13 70), distance: 7, intensity: 2, kind: point}}]
   feetPosition: {x: 102, y: 5, z: -194}
   id: ashen-rack
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 0.8, height: 2.2, kind: box, width: 2.6}
-  tags: [blueprint]
+  model: {id: /cdn/value.2d96b58403d6647bebd2140268afc438fb02fe3c180aa57e1631a361dd5bd160.glb, materials: {wood: {color: "#5a4030", roughness: 0.8, texture: cdn/texture-dark-oak-wood-grain.png}}}
+  physics: static
+  tags: [ashen-close, display]
