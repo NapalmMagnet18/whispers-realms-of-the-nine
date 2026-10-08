@@ -67,7 +67,7 @@ root_lasher:
   aggro: 40
   tally: root_lasher
   reward: {xp: 20}
-  model: /cdn/model-humanoid-fantasy-root-lasher-twisted-wooden-creature-thorn-whips-glowing-sap-eyes.glb
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
   scale: 1.1
 thorn_custodian:
   name: The Thorn Custodian
