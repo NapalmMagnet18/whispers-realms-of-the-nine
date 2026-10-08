@@ -56,6 +56,16 @@ var SHOP_INVENTORIES = {
   ],
 };
 SHOP_INVENTORIES['dren'] = SHOP_INVENTORIES['general-shop'];
+// Hild Copperhand's arms table on Copperlane, east of the Reach: steel a step past the starter kit
+SHOP_INVENTORIES['armsmith'] = [
+  { id: 'iron-sword', name: 'Iron Sword', icon: '/cdn/value.675433d075a3d17d74abb4ede67f738f67a9676c3b2b1b7cafc5a87c91a6029b.png', slot: 'mainHand', price: 120, description: 'A sturdy iron blade.', stats: { damage: { min: 6, max: 12 } } },
+  { id: 'copperlane-hand-axe', name: 'Copperlane Hand Axe', icon: '/cdn/icon-fantasy-generic-axe.png', slot: 'mainHand', price: 180, description: 'Bearded head, ash haft, honed on Hild\'s wheel.', stats: { damage: { min: 8, max: 14 } } },
+  { id: 'paired-fangs', name: 'Paired Fangs', icon: '/cdn/icon-fantasy-generic-dagger.png', slot: 'mainHand', price: 200, description: 'Two short blades for a quick hand.', stats: { damage: { min: 7, max: 13 } } },
+  { id: 'ashwood-longbow', name: 'Ashwood Longbow', icon: '/cdn/icon-fantasy-generic-bow.png', slot: 'mainHand', price: 220, description: 'Strung with waxed gut. Draws long and true.', stats: { damage: { min: 7, max: 15 }, range: 32 } },
+  { id: 'runed-oak-staff', name: 'Runed Oak Staff', icon: '/cdn/icon-fantasy-generic-staff.png', slot: 'mainHand', price: 240, description: 'Oak cut under a lantern, its runes still warm.', stats: { damage: { min: 6, max: 12 }, magic: 10 } },
+  { id: 'smiths-warhammer', name: 'Smith\'s Warhammer', icon: '/cdn/icon-fantasy-generic-hammer.png', slot: 'mainHand', price: 260, description: 'Heavy as a promise. Hits like one.', stats: { damage: { min: 10, max: 18 } } },
+  { id: 'iron-rim-shield', name: 'Iron-Rim Shield', icon: '/cdn/value.059e0a3c752a1f5677c284f9e44ecd1b50d6772be2de92a240b3e91a534361ef.png', slot: 'offHand', price: 160, description: 'Oak boards bound in a hammered iron rim.', stats: { defence: 14 } },
+];
 
 // what a vendor pays for a bag good it never sells (copper)
 var SELL_ONLY = { 'copper-ore': 5, 'log': 3, 'timber-logs': 3, 'empty-vial': 1 };
