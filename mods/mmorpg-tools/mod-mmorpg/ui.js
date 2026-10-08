@@ -42,6 +42,7 @@ function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m
 function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
 const WHF = require('./lib/ui-frames.js');
 const { versionTag } = require('./lib/version.js');
+const { renderHerald } = require('./lib/ui-herald.js');
 function renderGnomeTipJar(a, b) { var m = _lazyMod('gnome'); return m ? m.renderGnomeTipJar(a, b) : ''; }
 const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
 const { renderBuffIcons } = require('./lib/ui-buff-icons.js');
@@ -211,6 +212,7 @@ export default function(world, localPlayer) {
       var _hudParts = [];
       _hudParts.push('<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();window.__faCharName=undefined;" style="display:none" />');
       try { _hudParts.push(renderHUD(localPlayer, world, rightHudLayout)); } catch(e1) { _hudParts.push(''); }
+      try { _hudParts.push(renderHerald(world)); } catch(eH) { _hudParts.push(''); }
       if (!hideControls) { try { _hudParts.push(renderWASD(localPlayer, rightHudLayout)); } catch(e2) { _hudParts.push(''); } }
       try { _hudParts.push(renderChat(localPlayer, world, rightHudLayout)); } catch(e3) { _hudParts.push(''); }
       try { _hudParts.push(renderMenuPanel(localPlayer, world, rightHudLayout)); } catch(e4) { _hudParts.push(''); }

@@ -11,19 +11,39 @@ function modal(inner, width) {
   return '<div data-modal style="position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;pointer-events:auto;background:radial-gradient(ellipse at 50% 50%,rgba(8,5,3,.35) 30%,rgba(8,5,3,.15) 100%)">'
     + '<div style="width:min(' + width + 'px,calc(100vw - 2 * (var(--spawn-chrome-reservation-right-inset,50px) + 24px)));max-height:calc(100vh - 60px);overflow:auto;' + ART.frame('window', 18, 'rgba(14,11,8,.95)') + 'padding:12px 16px;color:' + INK + ';box-shadow:0 18px 60px rgba(0,0,0,.6),0 0 40px rgba(242,176,74,.12)">' + inner + '</div></div>';
 }
+function realmDetail(s, list, pick) {
+  var r = list.find(function (x) { return x.room === pick; }) || {};
+  var d = s.realmDetail && s.realmDetail.room === pick ? s.realmDetail : { loading: true, top: [], firsts: [] };
+  var top = (d.top || []).map(function (h, i) {
+    return '<div style="display:flex;justify-content:space-between;font-size:13px;padding:2px 0;border-bottom:1px solid rgba(201,164,106,.15)"><span><span style="color:' + DIM + '">' + (i + 1) + '.</span> ' + esc(h.name) + ' <span style="color:' + DIM + ';font-size:11px">' + esc(h.class) + '</span></span><span style="color:' + GOLD + '">' + (h.level || 1) + '</span></div>';
+  }).join('') || '<div style="font-size:12px;font-style:italic;color:' + DIM + '">' + (d.loading ? 'Reading the ledger\u2026' : 'No heroes yet. Be the first.') + '</div>';
+  var firsts = (d.firsts || []).map(function (f) {
+    return '<div style="font-size:12px;padding:2px 0"><span style="color:' + GOLD + '">\u2726</span> ' + esc(f.label) + ' <span style="color:' + DIM + '">\u2014</span> ' + esc(f.char_name) + '</div>';
+  }).join('') || '<div style="font-size:12px;font-style:italic;color:' + DIM + '">' + (d.loading ? '' : 'Every first is still unclaimed.') + '</div>';
+  return '<div style="' + ART.frame('realmRow', 10, 'rgba(20,15,10,.92)') + 'padding:8px 10px;min-height:100%;box-sizing:border-box">'
+    + '<div style="font-family:Cinzel,Georgia,serif;font-size:17px;font-weight:700;color:' + GOLD + '">' + esc(r.name || '') + '</div>'
+    + '<div style="font-size:12px;color:' + (TYPE[r.type] || INK) + ';letter-spacing:1px;margin-bottom:4px">' + esc(r.type || '') + ' realm \u00b7 ' + (r.awake ? '<span style="color:#7fd36b">\u25cf awake</span>' : '<span style="color:' + DIM + '">\u25cb quiet</span>') + ' \u00b7 ' + (r.heroes || 0) + ' heroes</div>'
+    + '<div style="font-size:12px;line-height:1.4;margin-bottom:8px">' + esc(r.note || '') + '</div>'
+    + '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:' + DIM + ';margin-bottom:2px">Greatest heroes</div>' + top
+    + '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:' + DIM + ';margin:8px 0 2px">Realm firsts</div>' + firsts
+    + '</div>';
+}
 function realmList(s) {
   var list = s.realmList || [], cur = s.realmCurrent || 'main', pick = s.realmPick || cur;
-  var head = '<div style="display:grid;grid-template-columns:2.2fr 1fr 1.1fr .9fr;gap:6px;padding:0 12px 4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:' + DIM + '"><div>Realm</div><div>Type</div><div>Population</div><div style="text-align:right">Characters</div></div>';
+  var head = '<div style="display:grid;grid-template-columns:2.2fr 1fr 1.1fr .9fr;gap:6px;padding:0 12px 4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:' + DIM + '"><div>Realm</div><div>Type</div><div>Population</div><div style="text-align:right">Yours</div></div>';
   var rows = list.map(function (r) {
-    var on = r.room === pick, here = r.room === cur;
-    return '<div class="wm-row" data-interactive onclick="sendAction(\'pickRealm\',{room:\'' + r.room + '\'})" style="display:grid;grid-template-columns:2.2fr 1fr 1.1fr .9fr;gap:6px;align-items:center;margin-bottom:4px;' + ART.frame('realmRow', 10, on ? 'rgba(110,78,26,.92)' : 'rgba(24,18,12,.9)') + 'padding:4px 6px;' + (here ? 'box-shadow:0 0 0 2px ' + GOLD + ';' : '') + '">'
-      + '<div style="font-family:Cinzel,Georgia,serif;font-weight:700;color:' + (on || here ? GOLD : INK) + '">' + esc(r.name) + (r.recommended ? ' <span style="font-size:10px;padding:1px 5px;background:#3f5a3a;color:#d8f0c0;letter-spacing:1px">RECOMMENDED</span>' : '') + (here ? ' <span style="font-size:10px;color:' + DIM + '">(current)</span>' : '') + '</div>'
+    var on = r.room === pick, here = r.room === cur, full = r.population === 'Full';
+    return '<div class="wm-row" data-interactive onclick="sendAction(\'pickRealm\',{room:\'' + r.room + '\'})" style="display:grid;grid-template-columns:2.2fr 1fr 1.1fr .9fr;gap:6px;align-items:center;margin-bottom:4px;' + ART.frame('realmRow', 10, on ? 'rgba(110,78,26,.92)' : 'rgba(24,18,12,.9)') + 'padding:4px 6px;' + (here ? 'box-shadow:0 0 0 2px ' + GOLD + ';' : '') + (full ? 'opacity:.6;' : '') + '">'
+      + '<div style="font-family:Cinzel,Georgia,serif;font-weight:700;color:' + (on || here ? GOLD : INK) + '">' + (r.awake ? '<span style="color:#7fd36b;font-size:10px">\u25cf</span> ' : '') + esc(r.name) + (r.recommended ? ' <span style="font-size:10px;padding:1px 5px;background:#3f5a3a;color:#d8f0c0;letter-spacing:1px">RECOMMENDED</span>' : '') + (here ? ' <span style="font-size:10px;color:' + DIM + '">(current)</span>' : '') + '</div>'
       + '<div style="color:' + (TYPE[r.type] || INK) + '">' + esc(r.type) + '</div>'
       + '<div style="color:' + (POP[r.population] || POP.Low) + '">' + esc(r.population || 'Low') + '</div>'
       + '<div style="text-align:right">' + (r.chars || 0) + '</div></div>';
   }).join('');
-  return modal('<div class="wm-title" style="text-align:center;font-size:22px;letter-spacing:3px">Realm Selection</div>' + ART.rule('title', '100%', 16) + head + rows + ART.rule('crossEnd', '100%', 14)
-    + '<div style="display:flex;justify-content:center;gap:12px;margin-top:6px">' + b('Okay', "sendAction('joinRealm')", true) + b('Cancel', "sendAction('closeRealmList')") + '</div>', 640);
+  var err = s.realmError ? '<div style="color:#ff8a70;font-size:13px;text-align:center;margin-top:4px">' + esc(s.realmError) + '</div>' : '';
+  var body = '<div style="display:flex;gap:12px;flex-wrap:wrap"><div style="flex:1.5 1 360px">' + head + rows + '</div><div style="flex:1 1 220px">' + realmDetail(s, list, pick) + '</div></div>';
+  return modal('<div class="wm-title" style="text-align:center;font-size:22px;letter-spacing:3px">Realm Selection</div>' + ART.rule('title', '100%', 16) + body + err
+    + '<div style="font-size:11px;color:' + DIM + ';text-align:center;margin-top:6px">A hero lives on one realm. Each realm keeps its own world, its own heroes and its own firsts.</div>' + ART.rule('crossEnd', '100%', 14)
+    + '<div style="display:flex;justify-content:center;gap:12px;margin-top:6px">' + b(pick === cur ? 'Stay Here' : 'Travel There', "sendAction('joinRealm')", true) + b('Cancel', "sendAction('closeRealmList')") + '</div>', 900);
 }
 function deleteConfirm(s) {
   var name = s._deleteConfirmName || '';
