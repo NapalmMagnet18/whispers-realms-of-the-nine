@@ -552,7 +552,7 @@ NAM-05:
   text: "The wreck on the south rocks. Nobody remembers her name, which is its own kind of answer. There's glass in her bilge, blue, that wasn't blown on this coast. Bring a piece out, then wash it in the tide pool by the cottages. Salt shows what glass is hiding."
   progressText: "Recover glass from the south wreck, then wash it in the tide pool."
   turnInText: "Look at it in the light. Nine lines, etched from inside. A harbor chart, small as a thumbnail. Somebody made this to be found."
-  doneText: "Sena's on the north sand. Something came up out of the water last night."
+  doneText: "Sena's on the south strand. Something came up out of the water last night."
   refusedText: "The glass is clean. Keep it."
   objectives:
     - { key: wreck_glass, desc: "Recover glass from the wreck", target: 1 }
@@ -568,8 +568,8 @@ NAM-06:
   title: Songs of the Lost Fleet
   giverNpcId: strand-npc-sena
   giverName: Pilot Sena Wavebound
-  text: "Three sailors washed up on the north sand at dawn, alive, and the water keeps standing up out of the surf to take them back. Drowned shapes, made of current. Drive them off. Then sit with the sailors. They're singing something, and I want the words."
-  progressText: "Drive off the phantom currents on the north sand, then learn the sailors' refrain."
+  text: "Three sailors washed up on the south strand at dawn, alive, and the water keeps standing up out of the surf to take them back. Drowned shapes, made of current. Drive them off. Then sit with the sailors. They're singing something, and I want the words."
+  progressText: "Drive off the phantom currents on the south strand, then learn the sailors' refrain."
   turnInText: "'Between the ninth wave and the tenth, a harbor where the lost may rest.' That's the verse cut from our hymn. Word for word. Wear this. The coast should know you."
   doneText: "Ruun is making something. He asked for you by name."
   refusedText: "The sand's quiet now."
