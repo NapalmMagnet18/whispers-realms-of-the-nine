@@ -40,8 +40,18 @@ export function onSpawn(ctx) {
   }
 }
 export const updateSchedule = { every: { seconds: 0.1 } };
+// A storm parks the caravan where the rain catches it: the route clock freezes (s.parkClock) and resumes after,
+// carrying the lost time as s.delay, so the walk picks up exactly where it stopped. Mott sells hot tea meanwhile.
+const STEAM = `fx
+pop steam rate=6 on=disc(.12) life=1.2..2 v=up(.5..0.9)+sdir()*.08 size=.12..0.2 acc=buoy(.4)+curl(.4)*.4+drag(.9) col=<.85,.84,.82> a=0>.35:.3>.7:.12>0 sz=$size*(.6>2.4) rot=spin(.2) r=sprite(smoke-puff,alpha)
+pop glow n=1 at=point().c(.1) r=light(<1,.6,.3>,1.6*flick(1.3,.15),4)`;
 export function update(ctx) {
-  const s = ctx.self.state, here = where(ctx.now()), terr = ctx.place.terrain;
+  const s = ctx.self.state, terr = ctx.place.terrain, now = ctx.now();
+  const storm = !!(ctx.place.state.storm && ctx.place.state.storm.on);
+  if (storm && s.parkClock == null) s.parkClock = now - (s.delay || 0);
+  if (!storm && s.parkClock != null) { s.delay = now - s.parkClock; s.parkClock = null; }
+  const parked = s.parkClock != null;
+  const here = parked ? { ...where(s.parkClock), moving: false, left: 5 } : where(now - (s.delay || 0));
   const yaw = Math.atan2(-here.dx, -here.dz) * 180 / Math.PI;
   const gy = terr.heightAt(here.x, here.z) ?? ctx.self.feetPosition.y;
   ctx.self.feetPosition = { x: here.x, y: gy, z: here.z };
@@ -51,7 +61,12 @@ export function update(ctx) {
     const r = rotate(yaw, off), px = here.x + r.x, pz = here.z + r.z, oy = id === "march-npc-mott" ? (terr.heightAt(px, pz) ?? gy) : gy + off.y;
     o.feetPosition = { x: px, y: oy, z: pz };
     if (id === "march-npc-mott") {
-      const shop = SHOPS[here.stop ?? 1]; if (o.state.shop !== shop) o.state.shop = shop;
+      const shop = parked ? "mott-storm" : SHOPS[here.stop ?? 1]; if (o.state.shop !== shop) o.state.shop = shop;
+      if (parked !== !!o.state.stormTea) {
+        o.state.stormTea = parked;
+        const goods = ctx.place.objects["march-caravan-goods"]; if (goods) goods.fx = parked ? { script: STEAM } : null;
+        if (parked) ctx.emit("playSound", { clip: "/cdn/moodboard-painterly-fantasy/sfx-iron-kettle-set-on-coals-hiss-and-clink.mp3", position: o.feetPosition, volume: 0.7, maxDistance: 30 }, { audience: { nearby: o.feetPosition, radius: 40 } });
+      }
       if (here.moving !== !!o.state.traveling) {
         o.state.traveling = here.moving;
         o.anim.base = { clip: here.moving ? "Walk" : (o.state.idle || "idle"), weight: 1, loop: "loop" };
@@ -60,5 +75,5 @@ export function update(ctx) {
       if (here.moving) { o.rotation = { yaw }; o.state.yaw = yaw; }
     } else o.rotation = { yaw };
   }
-  if (!here.moving) { ctx.sleep(Math.max(0.5, here.left)); }
+  if (!here.moving) { ctx.sleep(Math.max(0.5, Math.min(5, here.left))); } // short naps, so a storm finds him within seconds
 }

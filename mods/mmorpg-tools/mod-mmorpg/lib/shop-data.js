@@ -90,6 +90,12 @@ SHOP_INVENTORIES['mott-reed'] = [
   { id: 'mott-eel-skewer', name: "Lantern-Eel Skewer", icon: '/cdn/value.2c34dafd2c7a4f2088c6bf2c994715734c5697c7d1f6c9bc9595dcd1be231e7d.png', slot: 'bag', price: 95, stackable: true, consumable: true, description: "Glows faintly. So will you, for a minute. Restores 900 health over 14 sec. Eating stops if you are struck.", stats: { healOverTime: 900, eatSeconds: 14 } },
 ];
 
+// Mott in a storm: the caravan parks wherever the rain catches it and the kettle goes on (scripts/caravan-route.js)
+SHOP_INVENTORIES['mott-storm'] = [
+  { id: 'mott-storm-tea', name: "Mott's Storm Tea", icon: '/cdn/value.3ca0b718b1c90150cef47c906a8542f396e22133cb3bf37208f61afa95d25da3.png', slot: 'bag', price: 5, stackable: true, consumable: true, description: "Poured hot from a dented kettle while the rain hammers the canvas. Cinnamon, bog-myrtle, a splash of something. Restores 400 health over 6 sec. Drinking stops if you are struck.", stats: { healOverTime: 400, eatSeconds: 6 } },
+  { id: 'mott-waybread', name: "Mott's Waybread", icon: '/cdn/value.da27050004cfd3d7a59925f477676b26297dcb98663be58be06d4659b108ed73.png', slot: 'bag', price: 10, stackable: true, consumable: true, description: "Baked in the Reach, three days ago. Still good. Mostly. Restores 200 health over 8 sec. Eating stops if you are struck.", stats: { healOverTime: 200, eatSeconds: 8 } },
+];
+
 // what a vendor pays for a bag good it never sells (copper)
 var SELL_ONLY = { 'iron-ore': 12, 'sunleaf': 4, 'briarroot': 10, 'gravebloom': 22, 'copper-bar': 14, 'iron-bar': 30, 'ghostlight-oil': 70, 'copper-ore': 5, 'log': 3, 'timber-logs': 3, 'empty-vial': 1 };
 var SELL_RATE = 0.25;
