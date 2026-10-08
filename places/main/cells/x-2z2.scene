@@ -4,3 +4,34 @@ fen-deadwood:
   id: fen-deadwood
   scatter: {bounds: {radius: 90, shape: circle}, count: 40, templates: [{model: /cdn/value.f4f4066eaf00d08c0d9c372b2d350763da1546965bc450acfc4ceacacd03f4a6.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.b870253a285c88c99a4874784255c347c932c4900f2e1d904e8edb852ce06e2e.glb, physics: {body: static, collider: capsule}, weight: 1}], variation: {scale: [0.9, 1.6], yaw: [0, 360]}}
   tags: [kit-trees]
+march-caravan-bells:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-wagon-charms-tinkling-wind-mule-snort-loop.mp3, gain: 0.15, loop: true, maxDistance: 22, spatial: true}
+  feetPosition: {x: -241.4, y: 12.5, z: 275.2}
+  id: march-caravan-bells
+march-caravan-goods:
+  feetPosition: {x: -239.5, y: 10.6, z: 277}
+  id: march-caravan-goods
+  physics: static
+  primitive: {kind: scripted, params: {kind: goods, seed: 2}, script: scripts/gen/caravan.js}
+  rotation: {yaw: -37}
+  tags: [march-caravan]
+march-caravan-lamp:
+  feetPosition: {x: -242.6, y: 13.28, z: 276.8}
+  id: march-caravan-lamp
+  light: {color: "#ffbe70", distance: 9, intensity: 3, kind: point}
+march-caravan-wagon:
+  feetPosition: {x: -241.4, y: 11, z: 275.2}
+  id: march-caravan-wagon
+  physics: static
+  primitive: {kind: scripted, params: {kind: wagon}, script: scripts/gen/caravan.js}
+  rotation: {yaw: -37}
+  tags: [march-caravan]
+march-npc-mott:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -239.5, y: 10.52, z: 275.5}
+  id: march-npc-mott
+  model: /cdn/model-humanoid-fantasy-travelling-peddler-male-patched-coat-wide-brim-hat-satchels-grey-stubble.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -127}
+  state: {homeYaw: -127, idle: idle, npcName: mott, who: mott, yaw: -127}
+  tags: [npc, talker, townsfolk]
