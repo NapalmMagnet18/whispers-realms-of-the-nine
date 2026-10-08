@@ -1,16 +1,16 @@
 // Lantern's Reach: the town shelf at y≈4, rolling meadow, Thornwood to the NE, the copper quarry
-// (a rocky hill with a carved pit and a ramp cut toward town) to the SW, a ring of peaks far out.
+// (red cliffs with a carved pit and a ramp cut toward town) to the SW, a ring of peaks far out.
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
 const sstep = (a, b, v) => { const t = clamp01((v - a) / (b - a)); return t * t * (3 - 2 * t); };
-export const QUARRY = { x: -110, z: 90 };
-export const FOREST = { x: 120, z: -90 };
+export const QUARRY = { x: 135, z: 30 };
+export const FOREST = { x: -130, z: -30 };
 function quarryShape(x, z, h) {
   const dx = x - QUARRY.x, dz = z - QUARRY.z, dq = Math.hypot(dx, dz);
   h += 17 * Math.exp(-((dq / 52) ** 2));
   const pit = 1 - sstep(19, 29, dq);
   h = h * (1 - pit) + 3.2 * pit;
   // ramp cut from the pit toward town (direction to the origin)
-  const ux = 0.774, uz = -0.633, along = dx * ux + dz * uz, perp = Math.abs(dx * -uz + dz * ux);
+  const ux = -0.976, uz = -0.217, along = dx * ux + dz * uz, perp = Math.abs(dx * -uz + dz * ux);
   if (along > 10 && along < 70) {
     const cut = (1 - sstep(4.5, 9, perp)) * (1 - sstep(55, 70, along));
     const target = 3.2 + Math.max(0, along - 22) * 0.12;

@@ -129,7 +129,7 @@ terrain:
   - id: rock
     albedo: cdn/texture-terrain-rock-realistic-albedo.png
     pbr: true
-    tint: oklch(0.78 0.02 60)
+    tint: oklch(0.72 0.06 40)
     antiTiling: stochastic
   - id: forest
     albedo: cdn/texture-terrain-forest-floor-moss-pine-needles-realistic-albedo.png
@@ -159,8 +159,8 @@ terrain:
     quarry-floor:
       kind: flatten
       center:
-        x: -110
-        z: 90
+        x: 135
+        z: 30
       height: 3.2
       shape:
         kind: circle
@@ -169,16 +169,16 @@ terrain:
     road-forest:
       kind: path
       points:
-      - - 14
-        - -4
-      - - 44
-        - -12
-      - - 66
-        - -34
-      - - 84
-        - -58
-      - - 100
-        - -74
+      - - -14
+        - -2
+      - - -34
+        - -6
+      - - -56
+        - -10
+      - - -80
+        - -18
+      - - -104
+        - -26
       width: 3.4
       material: dirt
       grade: true
@@ -186,16 +186,16 @@ terrain:
     road-quarry:
       kind: path
       points:
-      - - -12
-        - 12
-      - - -40
-        - 30
-      - - -62
-        - 46
-      - - -80
-        - 62
-      - - -96
-        - 78
+      - - 14
+        - -3
+      - - 40
+        - -8
+      - - 64
+        - 0
+      - - 86
+        - 10
+      - - 112
+        - 24
       width: 3.4
       material: dirt
       grade: true
@@ -215,15 +215,6 @@ terrain:
       material: dirt
       grade: true
       noise: 0.5
-    pond:
-      kind: lake
-      at:
-        x: 52
-        z: 40
-      radius: 13
-      level: 3.2
-      depth: 2.2
-      bedMaterial: gravel
     plaza:
       kind: flatten
       center:
@@ -275,30 +266,6 @@ terrain:
       width: 3.2
       material: cobble
       noise: 0.3
-    lane-east:
-      kind: path
-      points:
-      - - 13
-        - -3
-      - - 30
-        - -8
-      - - 44
-        - -12
-      width: 3.2
-      material: cobble
-      noise: 0.3
-    lane-sw:
-      kind: path
-      points:
-      - - -9
-        - 9
-      - - -30
-        - 26
-      - - -40
-        - 30
-      width: 3.2
-      material: cobble
-      noise: 0.3
     lane-ne:
       kind: path
       points:
@@ -319,3 +286,43 @@ terrain:
       width: 3.2
       material: cobble
       noise: 0.3
+    lane-west:
+      kind: path
+      points:
+      - - -13
+        - -1
+      - - -30
+        - -6
+      width: 3.2
+      material: cobble
+      noise: 0.3
+    lane-east:
+      kind: path
+      points:
+      - - 13
+        - -2
+      - - 40
+        - -8
+      width: 3.2
+      material: cobble
+      noise: 0.3
+    river:
+      kind: river
+      points:
+      - - -70
+        - -320
+      - - -62
+        - -160
+      - - -52
+        - -60
+      - - -50
+        - -8
+      - - -56
+        - 60
+      - - -66
+        - 160
+      - - -78
+        - 320
+      width: 11
+      depth: 2.2
+      bedMaterial: gravel
