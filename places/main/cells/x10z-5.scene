@@ -112,6 +112,15 @@ hollowcrypt-twisted-3:
   rotation: 291
   scale: 1.04
   tags: [tree]
+node-gravebloom-2:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: 1256.5, y: {terrain: 0}, z: -588}
+  id: node-gravebloom-2
+  primitive: {kind: scripted, params: {kind: gravebloom}, script: scripts/gen/herb.js, seed: 2}
+  rotation: {yaw: 5.216967950210426}
+  scale: 1.0679836159888578
+  state: {node: gravebloom}
+  tags: [gather-node, herb-node]
 qm-hollowcrypt-seal:
   feetPosition: {x: 1335, y: {terrain: 0}, z: -690}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}

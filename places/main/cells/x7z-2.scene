@@ -35,6 +35,28 @@ kha-tunnel:
   primitive: {kind: scripted, params: {kind: cave}, script: scripts/gen/quarry.js}
   rotation: {yaw: 180}
   tags: [emberstone-cradle]
+node-iron-5:
+  behavior: scripts/gather-node.js
+  children: [{feetPosition: {x: -0.12488027193573849, y: 0.3413129544310798, z: 0.35929344979442684}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 11.979321610172894, roll: 36.45830217583957, yaw: 157.46009852618914}}, {feetPosition: {x: -0.47544707976074047, y: 0.603116056161521, z: -0.2528264577693716}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 52.01648491062991, roll: 41.061892956989766, yaw: 177.24472534714485}}, {feetPosition: {x: 0.36771325728222737, y: 0.5813322404079755, z: 0.3475779634704423}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 34.796098887359776, roll: 58.03399985564594, yaw: 320.77162947541643}}, {feetPosition: {x: -0.15051516689457434, y: 0.26684395997638066, z: 0.5794778697708629}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 18.463221936702368, roll: 51.37109015666464, yaw: 37.14825842396741}}, {feetPosition: {x: 0.4256800293603778, y: 0.49601104587596423, z: -0.3171812827109095}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 32.07512298229855, roll: 46.59196349167822, yaw: 86.11842986481192}}]
+  feetPosition: {x: 956, y: {terrain: -0.15}, z: -258.4}
+  id: node-iron-5
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 682}
+  rotation: {yaw: 66.78242781515347}
+  scale: 1.42473809920472
+  state: {node: iron-vein}
+  tags: [gather-node, ore-node]
+node-iron-7:
+  behavior: scripts/gather-node.js
+  children: [{feetPosition: {x: -0.17323653198504124, y: 0.44005431208762075, z: 0.47291651620382347}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 17.396584300974656, roll: 4.392346481044006, yaw: 114.25860531360776}}, {feetPosition: {x: -0.31200370163011915, y: 0.5358051301146882, z: 0.33532833635356857}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 32.61652385472158, roll: 25.9164263056202, yaw: 181.45747005076032}}, {feetPosition: {x: -0.41220047781402913, y: 0.6753530128744212, z: -0.4001177014060809}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 49.94697804094617, roll: 58.85993418230672, yaw: 166.46990431773938}}, {feetPosition: {x: -0.2691983787517668, y: 0.5327139705571877, z: -0.3620064075218505}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 17.189367449464914, roll: 1.6987231567961736, yaw: 18.962523722538037}}, {feetPosition: {x: 0.202978668244, y: 0.35786576313332924, z: -0.3187704095809495}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 13.288292555738376, roll: 16.332984294897404, yaw: 239.9047854914818}}]
+  feetPosition: {x: 946.9, y: {terrain: -0.15}, z: -244}
+  id: node-iron-7
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 306}
+  rotation: {yaw: 50.80226604398445}
+  scale: 1.4040948902741517
+  state: {node: iron-vein}
+  tags: [gather-node, ore-node]
 start-cinderhold/start-cinderhold-hall-2:
   children: [{feetPosition: {x: 0, y: 3.4, z: 8.25}, light: {color: oklch(0.78 0.14 55), distance: 12, intensity: 3, kind: point}}, {feetPosition: {x: -2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}, {feetPosition: {x: 2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}]
   feetPosition: {x: 6, y: -0.1, z: -23}

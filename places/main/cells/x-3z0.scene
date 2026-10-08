@@ -1,4 +1,13 @@
 # spawn-scene v2 yaml x-3z0
+node-briarroot-4:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: -354.6, y: {terrain: 0}, z: -51.7}
+  id: node-briarroot-4
+  primitive: {kind: scripted, params: {kind: briarroot}, script: scripts/gen/herb.js, seed: 86}
+  rotation: {yaw: 11.286876858811302}
+  scale: 1.1821161383679677
+  state: {node: briarroot}
+  tags: [gather-node, herb-node]
 start-thornhollow-way-6:
   feetPosition: {x: -393.50335888301504, y: 8.44704352970859, z: 26.88047950252877}
   id: start-thornhollow-way-6

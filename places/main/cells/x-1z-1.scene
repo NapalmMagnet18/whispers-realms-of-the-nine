@@ -7,3 +7,12 @@ briar-deadtree-0:
   rotation: 20
   scale: 1.3
   tags: [briar-kit]
+node-sunleaf-11:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: -65.8, y: {terrain: 0}, z: -113.9}
+  id: node-sunleaf-11
+  primitive: {kind: scripted, params: {kind: sunleaf}, script: scripts/gen/herb.js, seed: 916}
+  rotation: {yaw: 309.83337407458265}
+  scale: 1.174598392925504
+  state: {node: sunleaf}
+  tags: [gather-node, herb-node]

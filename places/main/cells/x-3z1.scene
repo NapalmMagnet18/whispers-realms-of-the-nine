@@ -1,0 +1,10 @@
+# spawn-scene v2 yaml x-3z1
+node-briarroot-11:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: -384.8, y: {terrain: 0}, z: 124.7}
+  id: node-briarroot-11
+  primitive: {kind: scripted, params: {kind: briarroot}, script: scripts/gen/herb.js, seed: 812}
+  rotation: {yaw: 231.26103417540946}
+  scale: 1.1035011550893548
+  state: {node: briarroot}
+  tags: [gather-node, herb-node]

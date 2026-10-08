@@ -1,4 +1,15 @@
 # spawn-scene v2 yaml x6z-1
+node-iron-4:
+  behavior: scripts/gather-node.js
+  children: [{feetPosition: {x: -0.15811316966464717, y: 0.38382605807102566, z: -0.5193814092942157}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 36.840191603098155, roll: 33.10027327067232, yaw: 91.64639978280589}}, {feetPosition: {x: 0.45491228753276947, y: 0.39232284864053263, z: -0.18763199300879585}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 34.416502078257736, roll: 38.15042927775086, yaw: 216.09368114550304}}, {feetPosition: {x: -0.35238907565500094, y: 0.3439283177693972, z: -0.16796775229490973}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 20.008213082332265, roll: 38.037274758348836, yaw: 42.58940020696698}}, {feetPosition: {x: 0.3594621749965986, y: 0.4251684591989817, z: -0.36322651876556067}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 23.890494240396887, roll: 7.5366983504671134, yaw: 125.03500582884764}}, {feetPosition: {x: 0.20467949844969024, y: 0.4642333038217543, z: 0.3001254603588129}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 5.485693665913163, roll: 38.053443002539424, yaw: 135.30986577985337}}]
+  feetPosition: {x: 798, y: {terrain: -0.15}, z: -169.6}
+  id: node-iron-4
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 99}
+  rotation: {yaw: 145.2992620809466}
+  scale: 1.2829975494104426
+  state: {node: iron-vein}
+  tags: [gather-node, ore-node]
 start-cinderhold-way-2:
   feetPosition: {x: 798.3327173692888, y: 23.5351111260493, z: -142.96767424639407}
   id: start-cinderhold-way-2

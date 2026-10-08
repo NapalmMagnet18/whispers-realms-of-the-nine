@@ -1,0 +1,10 @@
+# spawn-scene v2 yaml x11z-4
+node-gravebloom-4:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: 1407.3, y: {terrain: 0}, z: -567}
+  id: node-gravebloom-4
+  primitive: {kind: scripted, params: {kind: gravebloom}, script: scripts/gen/herb.js, seed: 769}
+  rotation: {yaw: 36.30680151111763}
+  scale: 0.9070108311283452
+  state: {node: gravebloom}
+  tags: [gather-node, herb-node]

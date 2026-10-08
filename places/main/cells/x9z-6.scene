@@ -1,0 +1,19 @@
+# spawn-scene v2 yaml x9z-6
+node-gravebloom-3:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: 1212.1, y: {terrain: 0}, z: -712.4}
+  id: node-gravebloom-3
+  primitive: {kind: scripted, params: {kind: gravebloom}, script: scripts/gen/herb.js, seed: 497}
+  rotation: {yaw: 139.35954374231378}
+  scale: 0.946543064222924
+  state: {node: gravebloom}
+  tags: [gather-node, herb-node]
+node-gravebloom-5:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: 1175, y: {terrain: 0}, z: -771.8}
+  id: node-gravebloom-5
+  primitive: {kind: scripted, params: {kind: gravebloom}, script: scripts/gen/herb.js, seed: 741}
+  rotation: {yaw: 308.6071752331253}
+  scale: 1.1006617859474672
+  state: {node: gravebloom}
+  tags: [gather-node, herb-node]

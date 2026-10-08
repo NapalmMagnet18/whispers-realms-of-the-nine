@@ -4,6 +4,33 @@ amb-briarwild-1:
   feetPosition: {x: -250, y: {terrain: 3}, z: 20}
   id: amb-briarwild-1
   tags: [ambience]
+node-briarroot-1:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: -294, y: {terrain: 0}, z: -16.6}
+  id: node-briarroot-1
+  primitive: {kind: scripted, params: {kind: briarroot}, script: scripts/gen/herb.js, seed: 558}
+  rotation: {yaw: 348.8164969854134}
+  scale: 1.1657206948686953
+  state: {node: briarroot}
+  tags: [gather-node, herb-node]
+node-briarroot-6:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: -215.1, y: {terrain: 0}, z: 22.2}
+  id: node-briarroot-6
+  primitive: {kind: scripted, params: {kind: briarroot}, script: scripts/gen/herb.js, seed: 366}
+  rotation: {yaw: 87.84551531441767}
+  scale: 0.9496465745147534
+  state: {node: briarroot}
+  tags: [gather-node, herb-node]
+node-briarroot-8:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: -199.6, y: {terrain: 0}, z: 28.6}
+  id: node-briarroot-8
+  primitive: {kind: scripted, params: {kind: briarroot}, script: scripts/gen/herb.js, seed: 127}
+  rotation: {yaw: 185.63612957747475}
+  scale: 1.0886915071814747
+  state: {node: briarroot}
+  tags: [gather-node, herb-node]
 start-thornhollow-way-8:
   feetPosition: {x: -277.73329271757694, y: 11.455085560174835, z: -11.244770844117761}
   id: start-thornhollow-way-8

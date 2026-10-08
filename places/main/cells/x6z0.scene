@@ -1,0 +1,12 @@
+# spawn-scene v2 yaml x6z0
+node-iron-9:
+  behavior: scripts/gather-node.js
+  children: [{feetPosition: {x: -0.4096130967278195, y: 0.6932380270181401, z: 0.222217360394397}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 33.09571298449101, roll: 39.648130340337815, yaw: 161.21607510429624}}, {feetPosition: {x: 0.3147667431439747, y: 0.33297001537073867, z: 0.23497170864234682}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 20.184432203036003, roll: 59.752036426100894, yaw: 301.6386688042612}}, {feetPosition: {x: -0.3695579714779558, y: 0.46533459558400075, z: -0.09735509771920589}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 0.78732118978506, roll: 32.50723671750503, yaw: 182.8383842403248}}, {feetPosition: {x: 0.19104647332317398, y: 0.3451585699315921, z: -0.41698105635788746}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 38.12138651410182, roll: 26.14314250934084, yaw: 24.067872215093985}}, {feetPosition: {x: 0.3824478826304951, y: 0.259234886713901, z: 0.4065997581323608}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 43.19946417734002, roll: 53.39442855370903, yaw: 328.59280042750424}}]
+  feetPosition: {x: 820.7, y: {terrain: -0.15}, z: -51.3}
+  id: node-iron-9
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 840}
+  rotation: {yaw: 240.9642131258567}
+  scale: 1.3728111180815898
+  state: {node: iron-vein}
+  tags: [gather-node, ore-node]

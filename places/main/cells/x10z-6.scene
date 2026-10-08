@@ -29,3 +29,12 @@ hollowcrypt-stone-5:
   physics: static
   primitive: {kind: scripted, params: {r: 2.5999999999999996}, script: scripts/gen/rock.js}
   rotation: 355
+node-gravebloom-8:
+  behavior: scripts/gather-node.js
+  feetPosition: {x: 1308.6, y: {terrain: 0}, z: -782.3}
+  id: node-gravebloom-8
+  primitive: {kind: scripted, params: {kind: gravebloom}, script: scripts/gen/herb.js, seed: 690}
+  rotation: {yaw: 2.2713717083779033}
+  scale: 0.9124535855895158
+  state: {node: gravebloom}
+  tags: [gather-node, herb-node]

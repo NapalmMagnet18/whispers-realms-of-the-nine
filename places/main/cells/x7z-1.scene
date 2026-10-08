@@ -204,6 +204,17 @@ kha-tuning-hammer:
   rotation: -30
   state: {after: cracked_pillar, afterText: "First: inspect the cracked pillars", mark: pillar_tone, quest: KHA-02, say: "Three pillars, three tones. Read in order they make a word in a script older than the quarry.", sound: /cdn/moodboard-painterly-fantasy/sfx-tuning-fork-stone-ring.mp3, title: Tuning Hammer, verb: Strike the pillars}
   tags: [quest-mark, emberstone-cradle]
+node-iron-2:
+  behavior: scripts/gather-node.js
+  children: [{feetPosition: {x: 0.15749548556451004, y: 0.306442165843417, z: 0.4850511524711361}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 0.09580213581016386, roll: 50.14649656142411, yaw: 18.785064247802396}}, {feetPosition: {x: 0.2455715643585981, y: 0.5956680669429097, z: -0.2647519393015377}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 24.139613902261303, roll: 54.4908553056842, yaw: 114.56088758751791}}, {feetPosition: {x: 0.10132308558925525, y: 0.69700675133942, z: -0.33804197940415875}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 38.57116997175439, roll: 25.653715275998092, yaw: 73.97580930682636}}, {feetPosition: {x: 0.38465736859957944, y: 0.589896426508155, z: 0.08140927458474496}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 14.946834824488887, roll: 51.45289518472408, yaw: 271.39225804777453}}, {feetPosition: {x: 0.16579355528995654, y: 0.45665404268384635, z: -0.3961916695709299}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 15.1968163136378, roll: 52.891783310515706, yaw: 107.59630992431022}}]
+  feetPosition: {x: 832.5, y: {terrain: -0.15}, z: -81.9}
+  id: node-iron-2
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/rock.js, seed: 497}
+  rotation: {yaw: 313.2125990247412}
+  scale: 1.371279787584804
+  state: {node: iron-vein}
+  tags: [gather-node, ore-node]
 roost-cinderhold:
   children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:52px;color:#f2b04a;text-shadow:0 0 12px #000\">CINDERHOLD</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
   feetPosition: {x: 912, y: 40.4, z: -156}
