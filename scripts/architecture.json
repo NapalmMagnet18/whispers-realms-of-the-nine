@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 933,
-  "updatedAt": "2026-10-08T07:57:38.439Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March and its streamed frontier campaigns. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors combine movement, classes, quests, trade and flight, while scene bindings and YAML registries define world content. Each realm is a separate room with its own live world and character roster; shared SQL holds saved heroes, population pulses and realm-first records.",
+  "basedOnSpecVersion": 942,
+  "updatedAt": "2026-10-08T08:03:06.508Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March and streamed frontier campaigns. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class kits, quests, trade, flight and vitality, while place bindings and YAML registries define content. Each realm is a separate room with its own live world and roster; shared SQL holds saved heroes, population pulses and realm-first records.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -147,6 +147,7 @@
     "scripts/lib/kit.js",
     "scripts/lib/leveling.js",
     "scripts/lib/missiles.js",
+    "scripts/lib/pvp.js",
     "scripts/lib/realm-firsts.js",
     "scripts/lib/regions.js",
     "scripts/lib/wow-move.js",
@@ -184,7 +185,7 @@
   "places": [
     "places/main-menu-land/ - realm selection and front door for entering the world or opening character creation.",
     "places/character-creation-land/ - race/class/appearance selection with preview character and creation camera.",
-    "places/main/config.yaml - continent terrain, regional flattening, roads, scatter and atmosphere; streamed cells contribute local sites and interactions.",
+    "places/main/config.yaml - Lantern March continent terrain, regional flattening, roads, scatter and atmosphere; streamed cells contribute local sites and interactions.",
     "places/main/cells/x0z0.scene - Lantern's Reach hub, residents, services, quests, Shield Table, Observatory and major chapter sites.",
     "places/main/cells/x-9z0.scene - Briarwild Deepgrove clearing, Fenna's camp, BRD quest NPCs/marks and grove-built landmarks.",
     "places/main/cells/x-1z0.scene, x-5z0.scene, x-5z1.scene, x-6z0.scene, x0z-1.scene, x1z0.scene, x7z-1..-2.scene, x2z11.scene and frontier cells - Briarwild, northern March, Emberstone, Saltmere and other continent landmarks/campaigns.",
@@ -207,18 +208,18 @@
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and eligibility/progress/status shared by quest-player, quest-giver and quest UI; includes origin, SHA, EQU/DHC, SOR, TID and BRD campaigns.",
     "scripts/lib/economy.js + MMORPG lib/currency.js - integer-copper transactions/ledger and denomination formatting shared by quests, vendor, flight and UI.",
     "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and continent height/material generation used by terrain and region display, including Deepgrove, Sorrowfen and Tideglass.",
-    "scripts/lib/data/flights.yml - roost coordinates, regions, discovery radius, fare/speed limits and clearance read by flight behavior and UI.",
-    "scripts/lib/leveling.js + scripts/lib/data/levels.yml - total-XP progression and derived level/stats shared by quest-player and HUD/frame XP displays."
+    "scripts/lib/data/flights.yml - roost coordinates, regions, discovery radius, fare/speed limits and clearance read by flight behavior/UI and PvP sanctuary/rise helpers.",
+    "scripts/lib/pvp.js + scripts/lib/data/pvp.yml - realm eligibility, safe zones, target filtering, player strikes and damage multiplier shared by class kits and vitality."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle/input; player.js - character build/save/load lifecycle.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - quest dialog/tracker renderers; lib/ui-herald.js - renderHerald; lib/version.js - version/title/tag (0.27.0 Alpha).",
+    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - quest dialog/tracker renderers; lib/ui-herald.js - renderHerald, renderRealmChip; lib/version.js - version/title/tag (0.28.0 Alpha).",
     "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-character-roster.js - renderCharacterRoster.",
     "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; class-aware action bar presents kit/cooldowns in slots 1–3 unless saved spellBar entries override.",
-    "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise and health-mending update.",
+    "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise, mending and PvP zone/death handling.",
     "scripts/quest-player.js - onInput/update; scripts/lib/realm-firsts.js - questFirst, levelFirst; scripts/db.js - migrate.",
-    "scripts/vanguard.js, arcanist.js and pathfinder.js - class combat handlers; scripts/shade.js - onInput, land, update, veiled, unveil, endAction; scripts/lib/kit.js - class/combat helpers."
+    "scripts/vanguard.js, arcanist.js and pathfinder.js - class combat handlers; scripts/shade.js - onInput, land, update, veiled, unveil, endAction; scripts/lib/kit.js - class/combat helpers; scripts/lib/pvp.js - pvpRealm, sanctuaryAt, pvpTargets, strikePlayer and PvP rules."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
@@ -228,21 +229,21 @@
     "scripts/quest-player.js - quest/tally, inventory/xp/dialog/cache state, quest marks/flags, deferred owedItems and quest travel transitions; derives level/xp progress/max stats from XP and persists changed character state.",
     "scripts/lib/realm-firsts.js - claims one realm/feat first in SQL; a winning claim writes the room-wide world.state.herald announcement.",
     "scripts/lib/leveling.js - derives level, XP within level, next-level requirement and max health/mana; levels.yml owns progression anchors, growth, cap and stat increments.",
-    "scripts/lib/economy.js - coin movement, purse floor and ledger writes; scripts/vendor.js owns shop state and transaction handling."
+    "scripts/lib/pvp.js and scripts/lib/kit.js - PvP striker writes victim state.health and lastPvp* hit attribution; scripts/vitality.js owns realm/zone state, death and kill/death counters, PvP rise/shield, and health mending."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → main gameplay lifecycle.",
     "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu Enter/Create and scripts/crypt-gate.js stamp transition exceptions.",
     "main-menu-mgr loads current room SQL roster and population; api.enterPlace routes selected character to saved place/position; routing validates requested room, then last room, then main.",
     "scripts/lib/data/realms.yml → scripts/routing.js and crons/realm-pulse.js; each room cron writes its player count to realm_pulse using SQLite unix time, and realm-save.js reads it (older than 180 s = quiet/zero).",
-    "realm-save refreshRealmList → player.state.realmList: pulse/character counts and global hero counts drive population, awake and least-populated-Normal recommendation; realmDetail queries top five heroes and recent realm_firsts for realmPick.",
+    "realm-save refreshRealmList → player.state.realmList: pulse/character counts and global hero counts drive population, awake and least-populated-Normal recommendation; realmDetail queries top five heroes and recent realm_firsts for realm picture/detail.",
     "main-menu-mgr realm-list actions → realm-save refreshes selection detail; joinRealm refuses a displayed Full realm, otherwise api.cross enters its room; realm-save and realms.yml room IDs must agree.",
     "Character creation race/class → lib/races.js race start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot; each realm has an independent roster.",
     "templates/player.js order → locomotion → movement → class handlers including Shade → quest-player → vendor → flight → vitality; moveX/moveZ/jump and camera intents are consumed by player.js/wow-move.js under place gravity.",
     "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest marks; quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI.",
-    "Quest completion and level-band crossing in quest-player → realm-firsts questFirst/levelFirst → race-safe INSERT OR IGNORE into realm_firsts; only the winner writes world.state.herald and emits realm-wide horn/stat events.",
-    "world.state.herald → MMORPG ui.js calls ui-herald.renderHerald on the gameplay HUD; banner displays each id once for 7 s, with the first herald on a page load remembered rather than shown.",
-    "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/enemies; wolves.js, scavengers.js and candle-warden.js consume combat state and issue damage/kill credits."
+    "Quest completion and level-band crossing in quest-player → realm-firsts questFirst/levelFirst → race-safe INSERT OR IGNORE into realm_firsts; only the winner writes world.state.herald and emits realm-wide horn/stat events; ui-herald renders heralds and realm chip in ui.js HUD.",
+    "Attack/cast inputs → class abilities and scripts/lib/kit.js → monster hits or pvpTargets/meleePlayer; PvP-enabled realm/config plus range, level, sanctuary, shield and Veil filters gate player targeting, and striker writes victim health/lastPvp*.",
+    "scripts/vitality.js reads health/lastPvp*: credited PvP fall increments counters, emits nearby notice, then raises at nearest configured gryphon roost with a timed strike/immunity shield; realmCurrent/pvpZone/pvpKills/pvpDeaths feed ui-herald.renderRealmChip."
   ],
   "behaviorFamilies": [
     "scripts/gen/ landmark builders reuse scripts/gen/shape.js procedural geometry helpers, varied by landmark and parameters; crypt.js supplies Hollowcrypt halls, rooms and furniture.",
@@ -256,11 +257,11 @@
   ],
   "probableOrphans": [],
   "migrationNotes": [
-    "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
+    "Money is one integer copper amount; 100 copper = 1 sil and 100 sil = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
     "templates/player.js behavior order is significant: locomotion before movement, then class handlers including Shade, quests, vendor, flight and vitality; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "state.xp remains cumulative while xpInto/xpToLevel are current-bar values; levels.yml owns total-XP anchors and progression cap 60.",
-    "realm_pulse.at uses SQLite unix seconds, shared with its freshness query; do not substitute a room-local clock. realm_firsts PRIMARY KEY (realm,feat) plus INSERT OR IGNORE arbitrates simultaneous first claims.",
-    "Shade Veil uses player.state.veiledUntil; wolves, scavengers and Candle Warden explicitly filter active Veil, so keep the key and expiry comparison aligned with Shade's timer state."
+    "realm_pulse.at uses SQLite unix seconds, shared with its freshness query; realm_firsts PRIMARY KEY (realm,feat) plus INSERT OR IGNORE arbitrates simultaneous first claims.",
+    "PvP player damage uses state.health (not monster state.hp); pvp.yml names eligible rooms/sanctuaries/multiplier/thresholds and flights.yml supplies roosts. vitality.js consumes lastPvpBy/At for credit and raises PvP falls at a roost with the configured shield."
   ]
 }
