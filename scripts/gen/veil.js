@@ -303,6 +303,13 @@ const K = {
     const n = 2 + Math.floor(q() * 3);
     for (let i = 0; i < n; i++) { const a = q() * Math.PI * 2, d = q() * r * 0.55, l = r * (0.25 + q() * 0.35); P(null, "oklch(0.74 0.15 300)", 0.12, 0.1); G("oklch(0.55 0.23 300)"); crystal1(ctx, [Math.cos(a) * d, 0.15 * r, Math.sin(a) * d], [Math.cos(a) * 0.4, 1, Math.sin(a) * 0.4], l * 0.16, l, 6); }
     P(null, "oklch(0.74 0.15 300)", 0.12, 0.1); G("oklch(0.6 0.23 300)"); crystal1(ctx, [tip[0], tip[1] + 0.3 * r, tip[2]], [0.1, -1, 0.05], r * 0.09, r * 0.7, 6); G(null);
+    // a lip of moss over the rim, a ruin on top, vines down the flank: a piece of the old Veil torn loose, not a dark cone
+    P(null, "oklch(0.62 0.09 145)", 1); for (let i = 0; i < seg; i++) { const j = (i + 1) % seg, A = rings[0][i], B = rings[0][j]; quadN(ctx, A, B, [B[0] * 1.04, B[1] - 0.18 * r, B[2] * 1.04], [A[0] * 1.04, A[1] - 0.18 * r, A[2] * 1.04], [(A[0] + B[0]), 0, (A[2] + B[2])]); }
+    if (r >= 3) { P(ROCK, "oklch(0.88 0.02 80)", 0.9); const ca = q() * Math.PI * 2;
+      for (let c = 0; c < 2 + Math.floor(q() * 2); c++) { const a = ca + c * 1.3, d = r * 0.45, h = r * (0.35 + q() * 0.6); cyl(ctx, Math.cos(a) * d, 0.2 * r, Math.sin(a) * d, r * 0.09, r * 0.08, h, 8); }
+      boxR(ctx, [Math.cos(ca + 0.65) * r * 0.2, 0.28 * r, Math.sin(ca + 0.65) * r * 0.2], [r * 0.7, r * 0.08, r * 0.25], { yaw: ca * 57.3 }); }
+    P(null, "oklch(0.5 0.08 150)", 1);
+    for (let v = 0; v < 6; v++) { const i = Math.floor(q() * seg), A = rings[0][i], len = r * (0.6 + q() * 1.1); boxR(ctx, [A[0] * 1.02, A[1] - len / 2, A[2] * 1.02], [0.06 * r, len, 0.06 * r], { roll: (q() - 0.5) * 8 }); }
   },
   brazier(ctx, p, far, col, P, G) {
     P(ASH, "oklch(0.8 0.012 285)", 0.92);
