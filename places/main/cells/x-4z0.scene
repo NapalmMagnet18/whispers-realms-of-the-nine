@@ -1,4 +1,45 @@
 # spawn-scene v2 yaml x-4z0
+briarwild-leaf-fall-2:
+  feetPosition: {x: -560, y: {terrain: 0}, z: 40}
+  fx: {params: {height: 10, radius: 14, rate: 3}, script: "fx\npop leaves rate=%rate|3 on=disc(%radius|12).c(%height|9) life=7..11 v=up(-.4..-.8)+sdir()*.3 size=.14..0.24 fr=0..5.99 spin=-2..2 acc=curl(.5)*.9+drag(.6) a=0>.08:1>.85:1>0 sz=$size rot=$age*$spin floor=stick r=mesh(card,material=scripts/leaf-fall-look.js,params=fr:$fr)"}
+  id: briarwild-leaf-fall-2
+  tags: [fx]
+deepwood-giantpine-0:
+  feetPosition: {x: -525, y: {terrain: -0.2}, z: -8}
+  id: deepwood-giantpine-0
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 100}
+  rotation: 0
+  scale: 0.85
+  tags: [tree, giantpine]
+deepwood-giantpine-11:
+  feetPosition: {x: -500, y: {terrain: -0.2}, z: -28}
+  id: deepwood-giantpine-11
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 111}
+  rotation: 17
+  scale: 1.15
+  tags: [tree, giantpine]
+deepwood-giantpine-2:
+  feetPosition: {x: -566, y: {terrain: -0.2}, z: -22}
+  id: deepwood-giantpine-2
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 102}
+  rotation: 134
+  scale: 1.05
+  tags: [tree, giantpine]
+deepwood-giantpine-9:
+  feetPosition: {x: -540, y: {terrain: -0.2}, z: -40}
+  id: deepwood-giantpine-9
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 109}
+  rotation: 243
+  scale: 0.95
+  tags: [tree, giantpine]
 start-thornhollow-way-3:
   feetPosition: {x: -571.4731344110835, y: 13.874915102896136, z: 28.628970821929624}
   id: start-thornhollow-way-3

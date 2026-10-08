@@ -1,4 +1,22 @@
 # spawn-scene v2 yaml x-5z0
+deepwood-giantpine-4:
+  feetPosition: {x: -612, y: {terrain: -0.2}, z: -14}
+  id: deepwood-giantpine-4
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 104}
+  rotation: 268
+  scale: 0.85
+  tags: [tree, giantpine]
+deepwood-giantpine-7:
+  feetPosition: {x: -655, y: {terrain: -0.2}, z: -30}
+  id: deepwood-giantpine-7
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 107}
+  rotation: 109
+  scale: 1.15
+  tags: [tree, giantpine]
 start-thornhollow-way-1:
   feetPosition: {x: -685.4634456826145, y: 12.102215344662568, z: 58.417590539220505}
   id: start-thornhollow-way-1
@@ -16,6 +34,7 @@ start-thornhollow-way-2:
 start-thornhollow/start-thornhollow-tree-3:
   feetPosition: {x: 21, y: -7.307199613837794, z: -21}
   id: start-thornhollow/start-thornhollow-tree-3
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   parent: start-thornhollow
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 42}

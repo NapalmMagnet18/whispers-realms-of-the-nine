@@ -1,4 +1,40 @@
 # spawn-scene v2 yaml x-5z1
+deepwood-giantpine-10:
+  feetPosition: {x: -620, y: {terrain: -0.2}, z: 110}
+  id: deepwood-giantpine-10
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 110}
+  rotation: 310
+  scale: 1.05
+  tags: [tree, giantpine]
+deepwood-giantpine-3:
+  feetPosition: {x: -590, y: {terrain: -0.2}, z: 85}
+  id: deepwood-giantpine-3
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 103}
+  rotation: 201
+  scale: 1.15
+  tags: [tree, giantpine]
+deepwood-giantpine-5:
+  feetPosition: {x: -634, y: {terrain: -0.2}, z: 72}
+  id: deepwood-giantpine-5
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 105}
+  rotation: 335
+  scale: 0.95
+  tags: [tree, giantpine]
+deepwood-giantpine-8:
+  feetPosition: {x: -578, y: {terrain: -0.2}, z: 108}
+  id: deepwood-giantpine-8
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 108}
+  rotation: 176
+  scale: 0.85
+  tags: [tree, giantpine]
 start-thornhollow/start-thornhollow-prop-5:
   feetPosition: {x: 16, y: -0.09887398745842901, z: 12}
   id: start-thornhollow/start-thornhollow-prop-5
@@ -9,6 +45,7 @@ start-thornhollow/start-thornhollow-prop-5:
 start-thornhollow/start-thornhollow-tree-4:
   feetPosition: {x: 26, y: -14.452016347891728, z: 26}
   id: start-thornhollow/start-thornhollow-tree-4
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
   parent: start-thornhollow
   physics: static
   primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 43}
@@ -17,6 +54,7 @@ start-thornhollow/start-thornhollow-tree-4:
 start-thornhollow/start-thornhollow-tree-7:
   feetPosition: {x: 31, y: -13.069276652979134, z: 7}
   id: start-thornhollow/start-thornhollow-tree-7
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
   parent: start-thornhollow
   physics: static
   primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 46}

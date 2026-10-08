@@ -403,6 +403,16 @@ briar-wolf-den:
   id: briar-wolf-den
   state: {respawnAt: {}}
   tags: [briar-wolf-den]
+briarwild-leaf-fall-0:
+  feetPosition: {x: -130, y: {terrain: 0}, z: -30}
+  fx: {params: {height: 10, radius: 14, rate: 3}, script: "fx\npop leaves rate=%rate|3 on=disc(%radius|12).c(%height|9) life=7..11 v=up(-.4..-.8)+sdir()*.3 size=.14..0.24 fr=0..5.99 spin=-2..2 acc=curl(.5)*.9+drag(.6) a=0>.08:1>.85:1>0 sz=$size rot=$age*$spin floor=stick r=mesh(card,material=scripts/leaf-fall-look.js,params=fr:$fr)"}
+  id: briarwild-leaf-fall-0
+  tags: [fx]
+briarwild-leaf-fall-1:
+  feetPosition: {x: -170, y: {terrain: 0}, z: -45}
+  fx: {params: {height: 10, radius: 14, rate: 3}, script: "fx\npop leaves rate=%rate|3 on=disc(%radius|12).c(%height|9) life=7..11 v=up(-.4..-.8)+sdir()*.3 size=.14..0.24 fr=0..5.99 spin=-2..2 acc=curl(.5)*.9+drag(.6) a=0>.08:1>.85:1>0 sz=$size rot=$age*$spin floor=stick r=mesh(card,material=scripts/leaf-fall-look.js,params=fr:$fr)"}
+  id: briarwild-leaf-fall-1
+  tags: [fx]
 kit-mushrooms-1:
   feetPosition: {x: -96, y: {terrain: 0}, z: -26}
   id: kit-mushrooms-1
@@ -447,6 +457,7 @@ timber-0:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -96, y: {terrain: 0}, z: 12}
   id: timber-0
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 30}
   rotation: 0
@@ -456,6 +467,7 @@ timber-1:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -104, y: {terrain: 0}, z: -4}
   id: timber-1
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 31}
   rotation: 47
@@ -465,6 +477,7 @@ timber-2:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -88, y: {terrain: 0}, z: -6}
   id: timber-2
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 32}
   rotation: 94
@@ -474,6 +487,7 @@ timber-3:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -114, y: {terrain: 0}, z: 2}
   id: timber-3
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 33}
   rotation: 141
@@ -483,6 +497,7 @@ timber-4:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -102, y: {terrain: 0}, z: -22}
   id: timber-4
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 34}
   rotation: 188
@@ -492,6 +507,7 @@ timber-5:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -120, y: {terrain: 0}, z: -12}
   id: timber-5
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 35}
   rotation: 235
@@ -501,6 +517,7 @@ timber-6:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -82, y: {terrain: 0}, z: 6}
   id: timber-6
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 36}
   rotation: 282
@@ -510,6 +527,7 @@ timber-7:
   behavior: [scripts/woodcutting.js]
   feetPosition: {x: -110, y: {terrain: 0}, z: -32}
   id: timber-7
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 37}
   rotation: 329

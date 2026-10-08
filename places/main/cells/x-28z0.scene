@@ -1,10 +1,20 @@
 # spawn-scene v2 yaml x-28z0
+elderveil-leaf-fall:
+  feetPosition: {x: -3600, y: {terrain: 0}, z: -60}
+  fx: {params: {height: 9, radius: 9, rate: 4}, script: "fx\npop leaves rate=%rate|3 on=disc(%radius|12).c(%height|9) life=7..11 v=up(-.4..-.8)+sdir()*.3 size=.14..0.24 fr=0..5.99 spin=-2..2 acc=curl(.5)*.9+drag(.6) a=0>.08:1>.85:1>0 sz=$size rot=$age*$spin floor=stick r=mesh(card,material=scripts/leaf-fall-look.js,params=fr:$fr)"}
+  id: elderveil-leaf-fall
+  tags: [fx]
+elderveil-mushrooms:
+  feetPosition: {x: -3600, y: {terrain: 0}, z: -60}
+  id: elderveil-mushrooms
+  scatter: {bounds: {innerRadius: 2.5, outerRadius: 14, shape: ring}, count: 220, templates: [{material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: orange}, script: scripts/mushroom.js, seed: 300}, weight: 3}, {material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: purple}, script: scripts/mushroom.js, seed: 301}, weight: 2}, {material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: speckle}, script: scripts/mushroom.js, seed: 302}, weight: 2}, {material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: gills}, script: scripts/mushroom.js, seed: 303}, weight: 2}], variation: {scale: [0.8, 2.2], yaw: [0, 360]}}
 frontier-elderveil:
   children: [{feetPosition: {x: 0, y: 1.6, z: 0}, physics: static, primitive: {kind: scripted, params: {kind: roots, n: 9, reach: 13}, script: scripts/gen/frontier.js, seed: 3}, scale: 0.2173913043478261}]
   feetPosition: {x: -3600, y: {terrain: -0.5}, z: -60}
   id: frontier-elderveil
+  material: {kind: scripted, params: {kind: twisted}, script: scripts/tree-look.js}
   physics: static
-  primitive: {kind: scripted, params: {bark: /cdn/bark-twistedtree-u37sw9e2o.webp, kind: oak}, script: scripts/gen/tree.js, seed: 11}
+  primitive: {kind: scripted, params: {bark: /cdn/bark-twistedtree-u37sw9e2o.webp, kind: twisted}, script: scripts/gen/tree.js, seed: 11}
   scale: 4.6
   tags: [landmark, elderveil]
 frontier-elderveil-bush-1:

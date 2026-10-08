@@ -2,6 +2,7 @@
 sorrowfen-dead-12:
   feetPosition: {x: -1562.9569243773378, y: {terrain: 0}, z: 797.4560524897464}
   id: sorrowfen-dead-12
+  material: {kind: scripted, params: {kind: dead}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
   rotation: 492

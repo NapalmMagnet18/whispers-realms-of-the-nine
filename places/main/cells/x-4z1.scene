@@ -1,0 +1,19 @@
+# spawn-scene v2 yaml x-4z1
+deepwood-giantpine-1:
+  feetPosition: {x: -548, y: {terrain: -0.2}, z: 78}
+  id: deepwood-giantpine-1
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 101}
+  rotation: 67
+  scale: 0.95
+  tags: [tree, giantpine]
+deepwood-giantpine-6:
+  feetPosition: {x: -505, y: {terrain: -0.2}, z: 82}
+  id: deepwood-giantpine-6
+  material: {kind: scripted, params: {kind: giantpine}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: giantpine}, script: scripts/gen/tree.js, seed: 106}
+  rotation: 42
+  scale: 1.05
+  tags: [tree, giantpine]

@@ -2,6 +2,7 @@
 hollowcrypt-dead-4:
   feetPosition: {x: 1313.4527372622006, y: {terrain: 0}, z: -636.8074562438395}
   id: hollowcrypt-dead-4
+  material: {kind: scripted, params: {kind: dead}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
   rotation: 212
@@ -9,6 +10,7 @@ hollowcrypt-dead-4:
 hollowcrypt-dead-5:
   feetPosition: {x: 1308.6673839794776, y: {terrain: 0}, z: -671.8643490763043}
   id: hollowcrypt-dead-5
+  material: {kind: scripted, params: {kind: dead}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
   rotation: 265
@@ -16,6 +18,7 @@ hollowcrypt-dead-5:
 hollowcrypt-dead-6:
   feetPosition: {x: 1293.6305299789362, y: {terrain: 0}, z: -691.5452469258771}
   id: hollowcrypt-dead-6
+  material: {kind: scripted, params: {kind: dead}, script: scripts/tree-look.js}
   physics: static
   primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js}
   rotation: 318
@@ -32,6 +35,42 @@ hollowcrypt-stone-4:
   physics: static
   primitive: {kind: scripted, params: {r: 2}, script: scripts/gen/rock.js}
   rotation: 284
+hollowcrypt-twisted-0:
+  feetPosition: {x: 1290, y: {terrain: -0.2}, z: -650}
+  id: hollowcrypt-twisted-0
+  material: {kind: scripted, params: {kind: twisted}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: twisted}, script: scripts/gen/tree.js, seed: 200}
+  rotation: 0
+  scale: 0.8
+  tags: [tree]
+hollowcrypt-twisted-1:
+  feetPosition: {x: 1322, y: {terrain: -0.2}, z: -662}
+  id: hollowcrypt-twisted-1
+  material: {kind: scripted, params: {kind: twisted}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: twisted}, script: scripts/gen/tree.js, seed: 201}
+  rotation: 97
+  scale: 0.88
+  tags: [tree]
+hollowcrypt-twisted-2:
+  feetPosition: {x: 1302, y: {terrain: -0.2}, z: -700}
+  id: hollowcrypt-twisted-2
+  material: {kind: scripted, params: {kind: twisted}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: twisted}, script: scripts/gen/tree.js, seed: 202}
+  rotation: 194
+  scale: 0.9600000000000001
+  tags: [tree]
+hollowcrypt-twisted-3:
+  feetPosition: {x: 1280, y: {terrain: -0.2}, z: -684}
+  id: hollowcrypt-twisted-3
+  material: {kind: scripted, params: {kind: twisted}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: twisted}, script: scripts/gen/tree.js, seed: 203}
+  rotation: 291
+  scale: 1.04
+  tags: [tree]
 waystone-crypt-road:
   feetPosition: {x: 1224, y: {terrain: 0}, z: -577}
   id: waystone-crypt-road

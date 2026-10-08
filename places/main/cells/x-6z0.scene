@@ -65,6 +65,7 @@ start-thornhollow/start-thornhollow-shrine-glow:
 start-thornhollow/start-thornhollow-tree-1:
   feetPosition: {x: -25, y: 9.726425648891741, z: -16}
   id: start-thornhollow/start-thornhollow-tree-1
+  material: {kind: scripted, params: {kind: pine}, script: scripts/tree-look.js}
   parent: start-thornhollow
   physics: static
   primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 40}
@@ -73,6 +74,7 @@ start-thornhollow/start-thornhollow-tree-1:
 start-thornhollow/start-thornhollow-tree-5:
   feetPosition: {x: -2, y: 3.880518236520814, z: -30}
   id: start-thornhollow/start-thornhollow-tree-5
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
   parent: start-thornhollow
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 44}
