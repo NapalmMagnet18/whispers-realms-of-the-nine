@@ -183,7 +183,10 @@ export function update(ctx, dt) {
       if (now >= m.strikeAt) strike(ctx, w, s, m, p, dist);
       continue;
     }
-    if (!p || dist > S.dropAggro) { s.mode = "leash"; s.target = null; m.roamUntil = 0; continue; } // lost its prey: walks home, where it heals and calms (the leash branch resets hp and enrage)
+    if (!p || dist > S.dropAggro) { // lost its prey. A hero still standing near (veiled, say) keeps the wounds; an empty field walks it home to heal and calm
+      const anyone = ctx.place.players.some((q) => (q.state?.health ?? 1) > 0 && !q.state?.dying && flat(q.feetPosition, pos) < S.dropAggro);
+      s.mode = anyone ? "idle" : "leash"; s.target = null; m.roamUntil = 0; continue;
+    }
     if (dist <= S.strike.start && now >= (m.nextStrike ?? 0)) {
       s.mode = "windup"; m.strikeAt = now + S.strike.windup * 1000;
       gait(w, m, "idle"); halt(w, m); once(w, S.clips.attack, 0.9);
