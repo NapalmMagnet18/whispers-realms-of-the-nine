@@ -14,6 +14,7 @@
 // (tally = the def's tally, XP, copper). It rises again after respawn seconds; an empty arena walks it home and heals it.
 import BOSSES from "./lib/data/bosses.yml";
 import VOICES from "./lib/data/boss-voices.yml";
+import TAUNTS from "./lib/data/boss-taunts.yml";
 
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const arcd = (from, to) => ((((to - from) % 360) + 540) % 360) - 180;
@@ -95,6 +96,11 @@ export function update(ctx, dt) {
     return;
   }
   if (s.mode === "asleep") {
+    // a hero steps into the arena: the boss speaks first, before it wakes (once a minute)
+    if (TAUNTS[s.boss] && !s.add && fighters.length && now > (m.tauntAt ?? 0) && !fighters.some((p) => flat(p.feetPosition, w.feetPosition) < (D.aggro ?? 12))) {
+      m.tauntAt = now + 60000;
+      ctx.emit("playSound", { clip: TAUNTS[s.boss], position: w.feetPosition, volume: 1, maxDistance: 90, refDistance: 12, bus: "Voice", mode: "restart" }, { audience: near(w.feetPosition, 95) });
+    }
     if (!s.add && !fighters.some((p) => flat(p.feetPosition, w.feetPosition) < (D.aggro ?? 12)) && !(s.lastHitAt && now - s.lastHitAt < 3000)) return;
     s.mode = "fight";
     if (D.raidScale && !s.add) { const n = fighters.length; s.maxHp = Math.round(D.hp * (1 + D.raidScale * (n - 1))); s.hp = s.maxHp; m.hp = s.hp; s.hpPct = 100; }

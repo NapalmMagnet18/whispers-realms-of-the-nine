@@ -1,0 +1,19 @@
+# A boss's arena taunt: scripts/boss.js speaks it when a hero first steps into the arena while the boss still sleeps (once a minute).
+reed_sentry: /cdn/voice-hollow-metallic-echoing-construct-guardian-saying-more-flesh-for-the-stair-the-water-remembers-every-step.mp3
+choir_mother: /cdn/voice-cold-ethereal-whispering-drowned-woman-reverb-saying-come-closer-little-voice-the-choir-has-a-place-for-you.mp3
+thorn_custodian: /cdn/voice-deep-creaking-ancient-tree-giant-saying-you-tread-on-roots-older-than-your-kingdom.mp3
+deacon_morrow: /cdn/voice-deep-sinister-priest-muffled-iron-mask-saying-another-lamp-walks-into-my-dark.mp3
+bone_organist: /cdn/voice-rasping-skeletal-gleeful-ghoul-saying-fresh-bones-oh-how-they-will-sing.mp3
+saint_ilvane: /cdn/voice-regal-sorrowful-fallen-saint-woman-echoing-saying-they-still-pray-to-me-in-the-dark-did-you-know.mp3
+kesh_slagmaster: /cdn/voice-gravel-voiced-brutish-dwarf-overseer-bellowing-saying-more-meat-for-the-furnace-step-right-in.mp3
+vharok_caldera: /cdn/voice-colossal-rumbling-volcanic-titan-booming-saying-i-smell-your-little-fire-it-is-nothing-to-mine.mp3
+seal_keeper: /cdn/voice-stern-hollow-armored-warden-reverb-saying-you-stand-before-the-first-seal-turn-back-while-you-still-owe-nothing.mp3
+memory_engine: /cdn/voice-layered-distorted-chorus-of-many-voices-mechanical-saying-i-already-know-your-name-i-am-only-waiting-for-the-rest-of-you.mp3
+bellforged_sentinel: /cdn/voice-booming-bronze-bell-resonant-golem-saying-the-bell-has-heard-your-footsteps.mp3
+engine_manifestation: /cdn/voice-hissing-clockwork-wraith-whisper-saying-so-many-memories-walking-toward-me.mp3
+lampless_reeve: /cdn/voice-weary-hoarse-old-lamplighter-bitter-saying-another-lantern-bearer-they-all-go-out-in-the-end.mp3
+hollowsong: /cdn/voice-creaking-rotten-wood-voice-mournful-saying-the-rot-hears-you-coming-child-of-the-march.mp3
+gharn_unbanked: /cdn/voice-grinding-stone-gravel-brute-growl-saying-you-owe-me-everyone-who-walks-this-road-owes-me.mp3
+captain_merrow: /cdn/voice-waterlogged-gurgling-old-sea-captain-saying-come-aboard-the-crew-is-short-a-hand.mp3
+the_unbraided: /cdn/voice-dry-rustling-reed-whisper-unsettling-saying-the-reeds-whisper-your-name-they-are-never-wrong.mp3
+star_that_answered: /cdn/voice-distant-shimmering-celestial-woman-echo-saying-you-looked-up-and-i-looked-back.mp3
