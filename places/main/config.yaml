@@ -393,3 +393,7 @@ terrain:
     veilgate-path: {grade: true, kind: path, material: gravel, maxGrade: 0.28, noise: 0.3, points: [[0, -7560], [8, -7572], [18, -7588], [30, -7597], [30, -7618]], width: 3.4}
     bastion-court: {center: {x: 7560, z: -170}, falloff: 16, height: 25, kind: flatten, material: dirt, shape: {kind: circle, radius: 58}}
     bastion-clear: {center: {x: 7560, z: -170}, kind: clear-scatter, shape: {kind: circle, radius: 66}}
+    ward: {center: {x: 0, z: -100}, falloff: 12, height: 0.8, kind: flatten, shape: {kind: circle, radius: 31}}
+    ward-clear: {center: {x: 0, z: -100}, kind: clear-scatter, shape: {kind: circle, radius: 36}}
+    lane-bellward: {grade: true, kind: path, material: cobble, noise: 0.3, points: [[-27, -101], [-12, -100], [0, -100], [14, -99], [28, -100]], width: 3}
+    lane-bellyard: {grade: true, kind: path, material: dirt, noise: 0.5, points: [[-4, -104], [-10, -110], [-16, -115], [-21, -122]], width: 2}
