@@ -54,8 +54,16 @@ function townhouse(ctx, p, s) {
   const t = 0.32, y0 = 0.45, y1 = y0 + h1, y2 = y1 + 0.28, y3 = y2 + h2;
   const W2 = w + 2 * jet, D2 = d + 2 * jet, R = W2 * (p.pitch ?? 0.85);
   const doorU = p.doorX ?? -w * 0.18;
-  if (s) { // collider: plinth, the ground-floor block, the upper block
-    boxR(ctx, [0, (y3 - 1) / 2, 0], [w + 0.16, y3 + 1, d + 0.16]);
+  const open = !!p.open, dW = open ? 1.4 : 1.15;
+  if (s) { // collider: closed = one block; open = floor, walls with the doorway, the ceiling and hearth
+    if (!open) { boxR(ctx, [0, (y3 - 1) / 2, 0], [w + 0.16, y3 + 1, d + 0.16]); return; }
+    boxR(ctx, [0, (y0 - 1) / 2, 0], [w + 0.16, y0 + 1, d + 0.16]);
+    wall(ctx, 0, w, -d / 2, -d / 2 + t, y0, y1, [{ u: doorU, w: dW, h: 2.5, sill: 0 }]);
+    wall(ctx, 180, w, -d / 2, -d / 2 + t, y0, y1, []);
+    wall(ctx, 90, d - 2 * t, -w / 2, -w / 2 + t, y0, y1, []);
+    wall(ctx, 270, d - 2 * t, -w / 2, -w / 2 + t, y0, y1, []);
+    boxR(ctx, [0, (y1 + y3) / 2, 0], [w, y3 - y1, d]);
+    boxR(ctx, [0, y0 + 0.7, d / 2 - t - 0.45], [2.4, 1.4, 0.9]);
     return;
   }
   if (lod >= 5) { // the far hull: the two blocks and the roof, a few dozen faces
@@ -74,8 +82,8 @@ function townhouse(ctx, p, s) {
   boxR(ctx, [0, (y0 - 1) / 2, 0], [w + 0.16, y0 + 1, d + 0.16]);
   // ground floor: ashlar, door in front, windows
   paint(ctx, s, ASHLAR, "oklch(0.92 0.01 80)");
-  const fH = [{ u: doorU, w: 1.15, h: 2.25, sill: 0 }]; if (w >= 4.4) fH.push({ u: w * 0.24, w: 0.8, h: 1.05, sill: 1.0 });
-  const bH = [{ u: 0, w: 0.8, h: 1.0, sill: 1.05 }], sH = [{ u: 0, w: 0.7, h: 1.0, sill: 1.05 }];
+  const fH = [{ u: doorU, w: dW, h: open ? 2.5 : 2.25, sill: 0 }]; if (w >= 4.4) fH.push({ u: w * 0.24, w: 0.8, h: 1.05, sill: 1.0 });
+  const bH = open ? [] : [{ u: 0, w: 0.8, h: 1.0, sill: 1.05 }], sH = open ? [{ u: -d * 0.22, w: 0.8, h: 1.1, sill: 1.05 }, { u: d * 0.22, w: 0.8, h: 1.1, sill: 1.05 }] : [{ u: 0, w: 0.7, h: 1.0, sill: 1.05 }];
   const faces = [[0, w, fH, d / 2], [180, w, bH, d / 2], [90, d - 2 * t, sH, w / 2], [270, d - 2 * t, sH, w / 2]];
   for (const [yaw, L, holes, half] of faces) wall(ctx, yaw, L, -half, -half + t, y0, y1, holes);
   for (const [yaw, L, holes, half] of faces) for (const o of holes) if (o.sill > 0) windowIn(ctx, s, yaw, o, -half, -half + t, y0, lit, lod, lod <= 2 && yaw === 0);
@@ -88,7 +96,26 @@ function townhouse(ctx, p, s) {
   }
   // the door: recessed leaf, iron straps, a step, a lantern on a bracket
   paint(ctx, s, DOOR, "oklch(0.75 0.03 50)");
-  bx(ctx, 0, doorU - 0.58, y0, -d / 2 + t * 0.6, doorU + 0.58, y0 + 2.25, -d / 2 + t * 0.6 + 0.08);
+  if (!open) bx(ctx, 0, doorU - 0.58, y0, -d / 2 + t * 0.6, doorU + 0.58, y0 + 2.25, -d / 2 + t * 0.6 + 0.08);
+  else { // a leaf swung in against the wall, a board floor, a beamed ceiling, the hearth on the back wall
+    bx(ctx, 0, doorU + dW / 2, y0, -d / 2 + t, doorU + dW / 2 + 0.08, y0 + 2.4, -d / 2 + t + 1.25);
+    paint(ctx, s, T("worn-oak-floor-boards"), "oklch(0.86 0.03 60)");
+    bx(ctx, 0, -w / 2 + t, y0 - 0.02, -d / 2 + t, w / 2 - t, y0 + 0.02, d / 2 - t);
+    paint(ctx, s, LIME, "oklch(0.82 0.02 75)");
+    bx(ctx, 0, -w / 2 + t, y1 - 0.04, -d / 2 + t, w / 2 - t, y1, d / 2 - t);
+    paint(ctx, s, OAK, "oklch(0.68 0.03 45)");
+    for (let zz = -d / 2 + 1.1; zz < d / 2 - 0.6; zz += 1.4) bx(ctx, 0, -w / 2 + t, y1 - 0.3, zz - 0.11, w / 2 - t, y1 - 0.04, zz + 0.11);
+    for (const sx of [-1, 1]) for (let zz = -d / 2 + 1.1; zz < d / 2 - 0.6; zz += 2.8) bx(ctx, 0, sx * (w / 2 - t) - (sx > 0 ? 0.18 : 0), y0, zz - 0.11, sx * (w / 2 - t) + (sx < 0 ? 0.18 : 0), y1 - 0.3, zz + 0.11);
+    const hz = d / 2 - t;
+    paint(ctx, s, FIELD, "oklch(0.78 0.02 100)");
+    bx(ctx, 0, -1.2, y0, hz - 0.9, -0.55, y0 + 1.4, hz); bx(ctx, 0, 0.55, y0, hz - 0.9, 1.2, y0 + 1.4, hz);
+    bx(ctx, 0, -0.55, y0 + 1.0, hz - 0.9, 0.55, y0 + 1.4, hz); bx(ctx, 0, -0.55, y0, hz - 0.9, 0.55, y0 + 0.15, hz);
+    bx(ctx, 0, -1.0, y0 + 1.4, hz - 0.7, 1.0, y1 - 0.04, hz);
+    paint(ctx, s, OAK, "oklch(0.7 0.03 45)");
+    bx(ctx, 0, -1.45, y0 + 1.4, hz - 1.05, 1.45, y0 + 1.55, hz); // mantel
+    glow(ctx, s, "oklch(0.5 0.12 40)", "oklch(0.55 0.2 35)");
+    bx(ctx, 0, -0.45, y0 + 0.15, hz - 0.6, 0.45, y0 + 0.22, hz - 0.1);
+  }
   paint(ctx, s, FIELD, "oklch(0.75 0.02 100)");
   bx(ctx, 0, doorU - 0.75, -0.2, -d / 2 - 0.6, doorU + 0.75, y0 - 0.02, -d / 2);
   if (lod <= 2) {
@@ -176,7 +203,7 @@ function townhouse(ctx, p, s) {
     boxR(ctx, [0, y3 + R * 0.3, -(D2 / 2 + 0.03)], [0.04, 0.6, 0.03]);
   }
   // chimney
-  const cx = (p.chimney ?? 1) * W2 * 0.22, cz = D2 * 0.18, top = y3 + R + 0.9;
+  const cx = (p.chimney ?? 1) * W2 * 0.22, cz = p.chimneyZ ?? D2 * 0.18, top = y3 + R + 0.9;
   paint(ctx, s, FIELD, "oklch(0.8 0.02 110)");
   boxR(ctx, [cx, (y3 + top) / 2, cz], [0.75, top - y3, 0.6]);
   paint(ctx, s, ASHLAR, "oklch(0.9 0.01 80)");
