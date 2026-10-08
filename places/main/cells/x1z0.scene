@@ -62,6 +62,82 @@ boulder-8:
   primitive: {kind: scripted, params: {ore: null, r: 1}, script: scripts/gen/rock.js}
   rotation: 504
   tags: [rock]
+cl-bell:
+  feetPosition: {x: 71.5, y: {terrain: 0}, z: -3}
+  id: cl-bell
+  layout: {maxExtents: {y: 2.6}, minExtents: {y: 2.6}}
+  model: {id: /cdn/value.f14cac9fb5bff249bf7b652f705c948a48a4b4f2caccd807b2aecc01fb34dbf8.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-camp-cauldron:
+  feetPosition: {x: 67, y: {terrain: 0}, z: 33}
+  id: cl-camp-cauldron
+  layout: {maxExtents: {y: 0.9}, minExtents: {y: 0.9}}
+  model: {id: /cdn/value.b008674fd919c3d2cc472baddbee3e7b64584e245ebedabdc298c6baaac2a727.glb}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-camp-fire:
+  feetPosition: {x: 67, y: {terrain: 0}, z: 33}
+  id: cl-camp-fire
+  layout: {maxExtents: {y: 0.5}, minExtents: {y: 0.5}}
+  model: {id: /cdn/value.a7a7b8db35ccd1cd9bc5ed257c038960cd4995a3a5c45fad0aff7d6cc820d73f.glb}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-camp-glow:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-campfire-crackle-loop.mp3, gain: 0.15, loop: true, maxDistance: 18, spatial: true}
+  feetPosition: {x: 67, y: {terrain: 0.6}, z: 33}
+  fx: {script: "fx\npop flame rate=36 on=disc(.25) life=.5..0.9 v=up(1.3)+cone(20)*(.3..0.7) size=.18..0.32 acc=curl(.5)+buoy(2)+drag(1.5) sz=$size*(.5>1:.3>.2) col=hdr(4,2.8,1.2)>hdr(2.4,1,.2)>hdr(.6,.12,.03) a=0>.15:1>.8:.8>0 r=sprite(flame-wisp,add)\npop smoke rate=5 on=disc(.2) life=2..3 v=up(1.2) size=.25..0.4 acc=buoy(.6)+curl(.3)+drag(.6) sz=$size*(.7>3) col=<.3,.28,.26> a=0>.2:.25>.7:.15>0 r=sprite(smoke-puff,alpha)"}
+  id: cl-camp-glow
+  light: {color: oklch(0.78 0.17 50), distance: 12, intensity: 2.5, kind: point}
+cl-camp-logs:
+  feetPosition: {x: 64.8, y: {terrain: 0}, z: 32}
+  id: cl-camp-logs
+  layout: {maxExtents: {y: 0.7}, minExtents: {y: 0.7}}
+  model: {id: /cdn/value.b50e8ad41a09d38b7dd0c0728666d62743012edc7dfbec1a35d4bbf5e15750f5.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 70}
+  tags: [kit, copperlane]
+cl-camp-tent-1:
+  feetPosition: {x: 64, y: {terrain: 0}, z: 36.5}
+  id: cl-camp-tent-1
+  layout: {maxExtents: {y: 2.2}, minExtents: {y: 2.2}}
+  model: {id: /cdn/value.3ac2a329ee34836b34d842c79aceeb1d63eaead3a8bfbd2af93dbde934ac424b.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 160}
+  tags: [kit, copperlane]
+cl-camp-tent-2:
+  feetPosition: {x: 70, y: {terrain: 0}, z: 36}
+  id: cl-camp-tent-2
+  layout: {maxExtents: {y: 2.2}, minExtents: {y: 2.2}}
+  model: {id: /cdn/value.3ac2a329ee34836b34d842c79aceeb1d63eaead3a8bfbd2af93dbde934ac424b.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 200}
+  tags: [kit, copperlane]
+cl-chandler-barrel:
+  feetPosition: {x: 70.6, y: {terrain: 0}, z: -15.8}
+  id: cl-chandler-barrel
+  layout: {maxExtents: {y: 1.1}, minExtents: {y: 1.1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-chandler-cart:
+  feetPosition: {x: 78.6, y: {terrain: 0}, z: -15.6}
+  id: cl-chandler-cart
+  layout: {maxExtents: {y: 1.6}, minExtents: {y: 1.6}}
+  model: {id: /cdn/value.c191493ec15547ab15cc840595c47f09a7045420a0e92032349600799902ec5a.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: -30}
+  tags: [kit, copperlane]
+cl-chandler-sacks:
+  feetPosition: {x: 77, y: {terrain: 0}, z: -14.2}
+  id: cl-chandler-sacks
+  layout: {maxExtents: {y: 0.6}, minExtents: {y: 0.6}}
+  model: {id: /cdn/value.91b326be54d57beb35456b5fb5d4532dd21dc0802e3394aff229865a32ade248.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 10}
+  tags: [kit, copperlane]
 cl-house-chandler:
   children: [{feetPosition: {x: 1.5, y: 1.6, z: -1}, id: cl-house-chandler-hearth, light: {color: oklch(0.82 0.14 60), distance: 9, intensity: 1.8, kind: point}}, {feetPosition: {x: 1, y: 4.8, z: 0}, id: cl-house-chandler-upstairs, light: {color: oklch(0.82 0.14 60), distance: 8, intensity: 1.4, kind: point}}, {feetPosition: {x: -2.1, y: 2.3, z: 3.38}, id: cl-house-chandler-door-lamp, light: {color: oklch(0.85 0.15 65), distance: 7, intensity: 1.2, kind: point}}]
   feetPosition: {x: 74, y: 0.45, z: -21}
@@ -70,6 +146,82 @@ cl-house-chandler:
   physics: {body: static, collider: mesh}
   rotation: {yaw: 0}
   tags: [building]
+cl-lamp-1:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.84 0.14 65), distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: 66, y: {terrain: 0}, z: -3}
+  id: cl-lamp-1
+  layout: {maxExtents: {y: 2.8}, minExtents: {y: 2.8}}
+  model: {id: /cdn/value.60d6adc4a3ffc6da11ed696eee515c6131da08ebdea52002320fb092459c37e1.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-lamp-2:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.84 0.14 65), distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: 70, y: {terrain: 0}, z: 4}
+  id: cl-lamp-2
+  layout: {maxExtents: {y: 2.8}, minExtents: {y: 2.8}}
+  model: {id: /cdn/value.60d6adc4a3ffc6da11ed696eee515c6131da08ebdea52002320fb092459c37e1.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-lamp-3:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.84 0.14 65), distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: 66, y: {terrain: 0}, z: 12}
+  id: cl-lamp-3
+  layout: {maxExtents: {y: 2.8}, minExtents: {y: 2.8}}
+  model: {id: /cdn/value.60d6adc4a3ffc6da11ed696eee515c6131da08ebdea52002320fb092459c37e1.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-lamp-4:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.84 0.14 65), distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: 70, y: {terrain: 0}, z: 20}
+  id: cl-lamp-4
+  layout: {maxExtents: {y: 2.8}, minExtents: {y: 2.8}}
+  model: {id: /cdn/value.60d6adc4a3ffc6da11ed696eee515c6131da08ebdea52002320fb092459c37e1.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-miller-sacks:
+  feetPosition: {x: 66.5, y: {terrain: 0}, z: 25.3}
+  id: cl-miller-sacks
+  layout: {maxExtents: {y: 0.6}, minExtents: {y: 0.6}}
+  model: {id: /cdn/value.91b326be54d57beb35456b5fb5d4532dd21dc0802e3394aff229865a32ade248.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 80}
+  tags: [kit, copperlane]
+cl-miller-wagon:
+  feetPosition: {x: 68.5, y: {terrain: 0}, z: 23.2}
+  id: cl-miller-wagon
+  layout: {maxExtents: {y: 2}, minExtents: {y: 2}}
+  model: {id: /cdn/value.33df6d693e2e9855af584dce169cf7becb4c0e6a03b435c20e9437e68b02e6dc.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 200}
+  tags: [kit, copperlane]
+cl-tanner-crate-1:
+  feetPosition: {x: 65.2, y: {terrain: 0}, z: -14.4}
+  id: cl-tanner-crate-1
+  layout: {maxExtents: {y: 0.8}, minExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 15}
+  tags: [kit, copperlane]
+cl-tanner-crate-2:
+  feetPosition: {x: 65.25, y: {terrain: 0.8}, z: -14.4}
+  id: cl-tanner-crate-2
+  layout: {maxExtents: {y: 0.8}, minExtents: {y: 0.8}}
+  model: {id: /cdn/value.aa83b3a7c9e43023559881c146e2a0cc6d61a6f8c050e4189c12fe99fa043a57.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 40}
+  tags: [kit, copperlane]
+cl-well:
+  feetPosition: {x: 68, y: {terrain: 0}, z: -7.5}
+  id: cl-well
+  layout: {maxExtents: {y: 2.4}, minExtents: {y: 2.4}}
+  model: {id: /cdn/value.d6dc100879f5eded65b0732bf52dbb1bff69d647052aaf474af23d62e11b9db2.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 20}
+  tags: [kit, copperlane]
 copper-0:
   feetPosition: {x: 141, y: {terrain: -0.2}, z: 24}
   id: copper-0

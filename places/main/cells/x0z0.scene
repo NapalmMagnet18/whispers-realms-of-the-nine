@@ -551,6 +551,77 @@ cl-house-tanner:
   physics: {body: static, collider: mesh}
   rotation: {yaw: 0}
   tags: [building]
+cl-miller-hay-1:
+  feetPosition: {x: 59, y: {terrain: 0}, z: 24.5}
+  id: cl-miller-hay-1
+  layout: {maxExtents: {y: 1.2}, minExtents: {y: 1.2}}
+  model: {id: /cdn/value.042fe3bfa737bc03cecab2172e1b0340def12da2b8a37b83dfe6728d5e2adeed.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 10}
+  tags: [kit, copperlane]
+cl-miller-hay-2:
+  feetPosition: {x: 60.2, y: {terrain: 0}, z: 25}
+  id: cl-miller-hay-2
+  layout: {maxExtents: {y: 1.2}, minExtents: {y: 1.2}}
+  model: {id: /cdn/value.042fe3bfa737bc03cecab2172e1b0340def12da2b8a37b83dfe6728d5e2adeed.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 50}
+  tags: [kit, copperlane]
+cl-miller-hay-3:
+  feetPosition: {x: 59.6, y: {terrain: 1.15}, z: 24.8}
+  id: cl-miller-hay-3
+  layout: {maxExtents: {y: 1.2}, minExtents: {y: 1.2}}
+  model: {id: /cdn/value.042fe3bfa737bc03cecab2172e1b0340def12da2b8a37b83dfe6728d5e2adeed.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 30}
+  tags: [kit, copperlane]
+cl-rocks-1:
+  feetPosition: {x: 57, y: {terrain: 0}, z: 9.4}
+  id: cl-rocks-1
+  layout: {maxExtents: {y: 0.5}, minExtents: {y: 0.5}}
+  model: {id: /cdn/value.b4b48a6cdb4af7e50e83dd510766d1f1ad085c7e010d559d4e2ba103a96ba9f3.glb}
+  rotation: {yaw: 30}
+  tags: [kit, copperlane]
+cl-tanner-barrel-1:
+  feetPosition: {x: 58.6, y: {terrain: 0}, z: -14.2}
+  id: cl-tanner-barrel-1
+  layout: {maxExtents: {y: 1.1}, minExtents: {y: 1.1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-tanner-barrel-2:
+  feetPosition: {x: 59.5, y: {terrain: 0}, z: -13.6}
+  id: cl-tanner-barrel-2
+  layout: {maxExtents: {y: 1.1}, minExtents: {y: 1.1}}
+  model: {id: /cdn/value.3bc06a29032dc7a92e2ae666fec401b6931a8fae5b7f4e790db7bb5d3d4574fd.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 40}
+  tags: [kit, copperlane]
+cl-tanner-bench:
+  feetPosition: {x: 61, y: {terrain: 0}, z: -13.9}
+  id: cl-tanner-bench
+  layout: {maxExtents: {y: 0.9}, minExtents: {y: 0.9}}
+  model: {id: /cdn/value.96a90469e6faf950058cfd55e59e406c93efbe0f255fe20a5ba8a83f8432f620.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
+cl-tanner-logs:
+  feetPosition: {x: 57.4, y: {terrain: 0}, z: -17.5}
+  id: cl-tanner-logs
+  layout: {maxExtents: {y: 1.1}, minExtents: {y: 1.1}}
+  model: {id: /cdn/value.b50e8ad41a09d38b7dd0c0728666d62743012edc7dfbec1a35d4bbf5e15750f5.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 90}
+  tags: [kit, copperlane]
+cl-waystone:
+  feetPosition: {x: 56, y: {terrain: 0}, z: 8}
+  id: cl-waystone
+  layout: {maxExtents: {y: 2.6}, minExtents: {y: 2.6}}
+  model: {id: /cdn/value.a554f2e8411bad9f39583ae774535d47be2b8afa51be534aad8428f310fa4aa3.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 0}
+  tags: [kit, copperlane]
 cottage-e:
   children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
   feetPosition: {x: 31, y: 4, z: -20}
