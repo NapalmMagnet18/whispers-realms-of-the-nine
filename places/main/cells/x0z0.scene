@@ -1,4 +1,197 @@
 # spawn-scene v2 yaml x0z0
+arc-bench:
+  feetPosition: {x: -18, y: {terrain: 0}, z: -30.5}
+  id: arc-bench
+  physics: static
+  primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/observatory.js}
+  rotation: -20
+  tags: [observatory]
+arc-consent-bram:
+  feetPosition: {x: 14.1, y: 4, z: -31.300000000000004}
+  id: arc-consent-bram
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: consent_asked, quest: ARC-03, say: "Bram thinks about it a long while. 'Yes. Only today, mind.' You read the smell of bread and a door he still locks twice.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Ask Permission, verb: Ask to read a trace}
+  tags: [quest-mark, observatory]
+arc-consent-mira:
+  feetPosition: {x: 19.099999999999998, y: 4, z: 4.4}
+  id: arc-consent-mira
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: consent_asked, quest: ARC-03, say: "'Go on, then. Gently.' Mira holds still. You read heat, and a song her father sang at the anvil.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Ask Permission, verb: Ask to read a trace}
+  tags: [quest-mark, observatory]
+arc-consent-rowan:
+  feetPosition: {x: -35.6, y: 4.4, z: -11.299999999999999}
+  id: arc-consent-rowan
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: consent_asked, quest: ARC-03, say: "'Ask the river first,' Rowan says, and grins, and nods. You read thirty years of a single crossing.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Ask Permission, verb: Ask to read a trace}
+  tags: [quest-mark, observatory]
+arc-credit:
+  feetPosition: {x: -18, y: {terrain: 0.5}, z: -30.5}
+  id: arc-credit
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {after: focus_trial, afterText: "First: hold your focus at the three plinths", mark: author_credited, quest: ARC-07, say: "You write it plainly on the card: 'Written by those who kept the lamps. Names unknown. Honored.'", sound: /cdn/moodboard-painterly-fantasy/sfx-quill-scratch-signature.mp3, title: Reading Bench, verb: Credit the author}
+  tags: [quest-mark, observatory]
+arc-desk:
+  feetPosition: {x: -30.6, y: {terrain: 0}, z: -37.8}
+  id: arc-desk
+  physics: static
+  primitive: {kind: scripted, params: {kind: desk}, script: scripts/gen/observatory.js}
+  rotation: 90
+  state: {after: ink_fragment, afterText: "First: copy the three ink fragments", mark: page_stabilized, quest: ARC-04, say: "You lay the three copies over the page. The ink slows, shivers, and stops. 'Here, by our own hands, we kept the lamps.'", sound: /cdn/moodboard-painterly-fantasy/sfx-paper-unfold.mp3, title: Ossa's Desk, verb: Pin the page}
+  tags: [quest-mark, observatory]
+arc-device:
+  feetPosition: {x: -28, y: {terrain: 0}, z: -31}
+  fx: {script: "fx\npop mote rate=3 on=sphere(.25) life=1..1.6 v=up(.15) size=.04..0.08 col=hdr(1.6,1.8,3) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: arc-device
+  physics: static
+  primitive: {kind: scripted, params: {kind: plinth}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {after: consent_asked, afterText: "First: ask three people for permission", mark: forced_refused, quest: ARC-03, say: A brass cage of needles that reads whoever stands near. It purrs at you. You close its lid and turn the key the wrong way., sound: /cdn/moodboard-painterly-fantasy/sfx-brass-compass-click.mp3, title: Reading Device, verb: Refuse it}
+  tags: [quest-mark, observatory]
+arc-echo-0:
+  feetPosition: {x: -34, y: {terrain: 0}, z: -46}
+  fx: {script: "fx\npop mote rate=3 on=sphere(.25) life=1..1.6 v=up(.15) size=.04..0.08 col=hdr(1.6,1.8,3) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: arc-echo-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: echo}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {mark: echo_released, quest: ARC-01, say: A woman laughing at a joke you'll never hear the start of. You let it go. It drifts off over the river., sound: /cdn/moodboard-painterly-fantasy/sfx-soft-magical-chime-release.mp3, title: Memory Echo, verb: "Listen, then release"}
+  tags: [quest-mark, observatory]
+arc-echo-1:
+  feetPosition: {x: -15, y: {terrain: 0}, z: -47}
+  fx: {script: "fx\npop mote rate=3 on=sphere(.25) life=1..1.6 v=up(.15) size=.04..0.08 col=hdr(1.6,1.8,3) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: arc-echo-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: echo}, script: scripts/gen/observatory.js}
+  rotation: 40
+  state: {mark: echo_released, quest: ARC-01, say: "Rain on a slate roof, and a child counting the drips. You open your hand. The sound goes quiet, gently.", sound: /cdn/moodboard-painterly-fantasy/sfx-soft-magical-chime-release.mp3, title: Memory Echo, verb: "Listen, then release"}
+  tags: [quest-mark, observatory]
+arc-echo-2:
+  feetPosition: {x: -29, y: {terrain: 0}, z: -53}
+  fx: {script: "fx\npop mote rate=3 on=sphere(.25) life=1..1.6 v=up(.15) size=.04..0.08 col=hdr(1.6,1.8,3) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: arc-echo-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: echo}, script: scripts/gen/observatory.js}
+  rotation: 80
+  state: {mark: echo_released, quest: ARC-01, say: "Someone humming while they mend a net. You listen to the whole verse, then let it leave.", sound: /cdn/moodboard-painterly-fantasy/sfx-soft-magical-chime-release.mp3, title: Memory Echo, verb: "Listen, then release"}
+  tags: [quest-mark, observatory]
+arc-falselamp:
+  feetPosition: {x: -21.8, y: {terrain: 0.05}, z: -33}
+  id: arc-falselamp
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {after: resonance_signal, afterText: "First: listen to both lamps", mark: false_lamp, quest: ARC-02, say: "Your hand on the brass. The lamp flickers, embarrassed, and its shadow snaps back to where it belongs.", sound: /cdn/moodboard-painterly-fantasy/sfx-soft-magical-chime-release.mp3, title: The Lying Lamp, verb: Mark the liar}
+  tags: [quest-mark, observatory]
+arc-forge:
+  feetPosition: {x: -24, y: {terrain: 0}, z: -49.5}
+  fx: {script: "fx\npop spark rate=8 on=sphere(.25).c(1.55) life=.5..1 v=sdir()*(.3..0.8) size=.03..0.06 col=hdr(4,3.6,2.4) a=1>0 r=sprite(ember,add)\npop glow n=1 pos=<0,1.55,0> r=light(<1,.9,.75>,6,12)"}
+  id: arc-forge
+  physics: static
+  primitive: {kind: scripted, params: {kind: forge}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {blockText: Held!, quest: ARC-05, sound: /cdn/moodboard-painterly-fantasy/sfx-magical-shield-hum-impact.mp3, tallyKey: forge_ward}
+  tags: [observatory, arcane-drill]
+arc-ink-0:
+  feetPosition: {x: -36, y: {terrain: 0.02}, z: -36}
+  fx: {script: "fx\npop mote rate=3 on=sphere(.25) life=1..1.6 v=up(.15) size=.04..0.08 col=hdr(1.6,1.8,3) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: arc-ink-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: token}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {gain: "+1 Ink Fragment", mark: ink_fragment, quest: ARC-04, sound: /cdn/moodboard-painterly-fantasy/sfx-quill-scratch-signature.mp3, title: Shifting Ink, verb: Copy it}
+  tags: [quest-mark, observatory]
+arc-ink-1:
+  feetPosition: {x: -13, y: {terrain: 0.02}, z: -43}
+  fx: {script: "fx\npop mote rate=3 on=sphere(.25) life=1..1.6 v=up(.15) size=.04..0.08 col=hdr(1.6,1.8,3) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: arc-ink-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: token}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {gain: "+1 Ink Fragment", mark: ink_fragment, quest: ARC-04, sound: /cdn/moodboard-painterly-fantasy/sfx-quill-scratch-signature.mp3, title: Shifting Ink, verb: Copy it}
+  tags: [quest-mark, observatory]
+arc-ink-2:
+  feetPosition: {x: -22, y: {terrain: 0.02}, z: -55}
+  fx: {script: "fx\npop mote rate=3 on=sphere(.25) life=1..1.6 v=up(.15) size=.04..0.08 col=hdr(1.6,1.8,3) a=0>1:.4>0 r=sprite(soft-disc,add)"}
+  id: arc-ink-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: token}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {gain: "+1 Ink Fragment", mark: ink_fragment, quest: ARC-04, sound: /cdn/moodboard-painterly-fantasy/sfx-quill-scratch-signature.mp3, title: Shifting Ink, verb: Copy it}
+  tags: [quest-mark, observatory]
+arc-lamp-0:
+  feetPosition: {x: -26.2, y: {terrain: 0}, z: -33.6}
+  id: arc-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamp}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {mark: resonance_signal, quest: ARC-02, say: The lamp hums a clean low note. Its shadow falls exactly where the sun says it should., sound: /cdn/moodboard-painterly-fantasy/sfx-glass-resonance-hum.mp3, title: Resonance Lamp, verb: Listen}
+  tags: [quest-mark, observatory]
+arc-lamp-1:
+  feetPosition: {x: -21.8, y: {terrain: 0}, z: -33.6}
+  id: arc-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamp}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {mark: resonance_signal, quest: ARC-02, say: "The same note. But its shadow leans left, toward a window that isn't there anymore.", sound: /cdn/moodboard-painterly-fantasy/sfx-glass-resonance-hum.mp3, title: Resonance Lamp, verb: Listen}
+  tags: [quest-mark, observatory]
+arc-plinth-0:
+  feetPosition: {x: -33, y: {terrain: 0}, z: -40}
+  fx: {script: "fx\npop flame rate=10 on=disc(.12).c(1.3) life=.4..0.8 v=up(.4) size=.06..0.1 acc=buoy(1)+drag(1.4) sz=$size*(.6>1:.7>.2) col=hdr(1.6,1.8,3.4)>hdr(.6,.5,1.4) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: arc-plinth-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: plinth}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {blockText: Focus holds, quest: ARC-07, sound: /cdn/moodboard-painterly-fantasy/sfx-magical-shield-hum-impact.mp3, tallyKey: focus_trial}
+  tags: [observatory, arcane-drill]
+arc-plinth-1:
+  feetPosition: {x: -15, y: {terrain: 0}, z: -33}
+  fx: {script: "fx\npop flame rate=10 on=disc(.12).c(1.3) life=.4..0.8 v=up(.4) size=.06..0.1 acc=buoy(1)+drag(1.4) sz=$size*(.6>1:.7>.2) col=hdr(1.6,1.8,3.4)>hdr(.6,.5,1.4) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: arc-plinth-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: plinth}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {blockText: Focus holds, quest: ARC-07, sound: /cdn/moodboard-painterly-fantasy/sfx-magical-shield-hum-impact.mp3, tallyKey: focus_trial}
+  tags: [observatory, arcane-drill]
+arc-plinth-2:
+  feetPosition: {x: -30, y: {terrain: 0}, z: -48}
+  fx: {script: "fx\npop flame rate=10 on=disc(.12).c(1.3) life=.4..0.8 v=up(.4) size=.06..0.1 acc=buoy(1)+drag(1.4) sz=$size*(.6>1:.7>.2) col=hdr(1.6,1.8,3.4)>hdr(.6,.5,1.4) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: arc-plinth-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: plinth}, script: scripts/gen/observatory.js}
+  rotation: 0
+  state: {blockText: Focus holds, quest: ARC-07, sound: /cdn/moodboard-painterly-fantasy/sfx-magical-shield-hum-impact.mp3, tallyKey: focus_trial}
+  tags: [observatory, arcane-drill]
+arc-sigil:
+  feetPosition: {x: -15.6, y: {terrain: 0}, z: -37.2}
+  id: arc-sigil
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: sigil_translated, quest: ARC-06, say: "'We who kept the lamps / ask nothing of the dark / but that it let us count our own / and...' The stone stops there.", sound: /cdn/moodboard-painterly-fantasy/sfx-paper-unfold.mp3, title: Half-Cut Sigil, verb: Translate}
+  tags: [quest-mark, observatory]
+arc-sigil-slab:
+  feetPosition: {x: -15, y: {terrain: 0}, z: -38}
+  id: arc-sigil-slab
+  physics: static
+  primitive: {kind: scripted, params: {kind: sigil}, script: scripts/gen/observatory.js}
+  rotation: -70
+  tags: [observatory]
+arc-unsigned:
+  feetPosition: {x: -14.4, y: {terrain: 0}, z: -38.8}
+  id: arc-unsigned
+  physics: none
+  primitive: {kind: scripted, params: {kind: chisel}, script: scripts/gen/cradle.js}
+  rotation: 0
+  state: {after: sigil_translated, afterText: "First: translate the sigil", mark: line_unsigned, quest: ARC-06, say: "You lift the chisel, and put it down. The line stays blank for whoever comes next.", sound: /cdn/moodboard-painterly-fantasy/sfx-soft-magical-chime-release.mp3, title: The Last Line, verb: Leave it open}
+  tags: [quest-mark, observatory]
 armory-barrel-fist-a:
   feetPosition: {x: 22.7, y: 5.07, z: -1.85}
   id: armory-barrel-fist-a
@@ -952,6 +1145,34 @@ merchant:
   primitive: {kind: scripted, params: {chimney: -1, d: 8, h: 3.6, rise: 2.4, roof: weathered red clay roof shingles, w: 10, win: 2}, script: scripts/gen/house.js}
   rotation: -90
   tags: [building, merchant]
+obs-npc-leth:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -20.4, y: {terrain: 0}, z: -33.2}
+  id: obs-npc-leth
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-elderly-astronomer-mage-male-long-white-hair-indigo-robe-brass-spectacles.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Magister Leth Sen, who: leth, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc]
+obs-npc-ossa:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -31.6, y: {terrain: 0}, z: -36.4}
+  id: obs-npc-ossa
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-archivist-woman-dark-bun-ink-stained-apron-reading-glasses.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {homeYaw: 120, idle: Idle, npcName: Curator Ossa, who: ossa, yaw: 120}
+  tags: [npc, talker, townsfolk, quest-npc]
+obs-tower:
+  children: [{feetPosition: {x: 0, y: 5.6, z: 0}, light: {color: oklch(0.85 0.1 80), distance: 16, intensity: 4, kind: point}}, {feetPosition: {x: 0, y: 11, z: 1}, fx: {script: "fx\npop star rate=2 on=sphere(1.5) life=2..3 v=up(.3) size=.05..0.1 col=hdr(2,2.4,3.6) a=0>1:.5>0 r=sprite(mote,add)"}}]
+  feetPosition: {x: -24, y: {terrain: -0.5}, z: -40}
+  id: obs-tower
+  physics: static
+  primitive: {kind: scripted, params: {kind: tower}, script: scripts/gen/observatory.js}
+  rotation: 0
+  tags: [observatory]
 plaza-0:
   feetPosition: {x: 9, y: 4, z: 6}
   id: plaza-0
