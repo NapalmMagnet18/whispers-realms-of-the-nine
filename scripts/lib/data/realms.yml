@@ -2,11 +2,11 @@
 # A hero lives on one realm; characters are saved per realm in the characters table.
 # room: the room name (lowercase, digits, -), what pickRoom and cross() use.
 realms:
-  - { room: main,            name: "Lantern's Rest",  type: Normal,  region: "The March",  note: "the first realm, recommended" }
-  - { room: realm-emberfall,  name: "Emberfall",       type: Normal,  region: "The March" }
-  - { room: realm-greyspine,  name: "Greyspine Watch", type: Normal,  region: "The March" }
-  - { room: realm-hollowmere, name: "Hollowmere",      type: PvP,     region: "The March",  note: "players can duel anywhere outside towns" }
-  - { room: realm-saltwind,   name: "Saltwind",        type: RP,      region: "The March",  note: "stay in character" }
-  - { room: realm-nine-veils, name: "The Nine Veils",  type: Normal,  region: "Far Shores" }
+  - { room: main,            name: "Lantern's Rest",  type: Normal,  region: "The March",  note: "The first realm. Steady, friendly, busiest in the evenings." }
+  - { room: realm-emberfall,  name: "Emberfall",       type: Normal,  region: "The March",  note: "A quieter realm. Good for a fresh start." }
+  - { room: realm-greyspine,  name: "Greyspine Watch", type: Normal,  region: "The March",  note: "For heroes who like the long road north." }
+  - { room: realm-hollowmere, name: "Hollowmere",      type: PvP,     region: "The March",  note: "Player combat is open outside towns. Towns and roosts stay safe." }
+  - { room: realm-saltwind,   name: "Saltwind",        type: RP,      region: "The March",  note: "Roleplay realm: speak as your hero, keep names in the world." }
+  - { room: realm-nine-veils, name: "The Nine Veils",  type: Normal,  region: "Far Shores", note: "The newest realm, far shores and fresh ledgers." }
 maxPlayersPerRealm: 120
 charactersPerRealm: 6
