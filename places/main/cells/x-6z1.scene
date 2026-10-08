@@ -39,7 +39,7 @@ start-thornhollow/start-thornhollow-greeter:
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 63.43494882292216}
   state: {line: "Easy now, little sapling, the old trees woke you gently. Warm your hands by the fire, then follow the lanterns east to Lantern's Reach.", npcName: Elder Fennick Thornwhisper}
-  tags: [npc, zone-greeter]
+  tags: [npc, zone-greeter, quest-npc]
 start-thornhollow/start-thornhollow-hut-3:
   feetPosition: {x: -10, y: 0.4333436136752198, z: 23}
   id: start-thornhollow/start-thornhollow-hut-3

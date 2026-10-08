@@ -59,7 +59,7 @@ start-cinderhold/start-cinderhold-greeter:
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: -128.50065372034558}
   state: {line: "Welcome to the fire, ember-child. You were struck true; warm your hands at the great forge, then follow the lanterns west to Lantern's Reach.", npcName: Forgemother Brenna Ashvein}
-  tags: [npc, zone-greeter]
+  tags: [npc, zone-greeter, quest-npc]
 start-cinderhold/start-cinderhold-hall-1:
   children: [{feetPosition: {x: 0, y: 3.4, z: 7.700000000000001}, light: {color: oklch(0.78 0.14 55), distance: 12, intensity: 3, kind: point}}, {feetPosition: {x: -2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}, {feetPosition: {x: 2.2, y: 0, z: -1.2}, primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.48 0.13 32)}, script: scripts/gen/hamlet.js}}]
   feetPosition: {x: -16, y: -0.801668547454382, z: -20}
