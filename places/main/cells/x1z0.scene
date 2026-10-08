@@ -113,7 +113,7 @@ copper-5:
 kit-fence-east-1:
   feetPosition: {x: 64, y: {terrain: 0}, z: -7.5}
   id: kit-fence-east-1
-  layout: {maxExtents: {y: 1}}
+  layout: {maxExtents: {y: 1}, minExtents: {y: 1}}
   model: {id: /cdn/value.ced267e5baa5099e2806ddc01d0df0b053c925e19763e326ca1c7655d63539c0.glb}
   physics: {body: static, collider: box}
   rotation: {yaw: 70}

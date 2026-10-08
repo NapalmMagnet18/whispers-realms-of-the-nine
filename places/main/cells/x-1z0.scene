@@ -406,7 +406,7 @@ briar-wolf-den:
 kit-mushrooms-1:
   feetPosition: {x: -96, y: {terrain: 0}, z: -26}
   id: kit-mushrooms-1
-  layout: {maxExtents: {y: 0.4}}
+  layout: {maxExtents: {y: 0.4}, minExtents: {y: 0.4}}
   model: {id: /cdn/value.cd4689d76c504941ad7e78a5fbd1b41d31c20173c6fac4b74eee79a899d18f89.glb}
   physics: {body: static, collider: box}
   rotation: {yaw: 0}
