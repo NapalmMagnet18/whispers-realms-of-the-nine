@@ -88,3 +88,24 @@ dockwatch:
   lines:
     - "River's quiet. Too quiet, for a river."
     - "Rowan counts the boats. I count the oars. Some nights they don't match."
+fenna:
+  name: Elder Fenna Rootwake
+  lines:
+    - "The dead are not made safer by frightening the living away from them. Let the children play."
+    - "Every tree in the orchard holds a memory someone gave back. Some grow apples. One grows white blossoms in winter."
+    - "Fire is the easy answer. A bowl of water and a patient listener is the harder one."
+ell:
+  name: Grove Singer Ell
+  lines:
+    - "I sing to the roots so they know someone is still listening. Lately they've started singing back."
+    - "A record, not a guess. Write what they say, not what you wish they'd said."
+tamsin_glade:
+  name: Tamsin the Ranger
+  lines:
+    - "Thorns grown right through their coats. Not a sickness. Something's calling them."
+    - "Spare what stops fighting. A beast that runs home tells you where home is."
+maudry:
+  name: Old Maudry
+  lines:
+    - "I was small when the First Silence fell. My mother covered my ears. I remember the quiet more than the bell."
+    - "There was a road with blue shutters. I'm nearly sure of it. Walk with me to the stone and I'll tell you."
