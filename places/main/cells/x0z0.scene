@@ -891,6 +891,62 @@ gatekeeper-elric:
   rotation: {yaw: -90}
   state: {homeYaw: -90, npcName: Gatekeeper Elric, yaw: -90}
   tags: [npc, quest-npc, quest-giver-q002, gatekeeper]
+guild-banner-l:
+  feetPosition: {x: -1.4000000000000012, y: 4.12329086772434, z: 27.599999999999998}
+  id: guild-banner-l
+  physics: static
+  primitive: {kind: scripted, params: {color: oklch(0.42 0.14 300), stand: true}, script: scripts/gen/war-banner.js}
+  rotation: 90
+  scale: 0.8
+  tags: [guild-hall]
+guild-banner-r:
+  feetPosition: {x: -1.4000000000000004, y: 4.033416898376076, z: 20.4}
+  id: guild-banner-r
+  physics: static
+  primitive: {kind: scripted, params: {color: oklch(0.55 0.15 70), stand: true}, script: scripts/gen/war-banner.js}
+  rotation: 90
+  scale: 0.8
+  tags: [guild-hall]
+guild-hall:
+  children: [{feetPosition: {x: 0, y: 3.4, z: 0}, light: {color: oklch(0.8 0.14 60), distance: 13, intensity: 7, kind: point}}, {feetPosition: {x: 0, y: 0.12, z: 2.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}}, {feetPosition: {x: -4.5, y: 0.12, z: 3.4}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}}, {feetPosition: {x: 4.5, y: 0.12, z: 3.4}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}}]
+  feetPosition: {x: 5, y: 4.03125, z: 24}
+  id: guild-hall
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 10, doorX: 0, h: 5.2, rise: 3, roof: dark oak shingle roof tiles, w: 14, wall: stone, win: 3}, script: scripts/gen/house.js}
+  rotation: 90
+  tags: [building, guild-hall]
+guild-lamp-l:
+  feetPosition: {x: -2.5, y: 4.159149500173896, z: 30}
+  fx: {script: "fx\npop glow n=1 at=<0,2.6,0> r=light(<1,.8,.45>,2.2,9)"}
+  id: guild-lamp-l
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost, seed: 71}, script: scripts/gen/props.js}
+  tags: [guild-hall]
+guild-lamp-r:
+  feetPosition: {x: -2.4999999999999973, y: 4.015526663014618, z: 18}
+  fx: {script: "fx\npop glow n=1 at=<0,2.6,0> r=light(<1,.8,.45>,2.2,9)"}
+  id: guild-lamp-r
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost, seed: 83}, script: scripts/gen/props.js}
+  tags: [guild-hall]
+guild-registrar:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1.799999999999999, y: 4.0562094333921115, z: 22.2}
+  id: guild-registrar
+  model: /cdn/model-humanoid-fantasy-banker-portly-velvet-coat-spectacles-ledger-gold-chain.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: 90
+  state: {guildRegistrar: true, homeYaw: 90, idle: Idle_FoldArms_Loop, npcName: "Registrar Ambrose Quill, Guild Charters", who: registrar, yaw: 90}
+  tags: [npc, vendor, interactable, guild-registrar]
+guild-sign:
+  feetPosition: {x: -2.2, y: 4.1058146880818445, z: 25.799999999999997}
+  id: guild-sign
+  material: {color: oklch(0.55 0.05 60), texture: cdn/texture-dark-oak-planks-weathered.png}
+  physics: static
+  primitive: {depth: 0.08, height: 0.9, kind: box, width: 1.6}
+  rotation: 90
+  tags: [guild-hall]
+  ui: "<div face=\"front\" width=\"1.5m\" class=\"p-2 text-center\" style=\"color:#f2b04a;font-family:Cinzel,serif\"><div style=\"font-size:150px\">HALL OF BANNERS</div><div style=\"font-size:90px;color:#e8d9b5\">guild charters · E at the registrar</div></div>"
 hay-1:
   feetPosition: {x: -26, y: {terrain: 0}, z: 57}
   id: hay-1
