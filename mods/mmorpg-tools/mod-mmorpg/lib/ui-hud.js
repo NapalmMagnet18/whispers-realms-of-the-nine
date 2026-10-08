@@ -149,6 +149,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         pointer-events:none;z-index:5;
         opacity:0;
       }
+      @keyframes kitcd { from { height:100% } to { height:0% } }
       .slot-flash-red {
         background:radial-gradient(circle,rgba(255,40,40,0.95),rgba(180,20,20,0.6)) !important;
       }
@@ -179,7 +180,25 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
   `;
 
   // --- SPELL BAR (8 slots reading from s.spellBar) ---
-  const spellBar = s.spellBar || [{ id: 'attack' }, null, null, null, null, null, null, null];
+  // the class kit rides slots 1-3 (keys 1, 2, 3) unless the hero dragged something there: icon, name, a cooldown sweep keyed off state.cd
+  const KIT = {
+    vanguard: [{ id: 'kit-strike', cd: 'strike', name: 'Strike', icon: '/cdn/icon-sword-u16jp5yx9.webp', shortDesc: 'A quick blade cut. 8 damage.', cooldown: 0.6 },
+      { id: 'kit-heavy', cd: 'heavy', name: 'Heavy Strike', icon: '/cdn/icon-hammerheavy-u5ndnaxuu.webp', shortDesc: 'A slow two-handed blow. 22 damage.', cooldown: 3 },
+      { id: 'kit-guard', cd: 'guard', name: 'Guard', icon: '/cdn/icon-shield-u3qgy9lfm.webp', shortDesc: 'Raise your shield: 70% less damage for 1.5 s.', cooldown: 4 }],
+    arcanist: [{ id: 'kit-firebolt', cd: 'firebolt', name: 'Firebolt', icon: '/cdn/icon-fireball-u1ns0jvs9.webp', shortDesc: 'A bolt of flame at your target.', cooldown: 1.2 },
+      { id: 'kit-frost', cd: 'frost', name: 'Frost Shard', icon: '/cdn/icon-frostball-u6cleszd4.webp', shortDesc: 'A shard of ice that slows.', cooldown: 4 },
+      { id: 'kit-ward', cd: 'ward', name: 'Ward', icon: '/cdn/icon-shield2-u7ym8ql7u.webp', shortDesc: 'A shimmering ward that drinks damage.', cooldown: 15 }],
+    pathfinder: [{ id: 'kit-arrow', cd: 'arrow', name: 'Arrow', icon: '/cdn/icon-crossbow-u18wj7tj2.webp', shortDesc: 'Loose an arrow at your target.', cooldown: 0.8 },
+      { id: 'kit-volley', cd: 'volley', name: 'Volley', icon: '/cdn/icon-crossbow-u18wj7tj2.webp', shortDesc: 'A fan of arrows.', cooldown: 4 },
+      { id: 'kit-roll', cd: 'roll', name: 'Dodge Roll', icon: '/cdn/icon-go-u3btdaqbv.webp', shortDesc: 'Roll 6 m clear, untouchable while you roll.', cooldown: 5 }],
+    shade: [{ id: 'kit-sstrike', cd: 'strike', name: 'Strike', icon: '/cdn/value.9c52728aae3cf14f8d2c1f2d59949f329d47d274d7d5b8cb76ea1d91ce2fe472.png', shortDesc: 'A dagger cut. 7 damage, triple as an Ambush: from the Veil, from behind, or just after a Shadowstep.', cooldown: 0.55 },
+      { id: 'kit-step', cd: 'step', name: 'Shadowstep', icon: '/cdn/value.ff172f4b040b18df67e514e44cfad7f237bfb90c014d873026c38e62e06c530e.png', shortDesc: 'Step through shadow behind the foe in front of you, or 8 m ahead.', cooldown: 7 },
+      { id: 'kit-veil', cd: 'veil', name: 'Veil', icon: '/cdn/value.dc44ac58361f8269804138d77434825528ebd3caeb9edfe85daa813f388dab5c.png', shortDesc: 'Vanish for 6 s. Beasts and wardens lose you. Striking breaks it.', cooldown: 12 }],
+  };
+  const _kit = KIT[String(s.className || 'vanguard').toLowerCase()] || null;
+  const spellBar = (s.spellBar && s.spellBar.length ? s.spellBar : [null, null, null, null, null, null, null, null]).slice();
+  if (_kit) for (let k = 0; k < 3; k++) if (!spellBar[k] || !spellBar[k].id || spellBar[k].id === 'attack') spellBar[k] = _kit[k];
+  const _kitCd = s.cd || {};
   const racialCdStr = s.racialCooldownRemaining || '';
   const classCdRemaining = s.classCooldownRemaining || {};
   const flashIndex = s.slotFlashIndex ?? -1;
@@ -305,6 +324,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         + (showCooldown ? '<div style="position:absolute;inset:0;border-radius:3px;display:flex;align-items:center;justify-content:center;pointer-events:none;">'
           + '<span style="font-size:14px;font-family:Cinzel,serif;color:rgba(255,50,50,0.95);font-weight:bold;text-shadow:0 0 10px rgba(255,0,0,0.8),0 0 20px rgba(255,0,0,0.4),0 2px 4px black;letter-spacing:0.5px;">' + racialCdStr + '</span>'
           + '</div>' : '')
+        + (spellBar[i] && spellBar[i].cd && _kitCd[spellBar[i].cd] && (spellBar[i].cooldown || 0) >= 1 ? '<div id="kcd' + i + '-' + Math.round(_kitCd[spellBar[i].cd]) + '" style="position:absolute;left:0;right:0;bottom:0;height:100%;background:rgba(5,3,2,0.72);pointer-events:none;animation:kitcd ' + spellBar[i].cooldown + 's linear forwards"></div>' : '')
         + (showClassCooldown ? '<div style="position:absolute;inset:0;border-radius:3px;background:rgba(5,3,2,0.7);display:flex;align-items:center;justify-content:center;pointer-events:none;">'
           + '<span style="font-size:18px;font-family:Cinzel,serif;color:rgba(220,180,80,0.95);font-weight:bold;text-shadow:0 0 8px rgba(180,30,30,0.6),0 2px 4px black;letter-spacing:0.5px;">' + classCdDisplay + '</span>'
           + '</div>' : '')
