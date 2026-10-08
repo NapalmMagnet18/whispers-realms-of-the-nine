@@ -3,7 +3,9 @@
 import { rotate, rotationFromDirection } from 'builtin/vec3'
 import LV from './data/levels.yml'
 // a hero's hits grow with their level, as their health does: every class reads this one number
-export function power(ctx) { return 1 + (LV.damagePerLevel ?? 0.08) * Math.max(0, (ctx.self.state?.level ?? 1) - 1) }
+export function power(ctx) { return (1 + (LV.damagePerLevel ?? 0.08) * Math.max(0, (ctx.self.state?.level ?? 1) - 1)) * (1 + gearPower(ctx.self.state) / 100) }
+// worn gear's power stat (scripts/lib/data/gear.yml): % more damage, summed over every equipped piece
+export function gearPower(s) { let n = 0; for (const it of Object.values(s?.equipment || {})) n += Number(it?.stats?.power) || 0; return n }
 import { MISSILES, impactFx } from './missiles.js'
 import { pvpTargets, isPlayer, strikePlayer, canPvp } from './pvp.js'
 

@@ -45,8 +45,8 @@ function hurt(ctx, p, dmg, color) {
   ctx.emit("screenShake", { intensity: 0.4, duration: 0.25 }, { audience: { player: p.id } });
   ctx.emit("flash", { target: p.id, color, duration: 0.15 }, { audience: near(at) });
 }
-function credit(ctx, p, key, text, xp = 0) {
-  if (key) ctx.emit("kill", { tally: key, xp }, { to: p.id }); // the hero's own machine counts it (quest-player.js ear)
+function credit(ctx, p, key, text, xp = 0, loot = null) {
+  if (key) ctx.emit("kill", loot ? { tally: key, xp, loot } : { tally: key, xp }, { to: p.id }); // the hero's own machine counts it (quest-player.js ear)
   if (text) ctx.emit("damageNumber", { position: { x: p.feetPosition.x, y: p.feetPosition.y + 2.1, z: p.feetPosition.z }, text, color: "oklch(0.86 0.15 85)", size: 1.1, lifetime: 1.6 }, { audience: { player: p.id } });
 }
 function arenaOf(ctx, D) { const s = ctx.self.state; return s.arena ?? D.arena ?? { x: s.home?.x ?? ctx.self.feetPosition.x, z: s.home?.z ?? ctx.self.feetPosition.z, r: 16 }; }
@@ -219,7 +219,7 @@ function die(ctx, D, m, fighters) {
   ctx.emit("shockwave", { position: at, speed: 14, thickness: 1.2, intensity: 0.6 }, { audience: near(at) });
   ctx.emit("slowMo", { scale: 0.4, duration: 0.9 }, { audience: near(at) });
   for (const p of fighters) {
-    credit(ctx, p, D.tally || s.boss, D.killText || (D.name + " falls"), D.reward?.xp ?? 0);
+    credit(ctx, p, D.tally || s.boss, D.killText || (D.name + " falls"), D.reward?.xp ?? 0, s.boss); // loot: the hero rolls gear.yml on their own machine
     if (D.reward?.copper) ctx.emit("coins", { delta: D.reward.copper, reason: "kill:" + (D.tally || s.boss) }, { to: p.id });
     ctx.emit("milestone", { step: D.milestone ?? 0, name: "boss:" + s.boss }, { audience: { player: p.id } });
   }
