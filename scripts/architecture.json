@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 573,
-  "updatedAt": "2026-10-08T04:37:16.030Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the streamed Lantern March continent, entered through a realm-gate menu and character creation. MMORPG Tools coordinates character persistence, lifecycle and modular UI; an ordered player behavior chain drives movement, classes, quests, commerce and gryphon travel. Procedural terrain and builders shape the continent, while regional data and UI present its frontiers.",
+  "basedOnSpecVersion": 582,
+  "updatedAt": "2026-10-08T04:44:39.582Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO set across the streamed Lantern March continent, entered through a realm-gate menu and character creation. MMORPG Tools coordinates character persistence, gameplay lifecycle and modular UI; an ordered player behavior chain drives movement, classes, quests, commerce and gryphon travel. Procedural terrain and builders shape the continent, with regional data and UI presenting its frontiers.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -53,6 +53,7 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-character-roster.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-character.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-chat.js",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-creation.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-cursed-item-dialog.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-door-panel.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-flight.js",
@@ -161,9 +162,11 @@
   "places": [
     "places/main-menu-land/ - realm-gate front door, roster and menu UI; Enter World and Create lead to gameplay or character creation.",
     "places/character-creation-land/ - race/class/appearance creation scene with preview model, lighting and creation camera.",
-    "places/main/ - streamed Lantern March continent, bounded by the Shrouded Sea; config owns procedural terrain/coast, roads, scatter, atmosphere and clearings.",
+    "places/main/ - streamed Lantern March continent bounded by the Shrouded Sea; config owns terrain/coast, roads, scatter, atmosphere and clearings.",
     "places/main/cells/x0z0.scene - Lantern's Reach hub: square, inn, smith/merchant services, residents, quest interactions and armory display.",
-    "places/main/cells/ - regional cells hold Briarwild, Emberstone Quarry, Windmill Farm, settlements, race starts, landmarks and Ninth Veil/Ashfall frontiers, including gryphon-roost sites."
+    "places/main/cells/ - regional cells hold Briarwild, Emberstone Quarry, Windmill Farm, settlements, race starts, landmarks and Ninth Veil/Ashfall frontiers, including gryphon roosts.",
+    "places/main/cells/x0z-59.scene - Ninth Veil gryphon roost and Veilgate Aerie blueprint marker at (30,130,-7580).",
+    "places/main/cells/x59z-1.scene - Emberstone Bastion gryphon roost and Bastion blueprint marker at (7560,25,-170)."
   ],
   "roots": [
     "world.config.yaml - main-menu-land default entry; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
@@ -181,16 +184,16 @@
     "scripts/lib/economy.js + MMORPG lib/currency.js - copper movements/ledger and denomination formatting shared by quests, vendor, flight and UI.",
     "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and terrain/coast generation used by continent systems and region display.",
     "scripts/lib/data/flights.yml - roost coordinates, region labels, discovery radius, fare/speed limits and flight clearance read by scripts/flight.js and flight UI data.",
-    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-* and elder-tree.js - reusable procedural geometry builders."
+    "scripts/gen/shape.js and gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js and stone-bridge.js - reusable procedural geometry builders."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle and input handling.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - character build/save/load and gameplay lifecycle; scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait behavior.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-flight.js - renderFlightMap; lib/ui-zone-splash.js - renderZoneSplash, resetZoneSplash, zoneSplashActive, zoneArtFor; lib/version.js - GAME_VERSION 0.9.8 Alpha, GAME_TITLE and versionTag.",
+    "mods/mmorpg-tools/mod-mmorpg/ui.js - UI composition/actions; lib/ui-creation.js - renderCharacterCreation; lib/version.js - GAME_VERSION 0.9.9 Alpha and GAME_TITLE.",
     "scripts/flight.js - onInput/update; scripts/gryphon-flight.js - at/update for deterministic gryphon path and rider landing; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
     "scripts/quest-player.js - onInput/update; scripts/elric.js and scripts/townsfolk.js - resident behavior; scripts/lib/economy.js - realmOf, ledger, feedback, move.",
-    "scripts/gen/elder-tree.js - geometry/collider; scripts/wolves.js, vanguard.js, arcanist.js and pathfinder.js - creature/combat behaviors.",
+    "scripts/gen/props.js, rock.js and stone-bridge.js - geometry, collider; scripts/gen/elder-tree.js - geometry/collider; scripts/wolves.js, vanguard.js, arcanist.js and pathfinder.js - creature/combat behaviors.",
     "mods/gavi/equipe.js - crew-watch/target behavior; mods/gavi/painel-equipe.js - panel renderer."
   ],
   "ownership": [
@@ -215,16 +218,16 @@
     "Interact/E → quest-player resolves NPCs, talkers, readable props, caches and timber; quests.yml via quest-data drives accept/turn-in/progress and UI.",
     "Quest accept/complete UI → quest-player; completion records claim before reward, saves character state and pays copper through economy.move; vendor UI actions similarly route purchases/sales through economy.",
     "scripts/flight.js discovers nearby roosts into state.roosts → MMORPG player persistence saves/loads them; E at a roost writes flightMap, rendered by ui.js/lib/ui-flight.js.",
-    "flightMap flyTo {id} action → scripts/flight.js validates discovered destination, charges economy.move, spawns scripts/gryphon-flight.js mount and parents rider → mount lands rider and clears flying; ui-zone-splash waits until landing and displays regional art."
+    "flightMap flyTo {id} action → scripts/flight.js validates discovered destination, charges economy.move, spawns scripts/gryphon-flight.js mount and parents rider → mount lands rider and clears flying; ui-zone-splash waits until landing and presents the region transition."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js and roost.js - procedural builders recur across placed instances, varied by kind, seed and parameters.",
+    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js and stone-bridge.js - procedural builders recur across placed instances, varied by kind, seed and parameters.",
     "scripts/grass.js, flower.js, mushroom.js and pebble.js - terrain scatter geometry reused by place bindings, varied by layer density, scale, seed or per-item params.",
     "scripts/gen/tree.js with scripts/tree-look.js - painted bark/alpha-cut foliage recur in forest layers and placed scatters, varied by tree kind and LOD.",
     "scripts/flower.js and mushroom.js with their look materials - painted wildflower frames and mushroom caps vary by frame/cap parameters in terrain scatter.",
     "MMORPG player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle registered by mod.json.",
     "MMORPG camera.js/camera-creation.js and menu-camera.js - gameplay, creation-preview and per-screen menu camera paths with phase/place guards.",
-    "MMORPG lib/ui-*.js - modular renderers composed by ui.js for HUD, menu/roster, quests, vendor, flight map, zone splashes, inventory, map, character and settings.",
+    "MMORPG lib/ui-*.js, including ui-creation.js - modular renderers composed/lazily loaded by ui.js for HUD, menu, creation, quests, vendor, travel, inventory, map and settings.",
     "scripts/vanguard.js, arcanist.js and pathfinder.js; wolves.js, quest-player.js, townsfolk.js, vendor.js, woodcutting.js and flight.js - gameplay behaviors vary by class, target tags and per-player/NPC state."
   ],
   "probableOrphans": [],
@@ -233,7 +236,7 @@
     "templates/player.js behavior order is significant: locomotion before movement, then classes, quests, vendor and flight; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "Flight roost ids in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is the discovery record, with coordinates in place-main meters.",
-    "Region splash art coverage/priority lives separately from scripts/lib/regions.js; ui-zone-splash.js has its own circle/band boundaries, and arrays alternate paintings per region, so keep splash mappings and actual region names/bounds aligned when editing.",
-    "Realm routing/pulse and realm-save use separate room-ID sources; arrival also depends on paired _worldEnterAt/_creationEnterAt transition stamps and grace checks."
+    "Far detail switches at ctx.lod >= 4 in props, rocks and stone bridges; simplified geometry uses collider-mass forms while collider exports retain collision construction.",
+    "Character-creation rendering now lives in lib/ui-creation.js and is dynamically loaded by ui.js; keep it off the eager menu boot path so the menu can stand before creation UI is loaded."
   ]
 }
