@@ -69,20 +69,20 @@ start-gullrest/start-gullrest-cottage-2:
   rotation: {yaw: 0}
 start-gullrest/start-gullrest-cottage-3:
   children: [{feetPosition: {x: 0, y: 2.3, z: 0.4}, light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 2.5, kind: point}}]
-  feetPosition: {x: 14, y: 9.04865999697869, z: 15}
+  feetPosition: {x: -24, y: -0.17363696963338143, z: 14}
   id: start-gullrest/start-gullrest-cottage-3
   parent: start-gullrest
   physics: static
   primitive: {kind: scripted, params: {chimney: 1, d: 5, doorX: 0, h: 2.8, rise: 2.2, roof: weathered blue slate, w: 6.5, wall: timber, win: 2}, script: scripts/gen/house.js, seed: 3}
-  rotation: {yaw: 43.025065989118026}
+  rotation: {yaw: -59.743562836470744}
 start-gullrest/start-gullrest-cottage-4:
   children: [{feetPosition: {x: 0, y: 2.3, z: 0.4}, light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 2.5, kind: point}}]
-  feetPosition: {x: 12, y: 7.387237592853588, z: -12}
+  feetPosition: {x: -12, y: -0.17363696963338143, z: 25}
   id: start-gullrest/start-gullrest-cottage-4
   parent: start-gullrest
   physics: static
   primitive: {kind: scripted, params: {chimney: -1, d: 5.5, doorX: 0, h: 2.8, rise: 2.2, roof: weathered blue slate, w: 7, wall: timber, win: 2}, script: scripts/gen/house.js, seed: 4}
-  rotation: {yaw: 135}
+  rotation: {yaw: -25.641005824305285}
 start-gullrest/start-gullrest-greeter:
   feetPosition: {x: 2.4000000000000057, y: 1.0875578823163097, z: 1.599999999999909}
   id: start-gullrest/start-gullrest-greeter
