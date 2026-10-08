@@ -4,8 +4,155 @@
 # Objectives count player.state.tally keys: briar_wolf (wolves.js), log (woodcutting), and quest marks (objects tagged
 # quest-mark, state.mark = the key) that E touches while their quest is active. The six origin finales that gate Q001 in
 # the Bible (MAR-08 … VEY-08) are not built yet, so Q001 stands open to every hero for now.
+# ── Marchfolk Origin: Names on a Census (Quest Bible MAR-01..MAR-08, zone Lantern Ward, levels 1-5) ──
+# Lantern Ward is the walled outer quarter north of the Reach, astride the north road (centre 0,-100). Elric keeps
+# both gates; Dren, Bram, Vale and Mira come out from the Reach. MAR-08 opens Q001 for Marchborn heroes (see origin).
+MAR-01:
+  id: MAR-01
+  title: The Bell Before Dawn
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  text: "Up before the bell, Marchborn? Good. Every soul in the Ward is written on the census board by the north road. Go and find your own name on it. Tell me if anything there looks... wrong."
+  progressText: "The census board stands by the north road, inside the Ward wall."
+  turnInText: "A whole row rubbed out, you say? Ten homes on Bellward Lane. I walked that lane as a boy. I... don't remember any houses there. That's what frightens me."
+  doneText: "Dren's short of hands this morning. Ask him at his rail by the west gate."
+  refusedText: "You've read the board already, friend."
+  objectives:
+    - { key: census_board, desc: "Examine the Ward census board", target: 1 }
+  rewards: { copper: 40, xp: 10, items: [starter_coat] }
+
+MAR-02:
+  id: MAR-02
+  title: A Face in the Crowd
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  requires: [MAR-01]
+  giverNpcId: reach-npc-dren
+  giverName: Quartermaster Dren
+  text: "Elric sent you? Then earn your boots. Three parcels for the Ward, crates stacked at the doorsteps on Bellward Lane. While you're there, ask the neighbours about number nine. Nobody ever answers me straight."
+  progressText: "Three parcels to the Ward doorsteps, and two neighbours asked about number nine."
+  turnInText: "Blue, said one. Green, said the other. A house nobody lived in, painted two colours. Here, your wages. And mind the coin: copper's how the March keeps its word."
+  doneText: "Bram's been chalking walls up in the Ward. Find him by the Bell tower."
+  refusedText: "Already paid you for those parcels."
+  objectives:
+    - { key: ward_parcel, desc: "Deliver supply parcels on Bellward Lane", target: 3 }
+    - { key: ward_neighbour, desc: "Ask the neighbours about number nine", target: 2 }
+  rewards: { copper: 120, xp: 25 }
+
+MAR-03:
+  id: MAR-03
+  title: The Empty Door
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  requires: [MAR-02]
+  giverNpcId: reach-npc-bram
+  giverName: Bram Alder
+  text: "Someone's been chalking arrows in the Ward at night. Not me. They lead to the east wall, to a door that was bricked up before I was born. Follow them, and look at the latch. Tell me it's rusted shut."
+  progressText: "Chalk arrows in the Ward lead to the bricked door in the east wall. Check its latch."
+  turnInText: "Warm? The latch was warm? And the hinges sit on the inside... as if the door opens from a street we don't have. Keep this. A scrap of the old lamp that hung over it."
+  doneText: "Sister Vale has been finding notices nailed up in the Ward. Speak with her."
+  refusedText: "You've seen the door already."
+  objectives:
+    - { key: walled_door, desc: "Follow the chalk marks to the walled door", target: 1 }
+    - { key: door_latch, desc: "Inspect the latch", target: 1 }
+  rewards: { copper: 60, xp: 30, items: [lantern_scrap] }
+
+MAR-04:
+  id: MAR-04
+  title: Three Names Too Few
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  requires: [MAR-03]
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "Lost-notices, nailed up in the Ward overnight. 'Have you seen...' and then a name I don't know. Bring me three, then read them against the bell roll at the foot of the tower. The bell roll names every soul it ever rang for."
+  progressText: "Three lost notices in the Ward, then compare them with the bell roll at the tower."
+  turnInText: "Dated tomorrow. All three. Signed by people the bell rang for... and nobody living can find. I'll keep a copy. You keep this note."
+  doneText: "Elric wants the storm lamps lit before dusk. Go to him."
+  refusedText: "You've brought me the notices already."
+  objectives:
+    - { key: lost_notice, desc: "Collect lost notices in the Ward", target: 3 }
+    - { key: bell_roll, desc: "Compare them with the bell roll", target: 1 }
+  rewards: { copper: 60, xp: 35, items: [archive_note] }
+
+MAR-05:
+  id: MAR-05
+  title: Keep the Light
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  requires: [MAR-04]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  text: "Something walks the Ward after the notices go up. Shapes. Light the two storm lamps on Bellward Lane, then stand at the bell rope. If the shapes come, steady them. Don't swing at them unless they swing first."
+  progressText: "Two storm lamps on Bellward Lane, then steady the shades at the bell rope."
+  turnInText: "They didn't fight you. They read you names. Names! ... Take this gear. If they ever do come with teeth, you'll want it."
+  doneText: "Mira says the old Ward furnace has been smoking again. Go and see her."
+  refusedText: "You kept the light already, friend."
+  objectives:
+    - { key: storm_lamp, desc: "Light the storm lamps", target: 2 }
+    - { key: echo_shade, desc: "Steady the echo shades at the bell rope", target: 2 }
+  rewards: { copper: 100, xp: 50, items: [ward_gloves] }
+
+MAR-06:
+  id: MAR-06
+  title: A Ledger of Ash
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  requires: [MAR-05]
+  giverNpcId: reach-npc-mira
+  giverName: Mira the Forgekeeper
+  text: "The Ward's old furnace, by the west wall. Nobody's fired it in a hundred years, but there's fresh soot in the flue. Scrape me a sample, then find the brass maker's mark on its door. I want to know whose it was."
+  progressText: "Soot from the old Ward furnace, then the maker's mark on its door."
+  turnInText: "That's not ore soot. That's paper. Ink and vellum. And the mark is the old Beacon Guild seal. They didn't smelt in that furnace... they burned records in it."
+  doneText: "Sister Vale will want to hear about that furnace. She's waiting."
+  refusedText: "I've seen that soot, love."
+  objectives:
+    - { key: furnace_soot, desc: "Scrape soot from the old furnace", target: 1 }
+    - { key: maker_mark, desc: "Uncover the brass maker's mark", target: 1 }
+  rewards: { copper: 80, xp: 55, items: [furnace_soot] }
+
+MAR-07:
+  id: MAR-07
+  title: No Grave, No Record
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  requires: [MAR-06]
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  text: "Behind the Bell tower there's a plaque under the ivy. No grave, no names, only a date. Read it. Then take what you read to Elric. He signed the Ward orders the year that date was cut. He has to hear it from someone who isn't me."
+  progressText: "Read the memorial plaque behind the Bell tower, then bring it to Elric."
+  turnInText: "...I signed it. I was nineteen and the Guild said it was for a week. 'Seal the lane, keep the people safe.' Then the lane was gone and nobody remembered it. Not even me, until now. Take this token. You've earned the truth of it."
+  doneText: "One more thing, Marchborn. The plaque. Someone has to decide what we do with it."
+  refusedText: "You've told me already. I won't forget twice."
+  objectives:
+    - { key: memorial_plaque, desc: "Read the forgotten memorial plaque", target: 1 }
+  rewards: { copper: 120, xp: 60, items: [lantern_token] }
+
+MAR-08:
+  id: MAR-08
+  title: Open the Eastern Gate
+  zone: Lantern Ward
+  group: "Marchfolk Origin: Names on a Census"
+  requires: [MAR-07]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  text: "The plaque is yours to decide. Set it up in the open for the whole Ward to read, or seal it in the archive chest for the scholars. Either way, it stays recorded. Then walk through into the Reach square. You're done being only a Ward child."
+  progressText: "Choose the plaque's fate at the memorial, then walk into Lantern's Reach."
+  turnInText: "Whatever you chose, it's written now. Truth can be kept, but not forever kept private. Welcome to the Reach, Marchborn. The road starts here."
+  doneText: "Now. Before you go wandering, the Beacon Guild register."
+  refusedText: "The gate's open for you already."
+  objectives:
+    - { key: memorial_choice, desc: "Choose: display or archive the memorial", target: 1 }
+    - { key: reach_visits, desc: "Walk into Lantern's Reach", target: 1 }
+  rewards: { copper: 200, xp: 80 }
+
 Q001:
   id: Q001
+  origin: { race: 0, quest: MAR-08 }   # a Marchborn hero (raceIndex 0) walks their origin first; other peoples pass
   title: Welcome to Lantern's Reach
   giverNpcId: gatekeeper-elric
   giverName: Gatekeeper Elric
@@ -202,6 +349,12 @@ woodcutting:
   fallSound: /cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3
 
 items:
+  starter_coat: { id: starter_coat, name: Ward Starter Coat, slot: chest, description: "Grey wool, the Ward's lantern stitched on the cuff." }
+  lantern_scrap: { id: lantern_scrap, name: Lantern Scrap, slot: bag, description: "Green-tarnished brass from the lamp over a door that should not open." }
+  archive_note: { id: archive_note, name: Archive Note, slot: bag, description: "Sister Vale's copy of three notices dated tomorrow." }
+  ward_gloves: { id: ward_gloves, name: Ward Watch Gloves, slot: hands, description: "Stiff leather, still smelling of lamp oil." }
+  furnace_soot: { id: furnace_soot, name: Ink-Black Soot, slot: bag, description: "Not ore soot. Burned paper." }
+  lantern_token: { id: lantern_token, name: Marchfolk Lantern Token, slot: bag, description: "A brass token Elric kept for forty years." }
   log: { id: log, name: Oak Log, slot: bag, stackable: true, description: "A sound length of Briarwild oak. The Reach burns it in its watch-fires." }
 
 marks:                # objects tagged quest-mark: E while the quest is active
