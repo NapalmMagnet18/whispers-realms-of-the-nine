@@ -1,4 +1,45 @@
 # spawn-scene v2 yaml x10z-5
+crypt-candle-l:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 2.5, kind: point}}]
+  feetPosition: {x: 1320.5, y: 2.4, z: -691.4}
+  id: crypt-candle-l
+  physics: static
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+  scale: 1.2
+  tags: [hollowcrypt-gate]
+crypt-candle-r:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 2.5, kind: point}}]
+  feetPosition: {x: 1320.5, y: 2.4, z: -684.6}
+  id: crypt-candle-r
+  physics: static
+  primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
+  scale: 1.2
+  tags: [hollowcrypt-gate]
+crypt-gate:
+  behavior: scripts/crypt-gate.js
+  feetPosition: {x: 1322.9, y: 2.4, z: -688}
+  id: crypt-gate
+  material: {kind: scripted, script: engine/portal-ink, view: {link: "+hollowcrypt#crypt-gate-in", sound: 1, spill: 1.5}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 90
+  state: {link: "+hollowcrypt#crypt-gate-in"}
+  tags: [portal, hollowcrypt-gate]
+crypt-portico:
+  feetPosition: {x: 1322, y: 2.1, z: -688}
+  id: crypt-portico
+  physics: static
+  primitive: {kind: scripted, params: {kind: portico}, script: scripts/gen/crypt.js}
+  rotation: 90
+  tags: [hollowcrypt-gate]
+crypt-sign:
+  feetPosition: {x: 1318.5, y: {terrain: 0}, z: -692}
+  id: crypt-sign
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern}, script: scripts/gen/crypt.js}
+  rotation: 90
+  state: {say: "Below lies the first sealed district. THE GATE ACCEPTS WITNESSES, NOT OWNERS.", title: The Hollowcrypt}
+  tags: [hollowcrypt-gate, readable]
 hollowcrypt-dead-4:
   feetPosition: {x: 1313.4527372622006, y: {terrain: 0}, z: -636.8074562438395}
   id: hollowcrypt-dead-4
