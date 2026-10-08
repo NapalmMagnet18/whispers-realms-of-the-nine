@@ -89,7 +89,7 @@ export function update(ctx, dt) {
     M.census = now + 1000;
     for (const def of (cs.crew || S.crew)) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def, cs);
   }
-  const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating");
+  const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating" && !((p.state?.veiledUntil || 0) > ctx.now()));
   for (const def of (cs.crew || S.crew)) {
     const w = ctx.getObject(def.id);
     if (!w) { delete M[def.id]; continue; }

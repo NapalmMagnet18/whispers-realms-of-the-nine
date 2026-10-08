@@ -2,18 +2,20 @@
 // Four races (races.yml), three classes each; two shared models for now, static PNG portraits
 // Export interface matches scripts/lib/races.js exactly
 
-var CLASSES = ['Vanguard', 'Arcanist', 'Pathfinder'];
+var CLASSES = ['Vanguard', 'Arcanist', 'Pathfinder', 'Shade'];
 
 var CLASS_STATS = {
   'Vanguard': { str: 60, agi: 45, mag: 30, def: 60 },
   'Arcanist': { str: 30, agi: 45, mag: 70, def: 35 },
   'Pathfinder': { str: 40, agi: 70, mag: 40, def: 45 },
+  'Shade': { str: 45, agi: 75, mag: 35, def: 35 },
 };
 
 var CLASS_ABILITIES = {
   'Vanguard': ['Strike', 'Heavy Strike', 'Guard'],
   'Arcanist': ['Firebolt', 'Frost Shard', 'Ward'],
   'Pathfinder': ['Arrow', 'Volley', 'Dodge Roll'],
+  'Shade': ['Strike', 'Shadowstep', 'Veil'],
 };
 
 var RACE_DESCRIPTIONS = {
@@ -27,18 +29,21 @@ var CLASS_LORE = {
   'Vanguard': 'A shield-bearing guardian of the March. Strikes true, hits hard when it counts, and holds the line with Guard.',
   'Arcanist': 'A scholar of the old whispers. Hurls firebolts and frost shards from afar and wraps allies in a Ward.',
   'Pathfinder': 'A scout of the wild roads. Looses arrows and volleys at range and rolls clear of every bite.',
+  'Shade': 'A keeper of quiet doors. Veils from sight, steps through shadow behind a foe, and strikes once, hard, from where no one is looking.',
 };
 
 var CLASS_ICONS = {
   'Vanguard': '/cdn/value.063462cc9e460847ae17aea8a9ba80fbdb90fd847808c9fe3e53c1122bc5975a.png',
   'Arcanist': '/cdn/icon-fantasy-generic-staff.png',
   'Pathfinder': '/cdn/icon-fantasy-generic-bow.png',
+  'Shade': '/cdn/icon-fantasy-generic-dagger.png',
 };
 
 var CLASS_COLORS = {
   'Vanguard': '#AF8951',
   'Arcanist': '#7FA7D9',
   'Pathfinder': '#8FB35A',
+  'Shade': '#9A7BC4',
 };
 
 // 2 race backgrounds
@@ -82,7 +87,7 @@ var WARRIOR_PORTRAIT = '/cdn/value.c4c67311858819ab9e86ef81f51da99f69509138567a3
 var MAGE_MODEL = '/cdn/model-humanoid-fantasy-mage-male-dark-robes.glb?animations=Idle,Walk,Run,Sprint,Jump,BeHit_FlyUp,Dead,Skill_01,Basic_Jump,Combat_Stance,Left_Slash,Reaping_Swing,Roll_Dodge_1';
 var MAGE_PORTRAIT = '/cdn/value.95a07d181d4a68b47e7b0a8bb46cf1769f5776bc254f0976ed6a10af4f5f9a4e.png';
 
-var ALL_CLASSES = ['Vanguard', 'Arcanist', 'Pathfinder'];
+var ALL_CLASSES = ['Vanguard', 'Arcanist', 'Pathfinder', 'Shade'];
 // Four races, two shared bodies for now: Marchborn & Emberforged wear the warrior model, Briarkin & Saltborn the mage model.
 // id / zone / start mirror scripts/lib/data/races.yml (the start point used on Enter World); tint = the body's skin wash.
 function race(id, name, model, portrait, zone, tint, defaultSkin) {

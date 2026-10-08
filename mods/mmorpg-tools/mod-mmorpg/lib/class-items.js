@@ -15,6 +15,10 @@ var CLASS_STARTING_ITEMS = {
     { id: 'starter-bow', name: 'Hunting Bow', icon: '/cdn/icon-fantasy-generic-bow.png', slot: 'mainHand', stats: { damage: { min: 3, max: 9 }, range: 30 } },
     { id: 'starter-leathers', name: 'Scout Leathers', icon: '/cdn/icon-fantasy-generic-leather-armor.png', slot: 'chest', stats: { defence: 5 } },
   ],
+  'Shade': [
+    { id: 'starter-daggers', name: 'Twin Daggers', icon: '/cdn/icon-fantasy-generic-dagger.png', slot: 'mainHand', stats: { damage: { min: 3, max: 8 } } },
+    { id: 'starter-shade-cloak', name: 'Dusk Cloak', icon: '/cdn/icon-fantasy-generic-dark-robes.png', slot: 'chest', stats: { defence: 4 } },
+  ],
 };
 
 // Universal starter items (fallback)

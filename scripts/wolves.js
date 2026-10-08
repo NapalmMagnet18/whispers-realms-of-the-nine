@@ -107,7 +107,7 @@ export function update(ctx, dt) {
     S.census = now + 1000;
     for (const def of (ds.pack || W.pack)) if (!ctx.getObject(def.id) && now >= (ds.respawnAt?.[def.id] ?? 0)) spawnWolf(ctx, def);
   }
-  const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating");
+  const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating" && !((p.state?.veiledUntil || 0) > ctx.now()));
   for (const def of (ds.pack || W.pack)) {
     const w = ctx.getObject(def.id);
     if (!w) { delete S[def.id]; continue; }

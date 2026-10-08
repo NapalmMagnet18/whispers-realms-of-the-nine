@@ -53,7 +53,7 @@ export function onSpawn(ctx) {
 export function update(ctx, dt) {
   const w = ctx.self, s = w.state, now = ctx.now(), C = W.chamber, home = s.home ?? { x: 0, z: -70 };
   const m = (ctx.session.warden ??= { seen: s.lastHitAt ?? 0 });
-  const fighters = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && flat(p.feetPosition, C) < C.r + 1);
+  const fighters = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !((p.state?.veiledUntil || 0) > ctx.now()) && flat(p.feetPosition, C) < C.r + 1);
   if (s.mode === "dead") {
     if (now >= (s.diedAt ?? now) + W.respawn * 1000) { s.hp = W.hp; s.hpPct = 100; s.unhurt = true; s.mode = "asleep"; s.lastHitBy = null; w.material = { dissolve: 0 }; w.fx = { script: CROWN }; m.gait = null; gait(w, m, "idle"); }
     else return;

@@ -9,5 +9,6 @@ classes:
   - { id: vanguard,   name: Vanguard,   role: "melee: strike, heavy strike, guard" }
   - { id: arcanist,   name: Arcanist,   role: "magic: firebolt, frost shard, ward" }
   - { id: pathfinder, name: Pathfinder, role: "ranged: arrow, volley, dodge roll" }
+  - { id: shade,      name: Shade,      role: "stealth: strike, shadowstep, veil" }
 startLevel: 1
 startCopper: 0
