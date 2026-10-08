@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 125,
-  "updatedAt": "2026-10-08T01:58:36.598Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. Its Lantern March continent is authored from place configs, scene entities and procedural terrain/prop scripts; the MMORPG Tools mod owns the RPG lifecycle, player state, cameras and UI.",
+  "basedOnSpecVersion": 132,
+  "updatedAt": "2026-10-08T02:04:49.323Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. The Lantern March is authored across place configs, hand-placed scenes and procedural terrain/prop scripts; the MMORPG Tools mod owns RPG lifecycle, player state, cameras and UI.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -110,7 +110,7 @@
     "places/main-menu-land/ - default title/travel menu scene with authored town art and shared terrain decoration.",
     "places/character-creation-land/ - character preview scene with terrain off and a preview camera/lighting setup.",
     "places/main/ - Lantern March continent: Reach hub at origin, Windmill Farm SW, Briarwild west, quarry east and distant regions across 29 cells.",
-    "places/main/cells/x0z0.scene - Reach hub, farm/smithy props and townhouse now staged as a carpenter's house, with a tool-covered bench below and mapmaker's desk upstairs; includes added grindstone, door bucket and lantern details."
+    "places/main/cells/x0z0.scene - Reach hub scene; smithy is staged as an armory with weapon displays, and townhouse is a carpenter's house with upstairs mapmaker's desk, brick chimney, fieldstone plinth border and yard clutter."
   ],
   "roots": [
     "world.config.yaml - world entry/defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
@@ -128,7 +128,7 @@
     "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometry/material reused by place scatter bindings.",
     "scripts/lib/regions.js - named Lantern March region definitions and regionAt lookup; ui-hud.js mirrors region tests inline.",
     "scripts/lib/data/{player,camera,world}.yml - shared movement, camera-height and terrain-height values read by core scripts.",
-    "art/tools/build.py and art/townhouse/build.py - Blender asset builders for tool-pack GLBs and the scene's townhouse GLB."
+    "art/tools/build.py and art/townhouse/build.py - Blender asset builders for tool-pack GLBs and the scene's townhouse GLB; townhouse builder combines kit modules and hand-built structure."
   ],
   "notableExports": [
     "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
@@ -171,7 +171,7 @@
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - paired gameplay orbit and preview camera modes with creation-phase guards.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character and settings.",
     "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected by place atmosphere.",
-    "art/tools/build.py and art/townhouse/build.py - asset-building pipelines; tool builder exports each OBJ separately and townhouse builder assembles kit modules plus hand-built structural parts."
+    "art/tools/build.py and art/townhouse/build.py - asset-building pipelines; tool builder exports each OBJ separately and townhouse builder assembles kit modules with hand-built structural parts and added exterior/yard kit pieces."
   ],
   "probableOrphans": [],
   "migrationNotes": [
