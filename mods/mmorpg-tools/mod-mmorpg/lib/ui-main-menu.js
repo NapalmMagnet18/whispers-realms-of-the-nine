@@ -65,9 +65,9 @@ export function renderMainMenu(localPlayer) {
 
     // ═══════════ LOGO ═══════════
     + '<div style="opacity:1;">'
-      + '<img src="/cdn/logo-dark-fantasy-rpg-ornate-placeholder.webp" style="'
+      + '<img src="/cdn/value.2adacf69e806f6c9dafa10b5803f7419a477aa2f5e7382758ab6a5d54bdada1f.png" style="'
       + 'width:420px;height:auto;pointer-events:none;-webkit-user-drag:none;user-select:none;'
-      + 'filter:drop-shadow(0 0 30px rgba(140,80,200,0.25)) drop-shadow(0 4px 20px rgba(0,0,0,0.7));'
+      + 'filter:drop-shadow(0 0 30px rgba(242,176,74,0.25)) drop-shadow(0 4px 20px rgba(0,0,0,0.7));'
       + '" />'
     + '</div>'
 

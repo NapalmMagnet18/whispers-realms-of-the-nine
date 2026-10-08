@@ -214,7 +214,7 @@ export default function(world, localPlayer) {
       + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();" style="display:none" />'
       + '<div class="fixed inset-0" style="background:#000;">'
       // Background art
-      + '<img src="/cdn/dark-fantasy-villain-group-loading-screen-tpwvsorw.webp" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.85;pointer-events:none;" />'
+      + '<img src="/cdn/value.0203214fb32e56521359cde38430170db3009da83ca3fe6b453cc498c0f84c92.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.85;pointer-events:none;" />'
       // Dark overlay for readability
       + '<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);pointer-events:none;"></div>'
       // Bottom vignette
@@ -241,7 +241,7 @@ export default function(world, localPlayer) {
     return FONT_INJECTOR + FONT_WRAP_OPEN
       + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();window.__faCharName=undefined;" style="display:none" />'
       + '<div class="fixed inset-0" style="background:#000;">'
-      + '<img src="/cdn/dark-fantasy-villain-group-loading-screen-tpwvsorw.webp" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.85;pointer-events:none;" />'
+      + '<img src="/cdn/value.0203214fb32e56521359cde38430170db3009da83ca3fe6b453cc498c0f84c92.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.85;pointer-events:none;" />'
       + '<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);pointer-events:none;"></div>'
       + '<div style="position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);pointer-events:none;"></div>'
       + '<div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:360px;">'
