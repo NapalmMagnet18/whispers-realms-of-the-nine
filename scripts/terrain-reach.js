@@ -12,6 +12,14 @@ export const FOREST = { x: -130, z: -30 };
 export const CRYPT = { x: 1350, z: -700 };
 export const FEN = { x: -1300, z: 950 };
 export const BAY = { x: 300, z: 1880 };
+// 2026-10-08 expansion: the continent now runs ~12 km east-west. Beyond the old coasts:
+// Frostveil Tundra (far north, past the Greyspine), Sunscar Expanse (far east, dunes and desert rock),
+// Elderveil Wilds (far west, an ancient high forest). The south coast and Saltmere bay stay where they were.
+export const COAST = { rx: 6200, rzN: 6000, rzS: 2050, rzS2: 3700 };
+export function coastD(x, z) {
+  const rz = z > 0 ? COAST.rzS + (COAST.rzS2 - COAST.rzS) * sstep(1300, 2800, Math.abs(x)) : COAST.rzN;
+  return Math.hypot(x / COAST.rx, z / rz);
+}
 function quarryShape(x, z, h) {
   const dx = x - QUARRY.x, dz = z - QUARRY.z, dq = Math.hypot(dx, dz);
   if (dq > 160) return h;
@@ -27,8 +35,8 @@ function quarryShape(x, z, h) {
   return h;
 }
 function landFactor(x, z, noise, so) {
-  const w = noise.fbm2({ x, z, frequency: 1 / 900, octaves: 3, seed: so(7) }) * 0.16;
-  const d = Math.hypot(x / 3200, z / (z > 0 ? 2050 : 3200)) + w;
+  const w = noise.fbm2({ x, z, frequency: 1 / 1400, octaves: 3, seed: so(7) }) * 0.12;
+  const d = coastD(x, z) + w;
   let land = 1 - sstep(0.84, 1.0, d);
   const db = Math.hypot(x - BAY.x, (z - BAY.z) * 1.3);
   land *= sstep(160, 330, db); // Saltmere bay bites into the south coast
@@ -44,14 +52,27 @@ export function heightAt(ctx) {
   const far = sstep(220, 520, r);
   if (far > 0) h += far * (6 + noise.ridged({ x, z, frequency: 1 / 300, octaves: 3, seed: so(2) }) * 9);
   // Greyspine Mountains, north
-  const north = sstep(-600, -1350, z);
+  const north = sstep(-600, -1350, z) * (1 - 0.8 * sstep(-2700, -3500, z));
   if (north > 0) h += north * (55 + noise.ridged({ x, z, frequency: 1 / 340, octaves: 5, seed: so(3) }) * 85);
   // Emberstone Highlands, east: stepped mesas
-  const east = sstep(520, 1050, x) * (1 - north * 0.4);
+  const east = sstep(520, 1050, x) * (1 - north * 0.4) * (1 - 0.85 * sstep(2700, 3500, x));
   if (east > 0) {
     const m = 22 + noise.fbm2({ x, z, frequency: 1 / 420, octaves: 3, seed: so(4) }) * 26, t = Math.max(0, m) / 8, f = t - Math.floor(t);
     h += east * (Math.floor(t) + sstep(0.72, 1, f)) * 8;
   }
+  // Frostveil Tundra, far north: a high cold plain with frozen meres
+  const tundra = sstep(-3000, -3600, z);
+  if (tundra > 0) h += tundra * (38 + noise.fbm2({ x, z, frequency: 1 / 500, octaves: 3, seed: so(12) }) * 14);
+  // Sunscar Expanse, far east: long dunes over desert rock
+  const desert = sstep(2900, 3600, x) * (1 - tundra);
+  if (desert > 0) {
+    const dn = noise.fbm2({ x, z, frequency: 1 / 700, octaves: 2, seed: so(13) });
+    const dune = Math.abs(Math.sin((x * 0.6 + z * 0.8) / 46 + dn * 6)) * 7 + noise.ridged({ x, z, frequency: 1 / 900, octaves: 3, seed: so(14) }) * 26;
+    h += desert * (14 + dune);
+  }
+  // Elderveil Wilds, far west: old high forest on long ridges
+  const elder = sstep(-2900, -3600, x) * (1 - tundra);
+  if (elder > 0) h += elder * (18 + noise.fbm2({ x, z, frequency: 1 / 380, octaves: 4, seed: so(15) }) * 22);
   // Briarwild Deepwood, west
   const west = sstep(-260, -650, x);
   if (west > 0) h += west * (5 + noise.fbm2({ x, z, frequency: 1 / 200, octaves: 3, seed: so(6) }) * 9);
@@ -78,6 +99,9 @@ export function materialAt(ctx) {
     const df = Math.hypot(x - FEN.x, z - FEN.z);
     return df < 650 ? { mud: 1 } : { sand: 1 };
   }
+  if (z < -3050 + n * 120) return { snow: 1 - rock * 0.5, rock: rock * 0.5 };
+  if (x > 3000 + n * 150) return slope > 0.35 ? { desertrock: 1 } : { sand: 0.75 - rock * 0.3, desertrock: 0.25 + rock * 0.3 };
+  if (x < -3000 + n * 150) return { forest: 1 - rock, rock };
   if (z < -700 && y > 120 + n * 14) return { snow: 1 - rock * 0.6, rock: rock * 0.6 };
   if (z < -650 && y > 45) return { rock: 0.5 + rock * 0.5, gravel: 0.5 - rock * 0.5 };
   if (Math.hypot(x - CRYPT.x, z - CRYPT.z) < 300 + n * 40) return { blight: 1 - rock, rock };

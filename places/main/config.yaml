@@ -132,6 +132,7 @@ terrain:
   - {albedo: cdn/texture-terrain-wet-marsh-mud-moss-realistic-albedo.png, id: mud, pbr: true, tint: oklch(0.8 0.04 110)}
   - {albedo: cdn/texture-terrain-red-sandstone-rock-realistic-albedo.png, antiTiling: stochastic, id: redrock, pbr: true, tint: oklch(0.82 0.06 45)}
   - {albedo: cdn/texture-terrain-dead-grass-ash-blighted-soil-realistic-albedo.png, id: blight, pbr: true, tint: oklch(0.75 0.03 300)}
+  - {albedo: /cdn/rocks-desert-diffuse-u6937xdf7.webp, antiTiling: stochastic, id: desertrock, pbr: true, textureScale: 3, tint: oklch(0.88 0.04 60)}
   seed: 1
   marks:
     town:
@@ -329,4 +330,7 @@ terrain:
     road-fen: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-980, 380], [-1080, 560], [-1180, 720]], width: 3.6}
     road-highlands: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[112, 24], [180, 40], [260, 30], [380, 0], [520, -40], [680, -80], [840, -160], [980, -300], [1100, -460], [1220, -580]], width: 3.6}
     road-north-pass: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-2, -140], [10, -220], [40, -300], [0, -420], [-30, -540], [10, -680], [-20, -820], [20, -960]], width: 3.6}
+    road-frostveil: {grade: true, kind: path, material: gravel, maxGrade: 0.2, noise: 0.4, points: [[20, -960], [60, -1200], [10, -1500], [-60, -1850], [0, -2200], [80, -2600], [40, -3000], [0, -3400], [-40, -3800]], width: 3.6}
+    road-sunscar: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[1220, -580], [1500, -560], [1850, -480], [2200, -380], [2600, -300], [3000, -240], [3400, -200], [3800, -180]], width: 3.6}
+    road-elderveil: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-1200, 180], [-1600, 120], [-2000, 60], [-2400, 20], [-2800, -20], [-3200, -40], [-3600, -60]], width: 3.6}
     road-saltmere: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[6, 29], [10, 120], [30, 260], [60, 420], [110, 620], [150, 860], [200, 1100], [250, 1340], [290, 1560]], width: 3.6}
