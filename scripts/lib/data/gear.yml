@@ -4,9 +4,9 @@
 # ilvl: dungeons 25-30, Pale Choir / Emberheart 62-66, Ninth Assembly 70-72. A level-60 hero has 4540 health with no gear.
 lockoutDays: 7
 tiers:
-  dungeon: { label: "Dungeon", color: "oklch(0.75 0.14 250)" }
-  raid1:   { label: "Raid I",  color: "oklch(0.72 0.18 300)" }
-  raid2:   { label: "Raid II", color: "oklch(0.8 0.16 70)" }
+  dungeon: { label: "Dungeon", color: "oklch(0.75 0.14 250)", sound: /cdn/moodboard-painterly-fantasy/sfx-rare-item-drop-bright-crystal-chime-shimmer.mp3 }
+  raid1:   { label: "Raid I",  color: "oklch(0.72 0.18 300)", sound: /cdn/moodboard-gothic-horror/sfx-epic-item-drop-deep-bell-toll-dark-choir-swell-shimmer.mp3 }
+  raid2:   { label: "Raid II", color: "oklch(0.8 0.16 70)", sound: /cdn/moodboard-painterly-fantasy/sfx-legendary-item-drop-heavy-golden-impact-choir-hit-glittering-tail.mp3 }
 items:
   choirmother_hood:   { name: "Choirmother's Silt Hood",      slot: head,    tier: dungeon, ilvl: 25, stats: { power: 2, stamina: 90 },  icon: /cdn/icon-helmet-u9bjftt8q.webp,     description: "Still damp. It hums one low note when you are brave." }
   drowned_bell_ring:  { name: "Ring of the Drowned Bell",     slot: ring1,   tier: dungeon, ilvl: 25, stats: { power: 3, stamina: 40 },  icon: /cdn/icon-ringmagic-u6z0dou5e.webp,  description: "A bell-clapper bent into a ring." }

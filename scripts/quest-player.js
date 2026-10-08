@@ -34,7 +34,7 @@ function loot(ctx, boss) {
   if (i < 0) st.owedItems = [...(st.owedItems || []), id]; else { inv[i] = item; st.inventory = inv; }
   const tier = GEAR.tiers?.[def.tier] || {};
   ctx.emit('damageNumber', { position: at, text: `${def.name}  ·  ilvl ${def.ilvl}`, color: tier.color || '#c9a46a', size: 1.4, lifetime: 3.2 }, { audience: { player: ctx.self.id } });
-  ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-epic-loot-drop-chime.mp3', position: at, volume: 0.8 }, { audience: { player: ctx.self.id } });
+  ctx.emit('playSound', { clip: tier.sound || '/cdn/moodboard-painterly-fantasy/sfx-epic-loot-drop-chime.mp3', position: at, volume: 0.85 }, { audience: { player: ctx.self.id } });
   ctx.emit('screenFlash', { color: tier.color || '#c9a46a', duration: 0.35, intensity: 0.25 }, { audience: { player: ctx.self.id } });
   ctx.emit('stat', { name: 'raid-loot' }, { audience: { player: ctx.self.id } });
 }
