@@ -2,12 +2,13 @@
 // health ≤ 0 → dying for FALL_S (input already blocked by the mod while dying) → stand where they last stood safe at RISE_PCT.
 const FALL_S = 2.5, RISE_PCT = 0.5, CALM_S = 8, MEND_PER_S = 0.03; // mend 3% of max a second once 8 s unhurt
 import { nearestRoost, PVP, pvpRealm, sanctuaryAt } from "./lib/pvp.js";
+import { isPlay, SAFE_HOME } from './lib/places.js';
 const SAFE_HOME = { hollowcrypt: { x: 0, y: 0.3, z: -4 } }; // the vestibule, by the residents
 export const updateSchedule = { every: { seconds: 0.25 } };
 export function update(ctx, dt) {
   const me = ctx.self, s = me.state, mem = ctx.session, now = ctx.now();
   if (!s.characterCreated || s.phase !== "playing" || s.pvpDead) return;
-  if (me.place !== "main" && me.place !== "hollowcrypt") return;
+  if (!isPlay(me.place)) return;
   if (mem.zoneAt !== Math.floor(now / 1000)) { // once a second: which ground am I on, on a PvP realm
     mem.zoneAt = Math.floor(now / 1000);
     const room = (ctx.getRoomId && ctx.getRoomId()) || "main"; if (s.realmCurrent !== room) s.realmCurrent = room;

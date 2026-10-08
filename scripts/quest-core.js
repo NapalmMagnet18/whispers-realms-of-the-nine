@@ -13,6 +13,7 @@ import { questFirst, levelFirst } from './lib/realm-firsts.js';
 import V from './lib/data/vanguard.yml';
 import { qt, warm as warmText } from './lib/quest-text.js';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
+import { isPlay } from './lib/places.js';
 
 const W = Q.woodcutting, N = Q.npc, R = Q.reading || { reach: 2.6, length: 11 }, M = Q.marks || { reach: 3.2, cooldown: 6 };
 const ELRIC = 'gatekeeper-elric';
@@ -26,7 +27,7 @@ const on1 = (input, n) => !!((input.pressed && input.pressed[n]) || (input.actio
 const on = (input, name) => on1(input, name) || on1(input, MNS + name);
 const dataOf = (input, name) => (input.actionData && (input.actionData[name] || input.actionData[MNS + name])) || {};
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
-const playing = (ctx) => (ctx.self.place === 'main' || ctx.self.place === 'hollowcrypt') && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
+const playing = (ctx) => isPlay(ctx.self.place) && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
 
 function say(ctx, text, anchor) {
   ctx.self.state.npcSay = anchor && anchor !== ELRIC ? { text, id: ctx.now(), anchor, offset: '0 2.35 0' } : { text, id: ctx.now() };

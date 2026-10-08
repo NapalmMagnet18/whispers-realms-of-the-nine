@@ -4,6 +4,7 @@
 import V from './lib/data/vanguard.yml'
 import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
 import { drill, classOf, meleePlayer, strikePlayer, power } from './lib/kit.js'
+import { isPlay } from './lib/places.js';
 
 const WHOOSH = '/cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3'
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
@@ -17,7 +18,7 @@ function me(ctx) { return (ctx.session.vg ??= {})[ctx.self.id] ??= { ready: {} }
 
 export function onInput(ctx, input) {
   if (classOf(ctx) !== 'vanguard') return
-  if ((ctx.self.place !== 'main' && ctx.self.place !== 'hollowcrypt') || ctx.self.state.phase === 'creating') return
+  if (!isPlay(ctx.self.place) || ctx.self.state.phase === 'creating') return
   const p = input.pressed || {}
   if (p.attack) act(ctx, 'strike')
   else if (p.castSlot2) act(ctx, 'heavy')

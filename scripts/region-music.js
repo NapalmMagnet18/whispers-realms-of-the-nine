@@ -2,6 +2,7 @@
 // the crypt), crossfaded as they cross a border. Per player, so two heroes in two regions hear two songs.
 // Steps aside while the jukebox tab plays a chosen track, and stays silent when the player muted music.
 import MUSIC from "./lib/data/music.yml";
+import { isPlay } from './lib/places.js';
 export const updateSchedule = { every: { seconds: 2 } };
 
 // per-machine module cache: the region table is code, not shared state
@@ -32,7 +33,7 @@ export function update(ctx) {
   const hp = s.hp;
   if (typeof hp === "number" && typeof ctx.session._lastHp === "number" && hp < ctx.session._lastHp) ctx.session._fightAt = now0;
   ctx.session._lastHp = hp;
-  if (self.place === "main" || self.place === "hollowcrypt") {
+  if (isPlay(self.place)) {
     for (const r of ctx.query({ radius: C.radius, excludeTags: ["player", "dummy", "training-dummy"] })) {
       const st = r.state;
       if (st && st.lastHitBy === self.id && now0 - (st.lastHitAt || 0) < 4000 && (st.hp ?? 1) > 0) { ctx.session._fightAt = now0; break; }

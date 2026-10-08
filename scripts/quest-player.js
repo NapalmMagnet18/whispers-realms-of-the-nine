@@ -1,7 +1,8 @@
+import { isPlay } from './lib/places.js';
 // On every player's body: the quest behavior, kept off the menu's boot. The logic (and quests.yml, townsfolk.yml,
 // quest-data) lives in scripts/quest-core.js and is import()ed the first tick a created hero stands in main or the
 // Hollowcrypt; until it lands (well under a second) a press is simply not handled yet. ears.kill needs no tables: here.
-const inWorld = (ctx) => (ctx.self.place === 'main' || ctx.self.place === 'hollowcrypt') && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
+const inWorld = (ctx) => isPlay(ctx.self.place) && ctx.self.state.characterCreated && ctx.self.state.phase !== 'creating';
 let core = null, pending = null;
 function load() {
   if (core || pending) return;
