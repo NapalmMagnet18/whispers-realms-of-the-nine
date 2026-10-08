@@ -29,12 +29,14 @@ function artAt(x, z) {
   if (x < -60 && Math.abs(z) < 420) return 'briarwild';
   return null;
 }
-var _cur = null, _shown = {}, _splash = null, _first = true;
+var _cur = null, _shown = {}, _splash = null, _first = true, _since = 0;
 var HOLD_FULL = 1200, END_FULL = 3600, END_CARD = 4500, REPEAT = 180000;
 
 export function renderZoneSplash(localPlayer) {
   var fp = localPlayer.feetPosition; if (!fp) return '';
   var now = typeof performance !== 'undefined' ? performance.now() : 0;
+  if (!_since) _since = now || 1;
+  if (_first && now - _since < 350) return ''; // the body settles at its destination first
   var a = artAt(fp.x, fp.z);
   if (_first) {
     _first = false; _cur = a;
@@ -58,5 +60,6 @@ export function renderZoneSplash(localPlayer) {
     + 'transform:translate(-50%,' + y.toFixed(1) + 'px);opacity:' + o.toFixed(3) + ';box-shadow:0 0 0 2px #c9a46a,0 0 0 5px #2a1e16,0 0 0 6px #6b4a2f,0 18px 40px rgba(0,0,0,.65)">'
     + '<img src="' + src + '" style="width:100%;height:100%;object-fit:cover;display:block" /></div>';
 }
+export function resetZoneSplash() { _first = true; _splash = null; _cur = null; _since = 0; }
 export function zoneArtFor(x, z) { return ART[artAt(x, z) || 'ninthveil']; }
-module.exports = { renderZoneSplash: renderZoneSplash, zoneArtFor: zoneArtFor };
+module.exports = { renderZoneSplash: renderZoneSplash, resetZoneSplash: resetZoneSplash, zoneArtFor: zoneArtFor };

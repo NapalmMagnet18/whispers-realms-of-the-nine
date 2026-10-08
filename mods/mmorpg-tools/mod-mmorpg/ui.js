@@ -17,7 +17,8 @@ function _lazyMod(key, path) {
 }
 // the in-world HUD set loads after the menu stands (kicked off on the first paint anywhere), ready long before Enter World
 var _HUD_SRC = { hud: function () { return import('./lib/ui-hud.js'); }, quest: function () { return import('./lib/ui-quest.js'); },
-  vendor: function () { return import('./lib/ui-vendor.js'); }, welcome: function () { return import('./lib/ui-welcome.js'); } };
+  vendor: function () { return import('./lib/ui-vendor.js'); }, welcome: function () { return import('./lib/ui-welcome.js'); },
+  splash: function () { return import('./lib/ui-zone-splash.js'); } };
 var _hudMods = {};
 function _hm(key) {
   var e = _hudMods[key] || (_hudMods[key] = { m: null, p: null });
@@ -31,7 +32,9 @@ function renderQuestDialog(a, b) { var f = _hf('quest', 'renderQuestDialog'); re
 function renderTurnInDialog(a, b) { var f = _hf('quest', 'renderTurnInDialog'); return f ? f(a, b) : ''; }
 function renderQuestTracker(a, b) { var f = _hf('quest', 'renderQuestTracker'); return f ? f(a, b) : ''; }
 function renderVendor(a, b) { var f = _hf('vendor', 'renderVendor'); return f ? f(a, b) : ''; }
-function _warmHud() { _hm('hud'); _hm('quest'); _hm('vendor'); _hm('welcome'); }
+function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : ''; }
+function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
+function _warmHud() { _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('welcome'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
 function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
 function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
@@ -180,6 +183,7 @@ export default function(world, localPlayer) {
 
   // Main menu — show only the title screen + character roster
   if (localPlayer.state.inMainMenu && !characterCreated && !__faEverPlayed) {
+    try { resetZoneSplash(); } catch (eZ) {}
     return FONT_INJECTOR + FONT_WRAP_OPEN + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();" style="display:none" />' + renderMainMenu(localPlayer) + renderCharacterRoster(localPlayer) + renderGnomeTipJar(localPlayer) + versionTag() + FONT_WRAP_CLOSE;
   }
   var hideArt = localPlayer.state.hideUiArt === true;
@@ -208,6 +212,7 @@ export default function(world, localPlayer) {
       try { _hudParts.push(renderWorldMapOverlay(localPlayer.state, localPlayer.feetPosition, localPlayer.state._lastAnnouncedPlace)); } catch(e5) { _hudParts.push(''); }
       if (localPlayer.state.showWelcome) { try { _hudParts.push(renderWelcomeWindow()); } catch(e6) { _hudParts.push(''); } }
       try { _hudParts.push(renderZoneBanner(localPlayer)); } catch(e7) { _hudParts.push(''); }
+      try { if (phase === 'playing' && !localPlayer.state.inMainMenu) _hudParts.push(renderZoneSplash(localPlayer)); else resetZoneSplash(); } catch(e7z) { _hudParts.push(''); }
       try { _hudParts.push(renderQuestTracker(localPlayer, world)); } catch(e7b) { _hudParts.push(''); }
       if (localPlayer.state.showQuestDialog) { try { _hudParts.push(localPlayer.state.questDialogData && localPlayer.state.questDialogData.turnIn ? renderTurnInDialog(localPlayer) : renderQuestDialog(localPlayer)); } catch(e8) { _hudParts.push(''); } }
       try { _hudParts.push(renderDoorPanel(localPlayer)); } catch(e9) { _hudParts.push(''); }
