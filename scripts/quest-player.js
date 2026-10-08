@@ -6,7 +6,7 @@ import Q from './lib/data/quests.yml';
 import V from './lib/data/vanguard.yml';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 
-const W = Q.woodcutting, N = Q.npc;
+const W = Q.woodcutting, N = Q.npc, R = Q.reading || { reach: 2.6, length: 11 };
 const ELRIC = 'gatekeeper-elric';
 const CHIPS = `fx
 pop chips burst=10..16 life=.5..0.9 v=<%normal|0,1,0>*(2..3.5)+up(1.5)+sdir()*(.6..1.2) size=.05..0.1 spin=-8..8 acc=grav()+drag(1.2) col=<.62,.45,.26> a=1>.7:1>0 sz=$size rot=$age*$spin floor=stick r=sprite(stalk,alpha,velocity,.02)
@@ -26,6 +26,12 @@ function near(ctx, tag, reach) {
   let best = null, bd = reach;
   for (const r of ctx.query({ tags: [tag], radius: reach + 2 })) { const d = flat(r.feetPosition, me); if (d <= bd) { bd = d; best = r; } }
   return best;
+}
+// anything tagged 'readable' (a journal, a plaque) carries state { title, text }: E floats its page over it
+function read(ctx, r) {
+  const s = r.state || {};
+  ctx.self.state.npcSay = { text: (s.title ? '<b>' + s.title + '</b><br>' : '') + (s.text || ''), id: ctx.now(), anchor: r.id, offset: s.offset || '0 1.4 0' };
+  ctx.session.sayUntil = ctx.now() + R.length * 1000;
 }
 const felled = (ctx, tree) => (tree.state.depletedUntil || 0) > ctx.now();
 
@@ -152,6 +158,8 @@ export function onInput(ctx, input) {
   if (!on(input, 'interact') || st.showQuestDialog || st.showDoorPanel) return;
   if (ctx.session.chop) return stopChop(ctx);
   if (near(ctx, 'quest-npc', N.talkReach)) return talk(ctx);
+  const page = near(ctx, 'readable', R.reach);
+  if (page) return read(ctx, page);
   const tree = near(ctx, 'timber', W.reach);
   if (tree && !felled(ctx, tree)) startChop(ctx, tree);
 }
@@ -177,6 +185,7 @@ export function update(ctx) {
   let hint = null;
   if (ctx.session.chop) hint = 'Chopping…';
   else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to Elric';
+  else if (near(ctx, 'readable', R.reach)) { const r = near(ctx, 'readable', R.reach); hint = 'E  Read ' + ((r.state && r.state.title) || 'note'); }
   else { const t = near(ctx, 'timber', W.reach); if (t) hint = felled(ctx, t) ? 'Felled · regrowing' : 'E  Chop Oak'; }
   if (hint !== ctx.session.hint) {
     if (hint) st.interactHint = hint;

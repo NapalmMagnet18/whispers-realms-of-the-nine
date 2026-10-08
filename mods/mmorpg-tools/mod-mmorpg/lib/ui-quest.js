@@ -445,7 +445,7 @@ export function renderQuestTracker(localPlayer, world) {
       + '<div style="font-size:18px;color:oklch(0.94 0.04 90);-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;white-space:nowrap">' + QUEST_NPCS[n].name + '</div></div>';
   }
   if (s.npcSay && s.npcSay.text) {
-    out += '<div data-world-anchor="gatekeeper-elric" data-anchor-offset="0 2.9 0" style="pointer-events:none;transform:translate(-50%,-100%)"><div id="say-' + s.npcSay.id + '" class="qt-plate" style="max-width:340px;font-size:17px;line-height:1.35;animation:qpop .2s">' + s.npcSay.text + '</div></div>';
+    out += '<div data-world-anchor="' + (s.npcSay.anchor || 'gatekeeper-elric') + '" data-anchor-offset="' + (s.npcSay.offset || '0 2.9 0') + '" style="pointer-events:none;transform:translate(-50%,-100%)"><div id="say-' + s.npcSay.id + '" class="qt-plate" style="max-width:' + (s.npcSay.anchor ? 400 : 340) + 'px;font-size:17px;line-height:1.35;animation:qpop .2s">' + s.npcSay.text + '</div></div>';
   }
   return out;
 }

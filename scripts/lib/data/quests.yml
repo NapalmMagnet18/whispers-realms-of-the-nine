@@ -37,3 +37,7 @@ woodcutting:
 
 items:
   log: { id: log, name: Oak Log, slot: bag, stackable: true, description: "A sound length of Briarwild oak. The Reach burns it in its watch-fires." }
+
+reading:              # E on anything tagged readable (state.title / state.text) floats its page above it
+  reach: 2.6           # metres
+  length: 11           # seconds the page stands
