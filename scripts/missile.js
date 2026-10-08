@@ -39,6 +39,7 @@ export function update(ctx, dt) {
 }
 function finish(ctx, M, at, dir, target, normal) {
   const self = ctx.self, s = self.state, n = normal || { x: -dir.x, y: -dir.y, z: -dir.z }
+  ctx.log('missile.finish', { kind: s.kind, target: target ? target.id : null, at })
   if (target) applyHit(ctx, s.ownerId, target, { damage: s.damage, kind: s.ability, slow: s.slow, slowFor: s.slowFor, at, normal: n, missile: M })
   else impactFx(ctx, M, 'earth', at, n)
   if (M.sticks && !(target && (target.tags || []).includes('wolf'))) {
