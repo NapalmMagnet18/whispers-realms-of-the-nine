@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 85,
-  "updatedAt": "2026-10-08T01:36:17.230Z",
-  "summary": "WHISPERS : Realm of the Nine is a fantasy MMO prototype whose MMORPG Tools title menu and character-creation flow lead into the Lantern March. Place configs and scenes define the hub, resource regions and new south-west farm; procedural scripts supply authored geometry, while the MMORPG Tools mod owns character lifecycle, RPG state, camera modes and UI.",
+  "basedOnSpecVersion": 99,
+  "updatedAt": "2026-10-08T01:40:39.899Z",
+  "summary": "WHISPERS : Realm of the Nine is a fantasy MMO prototype whose MMORPG Tools menu and character-creation flow lead into the Lantern March. Its main place combines the Lantern's Reach hub and authored farm/landmarks with procedural continent terrain, roads, river, coast and named regions; the MMORPG Tools mod owns RPG lifecycle, player state, cameras and UI.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -92,6 +92,7 @@
     "scripts/grass-look.js",
     "scripts/grass.js",
     "scripts/humanoid-locomotion.js",
+    "scripts/lib/regions.js",
     "scripts/lighting.js",
     "scripts/look-default.js",
     "scripts/pebble.js",
@@ -107,10 +108,10 @@
   "places": [
     "places/main-menu-land/ - default title/travel menu scene, with authored town art and shared terrain decoration.",
     "places/character-creation-land/ - character preview scene with terrain off and a preview camera/lighting setup.",
-    "places/main/ - six-cell Lantern March world: Lantern's Reach hub at origin, Briarwild west, Emberstone Quarry east and the distant north spire landmark.",
-    "places/main/cells/x0z0.scene - hub buildings and props plus Windmill Farm south-west of the square: windmill, turning sails, crop plots, fenced lane, hay, scarecrow and stone walls.",
+    "places/main/ - Lantern March continent: Reach hub at origin, farm SW, Briarwild west, quarry east, and distant Greyspine, Highlands, Hollowcrypt, Sorrowfen, Saltmere and Shrouded Sea regions; 29 cells now cover the expanded area.",
+    "places/main/cells/x0z0.scene - Reach hub buildings and props plus Windmill Farm: windmill, turning sails, crop plots, fenced lane, hay, scarecrow and stone walls.",
     "places/main/cells/x-1z0.scene and places/main/cells/x1z0.scene - west tagged timber trees and east tagged copper nodes, respectively.",
-    "places/main/config.yaml - main terrain, cinematic atmosphere, scatter, farm flatten/path shaping and bridge approach flattening to y 4.4."
+    "places/main/config.yaml - main terrain-reach heightmap, cinematic atmosphere, terrain materials/scatter, sea, river, farm flattening and roads out to the regions."
   ],
   "roots": [
     "world.config.yaml - world entry/defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
@@ -118,27 +119,27 @@
     "templates/player.js#player - native player template; runs humanoid locomotion then core movement behavior.",
     "templates/camera.js#camera - native custom camera template; core scripts/camera.js consumes engine look orientation.",
     "places/main-menu-land/config.yaml and places/character-creation-land/config.yaml - separate menu/preview place roots and atmosphere settings.",
-    "places/main/config.yaml - playable-world spawn, gravity, terrain generation/materials, vegetation scatter and cinematic look."
+    "places/main/config.yaml - playable-world spawn, gravity, terrain generator/materials, vegetation scatter and cinematic look."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/ - integrated RPG package: lifecycle, character selection, gameplay/orbit camera, interaction, quests and UI.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data and panel renderers used by mod behaviors and ui.js; races define Marchborn/Briarkin and Vanguard.",
+    "mods/mmorpg-tools/mod-mmorpg/ - integrated RPG package: lifecycle, character selection, gameplay/creation cameras, interaction, quests and UI.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data registries and panel renderers used by mod behaviors and ui.js.",
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural geometry used by authored scene instances with parameters.",
-    "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometries/material reused by place scatter bindings.",
+    "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometry/material reused by place scatter bindings.",
+    "scripts/lib/regions.js - named Lantern March region definitions and regionAt lookup; ui-hud.js currently mirrors its tests inline rather than importing it.",
     "scripts/lib/data/{player,camera,world}.yml - shared movement, camera-height and terrain-height values read by core scripts.",
     "mods/aaa-quality-kit/look-cinema.js and scripts/look-default.js - alternative post-process looks selected by place atmosphere; main uses cinema.",
-    "mods/codex/ - creator-facing document panel and document operations; doc-<tab>.js pages are assembled by codex-doc.js, not runtime game state.",
-    "mods/wow-camera-controls/ - separately packaged reusable camera controls alongside the MMORPG mod's camera behaviors."
+    "mods/codex/ and mods/wow-camera-controls/ - creator-facing document tools and a separately packaged reusable camera-controls mod."
   ],
   "notableExports": [
     "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
     "scripts/camera.js - finiteNumber, update; scripts/arrival.js - onArrive, onLeave; sim.js - cadence, tick.",
+    "scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, heightAt, materialAt; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
     "scripts/gen/stone-bridge.js, farm.js, windmill.js and windmill-sails.js - geometry, collider; scripts/gen/shape.js supplies box/quad helpers.",
     "scripts/sails-spin.js - onSpawn; animates the windmill sail assembly.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - movement/state, avatar and roster/music helpers, saveCharacter, onSpawn and lifecycle handlers.",
     "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview/model helpers, onSpawn, update, onInput; main-menu-mgr.js owns roster/menu handlers.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/stat-calc.js - statBonus, damage/power/crit/dodge calculations and calcBaseStats.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - default renderer and menu/HUD/zone/WASD/creation renderers; lib/ui-main-menu.js and lib/ui-hud.js export menu and HUD renderers."
+    "mods/mmorpg-tools/mod-mmorpg/ui.js - renderer/composition; lib/ui-hud.js exports renderTargetDisplay, renderHUD and lib/ui-main-menu.js exports menu rendering."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent keyed by body and writes core character velocity; place config owns gravity.",
@@ -148,21 +149,21 @@
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - orbit input/pose and creation-phase framing for the mod camera path.",
     "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - NPC proximity and quest-dialog handoff; quest definitions live in lib/quest-data.js.",
     "mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-*.js - render presentation from player/world state; UI is not gameplay-state owner.",
-    "scripts/flat-starter-terrain.js plus scripts/lib/data/world.yml - core terrain height/material inputs; sim.js currently owns no state."
+    "places/main/config.yaml and scripts/terrain-reach.js - terrain shape/material generation inputs; scripts/lib/regions.js owns the named-region lookup data."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → MMORPG menu/player/character-select/main-menu-mgr behaviors → character creation and transition into main.",
-    "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading rather than leaving the form blocked.",
-    "Creation camera behavior path in mod.json → character-select.js installs mods/mmorpg-tools/mod-mmorpg/camera-creation.js → frames the preview; gameplay camera handles orbit outside creation.",
+    "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading rather than blocking the form.",
+    "Creation camera behavior path in mod.json → character-select.js installs camera-creation.js → frames preview; gameplay camera handles orbit outside creation.",
     "world.config.yaml player template → scripts/humanoid-locomotion.js then scripts/player.js; gait samples movement before this tick's movement velocity write.",
     "moveX/moveZ/jump input → scripts/player.js onInput stores room-local intent → update eases velocity and applies place gravity.",
     "world.config.yaml UI renderer → mods/mmorpg-tools/mod-mmorpg/ui.js reads local player/world state → lib/ui-* renderers compose HUD, menu, quest and panels; nametag renders separately.",
-    "Character creation state → ui.js renderCharacterCreation and injected name input → setCharName/confirmCharacter actions; NAME_SWEEP removes the persistent DOM name box outside creation.",
+    "Main-place local player's feetPosition x/z → ui-hud.js inline region tests → name over minimap; scripts/lib/regions.js separately exports the corresponding lookup table, not imported by this HUD path.",
+    "Character creation state → ui.js creation renderer and injected name input → setCharName/confirmCharacter actions; NAME_SWEEP removes the persistent DOM name box outside creation.",
     "quest-giver.js proximity/interact → lib/quest-data.js and player activeQuests → showQuestDialog/questDialogData on player → ui.js/lib/ui-quest.js.",
-    "places/main/config.yaml terrain generator → scripts/flat-starter-terrain.js reads world.yml; scatter bindings use grass/flower/pebble geometry and grass-look material.",
-    "places/main/cells/*.scene scripted objects → scripts/gen geometry; Briarbridge uses stone-bridge.js, farm pieces use farm.js, and windmill body/sails use windmill.js and windmill-sails.js.",
-    "windmill-sails scene entity → scripts/sails-spin.js onSpawn → turns the separate sail object continuously; its placement aligns its hub with the windmill's upper tower.",
-    "world.config.yaml lighting/arrival bindings → scripts/lighting.js and scripts/arrival.js; arrival hooks remain empty; sim.js ticks once per second without state work."
+    "places/main/config.yaml terrain generator → scripts/terrain-reach.js heightAt/materialAt (including builtin shore at sea level 0); terrain materials select scatter bindings such as woods, deadwood and reeds.",
+    "places/main/config.yaml heightmap modifiers → sea and river plus graded roads to Deepwood, Fen, Highlands, north pass and Saltmere; expanded main cells carry the continent terrain around authored cells.",
+    "places/main/cells/*.scene scripted objects → scripts/gen geometry; windmill-sails scene entity → scripts/sails-spin.js onSpawn continuously rotates the separate sail assembly."
   ],
   "behaviorFamilies": [
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural scene geometry reused by instances, varied by kind/shape parameters, dimensions, seed and transforms.",
@@ -170,7 +171,7 @@
     "mods/mmorpg-tools/mod-mmorpg/player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle behaviors registered by mod.json.",
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - paired gameplay orbit and preview camera modes with creation-phase guards.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character and settings.",
-    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected per place atmosphere."
+    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected by place atmosphere."
   ],
   "probableOrphans": [],
   "migrationNotes": [
@@ -178,7 +179,7 @@
     "templates/player.js runs humanoid-locomotion before player.js; behavior order determines whether gait samples prior-tick or current movement velocity.",
     "Core scripts/camera.js uses engine look orientation and feetPosition + eyeHeight × effectiveScale.y; MMORPG orbit/creation cameras are a distinct path.",
     "MMORPG camera.js delegates creation framing to camera-creation.js and guards orbit during creation/dialog states; preserve these phase and panel guards.",
-    "Briarbridge deck spans X with L=22, W=4.2 and rise=1.4; scene origin and approach flatten centers at x=-64 and -37 use y=4.4. The farm flatten is centered (-16,52), radius 20 at height 4.2, with the dirt lane routed from the south lane.",
-    "Windmill body is at (-30, terrain, 50); sails are a separate pivot-center entity whose hub is aligned above the tower and whose onSpawn behavior spins it. Character creation uses race indices 0/1 for Marchborn/Briarkin and Vanguard; starting stats, class items and HUD stat keys are cross-coupled across lib/stat-calc.js, class-items.js and player/UI state."
+    "terrain-reach.js blends the March to a coastline via landFactor and builtin shore(h, 0); sea level is 0, while Sorrowfen terrain is shaped near 0.5 and classified as mud around the FEN center.",
+    "Region labels are duplicated: ui-hud.js hardcodes ordered distance/coordinate tests instead of calling scripts/lib/regions.js; keep their names, thresholds and precedence aligned when editing region behavior."
   ]
 }
