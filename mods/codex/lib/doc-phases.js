@@ -55,7 +55,8 @@ export const PHASES = [
       {"id": "bugs-5", "text": "Version tag on a stuck hero's HUD: gone with bugs-1, title shows v0.7.9 Alpha", "done": true}
     ],
     "notes": [
-      {"id": "notes-1", "text": "Windows crew handoff: rebuild the game windows as ui-book.js + one lib file per tab routed from renderMenuPanel; HUD fixes first: minimap labels pile up, empty hotbar slots glare white, tip panel covers nameplates, version tag over the XP text. v0.8.0: hotbar empties darkened, minimap names de-overlapped, pause version line lifted (unwatched in play). Open: tip panel over nameplates, windows rebuild", "done": false}
+      {"id": "notes-1", "text": "Windows crew handoff: rebuild the game windows as ui-book.js + one lib file per tab routed from renderMenuPanel; HUD fixes first: minimap labels pile up, empty hotbar slots glare white, tip panel covers nameplates, version tag over the XP text. v0.8.0: hotbar empties darkened, minimap names de-overlapped, pause version line lifted (unwatched in play). Seen in play 0.8.1: hotbar now dark brass slots (the white came from a raw ::after border in ui.js), version line clear of XP, game menu closes again (inline display beat the hide rule), windows in brass (crew: char/stats/inv/spellbook/quests/professions seen; talents, world map, backpack not). Open: tip panel over nameplates, minimap names clipped at the ring edge", "done": false},
+      {"id": "notes-2", "text": "Checked by Savi in her own browser 2026-10-08: title → Enter World → Lantern's Reach → Esc menu → Log Out → clean title, no HUD. Realm A→B→A and Character Select/Realm List returns not yet run", "done": true}
     ]
   },
   {
