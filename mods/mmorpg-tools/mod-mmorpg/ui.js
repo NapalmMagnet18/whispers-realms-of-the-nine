@@ -152,6 +152,9 @@ export function getRightHudLayout() {
 
 // Client-side latch: once we've EVER shown the HUD, never show loading/menu again in this session.
 // This survives transient state flickers that momentarily clear characterCreated/phase.
+// the race's home zone, painted (creator art, 2026-10-08)
+var RACE_ART = { marchborn: '/cdn/chatgpt-image-oct-7-2026-09-54-03-pm-1-u5u429bhl.webp', briarkin: '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-2-u6195ot7r.webp',
+  emberforged: '/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp', saltborn: '/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u6hx0nqke.webp' };
 var __faEverPlayed = false;
 
 export default function(world, localPlayer) {
@@ -257,7 +260,7 @@ export default function(world, localPlayer) {
       + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();" style="display:none" />'
       + '<div class="fixed inset-0" style="background:#000;">'
       // Background art
-      + '<img src="/cdn/value.0203214fb32e56521359cde38430170db3009da83ca3fe6b453cc498c0f84c92.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.85;pointer-events:none;" />'
+      + '<img src="/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u6hx0nqke.webp" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />'
       // Dark overlay for readability
       + '<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);pointer-events:none;"></div>'
       // Bottom vignette
@@ -284,7 +287,7 @@ export default function(world, localPlayer) {
     return FONT_INJECTOR + FONT_WRAP_OPEN
       + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();window.__faCharName=undefined;" style="display:none" />'
       + '<div class="fixed inset-0" style="background:#000;">'
-      + '<img src="/cdn/value.0203214fb32e56521359cde38430170db3009da83ca3fe6b453cc498c0f84c92.png" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.85;pointer-events:none;" />'
+      + '<img src="' + (RACE_ART[(RACES[localPlayer.state.raceIndex || 0] || {}).id] || RACE_ART.marchborn) + '" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />'
       + '<div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);pointer-events:none;"></div>'
       + '<div style="position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);pointer-events:none;"></div>'
       + '<div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:360px;">'
