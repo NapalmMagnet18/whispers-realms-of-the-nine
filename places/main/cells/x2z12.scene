@@ -12,6 +12,13 @@ hc-nam-boss:
   state: {arena: {r: 13, x: 217, z: 1497}, boss: captain_merrow, home: {x: 217, z: 1497}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: Captain Merrow of the Gull's Wake, unhurt: true, yaw: 180}
   tags: [enemy, boss, homecoming]
   ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Captain Merrow of the Gull's Wake</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+hc-nam-wreck:
+  feetPosition: {x: 217, y: 24, z: 1513}
+  id: hc-nam-wreck
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 7, height: 9, kind: box, width: 16}
+  tags: [blueprint]
 waystone-saltmere:
   feetPosition: {x: 294, y: {terrain: 0}, z: 1563}
   id: waystone-saltmere
