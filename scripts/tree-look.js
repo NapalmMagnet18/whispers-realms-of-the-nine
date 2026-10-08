@@ -26,7 +26,7 @@ export function material(ctx) {
     return m;
   }
   const isLeaf = step(5.0, uv().x);
-  const leafUV = vec2(uv().x.sub(10.0), uv().y);
+  const leafUV = vec2(uv().x.fract(), uv().y.fract());
   const leaf = ctx.texture(K.leaf).sample(leafUV);
   const cut = K.mask ? ctx.texture(K.mask).sample(leafUV).r : leaf.a;
   const leafCol = leaf.rgb.mul(ctx.param("leafGain", K.gain));

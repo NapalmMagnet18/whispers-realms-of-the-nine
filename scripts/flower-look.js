@@ -6,7 +6,7 @@ export function material(ctx) {
   const m = new MeshStandardNodeMaterial();
   m.side = DoubleSide;
   const head = step(5.0, uv().x);
-  const t = ctx.texture("/cdn/flowers-u3nrtlyel.webp").sample(vec2(uv().x.sub(10.0), uv().y));
+  const t = ctx.texture("/cdn/flowers-u3nrtlyel.webp").sample(vec2(uv().x.fract(), uv().y.fract()));
   const body = mix(vertexColor().rgb, t.rgb.mul(1.1), head), keep = mix(float(1), t.a, head);
   m.colorNode = Fn(() => { Discard(keep.lessThan(0.5)); return body; })();
   m.roughness = 0.8;
