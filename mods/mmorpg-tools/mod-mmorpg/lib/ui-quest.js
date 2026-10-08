@@ -462,12 +462,12 @@ export function renderQuestTracker(localPlayer, world) {
     var st = _qd.questStatus(_list[n].id, s);
     var mark = st === 'available' ? '!' : st === 'ready' ? '?' : '';
     var markCol = st === 'ready' ? 'oklch(0.86 0.15 85)' : 'oklch(0.9 0.17 90)';
-    out += '<div data-world-anchor="' + _list[n].id + '" data-anchor-offset="0 2.25 0" style="pointer-events:none;text-align:center;transform:translate(-50%,-100%);opacity:clamp(0,calc((40 - var(--anchor-depth,0)) / 10),1)">'
+    out += '<div data-world-anchor="' + _list[n].id + '" data-anchor-offset="0 2.25 0" style="pointer-events:none;z-index:95;text-align:center;transform:translate(-50%,-100%);opacity:clamp(0,calc((40 - var(--anchor-depth,0)) / 10),1)">'
       + (mark ? '<div style="font-size:52px;line-height:1;font-weight:900;color:' + markCol + ';-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;text-shadow:0 0 14px oklch(0.85 0.17 85 / .8);animation:qbob 1.2s ease-in-out infinite">' + mark + '</div>' : '')
       + '<div style="font-size:18px;color:oklch(0.94 0.04 90);-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;white-space:nowrap">' + _list[n].name + '</div></div>';
   }
   if (s.npcSay && s.npcSay.text) {
-    out += '<div data-world-anchor="' + (s.npcSay.anchor || 'gatekeeper-elric') + '" data-anchor-offset="' + (s.npcSay.offset || '0 2.9 0') + '" style="pointer-events:none;transform:translate(-50%,-100%)"><div id="say-' + s.npcSay.id + '" class="qt-plate" style="max-width:' + (s.npcSay.anchor ? 400 : 340) + 'px;font-size:17px;line-height:1.35;animation:qpop .2s">' + s.npcSay.text + '</div></div>';
+    out += '<div data-world-anchor="' + (s.npcSay.anchor || 'gatekeeper-elric') + '" data-anchor-offset="' + (s.npcSay.offset || '0 2.9 0') + '" style="pointer-events:none;z-index:96;transform:translate(-50%,-100%)"><div id="say-' + s.npcSay.id + '" class="qt-plate" style="max-width:' + (s.npcSay.anchor ? 400 : 340) + 'px;font-size:17px;line-height:1.35;animation:qpop .2s">' + s.npcSay.text + '</div></div>';
   }
   return out;
 }

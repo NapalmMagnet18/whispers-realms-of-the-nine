@@ -382,7 +382,7 @@ export function renderWASD(localPlayer, rightHudLayout) {
 
   return `
     <div style="
-      position:fixed; top:50%; left:-58px; ${wasdScaleStyle}
+      position:fixed; top:50%; left:-58px; z-index:40; ${wasdScaleStyle}
       pointer-events:none;
       opacity: 0.72;
       width: 370px;
