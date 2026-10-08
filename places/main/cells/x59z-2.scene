@@ -1,4 +1,66 @@
 # spawn-scene v2 yaml x59z-2
+bastion-blueprint/bn-gate-n:
+  feetPosition: {x: -41, y: 0, z: -37}
+  id: bastion-blueprint/bn-gate-n
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 90}
+  tags: [bastion]
+bastion-blueprint/bn-gate-s:
+  feetPosition: {x: -41, y: 0, z: -23}
+  id: bastion-blueprint/bn-gate-s
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 90}
+  tags: [bastion]
+bastion-blueprint/bn-keep-n:
+  feetPosition: {x: 19, y: 0, z: -37.5}
+  id: bastion-blueprint/bn-keep-n
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 90}
+  tags: [bastion]
+bastion-blueprint/br-gate-n:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: -51, y: 0, z: -33.8}
+  id: bastion-blueprint/br-gate-n
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: -51}
+  tags: [bastion]
+bastion-blueprint/br-gate-s:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: -51, y: 0, z: -26.2}
+  id: bastion-blueprint/br-gate-s
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: -51}
+  tags: [bastion]
+bastion-blueprint/br-keep-n:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: 18, y: 0, z: -33}
+  id: bastion-blueprint/br-keep-n
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: 18}
+  tags: [bastion]
+bastion-blueprint/br-keep-s:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: 18, y: 0, z: -23}
+  id: bastion-blueprint/br-keep-s
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: 18}
+  tags: [bastion]
+bastion-blueprint/embers-falls:
+  feetPosition: {x: 22, y: 0.6, z: -58}
+  fx: {params: {hx: 18, hz: 3}, script: "fx\npop drift rate=?mobile:6|12 on=box(%hx|10,.3,%hz|3) life=2.5..5 v=up(.6..1.4)+sdir()*.3 size=.03..0.07 acc=curl(.4)*.9+buoy(.25)+drag(.4) sz=$size*(1>.6:.8>.2) col=hdr(5,2.4,.6)>.5:hdr(2.4,.7,.12)>hdr(.8,.15,.03) a=(0>.1:1>.7:.8>0)*flick(6,.4) r=sprite(ember,add,velocity,.03)\npop haze rate=?mobile:1|2 on=box(%hx|10,.2,%hz|3) life=3..5 v=up(.5..1) size=1.2..2 acc=buoy(.3)+curl(.2)+drag(.6) sz=$size*(.6>2) col=<.35,.3,.28> a=0>.2:.18>.7:.12>0 rot=spin(.05) r=sprite(smoke-puff,alpha)"}
+  id: bastion-blueprint/embers-falls
+  parent: bastion-blueprint
+  tags: [bastion]
 bastion-blueprint/gate:
   feetPosition: {x: -46, y: 0, z: -30}
   id: bastion-blueprint/gate
@@ -42,3 +104,23 @@ bastion-blueprint/lavafall-w:
   primitive: {kind: scripted, params: {h: 20, kind: lavafall, seed: 3, w: 14}, script: scripts/gen/ashfall.js, seed: 1}
   rotation: {yaw: 180}
   tags: [bastion]
+bastion-blueprint/npc-brannoc:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 17, y: 0, z: -28}
+  id: bastion-blueprint/npc-brannoc
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-forgemaster-male-dwarf-braided-beard-leather-apron-soot.glb
+  parent: bastion-blueprint
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 90}
+  state: {homeYaw: 90, idle: Idle_FoldArms_Loop, npcName: Forgemaster Brannoc, who: brannoc, yaw: 90}
+  tags: [bastion, npc, talker, townsfolk]
+bastion-blueprint/sign:
+  feetPosition: {x: -54, y: 0, z: -34.8}
+  id: bastion-blueprint/sign
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js, seed: 4}
+  rotation: {yaw: 90}
+  tags: [bastion]
+  ui: "<div face=\"front\" at=\"0.5 0.82\" width=\"1.6m\" class=\"px-2 py-1 text-center font-serif text-amber-200\" style=\"font-size:150px;background:#2a1e16\">EMBERSTONE BASTION</div>"

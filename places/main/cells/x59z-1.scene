@@ -5,6 +5,124 @@ bastion-blueprint:
   physics: static
   primitive: {kind: scripted, params: {h: 8, kind: curtain, verts: [[-46, -38.5], [-30, -50], [0, -52], [30, -50], [46, -34], [50, -4], [44, 26], [24, 44], [-8, 48], [-36, 34], [-48, 8], [-46, -21.5]]}, script: scripts/gen/ashfall.js, seed: 1}
   tags: [bastion]
+bastion-blueprint/anvil-e:
+  feetPosition: {x: 16, y: 0, z: 33}
+  id: bastion-blueprint/anvil-e
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: anvil}, script: scripts/gen/props.js, seed: 1}
+  rotation: {yaw: 20}
+  tags: [bastion]
+bastion-blueprint/anvil-w:
+  feetPosition: {x: -16, y: 0, z: 35}
+  id: bastion-blueprint/anvil-w
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: anvil}, script: scripts/gen/props.js, seed: 1}
+  rotation: {yaw: 20}
+  tags: [bastion]
+bastion-blueprint/barrel-e1:
+  feetPosition: {x: 12.4, y: 0, z: 31}
+  id: bastion-blueprint/barrel-e1
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js, seed: 2}
+  tags: [bastion]
+bastion-blueprint/barrel-e2:
+  feetPosition: {x: 13.2, y: 0, z: 30.3}
+  id: bastion-blueprint/barrel-e2
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js, seed: 3}
+  rotation: {yaw: 40}
+  tags: [bastion]
+bastion-blueprint/barrel-w1:
+  feetPosition: {x: -19.6, y: 0, z: 33}
+  id: bastion-blueprint/barrel-w1
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js, seed: 2}
+  tags: [bastion]
+bastion-blueprint/barrel-w2:
+  feetPosition: {x: -18.8, y: 0, z: 32.3}
+  id: bastion-blueprint/barrel-w2
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js, seed: 3}
+  rotation: {yaw: 40}
+  tags: [bastion]
+bastion-blueprint/bn-bridge-e:
+  feetPosition: {x: 29, y: 0, z: -14.5}
+  id: bastion-blueprint/bn-bridge-e
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 0}
+  tags: [bastion]
+bastion-blueprint/bn-bridge-w:
+  feetPosition: {x: 23, y: 0, z: -14.5}
+  id: bastion-blueprint/bn-bridge-w
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 0}
+  tags: [bastion]
+bastion-blueprint/bn-keep-s:
+  feetPosition: {x: 19, y: 0, z: -18.5}
+  id: bastion-blueprint/bn-keep-s
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 90}
+  tags: [bastion]
+bastion-blueprint/bn-smithy-e:
+  feetPosition: {x: 9.5, y: 0, z: 30}
+  id: bastion-blueprint/bn-smithy-e
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 0}
+  tags: [bastion]
+bastion-blueprint/bn-smithy-w:
+  feetPosition: {x: -9.5, y: 0, z: 31}
+  id: bastion-blueprint/bn-smithy-w
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner, tint: oklch(0.42 0.16 28)}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 0}
+  tags: [bastion]
+bastion-blueprint/br-bridge-e:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: 28.8, y: 0, z: 2.5}
+  id: bastion-blueprint/br-bridge-e
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: 28}
+  tags: [bastion]
+bastion-blueprint/br-bridge-w:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: 23.2, y: 0, z: 2.5}
+  id: bastion-blueprint/br-bridge-w
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: 23}
+  tags: [bastion]
+bastion-blueprint/br-court-e:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: -8, y: 0, z: 22}
+  id: bastion-blueprint/br-court-e
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: -8}
+  tags: [bastion]
+bastion-blueprint/br-court-w:
+  children: [{feetPosition: {x: 0, y: 1.45, z: 0}, fx: {script: "fx\npop coals n=8 on=disc(.25) size=.07..0.14 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*?mobile:30|50 on=disc(.25) life=.5..0.9 v=up(1.6)+cone(24)*(.35..0.9) size=.25..0.45 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.2 inh=p;v:$v*.4 life=1.8..3 size=.18..0.28 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.25,.23,.22>><.12,.12,.13> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.6) glo=fire()*(#flame/30)~ r=light(<1,.55,.24>,$glo*14,14)"}, tags: [bastion]}]
+  feetPosition: {x: -30, y: 0, z: -10}
+  id: bastion-blueprint/br-court-w
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier}, script: scripts/gen/ashfall.js, seed: -30}
+  tags: [bastion]
 bastion-blueprint/bridge:
   feetPosition: {x: 26, y: 0, z: -6}
   id: bastion-blueprint/bridge
@@ -20,6 +138,60 @@ bastion-blueprint/channel:
   physics: static
   primitive: {kind: scripted, params: {L: 35, kind: channel, seed: 5, wd: 5}, script: scripts/gen/ashfall.js, seed: 1}
   tags: [bastion]
+bastion-blueprint/crate-e1:
+  feetPosition: {x: 20.2, y: 0, z: 30.6}
+  id: bastion-blueprint/crate-e1
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js, seed: 4}
+  rotation: {yaw: 15}
+  tags: [bastion]
+bastion-blueprint/crate-e2:
+  feetPosition: {x: 20.2, y: 0.9, z: 30.6}
+  id: bastion-blueprint/crate-e2
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js, seed: 5}
+  rotation: {yaw: 50}
+  tags: [bastion]
+bastion-blueprint/crate-w1:
+  feetPosition: {x: -11.8, y: 0, z: 32.6}
+  id: bastion-blueprint/crate-w1
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js, seed: 4}
+  rotation: {yaw: 15}
+  tags: [bastion]
+bastion-blueprint/crate-w2:
+  feetPosition: {x: -11.8, y: 0.9, z: 32.6}
+  id: bastion-blueprint/crate-w2
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js, seed: 5}
+  rotation: {yaw: 50}
+  tags: [bastion]
+bastion-blueprint/embers-channel:
+  feetPosition: {x: 32.5, y: 0.6, z: -6}
+  fx: {params: {hx: 16, hz: 2}, script: "fx\npop drift rate=?mobile:6|12 on=box(%hx|10,.3,%hz|3) life=2.5..5 v=up(.6..1.4)+sdir()*.3 size=.03..0.07 acc=curl(.4)*.9+buoy(.25)+drag(.4) sz=$size*(1>.6:.8>.2) col=hdr(5,2.4,.6)>.5:hdr(2.4,.7,.12)>hdr(.8,.15,.03) a=(0>.1:1>.7:.8>0)*flick(6,.4) r=sprite(ember,add,velocity,.03)\npop haze rate=?mobile:1|2 on=box(%hx|10,.2,%hz|3) life=3..5 v=up(.5..1) size=1.2..2 acc=buoy(.3)+curl(.2)+drag(.6) sz=$size*(.6>2) col=<.35,.3,.28> a=0>.2:.18>.7:.12>0 rot=spin(.05) r=sprite(smoke-puff,alpha)"}
+  id: bastion-blueprint/embers-channel
+  parent: bastion-blueprint
+  tags: [bastion]
+bastion-blueprint/forge-e:
+  children: [{feetPosition: {x: 0, y: 1, z: 0}, light: {color: oklch(0.75 0.18 50), distance: 10, intensity: 3, kind: point}, tags: [bastion]}]
+  feetPosition: {x: 18.4, y: 0, z: 35.6}
+  id: bastion-blueprint/forge-e
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: forge}, script: scripts/gen/props.js, seed: 1}
+  tags: [bastion]
+bastion-blueprint/forge-w:
+  children: [{feetPosition: {x: 0, y: 1, z: 0}, light: {color: oklch(0.75 0.18 50), distance: 10, intensity: 3, kind: point}, tags: [bastion]}]
+  feetPosition: {x: -13.6, y: 0, z: 37.6}
+  id: bastion-blueprint/forge-w
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: forge}, script: scripts/gen/props.js, seed: 1}
+  tags: [bastion]
 bastion-blueprint/guardian-s:
   feetPosition: {x: -55, y: 0, z: -19}
   id: bastion-blueprint/guardian-s
@@ -28,6 +200,28 @@ bastion-blueprint/guardian-s:
   primitive: {kind: scripted, params: {h: 14, kind: guardian}, script: scripts/gen/ashfall.js, seed: 1}
   rotation: {yaw: 90}
   tags: [bastion]
+bastion-blueprint/npc-hilde:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 21.5, y: 0, z: 4}
+  id: bastion-blueprint/npc-hilde
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-ashwarden-female-dark-plate-red-cloak-ash-grey-hair.glb
+  parent: bastion-blueprint
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 90}
+  state: {homeYaw: 90, idle: Idle_Shield_Loop, npcName: Ashwarden Hilde, who: hilde, yaw: 90}
+  tags: [bastion, npc, talker, townsfolk]
+bastion-blueprint/npc-toma:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 13.4, y: 0, z: 33}
+  id: bastion-blueprint/npc-toma
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-apprentice-smith-young-male-leather-apron-sooty-face.glb
+  parent: bastion-blueprint
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 90}
+  state: {homeYaw: 90, idle: Idle_Rail_Loop, npcName: Toma the Apprentice, who: toma, yaw: 90}
+  tags: [bastion, npc, talker, townsfolk]
 bastion-blueprint/smithy-e:
   children: [{feetPosition: {x: 0, y: 2.4, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 14, intensity: 3, kind: point}, tags: [bastion]}]
   feetPosition: {x: 16, y: 0, z: 34}
