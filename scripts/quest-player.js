@@ -9,7 +9,7 @@ import { move, formatText } from './lib/economy.js';
 import V from './lib/data/vanguard.yml';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 
-const W = Q.woodcutting, N = Q.npc, R = Q.reading || { reach: 2.6, length: 11 };
+const W = Q.woodcutting, N = Q.npc, R = Q.reading || { reach: 2.6, length: 11 }, M = Q.marks || { reach: 3.2, cooldown: 6 };
 const ELRIC = 'gatekeeper-elric';
 const CHIPS = `fx
 pop chips burst=10..16 life=.5..0.9 v=<%normal|0,1,0>*(2..3.5)+up(1.5)+sdir()*(.6..1.2) size=.05..0.1 spin=-8..8 acc=grav()+drag(1.2) col=<.62,.45,.26> a=1>.7:1>0 sz=$size rot=$age*$spin floor=stick r=sprite(stalk,alpha,velocity,.02)
@@ -110,9 +110,9 @@ function talk(ctx, npc) {
     const q = getQuest(aq.questId); if (!q) continue;
     if ((q.turnInNpcId || q.giverNpcId) === id || q.giverNpcId === id) return say(ctx, q.progressText, id);
   }
-  if (id === ELRIC) return say(ctx, getQuest('Q002').doneText, id);
-  const mine = Object.values(Q).find((q) => q && q.giverNpcId === id && (st.completedQuests || []).includes(q.id));
-  say(ctx, (mine && mine.doneText) || (npc.state && npc.state.line) || '...', id);
+  if (npc.state && npc.state.who && TF[npc.state.who]) return chat(ctx, npc); // a townsfolk giver with nothing to offer talks as themselves
+  const mine = Object.values(Q).filter((q) => q && q.giverNpcId === id && (st.completedQuests || []).includes(q.id)).pop();
+  say(ctx, (mine && mine.doneText) || (npc.state && npc.state.line) || 'Walk safe out there.', id);
 }
 
 function accept(ctx, questId) {
@@ -144,7 +144,44 @@ function complete(ctx, questId) {
   ctx.emit('damageNumber', { position: head, text: `+${formatText(q.rewards.copper || 0)}  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: 'cdn/sfx-reward.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3', position: ctx.self.feetPosition, volume: 0.6 }, { audience: { player: ctx.self.id } });
-  ctx.emit('milestone', { step: questId === 'Q002' ? 2 : 1, name: questId + ' complete' });
+  ctx.emit('milestone', { step: /^Q00\d$/.test(questId) ? Number(questId.slice(3)) : 1, name: questId + ' complete' });
+}
+
+// A quest mark (tag quest-mark): state { mark: tally key, quest: the quest it serves, verb, title, after?: an objective key
+// that must be full first, repeat?: true = pulls on a cooldown (ore, fish), else once per hero, say?: the line it floats }.
+// It answers only while its quest is active and that objective is short, so the world never pays a tally nobody asked for.
+function markFor(ctx, r) {
+  const ms = r.state || {}, st = ctx.self.state;
+  const aq = (st.activeQuests || []).find((x) => x && x.questId === ms.quest); if (!aq) return null;
+  const p = questProgress(aq, st);
+  const obj = p.objectives.find((o) => o.key === ms.mark); if (!obj || obj.current >= obj.target) return null;
+  if (!ms.repeat && (st.marks || {})[r.id]) return null;
+  return { aq, p, obj };
+}
+function nearMark(ctx) {
+  const me = ctx.self.feetPosition;
+  let best = null, bd = M.reach;
+  for (const r of ctx.query({ tags: ['quest-mark'], radius: M.reach + 2 })) {
+    const d = flat(r.feetPosition, me); if (d > bd || Math.abs(r.feetPosition.y - me.y) > 3) continue;
+    if (markFor(ctx, r)) { bd = d; best = r; }
+  }
+  return best;
+}
+function useMark(ctx, r) {
+  const st = ctx.self.state, ms = r.state || {}, m = markFor(ctx, r); if (!m) return;
+  const head = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 2.1, z: ctx.self.feetPosition.z };
+  const tell = (text, col) => ctx.emit('damageNumber', { position: head, text, color: col || 'oklch(0.8 0.02 80)', size: 1.1, lifetime: 1.8 }, { audience: { player: ctx.self.id } });
+  if (ms.after) { const pre = m.p.objectives.find((o) => o.key === ms.after); if (pre && pre.current < pre.target) return tell(ms.afterText || ('First: ' + pre.desc)); }
+  const cd = ctx.session.markCd || (ctx.session.markCd = {});
+  if (ms.repeat && ctx.now() < (cd[r.id] || 0)) return tell(ms.waitText || 'Nothing yet. Try again in a moment.');
+  cd[r.id] = ctx.now() + M.cooldown * 1000;
+  st.tally = { ...(st.tally || {}), [ms.mark]: ((st.tally || {})[ms.mark] || 0) + 1 };
+  if (!ms.repeat) st.marks = { ...(st.marks || {}), [r.id]: ctx.now() };
+  st._questSave = true;
+  ctx.self.anim.action = { clip: V.strike.clip, weight: 1, loop: 'once', speed: V.strike.speed, blendIn: 0.08 };
+  tell(ms.gain || ('+1 ' + m.obj.desc), 'oklch(0.86 0.15 85)');
+  if (ms.say) { ctx.self.state.npcSay = { text: (ms.title ? '<b>' + ms.title + '</b><br>' : '') + ms.say, id: ctx.now(), anchor: r.id, offset: '0 1.6 0' }; ctx.session.sayUntil = ctx.now() + R.length * 1000; }
+  ctx.emit('playSound', { clip: ms.sound || '/cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3', position: r.feetPosition, volume: 0.55 }, { audience: { player: ctx.self.id } });
 }
 
 function startChop(ctx, tree) {
@@ -199,6 +236,7 @@ export function onInput(ctx, input) {
   if (!on(input, 'interact') || st.showQuestDialog || st.showDoorPanel) return;
   if (ctx.session.chop) return stopChop(ctx);
   { const qn = near(ctx, 'quest-npc', N.talkReach); if (qn) return talk(ctx, qn); }
+  { const mk = nearMark(ctx); if (mk) return useMark(ctx, mk); }
   const folk = near(ctx, 'talker', N.talkReach);
   if (folk) return chat(ctx, folk);
   const page = near(ctx, 'readable', R.reach);
@@ -249,6 +287,7 @@ export function update(ctx) {
   let hint = null;
   if (ctx.session.chop) hint = 'Chopping…';
   else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to ' + npcName(near(ctx, 'quest-npc', N.talkReach));
+  else if (!st.showQuestDialog && nearMark(ctx)) { const mk = nearMark(ctx); hint = 'E  ' + (mk.state.verb || 'Use') + ' ' + (mk.state.title || ''); }
   else if (!st.showQuestDialog && near(ctx, 'talker', N.talkReach)) { const f = near(ctx, 'talker', N.talkReach); hint = 'E  Talk to ' + ((TF[f.state && f.state.who] || {}).name || 'them'); }
   else if (near(ctx, 'readable', R.reach)) { const r = near(ctx, 'readable', R.reach); hint = 'E  Read ' + ((r.state && r.state.title) || 'note'); }
   else if (nearCache(ctx)) { const c = nearCache(ctx); hint = (st.caches || {})[c.state.cache || c.id] ? 'Empty chest' : 'E  Open ' + (c.state.title || 'chest'); }
