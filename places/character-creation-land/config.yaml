@@ -2,13 +2,26 @@ atmosphere:
   sky:
     kind: realistic
     model: hosek
-  timeOfDay: 19
+  timeOfDay: 17.85
   fog:
     kind: linear
-    near: 20
-    far: 90
+    near: 16
+    far: 190
+  hemisphere:
+    skyColor: oklch(0.5 0.07 280)
+    groundColor: oklch(0.32 0.04 55)
+    intensity: 0.55
+  clouds:
+    enabled: true
+    density: 0.42
+    opacity: 0.7
+    altitude: 700
+  stars:
+    enabled: true
+    density: 0.5
+    milkyWay: 0.3
   look:
-    script: scripts/look-default.js
+    script: scripts/look-wayshrine.js
 defaultSpawnPoint:
   x: 83.168
   y: 1.229
