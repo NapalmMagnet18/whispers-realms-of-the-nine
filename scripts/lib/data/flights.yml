@@ -15,6 +15,7 @@ roosts:
   - { id: gullrest,    name: "Gullrest",             region: "Saltmere Coast",         x: 255,   z: 1450,  y: 3 }
   - { id: hollowcrypt, name: "Hollowcrypt Watch",    region: "Hollowcrypt Vale",       x: 1180,  z: -600,  y: 24 }
   - { id: sorrowfen,   name: "Sorrowfen Stilts",     region: "Sorrowfen",              x: -1170, z: 760,   y: 2.4 }
+  - { id: tideglass,   name: "Tideglass Quay",       region: "Tideglass Coast",        x: -1070, z: 1830,  y: 3.4 }
   - { id: frostveil,   name: "Frostveil Post",       region: "Frostveil Tundra",       x: -10,   z: -3760, y: 61 }
   - { id: sunscar,     name: "Sunscar Oasis",        region: "Sunscar Expanse",        x: 3770,  z: -150,  y: 77 }
   - { id: elderveil,   name: "Elderveil Bough",      region: "Elderveil Wilds",        x: -3540, z: -20,   y: 45 }
