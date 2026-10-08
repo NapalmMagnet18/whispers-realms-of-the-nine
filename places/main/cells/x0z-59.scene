@@ -149,24 +149,28 @@ veilgate-crystal-9:
   tags: [veilgate]
 veilgate-floatrock-0:
   feetPosition: {x: 22, y: 170, z: -7600}
+  fx: {params: {r: 3.2, reach: 24}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-0
   primitive: {kind: scripted, params: {kind: floatrock, r: 4}, script: scripts/gen/veil.js, seed: 20}
   rotation: {roll: -6, yaw: 0}
   tags: [veilgate]
 veilgate-floatrock-1:
   feetPosition: {x: 40, y: 176, z: -7612}
+  fx: {params: {r: 2.4000000000000004, reach: 18}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-1
   primitive: {kind: scripted, params: {kind: floatrock, r: 3}, script: scripts/gen/veil.js, seed: 21}
   rotation: {roll: 0, yaw: 47}
   tags: [veilgate]
 veilgate-floatrock-4:
   feetPosition: {x: 50, y: 166, z: -7596}
+  fx: {params: {r: 1.7600000000000002, reach: 13.200000000000001}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-4
   primitive: {kind: scripted, params: {kind: floatrock, r: 2.2}, script: scripts/gen/veil.js, seed: 24}
   rotation: {roll: 0, yaw: 188}
   tags: [veilgate]
 veilgate-floatrock-5:
   feetPosition: {x: 36, y: 192, z: -7590}
+  fx: {params: {r: 2.8000000000000003, reach: 21}, script: "fx\npop fall rate=?mobile:3|6 on=disc(%r|3).c(-1) life=3..5 v=up(-.6..-1.2) size=.05..0.1 acc=curl(.3)+drag(.3) col=hdr(1.4,.8,2.6) a=0>.1:.9>.7:.6>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,-4,0> r=light(<.7,.45,1>,6,%reach|22)"}
   id: veilgate-floatrock-5
   primitive: {kind: scripted, params: {kind: floatrock, r: 3.5}, script: scripts/gen/veil.js, seed: 25}
   rotation: {roll: 6, yaw: 235}
