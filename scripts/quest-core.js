@@ -14,6 +14,7 @@ import V from './lib/data/vanguard.yml';
 import { qt, warm as warmText } from './lib/quest-text.js';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 import { isPlay } from './lib/places.js';
+import GEAR from './lib/data/gear.yml';
 
 const W = Q.woodcutting, N = Q.npc, R = Q.reading || { reach: 2.6, length: 11 }, M = Q.marks || { reach: 3.2, cooldown: 6 };
 const ELRIC = 'gatekeeper-elric';
@@ -82,6 +83,16 @@ function addItem(st, item) {
   inv[i] = { ...item, count: 1 };
   st.inventory = inv;
   return true;
+}
+// owed rewards (a full bag at the moment they were earned) land in the first free slot, checked twice a second
+function payOwed(ctx, st) {
+  ctx.session.owedAt = ctx.now() + 500;
+  const owed = st.owedItems.slice(), left = [];
+  for (const id of owed) {
+    const g = GEAR.items?.[id], def = g ? { id, name: g.name, slot: g.slot, ilvl: g.ilvl, tier: g.tier, stats: g.stats, icon: g.icon, description: g.description } : Q.items?.[id];
+    if (!def || !addItem(st, def)) left.push(id);
+  }
+  if (left.length !== owed.length) { st.owedItems = left.filter((id) => GEAR.items?.[id] || Q.items?.[id]); st._questSave = true; }
 }
 // one log into the mod's 30-slot inventory: stacks on a log stack under stackMax, else the first empty slot; false = full
 function addLog(st) {
@@ -311,6 +322,7 @@ export function update(ctx) {
   if (!playing(ctx)) return;
   warmText();
   const st = ctx.self.state;
+  if (st.owedItems?.length && ctx.now() >= (ctx.session.owedAt || 0)) payOwed(ctx, st);
   if (ctx.session.chop) stepChop(ctx);
   if (st.npcSay && ctx.now() > (ctx.session.sayUntil || 0)) st.npcSay = null;
   if (ctx.now() < (ctx.session.nextScan || 0)) return;
