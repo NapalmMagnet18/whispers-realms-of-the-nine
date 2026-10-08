@@ -110,25 +110,121 @@ copper-5:
   rotation: 355
   state: {resource: copper}
   tags: [ore, copper, gatherable]
+quarry-camp-lantern:
+  children: [{feetPosition: {x: 0.72, y: 1.85, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 124.2, y: 3.2, z: 43.8}
+  id: quarry-camp-lantern
+  physics: static
+  primitive: {kind: scripted, params: {kind: lanternpost}, script: scripts/gen/quarry.js}
+  rotation: {yaw: 200}
+quarry-camp-mushrooms:
+  feetPosition: {x: 119.2, y: {terrain: 0}, z: 39.8}
+  id: quarry-camp-mushrooms
+  model: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb
+quarry-campfire:
+  children: [{audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-campfire-crackle-loop.mp3, gain: 0.15, loop: true, maxDistance: 14, spatial: true}, feetPosition: {x: 0, y: 0.5, z: 0}}]
+  feetPosition: {x: 124.5, y: 3.2, z: 37.5}
+  fx: {script: "fx\npop coals n=8 on=disc(.25) size=.06..0.14 tint=<2.4,.9,.25>..<1.1,.3,.08> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*60 on=disc(.22) life=.5..0.9 v=up(1.5)+cone(22)*(.3..0.8) size=.2..0.4 acc=curl(.5)*1.2+buoy(2.2)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.7>.14) col=hdr(4.6,3.4,1.4)>.3:hdr(3.2,1.4,.3)>.65:hdr(1.8,.5,.1)>hdr(.6,.12,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.22) life=.7..1.4 v=up(2.2)+cone(30)*(.4..1.2) size=.02..0.05 acc=curl(.8)+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.3 inh=p;v:$v*.4 life=2.2..3.6 size=.2..0.3 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.6) col=<.3,.28,.26>><.15,.15,.16> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.22).c(.45) glo=fire()*(#flame/40)~ r=light(<1,.55,.24>,$glo*30,12)"}
+  id: quarry-campfire
+  physics: static
+  primitive: {kind: scripted, params: {kind: campfire}, script: scripts/gen/quarry.js}
 quarry-cart:
   feetPosition: {x: 127, y: {terrain: 0}, z: 30}
   id: quarry-cart
   physics: static
   primitive: {kind: scripted, params: {kind: cart}, script: scripts/gen/props.js}
   rotation: 30
+quarry-cave:
+  children: [{feetPosition: {x: 0, y: 2.35, z: -11}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 8, kind: point}}, {feetPosition: {x: 1.75, y: 1.85, z: 0.12}, light: {color: oklch(0.83 0.13 70), distance: 8, intensity: 2, kind: point}}, {feetPosition: {x: 0, y: 2.2, z: -4.5}, light: {color: oklch(0.7 0.1 60), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: 135, y: 3.2, z: 21.5}
+  id: quarry-cave
+  physics: static
+  primitive: {kind: scripted, params: {kind: cave}, script: scripts/gen/quarry.js}
+  tags: [quarry, cave]
+quarry-cave-vein-0:
+  feetPosition: {x: 132.6, y: 3, z: 10.5}
+  id: quarry-cave-vein-0
+  physics: static
+  primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
+  rotation: 180
+  state: {resource: copper}
+  tags: [ore, copper, gatherable]
+quarry-cave-vein-1:
+  feetPosition: {x: 137.4, y: 3, z: 9.2}
+  id: quarry-cave-vein-1
+  physics: static
+  primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
+  rotation: 0
+  state: {resource: copper}
+  tags: [ore, copper, gatherable]
 quarry-crane:
-  feetPosition: {x: 150, y: 20, z: 20}
+  feetPosition: {x: 161.8, y: 20.2, z: 11.8}
   id: quarry-crane
-  material: {kind: scripted, script: engine/blueprint}
+  physics: static
+  primitive: {kind: scripted, params: {kind: crane, mast: 11.5, reach: 9.5, tipY: 10.8}, script: scripts/gen/quarry.js}
+  rotation: {yaw: 124.2}
+  tags: [quarry, crane]
+quarry-crane/quarry-crane-load:
+  behavior: scripts/quarry-sway.js
+  feetPosition: {x: 0, y: 10.7, z: -9.5}
+  id: quarry-crane/quarry-crane-load
+  parent: quarry-crane
   physics: none
-  primitive: {depth: 6, height: 12, kind: box, width: 6}
-  tags: [blueprint]
+  primitive: {kind: scripted, params: {L: 10.6, kind: load}, script: scripts/gen/quarry.js}
+  state: {period: 3.6, sway: 2.2}
+quarry-crate-0:
+  feetPosition: {x: 119.6, y: 3.2, z: 36.2}
+  id: quarry-crate-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: {yaw: 15}
+quarry-crate-1:
+  feetPosition: {x: 120.6, y: 3.2, z: 35}
+  id: quarry-crate-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: {yaw: -28}
+  scale: 0.8
+quarry-journal:
+  feetPosition: {x: 122.4, y: 3.2, z: 35}
+  id: quarry-journal
+  physics: static
+  primitive: {kind: scripted, params: {kind: journal}, script: scripts/gen/quarry.js}
+  rotation: {yaw: -20}
+  state: {text: "The stone we cut on the lower face is not ours: it is dressed ashlar, squared and fitted by hands long dead, the same cold grey-red block they say lines the vaults of Hollowcrypt. Old Harl swears that when the hammers stop, you can hear something below tapping back.", title: Miner's Journal}
+  tags: [readable]
 quarry-lamp:
   children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
   feetPosition: {x: 121, y: {terrain: 0}, z: 24}
   id: quarry-lamp
   physics: static
   primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+quarry-minecart:
+  feetPosition: {x: 135, y: 3.2, z: 24.6}
+  id: quarry-minecart
+  physics: static
+  primitive: {kind: scripted, params: {kind: minecart}, script: scripts/gen/quarry.js}
+  tags: [quarry]
+quarry-overlook:
+  feetPosition: {x: 108, y: 23.6, z: 11}
+  id: quarry-overlook
+  physics: static
+  primitive: {kind: scripted, params: {kind: overlook}, script: scripts/gen/quarry.js}
+  rotation: {yaw: 84}
+  tags: [quarry, overlook]
+quarry-overlook-bush:
+  feetPosition: {x: 110.5, y: {terrain: 0}, z: 13.6}
+  id: quarry-overlook-bush
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+quarry-overlook-clover:
+  feetPosition: {x: 107, y: {terrain: 0}, z: 8.6}
+  id: quarry-overlook-clover
+  model: /cdn/model-clover-green-stylized-n19jk6s9.glb
+quarry-overlook-tree:
+  feetPosition: {x: 104.5, y: {terrain: -0.1}, z: 15}
+  id: quarry-overlook-tree
+  model: /cdn/model-dead-tree-bare-dark-q2myjsa2.glb
+  rotation: {yaw: 40}
 quarry-pickaxe:
   feetPosition: {x: 139.4, y: {terrain: 0}, z: 24.6}
   id: quarry-pickaxe
@@ -143,6 +239,18 @@ quarry-rope:
   model: /cdn/value.b314fa5068dad14ce743e0002e0fa87ee4e016df829babab2f990e3e5ce84f2d.glb
   rotation: 40
   tags: [tool-prop]
+quarry-tent:
+  feetPosition: {x: 121.5, y: 3.2, z: 41}
+  id: quarry-tent
+  physics: static
+  primitive: {kind: scripted, params: {kind: tent}, script: scripts/gen/quarry.js}
+  rotation: {yaw: -40.5}
+quarry-toolrack:
+  feetPosition: {x: 127.5, y: 3.2, z: 42.6}
+  id: quarry-toolrack
+  physics: static
+  primitive: {kind: scripted, params: {kind: toolrack}, script: scripts/gen/quarry.js}
+  rotation: {yaw: 30.5}
 quarry-torch:
   children: [{feetPosition: {x: 0, y: 0.85, z: 0}, id: quarry-torch-glow, light: {color: oklch(0.8 0.16 60), distance: 9, intensity: 1.6, kind: point}}]
   feetPosition: {x: 131, y: {terrain: 0}, z: 28}
@@ -158,3 +266,8 @@ quarry-torch-burnt:
   model: /cdn/value.01588c63970c34d4222396454e44768059b4040a58cf3fc3d42f7a699461b39e.glb
   rotation: {pitch: 90, roll: 0, yaw: 70}
   tags: [tool-prop]
+quarry-track:
+  feetPosition: {x: 135, y: 3.2, z: 27.5}
+  id: quarry-track
+  physics: none
+  primitive: {kind: scripted, params: {kind: track, len: 13.5}, script: scripts/gen/quarry.js}
