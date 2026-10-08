@@ -423,6 +423,7 @@ export function update(objectApi, dt) {
         owedItems: [],
         roosts: [],
         activeCharIdx: newIdx,
+        selectedCharIdx: newIdx, // the new hero is the one Enter World resumes after a reconnect
         className: classNameC.toLowerCase(),
         raceName: raceDef.name,
         copper: 0,

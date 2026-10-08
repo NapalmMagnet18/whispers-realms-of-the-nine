@@ -113,7 +113,7 @@ export function onSpawn(api) {
   RS.loadRoster(api, function (rows) {
     if (rows && rows.length) {
       var s0 = api.getState();
-      api.patchState({ characters: rows, _menuRosterSnapshot: rows, selectedCharIdx: Math.min(s0.selectedCharIdx ?? 0, rows.length - 1), _hasCharacter: true, _dataLoaded: true, _rosterLoaded: true, realmName: realmName(api) });
+      api.patchState({ characters: rows, _menuRosterSnapshot: rows, selectedCharIdx: Math.min((typeof s0.activeCharIdx === 'number' && s0.activeCharIdx >= 0 ? s0.activeCharIdx : s0.selectedCharIdx) ?? 0, rows.length - 1), _hasCharacter: true, _dataLoaded: true, _rosterLoaded: true, realmName: realmName(api) });
     } else if (RS.realmOf(api) === 'main') {
       legacyLoad(api); // the old storage roster belongs to realm main alone
     } else {
