@@ -416,6 +416,7 @@ module.exports = { renderQuestDialog, renderTurnInDialog };
 
 // ── Quest tracker (SP-009) + quest-giver markers + NPC speech: drawn every frame from player state ──
 var _qd = require('./quest-data.js');
+var _rule = require('./ui-art.js').rule;
 var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' },
   // the Reach's townsfolk (scripts/lib/data/townsfolk.yml): a nameplate each, no quest marker
   { id: 'reach-npc-mira', name: 'Mira the Forgekeeper' }, { id: 'reach-npc-dren', name: 'Quartermaster Dren' }, { id: 'reach-npc-bram', name: 'Bram Alder' },
@@ -424,21 +425,27 @@ export function renderQuestTracker(localPlayer, world) {
   var s = localPlayer.state || {};
   var out = '<style>@keyframes qbob{50%{transform:translateY(-6px)}}@keyframes qpop{0%{transform:scale(1.5)}100%{transform:scale(1)}}'
     + '.qt-plate{background:oklch(0.22 0.04 60 / .82);box-shadow:0 0 0 2px oklch(0.55 0.09 75),3px 3px 0 oklch(0.12 0.02 60);color:oklch(0.94 0.03 90);padding:10px 14px;min-width:250px}'
-    + '.qt-title{color:oklch(0.86 0.15 85);font-size:20px;letter-spacing:.04em;margin-bottom:4px;text-shadow:2px 2px 0 oklch(0.15 0.03 60)}'
-    + '.qt-row{font-size:17px;display:flex;justify-content:space-between;gap:16px;line-height:1.35}.qt-done{color:oklch(0.8 0.15 140)}</style>';
+    + '.qtk{width:236px;font-family:Geist,Arial,sans-serif;text-shadow:0 1px 2px #000,0 0 4px rgba(0,0,0,.9),0 0 8px rgba(0,0,0,.6)}'
+    + '.qtk-h{font:600 15px Cinzel,serif;color:#f2b04a;padding-left:4px}'
+    + '.qtk-q{position:relative;padding-left:22px;margin-top:6px}'
+    + '.qtk-t{color:#f2b04a;font-size:15px;line-height:1.25}'
+    + '.qtk-o{color:#e8d9b5;font-size:13px;line-height:1.3;padding-left:6px}.qtk-o.done{color:#8c8577}'
+    + '.qtk-b{position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:radial-gradient(#4a3420,#1a120c);border:1px solid #f2b04a;color:#f2b04a;font:700 11px/15px Cinzel,serif;text-align:center;box-shadow:0 0 6px rgba(242,176,74,.5)}</style>';
   var aqs = s.activeQuests || [];
   var rows = '';
   for (var i = 0; i < aqs.length; i++) {
     var aq = aqs[i]; if (!aq || !aq.objectives) continue;
     var p = aq.baseline ? _qd.questProgress(aq, s) : { objectives: aq.objectives, done: false };
-    rows += '<div class="qt-title">' + (aq.title || 'Quest') + '</div>';
-    for (var j = 0; j < p.objectives.length; j++) {
-      var o = p.objectives[j], c = o.current || 0, done = c >= o.target;
-      rows += '<div class="qt-row' + (done ? ' qt-done' : '') + '"><span>' + (done ? '✔ ' : '◆ ') + o.desc + '</span><span id="qt-' + aq.questId + '-' + o.key + '-' + c + '" style="animation:qpop .25s">' + c + '/' + o.target + '</span></div>';
+    rows += '<div class="qtk-q">' + (p.done ? '<div class="qtk-b">?</div>' : '') + '<div class="qtk-t">' + (aq.title || 'Quest') + '</div>';
+    if (p.done) rows += '<div class="qtk-o">- Return to ' + (aq.giverName || 'the quest giver') + '</div>';
+    else for (var j = 0; j < p.objectives.length; j++) {
+      var o = p.objectives[j], c = Math.min(o.current || 0, o.target), done = c >= o.target;
+      rows += '<div class="qtk-o' + (done ? ' done' : '') + '">- <span id="qt-' + aq.questId + '-' + o.key + '-' + c + '" style="display:inline-block;animation:qpop .25s">' + c + '/' + o.target + '</span> ' + o.desc + '</div>';
     }
-    if (p.done) rows += '<div class="qt-row" style="color:oklch(0.86 0.15 85)">Return to ' + (aq.giverName || 'the quest giver') + '</div>';
+    rows += '</div>';
   }
-  if (rows) out += '<div class="fixed qt-plate" style="top:300px;right:calc(var(--spawn-chrome-reservation-right-inset, 50px) + 24px);pointer-events:none;z-index:40">' + rows + '</div>';
+  if (rows) out += '<div class="fixed qtk" style="top:262px;right:calc(var(--spawn-chrome-reservation-right-inset, 50px) + 12px);pointer-events:none;z-index:40">'
+    + '<div class="qtk-h">Quests</div>' + _rule('section', '100%', 8) + rows + '</div>';
   for (var n = 0; n < QUEST_NPCS.length; n++) {
     var st = _qd.questStatus(QUEST_NPCS[n].id, s);
     var mark = st === 'available' ? '!' : st === 'ready' ? '?' : '';

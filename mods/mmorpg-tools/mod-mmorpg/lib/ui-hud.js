@@ -3,6 +3,7 @@ const { RACES } = require('./races.js');
 const { ATTACK_SPELL, RACIAL_ABILITIES, CLASS_SPELLS, CLASS_EXTRA_SPELLS } = require('./racial-abilities.js');
 const { TRACKS } = require('./music-tracks.js');
 const { getRaceDamageMultiplier } = require('./race-damage.js');
+const { frame: _frame } = require('./ui-art.js');
 
 export function renderTargetDisplay(s) {
   if (!s.targetId) return '';
@@ -110,20 +111,18 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
       .spell-slot-wrap.dragging-active .spell-tt { display:none !important; }
       body.spell-dragging .spell-tt { display:none !important; }
       .spell-tt-inner {
-        background:rgba(0,0,0,0.95);
-        border:1px solid rgba(160,140,80,0.6);
-        border-radius:6px;
-        padding:10px 16px 10px 16px;
-        font-family:Cinzel,Palatino,Georgia,serif;
+        ${_frame('tooltip', 6, 'rgba(8,7,10,0.96)')}
+        padding:4px 8px;
+        font-family:Geist,Arial,sans-serif;
         display:flex; flex-direction:column; gap:3px;
         box-shadow:0 0 18px rgba(0,0,0,0.8), 0 0 6px rgba(160,140,80,0.15), inset 0 1px 0 rgba(200,175,120,0.08);
-        min-width:140px; text-align:center;
+        min-width:180px; max-width:260px; white-space:normal; text-align:left;
       }
       .spell-tt-arrow {
         position:absolute; bottom:-6px; left:50%; transform:translateX(-50%);
         width:0; height:0;
         border-left:7px solid transparent; border-right:7px solid transparent;
-        border-top:7px solid rgba(160,140,80,0.6);
+        border-top:7px solid rgba(220,215,200,0.55);
       }
       .spell-tt-arrow-inner {
         position:absolute; bottom:-4px; left:50%; transform:translateX(-50%);
@@ -132,16 +131,16 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         border-top:6px solid rgba(0,0,0,0.95);
       }
       .spell-tt-name {
-        font-size:18px; font-weight:bold; letter-spacing:0.8px;
-        color:rgba(220,190,100,0.95);
+        font:600 14px/1.25 Cinzel,serif; letter-spacing:0.3px;
+        color:#ffffff;
         text-shadow:0 0 8px rgba(200,170,80,0.3), 0 1px 2px rgba(0,0,0,0.9);
       }
       .spell-tt-desc {
-        font-size:18px; color:rgba(210,205,195,0.85); line-height:1.3;
+        font-size:12px; color:#f2b04a; line-height:1.35; font-style:italic;
         letter-spacing:0.3px;
       }
       .spell-tt-cd {
-        font-size:18px; color:rgba(150,130,100,0.7); margin-top:2px;
+        font-size:12px; color:#9a958c; margin-top:1px;
         letter-spacing:0.4px;
       }
       .slot-flash-overlay {
@@ -292,10 +291,9 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         + contextMenu + ' '
         + dropHandlers
         + 'style="'
-        + 'width:46px;height:46px;position:relative;cursor:pointer;pointer-events:auto;'
-        + 'background:linear-gradient(135deg,rgba(15,12,10,0.95),rgba(25,20,16,0.9));'
-        + 'border:2px solid rgba(200,175,120,0.8);border-radius:4px;'
-        + 'box-shadow:0 0 10px rgba(200,175,120,0.4),inset 0 1px 4px rgba(0,0,0,0.7);'
+        + 'width:40px;height:40px;box-sizing:border-box;position:relative;cursor:pointer;pointer-events:auto;'
+        + _frame('actionSlot', 3, 'rgba(15,12,10,0.95)')
+        + 'box-shadow:0 1px 3px rgba(0,0,0,0.8);'
         + 'transition:all 0.15s;'
         + (anyCooldown ? 'opacity:0.7;' : '')
         + '">'
@@ -303,7 +301,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
         + 'filter:brightness(1.1) sepia(0.2);'
         + (anyCooldown ? 'filter:brightness(0.55) saturate(0.4);' : '')
         + '" />'
-        + '<div style="position:absolute;bottom:0px;right:1px;font-size:11px;font-weight:bold;font-family:Cinzel,serif;color:rgba(255,255,255,0.95);text-shadow:0 1px 2px black;pointer-events:none;">' + slotLabel + '</div>'
+        + '<div style="position:absolute;top:0px;left:2px;font:700 10px/1.1 Arial,sans-serif;color:#e8d9b5;text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;pointer-events:none;z-index:6;">' + slotLabel + '</div>'
         + (showCooldown ? '<div style="position:absolute;inset:0;border-radius:3px;display:flex;align-items:center;justify-content:center;pointer-events:none;">'
           + '<span style="font-size:14px;font-family:Cinzel,serif;color:rgba(255,50,50,0.95);font-weight:bold;text-shadow:0 0 10px rgba(255,0,0,0.8),0 0 20px rgba(255,0,0,0.4),0 2px 4px black;letter-spacing:0.5px;">' + racialCdStr + '</span>'
           + '</div>' : '')
@@ -320,13 +318,12 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
       spellSlotsHtml += '<div id="spell-slot-' + i + '" data-interactive '
         + dropHandlers
         + 'style="'
-        + 'width:46px;height:46px;position:relative;pointer-events:auto;cursor:default;'
-        + 'background:linear-gradient(135deg,rgba(10,8,6,0.9),rgba(18,15,12,0.85));'
-        + 'border:2px solid rgba(60,45,25,0.3);border-radius:4px;'
-        + 'box-shadow:inset 0 1px 4px rgba(0,0,0,0.7);'
+        + 'width:40px;height:40px;box-sizing:border-box;position:relative;pointer-events:auto;cursor:default;'
+        + _frame('slot', 3, 'rgba(8,6,5,0.92)')
+        + 'box-shadow:inset 0 2px 6px rgba(0,0,0,0.9);opacity:0.85;'
         + 'transition:all 0.15s;'
         + '">'
-        + '<div style="position:absolute;bottom:0px;right:1px;font-size:11px;font-weight:bold;font-family:Cinzel,serif;color:rgba(255,255,255,0.95);text-shadow:0 1px 2px black;pointer-events:none;">' + slotLabel + '</div>'
+        + '<div style="position:absolute;top:0px;left:2px;font:700 10px/1.1 Arial,sans-serif;color:#e8d9b5;text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000;pointer-events:none;z-index:6;">' + slotLabel + '</div>'
         + '<div id="sf' + i + 't' + flashTick + '" class="slot-flash-overlay" style="' + (flashIndex === i ? 'animation:slotFlash 0.1s ease-out 1 forwards;' : '') + '"></div>'
         + '</div>';
     }
@@ -342,18 +339,19 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
   var spellScaleStyle = 'transform:translateX(-50%);';
   const spellSlot = `
     <div style="
-      position:fixed; bottom:64px; left:50%; ${spellScaleStyle} margin-left:-24px;
-      z-index:93; pointer-events:none; display:flex; gap:4px; align-items:flex-end;
+      position:fixed; bottom:22px; left:50%; ${spellScaleStyle}
+      z-index:93; pointer-events:none; display:flex; gap:3px; align-items:flex-end;
+      ${_frame('skillRow', 8, 'rgba(14,11,8,0.92)')} padding:1px 4px; box-shadow:0 2px 10px rgba(0,0,0,0.7);
     ">
       ${spellSlotsHtml}
     </div>
   `;
 
-  var lockScaleStyle = 'transform:translateX(286px);';
+  var lockScaleStyle = 'transform:translateX(-310px);';
   // Separate lock button — own fixed container so nothing blocks clicks
   const lockBtnEl = `
     <div id="spellbar-lock-btn" data-interactive onclick="sendAction('toggleSpellBarLock')" title="${lockTitle}" style="
-      position:fixed; bottom:68px; left:50%; z-index:98;
+      position:fixed; bottom:32px; left:50%; z-index:98;
       ${lockScaleStyle}
       width:29px; height:29px; cursor:pointer; pointer-events:auto;
       background:${barLocked
@@ -930,7 +928,8 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
     </div>
   ` : '';
 
-  return hudStyles + racePortrait + castingBar + spellSlot + lockBtnEl + menuBar + artBar + interactHint + minimap + buffDisplay + repBar + xpBar;
+  // portrait/target, XP strip: ui-frames.js (unit frames, dock); the old art bar and rep strip retire under the new action bar
+  return hudStyles + castingBar + spellSlot + lockBtnEl + menuBar + interactHint + minimap + buffDisplay;
 }
 
 module.exports = { renderHUD };
