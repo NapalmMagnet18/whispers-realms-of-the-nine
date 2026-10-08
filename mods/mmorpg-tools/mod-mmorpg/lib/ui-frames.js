@@ -38,7 +38,7 @@ var CSS = '<style>'
   + '#fa-ui-root:not(.wh-panel) [data-menu-panel]{display:none!important}'
   + '#fa-ui-root.wh-panel [data-menu-panel]{right:62px!important;bottom:84px!important}'
   + '#fa-ui-root:not(.wh-bag) .wh-bagwin{display:none}'
-  + '#fa-ui-root:not(.wh-menu) .wh-gmenu{display:none}'
+  + '#fa-ui-root:not(.wh-menu) .wh-gmenu{display:none!important}'
   + '</style>';
 
 // one-time helpers on this page: whT(flag[,on]) flips a window, whTab(tab) opens the menu panel on a tab
