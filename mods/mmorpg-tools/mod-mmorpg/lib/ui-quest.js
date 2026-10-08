@@ -6,7 +6,7 @@
 // nothing below 36px pre-zoom.
 
 // Portrait lookup — keyed by giverName (lowercase). Only modify ui-quest.js per instructions.
-var _CUR = require('lib/currency.js');
+var _CUR = require('./currency.js');
 var NPC_PORTRAITS = {
   'clawtheus': '/cdn/icon-circular-face-closeup-orange-lobster-face-wearing-morpheus-matrix-round-pince-nez-sunglasses-dark-gothic-tight-crop-filling-frame.png',
   'morwenna blackthorn': '/cdn/portrait-gothic-dark-fantasy-female-black-cloak-pale-face-closeup.png',
