@@ -213,7 +213,7 @@ dhc-archive-crew:
   state: {crew: [{id: dhc-archivist-1, x: -1.5, yaw: 180, z: -29}, {id: dhc-archivist-2, x: 1.8, yaw: 0, z: -34}, {id: dhc-archivist-3, x: -1.2, yaw: 90, z: -39}, {id: dhc-archivist-4, x: 1.5, yaw: 200, z: -43}], floorY: 0.05, model: /cdn/model-humanoid-fantasy-inkbound-archivist-gaunt-scribe-black-ink-stained-robes-quill.glb, name: Inkbound Archivist, tallyKey: inkbound_archivist}
   tags: [hollowcrypt]
 qm-dhc-candle-a:
-  feetPosition: {x: -5.6, y: 0, z: -6.5}
+  feetPosition: {x: -5.8, y: 0, z: -8.8}
   id: qm-dhc-candle-a
   physics: static
   primitive: {kind: scripted, params: {kind: candle}, script: scripts/gen/crypt.js}
