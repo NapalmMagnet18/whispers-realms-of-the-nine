@@ -121,3 +121,21 @@ kiv:
     - "It's a fault in the stone. That's all. More cutting, less listening, and we make quota."
     - "The Guild holds the food vouchers. You want to argue with the wall, argue on your own time."
     - "...Fine. Yes. I heard it too. Don't tell the crews."
+sena:
+  name: Pilot Sena Wavebound
+  lines:
+    - "I can tell from a gull's flight whether a squall will last an hour or a day. I can't tell you why the tide runs inland."
+    - "A true song of navigation carries travelers somewhere they can choose to stay. Remember that, deckhand."
+    - "Write down what you see. Not what you hope. Not what you're afraid of."
+ruun:
+  name: Shellkeeper Ruun
+  lines:
+    - "Every shell keeps the last thing it heard. Put one to your ear. Go on."
+    - "My grandmother sang a hymn with a hole in it. I thought she'd forgotten the verse. Now I think somebody made her."
+    - "Glass that wasn't blown on this coast. Oars with no boat. A child counting. Tell me again I'm a mad old man."
+sari:
+  name: Netmaker Sari
+  lines:
+    - "Three days of empty nets. The fish aren't gone. They're all swimming the same way."
+    - "Mind the cove rocks. They'll take a skiff's bottom and smile about it."
+    - "My nephew mends nets like he's angry at them. You've steadier hands."
