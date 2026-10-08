@@ -446,6 +446,22 @@ reach-smith-stand-2:
   primitive: {kind: scripted, params: {kind: armorstand, tabard: oklch(0.35 0.06 145), tier: warden}, script: scripts/gen/armory.js}
   rotation: {yaw: 34}
   tags: [smith-yard]
+trainer-marchborn:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 5, y: 0.800048828125, z: -82}
+  id: trainer-marchborn
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-class-trainer-veteran-weathered-plate-pauldrons-long-tabard-gold-trim.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 56.309932474020215}
+  state: {homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Sergeant Odile Varn, Discipline Trainer", trainer: true, who: trainer, yaw: 56.309932474020215}
+  tags: [npc, vendor, interactable, trainer-npc]
+trainer-marchborn-banner:
+  feetPosition: {x: 5, y: 3.400048828125, z: -82}
+  id: trainer-marchborn-banner
+  rotation: {yaw: 56.309932474020215}
+  tags: [sign]
+  vector: "<svg viewBox='0 0 260 60' width='1.9m' billboard='yaw'><rect x='3' y='3' width='254' height='54' rx='8' fill='#2a1e16' stroke='#c9a46a' stroke-width='4'/><text x='130' y='28' font-family='serif' font-size='20' fill='#f2b04a' text-anchor='middle'>DISCIPLINE TRAINER</text><text x='130' y='48' font-family='serif' font-size='13' fill='#e8d9b5' text-anchor='middle'>press E to train your class</text></svg>"
 ward-arrival-plate:
   feetPosition: {x: -1, y: {terrain: 0}, z: -84}
   id: ward-arrival-plate

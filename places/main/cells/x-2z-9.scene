@@ -30,6 +30,22 @@ start-starfall:
   physics: static
   primitive: {kind: scripted, params: {kind: plate}, script: scripts/gen/hamlet.js}
   tags: [start-zone, starfall]
+trainer-veylori:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -194, y: 120, z: -1090}
+  id: trainer-veylori
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-class-trainer-veteran-weathered-plate-pauldrons-long-tabard-gold-trim.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 56.309932474020215}
+  state: {homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Aurel Skyhand, Discipline Trainer", trainer: true, who: trainer, yaw: 56.309932474020215}
+  tags: [npc, vendor, interactable, trainer-npc]
+trainer-veylori-banner:
+  feetPosition: {x: -194, y: 122.6, z: -1090}
+  id: trainer-veylori-banner
+  rotation: {yaw: 56.309932474020215}
+  tags: [sign]
+  vector: "<svg viewBox='0 0 260 60' width='1.9m' billboard='yaw'><rect x='3' y='3' width='254' height='54' rx='8' fill='#2a1e16' stroke='#c9a46a' stroke-width='4'/><text x='130' y='28' font-family='serif' font-size='20' fill='#f2b04a' text-anchor='middle'>DISCIPLINE TRAINER</text><text x='130' y='48' font-family='serif' font-size='13' fill='#e8d9b5' text-anchor='middle'>press E to train your class</text></svg>"
 vey-assembly:
   feetPosition: {x: -202, y: {terrain: 0}, z: -1078}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1.8,1.6,2.4>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.8,1.6,2.4>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

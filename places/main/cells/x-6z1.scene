@@ -276,6 +276,22 @@ thr-seedling:
   rotation: 287
   state: {after: testimony_choice, afterText: "First: choose a testimony at the shrine", mark: rootblight, quest: THR-06, say: Grey rot creeps from the soil. You scrape it back and pack clean earth around the stem. It holds., title: Rootblight on the Seedling, verb: Scrape away the blight}
   tags: [quest-mark, rootwake-glade]
+trainer-briarkin:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -714, y: 19.6, z: 74}
+  id: trainer-briarkin
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-class-trainer-veteran-weathered-plate-pauldrons-long-tabard-gold-trim.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 56.309932474020215}
+  state: {homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Thessaly Rootward, Discipline Trainer", trainer: true, who: trainer, yaw: 56.309932474020215}
+  tags: [npc, vendor, interactable, trainer-npc]
+trainer-briarkin-banner:
+  feetPosition: {x: -714, y: 22.200000000000003, z: 74}
+  id: trainer-briarkin-banner
+  rotation: {yaw: 56.309932474020215}
+  tags: [sign]
+  vector: "<svg viewBox='0 0 260 60' width='1.9m' billboard='yaw'><rect x='3' y='3' width='254' height='54' rx='8' fill='#2a1e16' stroke='#c9a46a' stroke-width='4'/><text x='130' y='28' font-family='serif' font-size='20' fill='#f2b04a' text-anchor='middle'>DISCIPLINE TRAINER</text><text x='130' y='48' font-family='serif' font-size='13' fill='#e8d9b5' text-anchor='middle'>press E to train your class</text></svg>"
 waystone-briarkin:
   audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: -720, y: 19.5, z: 77}

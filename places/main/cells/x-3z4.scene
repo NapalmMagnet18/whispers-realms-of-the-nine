@@ -61,3 +61,19 @@ reh-willow-2:
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 982}
   rotation: {yaw: 206}
   scale: 1.8
+trainer-reedbound:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -434, y: 12, z: 574}
+  id: trainer-reedbound
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-class-trainer-veteran-weathered-plate-pauldrons-long-tabard-gold-trim.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -90}
+  state: {homeYaw: -90, idle: Idle_FoldArms_Loop, npcName: "Wren Mirewise, Discipline Trainer", trainer: true, who: trainer, yaw: -90}
+  tags: [npc, vendor, interactable, trainer-npc]
+trainer-reedbound-banner:
+  feetPosition: {x: -434, y: 14.6, z: 574}
+  id: trainer-reedbound-banner
+  rotation: {yaw: -90}
+  tags: [sign]
+  vector: "<svg viewBox='0 0 260 60' width='1.9m' billboard='yaw'><rect x='3' y='3' width='254' height='54' rx='8' fill='#2a1e16' stroke='#c9a46a' stroke-width='4'/><text x='130' y='28' font-family='serif' font-size='20' fill='#f2b04a' text-anchor='middle'>DISCIPLINE TRAINER</text><text x='130' y='48' font-family='serif' font-size='13' fill='#e8d9b5' text-anchor='middle'>press E to train your class</text></svg>"

@@ -506,6 +506,22 @@ start-cinderhold/start-cinderhold-signpost:
   physics: static
   primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js}
   rotation: {yaw: 171.41637851988605}
+trainer-emberforged:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 894, y: 40.4, z: -166}
+  id: trainer-emberforged
+  layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-class-trainer-veteran-weathered-plate-pauldrons-long-tabard-gold-trim.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -56.309932474020215}
+  state: {homeYaw: -56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Brann Ashmantle, Discipline Trainer", trainer: true, who: trainer, yaw: -56.309932474020215}
+  tags: [npc, vendor, interactable, trainer-npc]
+trainer-emberforged-banner:
+  feetPosition: {x: 894, y: 43, z: -166}
+  id: trainer-emberforged-banner
+  rotation: {yaw: -56.309932474020215}
+  tags: [sign]
+  vector: "<svg viewBox='0 0 260 60' width='1.9m' billboard='yaw'><rect x='3' y='3' width='254' height='54' rx='8' fill='#2a1e16' stroke='#c9a46a' stroke-width='4'/><text x='130' y='28' font-family='serif' font-size='20' fill='#f2b04a' text-anchor='middle'>DISCIPLINE TRAINER</text><text x='130' y='48' font-family='serif' font-size='13' fill='#e8d9b5' text-anchor='middle'>press E to train your class</text></svg>"
 waystone-emberforged:
   feetPosition: {x: 906.06, y: 40.3, z: -166.5}
   id: waystone-emberforged
