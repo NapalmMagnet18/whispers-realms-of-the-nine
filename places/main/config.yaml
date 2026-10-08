@@ -135,6 +135,26 @@ terrain:
   - {albedo: /cdn/rocks-desert-diffuse-u6937xdf7.webp, antiTiling: stochastic, id: desertrock, pbr: true, textureScale: 3, tint: oklch(0.88 0.04 60)}
   seed: 1
   marks:
+    frostveil-mere:
+      kind: flatten
+      center:
+        x: -16
+        z: -3774
+      height: 59.1
+      shape:
+        kind: circle
+        radius: 13
+      falloff: 10
+    sunscar-pool:
+      kind: flatten
+      center:
+        x: 3832
+        z: -168
+      height: 49.6
+      shape:
+        kind: circle
+        radius: 9
+      falloff: 8
     town:
       kind: flatten
       center:
