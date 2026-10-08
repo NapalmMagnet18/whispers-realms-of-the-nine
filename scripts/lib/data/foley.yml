@@ -1,0 +1,35 @@
+# What a struck thing sounds like. scripts/lib/kit.js meleeFoley() reads it; materialOf() picks the row:
+# state.material, else the boss id's row below, else wolf = fur, dummy = wood, anything else = flesh.
+F: &F /cdn/moodboard-gothic-horror/
+P: &P /cdn/moodboard-painterly-fantasy/
+hits:
+  flesh: [/cdn/moodboard-gothic-horror/sfx-heavy-blade-chop-into-meat-wet-flesh-impact.mp3, /cdn/moodboard-gothic-horror/sfx-sword-slash-cutting-flesh-wet-tear.mp3]
+  fur: [/cdn/moodboard-painterly-fantasy/sfx-arrow-hit-flesh-thud.mp3, /cdn/moodboard-gothic-horror/sfx-heavy-blade-chop-into-meat-wet-flesh-impact.mp3]
+  bone: [/cdn/moodboard-gothic-horror/sfx-mace-smash-skeleton-dry-bones-crack-and-clatter.mp3]
+  armor: [/cdn/moodboard-gothic-horror/sfx-sword-strike-on-plate-armour-heavy-metal-clang-ring.mp3]
+  stone: [/cdn/moodboard-painterly-fantasy/sfx-weapon-strike-on-rock-golem-stone-crunch-gravel-spray.mp3]
+  glass: [/cdn/moodboard-painterly-fantasy/sfx-blade-strike-on-crystal-glass-ringing-chime-crack.mp3]
+  bark: [/cdn/moodboard-painterly-fantasy/sfx-axe-strike-on-living-tree-bark-splintering-crack.mp3]
+  wood: [/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3]
+# a heavy blow, an ambush or a crit stacks this under the material: the low end you feel
+heavy: /cdn/moodboard-gothic-horror/sfx-deep-bass-body-blow-impact-punch-low-boom.mp3
+bosses:
+  bone_organist: bone
+  deacon_morrow: armor
+  saint_ilvane: armor
+  seal_keeper: armor
+  bellforged_sentinel: armor
+  kesh_slagmaster: armor
+  memory_engine: armor
+  engine_manifestation: armor
+  slag_hound: stone
+  vharok_caldera: stone
+  gharn_unbanked: stone
+  bellglass_colossus: glass
+  veil_witness: glass
+  star_that_answered: glass
+  root_lasher: bark
+  thorn_custodian: bark
+  hollowsong: bark
+  reed_sentry: bark
+  the_unbraided: bark

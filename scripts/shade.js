@@ -3,7 +3,7 @@
 // The Unseen Door's drills: a veiled hero slipping past a `shade-drill` thing with state.need "veil", or landing a
 // Shadowstep beside one with need "step", counts its tallyKey once per thing while state.quest is active.
 import S from './lib/data/shade.yml'
-import { classOf, canAct, softTargets, forward, alive, aimPoint, meleePlayer, strikePlayer, power } from './lib/kit.js'
+import { classOf, canAct, softTargets, forward, alive, aimPoint, meleePlayer, strikePlayer, power, meleeFoley } from './lib/kit.js'
 import { rotate, normalize } from 'builtin/vec3'
 import { raycast } from 'builtin/physics'
 
@@ -106,7 +106,7 @@ export function land(ctx) {
   ctx.emit('damageNumber', { position: pos, value: shown, crit: ambush, color: pvp ? '#ff6a55' : ambush ? '#d9a6ff' : undefined }, { audience: near })
   if (ambush) ctx.emit('damageNumber', { position: { ...pos, y: pos.y + 0.6 }, text: 'Ambush!', color: '#c890ff', size: 1.2, lifetime: 1.2 }, { audience: { player: self.id } })
   ctx.emit('fx', { position: pos, script: CUT, params: { normal: n } }, { audience: near })
-  ctx.emit('playSound', { clip: THUD, position: pos, volume: ambush ? 0.65 : 0.45, pitch: ambush ? 0.85 : 1.1 }, { audience: near })
+  meleeFoley(ctx, pvp ? { tags: [], state: { material: 'flesh' } } : t, pos, ambush, near)
   ctx.emit('squash', { target: t.id, axis: 'y', intensity: ambush ? 0.22 : 0.1, duration: 0.18 }, { audience: near })
   ctx.emit('hitstop', { duration: ambush ? 0.08 : 0.04 }, { audience: { player: self.id } })
   ctx.emit('cameraPunch', { direction: n, intensity: ambush ? 0.45 : 0.18 }, { audience: { player: self.id } })

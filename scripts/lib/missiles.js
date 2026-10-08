@@ -48,6 +48,7 @@ export const MISSILES = {
 }
 export function impactFx(ctx, M, mat, at, normal) {
   const near = { audience: { nearby: at, radius: 50 } }
+  if (!M.impact[mat] && mat !== 'earth') mat = mat === 'bark' ? 'wood' : 'fur' // flesh, bone, armor… take the flesh arrow
   const prog = M.impact[mat] ?? M.impact.any ?? M.impact.earth, snd = M.sound[mat] ?? M.sound.any ?? M.sound.earth
   if (prog) ctx.emit('fx', { position: at, script: prog, params: { normal: normal || { x: 0, y: 1, z: 0 } } }, near)
   if (snd) ctx.emit('playSound', { clip: snd, position: at, volume: 0.55, pitch: 0.92 + ctx.random() * 0.16 }, near)

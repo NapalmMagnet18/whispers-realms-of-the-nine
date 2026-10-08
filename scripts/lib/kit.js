@@ -2,6 +2,7 @@
 // which class a body plays, soft targeting, launching a missile and landing a hit into target.state.hp.
 import { rotate, rotationFromDirection } from 'builtin/vec3'
 import LV from './data/levels.yml'
+import FOLEY from './data/foley.yml'
 // a hero's hits grow with their level, as their health does: every class reads this one number
 export function power(ctx) { return (1 + (LV.damagePerLevel ?? 0.08) * Math.max(0, (ctx.self.state?.level ?? 1) - 1)) * (1 + gearPower(ctx.self.state) / 100) }
 // worn gear's power stat (scripts/lib/data/gear.yml): % more damage, summed over every equipped piece
@@ -51,7 +52,21 @@ export function launch(ctx, a, targetId, yawOff = 0) {
     state: { kind: a.missile, ability: a.kind, ownerId: self.id, targetId: t && alive(t) ? t.id : null, dir, speed: a.speed, turn: a.turn, damage: Math.round(a.damage * power(ctx)), slow: a.slow ?? 0, slowFor: a.slowFor ?? 0, range: a.range + 8 },
   })
 }
-export function materialOf(t) { return t.state?.material || ((t.tags || []).includes('wolf') ? 'fur' : 'wood') }
+export function materialOf(t) {
+  const tags = t.tags || [], s = t.state || {}
+  if (s.material) return s.material
+  if (s.boss && FOLEY.bosses?.[s.boss]) return FOLEY.bosses[s.boss]
+  if (tags.includes('wolf')) return 'fur'
+  if (tags.includes('dummy') || tags.includes('training-dummy') || s.dummy) return 'wood'
+  return 'flesh'
+}
+// a melee connect's sound: the struck thing's material, and on a heavy blow the low body-hit under it
+export function meleeFoley(ctx, t, pos, heavy, audience) {
+  const set = FOLEY.hits[materialOf(t)] || FOLEY.hits.flesh
+  const clip = set[Math.floor(ctx.random() * set.length)]
+  ctx.emit('playSound', { clip, position: pos, volume: heavy ? 0.75 : 0.55, pitch: (heavy ? 0.86 : 1) * (0.94 + ctx.random() * 0.12), maxDistance: 35 }, { audience })
+  if (heavy && FOLEY.heavy) ctx.emit('playSound', { clip: FOLEY.heavy, position: pos, volume: 0.6, pitch: 0.9 + ctx.random() * 0.15, maxDistance: 30 }, { audience })
+}
 // the hit, judged on the shooter's machine: hp, the hit marks the dummy and wolves read, a slow, and the payoff
 export function applyHit(ctx, ownerId, t, h) {
   const now = ctx.now(), s = t.state

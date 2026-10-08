@@ -3,7 +3,7 @@
 // target's state (target.state.hp -= d). Anything tagged "enemy" with state.hp is struck.
 import V from './lib/data/vanguard.yml'
 import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
-import { drill, classOf, meleePlayer, strikePlayer, power } from './lib/kit.js'
+import { drill, classOf, meleePlayer, strikePlayer, power, meleeFoley } from './lib/kit.js'
 import { isPlay } from './lib/places.js';
 
 const WHOOSH = '/cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3'
@@ -67,7 +67,7 @@ export function land(ctx, { kind }) {
     const n = normalize({ x: pt.feetPosition.x - self.feetPosition.x, y: 0.4, z: pt.feetPosition.z - self.feetPosition.z }), near = { nearby: pos, radius: 40 }
     ctx.emit('damageNumber', { position: pos, value: dmg, crit: kind === 'heavy', color: '#ff6a55' }, { audience: near })
     ctx.emit('fx', { position: pos, script: SPARKS, params: { normal: n } }, { audience: near })
-    ctx.emit('playSound', { clip: THUD, position: pos, volume: 0.6 }, { audience: near })
+    meleeFoley(ctx, { tags: [], state: { material: 'flesh' } }, pos, kind === 'heavy', near)
     ctx.emit('hitstop', { duration: 0.05 }, { audience: { player: self.id } })
     ctx.emit('cameraPunch', { direction: n, intensity: 0.25 }, { audience: { player: self.id } })
     return
@@ -84,7 +84,7 @@ export function land(ctx, { kind }) {
   const near = { nearby: pos, radius: 40 }
   ctx.emit('damageNumber', { position: pos, value: dealt, crit: kind === 'heavy' }, { audience: near })
   ctx.emit('fx', { position: pos, script: SPARKS, params: { normal: n } }, { audience: near })
-  ctx.emit('playSound', { clip: THUD, position: pos, volume: kind === 'heavy' ? 0.7 : 0.5, pitch: kind === 'heavy' ? 0.8 : 1 }, { audience: near })
+  meleeFoley(ctx, hit, pos, kind === 'heavy', near)
   ctx.emit('squash', { target: hit.id, axis: 'y', intensity: kind === 'heavy' ? 0.25 : 0.12, duration: 0.18 }, { audience: near })
   ctx.emit('hitstop', { duration: kind === 'heavy' ? 0.09 : 0.05 }, { audience: { player: self.id } })
   ctx.emit('cameraPunch', { direction: n, intensity: kind === 'heavy' ? 0.5 : 0.2 }, { audience: { player: self.id } })
