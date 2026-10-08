@@ -529,3 +529,22 @@ ires:
 otho:
   name: Star Reader Otho
   lines: [I don't need my eyes to know the ninth place is dark. I remember when it wasn't., Write it down. Memory is a liar with good intentions., 'The rune moves east. Everything moves east, toward the bell.']
+garrick:
+  name: Garrick Steelweather, Armourer
+  lines:
+    - "Plate's not made, it's argued with. Every dent on that iron stand is a disagreement I won."
+    - "The gilded set? Commissioned by a lord who died before the last fitting. It waits for a better pair of shoulders."
+    - "Warden plate's blackened on purpose. Lamplight slides off it. In the Ashen Close, that matters."
+    - "Mira keeps the old forge. I keep this one. We both keep score."
+pip:
+  name: Pip, the Armourer's Apprentice
+  lines:
+    - "Fourteen hundred turns of this wheel today. I counted. Master Garrick says counting's for people who aren't sharpening."
+    - "That staff with the blue stone hums at night. I'm not supposed to touch it. I have not touched it. Much."
+    - "One day I'll forge a blade with my name on the tang. Small letters. So it's humble."
+wenna:
+  name: Dame Wenna Harlow
+  lines:
+    - "I rode with the March Wardens nine summers. The kite shield on that wall? I carried its twin."
+    - "Never buy plate in a hurry. Buy it the way you'd pick a horse: watch how it moves."
+    - "If you're bound for the Drowned Bell, take something that doesn't rust. The water there remembers iron."
