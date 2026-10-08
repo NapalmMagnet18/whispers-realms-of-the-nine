@@ -201,7 +201,7 @@ export function renderQuestDialog(localPlayer) {
 
             // Quest title — Cinzel 38px, left aligned, padded
             + '<div style="text-align:left;margin-top:144px;margin-bottom:12px;padding-left:148px;">'
-              + '<span style="display:inline-block;max-width:600px;line-height:1.1;font-family:Cinzel,serif;font-size:38px;font-weight:700;color:oklch(0.3 0.02 0);letter-spacing:2px;">' + (quest.title || 'Quest') + '</span>'
+              + '<span style="display:inline-block;max-width:470px;line-height:1.1;font-family:Cinzel,serif;font-size:38px;font-weight:700;color:oklch(0.3 0.02 0);letter-spacing:2px;">' + (quest.title || 'Quest') + '</span>'
             + '</div>'
 
             // Quest description — Times New Roman 32px, supports {player}
@@ -412,7 +412,7 @@ export function renderTurnInDialog(localPlayer) {
 
             // Quest title
             + '<div style="text-align:left;margin-bottom:20px;padding-left:148px;">'
-              + '<span style="display:inline-block;max-width:560px;line-height:1.1;font-family:Cinzel,serif;font-size:46px;font-weight:700;color:oklch(0.3 0.02 0);letter-spacing:2px;">' + (quest.title || 'Quest') + '</span>'
+              + '<span style="display:inline-block;max-width:470px;line-height:1.1;font-family:Cinzel,serif;font-size:40px;font-weight:700;color:oklch(0.3 0.02 0);letter-spacing:2px;">' + (quest.title || 'Quest') + '</span>'
             + '</div>'
 
             // Objectives header — green for completed
