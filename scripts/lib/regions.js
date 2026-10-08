@@ -6,6 +6,8 @@ export const REGIONS = [
   { id: "reach", name: "Lantern's Reach", x: 0, z: 0, r: 70 },
   { id: "ashen", name: "Ashen Close", x: 128, z: -185, r: 46 },
   { id: "thornhollow", name: "Thornhollow", x: -720, z: 70, r: 60 },
+  { id: "reedhaven", name: "Reedhaven Refuge", x: -430, z: 560, r: 60 },
+  { id: "starfall", name: "Starfall Eyrie", x: -200, z: -1100, r: 60 },
   { id: "cinderhold", name: "Cinderhold", x: 900, z: -170, r: 60 },
   { id: "gullrest", name: "Gullrest", x: 250, z: 1430, r: 60 },
   { id: "farm", name: "Windmill Farm", x: -18, z: 52, r: 26 },
