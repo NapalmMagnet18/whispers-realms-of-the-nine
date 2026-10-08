@@ -317,7 +317,7 @@ fen-wisp-deck:
   tags: [sorrowfen]
 finder-sorrowfen:
   overrides:
-    feetPosition: {x: -1234, y: 1.3452678002691134, z: 846}
+    feetPosition: {x: -1234, y: 2.3, z: 846}
     rotation: {yaw: 225}
   template: templates/finder.js#board
 qm-sor-chapel:
