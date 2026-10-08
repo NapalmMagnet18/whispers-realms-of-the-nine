@@ -69,3 +69,8 @@ accepted at its real giver with E, every objective earned at its real world sour
 - Reconnect: body left the room and rejoined → main menu → Continue: all 16 completed quests and the 10,964 copper purse came back.
 - Not tested yet: leaving mid-quest with partial progress, a full bag, two players at once, walking the route on foot.
 - Gate status: the 16-quest proof passes at this level. Other origins/dungeons may proceed in small stages.
+
+## 2026-10-08 · Emberstone Quarry chapter, EQU-01..09 (campaign bible, lv 12–17)
+Follows Q008. Givers: Mira, Yurra and Kiv (now standing at the quarry camp: quarry-npc-yurra, quarry-npc-kiv), Dren, Tamsin, Vale, Elric. Marks are all in the quarry pit around (140, 3, 28) except the bellglass smelt at Mira's forge. New set pieces in scripts/gen/quarryworks.js: crystal veins, survey stake, lift brakes, drill rig, tuning hammers, east shaft door. EQU-07's drill crew is a scavengers.js camp (equ-drill-camp, tallyKey drill_crew) on the south rim.
+Bench test (builder body, driver): all nine accepted, progressed and turned in in order. Marks were pressed with E after moving the body beside them (teleport moves, not walking); the three drill-crew kills were state writes, not class combat. Fixes found by the run: Kiv's tally board moved clear of Kiv (E talked to him instead); the shaft door was buried in the pit wall, now set at its foot. DHC-01 (Hollowcrypt) is next and needs the dungeon itself; not built.
+Correction to the earlier MAR/Q00x live report: Q002/Q006 kills were state writes and MAR-08's reach visit was a teleport; after reconnect the test body read raceIndex 1, not the 0 it was set to: open.
