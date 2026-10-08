@@ -122,3 +122,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Lantern Waystones (scripts/gen/waystone.js, waystone-<people>) in all six hometowns, rune colour per people. Decorative for now; a waypoint travel network on them is an open idea, not approved.
 - 2026-10-08: Weaponsmith's yard at (-27,-68) in Lantern's Reach (reach-smith-*, scripts/gen/armory.js): smithy shed + forge fx/light/hammer loop, iron/gilded/warden armour stands, weapon rack, shield wall, grindstone. Decorative; no smith vendor wired.
 - 2026-10-08: Reedhaven apothecary at (-438,592) (reh-apoth-*, scripts/gen/apothecary.js) + Old Ysolde (townsfolk). Smith's yard folk Garrick/Pip/Wenna. Crew landed Emberforged forge-halls (kha-*) and Veylori star-houses + Hall of Watchers on Starfall Eyrie.
+- 2026-10-08: Gullrest fish market at (238,1427) (nam-market-*, scripts/gen/harbor.js) + Hask Brinewell fishmonger (townsfolk). Decorative; no vendor wired.
