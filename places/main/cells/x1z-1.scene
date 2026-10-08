@@ -1,7 +1,38 @@
 # spawn-scene v2 yaml x1z-1
-forest-bp:
-  feetPosition: {x: 120, y: 4, z: -90}
-  id: forest-bp
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 90, height: 14, kind: box, width: 90}
+thornwood-pines:
+  feetPosition: {x: 120, y: {terrain: 0}, z: -90}
+  id: thornwood-pines
+  scatter: {bounds: {radius: 72, shape: circle}, count: 420, templates: [{physics: static, primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 1}, weight: 3}, {physics: static, primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 2}, weight: 3}, {physics: static, primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 3}, weight: 2}, {physics: static, primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 4}, weight: 1}, {physics: static, primitive: {kind: scripted, params: {kind: dead}, script: scripts/gen/tree.js, seed: 5}, weight: 0.4}], variation: {scale: [0.8, 1.35], yaw: [0, 360]}}
+  tags: [forest]
+timber-2:
+  feetPosition: {x: 78, y: {terrain: 0}, z: -66}
+  id: timber-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 32}
+  rotation: 94
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-4:
+  feetPosition: {x: 92, y: {terrain: 0}, z: -82}
+  id: timber-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 34}
+  rotation: 188
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-5:
+  feetPosition: {x: 110, y: {terrain: 0}, z: -72}
+  id: timber-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 35}
+  rotation: 235
+  state: {resource: timber}
+  tags: [timber, gatherable]
+timber-7:
+  feetPosition: {x: 100, y: {terrain: 0}, z: -92}
+  id: timber-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 37}
+  rotation: 329
+  state: {resource: timber}
+  tags: [timber, gatherable]
