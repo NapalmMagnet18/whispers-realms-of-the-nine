@@ -950,7 +950,7 @@ export function renderCharacterCreation(localPlayer) {
               font-size:15px;font-weight:bold;letter-spacing:5px;text-transform:uppercase;
               text-shadow:0 0 14px rgba(255,160,40,0.6),0 2px 4px rgba(0,0,0,0.8),0 0 30px rgba(200,100,0,0.3);
               position:relative;z-index:2;padding-top:8px;
-            ">Enter the Abyss</span>
+            ">Enter the March</span>
           </div>
         </div>
 
