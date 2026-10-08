@@ -348,3 +348,5 @@ terrain:
         radius: 4
       falloff: 6
       material: dirt
+    farm: {center: {x: -16, z: 52}, falloff: 20, height: 4.2, kind: flatten, shape: {kind: circle, radius: 20}}
+    lane-farm: {grade: true, kind: path, material: dirt, noise: 0.4, points: [[4, 32], [-4, 40], [-10, 44], [-12, 50], [-12, 60]], width: 2.6}

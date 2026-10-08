@@ -260,3 +260,11 @@ smithy:
   primitive: {kind: scripted, params: {chimney: 0, d: 8, h: 3.6, open: true, rise: 2, roof: dark grey slate roof tiles, w: 10, win: 1}, script: scripts/gen/house.js}
   rotation: 90
   tags: [building, smithy]
+windmill:
+  children: [{feetPosition: {x: 0, y: 3.8, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 3, kind: point}}]
+  feetPosition: {x: -30, y: {terrain: 0}, z: 50}
+  id: windmill
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/windmill.js}
+  rotation: {lookAt: {x: 0, y: 4, z: 0}}
+  tags: [building, windmill]
