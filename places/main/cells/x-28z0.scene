@@ -1,8 +1,257 @@
 # spawn-scene v2 yaml x-28z0
 frontier-elderveil:
-  feetPosition: {x: -3600, y: 40, z: -60}
+  children: [{feetPosition: {x: 0, y: 1.6, z: 0}, physics: static, primitive: {kind: scripted, params: {kind: roots, n: 9, reach: 13}, script: scripts/gen/frontier.js, seed: 3}, scale: 0.2173913043478261}]
+  feetPosition: {x: -3600, y: {terrain: -0.5}, z: -60}
   id: frontier-elderveil
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 20, height: 40, kind: box, width: 20}
-  tags: [blueprint]
+  physics: static
+  primitive: {kind: scripted, params: {bark: /cdn/bark-twistedtree-u3vvl00p9.webp, kind: oak}, script: scripts/gen/tree.js, seed: 11}
+  scale: 4.6
+  tags: [landmark, elderveil]
+frontier-elderveil-bush-1:
+  feetPosition: {x: -3574.723331345944, y: {terrain: 0}, z: -43.84171971548127}
+  id: frontier-elderveil-bush-1
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+  rotation: 91
+  scale: 1.25
+frontier-elderveil-bush-2:
+  feetPosition: {x: -3583.1861180473966, y: {terrain: 0}, z: -32.77329667984162}
+  id: frontier-elderveil-bush-2
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+  rotation: 182
+  scale: 1.5
+frontier-elderveil-bush-3:
+  feetPosition: {x: -3597.0810161007435, y: {terrain: 0}, z: -32.15256685085893}
+  id: frontier-elderveil-bush-3
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+  rotation: 273
+  scale: 1
+frontier-elderveil-bush-4:
+  feetPosition: {x: -3610.127449225026, y: {terrain: 0}, z: -31.7611124122333}
+  id: frontier-elderveil-bush-4
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+  rotation: 364
+  scale: 1.25
+frontier-elderveil-bush-5:
+  feetPosition: {x: -3622.80174079699, y: {terrain: 0}, z: -37.54826027616397}
+  id: frontier-elderveil-bush-5
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+  rotation: 455
+  scale: 1.5
+frontier-elderveil-bush-6:
+  feetPosition: {x: -3626.4993457521587, y: {terrain: 0}, z: -50.956512027566816}
+  id: frontier-elderveil-bush-6
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+  rotation: 546
+  scale: 1
+frontier-elderveil-bush-7:
+  feetPosition: {x: -3629.7845917007435, y: {terrain: 0}, z: -63.58860658473347}
+  id: frontier-elderveil-bush-7
+  model: /cdn/model-bush-common-red-leafy-nk2dpql7.glb
+  rotation: 637
+  scale: 1.25
+frontier-elderveil-clover-0:
+  feetPosition: {x: -3588, y: {terrain: 0}, z: -60}
+  id: frontier-elderveil-clover-0
+  model: /cdn/model-clover-green-stylized-n19jk6s9.glb
+  rotation: 0
+  scale: 1.4
+frontier-elderveil-clover-1:
+  feetPosition: {x: -3589.5493993597925, y: {terrain: 0}, z: -49.23965863650716}
+  id: frontier-elderveil-clover-1
+  model: /cdn/model-clover-green-stylized-n19jk6s9.glb
+  rotation: 40
+  scale: 1.4
+frontier-elderveil-clover-2:
+  feetPosition: {x: -3600.5255914014233, y: {terrain: 0}, z: -42.007675145252904}
+  id: frontier-elderveil-clover-2
+  model: /cdn/model-clover-green-stylized-n19jk6s9.glb
+  rotation: 80
+  scale: 1.4
+frontier-elderveil-clover-3:
+  feetPosition: {x: -3615.485268026366, y: {terrain: 0}, z: -45.815273208425836}
+  id: frontier-elderveil-clover-3
+  model: /cdn/model-clover-green-stylized-n19jk6s9.glb
+  rotation: 120
+  scale: 1.4
+frontier-elderveil-clover-4:
+  feetPosition: {x: -3611.979537309537, y: {terrain: 0}, z: -60.700489721130964}
+  id: frontier-elderveil-clover-4
+  model: /cdn/model-clover-green-stylized-n19jk6s9.glb
+  rotation: 160
+  scale: 1.4
+frontier-elderveil-rootarch:
+  children: [{feetPosition: {x: 0, y: 4, z: 0}, light: {color: oklch(0.85 0.1 200), distance: 10, intensity: 1.5, kind: point}}]
+  feetPosition: {x: -3578, y: {terrain: 0}, z: -59}
+  id: frontier-elderveil-rootarch
+  physics: static
+  primitive: {kind: scripted, params: {kind: rootarch, span: 12, top: 5.6}, script: scripts/gen/frontier.js, seed: 5}
+  rotation: {yaw: 95}
+  tags: [elderveil]
+frontier-elderveil-shelf-0:
+  feetPosition: {x: -3597.5525050006895, y: {terrain: 1.2}, z: -57.93850340083939}
+  id: frontier-elderveil-shelf-0
+  model: /cdn/model-mushroom-laetiporus-orange-shelf-whfdbnsx.glb
+  rotation: 49.89000000000001
+  scale: 2
+frontier-elderveil-shelf-1:
+  feetPosition: {x: -3602.059546939883, y: {terrain: 1.7999999999999998}, z: -57.55086415190639}
+  id: frontier-elderveil-shelf-1
+  model: /cdn/model-mushroom-laetiporus-orange-shelf-whfdbnsx.glb
+  rotation: -40.071
+  scale: 2
+frontier-elderveil-shelf-2:
+  feetPosition: {x: -3602.450775143791, y: {terrain: 2.4}, z: -62.05759597457251}
+  id: frontier-elderveil-shelf-2
+  model: /cdn/model-mushroom-laetiporus-orange-shelf-whfdbnsx.glb
+  rotation: -130.03199999999998
+  scale: 2
+frontier-elderveil-shelf-3:
+  feetPosition: {x: -3597.944356295535, y: {terrain: 3}, z: -62.45241288536251}
+  id: frontier-elderveil-shelf-3
+  model: /cdn/model-mushroom-laetiporus-orange-shelf-whfdbnsx.glb
+  rotation: -219.993
+  scale: 2
+frontier-elderveil-shroom-0:
+  children: [{feetPosition: {x: 0, y: 0.15, z: 0}, light: {color: oklch(0.85 0.12 200), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: -3594.6709816805915, y: {terrain: 0}, z: -58.639278224100124}
+  id: frontier-elderveil-shroom-0
+  model: {id: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb, materials: {}}
+  rotation: 0
+  scale: 3
+  tags: [elderveil]
+frontier-elderveil-shroom-1:
+  children: []
+  feetPosition: {x: -3594.892316168173, y: {terrain: 0}, z: -53.84276312993487}
+  id: frontier-elderveil-shroom-1
+  model: {id: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb, materials: {}}
+  rotation: 61
+  scale: 4
+  tags: [elderveil]
+frontier-elderveil-shroom-2:
+  children: [{feetPosition: {x: 0, y: 0.15, z: 0}, light: {color: oklch(0.85 0.12 200), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: -3599.3264014600363, y: {terrain: 0}, z: -49.52162870447136}
+  id: frontier-elderveil-shroom-2
+  model: {id: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb, materials: {}}
+  rotation: 122
+  scale: 5
+  tags: [elderveil]
+frontier-elderveil-shroom-3:
+  children: []
+  feetPosition: {x: -3602.940622155033, y: {terrain: 0}, z: -55.35212507253802}
+  id: frontier-elderveil-shroom-3
+  model: {id: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb, materials: {}}
+  rotation: 183
+  scale: 3
+  tags: [elderveil]
+frontier-elderveil-shroom-4:
+  children: [{feetPosition: {x: 0, y: 0.15, z: 0}, light: {color: oklch(0.85 0.12 200), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: -3607.434077066988, y: {terrain: 0}, z: -57.04458155888446}
+  id: frontier-elderveil-shroom-4
+  model: {id: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb, materials: {}}
+  rotation: 244
+  scale: 4
+  tags: [elderveil]
+frontier-elderveil-shroom-5:
+  children: []
+  feetPosition: {x: -3610.173821074375, y: {terrain: 0}, z: -62.59679894227574}
+  id: frontier-elderveil-shroom-5
+  model: {id: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb, materials: {}}
+  rotation: 305
+  scale: 5
+  tags: [elderveil]
+frontier-elderveil-shroom-9:
+  children: []
+  feetPosition: {x: -3594.8892602965966, y: {terrain: 0}, z: -62.03232371536971}
+  id: frontier-elderveil-shroom-9
+  model: {id: /cdn/model-mushroom-common-white-cluster-mlkqkgzc.glb, materials: {}}
+  rotation: 549
+  scale: 3
+  tags: [elderveil]
+frontier-elderveil-tree-1:
+  feetPosition: {x: -3564.246733096547, y: {terrain: -0.2}, z: -47.12739708798429}
+  id: frontier-elderveil-tree-1
+  model: /cdn/model-common-tree-green-leafy-xbadau55.glb
+  physics: static
+  rotation: 73
+  scale: 1.02
+  tags: [elderveil]
+frontier-elderveil-tree-10:
+  feetPosition: {x: -3636.4598311096074, y: {terrain: -0.2}, z: -49.291091770917376}
+  id: frontier-elderveil-tree-10
+  model: /cdn/model-common-tree-green-leafy-xbadau55.glb
+  physics: static
+  rotation: 730
+  scale: 1.1400000000000001
+  tags: [elderveil]
+frontier-elderveil-tree-11:
+  feetPosition: {x: -3641.9246558443033, y: {terrain: -0.2}, z: -62.51460381307096}
+  id: frontier-elderveil-tree-11
+  model: /cdn/model-common-tree-green-leafy-jg8btwjc.glb
+  physics: static
+  rotation: 803
+  scale: 1.26
+  tags: [elderveil]
+frontier-elderveil-tree-2:
+  feetPosition: {x: -3567.6392853749007, y: {terrain: -0.2}, z: -33.227175177936815}
+  id: frontier-elderveil-tree-2
+  model: /cdn/model-common-tree-green-leafy-jg8btwjc.glb
+  physics: static
+  rotation: 146
+  scale: 1.1400000000000001
+  tags: [elderveil]
+frontier-elderveil-tree-3:
+  feetPosition: {x: -3576.6190870237, y: {terrain: -0.2}, z: -31.323652457213427}
+  id: frontier-elderveil-tree-3
+  model: /cdn/model-common-tree-green-leafy-3n2n5gqb.glb
+  physics: static
+  rotation: 219
+  scale: 1.26
+  tags: [elderveil]
+frontier-elderveil-tree-4:
+  feetPosition: {x: -3586.3876271157073, y: {terrain: -0.2}, z: -21.325676418856787}
+  id: frontier-elderveil-tree-4
+  model: /cdn/model-common-tree-green-leafy-xbadau55.glb
+  physics: static
+  rotation: 292
+  scale: 0.9
+  tags: [elderveil]
+frontier-elderveil-tree-5:
+  feetPosition: {x: -3594.875165109272, y: {terrain: -0.2}, z: -24.36664389448032}
+  id: frontier-elderveil-tree-5
+  model: /cdn/model-common-tree-green-leafy-jg8btwjc.glb
+  physics: static
+  rotation: 365
+  scale: 1.02
+  tags: [elderveil]
+frontier-elderveil-tree-6:
+  feetPosition: {x: -3608.0545161954524, y: {terrain: -0.2}, z: -20.819331694607442}
+  id: frontier-elderveil-tree-6
+  model: /cdn/model-common-tree-green-leafy-3n2n5gqb.glb
+  physics: static
+  rotation: 438
+  scale: 1.1400000000000001
+  tags: [elderveil]
+frontier-elderveil-tree-7:
+  feetPosition: {x: -3618.2444972554554, y: {terrain: -0.2}, z: -30.131315397298106}
+  id: frontier-elderveil-tree-7
+  model: /cdn/model-common-tree-green-leafy-xbadau55.glb
+  physics: static
+  rotation: 511
+  scale: 1.26
+  tags: [elderveil]
+frontier-elderveil-tree-8:
+  feetPosition: {x: -3626.410237404497, y: {terrain: -0.2}, z: -31.30332144240185}
+  id: frontier-elderveil-tree-8
+  model: /cdn/model-common-tree-green-leafy-jg8btwjc.glb
+  physics: static
+  rotation: 584
+  scale: 0.9
+  tags: [elderveil]
+frontier-elderveil-tree-9:
+  feetPosition: {x: -3630.1377930537496, y: {terrain: -0.2}, z: -44.26108549329505}
+  id: frontier-elderveil-tree-9
+  model: /cdn/model-common-tree-green-leafy-3n2n5gqb.glb
+  physics: static
+  rotation: 657
+  scale: 1.02
+  tags: [elderveil]
