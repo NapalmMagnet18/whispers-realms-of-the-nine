@@ -116,8 +116,13 @@ export function materialAt(ctx) {
   const dq = Math.hypot(x - QUARRY.x, z - QUARRY.z);
   if (dq < 32 + n * 6) return { gravel: 0.7 - rock * 0.5, rock: 0.3 + rock * 0.5 };
   if (dq < 60 + n * 10) return { rock: 0.4 + rock * 0.6, grass: 0.6 - rock * 0.6 };
+  const dfen = Math.hypot(x - FEN.x, z - FEN.z);
+  if (dfen < 600 + n * 40 && y < 3.5) { // Sorrowfen: black wet mud in the low ground, sedge on the banks, never beach sand
+    const bank = clamp01((y - 0.6 + n * 0.5) * 1.4);
+    return { mud: 1 - bank * 0.55, grass: bank * 0.55 };
+  }
   if (y < 1.6 + n * 0.8) {
-    const df = Math.hypot(x - FEN.x, z - FEN.z);
+    const df = dfen;
     if (df >= 650) return { sand: 1 };
     const bank = clamp01((y - 0.75 + n * 0.5) * 1.6); // the low ground stays black wet mud; the banks between the pools green over with sedge
     return { mud: 1 - bank * 0.6, grass: bank * 0.6 };
