@@ -55,7 +55,7 @@ export const PHASES = [
       {"id": "bugs-5", "text": "Version tag on a stuck hero's HUD: gone with bugs-1, title shows v0.7.9 Alpha", "done": true}
     ],
     "notes": [
-      {"id": "notes-1", "text": "Windows crew handoff: rebuild the game windows as ui-book.js + one lib file per tab routed from renderMenuPanel; HUD fixes first: minimap labels pile up, empty hotbar slots glare white, tip panel covers nameplates, version tag over the XP text", "done": false}
+      {"id": "notes-1", "text": "Windows crew handoff: rebuild the game windows as ui-book.js + one lib file per tab routed from renderMenuPanel; HUD fixes first: minimap labels pile up, empty hotbar slots glare white, tip panel covers nameplates, version tag over the XP text. v0.8.0: hotbar empties darkened, minimap names de-overlapped, pause version line lifted (unwatched in play). Open: tip panel over nameplates, windows rebuild", "done": false}
     ]
   },
   {
