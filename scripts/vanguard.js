@@ -3,7 +3,7 @@
 // target's state (target.state.hp -= d). Anything tagged "enemy" with state.hp is struck.
 import V from './lib/data/vanguard.yml'
 import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
-import { drill, classOf } from './lib/kit.js'
+import { drill, classOf, meleePlayer, strikePlayer } from './lib/kit.js'
 
 const WHOOSH = '/cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3'
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
