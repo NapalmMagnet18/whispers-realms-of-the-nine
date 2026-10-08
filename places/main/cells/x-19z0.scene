@@ -1,0 +1,9 @@
+# spawn-scene v2 yaml x-19z0
+frontier-waystone-elderveil-2:
+  children: [{feetPosition: {x: 0.75, y: 1.85, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2, kind: point}}]
+  feetPosition: {x: -2484.4346289752657, y: {terrain: 0}, z: 7.938581878869924}
+  id: frontier-waystone-elderveil-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 2}
+  rotation: 174.28898621225642
+  tags: [waystone, elderveil]

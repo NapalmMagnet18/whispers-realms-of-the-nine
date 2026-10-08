@@ -1,0 +1,9 @@
+# spawn-scene v2 yaml x21z-2
+frontier-waystone-sunscar-2:
+  children: [{feetPosition: {x: 0.75, y: 1.85, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2, kind: point}}]
+  feetPosition: {x: 2726.7495612685793, y: {terrain: 0}, z: -277.3472910948049}
+  id: frontier-waystone-sunscar-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 2}
+  rotation: 351.48186505267097
+  tags: [waystone, sunscar]

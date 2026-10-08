@@ -1,0 +1,9 @@
+# spawn-scene v2 yaml x0z-27
+frontier-waystone-frostveil-4:
+  children: [{feetPosition: {x: 0.75, y: 1.85, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2, kind: point}}]
+  feetPosition: {x: -5.227333589255013, y: {terrain: 0}, z: -3488.4528881285855}
+  id: frontier-waystone-frostveil-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 4}
+  rotation: 95.704384262396
+  tags: [waystone, frostveil]
