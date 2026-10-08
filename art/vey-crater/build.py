@@ -188,7 +188,7 @@ for p in g.data.polygons:
 for k in range(40):
     a = 6.283 * k / 40 + U(-.08, .08)
     if abs(math.atan2(math.sin(a + math.pi / 2), math.cos(a + math.pi / 2))) < 0.3: continue
-    rn = U(.64, .86); x, y = AX * rn * math.cos(a), AY * rn * math.sin(a)
+    rn = U(.64, .86 if math.sin(a) > -0.3 else .74); x, y = AX * rn * math.cos(a), AY * rn * math.sin(a)
     L, W, T = U(1.0, 2.0), U(.6, 1.2), U(.16, .3)
     tilt = -U(30, 70) if rng.random() < .7 else U(20, 45)
     m = Matrix.Translation((x, y, H(x, y) - .12)) @ Matrix.Rotation(a - math.pi / 2, 4, 'Z') @ Matrix.Rotation(math.radians(tilt), 4, 'X') @ Matrix.Rotation(U(-.25, .25), 4, 'Y')
