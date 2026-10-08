@@ -20,7 +20,7 @@ function build(ctx, s) {
   boxR(ctx, [0.6, 3.85, 0], [1.4, 0.07, 0.07]);
   paint(ctx, s, T("rusted-black-iron-plate"), "oklch(0.8 0.1 85)", 0.35, 0.9);
   cyl(ctx, 0, 4.2, 0, 0.11, 0.02, 0.4, 8); cyl(ctx, 0, 0, 0, 0.09, 0.09, 0.25, 8);
-  ctx.albedo(null); ctx.color(p.color || "#f2b04a"); ctx.roughness(0.95); ctx.metalness(0); ctx.doubleSided?.(true);
+  ctx.albedo(null); ctx.color(p.color || "#f2b04a"); ctx.roughness(0.95); ctx.metalness(0);
   const N = lod <= 2 ? 6 : 2, x0 = 0.08, x1 = 1.3, top = 3.82, bot = 1.6;
   for (let i = 0; i < N; i++) { // the cloth, gently rippled
     const ya = top - (top - bot) * i / N, yb = top - (top - bot) * (i + 1) / N, za = Math.sin(i * 0.9) * 0.06, zb = Math.sin((i + 1) * 0.9) * 0.06;
