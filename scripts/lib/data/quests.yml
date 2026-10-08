@@ -13,7 +13,7 @@ Q002:
   objectives:
     - { key: briar_wolf, desc: Briar Wolves, target: 3 }
     - { key: log, desc: Logs, target: 5 }
-  rewards: { gold: 25, xp: 150 }
+  rewards: { copper: 2500, xp: 150 }   # 25 silver
 
 npc:
   talkReach: 3.5        # metres from Elric's feet that E talks

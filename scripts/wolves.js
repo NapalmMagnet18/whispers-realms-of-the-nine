@@ -1,7 +1,7 @@
 // The Briar Wolf pack: one manager on the invisible briar-wolf-den steps every wolf row in scripts/lib/data/wolves.yml.
 // idle/roam near home → chase a player within aggro → 0.6 s telegraphed bite (head rears, red pulse) → bite if still in
 // reach (guard reduces it) → leash home past 30 m, heal, ignore players. Struck (Vanguard writes hp/lastHitBy/lastHitAt):
-// flinch and hunt the striker. hp ≤ 0: collapse, yelp, the killer's tally.briar_wolf += 1 (+xp, +gold), fade, respawn.
+// flinch and hunt the striker. hp ≤ 0: collapse, yelp, the killer's tally.briar_wolf += 1 (+xp, +copper via the player's coins ear), fade, respawn.
 import W from "./lib/data/wolves.yml";
 import { play, stop } from "builtin/anim";
 import { animate } from "builtin/tween";
@@ -76,8 +76,8 @@ function die(ctx, w, s, m) {
   if (p && (p.tags || []).includes("player")) {
     p.state.tally = { ...(p.state.tally || {}), briar_wolf: (p.state.tally?.briar_wolf || 0) + 1 };
     if (typeof p.state.xp === "number") p.state.xp += W.reward.xp; else p.state.xp = W.reward.xp;
-    if (typeof p.state.gold === "number") p.state.gold += W.reward.gold; else p.state.gold = W.reward.gold;
-    ctx.emit("damageNumber", { position: pos, text: `+${W.reward.xp} XP  +${W.reward.gold} gold`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
+    if (W.reward.copper) ctx.emit("coins", { delta: W.reward.copper, reason: "kill:briar_wolf" }, { to: p.id }); // scripts/vendor.js ear: ledger, clink, purse
+    ctx.emit("damageNumber", { position: pos, text: `+${W.reward.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
   }
 }
 

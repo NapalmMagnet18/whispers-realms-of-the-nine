@@ -1,8 +1,9 @@
 // On every player's body: E talks to Gatekeeper Elric and chops timber oaks; the quest dialog's Accept / Complete
 // buttons land here; the active quests' objective counts follow player.state.tally. All numbers: scripts/lib/data/quests.yml.
 // Writes only this body's own state (and a felled oak's logsLeft / depletedUntil); the mod's player.js saves the
-// character when state._questSave is raised (buildCharData carries activeQuests, completedQuests, tally, gold, xp, inventory).
+// character when state._questSave is raised (buildCharData carries activeQuests, completedQuests, tally, copper, xp, inventory).
 import Q from './lib/data/quests.yml';
+import { move, formatText } from './lib/economy.js';
 import V from './lib/data/vanguard.yml';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 
@@ -96,13 +97,14 @@ function complete(ctx, questId) {
   if (!aq || !questProgress(aq, st).done) { if (aq) say(ctx, q.progressText); return; }
   st.completedQuests = [...(st.completedQuests || []), questId];
   st.activeQuests = (st.activeQuests || []).filter((x) => x && x.questId !== questId);
-  st.gold = (st.gold || 0) + (q.rewards.gold || 0);
   st.xp = (st.xp || 0) + (q.rewards.xp || 0);
   st._questSave = true;
+  if (q.rewards.copper) move(ctx, q.rewards.copper, 'quest:' + questId, { feedback: false });
   say(ctx, q.doneText);
   const head = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 2.2, z: ctx.self.feetPosition.z };
-  ctx.emit('damageNumber', { position: head, text: `+${q.rewards.gold} Gold  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
+  ctx.emit('damageNumber', { position: head, text: `+${formatText(q.rewards.copper || 0)}  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: 'cdn/sfx-reward.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
+  ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3', position: ctx.self.feetPosition, volume: 0.6 }, { audience: { player: ctx.self.id } });
   ctx.emit('milestone', { step: 2, name: 'Q002 complete' });
 }
 

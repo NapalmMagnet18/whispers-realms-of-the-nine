@@ -13,7 +13,7 @@ bite: { damage: 45, windup: 0.6, start: 1.8, reach: 2.0, cooldown: 1.5, stopAt: 
 corpse: 3          # seconds a felled wolf lies before it is gone
 fadeAt: 1.6        # seconds after death the body starts to dissolve
 respawn: 20        # seconds from death to a fresh wolf at home
-reward: { xp: 25, gold: 3 }
+reward: { xp: 25, copper: 3 }
 sounds:
   growl: /cdn/moodboard-painterly-fantasy/sfx-wolf-growl.mp3
   bite: /cdn/moodboard-painterly-fantasy/sfx-wolf-bite.mp3
