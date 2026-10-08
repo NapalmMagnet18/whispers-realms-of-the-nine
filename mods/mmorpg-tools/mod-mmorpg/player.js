@@ -138,6 +138,7 @@ export function restoreRosterCharacterState(objectApi, state, opts) {
     professions: charData.professions || [],
     activeQuests: charData.activeQuests || [],
     completedQuests: charData.completedQuests || [],
+    tally: charData.tally || {},
     wraithDefeated: charData.wraithDefeated ?? false,
     activeCharIdx: resume.idx,
     selectedCharIdx: typeof state.selectedCharIdx === 'number' ? state.selectedCharIdx : resume.idx,
@@ -241,6 +242,7 @@ export function buildCharData(objectApi) {
     guildRole: s.guildRole || null,
     activeQuests: s.activeQuests || [],
     completedQuests: s.completedQuests || [],
+    tally: s.tally || {},
     wraithDefeated: s.wraithDefeated || false,
   };
 }
@@ -497,6 +499,7 @@ export function onSpawn(objectApi) {
             professions: data.professions || [],
             activeQuests: data.activeQuests || [],
             completedQuests: data.completedQuests || [],
+            tally: data.tally || {},
             wraithDefeated: data.wraithDefeated ?? false,
           });
         } else {
@@ -518,6 +521,12 @@ export function update(objectApi, dt) {
   var s = objectApi.getState();
   var currentPlace = objectApi.getEntityPlace(objectApi.id);
   var isMetaPlace = META_PLACES.indexOf(currentPlace) !== -1;
+
+  // ── Quest / gathering save: scripts/quest-player.js raises _questSave after accept, claim, progress or a log ──
+  if (s._questSave && !s._saveInFlight && s.characterCreated) {
+    objectApi.patchState({ _questSave: false });
+    saveCharacter(objectApi);
+  }
 
   // ── Continuously save position so CMD-R restores exact location ──
   if (!isMetaPlace && s.phase === 'playing') {

@@ -5,7 +5,7 @@ const { renderHUD } = require('./lib/ui-hud.js');
 const { renderChat } = require('./lib/ui-chat.js');
 const { renderMenuPanel, renderWorldMapOverlay } = require('./lib/ui-menu-panel.js');
 const { renderWelcomeWindow } = require('./lib/ui-welcome.js');
-const { renderQuestDialog, renderTurnInDialog } = require('./lib/ui-quest.js');
+const { renderQuestDialog, renderTurnInDialog, renderQuestTracker } = require('./lib/ui-quest.js');
 const { renderDoorPanel } = require('./lib/ui-door-panel.js');
 const { renderGnomeTipJar } = require('./lib/ui-gnome-tip.js');
 const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
@@ -176,6 +176,7 @@ export default function(world, localPlayer) {
       try { _hudParts.push(renderWorldMapOverlay(localPlayer.state, localPlayer.feetPosition, localPlayer.state._lastAnnouncedPlace)); } catch(e5) { _hudParts.push(''); }
       if (localPlayer.state.showWelcome) { try { _hudParts.push(renderWelcomeWindow()); } catch(e6) { _hudParts.push(''); } }
       try { _hudParts.push(renderZoneBanner(localPlayer)); } catch(e7) { _hudParts.push(''); }
+      try { _hudParts.push(renderQuestTracker(localPlayer, world)); } catch(e7b) { _hudParts.push(''); }
       if (localPlayer.state.showQuestDialog) { try { _hudParts.push(localPlayer.state.questDialogData && localPlayer.state.questDialogData.turnIn ? renderTurnInDialog(localPlayer) : renderQuestDialog(localPlayer)); } catch(e8) { _hudParts.push(''); } }
       try { _hudParts.push(renderDoorPanel(localPlayer)); } catch(e9) { _hudParts.push(''); }
       try { _hudParts.push(renderBuffIcons(localPlayer, rightHudLayout)); } catch(e10) { _hudParts.push(''); }

@@ -5,7 +5,6 @@
 import Q from './lib/data/quests.yml';
 import V from './lib/data/vanguard.yml';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
-import { ITEM_ICONS } from '../mods/mmorpg-tools/mod-mmorpg/lib/item-icons.js';
 
 const W = Q.woodcutting, N = Q.npc;
 const ELRIC = 'gatekeeper-elric';
@@ -39,7 +38,7 @@ function addLog(st) {
   else {
     i = inv.findIndex((it) => !it);
     if (i < 0) return false;
-    inv[i] = { ...Q.items.log, icon: ITEM_ICONS['log'], count: 1 };
+    inv[i] = { ...Q.items.log, count: 1 }; // its icon: item-icons.js ITEM_ICONS.log
   }
   st.inventory = inv;
   return true;
@@ -104,7 +103,6 @@ function complete(ctx, questId) {
 function startChop(ctx, tree) {
   if (felled(ctx, tree)) return;
   ctx.session.chop = { tree: tree.id, at: ctx.now(), swung: 0, from: { ...ctx.self.feetPosition } };
-  ctx.self.state.interactHint = 'Chopping…';
 }
 function stopChop(ctx) {
   ctx.session.chop = null;
@@ -142,9 +140,7 @@ function stepChop(ctx) {
   else tree.state.logsLeft = left;
   ctx.emit('damageNumber', { position: head, text: '+1 Log', color: 'oklch(0.82 0.12 75)', lifetime: 1.6 }, { audience: { player: ctx.self.id } });
   ctx.emit('stat', { name: 'logs' }, { audience: { player: ctx.self.id } });
-  stopChop(ctx);
-  if (left > 0) startChop(ctx, tree); // keep swinging while E was the ask and the tree still stands? no: one press, one log
-  stopChop(ctx);
+  stopChop(ctx); // one press, one log
 }
 
 export function onInput(ctx, input) {

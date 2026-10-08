@@ -413,3 +413,40 @@ export function renderTurnInDialog(localPlayer) {
 }
 
 module.exports = { renderQuestDialog, renderTurnInDialog };
+
+// ── Quest tracker (SP-009) + quest-giver markers + NPC speech: drawn every frame from player state ──
+var _qd = require('./quest-data.js');
+var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' }];
+export function renderQuestTracker(localPlayer, world) {
+  var s = localPlayer.state || {};
+  var out = '<style>@keyframes qbob{50%{transform:translateY(-6px)}}@keyframes qpop{0%{transform:scale(1.5)}100%{transform:scale(1)}}'
+    + '.qt-plate{background:oklch(0.22 0.04 60 / .82);box-shadow:0 0 0 2px oklch(0.55 0.09 75),3px 3px 0 oklch(0.12 0.02 60);color:oklch(0.94 0.03 90);padding:10px 14px;min-width:250px}'
+    + '.qt-title{color:oklch(0.86 0.15 85);font-size:20px;letter-spacing:.04em;margin-bottom:4px;text-shadow:2px 2px 0 oklch(0.15 0.03 60)}'
+    + '.qt-row{font-size:17px;display:flex;justify-content:space-between;gap:16px;line-height:1.35}.qt-done{color:oklch(0.8 0.15 140)}</style>';
+  var aqs = s.activeQuests || [];
+  var rows = '';
+  for (var i = 0; i < aqs.length; i++) {
+    var aq = aqs[i]; if (!aq || !aq.objectives) continue;
+    var p = aq.baseline ? _qd.questProgress(aq, s) : { objectives: aq.objectives, done: false };
+    rows += '<div class="qt-title">' + (aq.title || 'Quest') + '</div>';
+    for (var j = 0; j < p.objectives.length; j++) {
+      var o = p.objectives[j], c = o.current || 0, done = c >= o.target;
+      rows += '<div class="qt-row' + (done ? ' qt-done' : '') + '"><span>' + (done ? '✔ ' : '◆ ') + o.desc + '</span><span id="qt-' + aq.questId + '-' + o.key + '-' + c + '" style="animation:qpop .25s">' + c + '/' + o.target + '</span></div>';
+    }
+    if (p.done) rows += '<div class="qt-row" style="color:oklch(0.86 0.15 85)">Return to ' + (aq.giverName || 'the quest giver') + '</div>';
+  }
+  if (rows) out += '<div class="fixed qt-plate" style="top:300px;right:calc(var(--spawn-chrome-reservation-right-inset, 50px) + 24px);pointer-events:none;z-index:40">' + rows + '</div>';
+  for (var n = 0; n < QUEST_NPCS.length; n++) {
+    var st = _qd.questStatus(QUEST_NPCS[n].id, s);
+    var mark = st === 'available' ? '!' : st === 'ready' ? '?' : '';
+    var markCol = st === 'ready' ? 'oklch(0.86 0.15 85)' : 'oklch(0.9 0.17 90)';
+    out += '<div data-world-anchor="' + QUEST_NPCS[n].id + '" data-anchor-offset="0 2.25 0" style="pointer-events:none;text-align:center;transform:translate(-50%,-100%);opacity:clamp(0,calc((40 - var(--anchor-depth,0)) / 10),1)">'
+      + (mark ? '<div style="font-size:52px;line-height:1;font-weight:900;color:' + markCol + ';-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;text-shadow:0 0 14px oklch(0.85 0.17 85 / .8);animation:qbob 1.2s ease-in-out infinite">' + mark + '</div>' : '')
+      + '<div style="font-size:18px;color:oklch(0.94 0.04 90);-webkit-text-stroke:3px oklch(0.2 0.04 60);paint-order:stroke;white-space:nowrap">' + QUEST_NPCS[n].name + '</div></div>';
+  }
+  if (s.npcSay && s.npcSay.text) {
+    out += '<div data-world-anchor="gatekeeper-elric" data-anchor-offset="0 2.9 0" style="pointer-events:none;transform:translate(-50%,-100%)"><div id="say-' + s.npcSay.id + '" class="qt-plate" style="max-width:340px;font-size:17px;line-height:1.35;animation:qpop .2s">' + s.npcSay.text + '</div></div>';
+  }
+  return out;
+}
+module.exports.renderQuestTracker = renderQuestTracker;

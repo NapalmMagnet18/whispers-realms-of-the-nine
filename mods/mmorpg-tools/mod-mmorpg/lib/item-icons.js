@@ -1,5 +1,6 @@
 // WHISPERS item art, cut from the creator's item sheet. Keyed by item id; the inventory draws these over any older icon.
 var ITEM_ICONS = {
+  'log': '/cdn/value.faa1caa9a0cf6fd75763ae18532eca3400495074fe6c2b5fcfaf7c4bdb246e88.png',
   'coins': '/cdn/value.2549e625a14795332e467d4542081035322aa70cc52ad63e3e823737f7b2c4d0.png',
   'health-potion': '/cdn/value.a1a947286a76456c3d3b2be345dd82dadb1847faa1300441dd45fd9c1a6a5428.png',
   'mana-potion': '/cdn/value.92a77d9274fa1859e5728065999535fc5681d52e0dad8219d30c40a3fbe830ce.png',
