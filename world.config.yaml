@@ -21,6 +21,8 @@ inputs:
     vendorSell: {}
     vendorTab: {}
     vendorClose: {}
+    flyTo: {}
+    flightClose: {}
     orbit:
       mouse: left
       activeOn: hold
