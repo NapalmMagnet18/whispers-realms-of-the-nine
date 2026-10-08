@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1123,
-  "updatedAt": "2026-10-08T17:40:07.652Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March and its streamed frontier regions. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, vitality and personal regional music. Place bindings and YAML registries define content, while shared SQL stores realm character records and realm-scoped auction listings.",
+  "basedOnSpecVersion": 1153,
+  "updatedAt": "2026-10-08T17:58:07.159Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO set across the Lantern March and its streamed frontier regions, now including Ashen Close north-east of Lantern's Reach. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, vitality and personal regional music, while place scenes and YAML registries define content.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -193,11 +193,11 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main-menu-land/ - realm selection and front door for entering the world or opening character creation.",
+    "places/main-menu-land/ - realm-selection front door for entering the world or opening character creation; the main menu now presents a crest, herald news, selected hero/realm and a primary Enter World/Create Hero action.",
     "places/character-creation-land/ - race/class/appearance selection with preview character and creation camera.",
-    "places/main/config.yaml - Lantern March continent terrain, regional surfaces/scatter, roads, atmosphere and flattened Lantern Exchange quarter.",
-    "places/main/cells/x0z0.scene - Lantern's Reach hub, town services and quests; now includes the Lantern Exchange auction hall, auctioneer, forge and alchemist's bench east of the roost.",
-    "places/main/cells/ - 109 streamed March cells with hub and Exchange, Briarwild gather nodes, northern March, Emberstone, Saltmere, Sorrowfen, Tideglass and frontier landmarks/campaigns.",
+    "places/main/config.yaml - Lantern March terrain, regional surfaces/scatter, roads and atmosphere; now levels/clears Ashen Close at (128,-185) and adds its cobbled north-pass spur.",
+    "places/main/cells/x0z0.scene - Lantern's Reach hub, town services, quests and Exchange; trade forge and alchemy bench have spatial looping ambience.",
+    "places/main/cells/ - 111 streamed March cells across hub, frontiers and campaigns; x0z-2 adds an Ashen Close signpost, x1z-1 holds its graveyard/cathedral blueprints, ambient wind/crows and four townsfolk, and x1z-2 has a relic-rack blueprint.",
     "places/hollowcrypt/ - underground dungeon entered from the mausoleum in main; cells hold crypt halls, archive, Warden, Vale/Elric, candles and echoes."
   ],
   "roots": [
@@ -217,12 +217,12 @@
     "scripts/lib/economy.js + MMORPG lib/currency.js - integer-copper transactions/ledger and denomination formatting shared by quests, vendor, flight, trade and UI.",
     "scripts/lib/data/trades.yml - trade/profession, gather-node, recipe, item and auction configuration consumed by trades-core and MMORPG ui-trades.",
     "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and continent terrain; regions.js also supplies ids consumed by scripts/region-music.js.",
-    "scripts/lib/data/music.yml - place/region themes and combat-music settings consumed by scripts/region-music.js."
+    "scripts/lib/data/music.yml - place/region themes and combat music consumed by scripts/region-music.js; Ashen Close maps to the crypt theme."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - getMenuRoster, getSelectedRosterIndex, hydrateMenuRoster, update, onSpawn, onInput; character-select.js - preview lifecycle, update/input and spawn handlers.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-trades.js - trade-station and auction-house panels; lib/version.js - GAME_VERSION 0.32.0 Alpha, GAME_TITLE, versionTag.",
+    "MMORPG ui.js - UI composition/actions; lib/ui-trades.js - trade-station and auction-house panels; lib/version.js - GAME_VERSION 0.33.1 Alpha, GAME_TITLE, versionTag.",
     "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-character-roster.js - renderCharacterRoster.",
     "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; class-aware action bar presents kit/cooldowns in slots 1-3 unless saved spellBar entries override.",
     "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise, mending and PvP zone/death handling.",
@@ -247,7 +247,7 @@
     "realm-save refreshRealmList → player.state.realmList: pulse/character counts and global hero counts drive population, awake and least-populated-Normal recommendation; realmDetail queries top heroes and recent realm_firsts.",
     "main-menu-mgr realm-list actions → realm-save refreshes selection detail; joinRealm refuses displayed Full realm, otherwise api.cross enters its room.",
     "Character creation race/class → lib/races.js race start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot; each realm has an independent roster.",
-    "templates/player.js order → locomotion → movement → class handlers including Shade → quest-player → vendor → trades → flight → vitality → cursor-free → region-music; movement/camera intents are consumed by player.js/wow-move.js under place gravity.",
+    "templates/player.js order → locomotion → movement → class handlers including Shade → quest-player → vendor → trades → flight → vitality → cursor-free → region-music; movement/camera intents are consumed by player.js/wow-move.js under place configuration.",
     "First in-world quest-player update/input for a created hero in main or hollowcrypt → dynamic import scripts/quest-core.js; subsequent input/update delegate there, while ears.kill is handled immediately by the lightweight wrapper.",
     "Interact/E → quest-core resolves NPCs, talkers, readable props, caches, timber and quest marks; quests.yml + quest-data define mechanics, quest-text.js supplies dialogue and ui-quest renders it.",
     "In main, scripts/trades.js lazy-loads trades-core on the hero's first eligible tick; E on gather-node/trade-station/auctioneer opens gathering, tradeOpen or ahOpen, and UI actions return to trades-core; trades.yml supplies definitions.",
@@ -270,6 +270,6 @@
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "state.xp remains cumulative while xpInto/xpToLevel are current-bar values; levels.yml owns total-XP anchors and progression cap 60, and class damage derives from configured damagePerLevel through lib/kit.js power.",
     "Monster managers target kill and coins events to the hero's own behaviors: quest-player ears.kill owns tally/XP persistence, vendor owns coin ledger/purse; do not mutate the remote hero save from the monster's machine.",
-    "Trade professionSkill/inventory changes are player state saved via _questSave; node depletion is a shared node state with timed regrow, but auction rows are realm-scoped SQL (conditional sale prevents double-buy) and proceeds/refunds settle via the seller's next visit."
+    "Trade professionSkill/inventory changes are player state saved via _questSave; node depletion is shared timed-regrow state, while auction rows are realm-scoped SQL with conditional sale and settlement on a later auction-house visit."
   ]
 }
