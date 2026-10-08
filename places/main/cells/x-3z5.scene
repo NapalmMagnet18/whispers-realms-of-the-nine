@@ -7,6 +7,56 @@ hc-reh-mark-0:
   rotation: {yaw: 0}
   state: {mark: loose_braid, quest: REH-11, say: "Over, under, through. You say the name as you knot it.", title: Loosened Name-Braid, verb: Retie}
   tags: [quest-mark, homecoming]
+reh-apoth-brew:
+  feetPosition: {x: -433.2846349162, y: 12.95, z: 589.6156065495645}
+  fx: {script: "fx\npop bubbles rate=6 on=disc(.4) life=.4..0.8 v=up(.3..0.6) size=.05..0.1 col=hdr(.8,2.6,.5) a=.8>0 sz=$size*(1>1.6) r=sprite(soft-disc,add)\npop steam rate=3 on=disc(.35) life=2..3 v=up(.7..1.1) size=.3..0.5 acc=buoy(.4)+curl(.4) sz=$size*(.5>2.5) col=<.55,.75,.5> a=0>.25:.2>0 r=sprite(smoke-puff,alpha)"}
+  id: reh-apoth-brew
+  light: {color: "#7dff6a", distance: 7, intensity: 4, kind: point}
+reh-apoth-bubble:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-cauldron-bubbling-thick-brew-loop.mp3, gain: 0.15, loop: true, maxDistance: 16, spatial: true}
+  feetPosition: {x: -433.2846349162, y: 13, z: 589.6156065495645}
+  id: reh-apoth-bubble
+reh-apoth-cauldron:
+  feetPosition: {x: -433.28, y: 12, z: 589.62}
+  id: reh-apoth-cauldron
+  physics: static
+  primitive: {kind: scripted, params: {kind: cauldron}, script: scripts/gen/apothecary.js}
+  rotation: {yaw: -33.7}
+  tags: [reh-apothecary]
+reh-apoth-dryrack:
+  feetPosition: {x: -438.61, y: 12, z: 586.79}
+  id: reh-apoth-dryrack
+  physics: static
+  primitive: {kind: scripted, params: {kind: dryrack, seed: 2}, script: scripts/gen/apothecary.js}
+  rotation: {yaw: -13.700000000000003}
+  tags: [reh-apothecary]
+reh-apoth-hut:
+  feetPosition: {x: -438, y: 12, z: 592}
+  id: reh-apoth-hut
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut}, script: scripts/gen/apothecary.js}
+  rotation: {yaw: -33.7}
+  tags: [reh-apothecary]
+reh-apoth-lamp:
+  feetPosition: {x: -434.6855077138416, y: 15.2, z: 591.0853192442187}
+  id: reh-apoth-lamp
+  light: {color: "#ffc070", distance: 10, intensity: 5, kind: point}
+reh-apoth-shelf:
+  feetPosition: {x: -441.22, y: 12, z: 590.34}
+  id: reh-apoth-shelf
+  physics: static
+  primitive: {kind: scripted, params: {kind: flaskshelf, seed: 3}, script: scripts/gen/apothecary.js}
+  rotation: {yaw: 56.3}
+  tags: [reh-apothecary]
+reh-npc-ysolde:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -437.5, y: 12.6, z: 591.25}
+  id: reh-npc-ysolde
+  model: /cdn/model-humanoid-fantasy-old-herbwife-hunched-green-shawl-reed-basket-silver-hair.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -33.7}
+  state: {homeYaw: -33.7, idle: idle, npcName: ysolde, who: ysolde, yaw: -33.7}
+  tags: [npc, talker, townsfolk]
 waystone-reedbound:
   feetPosition: {x: -430.5, y: 11.9, z: 579.36}
   id: waystone-reedbound
