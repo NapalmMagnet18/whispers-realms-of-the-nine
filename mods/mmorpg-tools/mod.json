@@ -1,0 +1,268 @@
+{
+  "name": "mmorpg-tools",
+  "displayName": "MMORPG Tools",
+  "description": "A prebuilt character creation screen, main menu and HUD for you to customise. Includes building/NPC and quest-giver UIs.",
+  "tags": [
+    "rpg",
+    "mmorpg",
+    "ui",
+    "hud",
+    "character-creation",
+    "menu",
+    "inventory",
+    "quest",
+    "gothic"
+  ],
+  "visibility": "public",
+  "version": "1.3.0",
+  "inputs": {
+    "actions": {
+      "jump": {
+        "keys": [
+          "space"
+        ]
+      },
+      "attack": {
+        "keys": [
+          "Digit1"
+        ]
+      },
+      "logout": {},
+      "sprint": {
+        "keys": [
+          "shift"
+        ],
+        "activeOn": "hold"
+      },
+      "menuTab": {},
+      "useFood": {},
+      "chatType": {},
+      "interact": {
+        "keys": [
+          "e"
+        ]
+      },
+      "openChat": {},
+      "sellItem": {},
+      "sendChat": {},
+      "useWater": {},
+      "castSlot2": {
+        "keys": [
+          "Digit2"
+        ]
+      },
+      "castSlot3": {
+        "keys": [
+          "Digit3"
+        ]
+      },
+      "castSlot4": {
+        "keys": [
+          "Digit4"
+        ]
+      },
+      "castSlot5": {
+        "keys": [
+          "Digit5"
+        ]
+      },
+      "castSlot6": {
+        "keys": [
+          "Digit6"
+        ]
+      },
+      "castSlot7": {
+        "keys": [
+          "Digit7"
+        ]
+      },
+      "castSlot8": {
+        "keys": [
+          "Digit8"
+        ]
+      },
+      "castSlot9": {
+        "keys": [
+          "Digit9"
+        ]
+      },
+      "closeChat": {},
+      "closeMenu": {},
+      "equipItem": {},
+      "guildKick": {},
+      "mouseLeft": {
+        "mouse": "left"
+      },
+      "musicMute": {},
+      "playMusic": {},
+      "playTrack": {},
+      "stopTrack": {},
+      "tipDonate": {},
+      "toggleMap": {
+        "keys": [
+          "m"
+        ]
+      },
+      "castSlot10": {
+        "keys": [
+          "Digit0"
+        ]
+      },
+      "castSlot11": {},
+      "castSlot12": {},
+      "guildLeave": {},
+      "leaveGuild": {},
+      "mouseRight": {
+        "mouse": "right"
+      },
+      "musicVolUp": {},
+      "removeBuff": {},
+      "selectRace": {},
+      "setChatTab": {},
+      "setMenuTab": {},
+      "toggleShop": {},
+      "acceptQuest": {},
+      "buyShopItem": {},
+      "clearTarget": {
+        "keys": [
+          "Escape"
+        ]
+      },
+      "createGuild": {},
+      "cycleOption": {},
+      "cycleTarget": {},
+      "guildInvite": {},
+      "selectClass": {},
+      "selectColor": {},
+      "selectSpell": {},
+      "setCharName": {},
+      "spendTalent": {},
+      "toggleGuild": {},
+      "toggleMusic": {},
+      "toggleUiArt": {},
+      "unequipItem": {},
+      "castFromBook": {},
+      "continueGame": {},
+      "declineQuest": {},
+      "goToMainMenu": {},
+      "hideControls": {},
+      "musicVolDown": {},
+      "selectGender": {},
+      "selectTalent": {},
+      "selectTarget": {},
+      "setTalentTab": {},
+      "spellDragEnd": {},
+      "spellbarDrop": {},
+      "toggleQuests": {},
+      "useRunestone": {},
+      "cancelNewChar": {},
+      "completeQuest": {},
+      "forceCreation": {},
+      "guildChatSend": {},
+      "moveDoorPanel": {},
+      "openGuildJoin": {},
+      "spellbookPage": {},
+      "submitTalents": {},
+      "toggleFriends": {},
+      "toggleKeyring": {},
+      "toggleTalents": {},
+      "useManaPotion": {},
+      "closeDoorPanel": {},
+      "closeGuildJoin": {},
+      "closeZonePopup": {},
+      "confirmNewChar": {},
+      "dismissWelcome": {},
+      "purchaseSpoins": {},
+      "shopSelectItem": {},
+      "spellDragStart": {},
+      "spellbarRemove": {},
+      "toggleChatLock": {},
+      "toggleMenuLock": {},
+      "toggleSettings": {},
+      "toggleTipModal": {},
+      "toggleWorldMap": {},
+      "closeGuildPanel": {},
+      "deleteCharacter": {},
+      "learnProfession": {},
+      "selectCharacter": {},
+      "setInventoryTab": {},
+      "tipCustomDonate": {},
+      "tipFromReminder": {},
+      "toggleCharacter": {},
+      "toggleInventory": {},
+      "toggleSpellbook": {},
+      "useHealthPotion": {},
+      "cancelDeleteChar": {},
+      "closeQuestDialog": {},
+      "confirmCharacter": {},
+      "confirmJoinGuild": {},
+      "toggleHighscores": {},
+      "toggleSpoinsShop": {},
+      "assignSpellToSlot": {},
+      "confirmDeleteChar": {},
+      "guildAcceptInvite": {},
+      "selectSpellForBar": {},
+      "spellbookPageLeft": {},
+      "toggleNpcDialogue": {},
+      "toggleProfessions": {},
+      "toggleStatsWindow": {},
+      "dismissTipReminder": {},
+      "guildDeclineInvite": {},
+      "setHighscoreFilter": {},
+      "showNewCharConfirm": {},
+      "spellbookPageRight": {},
+      "toggleSpellBarLock": {},
+      "randomizeAppearance": {},
+      "toggleGuildCreation": {},
+      "togglePendingTalent": {},
+      "confirmLearnProfession": {},
+      "startCharacterCreation": {},
+      "toggleGuildInviteInput": {},
+      "closeProfessionDialogue": {}
+    },
+    "axes": {
+      "lookX": {
+        "mouse": "deltaX",
+        "gamepad": "rightStickX"
+      },
+      "lookY": {
+        "mouse": "deltaY",
+        "gamepad": "rightStickY"
+      },
+      "moveX": {
+        "keys": "a/d"
+      },
+      "moveZ": {
+        "keys": "w/s"
+      },
+      "zoomIn": {
+        "mouse": "wheelY"
+      },
+      "aimPitchN": {},
+      "aimYawCos": {},
+      "aimYawSin": {}
+    }
+  },
+  "attach": [
+    {
+      "target": {
+        "kind": "player"
+      },
+      "behavior": [
+        "mods/mmorpg-tools/mod-mmorpg/player.js",
+        "mods/mmorpg-tools/mod-mmorpg/character-select.js",
+        "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js",
+        "mods/mmorpg-tools/mod-mmorpg/menu-camera.js"
+      ]
+    },
+    {
+      "target": {
+        "kind": "camera"
+      },
+      "behavior": [
+        "mods/mmorpg-tools/mod-mmorpg/camera.js",
+        "mods/mmorpg-tools/mod-mmorpg/camera-creation.js"
+      ]
+    }
+  ]
+}
