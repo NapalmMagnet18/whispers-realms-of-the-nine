@@ -42,3 +42,10 @@ Regions are ground, roads and landmarks only: no NPCs, quests or enemies there y
 - 2026-10-08: every join, rejoin, realm link or portal lands on the realm gate main menu (was: a rejoin landed where you last stood). Only Enter World and Create step past it. @whispers: "anyone and everyone who joins from any part loads into the starting main menu every time". Code: scripts/arrival.js.
 
 - 2026-10-08: continent grown to ~19 km east-west and ~9 km north. New frontiers: The Ninth Veil (z < -6400, violet crystal plateau, Veilgate Aerie at 30,-7560) and Ashfall Reaches (x > 6400, black volcanic shelves, Emberstone Bastion at 7560,-170), each reached by a graded road (road-ninthveil from Frostveil, road-bastion from Sunscar). Gryphon roosts (scripts/lib/data/flights.yml, 11 of them): walking within 22 m learns a roost (saved per character as roosts), E at a roost opens the flight map, fare 0.25 copper per 100 m, a flight lasts 18-80 s. Asked for "fly to each area in the select few way like world of warcraft".
+
+## 2026-10-08 · Marchfolk origin slice (#14489)
+- Marchborn (raceIndex 0) now wake in Lantern Ward, a walled quarter north of the Reach (centre 0,-100), gate at z -71.
+- MAR-01..MAR-08 live in scripts/lib/data/quests.yml with their bible IDs; givers follow the bible (Elric, Dren, Bram, Vale, Mira).
+- Q001 carries `origin: { race: 0, quest: MAR-08 }`: Marchborn walk the origin first; other peoples and saves already past Q001 are unchanged.
+- Item rewards pay after the completed flag (once); a full bag keeps them in owedItems. marks, questFlags, owedItems now save with the character.
+- MAR-08's choice (display vs archive the plaque) is a personal questFlag, never shared world state.
