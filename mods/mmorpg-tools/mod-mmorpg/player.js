@@ -796,8 +796,21 @@ export function update(objectApi, dt) {
 }
 
 // ─── INPUT ───────────────────────────────────────────────────────
+// UI sounds from the creator's pack: parchment for the book-like panels, a soft click for every other button
+var UI_SCROLL = ['toggleQuests', 'toggleSpellbook', 'toggleMap', 'toggleWorldMap', 'toggleTalents', 'toggleProfessions'];
+var UI_SND = { scroll: '/cdn/sfx-scroll-paper-unroll-magic-r41hu1b5.mp3', click: '/cdn/sfx-menu-select-click-hxtrmn8i.mp3', toggle: '/cdn/sfx-toggle-switch-ui-click-uz2we2q1.mp3' };
+function uiSound(objectApi, input) {
+  var acts = input.actions || {};
+  for (var i = 0; i < UI_SCROLL.length; i++) if (acts[UI_SCROLL[i]]) { objectApi.playSound(UI_SND.scroll, { volume: 0.25 }); return; }
+  for (var k in acts) {
+    if (!acts[k]) continue;
+    if (k.indexOf('toggle') === 0) { objectApi.playSound(UI_SND.toggle, { volume: 0.22 }); return; }
+    if (input.actionData && input.actionData[k]) { objectApi.playSound(UI_SND.click, { volume: 0.2 }); return; }
+  }
+}
 export function onInput(objectApi, input) {
   var s = objectApi.getState();
+  uiSound(objectApi, input);
 
   // ── HANG GLIDER — glider script owns input, skip movement ──
   if (s.onGlider) return;

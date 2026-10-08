@@ -156,7 +156,7 @@ export function onInteract(objectApi, other) {
         rewards: quest.rewards
       }
     });
-    objectApi.playSound('cdn/sfx-parchment-scroll-open.mp3', {
+    objectApi.playSound('/cdn/sfx-scroll-open-magic-parchment-yk3iu4k0.mp3', {
       position: objectApi.getProperty('feetPosition'),
       volume: 0.3
     });
@@ -190,7 +190,7 @@ export function onInteract(objectApi, other) {
             turnIn: true
           }
         });
-        objectApi.playSound('cdn/sfx-parchment-scroll-open.mp3', {
+        objectApi.playSound('/cdn/sfx-scroll-open-magic-parchment-yk3iu4k0.mp3', {
           position: objectApi.getProperty('feetPosition'),
           volume: 0.3
         });
@@ -200,7 +200,7 @@ export function onInteract(objectApi, other) {
           color: 'oklch(0.65 0.15 250)',
           audience: { kind: 'player', id: other.id }
         });
-        objectApi.playSound('cdn/sfx-parchment-scroll-open.mp3', {
+        objectApi.playSound('/cdn/sfx-scroll-open-magic-parchment-yk3iu4k0.mp3', {
           position: objectApi.getProperty('feetPosition'),
           volume: 0.18
         });
