@@ -28,7 +28,7 @@ export function material(ctx) {
   const isLeaf = step(5.0, uv().x);
   const leafUV = vec2(uv().x.fract(), uv().y.fract());
   const leaf = ctx.texture(K.leaf).sample(leafUV);
-  const cut = K.mask ? ctx.texture(K.mask).sample(leafUV).r : leaf.a;
+  const cut = K.mask ? ctx.texture(K.mask).sample(leafUV).r.min(leaf.a) : leaf.a;
   const leafCol = leaf.rgb.mul(ctx.param("leafGain", K.gain));
   const body = mix(barkCol, leafCol, isLeaf).mul(tint);
   const keep = mix(float(1), cut, isLeaf);
