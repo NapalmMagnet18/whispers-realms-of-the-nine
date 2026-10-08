@@ -37,3 +37,21 @@ rowan:
     - "Ferryman by title, bridge-keeper by trade. The river ate my boat years back, so the town built me this bridge instead."
     - "West bank's the Briarwild. Keep to the path; the moss hides roots that'll snap an ankle clean."
     - "Copper glints east, timber groans west, and the water just keeps on south to the sea. Me, I watch it go."
+ysolde:
+  name: Warden Ysolde
+  lines:
+    - "The Veil thins every night. Something on the other side is listening."
+    - "I keep the last fire before the world ends. Warm your hands, then tell me why you came this far north."
+    - "The gate was broken before the Reach had a name. We don't mend it. We watch it."
+maelis:
+  name: Sister Maelis
+  lines:
+    - "These crystals hum in the nine tones. Eight we know."
+    - "Lay your palm on one at dusk. If it hums back, it has learned your name. Try not to let it."
+    - "The runes on the obelisks are a warning, not a welcome. I've translated three words: 'stay', 'close', 'listening'."
+kestrel:
+  name: Kestrel the Scout
+  lines:
+    - "Past the arch, the ground stops making sense. Don't go alone."
+    - "I've seen rocks float up off that ridge like bubbles from a pond. They never come down."
+    - "Need to get out fast? The roostmaster's gryphon will take you south. Just don't look back at the gate when you lift off."
