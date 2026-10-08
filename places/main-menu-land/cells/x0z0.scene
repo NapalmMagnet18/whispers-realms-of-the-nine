@@ -56,25 +56,35 @@ rg-gatelight:
   id: rg-gatelight
   light: {color: "#f2b04a", distance: 95, intensity: 1600, kind: point, shadow: {enabled: false}}
   tags: [realm-gate]
+rg-lamp-l1:
+  feetPosition: {x: -2.9, y: 2.5, z: 1}
+  id: rg-lamp-l1
+  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  tags: [realm-gate]
 rg-lamp-l2:
   feetPosition: {x: -2.9, y: 2.5, z: -7}
   id: rg-lamp-l2
-  light: {color: "#f2b04a", distance: 9, intensity: 4, kind: point}
+  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
   tags: [realm-gate]
 rg-lamp-l3:
   feetPosition: {x: -2.9, y: 2.5, z: -14}
   id: rg-lamp-l3
-  light: {color: "#f2b04a", distance: 9, intensity: 4, kind: point}
+  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  tags: [realm-gate]
+rg-lamp-r1:
+  feetPosition: {x: 2.9, y: 2.5, z: 1}
+  id: rg-lamp-r1
+  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
   tags: [realm-gate]
 rg-lamp-r2:
   feetPosition: {x: 2.9, y: 2.5, z: -7}
   id: rg-lamp-r2
-  light: {color: "#f2b04a", distance: 9, intensity: 4, kind: point}
+  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
   tags: [realm-gate]
 rg-lamp-r3:
   feetPosition: {x: 2.9, y: 2.5, z: -14}
   id: rg-lamp-r3
-  light: {color: "#f2b04a", distance: 9, intensity: 4, kind: point}
+  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
   tags: [realm-gate]
 rg-lantern-l1:
   castShadow: true
