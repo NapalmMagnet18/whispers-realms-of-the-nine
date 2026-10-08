@@ -1,4 +1,219 @@
 # spawn-scene v2 yaml x-1z0
+briar-boulders:
+  feetPosition: {x: -118, y: {terrain: 0}, z: -24}
+  id: briar-boulders
+  scatter: {bounds: {radius: 64, shape: circle}, count: 46, templates: [{feetPosition: {x: 0, y: -0.35, z: 0}, model: /cdn/value.917ea8f038b8f1f1494ec5f0013672174af9e9b818a3bee789dac7f0a18b6d53.glb, physics: {body: static, collider: mesh}, weight: 1}, {feetPosition: {x: 0, y: -0.35, z: 0}, model: /cdn/value.a5c53f4a75cbc4dd4cd41b5d2e47cd434f8945c5077f18c7de1c3581e93f708c.glb, physics: {body: static, collider: mesh}, weight: 1}, {feetPosition: {x: 0, y: -0.35, z: 0}, model: /cdn/value.442ed9843e4b374b29c07714a74e1184bd041d46326156de519d7691cde341c8.glb, physics: {body: static, collider: mesh}, weight: 1}], variation: {scale: [0.6, 1.6], yaw: [0, 360]}}
+  tags: [briar-kit]
+briar-mush-0-1:
+  feetPosition: {x: -65.11066143011969, y: {terrain: 0}, z: -0.10093939337247759}
+  id: briar-mush-0-1
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 119.7
+  scale: 1.25
+  tags: [briar-kit]
+briar-mush-0-2:
+  feetPosition: {x: -65.07857380694954, y: {terrain: 0}, z: -3.917466699309894}
+  id: briar-mush-0-2
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 239.4
+  scale: 1.5
+  tags: [briar-kit]
+briar-mush-1-0:
+  feetPosition: {x: -75.07857380694954, y: {terrain: 0}, z: -25.917466699309895}
+  id: briar-mush-1-0
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 239.4
+  scale: 1
+  tags: [briar-kit]
+briar-mush-1-1:
+  feetPosition: {x: -71.80031099995648, y: {terrain: 0}, z: -23.96300941893443}
+  id: briar-mush-1-1
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 359.1
+  scale: 1.25
+  tags: [briar-kit]
+briar-mush-1-2:
+  feetPosition: {x: -75.1424350390567, y: {terrain: 0}, z: -22.119882402205782}
+  id: briar-mush-1-2
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 478.8
+  scale: 1.5
+  tags: [briar-kit]
+briar-mush-2-0:
+  feetPosition: {x: -91.1424350390567, y: {terrain: 0}, z: -4.119882402205783}
+  id: briar-mush-2-0
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 478.8
+  scale: 1
+  tags: [briar-kit]
+briar-mush-2-1:
+  feetPosition: {x: -91.04618124159119, y: {terrain: 0}, z: -7.935330671937674}
+  id: briar-mush-2-1
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 598.5
+  scale: 1.25
+  tags: [briar-kit]
+briar-mush-2-2:
+  feetPosition: {x: -87.80124391189779, y: {terrain: 0}, z: -5.926029296113495}
+  id: briar-mush-2-2
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 718.2
+  scale: 1.5
+  tags: [briar-kit]
+briar-mush-3-0:
+  feetPosition: {x: -95.80124391189779, y: {terrain: 0}, z: -39.9260292961135}
+  id: briar-mush-3-0
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 718.2
+  scale: 1
+  tags: [briar-kit]
+briar-mush-3-1:
+  feetPosition: {x: -99.17388565049606, y: {terrain: 0}, z: -38.13935697148555}
+  id: briar-mush-3-1
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 837.9000000000001
+  scale: 1.25
+  tags: [briar-kit]
+briar-mush-3-2:
+  feetPosition: {x: -99.013492892305, y: {terrain: 0}, z: -41.95264747387931}
+  id: briar-mush-3-2
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 957.6
+  scale: 1.5
+  tags: [briar-kit]
+briar-mush-4-0:
+  feetPosition: {x: -115.013492892305, y: {terrain: 0}, z: -13.95264747387931}
+  id: briar-mush-4-0
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 957.6
+  scale: 1
+  tags: [briar-kit]
+briar-mush-4-1:
+  feetPosition: {x: -111.8027984720643, y: {terrain: 0}, z: -11.889070086825008}
+  id: briar-mush-4-1
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 1077.3000000000002
+  scale: 1.25
+  tags: [briar-kit]
+briar-mush-4-2:
+  feetPosition: {x: -115.20500437249339, y: {terrain: 0}, z: -10.159357595220676}
+  id: briar-mush-4-2
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 1197
+  scale: 1.5
+  tags: [briar-kit]
+briar-pines:
+  feetPosition: {x: -140, y: {terrain: 0}, z: -20}
+  id: briar-pines
+  scatter: {bounds: {radius: 60, shape: circle}, count: 110, templates: [{feetPosition: {x: 0, y: -0.2, z: 0}, model: /cdn/value.d24c34ef207660dc55dbfc5cac9826963f590d656e6de4c0d5fb70f55b2b354f.glb, physics: {body: static, collider: capsule}, weight: 1}, {feetPosition: {x: 0, y: -0.2, z: 0}, model: /cdn/value.5ca5896d6be6e43ca3372da454ba530fd3748384982bc69f420737ed06dfa460.glb, physics: {body: static, collider: capsule}, weight: 1}, {feetPosition: {x: 0, y: -0.2, z: 0}, model: /cdn/value.918d59d2d5ffbbe6158b0b81bb7eb323143ae5f170465b57017a0bc33ef00e41.glb, physics: {body: static, collider: capsule}, weight: 1}, {feetPosition: {x: 0, y: -0.2, z: 0}, model: /cdn/value.c1f6901872566d848eefa5f97ae3935fa5267189d45f1fc506659631266fadd8.glb, physics: {body: static, collider: capsule}, weight: 1}, {feetPosition: {x: 0, y: -0.2, z: 0}, model: /cdn/value.0a4c247c8e2b660a52bdc309513273cfe7141be33436462df157ff17a0d90e4b.glb, physics: {body: static, collider: capsule}, weight: 1}], variation: {scale: [0.9, 1.5], yaw: [0, 360]}}
+  tags: [forest, briar-kit]
+briar-stone-0:
+  feetPosition: {x: -104, y: {terrain: -0.04}, z: -26}
+  id: briar-stone-0
+  model: /cdn/value.12ce25726a89c7f25d682cfa29aeaf1fb2bb7443fd7488b1d5366443238e34f8.glb
+  rotation: 0
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-1:
+  feetPosition: {x: -108.5, y: {terrain: -0.04}, z: -27.5}
+  id: briar-stone-1
+  model: /cdn/value.690de3f73f1630559ef45deb0d63af77f734d1157280e2bd88093807e9c9651a.glb
+  rotation: 53
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-2:
+  feetPosition: {x: -113, y: {terrain: -0.04}, z: -29.5}
+  id: briar-stone-2
+  model: /cdn/value.1ef21076863b20697d45fca8afb74da2a1490c920f6af49786ac1f401f073a0c.glb
+  rotation: 106
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-3:
+  feetPosition: {x: -117, y: {terrain: -0.04}, z: -32}
+  id: briar-stone-3
+  model: /cdn/value.538ecc960b770f93750f1fbb2431adedbb08d08e660a25543e8016df0113e7ad.glb
+  rotation: 159
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-4:
+  feetPosition: {x: -121, y: {terrain: -0.04}, z: -34.5}
+  id: briar-stone-4
+  model: /cdn/value.a2ca8becc5de509a4faa0329860be5cd81c6dd987d83dca9d9c26d7e8d15d3c6.glb
+  rotation: 212
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-5:
+  feetPosition: {x: -125.5, y: {terrain: -0.04}, z: -36}
+  id: briar-stone-5
+  model: /cdn/value.62ff3ca212527beb4b2bad9f5506e4c8961ff9ad65dbaacb15de4c2366ba09b0.glb
+  rotation: 265
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-6:
+  feetPosition: {x: -130, y: {terrain: -0.04}, z: -37}
+  id: briar-stone-6
+  model: /cdn/value.12ce25726a89c7f25d682cfa29aeaf1fb2bb7443fd7488b1d5366443238e34f8.glb
+  rotation: 318
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-7:
+  feetPosition: {x: -134.5, y: {terrain: -0.04}, z: -39}
+  id: briar-stone-7
+  model: /cdn/value.690de3f73f1630559ef45deb0d63af77f734d1157280e2bd88093807e9c9651a.glb
+  rotation: 371
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-8:
+  feetPosition: {x: -139, y: {terrain: -0.04}, z: -41.5}
+  id: briar-stone-8
+  model: /cdn/value.1ef21076863b20697d45fca8afb74da2a1490c920f6af49786ac1f401f073a0c.glb
+  rotation: 424
+  scale: 1.1
+  tags: [briar-kit]
+briar-stone-9:
+  feetPosition: {x: -143, y: {terrain: -0.04}, z: -44}
+  id: briar-stone-9
+  model: /cdn/value.538ecc960b770f93750f1fbb2431adedbb08d08e660a25543e8016df0113e7ad.glb
+  rotation: 477
+  scale: 1.1
+  tags: [briar-kit]
+briar-twisted-1:
+  feetPosition: {x: -74, y: {terrain: -0.15}, z: -24}
+  id: briar-twisted-1
+  model: /cdn/value.fd95dd67b0fef8bb3999e94361fa03d4c22c6fcb32dc9a572598a152c5661a6c.glb
+  physics: {body: static, collider: capsule}
+  rotation: 71
+  scale: 0.85
+  tags: [forest, briar-kit]
+briar-twisted-2:
+  feetPosition: {x: -90, y: {terrain: -0.15}, z: -6}
+  id: briar-twisted-2
+  model: /cdn/value.3ea2d0896499eeb332d1050b9a9fa725e7aca746cd3e9c3b949370d360ee1fc0.glb
+  physics: {body: static, collider: capsule}
+  rotation: 142
+  scale: 0.95
+  tags: [forest, briar-kit]
+briar-twisted-3:
+  feetPosition: {x: -98, y: {terrain: -0.15}, z: -40}
+  id: briar-twisted-3
+  model: /cdn/value.23b6a0538e70ed952dab913ba236fc178e50412d4f3fffe7828cf3a137da93ff.glb
+  physics: {body: static, collider: capsule}
+  rotation: 213
+  scale: 0.75
+  tags: [forest, briar-kit]
+briar-twisted-4:
+  feetPosition: {x: -114, y: {terrain: -0.15}, z: -12}
+  id: briar-twisted-4
+  model: /cdn/value.d61c503ed1ee8fd6d83599df0f91f7516ae3c97da7e547c690bfab872bd81790.glb
+  physics: {body: static, collider: capsule}
+  rotation: 284
+  scale: 0.85
+  tags: [forest, briar-kit]
+briar-undergrowth:
+  feetPosition: {x: -120, y: {terrain: 0}, z: -22}
+  id: briar-undergrowth
+  scatter: {bounds: {radius: 66, shape: circle}, count: 480, templates: [{model: /cdn/value.dfd7a6e41f3e3432bc71bd2abb438ffda85273438378a234058ba799b1cf9e1e.glb, weight: 4}, {model: /cdn/value.9fcb9aae2f178ac8e7727e11b3cdae8aa7116ac627758076373093e081f7dd2b.glb, weight: 1}, {model: /cdn/value.3be3450f71803361eabb7a9d8f521199dd2278d78cc640b6f68e4c17a1b0fd4e.glb, weight: 3}, {model: /cdn/value.f6a5f2cc3ae89ececf13b231c784ef3264c2bd8bafb9088a27a642043487bb63.glb, weight: 2}, {model: /cdn/value.6d1658e7f2a3ea09559f9d7cb0975f03d36250c6212b62357214b0b819640605.glb, weight: 4}, {model: /cdn/value.1b3dfa6c9e39eb3f77f598274b2cb936f33e7bb8991dfc8b26c0e1e24fa37021.glb, weight: 4}, {model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb, weight: 2}, {model: /cdn/value.9e5e26478753e9acfc04265fa3f9fcb3ef42f8d83e6b60510d670218d2c6bfee.glb, weight: 1.2}], variation: {scale: [0.6, 1.2], yaw: [0, 360]}}
+  tags: [briar-kit]
 thornwood-pines:
   feetPosition: {x: -130, y: {terrain: 0}, z: -30}
   id: thornwood-pines

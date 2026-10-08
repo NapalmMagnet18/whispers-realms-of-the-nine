@@ -281,6 +281,21 @@ briar-bridge:
   primitive: {kind: scripted, params: {L: 22, W: 4.2, arch: 8, depth: 3.4785774302901418, rise: 1.4}, script: scripts/gen/stone-bridge.js}
   rotation: 0
   tags: [bridge]
+briar-mush-0-0:
+  feetPosition: {x: -61.8, y: {terrain: 0}, z: -2}
+  id: briar-mush-0-0
+  model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb
+  rotation: 0
+  scale: 1
+  tags: [briar-kit]
+briar-twisted-0:
+  feetPosition: {x: -64, y: {terrain: -0.15}, z: -2}
+  id: briar-twisted-0
+  model: /cdn/value.0e48a63e9857dffb44960613eb14621924d045f5d049ad31d793f5c4db0fd6cd.glb
+  physics: {body: static, collider: capsule}
+  rotation: 0
+  scale: 0.75
+  tags: [forest, briar-kit]
 cottage-e:
   children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
   feetPosition: {x: 31, y: 4, z: -20}
