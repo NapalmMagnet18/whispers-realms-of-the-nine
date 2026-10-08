@@ -4,6 +4,7 @@ import { coastD } from "../terrain-reach.js";
 export const REGIONS = [
   { id: "sea", name: "The Shrouded Sea", test: (x, z) => coastD(x, z) > 1.0 },
   { id: "reach", name: "Lantern's Reach", x: 0, z: 0, r: 70 },
+  { id: "ashen", name: "Ashen Close", x: 128, z: -185, r: 46 },
   { id: "thornhollow", name: "Thornhollow", x: -720, z: 70, r: 60 },
   { id: "cinderhold", name: "Cinderhold", x: 900, z: -170, r: 60 },
   { id: "gullrest", name: "Gullrest", x: 250, z: 1430, r: 60 },
