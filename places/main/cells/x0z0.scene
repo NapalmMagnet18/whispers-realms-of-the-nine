@@ -1690,7 +1690,7 @@ reach-smith-rack-0:
   id: reach-smith-rack-0
   physics: static
   primitive: {kind: scripted, params: {kind: weaponrack}, script: scripts/gen/armory.js}
-  rotation: {yaw: -146}
+  rotation: {yaw: 34}
   tags: [smith-yard]
 reach-smith-ring:
   audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-blacksmith-hammer-on-anvil-slow-rhythm-loop.mp3, gain: 0.18, loop: true, maxDistance: 28, spatial: true}
