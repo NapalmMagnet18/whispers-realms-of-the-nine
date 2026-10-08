@@ -137,3 +137,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Zone entry sting (enter/discover, discoveredZones saved per character) in region-music.js; gryphon flight wing+wind loop heard by the rider alone (flight.js spawn audio row).
 - 2026-10-08: Level-up made public: golden column + motes fx and choir/bell chord heard within 60 m, shockwave, music ducked 3 s (quest-core syncLevel).
 - 2026-10-08: WoW-style NPC greeting barks: greet-voices.yml (6 voice types x3 lines, cast by base name), quest-core bark() on E, 6 s cooldown per resident, Voice bus, heard by the presser.
+- 2026-10-08: Kill-tally quest cues (quest-player tallyCue): count text + quill tick, filled chime, ready-to-turn-in bell + 'return to X'; accept plays parchment unroll + seal snap.

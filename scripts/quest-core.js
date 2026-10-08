@@ -166,7 +166,7 @@ function accept(ctx, questId) {
   if (!q || !getAvailableQuests(q.giverNpcId, st).some((x) => x.id === questId)) return; // done or already active: nothing
   st.activeQuests = [...(st.activeQuests || []), questToActiveFormat(q, st)];
   st._questSave = true;
-  ctx.emit('playSound', { clip: '/cdn/question-prompt-chime-notification-jtcgt1r9.mp3', position: ctx.self.feetPosition, volume: 0.35, pitch: 1.2 }, { audience: { player: ctx.self.id } });
+  ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-quest-accepted-parchment-scroll-unrolling-and-wax-seal-snap.mp3', volume: 0.55 }, { audience: { player: ctx.self.id } });
 }
 
 // The claim: the completed flag lands FIRST; a second press, a stale dialog or a reconnect finds it and pays nothing.

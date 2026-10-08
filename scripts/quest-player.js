@@ -14,11 +14,30 @@ export const ears = {
   kill: (ctx, k) => {
     const st = ctx.self.state, tk = String((k && k.tally) || ''), xp = Math.max(0, Math.trunc(Number(k && k.xp) || 0));
     if (tk) st.tally = { ...(st.tally || {}), [tk]: ((st.tally || {})[tk] || 0) + 1 };
+    if (tk) tallyCue(ctx, st, tk);
     if (xp) st.xp = (typeof st.xp === 'number' ? st.xp : 0) + xp;
     if (k && k.loot) loot(ctx, String(k.loot));
     st._questSave = true;
   },
 };
+// a counted objective answers each kill: the count floats up with a quill tick; a filled objective chimes; a finished quest rings
+const QSND = {
+  tick: '/cdn/moodboard-painterly-fantasy/sfx-quill-pen-quick-scratch-on-parchment-tick.mp3',
+  filled: '/cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3',
+  ready: '/cdn/moodboard-painterly-fantasy/sfx-quest-ready-to-turn-in-bright-bell-ring-and-soft-harp-glissando.mp3',
+};
+function tallyCue(ctx, st, tk) {
+  const n = (st.tally || {})[tk] || 0, fp = ctx.self.feetPosition, me = { audience: { player: ctx.self.id } };
+  for (const aq of st.activeQuests || []) {
+    if (!aq || !aq.objectives) continue;
+    const o = aq.objectives.find((x) => x.key === tk); if (!o) continue;
+    const cur = n - ((aq.baseline || {})[tk] || 0); if (cur < 1 || cur > o.target) continue;
+    const done = aq.objectives.every((x) => (x.key === tk ? cur : Math.min(x.target, ((st.tally || {})[x.key] || 0) - ((aq.baseline || {})[x.key] || 0))) >= x.target);
+    ctx.emit('damageNumber', { position: { x: fp.x, y: fp.y + 2.4, z: fp.z }, text: (o.desc || tk) + ': ' + cur + '/' + o.target, color: cur >= o.target ? '#f2d48a' : '#e8d9b5', size: 0.95, lifetime: 2 }, me);
+    ctx.emit('playSound', { clip: done ? QSND.ready : cur >= o.target ? QSND.filled : QSND.tick, volume: done ? 0.6 : 0.45, pitch: cur >= o.target ? 1 : 0.95 + ctx.random() * 0.1 }, me);
+    if (done) ctx.emit('damageNumber', { position: { x: fp.x, y: fp.y + 3, z: fp.z }, text: aq.title + ' complete: return to ' + (aq.turnInName || aq.giverName || 'the giver'), color: '#f2d48a', size: 1.1, lifetime: 3.2 }, me);
+  }
+}
 // one piece of boss gear per hero per boss per week (gear.yml); a full bag keeps it owed like a quest reward
 function loot(ctx, boss) {
   const table = GEAR.loot?.[boss]; if (!table?.length) return;
