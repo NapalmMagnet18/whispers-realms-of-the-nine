@@ -309,9 +309,158 @@ THR-08:
     - { key: reach_visits, desc: "Travel to Lantern's Reach", target: 1 }
   rewards: { copper: 200, xp: 80 }
 
+KHA-01:
+  id: KHA-01
+  race: 2   # Emberforged (Kharic) origin only
+  title: First Chisel
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  giverNpcId: cradle-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  text: "New hands, and you haven't even got a chisel yet. Go and pull ore from the two copper seams past the rails, then bring it to the stump bench and mend that novice chisel. A cutter who can't mend her own tool can't be trusted with anyone else's."
+  progressText: "Two seams of copper past the rails, then mend the chisel at the stump bench."
+  turnInText: "Strike it on the bench. Hear that? Two notes. A chisel only rings once. Keep it close, and keep quiet about it for now."
+  doneText: "Kiv wants a word. He always wants a word."
+  refusedText: "That chisel's yours already."
+  objectives:
+    - { key: copper_node, desc: "Mine the copper seams", target: 2 }
+    - { key: novice_chisel, desc: "Mend the novice chisel", target: 1 }
+  rewards: { xp: 40, copper: 60, items: [training_chisel] }
+
+KHA-02:
+  id: KHA-02
+  race: 2   # Emberforged (Kharic) origin only
+  title: Stones That Should Be Silent
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  requires: [KHA-01]
+  giverNpcId: cradle-npc-kiv
+  giverName: Quarry Foreman Kiv
+  text: "Pillars on the east cut are cracking and the crews say they hum. Stone doesn't hum. Look at the three cracked pillars, then take the tuning hammer off its stand and prove it, one way or the other. I've a quota to meet."
+  progressText: "Inspect the three cracked pillars on the east cut, then strike them with the tuning hammer."
+  turnInText: "Letters. You're telling me the cracks run in letters? In a script nobody alive can read? ...Don't put that in the shift log."
+  doneText: "Dren's counting tokens and coming up short. Help him."
+  refusedText: "You've done your looking."
+  objectives:
+    - { key: cracked_pillar, desc: "Inspect the cracked pillars", target: 3 }
+    - { key: pillar_tone, desc: "Compare their tones with the tuning hammer", target: 1 }
+  rewards: { xp: 55, copper: 80, items: [ore_chips] }
+
+KHA-03:
+  id: KHA-03
+  race: 2   # Emberforged (Kharic) origin only
+  title: The Closed Shift
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  requires: [KHA-02]
+  giverNpcId: cradle-npc-dren
+  giverName: Quartermaster Dren
+  text: "Three brass shift tokens turned up in the spoil heaps. Stamped, numbered, Guild issue. Fetch them, then check them against the roster board. I'll pay for the tokens either way, but I'd like to know whose they are."
+  progressText: "Find three shift tokens in the spoil, then check them against the roster board."
+  turnInText: "Not on the roster. Not on any roster. A whole crew that was never paid, never fed, never counted. That isn't a clerk's error, friend."
+  doneText: "Yurra's at the hall. Show her the tokens."
+  refusedText: "Tokens are counted."
+  objectives:
+    - { key: shift_token, desc: "Recover the shift tokens", target: 3 }
+    - { key: missing_crew, desc: "Count the missing miners on the roster", target: 1 }
+  rewards: { xp: 60, copper: 150 }
+
+KHA-04:
+  id: KHA-04
+  race: 2   # Emberforged (Kharic) origin only
+  title: Resonance Underfoot
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  requires: [KHA-03]
+  giverNpcId: cradle-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  text: "The old training tunnel under the west hall has two tuning stones. We used them to teach apprentices to hear a bad seam. Wake them both. If the floor answers, I want to know what it says."
+  progressText: "Wake the two tuning stones by the west hall."
+  turnInText: "Both stones, and the floor sang back in two voices. One of them was mine, from twenty years ago. I said those words on my first shift."
+  doneText: "Mira's down from the Reach with her bellows. She wants to see what you dig up."
+  refusedText: "The stones are awake."
+  objectives:
+    - { key: tuning_stone, desc: "Wake the tuning stones", target: 2 }
+  rewards: { xp: 70, copper: 90, items: [tuning_stone] }
+
+KHA-05:
+  id: KHA-05
+  race: 2   # Emberforged (Kharic) origin only
+  title: The Lighter Vein
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  requires: [KHA-04]
+  giverNpcId: cradle-npc-mira
+  giverName: Mira the Forgekeeper
+  text: "I came up from the Reach because they told me the bellglass here runs lighter than copper. Smelt me a bar at the forge, then set it beside the shard on the anvil horn. Tell me which one feels heavier in your hand."
+  progressText: "Smelt a copper bar at the forge, then compare it with the bellglass shard."
+  turnInText: "The glass. Of course the glass. It isn't ore, cutter. It's something said and never let out. Pressed down. Every cart they sell is somebody's held breath."
+  doneText: "Kiv's shouting about the tunnel mouth again. Go."
+  refusedText: "Bar's cooled."
+  objectives:
+    - { key: copper_bar, desc: "Smelt a copper bar", target: 1 }
+    - { key: bellglass_compare, desc: "Compare it with the bellglass shard", target: 1 }
+  rewards: { xp: 70, copper: 100, items: [novice_maul] }
+
+KHA-06:
+  id: KHA-06
+  race: 2   # Emberforged (Kharic) origin only
+  title: A Seal in the Wall
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  requires: [KHA-05]
+  giverNpcId: cradle-npc-kiv
+  giverName: Quarry Foreman Kiv
+  text: "Scavengers came up out of the north tunnel mouth last night and they're digging where nobody ordered a dig. Drive three of them off, then find what they were after. If it's ore, it's the Guild's. If it isn't, it's Yurra's problem."
+  progressText: "Drive off three scavengers at the north tunnel mouth, then recover what they uncovered."
+  turnInText: "Nine points. Rusted shut, and somebody hammered it shut from the outside. That sealed cut runs toward the old crypt road. ...It's Yurra's problem."
+  doneText: "Yurra's at the lintel stones. She asked for you by name."
+  refusedText: "The tunnel's quiet."
+  objectives:
+    - { key: tunnel_scavenger, desc: "Drive off the tunnel scavengers", target: 3 }
+    - { key: old_seal, desc: "Recover the old seal", target: 1 }
+  rewards: { xp: 90, copper: 160, items: [rust_seal] }
+
+KHA-07:
+  id: KHA-07
+  race: 2   # Emberforged (Kharic) origin only
+  title: Honest Stone
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  requires: [KHA-06]
+  giverNpcId: cradle-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  text: "The ancestors sealed that chamber knowing someone was still inside. I won't open it and I won't pretend it isn't there. The new lintel by the hall is blank. Cut the names from the tokens into it. Leave space. There will be more."
+  progressText: "Cut the lost miners' names into the new lintel by the hall."
+  turnInText: "There. Not a monument. A beginning. Leave the chisel ringing when you go, so they know someone heard."
+  doneText: "One more thing, and then the road."
+  refusedText: "The names are cut."
+  objectives:
+    - { key: lintel_names, desc: "Cut the miners names into the lintel", target: 1 }
+  rewards: { xp: 90, copper: 120, items: [chisel_of_witness] }
+
+KHA-08:
+  id: KHA-08
+  race: 2   # Emberforged (Kharic) origin only
+  title: Road to the Living Bell
+  zone: Emberstone Cradle
+  group: "Kharic Origin: The Quarry Has a Voice"
+  requires: [KHA-07]
+  giverNpcId: cradle-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  text: "Lay your old chisel on the shrine with the others. Then carry a copy of the marks west along the lantern road to Lantern's Reach. Sister Vale keeps the Accord books there. We record the cost of every miracle before we accept another. That's the vow."
+  progressText: "Leave the novice chisel at the miners' shrine, then take the lantern road west to Lantern's Reach."
+  turnInText: "Go on. The wall will be quieter without you listening, but it won't be silent. It never will be again."
+  doneText: "The Reach is west. Find Gatekeeper Elric."
+  refusedText: "The road's open, cutter."
+  objectives:
+    - { key: shrine_chisel, desc: "Leave your chisel at the miners' shrine", target: 1 }
+    - { key: reach_visits, desc: "Travel to Lantern's Reach", target: 1 }
+  rewards: { copper: 200, xp: 80 }
+
 Q001:
   id: Q001
-  origin: [{ race: 0, quest: MAR-08 }, { race: 1, quest: THR-08 }]   # Marchborn walk the Ward, Briarkin the Thren glade first; other peoples pass
+  origin: [{ race: 0, quest: MAR-08 }, { race: 1, quest: THR-08 }, { race: 2, quest: KHA-08 }]   # Marchborn walk the Ward, Briarkin the Thren glade first; other peoples pass
   title: Welcome to Lantern's Reach
   giverNpcId: gatekeeper-elric
   giverName: Gatekeeper Elric
@@ -510,6 +659,12 @@ woodcutting:
   fallSound: /cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3
 
 items:
+  training_chisel: { id: training_chisel, name: Training Chisel, slot: bag, description: "Strike it once and it rings twice." }
+  ore_chips: { id: ore_chips, name: Ore Chips, slot: bag, stackable: true, description: "Copper chips swept from the east cut. Some still hum." }
+  tuning_stone: { id: tuning_stone, name: Tuning Stone, slot: bag, description: "A pocket of basalt that answers in a voice twenty years old." }
+  novice_maul: { id: novice_maul, name: Cradle Novice Maul, slot: mainhand, description: "Mira's work: honest iron, no bellglass in it." }
+  rust_seal: { id: rust_seal, name: Rust Seal, slot: bag, description: "Nine points, hammered shut from the outside." }
+  chisel_of_witness: { id: chisel_of_witness, name: Chisel of Witness, slot: offhand, description: "Plain iron. Room along the handle for names as they are found." }
   root_seed: { id: root_seed, name: Root Seed, slot: bag, description: "Warm as a hand. It turns in your palm toward water." }
   lore_glyph: { id: lore_glyph, name: Lore Glyph, slot: bag, description: "Three words in Ell's hand: water, road, grandmother." }
   pathfinder_tonic: { id: pathfinder_tonic, name: Pathfinder Tonic, slot: bag, description: "Bitter bark and honey. Tamsin swears by it." }

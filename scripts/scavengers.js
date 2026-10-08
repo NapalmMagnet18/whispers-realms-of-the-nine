@@ -83,7 +83,7 @@ function strike(ctx, w, s, m, p, dist) {
 }
 
 export function update(ctx, dt) {
-  const camp = ctx.self, cs = camp.state, now = ctx.now(), M = (ctx.session.scav ??= {});
+  const camp = ctx.self, cs = camp.state, now = ctx.now(), M = (ctx.session["scav:" + camp.id] ??= {}); // each camp its own scratch: two camps never share a census clock
   if (now >= (M.census ?? 0)) {
     M.census = now + 1000;
     for (const def of (cs.crew || S.crew)) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def);
