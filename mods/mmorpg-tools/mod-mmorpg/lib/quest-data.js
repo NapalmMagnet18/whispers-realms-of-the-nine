@@ -6,6 +6,15 @@ var QUEST_DATABASE = {};
 for (var k in QDATA) { if (QDATA[k] && QDATA[k].objectives) QUEST_DATABASE[k] = QDATA[k]; }
 
 function has(list, id) { return Array.isArray(list) && list.indexOf(id) !== -1; }
+// The roadmap's eligibility: every id in requires done, and at least one of requiresAny when it is set.
+function eligible(q, ps) {
+  var done = (ps && ps.completedQuests) || [];
+  var req = q.requires || [], any = q.requiresAny || [];
+  for (var i = 0; i < req.length; i++) if (done.indexOf(req[i]) === -1) return false;
+  if (!any.length) return true;
+  for (var j = 0; j < any.length; j++) if (done.indexOf(any[j]) !== -1) return true;
+  return false;
+}
 function activeOf(ps, id) { var a = (ps && ps.activeQuests) || []; for (var i = 0; i < a.length; i++) if (a[i] && a[i].questId === id) return a[i]; return null; }
 
 export function getAvailableQuests(npcId, playerState) {
@@ -14,6 +23,7 @@ export function getAvailableQuests(npcId, playerState) {
     var q = QUEST_DATABASE[id];
     if (q.giverNpcId !== npcId) continue;
     if (has(playerState && playerState.completedQuests, id) || activeOf(playerState, id)) continue;
+    if (!eligible(q, playerState)) continue;
     out.push(q);
   }
   return out;
@@ -59,11 +69,12 @@ export function questStatus(npcId, playerState) {
     if (aq) { if (taker === npcId && questProgress(aq, playerState).done) return 'ready'; any = 'active'; continue; }
     if (giver !== npcId) continue;
     if (has(playerState && playerState.completedQuests, id)) { if (!any) any = 'done'; continue; }
-    avail = true;
+    if (eligible(q, playerState)) avail = true;
   }
   return avail ? 'available' : any;
 }
 
+export { eligible };
 export function getQuest(id) { return QUEST_DATABASE[id] || null; }
 
-module.exports = { QUEST_DATABASE: QUEST_DATABASE, getAvailableQuests: getAvailableQuests, questToActiveFormat: questToActiveFormat, questProgress: questProgress, questStatus: questStatus, getQuest: getQuest };
+module.exports = { QUEST_DATABASE: QUEST_DATABASE, getAvailableQuests: getAvailableQuests, questToActiveFormat: questToActiveFormat, questProgress: questProgress, questStatus: questStatus, getQuest: getQuest, eligible: eligible };
