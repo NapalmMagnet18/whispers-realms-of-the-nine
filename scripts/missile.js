@@ -30,7 +30,7 @@ export function update(ctx, dt) {
   const hit = raycast(ctx, p, dir, { distance: step + 0.1, ignoreEntities: [self.id, s.ownerId], excludeTags: ['projectile', 'player'], physicsOnly: true })
   if (hit) {
     const o = hit.id ? ctx.getObject(hit.id) : null
-    ctx.log('missile.ray', { id: hit.id, tags: o && o.tags })
+    ctx.log('missile.ray ' + JSON.stringify({ id: hit.id, tags: o && o.tags, p: hit.position }))
     return finish(ctx, M, hit.position, dir, o && (o.tags || []).includes('enemy') && alive(o) ? o : null, hit.normal)
   }
   m.dir = dir; m.flown += step
@@ -40,7 +40,7 @@ export function update(ctx, dt) {
 }
 function finish(ctx, M, at, dir, target, normal) {
   const self = ctx.self, s = self.state, n = normal || { x: -dir.x, y: -dir.y, z: -dir.z }
-  ctx.log('missile.finish', { kind: s.kind, target: target ? target.id : null, at })
+  ctx.log('missile.finish ' + JSON.stringify({ kind: s.kind, target: target ? target.id : null, at }))
   if (target) applyHit(ctx, s.ownerId, target, { damage: s.damage, kind: s.ability, slow: s.slow, slowFor: s.slowFor, at, normal: n, missile: M })
   else impactFx(ctx, M, 'earth', at, n)
   if (M.sticks && !(target && (target.tags || []).includes('wolf'))) {
