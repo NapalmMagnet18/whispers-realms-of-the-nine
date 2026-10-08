@@ -96,3 +96,5 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - Saltborn Pathfinder created through the menu and played TID-01..09 in the client: all nine accept, progress, turn in; the relay skiff carries the hero to the Reach; Leth takes the turn-in. Fix found: a quest mark waiting on an earlier step (TID-07's oath post) stole E from Captain Orin beside it; nearMark now prefers ready steps. The test character was given SOR-09-and-earlier as done by console, so the gate chain before TID was not replayed.
 - SOR-05..09 "givers and steps match the source" (line above) is NOT verified by a full comparison; treat as unchecked.
 - Tideglass Coast has its own zone name on the minimap and a painted arrival card.
+
+- 2026-10-08: Shade added as the 4th class (scripts/shade.js, shade.yml): 1 Strike (x3 Ambush from Veil/behind/after a step), 2 Shadowstep (behind target or 8 m blink), 3 Veil (6 s; wolves, scavengers and the Warden lose you). Shade path SHA-01..07 "The Door Without a Key" at the Old Bond House (46,-52) by the watchtower, Keeper Sen Arlo; drills are `shade-drill` things (need veil|step). Not yet play-tested.
