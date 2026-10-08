@@ -361,7 +361,7 @@ export function onSpawn(objectApi) {
     // If a roster character is already loaded in menu state, treat this as an
     // intentional gameplay transfer and restore the selected character instead
     // of bouncing the player back through the menu flow.
-    if (restoreRosterCharacterState(objectApi, s, { placeId: spawnPlace, keepCurrentPosition: true })) {
+    if (!_fresh && restoreRosterCharacterState(objectApi, s, { placeId: spawnPlace, keepCurrentPosition: true })) {
       return;
     }
 
