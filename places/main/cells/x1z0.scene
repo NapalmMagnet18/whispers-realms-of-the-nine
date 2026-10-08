@@ -62,6 +62,10 @@ boulder-8:
   primitive: {kind: scripted, params: {ore: null, r: 1}, script: scripts/gen/rock.js}
   rotation: 504
   tags: [rock]
+cl-ambience:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-village-birdsong-distant-hammer-loop.mp3, gain: 0.15, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 68, y: 3, z: 6}
+  id: cl-ambience
 cl-arms-arrow-a:
   feetPosition: {x: 72.18, y: 1.501671634097825, z: -10.099999999999998}
   id: cl-arms-arrow-a
@@ -434,6 +438,10 @@ cl-well:
   physics: {body: static, collider: box}
   rotation: {yaw: 20}
   tags: [kit, copperlane]
+cl-woods-birds:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-forest-birds-leaves-rustle-loop.mp3, gain: 0.14, loop: true, maxDistance: 50, spatial: true}
+  feetPosition: {x: 100, y: 12, z: 6}
+  id: cl-woods-birds
 cl-yard-tree-2:
   feetPosition: {x: 80, y: {terrain: -0.05}, z: -24}
   id: cl-yard-tree-2
