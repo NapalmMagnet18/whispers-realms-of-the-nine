@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x0z-1
+amb-crypt-warden:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-crypt-water-drips-echo-faint-stone-grind-distant-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 40, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -65}
+  id: amb-crypt-warden
+  tags: [ambience]
 candle-warden:
   behavior: scripts/candle-warden.js
   feetPosition: {x: 0, y: 0.05, z: -71}

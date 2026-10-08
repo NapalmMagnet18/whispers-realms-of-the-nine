@@ -19,3 +19,5 @@ atmosphere:
   look:
     script: mods/aaa-quality-kit/look-cinema.js
     params: { dayWarmth: 0.04, grain: 0.03 }
+acoustics:
+  reverb: 0.45
