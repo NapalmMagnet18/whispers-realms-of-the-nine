@@ -139,3 +139,24 @@ sari:
     - "Three days of empty nets. The fish aren't gone. They're all swimming the same way."
     - "Mind the cove rocks. They'll take a skiff's bottom and smile about it."
     - "My nephew mends nets like he's angry at them. You've steadier hands."
+oren:
+  name: Marshal Oren Flint
+  lines:
+    - "A shield isn't a wall. It's a promise you make with your arm."
+    - "Nine places at the Table. One stays bare. Ask me why when you've earned the answer."
+    - "Anyone can hold a line. Holding it for people who'll never thank you, that's the job."
+hollis:
+  name: Old Hollis
+  lines:
+    - "I obeyed. They told me to withdraw and I withdrew, and I've carried that order in my chest for thirty years."
+    - "Captain Ide wouldn't sign it. A lord did. I watched her tear her own sleeve to bind a stranger's arm the same hour."
+wenna:
+  name: Wenna of the Lane
+  lines:
+    - "I was nine. The soldiers walked away down the lane and nobody turned round. Except one. She came back."
+    - "I don't want anyone hanged. I want it written down. That's all. Written down where people walk."
+refugee:
+  name: East-Road Traveler
+  lines:
+    - "Is it true the Reach still keeps its gate open? Even for folk like us?"
+    - "We walked by night. The lanterns along the road kept us honest."
