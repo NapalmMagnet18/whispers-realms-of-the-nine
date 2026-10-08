@@ -69,7 +69,7 @@ export function eqSlot(label, eqItem, slotKey) {
   var content = '';
   var tooltipHtml = '';
   var clickUnequip = '';
-  if (eqItem && eqItem.icon) {
+  if (eqItem && (eqItem.icon = require('./item-icons.js').iconFor(eqItem))) {
     content = '<img src="' + eqItem.icon + '" style="width:42px;height:42px;object-fit:contain;-webkit-user-drag:none;user-select:none;pointer-events:none;" />';
     tooltipHtml = buildItemTooltip(eqItem);
     clickUnequip = ' data-interactive onclick="sendAction(\'unequipItem\',{slot:\'' + slotKey + '\'})"';
@@ -101,7 +101,7 @@ export function eqSlotLarge(label, eqItem, slotKey) {
   var content = '';
   var tooltipHtml = '';
   var clickUnequip = '';
-  if (eqItem && eqItem.icon) {
+  if (eqItem && (eqItem.icon = require('./item-icons.js').iconFor(eqItem))) {
     content = '<img src="' + eqItem.icon + '" style="width:74px;height:74px;object-fit:contain;-webkit-user-drag:none;user-select:none;pointer-events:none;" />';
     tooltipHtml = buildItemTooltip(eqItem);
     clickUnequip = ' data-interactive onclick="sendAction(\'unequipItem\',{slot:\'' + slotKey + '\'})"';
@@ -245,7 +245,7 @@ export function renderInventory(localPlayer) {
     var isOnCooldown = false;
     var cooldownText = '';
 
-    if (item && item.icon) {
+    if (item && (item.icon = require('./item-icons.js').iconFor(item))) {
       // Runestone — always usable, no cooldown
       if (item.id === 'runestone') {
         clickAttr = ' data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'__runestone__\'})"';

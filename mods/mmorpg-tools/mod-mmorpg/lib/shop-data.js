@@ -6,7 +6,7 @@ var SHOP_INVENTORIES = {
     {
       id: 'health-potion',
       name: 'Health Potion',
-      icon: '/cdn/icon-fantasy-health-potion-red.png',
+      icon: '/cdn/value.a1a947286a76456c3d3b2be345dd82dadb1847faa1300441dd45fd9c1a6a5428.png',
       slot: 'bag',
       price: 50,
       consumable: true,
@@ -17,7 +17,7 @@ var SHOP_INVENTORIES = {
     {
       id: 'mana-potion',
       name: 'Mana Potion',
-      icon: '/cdn/icon-fantasy-mana-potion-blue.png',
+      icon: '/cdn/value.92a77d9274fa1859e5728065999535fc5681d52e0dad8219d30c40a3fbe830ce.png',
       slot: 'bag',
       price: 50,
       consumable: true,
@@ -28,7 +28,7 @@ var SHOP_INVENTORIES = {
     {
       id: 'iron-sword',
       name: 'Iron Sword',
-      icon: '/cdn/icon-fantasy-iron-sword-simple.png',
+      icon: '/cdn/value.675433d075a3d17d74abb4ede67f738f67a9676c3b2b1b7cafc5a87c91a6029b.png',
       slot: 'mainHand',
       price: 200,
       description: 'A sturdy iron blade.',
@@ -42,6 +42,15 @@ var SHOP_INVENTORIES = {
       price: 150,
       description: 'Basic leather protection.',
       stats: { defence: 10 },
+    },
+    {
+      id: 'wooden-shield',
+      name: 'Wooden Shield',
+      icon: '/cdn/value.059e0a3c752a1f5677c284f9e44ecd1b50d6772be2de92a240b3e91a534361ef.png',
+      slot: 'offHand',
+      price: 120,
+      description: 'Oak boards under an iron compass boss.',
+      stats: { defence: 8 },
     },
   ],
 };
