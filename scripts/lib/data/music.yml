@@ -12,6 +12,9 @@ themes:
   ember: /cdn/moodboard-painterly-fantasy/music-heroic-dwarven-forge-deep-brass-war-drums-anvil-hits-loop.mp3
   arcane: /cdn/moodboard-painterly-fantasy/music-ancient-arcane-ruins-ethereal-choir-glass-harmonica-slow-pads-loop.mp3
   wilds: /cdn/music-instrumental-fantasy-adventure-orchestral.mp3
+  ashen: /cdn/moodboard-gothic-horror/music-ashen-close-graveyard-dark-gothic-solo-cello-music-box-distant-church-bell-dread-loop.mp3
+  frost: /cdn/moodboard-painterly-fantasy/music-frozen-mountain-pass-lonely-low-horn-icy-glass-pads-slow-taiko-wind-loop.mp3
+  desert: /cdn/moodboard-painterly-fantasy/music-scorched-ash-desert-duduk-lament-frame-drum-low-drone-heat-haze-loop.mp3
   battle: /cdn/moodboard-painterly-fantasy/music-tense-fantasy-battle-war-drums-low-brass-staccato-strings-loop.mp3
   crypt: /cdn/moodboard-gothic-horror/music-hollowcrypt-candlelit-vault-low-choir-slow-bells.mp3
   drownedbell: /cdn/moodboard-gothic-horror/music-drowned-bell-underwater-choir-muffled-bells-slow-dread-loop.mp3
@@ -32,7 +35,7 @@ places:
   ninth-assembly: assembly
 regions:
   reach: reach
-  ashen: crypt
+  ashen: ashen
   farm: reach
   briarwild: forest
   deepgrove: forest
@@ -49,10 +52,51 @@ regions:
   quarry: ember
   highlands: ember
   cinderhold: ember
-  ashfall: ember
-  sunscar: ember
+  ashfall: desert
+  sunscar: desert
   spire: arcane
   ninthveil: arcane
   hollowcrypt: crypt
-  greyspine: wilds
-  frostveil: wilds
+  greyspine: frost
+  frostveil: frost
+
+# Ambient beds: each player hears the bed of the area they stand in, under the music (player.ambience, per player).
+# A key is a theme id (the area's music row) or a place name; places win.
+ambience:
+  menu: null
+  creation: null
+  reach: /cdn/moodboard-painterly-fantasy/sfx-village-afternoon-ambience-distant-chickens-hammer-on-anvil-birdsong-murmur-loop.mp3
+  forest: /cdn/moodboard-painterly-fantasy/sfx-deep-forest-ambience-wind-in-pine-canopy-creaking-branches-woodpecker-birds-loop.mp3
+  coast: /cdn/moodboard-painterly-fantasy/sfx-coast-ambience-waves-on-shingle-beach-gulls-wind-rigging-creak-loop.mp3
+  fen: /cdn/moodboard-gothic-horror/sfx-swamp-ambience-frogs-croaking-bubbling-mud-insects-buzzing-still-water-loop.mp3
+  ember: /cdn/moodboard-painterly-fantasy/sfx-volcanic-highland-ambience-low-rumble-hissing-steam-vents-crackling-embers-loop.mp3
+  arcane: /cdn/moodboard-painterly-fantasy/sfx-ancient-ruins-ambience-high-wind-faint-crystal-hum-whispering-echoes-loop.mp3
+  wilds: /cdn/moodboard-painterly-fantasy/sfx-open-grassland-ambience-gentle-wind-through-tall-grass-crickets-distant-birds-loop.mp3
+  ashen: /cdn/moodboard-gothic-horror/sfx-graveyard-ambience-cold-wind-crows-cawing-creaking-iron-gate-dry-leaves-loop.mp3
+  frost: /cdn/moodboard-painterly-fantasy/sfx-mountain-blizzard-ambience-howling-wind-snow-hiss-ice-creak-loop.mp3
+  desert: /cdn/moodboard-painterly-fantasy/sfx-ash-desert-ambience-hot-dry-wind-sand-hiss-distant-thunder-rumble-loop.mp3
+  crypt: /cdn/moodboard-gothic-horror/sfx-dungeon-crypt-ambience-dripping-water-distant-chains-low-stone-groan-loop.mp3
+  drownedbell: /cdn/moodboard-gothic-horror/sfx-flooded-catacomb-ambience-dripping-echoing-water-slosh-muffled-bell-loop.mp3
+  rootarchive: /cdn/moodboard-painterly-fantasy/sfx-underground-root-cavern-ambience-creaking-roots-soil-trickle-low-heartbeat-loop.mp3
+  palechoir: /cdn/moodboard-gothic-horror/sfx-cathedral-ruin-ambience-cold-wind-through-broken-windows-faint-ghostly-choir-loop.mp3
+  emberheart: /cdn/moodboard-painterly-fantasy/sfx-lava-caldera-ambience-bubbling-magma-deep-rumble-fire-roar-loop.mp3
+  assembly: /cdn/moodboard-painterly-fantasy/sfx-cosmic-void-ambience-deep-sub-hum-shimmering-star-chimes-slow-breath-loop.mp3
+ambienceGain: 0.55
+# Far-off one-shots, Diablo style: every 18-45 s a player hears one of their area's, panned off somewhere unseen.
+stingers:
+  every: [18, 45]
+  volume: 0.35
+  sets:
+    forest: [/cdn/moodboard-painterly-fantasy/sfx-distant-wolf-howl-echoing-through-forest.mp3, /cdn/moodboard-painterly-fantasy/sfx-branch-snapping-deep-in-woods-far.mp3, /cdn/moodboard-painterly-fantasy/sfx-owl-hoot-twice-in-dark-forest.mp3]
+    wilds: [/cdn/moodboard-painterly-fantasy/sfx-distant-wolf-howl-echoing-through-forest.mp3, /cdn/moodboard-painterly-fantasy/sfx-hawk-cry-high-overhead-open-sky.mp3]
+    ashen: [/cdn/moodboard-gothic-horror/sfx-crow-caw-flock-taking-off-from-dead-tree.mp3, /cdn/moodboard-gothic-horror/sfx-distant-church-bell-single-toll-heavy-iron.mp3, /cdn/moodboard-gothic-horror/sfx-ghostly-woman-sigh-whisper-reverb-far.mp3]
+    crypt: [/cdn/moodboard-gothic-horror/sfx-heavy-stone-slab-grinding-far-in-crypt-reverb.mp3, /cdn/moodboard-gothic-horror/sfx-distant-chains-rattling-dungeon-reverb.mp3, /cdn/moodboard-gothic-horror/sfx-ghostly-woman-sigh-whisper-reverb-far.mp3, /cdn/moodboard-gothic-horror/sfx-bones-clattering-far-off-crypt.mp3]
+    fen: [/cdn/moodboard-gothic-horror/sfx-marsh-bird-eerie-cry-over-water.mp3, /cdn/moodboard-gothic-horror/sfx-big-bubble-burst-mud-plop.mp3]
+    coast: [/cdn/moodboard-painterly-fantasy/sfx-ship-bell-ringing-far-out-at-sea.mp3, /cdn/moodboard-painterly-fantasy/sfx-hawk-cry-high-overhead-open-sky.mp3]
+    ember: [/cdn/moodboard-painterly-fantasy/sfx-distant-rockfall-rumble-mountain.mp3, /cdn/moodboard-painterly-fantasy/sfx-distant-rockfall-rumble-mountain.mp3]
+    frost: [/cdn/moodboard-painterly-fantasy/sfx-distant-rockfall-rumble-mountain.mp3, /cdn/moodboard-painterly-fantasy/sfx-distant-wolf-howl-echoing-through-forest.mp3]
+    desert: [/cdn/moodboard-painterly-fantasy/sfx-distant-rockfall-rumble-mountain.mp3, /cdn/moodboard-painterly-fantasy/sfx-hawk-cry-high-overhead-open-sky.mp3]
+    arcane: [/cdn/moodboard-gothic-horror/sfx-ghostly-woman-sigh-whisper-reverb-far.mp3, /cdn/moodboard-painterly-fantasy/sfx-distant-church-bell-single-toll-heavy-iron.mp3]
+    drownedbell: [/cdn/moodboard-gothic-horror/sfx-distant-church-bell-single-toll-heavy-iron.mp3, /cdn/moodboard-gothic-horror/sfx-distant-chains-rattling-dungeon-reverb.mp3]
+    palechoir: [/cdn/moodboard-gothic-horror/sfx-ghostly-woman-sigh-whisper-reverb-far.mp3, /cdn/moodboard-gothic-horror/sfx-distant-church-bell-single-toll-heavy-iron.mp3]
+    rootarchive: [/cdn/moodboard-painterly-fantasy/sfx-branch-snapping-deep-in-woods-far.mp3, /cdn/moodboard-gothic-horror/sfx-heavy-stone-slab-grinding-far-in-crypt-reverb.mp3]
