@@ -26,7 +26,7 @@ function say(ctx, text, anchor) {
 function near(ctx, tag, reach) {
   const me = ctx.self.feetPosition;
   let best = null, bd = reach;
-  for (const r of ctx.query({ tags: [tag], radius: reach + 2 })) { const d = flat(r.feetPosition, me); if (d <= bd) { bd = d; best = r; } }
+  for (const r of ctx.query({ tags: [tag], radius: reach + 2 })) { const h = r.id.includes('/') ? ctx.place.objects[r.id] : null; const at = (h && h.worldFeetPosition) || r.feetPosition; const d = flat(at, me); if (d <= bd) { bd = d; best = r; } }
   return best;
 }
 // anything tagged 'readable' (a journal, a plaque) carries state { title, text }: E floats its page over it
