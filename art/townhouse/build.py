@@ -5,11 +5,11 @@ SRC = "/workspace/kit/src"; OUT = "/workspace/kit/out"; os.makedirs(OUT, exist_o
 bpy.ops.object.select_all(action="SELECT"); bpy.ops.object.delete()
 COL = {"MI_Plaster": (0.86, 0.80, 0.66), "MI_WoodTrim": (0.19, 0.12, 0.07), "MI_WoodTrim_Wear": (0.33, 0.22, 0.13),
        "MI_Brick": (0.50, 0.32, 0.22), "MI_UnevenBrick": (0.52, 0.48, 0.42), "MI_RockTrim": (0.45, 0.42, 0.38),
-       "MI_WindowGlass": (1.0, 0.62, 0.25), "MI_Shingle": (0.50, 0.20, 0.13), "MI_Floor": (0.36, 0.24, 0.14)}
+       "MI_WindowGlass": (1.0, 0.62, 0.25), "MI_Shingle": (0.50, 0.20, 0.13), "MI_RoundTiles": (0.50, 0.20, 0.13), "MI_Floor": (0.36, 0.24, 0.14)}
 MATS = {}
 TEX = "/workspace/kit/tex/t-"
 SET = {"MI_Plaster": ("plaster", "orm"), "MI_WoodTrim": ("woodtrim", "orm"), "MI_WoodTrim_Wear": ("woodtrim", "orm"), "MI_Floor": ("woodtrim", "orm"),
-       "MI_UnevenBrick": ("unevenbrick", "roughness"), "MI_RockTrim": ("rocktrim", "orm"), "MI_Brick": ("brick", "roughness"), "MI_Shingle": ("roundtiles", "roughness")}
+       "MI_UnevenBrick": ("unevenbrick", "roughness"), "MI_RockTrim": ("rocktrim", "orm"), "MI_Brick": ("brick", "roughness"), "MI_Shingle": ("roundtiles", "roughness"), "MI_RoundTiles": ("roundtiles", "roughness")}
 TINT = {"MI_WoodTrim": (0.62, 0.55, 0.5), "MI_Floor": (0.8, 0.72, 0.65)}
 def img(path, data=False):
     im = bpy.data.images.load(path, check_existing=True)
@@ -115,19 +115,14 @@ box("MI_WoodTrim", -2.0, 2.0, H - 0.22, H - 0.01, D2, D2 + 2.0)
 piece("balcony-cross-straight", 1, H, D2 + 1, 90)
 piece("balcony-cross-straight", -1, H, D2 + 1, -90)
 for X in (-1.9, 1.9): box("MI_WoodTrim", X - 0.08, X + 0.08, H - 1.1, H - 0.2, D2, D2 + 1.6).rotation_euler = (math.radians(-40), 0, 0)
-# gable roof, ridge along X
-R0, RY, OV = 2 * H, 2 * H + 3.0, 0.55
-xa, xb = -W2 - OV, W2 + OV; ze = D2 + OV; ye = R0 - OV * (3.0 / D2)
-T = 0.18
-for s in (1, -1):
-    v = [(xa, ye, s * ze), (xb, ye, s * ze), (xb, RY, 0), (xa, RY, 0), (xa, ye + T, s * ze), (xb, ye + T, s * ze), (xb, RY + T, 0), (xa, RY + T, 0)]
-    poly("MI_Shingle", v, [(0, 1, 2, 3), (4, 7, 6, 5), (0, 4, 5, 1), (1, 5, 6, 2), (2, 6, 7, 3), (3, 7, 4, 0)])
-for sx in (-1, 1):  # plaster gables + barge boards
-    x = sx * (W2 - 0.05)
-    poly("MI_Plaster", [(x, R0, D2), (x, R0, -D2), (x, RY, 0)], [(0, 1, 2), (2, 1, 0)])
-box("MI_WoodTrim", xa, xb, RY + T - 0.05, RY + T + 0.12, -0.12, 0.12)  # ridge beam
-box("MI_Brick", 1.8, 2.7, R0 - 0.5, RY - 1.5, -1.9, -1.0)  # chimney stack inside the attic
-piece("prop-chimney", 2.25, RY - 1.6, -1.45, 0)  # the kit's brick chimney breaks the roof
+# the creator's round-tile roof kit: a 6-span roof turned so its ridge runs along X, brick-and-plaster gable fronts at each end
+R0 = 2 * H; RY = R0 + 4.4
+piece("roof-roundtiles-6x8", 0, R0, 0, 90)
+piece("roof-front-brick6", -W2 + 0.09, R0, 0, -90)
+piece("roof-front-brick6", W2 - 0.09, R0, 0, 90)
+for X in (-3, -1, 1, 3): piece("roof-support2", X, R0, D2 - 0.09, 0); piece("roof-support2", X, R0, -D2 + 0.09, 180)
+box("MI_Brick", 1.8, 2.7, R0 - 0.5, R0 + 2.0, -1.9, -1.0)  # chimney stack through the attic
+piece("prop-chimney", 2.25, R0 + 1.9, -1.45, 0)  # the kit's brick chimney breaks the roof
 # fieldstone border round the plinth, kit corners at each end
 for i in range(4): piece("prop-exteriorborder-straight" + ("1" if i % 2 else "2"), -3 + 2 * i, 0, D2 + 0.25, 0); piece("prop-exteriorborder-straight" + ("2" if i % 2 else "1"), 3 - 2 * i, 0, -D2 - 0.25, 180)
 for i in range(3): piece("prop-exteriorborder-straight1", -W2 - 0.25, 0, 2 - 2 * i, -90); piece("prop-exteriorborder-straight2", W2 + 0.25, 0, -2 + 2 * i, 90)
