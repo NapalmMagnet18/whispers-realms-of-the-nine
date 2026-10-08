@@ -49,3 +49,5 @@ Regions are ground, roads and landmarks only: no NPCs, quests or enemies there y
 - Q001 carries `origin: { race: 0, quest: MAR-08 }`: Marchborn walk the origin first; other peoples and saves already past Q001 are unchanged.
 - Item rewards pay after the completed flag (once); a full bag keeps them in owedItems. marks, questFlags, owedItems now save with the character.
 - MAR-08's choice (display vs archive the plaque) is a personal questFlag, never shared world state.
+
+- 2026-10-08: Thren origin THR-01..08 built in Rootwake Glade around Thornhollow (-720,70) for Briarkin (raceIndex 1), from the campaign bible. Origin chains are now race-locked (quest `race:` field): MAR-* Marchborn only, THR-* Briarkin only. Q001 waits on MAR-08 for Marchborn and THR-08 for Briarkin; other peoples start at Q001. Wolf dens may carry their own pack and tally key (THR-03 bramble_beast).
