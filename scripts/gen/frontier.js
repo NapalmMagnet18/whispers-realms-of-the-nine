@@ -174,10 +174,10 @@ const K = {
     }
   },
 };
-function build(ctx, s) {
+function build(ctx, s, paint = !s) {
   const p = ctx.params || {};
-  const P = (tex, col, r = 0.9, m = 0) => { if (s) return; ctx.albedo(tex); ctx.color(col); ctx.roughness(r); ctx.metalness(m); };
+  const P = (tex, col, r = 0.9, m = 0) => { if (!paint) return; ctx.albedo(tex); ctx.color(col); ctx.roughness(r); ctx.metalness(m); };
   (K[p.kind] || K.stone)(ctx, p, s, P);
 }
-export function geometry(ctx) { ctx.flat(); build(ctx, false); }
+export function geometry(ctx) { ctx.flat(); const far = (ctx.lod || 1) >= 4; build(ctx, far, true); } // levels 4–5: the solid outline alone, still painted
 export function collider(ctx) { build(ctx, true); }
