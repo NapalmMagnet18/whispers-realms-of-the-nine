@@ -264,3 +264,18 @@ orin-tide:
   lines:
     - "I said I'd hold the door. I'm still holding it."
     - "You can see me. That means you agreed to listen."
+arlo:
+  name: Keeper Sen Arlo
+  lines:
+    - "Most walk past this door twice. You came back."
+    - "We don't take what isn't given. Not even secrets."
+    - "Quiet is a tool. It is not a virtue."
+sentry:
+  name: Yard Sentry
+  lines:
+    - "Practice watch. Arlo says I'm hard to sneak past. I'm not."
+    - "Did you hear something? No? Good."
+informant:
+  name: Informant
+  lines:
+    - "Don't say my name. Please. Just cut the rope."

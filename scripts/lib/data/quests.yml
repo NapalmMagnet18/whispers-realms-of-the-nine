@@ -1220,7 +1220,148 @@ PAT-07:
   rewards: { xp: 250, copper: 200, items: [wayfarer_compass] }
 
 
+# ── Shade Path: The Door Without a Key (Quest Bible SHA-01..SHA-07; the Unseen Door, the Old Bond House on the Reach's river bank) ──
+SHA-01:
+  id: SHA-01
+  group: "Shade Path: The Door Without a Key"
+  zone: The Unseen Door
+  cls: shade   # Shades only
+  requires: [Q001]
+  title: The Shadow of a Lock
+  giverNpcId: unseen-npc-arlo
+  giverName: Keeper Sen Arlo
+  text: "You found the door. Most walk past it twice. Lesson one: two of my people stand watch in this yard with lanterns. Veil (3) and slip past each of them close enough to smell their supper. Then open the practice case by the north wall. Nobody gets hurt. That's the lesson."
+  progressText: "Veil (3) and slip past the two yard sentries, then open the practice case by the north wall."
+  turnInText: "Neither of them saw you. Good. Secrecy is a tool for keeping the weak alive when force would only get them killed. Remember who it's for."
+  doneText: "There's a letter in the fish crate by the gate. Not yours. That's the point."
+  refusedText: "The case is open. Close it behind you next time."
+  objectives:
+    - { key: sentry_passed, desc: "Slip past the yard sentries unseen", target: 2 }
+    - { key: case_opened, desc: "Open the practice case", target: 1 }
+  rewards: { xp: 130, copper: 90, items: [lockpick_roll] }
+
+SHA-02:
+  id: SHA-02
+  group: "Shade Path: The Door Without a Key"
+  zone: The Unseen Door
+  cls: shade   # Shades only
+  requires: [SHA-01]
+  title: Someone Else's Letter
+  giverNpcId: unseen-npc-arlo
+  giverName: Keeper Sen Arlo
+  text: "A sealed letter sits in the dead-drop crate by the gate. It was stolen from Mira at the forge last week, and we took it back. Carry it to her. Don't open it. I'll know, and so will you."
+  progressText: "Take the sealed letter from the dead-drop crate, then put it in Mira's hands at the forge, unopened."
+  turnInText: "Seal unbroken. Mira sent word: she cried, then she laughed, then she sent a pie. We measure a Shade by what they refuse to read."
+  doneText: "Dren has a ledger problem. Go and be useful to him."
+  refusedText: "Delivered. Unread. That's all of it."
+  objectives:
+    - { key: letter_taken, desc: "Take the sealed letter from the dead drop", target: 1 }
+    - { key: letter_delivered, desc: "Deliver it unopened to Mira", target: 1 }
+  rewards: { xp: 140, copper: 100 }
+
+SHA-03:
+  id: SHA-03
+  group: "Shade Path: The Door Without a Key"
+  zone: The Unseen Door
+  cls: shade   # Shades only
+  requires: [SHA-02]
+  title: A Ledger Bought Twice
+  giverNpcId: reach-npc-dren
+  giverName: Quartermaster Dren
+  text: "Somebody's paying for the same lamp oil twice and pocketing the difference. Three handoffs I can't explain: one at the bank steps, one behind the inn, one at my own stall when I wasn't looking. Follow the coin. Find out whose shopfront it ends at, and chalk it."
+  progressText: "Follow the three suspicious payments (bank steps, behind the inn, Dren's stall), then chalk the front company's sign."
+  turnInText: "The Gilt Lantern Relief Society. A Hollow Court front, and... funding the shelters by the river? Thieves feeding orphans. I hate when it's complicated."
+  doneText: "Arlo will want to hear it. And he'll want the mirrors dealt with."
+  refusedText: "The chalk mark's still there. Nobody's scrubbed it."
+  objectives:
+    - { key: payment_followed, desc: "Follow the suspicious payments", target: 3 }
+    - { key: front_marked, desc: "Chalk the Hollow Court's front", target: 1 }
+  rewards: { xp: 150, copper: 160, items: [coin_purse] }
+
+SHA-04:
+  id: SHA-04
+  group: "Shade Path: The Door Without a Key"
+  zone: The Unseen Door
+  cls: shade   # Shades only
+  requires: [SHA-03]
+  title: Knife in the Spotlight
+  giverNpcId: unseen-npc-arlo
+  giverName: Keeper Sen Arlo
+  text: "The Court flashes signals across the river with three mirrors on our own side of it. They caught one of my informants and tied her behind the bond house to be collected tonight. Turn the three mirrors to the ground, then cut her loose. Quietly. If this is loud, she's named, and named is dead."
+  progressText: "Turn down the three signal mirrors around the bond house, then cut the informant loose behind it."
+  turnInText: "She's away down the river, and nobody's said her name aloud. Somebody wants to make a public accusation of all this. Not yet."
+  doneText: "Sister Vale's at the shrine. She'll know how to tell it without telling on anyone."
+  refusedText: "Mirrors are down. The river's dark tonight."
+  objectives:
+    - { key: mirror_disabled, desc: "Turn down the signal mirrors", target: 3 }
+    - { key: informant_freed, desc: "Cut the informant loose", target: 1 }
+  rewards: { xp: 160, copper: 120, items: [shadowstep_token] }
+
+SHA-05:
+  id: SHA-05
+  group: "Shade Path: The Door Without a Key"
+  zone: The Unseen Door
+  cls: shade   # Shades only
+  requires: [SHA-04]
+  title: The Truth Without the Name
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "Arlo's draft report is on his desk at the bond house. Everything in it is true, and one line of it would hang the girl you cut loose. Strike her name, keep the rest. Then put it in the Guild's sealed box, here beside me, where it has to be answered."
+  progressText: "Strike the informant's name from the draft on Arlo's desk, then post the report in the sealed box beside Sister Vale."
+  turnInText: "It's posted. The Guild will have to answer it, and nobody can ask her for more than she's already given. A truth doesn't have to destroy the one who carried it."
+  doneText: "Arlo has asked for you. He sounded... tired."
+  refusedText: "The box is sealed. The truth is in it."
+  objectives:
+    - { key: names_struck, desc: "Strike the witness's name from the draft", target: 1 }
+    - { key: report_filed, desc: "Post the report in the Guild's sealed box", target: 1 }
+  rewards: { xp: 170, copper: 130, items: [silent_cloak] }
+
+SHA-06:
+  id: SHA-06
+  group: "Shade Path: The Door Without a Key"
+  zone: The Unseen Door
+  cls: shade   # Shades only
+  requires: [SHA-05]
+  title: The Keeper Was There
+  giverNpcId: unseen-npc-arlo
+  giverName: Keeper Sen Arlo
+  text: "Under the yard there's a records room older than the Guild. The Court's left a watcher on the hatch. Veil past him, go down, and find a brass badge with my name scratched off the back. Bring it up. Then ask me why."
+  progressText: "Veil (3) past the hatch watcher, then search the records room below for Arlo's old badge."
+  turnInText: "Hollow Court, third circle. I wore it for nine years. I left the night they asked me to read a frightened man's mind against his will. That's why I don't take what isn't given. Not even secrets."
+  doneText: "One trial left. When you're ready."
+  refusedText: "Keep it. I don't need to see it again."
+  objectives:
+    - { key: records_slipped, desc: "Slip past the hatch watcher", target: 1 }
+    - { key: badge_found, desc: "Recover Arlo's original badge", target: 1 }
+  rewards: { xp: 180, copper: 140, items: [shade_blades_cosmetic] }
+
+SHA-07:
+  id: SHA-07
+  group: "Shade Path: The Door Without a Key"
+  zone: The Unseen Door
+  cls: shade   # Shades only
+  requires: [SHA-06]
+  title: Unseen, Not Unaccountable
+  giverNpcId: unseen-npc-arlo
+  giverName: Keeper Sen Arlo
+  text: "Your trial: three black posts between the yard and the farm lane. Shadowstep (2) to each, clean, harm no one. Then the part that makes us different from the Court: give back what we took. The ledger goes to the bank's strongbox, the shelter deed to the inn's board, where its owners can see it."
+  progressText: "Shadowstep (2) to the three black trial posts, then return the ledger to the bank strongbox and the deed to the inn's notice board."
+  turnInText: "Done in the dark, answered in the light. That's the whole of it. Welcome, Shade. We act quietly, and we accept being judged out loud."
+  doneText: "The Door's open to you now. It always was."
+  refusedText: "You're one of us."
+  objectives:
+    - { key: shade_trial, desc: "Shadowstep to the trial posts", target: 3 }
+    - { key: evidence_returned, desc: "Return the evidence to its owners", target: 2 }
+  rewards: { xp: 260, copper: 220, items: [unseen_key] }
+
+
 items:
+  lockpick_roll: { id: lockpick_roll, name: Lockpick Roll, slot: bag, description: "Seven picks in oilcloth. One is missing; Arlo says that's tradition." }
+  coin_purse: { id: coin_purse, name: Coin Purse, slot: bag, description: "Doubled leather, no clink. Dren swears by it." }
+  shadowstep_token: { id: shadowstep_token, name: Shadowstep Token, slot: bag, description: "A black glass bead. Warm when someone's watching." }
+  silent_cloak: { id: silent_cloak, name: Silent Cloak, slot: bag, description: "Felted wool, dyed the colour of a closed door." }
+  shade_blades_cosmetic: { id: shade_blades_cosmetic, name: Shade Blades, slot: bag, description: "Twin daggers, blackened, a violet thread at each grip." }
+  unseen_key: { id: unseen_key, name: Key Without a Door, slot: bag, description: "It opens nothing. Every Shade carries one." }
   trail_mark: { id: trail_mark, name: Trail Mark, slot: bag, description: "A notched bone token. The lodge knows you by it." }
   trap_kit: { id: trap_kit, name: Trap Kit, slot: bag, description: "Snare wire, stakes, a little bell." }
   pathfinder_journal: { id: pathfinder_journal, name: Pathfinder Journal, slot: bag, description: "Tamsin's old report, and yours under it." }
