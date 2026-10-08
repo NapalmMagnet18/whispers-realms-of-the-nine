@@ -10,13 +10,18 @@ assets:
     "/cdn/value.21c52ecac7b7723cd5de4a54b0fbfaabc05458f88d2ff65390e4d8f6b9f901cf.glb": {bytes: 701544, kind: model, name: vey-crater-telescope, uploadedAt: "2026-10-08T19:22:52.319Z"}
     "/cdn/value.21d34d0802c976ba380708eb9cb00f0d56a1b7cb0c63d8d008d07186e171465d.glb": {bytes: 1930336, kind: model, name: lamphouse, uploadedAt: "2026-10-08T19:25:41.952Z"}
     "/cdn/value.2258a0b8e01aebc37647299aabbbcf0192ad76a3bfc60fff0bac423c2527ff99.glb": {bytes: 3625820, kind: model, name: vey-crater-hc-vey-crater, uploadedAt: "2026-10-08T19:22:49.058Z"}
+    "/cdn/value.27b225920bc67326aa3b8e7a695b74118e9003fea70e35404b9c0d2a4ae3f267.glb": {bytes: 866836, kind: model, name: vey-hall, uploadedAt: "2026-10-08T19:35:49.643Z"}
+    "/cdn/value.2d51c742eac117457070f8dc6a4f619eb4402f031801af0fdaf30f3336192a89.glb": {bytes: 177448, kind: model, name: vey-lenscrate, uploadedAt: "2026-10-08T19:35:57.676Z"}
     "/cdn/value.2d96b58403d6647bebd2140268afc438fb02fe3c180aa57e1631a361dd5bd160.glb": {bytes: 113668, kind: model, name: ashen-rack, uploadedAt: "2026-10-08T17:58:57.901Z"}
+    "/cdn/value.2dd1677308ee4150ddeb6bdb5d7cfb55da1c8a41ca71e5290f69eb23216ba643.glb": {bytes: 163720, kind: model, name: vey-lantern, uploadedAt: "2026-10-08T19:35:55.322Z"}
     "/cdn/value.33dab4065950a5257a004810962e5997cb619e3981bb9d1f7d93a48d6712a666.glb": {bytes: 34348, kind: model, name: wreck-bones, uploadedAt: "2026-10-08T19:25:08.190Z"}
     "/cdn/value.40f32259dff04937118710719813179883b08ef0765560a4d676744445685f64.glb": {bytes: 1364528, kind: model, name: ashen-cathedral, uploadedAt: "2026-10-08T18:02:38.144Z"}
+    "/cdn/value.42a5a11841076b00c96782c232152d2115a3195d081a77b01479d1edd08f8e1e.glb": {bytes: 99904, kind: model, name: vey-bench, uploadedAt: "2026-10-08T19:35:44.624Z"}
     "/cdn/value.54ae9d955191660ad244358c4bf2a740380ee303d502fbadf6dae6ac20b1bb47.glb": {bytes: 511544, kind: model, name: kha-yard-c, uploadedAt: "2026-10-08T19:35:26.412Z"}
     "/cdn/value.5cadbd874ccd611a2fe62fcf41bfbf98aabfd8e5b8f037a6c69356dd0a3c01f8.glb": {bytes: 130956, kind: model, name: wreck-anchor, uploadedAt: "2026-10-08T19:25:06.190Z"}
     "/cdn/value.65ab69ae50c29de80ba35bdadc0dbd74ed2010325e83626ebc096fc3058b13be.glb": {bytes: 2876540, kind: model, name: kha-hall, uploadedAt: "2026-10-08T19:35:15.617Z"}
     "/cdn/value.79446608a7a44fb28224cae3d0e12eedc330a71e84412f721c81774d60613424.glb": {bytes: 1154524, kind: model, name: vey-crater-shard, uploadedAt: "2026-10-08T19:23:00.253Z"}
+    "/cdn/value.7d63086e18b439175cf078380cf56ba1ff2a5e36f2d1d1690b7b25df374025c3.glb": {bytes: 708092, kind: model, name: vey-home, uploadedAt: "2026-10-08T19:35:52.174Z"}
     "/cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb": {bytes: 528556, kind: model, name: kha-yard-a, uploadedAt: "2026-10-08T19:35:20.990Z"}
     "/cdn/value.86eba495ff0ec2ea17ab1a7a3f9b65418031526ee1fb5c16227c89d628880f09.glb": {bytes: 41284, kind: model, name: wreck-buoy, uploadedAt: "2026-10-08T19:25:14.085Z"}
     "/cdn/value.93219a947d56db9be4a3ef205800e78a7ea73bb4a691e5d596410f0ad912e140.glb": {bytes: 1930340, kind: model, name: lamphouse-2, uploadedAt: "2026-10-08T19:26:41.076Z"}
@@ -26,9 +31,11 @@ assets:
     "/cdn/value.ae572e81ad4bdeee554a69fc12ffe7bcad33dccb7d35c382ca5e5431f2b4ec24.glb": {bytes: 22096, kind: model, name: ashen-flask, uploadedAt: "2026-10-08T17:58:48.782Z"}
     "/cdn/value.af0487c927b55c7aed25837ca7d7c22681fffb2deb8987e11c20d2bbea444ca4.glb": {bytes: 136472, kind: model, name: wreck-crate, uploadedAt: "2026-10-08T19:25:01.865Z"}
     "/cdn/value.b18da9f01c0c114ff2106aed1363f59994660980a1101f5e9bd6c784089a6e12.glb": {bytes: 524608, kind: model, name: kha-yard-b, uploadedAt: "2026-10-08T19:35:23.638Z"}
+    "/cdn/value.b9b07ad540239d9f6677cfae822e7eb743016e360fae7667df3dc4cf85230f7e.glb": {bytes: 166572, kind: model, name: vey-telescope, uploadedAt: "2026-10-08T19:36:00.427Z"}
     "/cdn/value.bfe82f4da1223cc5c448786927465c38158327a575eb3533c15dfbc8650e01a6.glb": {bytes: 46872, kind: model, name: ashen-tome, uploadedAt: "2026-10-08T17:58:51.323Z"}
     "/cdn/value.c66ce5b39dc37d58306eca9cdd3de806ca3c3dce3ad01cbd1bdcc725df041be8.glb": {bytes: 973860, kind: model, name: vey-crater-flagpole, uploadedAt: "2026-10-08T19:22:55.232Z"}
     "/cdn/value.caa1a85a6fd2c15469e2b604422b151c7db92910f0e9fd53bc347d7fdcb7cf5f.glb": {bytes: 54564, kind: model, name: ashen-table, uploadedAt: "2026-10-08T17:59:01.297Z"}
+    "/cdn/value.d43afce7cad4157445a482cae27454cbcb00a21c436198efe1f1c50f696c6b5d.glb": {bytes: 158404, kind: model, name: vey-flagpole, uploadedAt: "2026-10-08T19:35:47.331Z"}
     "/cdn/value.e9247ef86f15b83841bda52056d92c36d77b43aa57bca9526311bf2ace958af2.glb": {bytes: 35140, kind: model, name: wreck-rope, uploadedAt: "2026-10-08T19:25:03.989Z"}
     "/cdn/value.f0cfe2686cc5dc0c4d3a4fc68af5c29a644ff8eea7720cb21861d6657a8f87d8.glb": {bytes: 1561484, kind: model, name: gulls-wake, uploadedAt: "2026-10-08T19:24:58.637Z"}
     "/cdn/value.f5df359a5ea5a6d7604f23b82af77cf56876d7a0ab0d97c4fde8be319a17a12b.glb": {bytes: 958504, kind: model, name: wreck-rowboat, uploadedAt: "2026-10-08T19:25:11.283Z"}
