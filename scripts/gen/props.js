@@ -64,6 +64,35 @@ function build(ctx, p, s) {
   if (k === "cart") { P(ctx, s, PLANK, "oklch(0.9 0.04 60)"); box(ctx, -1.1, 0.6, -0.7, 1.1, 0.7, 0.7); for (const z of [-0.7, 0.66]) box(ctx, -1.1, 0.7, z, 1.1, 1.1, z + 0.04); box(ctx, 1.06, 0.7, -0.7, 1.1, 1.1, 0.7);
     if (!s) { P(ctx, s, WOOD, "oklch(0.85 0.02 60)"); for (const z of [-0.8, 0.72]) { for (let i = 0; i < 6; i++) boxR(ctx, [0, 0.45, z + 0.04], [0.9, 0.06, 0.05], { roll: i * 30 }); cyl(ctx, 0, 0.45, z, 0.45, 0.45, 0.08, 14, false); } boxR(ctx, [-1.9, 0.55, -0.3], [1.8, 0.07, 0.07], { roll: 8 }); boxR(ctx, [-1.9, 0.55, 0.3], [1.8, 0.07, 0.07], { roll: 8 });
       P(ctx, s, "rough-split-firewood-logs", "oklch(0.9 0.04 60)"); for (let i = 0; i < 5; i++) boxR(ctx, [-0.5 + i * 0.25, 0.85, 0], [0.18, 0.18, 1.2], { yaw: (i % 2) * 6 }); } return; }
+  if (k === "bridge") {
+    // a timber footbridge spanning X from -9 to 9, gently arched, deck at y=0 at the ends
+    const N = 12, L = 18, arc = 1.1, wd = 3.4;
+    P(ctx, s, PLANK, "oklch(0.92 0.03 60)");
+    for (let i = 0; i < N; i++) {
+      const x0 = -L / 2 + (L * i) / N, x1 = x0 + L / N, xm = (x0 + x1) / 2;
+      const y = arc * (1 - (xm / (L / 2)) ** 2), dy = (-2 * arc * xm) / ((L / 2) ** 2);
+      boxR(ctx, [xm, y - 0.1, 0], [L / N + 0.05, 0.2, wd], { roll: Math.atan(dy) * 57.3 });
+    }
+    if (s) return;
+    P(ctx, s, WOOD, "oklch(0.88 0.02 60)");
+    for (let i = 0; i <= 6; i++) { const x = -L / 2 + (L * i) / 6, y = arc * (1 - (x / (L / 2)) ** 2); for (const z of [-wd / 2, wd / 2]) box(ctx, x - 0.08, y - 0.2, z - 0.08, x + 0.08, y + 1.05, z + 0.08); }
+    for (let i = 0; i < N; i++) { const x0 = -L / 2 + (L * i) / N, x1 = x0 + L / N, xm = (x0 + x1) / 2, y = arc * (1 - (xm / (L / 2)) ** 2), dy = (-2 * arc * xm) / ((L / 2) ** 2);
+      for (const z of [-wd / 2, wd / 2]) boxR(ctx, [xm, y + 1.0, z], [L / N + 0.05, 0.1, 0.12], { roll: Math.atan(dy) * 57.3 }); }
+    P(ctx, s, STONE, "oklch(0.9 0.01 80)");
+    for (const x of [-L / 2, L / 2]) box(ctx, x - 0.8, -2.5, -wd / 2 - 0.3, x + 0.8, 0.0, wd / 2 + 0.3);
+    return;
+  }
+  if (k === "questboard") {
+    P(ctx, s, WOOD, "oklch(0.9 0.02 60)");
+    for (const x of [-1.1, 1.1]) box(ctx, x - 0.1, 0, -0.1, x + 0.1, 2.7, 0.1);
+    if (s) return;
+    P(ctx, s, PLANK, "oklch(0.85 0.04 60)"); box(ctx, -1.2, 1.0, -0.06, 1.2, 2.3, 0.04);
+    P(ctx, s, "red-clay-roof-shingles", "oklch(0.9 0.03 40)"); boxR(ctx, [0, 2.75, -0.2], [2.8, 0.06, 0.8], { pitch: -18 });
+    ctx.albedo(null); ctx.color("oklch(0.9 0.04 85)"); ctx.roughness(0.9);
+    const notes = [[-0.8, 1.9, 0.5, 0.6], [-0.15, 2.0, 0.45, 0.5], [0.5, 1.85, 0.55, 0.65], [-0.6, 1.25, 0.6, 0.45], [0.35, 1.2, 0.4, 0.5]];
+    notes.forEach(([x, y, w, h], i) => boxR(ctx, [x, y, -0.08], [w, h, 0.01], { roll: (i % 2 ? 4 : -3) }));
+    return;
+  }
   if (k === "chest") { P(ctx, s, "dark-oak-timber-beam-hand-painted", "oklch(0.85 0.05 50)"); box(ctx, -0.5, 0, -0.32, 0.5, 0.55, 0.32); if (!s) { P(ctx, s, IRON, "oklch(0.75 0.06 80)", 0.4, 0.8); for (const x of [-0.35, 0.35]) box(ctx, x - 0.04, 0, -0.34, x + 0.04, 0.57, 0.34); box(ctx, -0.07, 0.3, -0.35, 0.07, 0.45, -0.32); } return; }
 }
 export function geometry(ctx) { ctx.flat(); build(ctx, ctx.params || {}, false); }
