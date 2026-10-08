@@ -58,6 +58,17 @@ function townhouse(ctx, p, s) {
     boxR(ctx, [0, (y3 - 1) / 2, 0], [w + 0.16, y3 + 1, d + 0.16]);
     return;
   }
+  if (lod >= 5) { // the far hull: the two blocks and the roof, a few dozen faces
+    paint(ctx, s, ASHLAR, "oklch(0.88 0.01 80)");
+    boxR(ctx, [0, (y1 - 1) / 2, 0], [w, y1 + 1, d]);
+    paint(ctx, s, LIME, "oklch(0.86 0.015 85)");
+    boxR(ctx, [0, (y1 + y3) / 2, 0], [W2, y3 - y1, D2]);
+    for (const sz of [-1, 1]) triN(ctx, [-W2 / 2, y3, sz * D2 / 2], [W2 / 2, y3, sz * D2 / 2], [0, y3 + R, sz * D2 / 2], [0, 0, sz]);
+    paint(ctx, s, SLATE, "oklch(0.78 0.015 250)", 0.8);
+    const a5 = Math.atan2(R, W2 / 2), l5 = Math.hypot(W2 / 2, R) + 0.35;
+    for (const sgn of [-1, 1]) boxR(ctx, [sgn * Math.cos(a5) * l5 / 2, y3 + R - Math.sin(a5) * l5 / 2 + 0.08, 0], [l5, 0.16, D2 + 0.7], { roll: -sgn * a5 * D });
+    return;
+  }
   // plinth
   paint(ctx, s, FIELD, "oklch(0.8 0.02 120)");
   boxR(ctx, [0, (y0 - 1) / 2, 0], [w + 0.16, y0 + 1, d + 0.16]);
