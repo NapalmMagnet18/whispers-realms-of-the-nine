@@ -348,3 +348,131 @@ engine_manifestation:
   scale: 1.7
   height: 3.4
   sounds: {wake: /cdn/moodboard-scifi-neon/sfx-cosmic-hum-awakening.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-void-implosion-burst.mp3, die: /cdn/moodboard-scifi-neon/sfx-crystal-shatter-echo.mp3}
+
+# Homecoming bosses (lv 30, open world, solo-able): one per people, at home.
+lampless_reeve:
+  name: Reeve Ashcombe, the Lampless
+  hp: 5200
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  scale: 1.7
+  height: 3.2
+  walk: 1.6
+  turn: 140
+  melee: {damage: 150, reach: 2.8, every: 2.4, windup: 0.6}
+  abilities:
+  - {kind: cleave, call: Reeve Ashcombe winds up, color: frost, cone: 100, radius: 7, damage: 520, every: 9, telegraph: 1.4}
+  - {kind: pools, color: frost, radius: 2.6, damage: 420, every: 12, first: 6, telegraph: 1.5}
+  - {kind: nova, call: 'Close in, or be swept away', color: frost, safe: 4, damage: 600, every: 20, first: 14, from: 50, telegraph: 2.0}
+  enrage: {below: 20, line: Reeve Ashcombe will not go quietly, speed: 1.3}
+  reward: {xp: 1800, copper: 6000}
+  tally: lampless_reeve
+  respawn: 180
+  milestone: 30
+  killText: Reeve Ashcombe is laid to rest
+  wakeLine: You came home. Too late.
+  sounds: {}
+hollowsong:
+  name: Hollowsong, the Rotted Warden
+  hp: 5200
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  scale: 2.1
+  height: 4.0
+  walk: 1.6
+  turn: 140
+  melee: {damage: 150, reach: 2.8, every: 2.4, windup: 0.6}
+  abilities:
+  - {kind: cleave, call: Hollowsong winds up, color: poison, cone: 100, radius: 7, damage: 520, every: 9, telegraph: 1.4}
+  - {kind: pools, color: poison, radius: 2.6, damage: 420, every: 12, first: 6, telegraph: 1.5}
+  - {kind: nova, call: 'Close in, or be swept away', color: poison, safe: 4, damage: 600, every: 20, first: 14, from: 50, telegraph: 2.0}
+  enrage: {below: 20, line: Hollowsong will not go quietly, speed: 1.3}
+  reward: {xp: 1800, copper: 6000}
+  tally: hollowsong
+  respawn: 180
+  milestone: 30
+  killText: Hollowsong is laid to rest
+  wakeLine: You came home. Too late.
+  sounds: {}
+gharn_unbanked:
+  name: Gharn the Unbanked
+  hp: 5200
+  model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
+  scale: 2.0
+  height: 3.8
+  walk: 1.6
+  turn: 140
+  melee: {damage: 150, reach: 2.8, every: 2.4, windup: 0.6}
+  abilities:
+  - {kind: cleave, call: Gharn the Unbanked winds up, color: fire, cone: 100, radius: 7, damage: 520, every: 9, telegraph: 1.4}
+  - {kind: pools, color: fire, radius: 2.6, damage: 420, every: 12, first: 6, telegraph: 1.5}
+  - {kind: nova, call: 'Close in, or be swept away', color: fire, safe: 4, damage: 600, every: 20, first: 14, from: 50, telegraph: 2.0}
+  enrage: {below: 20, line: Gharn the Unbanked will not go quietly, speed: 1.3}
+  reward: {xp: 1800, copper: 6000}
+  tally: gharn_unbanked
+  respawn: 180
+  milestone: 30
+  killText: Gharn the Unbanked is laid to rest
+  wakeLine: You came home. Too late.
+  sounds: {}
+captain_merrow:
+  name: Captain Merrow of the Gull's Wake
+  hp: 5200
+  model: /cdn/model-humanoid-fantasy-drowned-sailor-ghoul-barnacled-rags-seaweed-hair-pale-bloated.glb
+  scale: 1.8
+  height: 3.4
+  walk: 1.6
+  turn: 140
+  melee: {damage: 150, reach: 2.8, every: 2.4, windup: 0.6}
+  abilities:
+  - {kind: cleave, call: Captain Merrow of the Gull's Wake winds up, color: frost, cone: 100, radius: 7, damage: 520, every: 9, telegraph: 1.4}
+  - {kind: pools, color: frost, radius: 2.6, damage: 420, every: 12, first: 6, telegraph: 1.5}
+  - {kind: nova, call: 'Close in, or be swept away', color: frost, safe: 4, damage: 600, every: 20, first: 14, from: 50, telegraph: 2.0}
+  enrage: {below: 20, line: Captain Merrow of the Gull's Wake will not go quietly, speed: 1.3}
+  reward: {xp: 1800, copper: 6000}
+  tally: captain_merrow
+  respawn: 180
+  milestone: 30
+  killText: Captain Merrow of the Gull's Wake is laid to rest
+  wakeLine: You came home. Too late.
+  sounds: {}
+the_unbraided:
+  name: The Unbraided
+  hp: 5200
+  model: /cdn/model-humanoid-fantasy-reed-sentry-tall-guardian-woven-from-black-reeds-and-chapel-iron-glowing-teal-lantern-head.glb
+  scale: 1.7
+  height: 3.2
+  walk: 1.6
+  turn: 140
+  melee: {damage: 150, reach: 2.8, every: 2.4, windup: 0.6}
+  abilities:
+  - {kind: cleave, call: The Unbraided winds up, color: poison, cone: 100, radius: 7, damage: 520, every: 9, telegraph: 1.4}
+  - {kind: pools, color: poison, radius: 2.6, damage: 420, every: 12, first: 6, telegraph: 1.5}
+  - {kind: nova, call: 'Close in, or be swept away', color: poison, safe: 4, damage: 600, every: 20, first: 14, from: 50, telegraph: 2.0}
+  enrage: {below: 20, line: The Unbraided will not go quietly, speed: 1.3}
+  reward: {xp: 1800, copper: 6000}
+  tally: the_unbraided
+  respawn: 180
+  milestone: 30
+  killText: The Unbraided is laid to rest
+  wakeLine: You came home. Too late.
+  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-burst.mp3, die: /cdn/moodboard-gothic-horror/sfx-choir-fades-sigh.mp3}
+star_that_answered:
+  name: The Star That Answered
+  hp: 5200
+  model: /cdn/model-humanoid-fantasy-veil-witness-faceless-robed-figure-violet-crystal-shards-floating-around-head.glb
+  scale: 1.8
+  height: 3.4
+  walk: 1.6
+  turn: 140
+  melee: {damage: 150, reach: 2.8, every: 2.4, windup: 0.6}
+  abilities:
+  - {kind: cleave, call: The Star That Answered winds up, color: arcane, cone: 100, radius: 7, damage: 520, every: 9, telegraph: 1.4}
+  - {kind: pools, color: arcane, radius: 2.6, damage: 420, every: 12, first: 6, telegraph: 1.5}
+  - {kind: nova, call: 'Close in, or be swept away', color: arcane, safe: 4, damage: 600, every: 20, first: 14, from: 50, telegraph: 2.0}
+  enrage: {below: 20, line: The Star That Answered will not go quietly, speed: 1.3}
+  reward: {xp: 1800, copper: 6000}
+  tally: star_that_answered
+  respawn: 180
+  milestone: 30
+  killText: The Star That Answered is laid to rest
+  wakeLine: You came home. Too late.
+  sounds: {}

@@ -1001,6 +1001,18 @@ SHA-07:
 
 
 items:
+  ward_reeve_mantle: {"id": "ward_reeve_mantle", "name": "Mantle of the Relit Ward", "slot": "chest", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 180}, "description": "Grey wool, lantern-thread at every seam. It is warm the way a kept promise is warm."}
+  lantern_of_the_ward: {"id": "lantern_of_the_ward", "name": "Lantern-Key of the Ward", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "The old Ward gate key, hung on a lamp chain. The gate has not been locked since you came home."}
+  hollowsong_bracers: {"id": "hollowsong_bracers", "name": "Bracers of the Mended Song", "slot": "hands", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 170}, "description": "Willow bark wound over leather. Hum and the grain hums back."}
+  rootwake_seed: {"id": "rootwake_seed", "name": "Seed of the Ninth Grove", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "A seed from the Singing Tree, sealed in amber. It has already chosen where it will grow."}
+  gharn_heartplate: {"id": "gharn_heartplate", "name": "Gharn-Banked Girdle", "slot": "belt", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 190}, "description": "A slag link from the brute's chain, cooled and banked. It keeps a forge's patience."}
+  ninth_anvil_brand: {"id": "ninth_anvil_brand", "name": "Brand of the Ninth Anvil", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "A cooled brand from the Cradle forge, stamped with nine hammers. The ninth hammer is yours."}
+  merrow_spyglass: {"id": "merrow_spyglass", "name": "Merrow’s Brass Spyglass", "slot": "offHand", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 170}, "description": "Barnacled, salt-fogged, still true. Look through it at the horizon and the horizon looks back, politely."}
+  ninth_tide_pearl: {"id": "ninth_tide_pearl", "name": "Pearl of the Ninth Tide", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "Found where the Gull's Wake sank. It glows at low tide, which is when the drowned are listening."}
+  unbraided_wraps: {"id": "unbraided_wraps", "name": "Rebraided Fen-Wraps", "slot": "legs", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 190}, "description": "Reed and river wool, every braid tied with a name. They never quite dry, and never get cold."}
+  ninth_reed_knot: {"id": "ninth_reed_knot", "name": "The Ninth Knot", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "A single reed braid, nine strands. The ninth strand is a lantern-wick, still faintly lit."}
+  starfall_circlet: {"id": "starfall_circlet", "name": "Circlet of the True Chart", "slot": "head", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 170}, "description": "Thin sky-iron set with a lens shard. Close your eyes and you still know where north is."}
+  ninth_lamp_star: {"id": "ninth_lamp_star", "name": "Star of the Ninth Lamp", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "The ninth lamp on Otho's chart, made real in sky-glass. Every Veylori who sees it bows, a little."}
   marsh_reed_bundle: { id: marsh_reed_bundle, name: "Marsh Reed Bundle", slot: bag, description: "Three supple reeds, the first knot still in them." }
   lantern_net: { id: lantern_net, name: "Lantern Net", slot: bag, description: "A soft net that never closes. For wisps who want to come along." }
   wading_staff: { id: wading_staff, name: "Wading Staff", slot: bag, description: "White-tipped. It finds firm ground before your feet do." }
@@ -2721,3 +2733,401 @@ VEY-08:
   requires: [VEY-07]
   turnInNpcId: gatekeeper-elric
   turnInName: Gatekeeper Elric
+
+# ── Homecomings (lv 30) and Epilogues (after RAC-05): each people goes home twice. 2026-10-08 ──
+MAR-10:
+  id: MAR-10
+  title: Word from Lantern Ward
+  zone: Lantern Ward
+  group: Marchborn Homecoming (lv 30)
+  minLevel: 30
+  race: 0
+  requires: [MAR-08]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: reach-npc-bram
+  turnInName: Bram Alder
+  objectives:
+  - {key: mar_summons, desc: Read Bram's notice on the board in Lantern Ward, target: 1}
+  rewards: {copper: 4000, xp: 1500}
+MAR-11:
+  id: MAR-11
+  title: Snuffed Ward Lamps
+  zone: Lantern Ward
+  group: Marchborn Homecoming (lv 30)
+  minLevel: 30
+  race: 0
+  requires: [MAR-10]
+  giverNpcId: reach-npc-bram
+  giverName: Bram Alder
+  turnInNpcId: reach-npc-bram
+  turnInName: Bram Alder
+  objectives:
+  - {key: snuffed_lamp, desc: Relight three snuffed ward lamps around Lantern Ward, target: 3}
+  rewards: {copper: 6000, xp: 3000}
+MAR-12:
+  id: MAR-12
+  title: Reeve Ashcombe, the Lampless
+  zone: Lantern Ward
+  group: Marchborn Homecoming (lv 30)
+  minLevel: 30
+  race: 0
+  requires: [MAR-11]
+  giverNpcId: reach-npc-bram
+  giverName: Bram Alder
+  turnInNpcId: reach-npc-bram
+  turnInName: Bram Alder
+  objectives:
+  - {key: lampless_reeve, desc: Defeat Reeve Ashcombe in the field south of Lantern Ward, target: 1}
+  rewards:
+    copper: 12000
+    xp: 4500
+    items: [ward_reeve_mantle]
+MAR-20:
+  id: MAR-20
+  title: The Ninth Flame Comes Home
+  zone: Lantern Ward
+  group: Marchborn Epilogue (lv 60)
+  minLevel: 60
+  race: 0
+  requires: [RAC-05]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: reach-npc-bram
+  turnInName: Bram Alder
+  objectives:
+  - {key: mar_ninth_flame, desc: Set the ninth flame in the Ward's old gate lamp, target: 1}
+  rewards:
+    copper: 40000
+    xp: 5000
+    items: [lantern_of_the_ward]
+THR-10:
+  id: THR-10
+  title: Word from Rootwake Glade
+  zone: Rootwake Glade
+  group: Briarkin Homecoming (lv 30)
+  minLevel: 30
+  race: 1
+  requires: [THR-08]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: glade-npc-fenna
+  turnInName: Elder Fenna Rootwake
+  objectives:
+  - {key: thr_summons, desc: Listen at the Singing Tree in Rootwake Glade, target: 1}
+  rewards: {copper: 4000, xp: 1500}
+THR-11:
+  id: THR-11
+  title: Weeping Rot-Blooms
+  zone: Rootwake Glade
+  group: Briarkin Homecoming (lv 30)
+  minLevel: 30
+  race: 1
+  requires: [THR-10]
+  giverNpcId: glade-npc-fenna
+  giverName: Elder Fenna Rootwake
+  turnInNpcId: glade-npc-fenna
+  turnInName: Elder Fenna Rootwake
+  objectives:
+  - {key: rot_bloom, desc: Burn out three rot-blooms around Rootwake Glade, target: 3}
+  rewards: {copper: 6000, xp: 3000}
+THR-12:
+  id: THR-12
+  title: Hollowsong, the Rotted Warden
+  zone: Rootwake Glade
+  group: Briarkin Homecoming (lv 30)
+  minLevel: 30
+  race: 1
+  requires: [THR-11]
+  giverNpcId: glade-npc-fenna
+  giverName: Elder Fenna Rootwake
+  turnInNpcId: glade-npc-fenna
+  turnInName: Elder Fenna Rootwake
+  objectives:
+  - {key: hollowsong, desc: Defeat Hollowsong in the pines north of Rootwake Glade, target: 1}
+  rewards:
+    copper: 12000
+    xp: 4500
+    items: [hollowsong_bracers]
+THR-20:
+  id: THR-20
+  title: The Ninth Flame Comes Home
+  zone: Rootwake Glade
+  group: Briarkin Epilogue (lv 60)
+  minLevel: 60
+  race: 1
+  requires: [RAC-05]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: glade-npc-fenna
+  turnInName: Elder Fenna Rootwake
+  objectives:
+  - {key: thr_ninth_flame, desc: Set the ninth flame in Hollowsong's old hollow, target: 1}
+  rewards:
+    copper: 40000
+    xp: 5000
+    items: [rootwake_seed]
+KHA-10:
+  id: KHA-10
+  title: Word from Emberstone Cradle
+  zone: Emberstone Cradle
+  group: Emberforged Homecoming (lv 30)
+  minLevel: 30
+  race: 2
+  requires: [KHA-08]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: cradle-npc-yurra
+  turnInName: Mason Yurra Flint-Eye
+  objectives:
+  - {key: kha_summons, desc: Touch the cold forge in Emberstone Cradle, target: 1}
+  rewards: {copper: 4000, xp: 1500}
+KHA-11:
+  id: KHA-11
+  title: Cracked Quarry Seals
+  zone: Emberstone Cradle
+  group: Emberforged Homecoming (lv 30)
+  minLevel: 30
+  race: 2
+  requires: [KHA-10]
+  giverNpcId: cradle-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  turnInNpcId: cradle-npc-yurra
+  turnInName: Mason Yurra Flint-Eye
+  objectives:
+  - {key: cracked_seal, desc: Re-seal three cracked quarry seals around the Cradle, target: 3}
+  rewards: {copper: 6000, xp: 3000}
+KHA-12:
+  id: KHA-12
+  title: Gharn the Unbanked
+  zone: Emberstone Cradle
+  group: Emberforged Homecoming (lv 30)
+  minLevel: 30
+  race: 2
+  requires: [KHA-11]
+  giverNpcId: cradle-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  turnInNpcId: cradle-npc-yurra
+  turnInName: Mason Yurra Flint-Eye
+  objectives:
+  - {key: gharn_unbanked, desc: Defeat Gharn the Unbanked on the shelf east of the Cradle, target: 1}
+  rewards:
+    copper: 12000
+    xp: 4500
+    items: [gharn_heartplate]
+KHA-20:
+  id: KHA-20
+  title: The Ninth Flame Comes Home
+  zone: Emberstone Cradle
+  group: Emberforged Epilogue (lv 60)
+  minLevel: 60
+  race: 2
+  requires: [RAC-05]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: cradle-npc-yurra
+  turnInName: Mason Yurra Flint-Eye
+  objectives:
+  - {key: kha_ninth_flame, desc: Set the ninth flame in the Cradle forge, target: 1}
+  rewards:
+    copper: 40000
+    xp: 5000
+    items: [ninth_anvil_brand]
+NAM-10:
+  id: NAM-10
+  title: Word from Breakwater Strand
+  zone: Breakwater Strand
+  group: Saltborn Homecoming (lv 30)
+  minLevel: 30
+  race: 3
+  requires: [NAM-08]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: strand-npc-sena
+  turnInName: Pilot Sena Wavebound
+  objectives:
+  - {key: nam_summons, desc: Look at the empty mooring on Breakwater Strand, target: 1}
+  rewards: {copper: 4000, xp: 1500}
+NAM-11:
+  id: NAM-11
+  title: Tolling Drift-Bells
+  zone: Breakwater Strand
+  group: Saltborn Homecoming (lv 30)
+  minLevel: 30
+  race: 3
+  requires: [NAM-10]
+  giverNpcId: strand-npc-sena
+  giverName: Pilot Sena Wavebound
+  turnInNpcId: strand-npc-sena
+  turnInName: Pilot Sena Wavebound
+  objectives:
+  - {key: drift_bell, desc: Silence three tolling drift-bells along the Strand, target: 3}
+  rewards: {copper: 6000, xp: 3000}
+NAM-12:
+  id: NAM-12
+  title: Captain Merrow of the Gull's Wake
+  zone: Breakwater Strand
+  group: Saltborn Homecoming (lv 30)
+  minLevel: 30
+  race: 3
+  requires: [NAM-11]
+  giverNpcId: strand-npc-sena
+  giverName: Pilot Sena Wavebound
+  turnInNpcId: strand-npc-sena
+  turnInName: Pilot Sena Wavebound
+  objectives:
+  - {key: captain_merrow, desc: Defeat Captain Merrow on the cliffs above the Strand, target: 1}
+  rewards:
+    copper: 12000
+    xp: 4500
+    items: [merrow_spyglass]
+NAM-20:
+  id: NAM-20
+  title: The Ninth Flame Comes Home
+  zone: Breakwater Strand
+  group: Saltborn Epilogue (lv 60)
+  minLevel: 60
+  race: 3
+  requires: [RAC-05]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: strand-npc-sena
+  turnInName: Pilot Sena Wavebound
+  objectives:
+  - {key: nam_ninth_flame, desc: Set the ninth flame in the mooring boat and send it out, target: 1}
+  rewards:
+    copper: 40000
+    xp: 5000
+    items: [ninth_tide_pearl]
+REH-10:
+  id: REH-10
+  title: Word from Reedhaven Refuge
+  zone: Reedhaven Refuge
+  group: Reedbound Homecoming (lv 30)
+  minLevel: 30
+  race: 4
+  requires: [REH-08]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: reh-npc-iona
+  turnInName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: reh_summons, desc: Look into the memorial pool at Reedhaven, target: 1}
+  rewards: {copper: 4000, xp: 1500}
+REH-11:
+  id: REH-11
+  title: Loosened Name-Braids
+  zone: Reedhaven Refuge
+  group: Reedbound Homecoming (lv 30)
+  minLevel: 30
+  race: 4
+  requires: [REH-10]
+  giverNpcId: reh-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  turnInNpcId: reh-npc-iona
+  turnInName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: loose_braid, desc: Retie three loosened name-braids around Reedhaven, target: 3}
+  rewards: {copper: 6000, xp: 3000}
+REH-12:
+  id: REH-12
+  title: The Unbraided
+  zone: Reedhaven Refuge
+  group: Reedbound Homecoming (lv 30)
+  minLevel: 30
+  race: 4
+  requires: [REH-11]
+  giverNpcId: reh-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  turnInNpcId: reh-npc-iona
+  turnInName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: the_unbraided, desc: Defeat the Unbraided at the deep pool east of Reedhaven, target: 1}
+  rewards:
+    copper: 12000
+    xp: 4500
+    items: [unbraided_wraps]
+REH-20:
+  id: REH-20
+  title: The Ninth Flame Comes Home
+  zone: Reedhaven Refuge
+  group: Reedbound Epilogue (lv 60)
+  minLevel: 60
+  race: 4
+  requires: [RAC-05]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: reh-npc-iona
+  turnInName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: reh_ninth_flame, desc: Set the ninth flame in the memorial pool, target: 1}
+  rewards:
+    copper: 40000
+    xp: 5000
+    items: [ninth_reed_knot]
+VEY-10:
+  id: VEY-10
+  title: Word from Starfall Eyrie
+  zone: Starfall Eyrie
+  group: Veylori Homecoming (lv 30)
+  minLevel: 30
+  race: 5
+  requires: [VEY-08]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: vey-npc-neris
+  turnInName: Astromer Neris Sol
+  objectives:
+  - {key: vey_summons, desc: Examine the cracked great lens at Starfall Eyrie, target: 1}
+  rewards: {copper: 4000, xp: 1500}
+VEY-11:
+  id: VEY-11
+  title: Fallen Lens Shards
+  zone: Starfall Eyrie
+  group: Veylori Homecoming (lv 30)
+  minLevel: 30
+  race: 5
+  requires: [VEY-10]
+  giverNpcId: vey-npc-neris
+  giverName: Astromer Neris Sol
+  turnInNpcId: vey-npc-neris
+  turnInName: Astromer Neris Sol
+  objectives:
+  - {key: lens_shard, desc: Recover three fallen lens shards on the terrace, target: 3}
+  rewards: {copper: 6000, xp: 3000}
+VEY-12:
+  id: VEY-12
+  title: The Star That Answered
+  zone: Starfall Eyrie
+  group: Veylori Homecoming (lv 30)
+  minLevel: 30
+  race: 5
+  requires: [VEY-11]
+  giverNpcId: vey-npc-neris
+  giverName: Astromer Neris Sol
+  turnInNpcId: vey-npc-neris
+  turnInName: Astromer Neris Sol
+  objectives:
+  - {key: star_that_answered, desc: Defeat the Star That Answered on the east edge of the shelf, target: 1}
+  rewards:
+    copper: 12000
+    xp: 4500
+    items: [starfall_circlet]
+VEY-20:
+  id: VEY-20
+  title: The Ninth Flame Comes Home
+  zone: Starfall Eyrie
+  group: Veylori Epilogue (lv 60)
+  minLevel: 60
+  race: 5
+  requires: [RAC-05]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: vey-npc-neris
+  turnInName: Astromer Neris Sol
+  objectives:
+  - {key: vey_ninth_flame, desc: Set the ninth flame in the mended great lens, target: 1}
+  rewards:
+    copper: 40000
+    xp: 5000
+    items: [ninth_lamp_star]
