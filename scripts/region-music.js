@@ -4,6 +4,7 @@
 import MUSIC from "./lib/data/music.yml";
 export const updateSchedule = { every: { seconds: 2 } };
 
+// per-machine module cache: the region table is code, not shared state
 let regionsMod = null, loading = false;
 
 function themeFor(ctx, self) {
@@ -28,7 +29,7 @@ export function update(ctx) {
   if (s.musicMuted) { ctx.session._areaTheme = null; return; }
   const theme = themeFor(ctx, self);
   if (!theme) return;
-  const vol = MUSIC.volume * (typeof s.musicVolume === "number" ? s.musicVolume / 0.5 * 0.5 + 0.5 * s.musicVolume : 1);
+  const vol = typeof s.musicVolume === "number" ? s.musicVolume * MUSIC.volume : MUSIC.volume;
   const key = theme + "|" + vol.toFixed(2);
   const now = ctx.now();
   // re-assert every 20 s too: a menu or place change elsewhere in the kit may have set its own track
