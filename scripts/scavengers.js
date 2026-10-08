@@ -183,7 +183,7 @@ export function update(ctx, dt) {
       if (now >= m.strikeAt) strike(ctx, w, s, m, p, dist);
       continue;
     }
-    if (!p || dist > S.dropAggro) { s.mode = "idle"; s.target = null; m.roamUntil = 0; continue; }
+    if (!p || dist > S.dropAggro) { s.mode = "leash"; s.target = null; m.roamUntil = 0; continue; } // lost its prey: walks home, where it heals and calms (the leash branch resets hp and enrage)
     if (dist <= S.strike.start && now >= (m.nextStrike ?? 0)) {
       s.mode = "windup"; m.strikeAt = now + S.strike.windup * 1000;
       gait(w, m, "idle"); halt(w, m); once(w, S.clips.attack, 0.9);
