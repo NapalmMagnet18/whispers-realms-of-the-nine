@@ -10,8 +10,9 @@ const STOPS = [6, 326, 600]; // arc metres along ROAD: Reach edge, fen camp, Ree
 const SHOPS = ["mott-reach", "mott-fen", "mott-reed"]; // his stock follows the stop he last stood at
 const RIDERS = ["march-caravan-goods", "march-caravan-lamp", "march-caravan-bells", "march-npc-mott"];
 
-const SEG = []; let LEN = 0;
-for (let i = 0; i < ROAD.length - 1; i++) { const [ax, az] = ROAD[i], [bx, bz] = ROAD[i + 1], l = Math.hypot(bx - ax, bz - az); SEG.push({ ax, az, dx: (bx - ax) / l, dz: (bz - az) / l, l, s: LEN }); LEN += l; }
+const SEG = ROAD.slice(0, -1).map(([ax, az], i) => { const [bx, bz] = ROAD[i + 1], l = Math.hypot(bx - ax, bz - az); return { ax, az, dx: (bx - ax) / l, dz: (bz - az) / l, l }; });
+SEG.forEach((g, i) => { g.s = i ? SEG[i - 1].s + SEG[i - 1].l : 0; }); // a pure constant of ROAD, the same on every machine
+const LEN = SEG[SEG.length - 1].s + SEG[SEG.length - 1].l;
 function at(s) {
   s = Math.max(0, Math.min(LEN - 0.01, s));
   const g = SEG.find((q) => s < q.s + q.l) || SEG[SEG.length - 1], t = s - g.s;

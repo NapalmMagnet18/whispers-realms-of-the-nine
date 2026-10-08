@@ -28,3 +28,12 @@ march-caravan-wagon:
   rotation: {yaw: -37}
   state: {homeYaw: -37}
   tags: [march-caravan]
+march-npc-mott:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -239.5, y: 10.52, z: 275.5}
+  id: march-npc-mott
+  model: /cdn/model-humanoid-fantasy-travelling-peddler-male-patched-coat-wide-brim-hat-satchels-grey-stubble.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -127}
+  state: {homeYaw: -127, idle: idle, npcName: "Mott Farwander, Peddler", shop: mott-fen, who: mott, yaw: -127}
+  tags: [npc, vendor, interactable, merchant-npc, townsfolk]
