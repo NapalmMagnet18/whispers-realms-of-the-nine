@@ -410,3 +410,7 @@ terrain:
     fen-pool-d: {at: {x: -1375, z: 830}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 11}
     fen-pool-e: {at: {x: -1265, z: 900}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 12}
     fen-pool-f: {at: {x: -1330, z: 840}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 9}
+    tide-quay: {center: {x: -1010, z: 1880}, falloff: 30, height: 3, kind: flatten, material: cobble, shape: {kind: circle, radius: 48}}
+    roost-tideglass: {center: {x: -1070, z: 1830}, falloff: 14, height: 3.4, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-tideglass-clear: {center: {x: -1070, z: 1830}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    tide-quay-clear: {center: {x: -1010, z: 1880}, kind: clear-scatter, shape: {kind: circle, radius: 46}}
