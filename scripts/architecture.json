@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 958,
-  "updatedAt": "2026-10-08T11:06:08.060Z",
+  "basedOnSpecVersion": 1010,
+  "updatedAt": "2026-10-08T11:45:23.295Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March and streamed frontier campaigns. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class kits, quests, trade, flight and vitality, while place bindings and YAML registries define content. Each realm is a separate room with its own live world and roster; shared SQL holds saved heroes, population pulses and realm-first records.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -95,6 +95,7 @@
     "scripts/candle-warden.js",
     "scripts/crons/realm-pulse.js",
     "scripts/crypt-gate.js",
+    "scripts/cursor-free.js",
     "scripts/db.js",
     "scripts/elric.js",
     "scripts/flat-starter-terrain.js",
@@ -148,6 +149,7 @@
     "scripts/lib/leveling.js",
     "scripts/lib/missiles.js",
     "scripts/lib/pvp.js",
+    "scripts/lib/quest-text.js",
     "scripts/lib/realm-firsts.js",
     "scripts/lib/regions.js",
     "scripts/lib/wow-move.js",
@@ -195,7 +197,7 @@
   "roots": [
     "world.config.yaml - main-menu-land default entry; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "templates/player.js#player - ordered locomotion, movement, Vanguard, Arcanist, Pathfinder, Shade, quest, vendor, flight and vitality behaviors.",
+    "templates/player.js#player - ordered locomotion, movement, Vanguard, Arcanist, Pathfinder, Shade, quest, vendor, flight, vitality and cursor-free behaviors.",
     "templates/camera.js#camera - gameplay camera template; MMORPG has separate creation and menu camera paths.",
     "places/main/config.yaml - owns continent terrain and regional surface/scatter configuration; cells supply local structures and interactions.",
     "places/hollowcrypt/config.yaml - owns dungeon gravity, dark atmosphere, lighting and place configuration; cells bind crypt geometry and encounters.",
@@ -205,21 +207,21 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character load/upsert/delete, roster population, realm list and selected-realm detail shared by menu and player lifecycle.",
     "scripts/lib/data/realms.yml - six-room roster/config read by routing and realm-pulse; realm-save.js maintains the matching room/name/type/note list.",
-    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and eligibility/progress/status shared by quest-player, quest-giver and quest UI; includes origin, SHA, EQU/DHC, SOR, TID and BRD campaigns.",
+    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest definitions and eligibility/progress/status shared by quest-player, quest-giver and quest UI; dialogue prose is separate in scripts/lib/data/quest-text.yml.",
+    "scripts/lib/quest-text.js - lazy shared quest-dialogue lookup for scripts/quest-player.js and MMORPG quest-giver.js; data lives in quest-text.yml.",
     "scripts/lib/economy.js + MMORPG lib/currency.js - integer-copper transactions/ledger and denomination formatting shared by quests, vendor, flight and UI.",
     "scripts/lib/regions.js + scripts/terrain-reach.js - regional classification and continent height/material generation used by terrain and region display, including Deepgrove, Sorrowfen and Tideglass.",
-    "scripts/lib/data/flights.yml - roost coordinates, regions, discovery radius, fare/speed limits and clearance read by flight behavior/UI and PvP sanctuary/rise helpers.",
     "scripts/lib/pvp.js + scripts/lib/data/pvp.yml - realm eligibility, safe zones, target filtering, player strikes and damage multiplier shared by class kits and vitality."
   ],
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle/input; player.js - character build/save/load lifecycle.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - quest dialog/tracker renderers; lib/ui-herald.js - renderHerald, renderRealmChip; lib/version.js - version/title/tag (0.29.0 Alpha).",
+    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - quest dialog/tracker renderers; lib/version.js - version/title/tag.",
     "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-character-roster.js - renderCharacterRoster.",
     "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; class-aware action bar presents kit/cooldowns in slots 1–3 unless saved spellBar entries override.",
     "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise, mending and PvP zone/death handling.",
-    "scripts/quest-player.js - onInput/update; scripts/lib/realm-firsts.js - questFirst, levelFirst; scripts/db.js - migrate.",
-    "scripts/vanguard.js, arcanist.js and pathfinder.js - class combat handlers; scripts/shade.js - onInput, land, update, veiled, unveil, endAction; scripts/lib/kit.js - class/combat helpers; scripts/lib/pvp.js - PvP helpers; scripts/scavengers.js - update."
+    "scripts/quest-player.js - onInput/update and ears.kill; scripts/lib/quest-text.js - qt, withText, warm; scripts/lib/realm-firsts.js - questFirst, levelFirst; scripts/db.js - migrate.",
+    "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class combat handlers; scripts/lib/kit.js - class/combat helpers including level-scaled power; scripts/cursor-free.js - scheduled pointer-lock handling for open panels."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
@@ -229,21 +231,21 @@
     "scripts/quest-player.js - quest/tally, inventory/xp/dialog/cache state, quest marks/flags, deferred owedItems and quest travel transitions; derives level/xp progress/max stats from XP and persists changed character state.",
     "scripts/lib/realm-firsts.js - claims one realm/feat first in SQL; a winning claim writes the room-wide world.state.herald announcement.",
     "scripts/lib/leveling.js - derives level, XP within level, next-level requirement and max health/mana; levels.yml owns progression anchors, growth, cap and stat increments.",
-    "scripts/lib/pvp.js and scripts/lib/kit.js - PvP striker writes victim state.health and lastPvp* hit attribution; scripts/vitality.js owns realm/zone state, death and kill/death counters, PvP rise/shield, and health mending."
+    "scripts/lib/quest-text.js owns the asynchronously imported dialogue book cache; scripts/cursor-free.js owns no character data, but synchronizes local pointer lock to quest/vendor/flight panel state."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → main gameplay lifecycle.",
     "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu Enter/Create and scripts/crypt-gate.js stamp transition exceptions.",
     "main-menu-mgr loads current room SQL roster and population; api.enterPlace routes selected character to saved place/position; routing validates requested room, then last room, then main.",
     "scripts/lib/data/realms.yml → scripts/routing.js and crons/realm-pulse.js; each room cron writes its player count to realm_pulse using SQLite unix time, and realm-save.js reads it (older than 180 s = quiet/zero).",
-    "realm-save refreshRealmList → player.state.realmList: pulse/character counts and global hero counts drive population, awake and least-populated-Normal recommendation; realmDetail queries top five heroes and recent realm_firsts for realm population details.",
+    "realm-save refreshRealmList → player.state.realmList: pulse/character counts and global hero counts drive population, awake and least-populated-Normal recommendation; realmDetail queries top five heroes and recent realm_firsts for realm population detail.",
     "main-menu-mgr realm-list actions → realm-save refreshes selection detail; joinRealm refuses a displayed Full realm, otherwise api.cross enters its room; realm-save and realms.yml room IDs must agree.",
     "Character creation race/class → lib/races.js race start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot; each realm has an independent roster.",
-    "templates/player.js order → locomotion → movement → class handlers including Shade → quest-player → vendor → flight → vitality; moveX/moveZ/jump and camera intents are consumed by player.js/wow-move.js under place gravity.",
-    "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest marks; quests.yml → quest-data eligibility/progress/status → quest-player and quest-giver/UI.",
-    "Quest completion and level-band crossing in quest-player → realm-firsts questFirst/levelFirst → race-safe INSERT OR IGNORE into realm_firsts; only the winner writes world.state.herald and emits realm-wide horn/stat events; ui-herald renders the announcement.",
-    "Attack/cast inputs → class abilities and scripts/lib/kit.js → monster hits or pvpTargets/meleePlayer; PvP-enabled realm/config plus range, level, sanctuary, shield and Veil filters gate player targeting, and striker writes victim health/lastPvp attribution.",
-    "SOR Mirelurker camp state.toll → scripts/scavengers.js tollBegin emits filling telegraph/ring and warning; tollLand shockwave damages every hero remaining within radius, while low hp enrages and leashing home resets it."
+    "templates/player.js order → locomotion → movement → class handlers including Shade → quest-player → vendor → flight → vitality → cursor-free; moveX/moveZ/jump and camera intents are consumed by player.js/wow-move.js under place gravity.",
+    "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest marks; quests.yml + quest-data define mechanics while quest-text.yml is lazily warmed via quest-text.js and read by quest-player/quest-giver; ui-quest renders dialog and tracker.",
+    "scripts/wolves.js and scripts/scavengers.js resolve monster death on their simulation machine → targeted kill event to killer's quest-player ears.kill updates tally and XP on the hero's own machine; targeted coins event goes through vendor's coins ear.",
+    "Quest completion and level-band crossing in quest-player → realm-firsts questFirst/levelFirst → race-safe INSERT OR IGNORE into realm_firsts; only the winner writes world.state.herald and emits realm-wide horn/stat events; ui-herald renders announcements.",
+    "Attack/cast inputs → class abilities and scripts/lib/kit.js → monster hits or pvpTargets/meleePlayer; PvP-enabled realm/config plus range, level, sanctuary, shield and Veil filters gate player targeting, and striker writes victim health/lastPvp attribution."
   ],
   "behaviorFamilies": [
     "scripts/gen/ landmark builders reuse scripts/gen/shape.js procedural geometry helpers, varied by landmark and parameters; crypt.js supplies Hollowcrypt halls, rooms and furniture.",
@@ -258,10 +260,10 @@
   "probableOrphans": [],
   "migrationNotes": [
     "Money is one integer copper amount; 100 copper = 1 sil and 100 sil = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
-    "templates/player.js behavior order is significant: locomotion before movement, then class handlers including Shade, quests, vendor, flight and vitality; gait samples prior-tick velocity.",
+    "templates/player.js behavior order is significant: locomotion before movement, then class handlers including Shade, quests, vendor, flight, vitality and cursor-free; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
-    "state.xp remains cumulative while xpInto/xpToLevel are current-bar values; levels.yml owns total-XP anchors and progression cap 60.",
-    "realm_pulse.at uses SQLite unix seconds, shared with its freshness query; realm_firsts PRIMARY KEY (realm,feat) plus INSERT OR IGNORE arbitrates simultaneous first claims.",
-    "scavengers.js reads optional state.toll per camp; toll damage writes hero state.health (respecting guardUntil/guardReduce), while extents are full body dimensions and radius adjusts melee reach from the body's edge."
+    "state.xp remains cumulative while xpInto/xpToLevel are current-bar values; levels.yml owns total-XP anchors and progression cap 60, and class damage derives from configured damagePerLevel through lib/kit.js power.",
+    "Monster managers must target kill and coins events to the hero's own behaviors: quest-player ears.kill owns tally/XP persistence, vendor owns coin ledger/purse; do not mutate the remote hero save from the monster's machine.",
+    "Quest mechanics remain in quests.yml; dialogue strings are in quest-text.yml and load asynchronously on warm(), so consumers should use qt()/withText() rather than expect prose in quest definitions."
   ]
 }
