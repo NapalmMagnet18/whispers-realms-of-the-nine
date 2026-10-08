@@ -1,4 +1,4 @@
-# WHISPERS: Realms of the Nine — build page
+# WHISPERS : Realm of the Nine — build page
 The full bible lives in scripts/lib/data/01–05 *.md and the backlog/QA csvs (the creator's). This page tracks what stands.
 
 ## Stage 1 (now): the place
