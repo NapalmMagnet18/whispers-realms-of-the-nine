@@ -21,3 +21,5 @@ atmosphere:
     params: { dayWarmth: 0.04, grain: 0.03 }
 acoustics:
   reverb: 0.45
+
+arrivalBudget: { bytes: 620000 }
