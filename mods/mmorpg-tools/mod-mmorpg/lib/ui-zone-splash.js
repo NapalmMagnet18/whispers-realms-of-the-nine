@@ -22,6 +22,8 @@ function srcOf(k) { var a = ART[k] || ART.ninthveil; return a[(_pick++) % a.leng
 var CIRCLES = [
   { art: 'reach', x: 0, z: 0, r: 70 },
   { art: 'briarwild', x: -720, z: 70, r: 60 },      // Thornhollow
+  { art: 'sorrowfen', x: -430, z: 560, r: 60 },     // Reedhaven Refuge (Reedbound)
+  { art: 'spire', x: -200, z: -1100, r: 60 },       // Starfall Eyrie (Veylori)
   { art: 'emberstone', x: 900, z: -170, r: 60 },    // Cinderhold
   { art: 'emberstone', x: 135, z: 30, r: 80 },      // Emberstone Quarry
   { art: 'spire', x: 30, z: -360, r: 90 },          // The Old Spire
