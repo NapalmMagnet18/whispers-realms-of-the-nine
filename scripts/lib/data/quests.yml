@@ -1,0 +1,39 @@
+# Quests, keyed by id. Objectives count player.state.tally[key] from the moment of accept (baseline stored on accept).
+# Rewards pay once: the claim writes completedQuests first and refuses when the id is already there.
+Q002:
+  id: Q002
+  title: A Light Against the Briars
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  text: "Ah, a new lantern on the road! The Briar Wolves have grown bold past the river, and our watch-fires are burning low. Put down three of the beasts and bring me five good oak logs. Do that, and the Reach owes you."
+  progressText: "Still at it, friend? Three wolves, five logs. The oaks past the river chop clean."
+  turnInText: "Ha! Wolves quiet and the woodpile full. The Reach thanks you, and so do I. Here, you've earned this."
+  doneText: "Fires are lit thanks to you. Walk safe out there."
+  refusedText: "You've already been paid for that one, friend!"
+  objectives:
+    - { key: briar_wolf, desc: Briar Wolves, target: 3 }
+    - { key: log, desc: Logs, target: 5 }
+  rewards: { gold: 25, xp: 150 }
+
+npc:
+  talkReach: 3.5        # metres from Elric's feet that E talks
+  greetReach: 7         # metres at which he salutes a passer-by
+  greetCooldown: 20     # seconds between salutes
+  sayLength: 5          # seconds a speech bubble stands
+
+woodcutting:
+  reach: 3              # metres from the oak's feet that E chops
+  chopSeconds: 2.5      # one log
+  swings: 3             # thunks per chop
+  cancelMove: 1.2       # metres the chopper may drift before the chop stops
+  logsPerTree: 3
+  regrowSeconds: 30
+  fallSeconds: 1.6      # the felled oak's tip-over
+  fallAngle: 82         # degrees it lies at
+  bagSlots: 30
+  stackMax: 20
+  chopSound: /cdn/moodboard-painterly-fantasy/sfx-axe-chop-wood.mp3
+  fallSound: /cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3
+
+items:
+  log: { id: log, name: Oak Log, slot: bag, stackable: true, description: "A sound length of Briarwild oak. The Reach burns it in its watch-fires." }

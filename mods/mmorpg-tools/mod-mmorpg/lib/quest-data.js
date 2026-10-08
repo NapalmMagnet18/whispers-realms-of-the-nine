@@ -1,14 +1,67 @@
-// Quest data module — MMORPG Tools Mod (empty)
-// Export interface matches scripts/lib/quest-data.js exactly
+// Quest data module — MMORPG Tools Mod. The quests themselves live in scripts/lib/data/quests.yml.
+// getAvailableQuests / questToActiveFormat keep the interface quest-giver.js reads; questProgress / questStatus serve the tracker.
+import QDATA from '../../../../scripts/lib/data/quests.yml';
 
 var QUEST_DATABASE = {};
+for (var k in QDATA) { if (QDATA[k] && QDATA[k].objectives) QUEST_DATABASE[k] = QDATA[k]; }
+
+function has(list, id) { return Array.isArray(list) && list.indexOf(id) !== -1; }
+function activeOf(ps, id) { var a = (ps && ps.activeQuests) || []; for (var i = 0; i < a.length; i++) if (a[i] && a[i].questId === id) return a[i]; return null; }
 
 export function getAvailableQuests(npcId, playerState) {
-  return [];
+  var out = [];
+  for (var id in QUEST_DATABASE) {
+    var q = QUEST_DATABASE[id];
+    if (q.giverNpcId !== npcId) continue;
+    if (has(playerState && playerState.completedQuests, id) || activeOf(playerState, id)) continue;
+    out.push(q);
+  }
+  return out;
 }
 
-export function questToActiveFormat(quest) {
-  return null;
+// The active-quest row: objectives carry current/target (the menu panel reads them); baseline = tally at accept.
+export function questToActiveFormat(quest, playerState) {
+  if (!quest) return null;
+  var tally = (playerState && playerState.tally) || {};
+  var baseline = {};
+  var objs = [];
+  for (var i = 0; i < quest.objectives.length; i++) {
+    var o = quest.objectives[i];
+    baseline[o.key] = tally[o.key] || 0;
+    objs.push({ key: o.key, desc: o.desc, target: o.target, current: 0 });
+  }
+  return { questId: quest.id, title: quest.title, giverNpcId: quest.giverNpcId, giverName: quest.giverName, objectives: objs, rewards: quest.rewards, baseline: baseline };
 }
 
-module.exports = { QUEST_DATABASE: QUEST_DATABASE, getAvailableQuests: getAvailableQuests, questToActiveFormat: questToActiveFormat };
+// Fresh objective counts from the tally: min(target, tally − baseline).
+export function questProgress(aq, playerState) {
+  var tally = (playerState && playerState.tally) || {};
+  var base = aq.baseline || {};
+  var objs = [];
+  var done = true;
+  for (var i = 0; i < aq.objectives.length; i++) {
+    var o = aq.objectives[i];
+    var cur = Math.max(0, Math.min(o.target, (tally[o.key] || 0) - (base[o.key] || 0)));
+    if (cur < o.target) done = false;
+    objs.push({ key: o.key, desc: o.desc, target: o.target, current: cur });
+  }
+  return { objectives: objs, done: done };
+}
+
+// What an NPC means to this player: 'available' (!), 'ready' (?), 'active', 'done' or null.
+export function questStatus(npcId, playerState) {
+  var any = null;
+  for (var id in QUEST_DATABASE) {
+    var q = QUEST_DATABASE[id];
+    if (q.giverNpcId !== npcId) continue;
+    var aq = activeOf(playerState, id);
+    if (aq) { if (questProgress(aq, playerState).done) return 'ready'; any = 'active'; continue; }
+    if (has(playerState && playerState.completedQuests, id)) { if (!any) any = 'done'; continue; }
+    return 'available';
+  }
+  return any;
+}
+
+export function getQuest(id) { return QUEST_DATABASE[id] || null; }
+
+module.exports = { QUEST_DATABASE: QUEST_DATABASE, getAvailableQuests: getAvailableQuests, questToActiveFormat: questToActiveFormat, questProgress: questProgress, questStatus: questStatus, getQuest: getQuest };
