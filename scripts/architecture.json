@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "basedOnSpecVersion": 2,
+  "updatedAt": "2026-10-08T00:58:51.145Z",
+  "summary": "A multiplayer 3D starter meadow: one main heightmap place, a first-person camera, humanoid movement and gait, and a scripted lighting/look pipeline. World config wires the shared player, camera, lighting and UI; place config owns terrain, atmosphere and meadow decoration, while AAA Quality Kit contributes reusable polish playbooks and an optional cinematic look.",
+  "scriptPaths": [
+    "mods/aaa-quality-kit/look-cinema.js",
+    "scripts/arrival.js",
+    "scripts/camera.js",
+    "scripts/flat-starter-terrain.js",
+    "scripts/flower.js",
+    "scripts/grass-look.js",
+    "scripts/grass.js",
+    "scripts/humanoid-locomotion.js",
+    "scripts/lighting.js",
+    "scripts/look-default.js",
+    "scripts/pebble.js",
+    "scripts/player.js",
+    "scripts/sim.js",
+    "scripts/templates/camera.js",
+    "scripts/templates/player.js",
+    "scripts/ui.js",
+    "scripts/ui/nametag.js"
+  ],
+  "places": [
+    "places/main/config.yaml - the sole place; realistic afternoon sky, clouds/fog/wind, linear fog, flat heightmap grass ground, and configured grass/flower/pebble scatter; default spawn at the origin."
+  ],
+  "roots": [
+    "world.config.yaml - world entry/config: multiplayer default place main; binds camera, player, lighting, arrival behavior, HUD and nametag.",
+    "templates/player.js#player - shared humanoid player body with character physics; runs locomotion before player movement.",
+    "templates/camera.js#camera - first-person custom camera using engine look orientation and scripts/camera.js.",
+    "places/main/config.yaml - main place's terrain generator, atmosphere, spawn, gravity and decoration root.",
+    "sim.js - world-level simulation entry, cadence 1s; tick is currently empty."
+  ],
+  "shared": [
+    "scripts/lib/data/player.yml - shared movement and turning defaults consumed by scripts/player.js and scripts/humanoid-locomotion.js.",
+    "scripts/lib/data/camera.yml - camera eye-height default consumed by scripts/camera.js.",
+    "scripts/lib/data/world.yml - terrain baseHeight consumed by scripts/flat-starter-terrain.js.",
+    "mods/aaa-quality-kit/ - optional look-cinema.js and skill playbooks for visual polish, sound, UI, models, animation, sprites, training, fleet workflows and named specialist modes; not wired into world config by default."
+  ],
+  "notableExports": [
+    "scripts/player.js - exports onInput, update.",
+    "scripts/humanoid-locomotion.js - exports sit, onInput, update.",
+    "scripts/camera.js - exports finiteNumber, update.",
+    "scripts/lighting.js - exports lighting.",
+    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - each exports look.",
+    "scripts/flat-starter-terrain.js - exports heightAt, materialAt; scripts/grass.js, scripts/flower.js, scripts/pebble.js - export geometry.",
+    "scripts/grass-look.js - exports material; scripts/arrival.js - exports onArrive, onLeave.",
+    "scripts/ui.js and ui/nametag.js - each exports default renderer."
+  ],
+  "ownership": [
+    "scripts/player.js - movement intent in room-local ctx.session; body velocity from input, acceleration/deceleration and place gravity; jump velocity.",
+    "scripts/humanoid-locomotion.js - room-local gait/turn working data in ctx.session; body yaw, gait animation channels, seated gait state and foot-ground settings.",
+    "scripts/camera.js - camera rig's local-player hiding, eye position and presented-view rotation; engine owns mouse-look integration.",
+    "scripts/flat-starter-terrain.js + scripts/lib/data/world.yml - flat terrain height and grass material assignment.",
+    "scripts/grass.js, scripts/flower.js, scripts/pebble.js - procedural decoration geometry; scripts/grass-look.js owns the grass-layer material.",
+    "scripts/lighting.js - shared surface-lighting calculation; scripts/look-default.js - post-process look and bloom defaults.",
+    "sim.js - would own world/place shared simulation state; currently writes nothing."
+  ],
+  "flows": [
+    "world.config.yaml → templates/player.js#player → scripts/humanoid-locomotion.js then scripts/player.js; declared behavior order makes gait read the body's current movement before the movement script updates it.",
+    "move/jump input → scripts/player.js onInput stores per-body intent in ctx.session; update reads it and writes ctx.self.velocity, using ctx.place.gravity.y and sleeping when grounded and idle.",
+    "look input → engine's templates/camera.js look orientation → scripts/camera.js reads ctx.self.view, hides the local body and places camera at target feetPosition plus scaled eye height.",
+    "scripts/humanoid-locomotion.js reads body movement, model gait metadata, player defaults and seat state → writes yaw, animation channels and gait state; seated bodies clear/hold locomotion animation.",
+    "world.config.yaml lighting → scripts/lighting.js lighting(surface, lights) → lit surface color; places/main atmosphere selects scripts/look-default.js for the whole-frame post-process.",
+    "places/main/config.yaml terrain.generator → scripts/flat-starter-terrain.js reads world baseHeight and returns grass material; terrain decoration bindings/layers invoke grass, flower, pebble geometry and grass-look material.",
+    "engine arrival lifecycle → scripts/arrival.js onArrive/onLeave; both hooks are currently empty.",
+    "world.config.yaml ui.render → scripts/ui.js default(ctx, player), currently empty; nametag → ui/nametag.js default(ctx, tag), which builds the styled tag from tag facts.",
+    "sim.js tick(ctx) is scheduled every 1s and has no current state reads or writes."
+  ],
+  "behaviorFamilies": [
+    "scripts/grass.js, scripts/flower.js, scripts/pebble.js - heightmap decoration geometry invoked by main-place scatter layers; each layer varies density, scale, seed and (where configured) wind/params.",
+    "scripts/player.js + scripts/humanoid-locomotion.js - paired player-body behaviors; locomotion handles heading/gait/seating, movement handles velocity and jump.",
+    "scripts/look-default.js + mods/aaa-quality-kit/look-cinema.js - interchangeable whole-screen look implementations; only default is wired, cinematic version is an opt-in alternative."
+  ],
+  "probableOrphans": [],
+  "migrationNotes": [
+    "Movement intent and gait/turn scratch live in ctx.session keyed by body id; keep transient per-room working values out of replicated/saved state.",
+    "scripts/player.js writes velocity and relies on the place's gravity; body speeds and gait pace are metres per second, and body feetPosition is feet-level.",
+    "Camera orientation source is the engine's look contract; camera position is the controlled body's feet plus eyeHeight scaled by effectiveScale.y, and local hiding belongs to the camera rig.",
+    "Humanoid gait behavior runs before player movement in templates/player.js; changing that order changes which tick's velocity gait observes.",
+    "Grass placement/wind/culling belong to the terrain layer config and engine; grass geometry and grass-look material are separate responsibilities.",
+    "AAA Quality Kit's specialist mode skills are guidance only and do not change appearance or engine behavior unless their instructions/scripts are explicitly used."
+  ]
+}
