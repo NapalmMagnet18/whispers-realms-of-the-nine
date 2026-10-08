@@ -212,7 +212,14 @@ export function spawnPreviewIfCreating(objectApi) {
 export function update(objectApi, dt) {
   const s = objectApi.getState();
   if (s.phase === 'mainMenu' || s.inMainMenu) return;
-  if (s.characterCreated && s._previewCleaned) return;
+  // a second hero is made with characterCreated still true from the first: the creation dais hides this body all the same
+  if (s.phase === 'creating' && objectApi.getEntityPlace(objectApi.id) === 'character-creation-land' && objectApi.getProperty('visible') !== false) {
+    objectApi.setProperty('visible', false);
+    objectApi.setProperty('scale', 0.001);
+    objectApi.setProperty('animated3DCharacter', null);
+    objectApi.setProperty('model', null);
+  }
+  if (s.characterCreated && s._previewCleaned && s.phase !== 'creating') return;
   if (s.characterCreated) {
     objectApi.patchState({ _previewCleaned: true, previewModelId: null, previewLightId: null });
     return;
