@@ -68,6 +68,7 @@ export function updatePreviewModel(objectApi, raceIndex, genderIndex) {
         animationNameMap: { Idle: idleClip },
       },
       text: null,
+      mixer: { idle: { clip: idleClip, weight: 1, loop: 'loop' } },
   });
   objectApi.patchState({ previewModelId: previewId });
 }
@@ -160,6 +161,7 @@ export function spawnPreviewIfCreating(objectApi) {
         animationNameMap: { Idle: idleClip },
       },
       text: null,
+      mixer: { idle: { clip: idleClip, weight: 1, loop: 'loop' } },
   });
 
   const race = RACES[raceIndex];
