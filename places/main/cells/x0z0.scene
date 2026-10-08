@@ -8,10 +8,10 @@ bank:
   rotation: -36
   tags: [building, bank]
 briar-bridge:
-  feetPosition: {x: -50.5, y: {terrain: 0.05}, z: -9}
+  feetPosition: {x: -50.5, y: 4.844248298643506, z: -9}
   id: briar-bridge
   physics: static
-  primitive: {kind: scripted, params: {kind: bridge}, script: scripts/gen/props.js}
+  primitive: {kind: scripted, params: {L: 22, W: 4.2, arch: 8, depth: 3.888336448786146, rise: 1.4}, script: scripts/gen/stone-bridge.js}
   rotation: 0
   tags: [bridge]
 cottage-e:
