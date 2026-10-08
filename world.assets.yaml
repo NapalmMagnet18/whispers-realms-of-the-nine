@@ -32,6 +32,7 @@ assets:
     "/cdn/value.af0487c927b55c7aed25837ca7d7c22681fffb2deb8987e11c20d2bbea444ca4.glb": {bytes: 136472, kind: model, name: wreck-crate, uploadedAt: "2026-10-08T19:25:01.865Z"}
     "/cdn/value.b18da9f01c0c114ff2106aed1363f59994660980a1101f5e9bd6c784089a6e12.glb": {bytes: 524608, kind: model, name: kha-yard-b, uploadedAt: "2026-10-08T19:35:23.638Z"}
     "/cdn/value.b9b07ad540239d9f6677cfae822e7eb743016e360fae7667df3dc4cf85230f7e.glb": {bytes: 166572, kind: model, name: vey-telescope, uploadedAt: "2026-10-08T19:36:00.427Z"}
+    "/cdn/value.bf15ca9abbc166c1a5f7548006e86c429025517b089efcc37e77909cb6bb0ae9.png": {bytes: 974007, kind: image, name: icon-mott-myrtle-tea, uploadedAt: "2026-10-08T22:30:14.224Z"}
     "/cdn/value.bfe82f4da1223cc5c448786927465c38158327a575eb3533c15dfbc8650e01a6.glb": {bytes: 46872, kind: model, name: ashen-tome, uploadedAt: "2026-10-08T17:58:51.323Z"}
     "/cdn/value.c66ce5b39dc37d58306eca9cdd3de806ca3c3dce3ad01cbd1bdcc725df041be8.glb": {bytes: 973860, kind: model, name: vey-crater-flagpole, uploadedAt: "2026-10-08T19:22:55.232Z"}
     "/cdn/value.caa1a85a6fd2c15469e2b604422b151c7db92910f0e9fd53bc347d7fdcb7cf5f.glb": {bytes: 54564, kind: model, name: ashen-table, uploadedAt: "2026-10-08T17:59:01.297Z"}
