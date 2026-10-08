@@ -1745,6 +1745,7 @@ END-01:
   zone: Lantern's Reach
   group: "Endgame \xB7 The Three Doors (lv 60)"
   minLevel: 60
+  requires: [VEI-09]
   giverNpcId: gatekeeper-elric
   giverName: Gatekeeper Elric
   turnInNpcId: gatekeeper-elric
