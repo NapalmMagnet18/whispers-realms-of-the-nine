@@ -14,6 +14,21 @@ engine:
       font: Geist Pixel Square
 inputs:
   actions:
+    orbit:
+      mouse: left
+      activeOn: hold
+    steer:
+      mouse: right
+      activeOn: hold
+    autoRun:
+      keys:
+      - q
+    autoRunStop:
+      keys:
+      - w
+    release:
+      keys:
+      - escape
     attack:
       keys:
       - Digit1
