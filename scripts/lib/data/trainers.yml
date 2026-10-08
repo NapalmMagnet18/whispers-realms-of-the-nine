@@ -1,0 +1,11 @@
+# Discipline training (2026-10-08). A trainer (tag vendor + state.trainer) teaches a hero's own class one rank at a time.
+# Each rank needs its level and its fee, and adds `bonus` to every ability's damage (kit.js power()). Tune here only.
+bonus: 0.06            # +6% ability damage per rank: rank 6 at level 50 = +36%, on top of level growth and gear
+ranks:
+  - { rank: 1, level: 5,  copper: 100,    title: "Adept" }
+  - { rank: 2, level: 10, copper: 600,    title: "Journeyman" }
+  - { rank: 3, level: 20, copper: 2500,   title: "Veteran" }
+  - { rank: 4, level: 30, copper: 8000,   title: "Expert" }
+  - { rank: 5, level: 40, copper: 20000,  title: "Master" }
+  - { rank: 6, level: 50, copper: 45000,  title: "Grandmaster" }
+  - { rank: 7, level: 60, copper: 90000,  title: "Paragon of the Nine" }

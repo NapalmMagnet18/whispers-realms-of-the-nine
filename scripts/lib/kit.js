@@ -2,9 +2,10 @@
 // which class a body plays, soft targeting, launching a missile and landing a hit into target.state.hp.
 import { rotate, rotationFromDirection } from 'builtin/vec3'
 import LV from './data/levels.yml'
+import TR from './data/trainers.yml'
 import FOLEY from './data/foley.yml'
 // a hero's hits grow with their level, as their health does: every class reads this one number
-export function power(ctx) { const s = ctx.self.state; return (1 + (LV.damagePerLevel ?? 0.08) * Math.max(0, (s?.level ?? 1) - 1)) * (1 + gearPower(s) / 100) * ((s?.bloodUntil ?? 0) > ctx.now() ? 1.25 : 1) } // the Blood Shrine's pact: +25% while it holds
+export function power(ctx) { const s = ctx.self.state; return (1 + (LV.damagePerLevel ?? 0.08) * Math.max(0, (s?.level ?? 1) - 1)) * (1 + gearPower(s) / 100) * ((s?.bloodUntil ?? 0) > ctx.now() ? 1.25 : 1) * (1 + (TR.bonus ?? 0.06) * (s?.trained ?? 0)) } // the Blood Shrine's pact: +25% while it holds
 // worn gear's power stat (scripts/lib/data/gear.yml): % more damage, summed over every equipped piece
 export function gearPower(s) { let n = 0; for (const it of Object.values(s?.equipment || {})) n += Number(it?.stats?.power) || 0; return n }
 import { MISSILES, impactFx } from './missiles.js'
