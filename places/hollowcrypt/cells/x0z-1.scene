@@ -2,7 +2,7 @@
 candle-warden:
   behavior: scripts/candle-warden.js
   feetPosition: {x: 0, y: 0.05, z: -71}
-  fx: {script: "fx\npop flame rate=40 on=ci(.35) life=.3..0.6 v=up(.7..1.2) size=.06..0.12 acc=curl(.5)+buoy(1) sz=$size*(1>.3) col=hdr(4,2.4,.8)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)\npop glow n=1 at=<0,2.9,0> r=light(<1,.62,.3>,5,10)"}
+  fx: {script: "fx\npop flame rate=40 on=arc(.35,6.283,.05) life=.3..0.6 v=up(.7..1.2) size=.06..0.12 acc=curl(.5)+buoy(1) sz=$size*(1>.3) col=hdr(4,2.4,.8)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)\npop glow n=1 at=<0,2.9,0> r=light(<1,.62,.3>,5,10)"}
   id: candle-warden
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}

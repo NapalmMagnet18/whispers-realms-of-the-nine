@@ -9,15 +9,15 @@ const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const arc = (from, to) => ((((to - from) % 360) + 540) % 360) - 180;
 const near = (p) => ({ nearby: p, radius: 45 });
 const RING = (r) => `fx
-pop ring burst=90 on=ci(${r}) life=1.8 v=up(.15..0.4) size=.18..0.3 col=hdr(3.4,1.4,.5) a=0>.2:1>.8:1>0 sz=$size*(.6>1.3) r=sprite(soft-disc,add)
+pop ring burst=90 on=arc(${r},6.283,.15) life=1.8 v=up(.15..0.4) size=.18..0.3 col=hdr(3.4,1.4,.5) a=0>.2:1>.8:1>0 sz=$size*(.6>1.3) r=sprite(soft-disc,add)
 pop inner burst=30 on=disc(${r}) life=1.8 v=up(.05..0.2) size=.08..0.14 col=hdr(1.6,.5,2.4) a=0>.4:.6>1:0 sz=$size r=sprite(soft-disc,add)
 pop glow n=1 at=<0,.4,0> life=1.8 r=light(<1,.5,.2>,6,${r + 4})`;
 const BURST = (r) => `fx
-pop flame burst=160 on=ci(${r * 0.5}) life=.5..0.9 v=radial(${r * 1.6})+up(1.5..3) size=.3..0.6 acc=drag(2.5)+buoy(1.5) sz=$size*(.6>1.4:.6>.2) col=hdr(4.6,2.2,.6)>hdr(2,.5,.1)>hdr(.6,.12,.03) a=0>.1:1>.7:.8>0 rot=spin(.4) r=sprite(flame-wisp,add)
+pop flame burst=160 on=disc(${r * 0.5}) life=.5..0.9 v=radial(${r * 1.6})+up(1.5..3) size=.3..0.6 acc=drag(2.5)+buoy(1.5) sz=$size*(.6>1.4:.6>.2) col=hdr(4.6,2.2,.6)>hdr(2,.5,.1)>hdr(.6,.12,.03) a=0>.1:1>.7:.8>0 rot=spin(.4) r=sprite(flame-wisp,add)
 pop smoke burst=24 on=disc(${r * 0.6}) life=1.5..2.4 v=up(.6..1.2) size=.4..0.7 acc=buoy(.5)+drag(.8) sz=$size*(.6>2.4) col=<.2,.18,.2> a=0>.3:.3>.7:.2>0 r=sprite(smoke-puff,alpha)
 pop flash n=1 life=.35 r=light(<1,.6,.25>,30,${r + 8})`;
 const CROWN = `fx
-pop flame rate=40 on=ci(.35) life=.3..0.6 v=up(.7..1.2) size=.06..0.12 acc=curl(.5)+buoy(1) sz=$size*(1>.3) col=hdr(4,2.4,.8)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)
+pop flame rate=40 on=arc(.35,6.283,.05) life=.3..0.6 v=up(.7..1.2) size=.06..0.12 acc=curl(.5)+buoy(1) sz=$size*(1>.3) col=hdr(4,2.4,.8)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)
 pop glow n=1 at=<0,.2,0> r=light(<1,.62,.3>,5,10)`;
 
 function once(w, clip, speed = 1) { w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override" }; }
