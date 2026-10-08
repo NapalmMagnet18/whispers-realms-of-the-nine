@@ -1,19 +1,135 @@
 # Quests, keyed by id. Objectives count player.state.tally[key] from the moment of accept (baseline stored on accept).
 # Rewards pay once: the claim writes completedQuests first and refuses when the id is already there.
+# The Lantern's Reach chain (Quest Bible Q001-Q008, roadmap milestone 1). requires = every id done; requiresAny = one of.
+# Objectives count player.state.tally keys: briar_wolf (wolves.js), log (woodcutting), and quest marks (objects tagged
+# quest-mark, state.mark = the key) that E touches while their quest is active. The six origin finales that gate Q001 in
+# the Bible (MAR-08 … VEY-08) are not built yet, so Q001 stands open to every hero for now.
+Q001:
+  id: Q001
+  title: Welcome to Lantern's Reach
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  text: "Another lantern on the road. Let me see your hand... aye, you carry the mark. Every one of them does, even folk from places I've never heard named. Before you go wandering, sign the Beacon Guild register by the quest board. The Reach keeps count of who walks its roads."
+  progressText: "The register stands by the quest board, east of the well. Sign it, then come back to me."
+  turnInText: "Signed in your own hand. Good. Now the Reach knows your name, and if you vanish, someone will notice. That matters more than you'd think, these days."
+  doneText: "Tamsin's been asking for able hands. You'll find her by the stable."
+  refusedText: "You're already on the register, friend."
+  objectives:
+    - { key: beacon_register, desc: "Sign the Beacon Guild register", target: 1 }
+  rewards: { copper: 300, xp: 60 }
+
 Q002:
   id: Q002
   title: A Light Against the Briars
-  giverNpcId: gatekeeper-elric
-  giverName: Gatekeeper Elric
-  text: "Ah, a new lantern on the road! The Briar Wolves have grown bold past the river, and our watch-fires are burning low. Put down three of the beasts and bring me five good oak logs. Do that, and the Reach owes you."
-  progressText: "Still at it, friend? Three wolves, five logs. The oaks past the river chop clean."
-  turnInText: "Ha! Wolves quiet and the woodpile full. The Reach thanks you, and so do I. Here, you've earned this."
-  doneText: "Fires are lit thanks to you. Walk safe out there."
+  requires: [Q001]
+  giverNpcId: reach-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "Elric sent you? Good. The Briar Wolves have grown bold past the river. They're chasing something, a pulse I can almost hear on still nights. Put down three of them and come back to me. No more than that. They're not the enemy, only frightened."
+  progressText: "Three wolves, past Rowan's bridge to the west. Don't hunt the whole pack."
+  turnInText: "Three. That's enough. Did you feel it out there, that ringing under the ground? Something's calling them. Something made of glass and bells."
+  doneText: "Walk soft in the Briarwild. The wolves remember."
   refusedText: "You've already been paid for that one, friend!"
   objectives:
     - { key: briar_wolf, desc: Briar Wolves, target: 3 }
-    - { key: log, desc: Logs, target: 5 }
   rewards: { copper: 2500, xp: 150 }   # 25 silver
+
+Q003:
+  id: Q003
+  title: The First Forge
+  requires: [Q002]
+  giverNpcId: reach-npc-mira
+  giverName: Mira the Forgekeeper
+  text: "Tamsin says you've steady hands. Prove it at my forge. Mine two lumps of copper at Emberstone Quarry, east along the road, smelt them into a bar at my forge, then hammer yourself a practice blade on the anvil. Everyone who works iron in the Reach starts the same way."
+  progressText: "Two ore from the quarry, a bar at the forge, a blade on the anvil. In that order."
+  turnInText: "Not bad for a first blade. Strange, though. When you struck it, the anvil rang twice, and I swear the second note said 'there should be nine.' Did you hear it too?"
+  doneText: "Keep that blade. Your first one always means something."
+  refusedText: "That blade's already been judged, friend."
+  objectives:
+    - { key: ore, desc: "Mine copper ore at Emberstone Quarry", target: 2 }
+    - { key: forge_smelt, desc: "Smelt a bar at Mira's forge", target: 1 }
+    - { key: forge_blade, desc: "Hammer a practice blade on the anvil", target: 1 }
+  rewards: { copper: 800, xp: 120 }
+
+Q004:
+  id: Q004
+  title: The Old River
+  requires: [Q003]
+  giverNpcId: reach-npc-rowan
+  giverName: Rowan the Ferryman
+  text: "You'll want to eat if you're to keep walking. Cast a line off the jetty past my bridge, catch two river fish, then cook a supper at the inn hearth. Bring word back to me. And while you're at it... ah, never mind. Old men see docks that aren't there."
+  progressText: "Two fish off the western jetty, cooked at the inn hearth."
+  turnInText: "Smells right. Sit a moment. My ferry book lists a crossing last week, to a dock called the Ninth Landing. I've worked this river forty years. There is no Ninth Landing."
+  doneText: "Mind the river. It remembers more than I do."
+  refusedText: "You've had your supper, friend."
+  objectives:
+    - { key: fish, desc: "Catch river fish at the western jetty", target: 2 }
+    - { key: cook_meal, desc: "Cook a supper at the inn hearth", target: 1 }
+  rewards: { copper: 700, xp: 120 }
+
+Q005:
+  id: Q005
+  title: Supply the Watch
+  requires: [Q004]
+  giverNpcId: reach-npc-bram
+  giverName: Bram Alder
+  text: "The eastern watchtower's steps are rotting through. Chop me three oak logs from the stand past the river, then mend the steps at the tower's foot. I'd do it myself, but my back says otherwise."
+  progressText: "Three oak logs, then the steps at the eastern watchtower."
+  turnInText: "Steps are sound. But look what you dug up under the bottom tread: a waymark stone, old as the hills, carved with an arrow pointing east. Toward Hollowcrypt."
+  doneText: "Good timber, good work. The watch thanks you."
+  refusedText: "The steps are already mended, friend."
+  objectives:
+    - { key: log, desc: Oak Logs, target: 3 }
+    - { key: watch_steps, desc: "Mend the eastern watchtower steps", target: 1 }
+  rewards: { copper: 900, xp: 140 }
+
+Q006:
+  id: Q006
+  title: Echoes at the Quarry
+  requires: [Q005]
+  giverNpcId: reach-npc-mira
+  giverName: Mira the Forgekeeper
+  text: "Scavengers have been picking over Emberstone Quarry, and the miners say the old bellglass lamp there has been smashed. Recover the two crates the scavengers stashed, and look closely at that lamp. I want to know who broke it."
+  progressText: "Two scavenger stashes and the broken bellglass lamp, all in the quarry."
+  turnInText: "A maker's seal, fresh, pressed right over an Accord mark centuries old. The Hollow Court. They're signing their work now. That's not a good sign, friend."
+  doneText: "Keep your eyes open in the quarry."
+  refusedText: "You've already told me what you found."
+  objectives:
+    - { key: quarry_stash, desc: "Recover scavenger stashes in the quarry", target: 2 }
+    - { key: bellglass_lamp, desc: "Investigate the broken bellglass lamp", target: 1 }
+  rewards: { copper: 1200, xp: 180 }
+
+Q007:
+  id: Q007
+  title: Broken Sigil
+  requires: [Q006]
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "That seal Mira found is no accident. Three sigil stones were cast out of the Reach long ago: one by the windmill farm, one by Rowan's bridge, one on the old spire road north. Find them all, then set them in the witness recess beside me."
+  progressText: "Three sigil stones: the farm, the bridge, the spire road. Then the recess."
+  turnInText: "Listen. Each stone answers to a different voice, and none of them is yours or mine. No single hero can restore this inscription. It needs witnesses. It needs many."
+  doneText: "The stones will wait. So will I."
+  refusedText: "The stones are already set, child."
+  objectives:
+    - { key: sigil_stone, desc: "Find the three sigil stones", target: 3 }
+    - { key: witness_recess, desc: "Set the stones in the witness recess", target: 1 }
+  rewards: { copper: 1200, xp: 200 }
+
+Q008:
+  id: Q008
+  title: The Hollowcrypt Gate
+  requires: [Q007]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: reach-npc-vale
+  turnInName: Sister Vale
+  text: "Vale tells me the stones want witnesses. Then go and witness. Fly to Hollowcrypt Watch from the roost by the stable, find the old seal at the foot of the dead spire, and tell Sister Vale what it says."
+  progressText: "The seal lies at the dead spire in Hollowcrypt Vale. Then bring word to Sister Vale."
+  turnInText: "'The gate accepts witnesses, not owners.' So the first sealed district lies beneath us after all. You've done the Reach a great service. When you're ready, Hollowcrypt is open to you."
+  doneText: "Hollowcrypt waits. Go with others if you can."
+  refusedText: "You've already brought me the seal's words."
+  objectives:
+    - { key: hollowcrypt_seal, desc: "Inspect the Hollowcrypt seal", target: 1 }
+  rewards: { copper: 2000, xp: 300 }
 
 # Greeter quests: one per race start, claimed once. Given by the zone's greeter, turned in to Gatekeeper Elric at the Reach.
 # reach_visits counts each time the hero walks into Lantern's Reach (quest-player.js), so the walk after accepting is the objective.
@@ -87,6 +203,10 @@ woodcutting:
 
 items:
   log: { id: log, name: Oak Log, slot: bag, stackable: true, description: "A sound length of Briarwild oak. The Reach burns it in its watch-fires." }
+
+marks:                # objects tagged quest-mark: E while the quest is active
+  reach: 3.2
+  cooldown: 6          # seconds between pulls on a repeat mark (ore, fish)
 
 reading:              # E on anything tagged readable (state.title / state.text) floats its page above it
   reach: 2.6           # metres
