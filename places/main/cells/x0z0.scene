@@ -213,37 +213,37 @@ armory-wall-bow-a-withstring:
   feetPosition: {x: 27.62, y: 6.17, z: -2.2}
   id: armory-wall-bow-a-withstring
   model: /cdn/model-bow-wooden-string-beads-9nw6cnxc.glb
-  rotation: {pitch: 0, roll: 90, yaw: 90}
+  rotation: {pitch: 90, roll: 90, yaw: 0}
   tags: [weapon-display]
 armory-wall-bow-b:
   feetPosition: {x: 27.62, y: 6.17, z: -0.3400000000000003}
   id: armory-wall-bow-b
   model: /cdn/model-bow-ice-crystal-bone-gk5xyvor.glb
-  rotation: {pitch: 0, roll: 90, yaw: 90}
+  rotation: {pitch: 90, roll: 90, yaw: 0}
   tags: [weapon-display]
 armory-wall-bow-b-withstring:
   feetPosition: {x: 27.62, y: 6.17, z: -1.58}
   id: armory-wall-bow-b-withstring
   model: /cdn/model-bow-fantasy-blue-crystal-pt660s1g.glb
-  rotation: {pitch: 0, roll: 90, yaw: 90}
+  rotation: {pitch: 90, roll: 90, yaw: 0}
   tags: [weapon-display]
 armory-wall-shield-a:
   feetPosition: {x: 24, y: 5.57, z: -2.62}
   id: armory-wall-shield-a
   model: /cdn/model-shield-a-tan-riveted-gwyh62ww.glb
-  rotation: 0
+  rotation: 180
   tags: [weapon-display]
 armory-wall-shield-b:
   feetPosition: {x: 24.95, y: 5.57, z: -2.62}
   id: armory-wall-shield-b
   model: /cdn/model-shield-blue-white-heraldic-z5jgrxtp.glb
-  rotation: 0
+  rotation: 180
   tags: [weapon-display]
 armory-wall-shield-c:
   feetPosition: {x: 25.9, y: 5.57, z: -2.62}
   id: armory-wall-shield-c
   model: /cdn/model-shield-spiked-blue-stone-1zjmstmh.glb
-  rotation: 0
+  rotation: 180
   tags: [weapon-display]
 bank:
   children: [{feetPosition: {x: 0, y: 0.12, z: 2}, physics: static, primitive: {kind: scripted, params: {kind: counter}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -3.8, y: 0.12, z: 3.2}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -2.6, y: 0.12, z: 3.4}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.6, y: 0.12, z: 3.3}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 0, y: 3, z: 0.5}, light: {color: oklch(0.82 0.13 65), distance: 11, intensity: 6, kind: point}}]
