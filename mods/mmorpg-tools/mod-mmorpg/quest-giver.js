@@ -3,6 +3,7 @@
 // Handles: proximity highlight + prompt, interact to open dialog, floating quest diamond
 
 var { getAvailableQuests } = require('./lib/quest-data.js');
+var { qt } = require('../../../scripts/lib/quest-text.js');
 var { distance } = require('builtin/vec3');
 var { isNearestInteractable } = require('./lib/nearest-interactable.js');
 
@@ -151,7 +152,7 @@ export function onInteract(objectApi, other) {
         title: quest.title,
         giverName: quest.giverName,
         giverNpcId: quest.giverNpcId || objectApi.id,
-        text: quest.text,
+        text: qt(quest.id, 'text'),
         objectives: quest.objectives,
         rewards: quest.rewards
       }

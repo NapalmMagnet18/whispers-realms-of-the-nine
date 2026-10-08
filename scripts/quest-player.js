@@ -9,6 +9,7 @@ import { move, formatText } from './lib/economy.js';
 import { levelInfo, statsFor } from './lib/leveling.js';
 import { questFirst, levelFirst } from './lib/realm-firsts.js';
 import V from './lib/data/vanguard.yml';
+import { qt, warm as warmText } from './lib/quest-text.js';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 
 const W = Q.woodcutting, N = Q.npc, R = Q.reading || { reach: 2.6, length: 11 }, M = Q.marks || { reach: 3.2, cooldown: 6 };
@@ -104,7 +105,7 @@ function talk(ctx, npc) {
     const q = getQuest(aq.questId); if (!q || (q.turnInNpcId || q.giverNpcId) !== id) continue;
     const p = questProgress(aq, st);
     if (p.done) {
-      st.questDialogData = { id: q.id, title: q.title, giverName: q.turnInName || q.giverName, giverNpcId: id, text: q.turnInText, objectives: p.objectives, rewards: q.rewards, turnIn: true };
+      st.questDialogData = { id: q.id, title: q.title, giverName: q.turnInName || q.giverName, giverNpcId: id, text: qt(q.id, 'turnInText'), objectives: p.objectives, rewards: q.rewards, turnIn: true };
       st.showQuestDialog = true;
       ctx.emit('playSound', { clip: '/cdn/sfx-scroll-open-magic-parchment-yk3iu4k0.mp3', position: pos, volume: 0.3 }, { audience: { player: ctx.self.id } });
       return;
@@ -113,18 +114,18 @@ function talk(ctx, npc) {
   const avail = getAvailableQuests(id, st);
   if (avail.length) {
     const a = avail[0];
-    st.questDialogData = { id: a.id, title: a.title, giverName: a.giverName, giverNpcId: id, text: a.text, objectives: a.objectives, rewards: a.rewards };
+    st.questDialogData = { id: a.id, title: a.title, giverName: a.giverName, giverNpcId: id, text: qt(a.id, 'text'), objectives: a.objectives, rewards: a.rewards };
     st.showQuestDialog = true;
     ctx.emit('playSound', { clip: '/cdn/question-prompt-chime-notification-jtcgt1r9.mp3', position: pos, volume: 0.3 }, { audience: { player: ctx.self.id } });
     return;
   }
   for (const aq of actives) {
     const q = getQuest(aq.questId); if (!q) continue;
-    if ((q.turnInNpcId || q.giverNpcId) === id || q.giverNpcId === id) return say(ctx, q.progressText, id);
+    if ((q.turnInNpcId || q.giverNpcId) === id || q.giverNpcId === id) return say(ctx, qt(q.id, 'progressText'), id);
   }
   if (npc.state && npc.state.who && TF[npc.state.who]) return chat(ctx, npc); // a townsfolk giver with nothing to offer talks as themselves
   const mine = Object.values(Q).filter((q) => q && q.giverNpcId === id && (st.completedQuests || []).includes(q.id)).pop();
-  say(ctx, (mine && mine.doneText) || (npc.state && npc.state.line) || 'Walk safe out there.', id);
+  say(ctx, (mine && qt(mine.id, 'doneText')) || (npc.state && npc.state.line) || 'Walk safe out there.', id);
 }
 
 function accept(ctx, questId) {
@@ -143,16 +144,16 @@ function complete(ctx, questId) {
   const q = getQuest(questId);
   st.showQuestDialog = false; st.questDialogData = null;
   if (!q) return;
-  if ((st.completedQuests || []).includes(questId)) { say(ctx, q.refusedText); return; }
+  if ((st.completedQuests || []).includes(questId)) { say(ctx, qt(q.id, 'refusedText')); return; }
   const aq = (st.activeQuests || []).find((x) => x && x.questId === questId);
-  if (!aq || !questProgress(aq, st).done) { if (aq) say(ctx, q.progressText); return; }
+  if (!aq || !questProgress(aq, st).done) { if (aq) say(ctx, qt(q.id, 'progressText')); return; }
   st.completedQuests = [...(st.completedQuests || []), questId];
   st.activeQuests = (st.activeQuests || []).filter((x) => x && x.questId !== questId);
   st.xp = (st.xp || 0) + (q.rewards.xp || 0);
   st._questSave = true;
   if (q.rewards.copper) move(ctx, q.rewards.copper, 'quest:' + questId, { feedback: false });
   for (const k of q.rewards.items || []) if (Q.items && Q.items[k]) addItem(st, Q.items[k]); // after the completed flag: paid once
-  say(ctx, q.doneText, q.turnInNpcId || q.giverNpcId);
+  say(ctx, qt(q.id, 'doneText'), q.turnInNpcId || q.giverNpcId);
   const head = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 2.2, z: ctx.self.feetPosition.z };
   ctx.emit('damageNumber', { position: head, text: `+${formatText(q.rewards.copper || 0)}  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: 'cdn/sfx-reward.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
@@ -301,6 +302,7 @@ pop glow burst=1 life=1 pos=<0,1,0> r=light(<1,.8,.4>,25>0,8)`;
 
 export function update(ctx) {
   if (!playing(ctx)) return;
+  warmText();
   const st = ctx.self.state;
   if (ctx.session.chop) stepChop(ctx);
   if (st.npcSay && ctx.now() > (ctx.session.sayUntil || 0)) st.npcSay = null;
