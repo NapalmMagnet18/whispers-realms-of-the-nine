@@ -13,7 +13,32 @@ const SND = {
 const MNS = 'mmorpg-tools:';
 const pressed = (input, n) => !!((input.pressed && (input.pressed[n] || input.pressed[MNS + n])) || (input.actions && (input.actions[n] || input.actions[MNS + n])));
 const FOOD = { bite: "/cdn/moodboard-painterly-fantasy/sfx-eating-a-bite-of-cooked-fish-soft-chew-and-crunch.mp3", done: "/cdn/moodboard-painterly-fantasy/sfx-satisfied-content-sigh-after-a-meal.mp3" };
+const BLOOD = { seconds: 180, cost: 0.2, sound: "/cdn/moodboard-gothic-horror/sfx-blood-pact-deep-war-drum-heartbeat-and-dark-choir-whisper-swell.mp3",
+  aura: `fx
+pop drip rate=8 on=disc(.45).c(1) life=.8..1.3 v=up(.3..0.8) size=.04..0.07 acc=curl(.4)+buoy(.2) col=hdr(2.6,.25,.15) a=0>.2:.9>.7:.6>0 r=sprite(ember,add)` };
+function offerBlood(ctx) {
+  const me = ctx.self, s = me.state, now = ctx.now(), fp = me.feetPosition, to = { audience: { player: me.id } };
+  const sh = ctx.query({ tags: ['blood-shrine'], radius: 5 })[0]; if (!sh) return false;
+  if ((s.bloodUntil || 0) > now) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'The shrine is sated. ' + Math.ceil((s.bloodUntil - now) / 1000) + 's', color: '#e2876a', size: 0.95, lifetime: 1.6 }, to); return true; }
+  const max = s.maxHealth || 1000, cost = Math.round(max * BLOOD.cost);
+  if ((s.health ?? max) <= cost + 1) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'Too weak to bleed for it', color: '#e2876a', size: 0.95, lifetime: 1.6 }, to); return true; }
+  s.health = (s.health ?? max) - cost; ctx.session.lastHp = s.health; ctx.session.hurtAt = now;
+  s.bloodUntil = now + BLOOD.seconds * 1000;
+  me.fx = { script: BLOOD.aura }; ctx.after(BLOOD.seconds, 'bloodEnds');
+  ctx.emit('playSound', { clip: BLOOD.sound, position: fp, volume: 0.75, maxDistance: 30 }, { audience: { nearby: fp, radius: 30 } });
+  ctx.emit('screenFlash', { color: 'oklch(0.45 0.2 25)', duration: 0.5, intensity: 0.45 }, to);
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2 }, value: cost, color: '#c0392b' }, to);
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.8 }, text: 'Blood Pact: +25% power', color: '#ff7a60', size: 1.2, lifetime: 2.4 }, to);
+  return true;
+}
+export function bloodEnds(ctx) {
+  const s = ctx.self.state; if ((s.bloodUntil || 0) > ctx.now() + 500) return;
+  ctx.self.fx = null; s.bloodUntil = 0;
+  const fp = ctx.self.feetPosition;
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.4 }, text: 'The Blood Pact fades', color: '#c8b890', size: 0.95, lifetime: 1.8 }, { audience: { player: ctx.self.id } });
+}
 export function onInput(ctx, input) {
+  if (pressed(input, 'interact') && ctx.self.state.characterCreated && !ctx.self.state.dying && offerBlood(ctx)) return;
   if (!pressed(input, 'useFood')) return;
   const me = ctx.self, s = me.state; if (!s.characterCreated || s.dying) return;
   const d = (input.actionData && (input.actionData.useFood || input.actionData[MNS + 'useFood'])) || {};
