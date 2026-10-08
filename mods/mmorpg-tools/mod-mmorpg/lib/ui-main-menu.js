@@ -51,7 +51,7 @@ function titleView(s, hasChar, loading) {
   var stack = loading
     ? '<div style="color:' + DIM + ';font-style:italic;letter-spacing:2px">Reading the realm\u2019s ledger\u2026</div>'
     : items.map(function (it, i) { return '<div>' + btn(it[0], it[1], it[2], 420, i === 0 ? 'buttonHot' : 'button', i === 0 ? 31 : 24) + '</div>'; }).join('<div style="height:13px"></div>');
-  return '<div style="position:fixed;left:64px;top:50%;transform:translateY(-34%) scale(min(1, calc(100vh / 760)));transform-origin:left center;z-index:60;pointer-events:none;' + ART.frame('menu', 16, 'rgba(14,11,8,.88)') + 'padding:22px 22px;box-shadow:0 16px 50px rgba(0,0,0,.55)">'
+  return '<div style="position:fixed;left:64px;top:50%;transform:translateY(-34%);z-index:60;pointer-events:none;' + ART.frame('menu', 16, 'rgba(14,11,8,.88)') + 'padding:22px 22px;box-shadow:0 16px 50px rgba(0,0,0,.55)">'
     + ART.rule('fadeCross', '420px', 18) + stack + ART.rule('capEnd', '420px', 18) + '</div>';
 }
 function creditsView() {
