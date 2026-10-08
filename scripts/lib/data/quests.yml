@@ -1592,3 +1592,326 @@ BRD-09:
     - { key: archive_opened, desc: "Open the Root Archive to outsiders", target: 1 }
     - { key: velthraen_road, desc: "Set out for Velthraen Reach", target: 1 }
   rewards: { copper: 16000, xp: 1900 }
+
+# ── Dungeons, raids and the endgame (2026-10-08): campaign bible DSB/DRT/RAC, plus original raids RPC (Pale Choir) and RCE (Emberheart). minLevel = the area's level band. ──
+
+DSB-01:
+  id: DSB-01
+  title: Beneath the Marsh Floor
+  zone: Sorrowfen Sunken Chapel
+  group: "Dungeon \xB7 The Drowned Bell (lv 23-27)"
+  requires: [SOR-06]
+  minLevel: 22
+  giverNpcId: fen-npc-pell
+  giverName: Marsh Guide Pell
+  turnInNpcId: bell-npc-pell
+  turnInName: Marsh Guide Pell
+  objectives:
+  - {key: bell_entered, desc: Go down through the drowned chapel, target: 1}
+  - {key: pump_gate, desc: Open the pump gate, target: 1}
+  - {key: wisp_guided, desc: Guide the wisp down the flooded stair, target: 3}
+  rewards: {copper: 3500, xp: 800}
+
+DSB-02:
+  id: DSB-02
+  title: The Mouth of the Mire
+  zone: Sorrowfen Sunken Chapel
+  group: "Dungeon \xB7 The Drowned Bell (lv 23-27)"
+  requires: [DSB-01]
+  minLevel: 22
+  giverNpcId: bell-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  turnInNpcId: bell-npc-iona
+  turnInName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: reed_sentry, desc: Defeat the corrupted reed sentries, target: 2}
+  - {key: air_pocket, desc: Open air pockets, target: 3}
+  rewards: {copper: 3800, xp: 900}
+
+DSB-03:
+  id: DSB-03
+  title: Choirmother Without Choir
+  zone: Sorrowfen Sunken Chapel
+  group: "Dungeon \xB7 The Drowned Bell (lv 23-27)"
+  requires: [DSB-02]
+  minLevel: 22
+  giverNpcId: bell-npc-kele
+  giverName: Wisp Tender Kele
+  turnInNpcId: bell-npc-kele
+  turnInName: Wisp Tender Kele
+  objectives:
+  - {key: tether_chord, desc: Disrupt the tethering chords, target: 3}
+  - {key: choir_mother_dodge, desc: Step out of her song, target: 3}
+  - {key: choir_mother, desc: Defeat the Choirmother projection, target: 1}
+  rewards: {copper: 6000, xp: 1400}
+
+DSB-04:
+  id: DSB-04
+  title: One Song for the Living
+  zone: Sorrowfen Sunken Chapel
+  group: "Dungeon \xB7 The Drowned Bell (lv 23-27)"
+  requires: [DSB-03]
+  minLevel: 22
+  giverNpcId: bell-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  turnInNpcId: fen-npc-iona
+  turnInName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: stolen_melody, desc: Return the stolen melody to the memorial, target: 1}
+  - {key: dry_path, desc: Open the dry escape path, target: 1}
+  rewards: {copper: 4000, xp: 1000}
+
+DRT-01:
+  id: DRT-01
+  title: Door in the Trunk
+  zone: Root Archive
+  group: "Dungeon \xB7 The Root Archive (lv 29-33)"
+  requires: [BRD-06]
+  minLevel: 28
+  giverNpcId: grove-npc-fenna
+  giverName: Elder Fenna Rootwake
+  turnInNpcId: root-npc-fenna
+  turnInName: Elder Fenna Rootwake
+  objectives:
+  - {key: root_entered, desc: Enter the door in the great trunk, target: 1}
+  - {key: root_elevator, desc: Wake the root elevator, target: 1}
+  - {key: seed_guided, desc: 'Carry the living seed down, gently', target: 3}
+  rewards: {copper: 4500, xp: 1100}
+
+DRT-02:
+  id: DRT-02
+  title: The Orchard That Counts
+  zone: Root Archive
+  group: "Dungeon \xB7 The Root Archive (lv 29-33)"
+  requires: [DRT-01]
+  minLevel: 28
+  giverNpcId: root-npc-ell
+  giverName: Grove Singer Ell
+  turnInNpcId: root-npc-ell
+  turnInName: Grove Singer Ell
+  objectives:
+  - {key: living_glyph, desc: Solve the living glyphs, target: 3}
+  - {key: root_lasher, desc: Protect the witness branch from root lashers, target: 6}
+  rewards: {copper: 4800, xp: 1200}
+
+DRT-03:
+  id: DRT-03
+  title: The Thorn Custodian
+  zone: Root Archive
+  group: "Dungeon \xB7 The Root Archive (lv 29-33)"
+  requires: [DRT-02]
+  minLevel: 28
+  giverNpcId: root-npc-tamsin
+  giverName: Tamsin the Ranger
+  turnInNpcId: root-npc-tamsin
+  turnInName: Tamsin the Ranger
+  objectives:
+  - {key: bellglass_thorn, desc: Disable the bellglass thorns, target: 3}
+  - {key: thorn_custodian_dodge, desc: Dodge the Custodian's thorns, target: 3}
+  - {key: thorn_custodian, desc: Defeat the Thorn Custodian, target: 1}
+  rewards: {copper: 7500, xp: 1800}
+
+DRT-04:
+  id: DRT-04
+  title: No Fruit for the Crown
+  zone: Root Archive
+  group: "Dungeon \xB7 The Root Archive (lv 29-33)"
+  requires: [DRT-03]
+  minLevel: 28
+  giverNpcId: root-npc-fenna
+  giverName: Elder Fenna Rootwake
+  turnInNpcId: grove-npc-fenna
+  turnInName: Elder Fenna Rootwake
+  objectives:
+  - {key: archive_kernel, desc: Plant the archive kernel in the open glade, target: 1}
+  - {key: kernel_daylight, desc: Carry the kernel up to daylight, target: 1}
+  rewards: {copper: 5000, xp: 1300}
+
+END-01:
+  id: END-01
+  title: Three Doors at the End
+  zone: Lantern's Reach
+  group: "Endgame \xB7 The Three Doors (lv 60)"
+  minLevel: 60
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  objectives:
+  - {key: pale_choir_entered, desc: Find the Pale Choir under Ashen Close cathedral, target: 1}
+  - {key: emberheart_entered, desc: Find the Emberheart Caldera past Emberstone Bastion, target: 1}
+  - {key: assembly_entered, desc: Find the Assembly door at Veilgate Aerie, target: 1}
+  rewards: {copper: 20000, xp: 0}
+
+RPC-01:
+  id: RPC-01
+  title: The Unlit Deacon
+  zone: The Pale Choir
+  group: "Raid \xB7 The Pale Choir (lv 60, 5-10 heroes)"
+  minLevel: 60
+  giverNpcId: choir-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: choir-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: pale_acolyte, desc: Silence the pale acolytes, target: 8}
+  - {key: deacon_morrow, desc: 'Defeat Deacon Morrow, the Unlit', target: 1}
+  rewards: {copper: 30000, xp: 3000}
+
+RPC-02:
+  id: RPC-02
+  title: A Hymn Needs Bones
+  zone: The Pale Choir
+  group: "Raid \xB7 The Pale Choir (lv 60, 5-10 heroes)"
+  requires: [RPC-01]
+  minLevel: 60
+  giverNpcId: choir-npc-wenna
+  giverName: Wenna Ashgrave
+  turnInNpcId: choir-npc-wenna
+  turnInName: Wenna Ashgrave
+  objectives:
+  - {key: organ_pipe, desc: Crack the bone organ's pipes, target: 4}
+  - {key: bone_organist, desc: Defeat the Bone Organist, target: 1}
+  rewards: {copper: 32000, xp: 3200}
+
+RPC-03:
+  id: RPC-03
+  title: The Candleless Saint
+  zone: The Pale Choir
+  group: "Raid \xB7 The Pale Choir (lv 60, 5-10 heroes)"
+  requires: [RPC-02]
+  minLevel: 60
+  giverNpcId: choir-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: reach-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: saint_ilvane_dodge, desc: Survive the Saint's holy fire, target: 5}
+  - {key: saint_ilvane, desc: Defeat Saint Ilvane the Candleless, target: 1}
+  rewards: {copper: 60000, xp: 5000}
+
+RCE-01:
+  id: RCE-01
+  title: Hounds of the Slagmaster
+  zone: Emberheart Caldera
+  group: "Raid \xB7 Emberheart Caldera (lv 60, 5-10 heroes)"
+  minLevel: 60
+  giverNpcId: caldera-npc-yurra
+  giverName: Yurra Flint-Eye
+  turnInNpcId: caldera-npc-yurra
+  turnInName: Yurra Flint-Eye
+  objectives:
+  - {key: slag_hound, desc: Put down the slag hounds, target: 8}
+  - {key: kesh_slagmaster, desc: Defeat Kesh the Slagmaster, target: 1}
+  rewards: {copper: 30000, xp: 3000}
+
+RCE-02:
+  id: RCE-02
+  title: The Glass That Rings
+  zone: Emberheart Caldera
+  group: "Raid \xB7 Emberheart Caldera (lv 60, 5-10 heroes)"
+  requires: [RCE-01]
+  minLevel: 60
+  giverNpcId: caldera-npc-kiv
+  giverName: Foreman Kiv
+  turnInNpcId: caldera-npc-kiv
+  turnInName: Foreman Kiv
+  objectives:
+  - {key: cooling_valve, desc: Open the caldera cooling valves, target: 3}
+  - {key: bellglass_colossus, desc: Shatter the Bellglass Colossus, target: 1}
+  rewards: {copper: 32000, xp: 3200}
+
+RCE-03:
+  id: RCE-03
+  title: Heart of the Caldera
+  zone: Emberheart Caldera
+  group: "Raid \xB7 Emberheart Caldera (lv 60, 5-10 heroes)"
+  requires: [RCE-02]
+  minLevel: 60
+  giverNpcId: caldera-npc-yurra
+  giverName: Yurra Flint-Eye
+  turnInNpcId: caldera-npc-yurra
+  turnInName: Yurra Flint-Eye
+  objectives:
+  - {key: vharok_caldera_dodge, desc: Survive Vharok's eruptions, target: 5}
+  - {key: vharok_caldera, desc: 'Defeat Vharok, Heart of the Caldera', target: 1}
+  rewards: {copper: 60000, xp: 5000}
+
+RAC-01:
+  id: RAC-01
+  title: The Gathering of Delegates
+  zone: Ninth Veil Assembly
+  group: "Raid \xB7 Assembly of the Ninth, season finale (lv 60)"
+  requires: [RPC-03, RCE-03]
+  minLevel: 60
+  giverNpcId: assembly-npc-leth
+  giverName: Magister Leth Sen
+  turnInNpcId: assembly-npc-leth
+  turnInName: Magister Leth Sen
+  objectives:
+  - {key: delegate_invited, desc: Invite six living delegations and three echo delegates, target: 9}
+  rewards: {copper: 30000, xp: 3000}
+
+RAC-02:
+  id: RAC-02
+  title: Nine Seats, None a Throne
+  zone: Ninth Veil Assembly
+  group: "Raid \xB7 Assembly of the Ninth, season finale (lv 60)"
+  requires: [RAC-01]
+  minLevel: 60
+  giverNpcId: assembly-npc-witness
+  giverName: The Ninth Witness
+  turnInNpcId: assembly-npc-witness
+  turnInName: The Ninth Witness
+  objectives:
+  - {key: seat_station, desc: Take each of the nine seats in turn, target: 9}
+  - {key: seal_keeper, desc: Release the First Seal-Keeper, target: 1}
+  rewards: {copper: 35000, xp: 3500}
+
+RAC-03:
+  id: RAC-03
+  title: Against the Memory Engine
+  zone: Ninth Veil Assembly
+  group: "Raid \xB7 Assembly of the Ninth, season finale (lv 60)"
+  requires: [RAC-02]
+  minLevel: 60
+  giverNpcId: assembly-npc-mareth
+  giverName: Regent Mareth Sable
+  turnInNpcId: assembly-npc-mareth
+  turnInName: Regent Mareth Sable
+  objectives:
+  - {key: memory_engine_dodge, desc: Survive the siphons and the echo tide, target: 5}
+  - {key: memory_engine, desc: Shut down the Memory Engine, target: 1}
+  rewards: {copper: 100000, xp: 8000}
+
+RAC-04:
+  id: RAC-04
+  title: The Hearing After Victory
+  zone: Ninth Veil Assembly
+  group: "Raid \xB7 Assembly of the Ninth, season finale (lv 60)"
+  requires: [RAC-03]
+  minLevel: 60
+  giverNpcId: assembly-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: assembly-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: victim_heard, desc: Listen to three victims, target: 3}
+  - {key: restitution, desc: Record the public restitution promises, target: 1}
+  rewards: {copper: 20000, xp: 2000}
+
+RAC-05:
+  id: RAC-05
+  title: The Bell at First Light
+  zone: Ninth Veil Assembly
+  group: "Raid \xB7 Assembly of the Ninth, season finale (lv 60)"
+  requires: [RAC-04]
+  minLevel: 60
+  giverNpcId: assembly-npc-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  objectives:
+  - {key: ceremony, desc: Attend the open remembrance ceremony, target: 1}
+  - {key: crest_chosen, desc: Choose a commemorative crest, target: 1}
+  rewards: {copper: 50000, xp: 5000}
