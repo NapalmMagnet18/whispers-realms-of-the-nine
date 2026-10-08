@@ -307,3 +307,27 @@ wyn-grove:
   name: Gardener Wyn
   lines:
     - "Nobody asked my aunt. Nobody asks the young ones anything."
+osric-ashen:
+  name: Gravekeeper Osric
+  lines:
+    - "Wipe your boots on the way out, not in. The dead of Ashen Close keep a tidier house than the living."
+    - "Three hundred stones in this yard and I know every name. Some of them still answer when the bell's quiet."
+    - "The cathedral roof came down the night the Ninth Veil thinned. Nobody's fixed it. Nobody's dared."
+halric-ashen:
+  name: Ser Halric of the Nine
+  lines:
+    - "Halt, wayfarer. This is holy ground, broken or not. Walk it with your weapon sheathed and your voice low."
+    - "I swore to keep the altar lit until the order returns. That was eleven winters ago. The candles still burn."
+    - "Something walks the nave after midnight. It does not bleed. I have tried."
+nyssa-ashen:
+  name: Nyssa the Bonewort
+  lines:
+    - "Don't mind the mask. The grave-mist here gets into your lungs and gives you dreams that aren't yours."
+    - "Gravebloom grows best where the soil is old and sad. Bring me some, and I'll brew you something to keep the cold out."
+    - "The relic table by the door? Pilgrims leave their best blades there. Touch nothing. The saints keep accounts."
+corwen-ashen:
+  name: Pilgrim Corwen
+  lines:
+    - "I walked here from the Saltmere coast barefoot. My feet hate me. My soul feels lighter. Mostly my feet."
+    - "They say the rose window shows a different saint to each who looks. I saw my mother. She looked disappointed."
+    - "Lantern's Reach is south-west, down the cobble road. Tell the innkeep Corwen sent you; she'll charge you double."
