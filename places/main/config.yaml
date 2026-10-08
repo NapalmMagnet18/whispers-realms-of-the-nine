@@ -372,3 +372,17 @@ terrain:
     start-thornhollow-clear: {center: {x: -720, z: 70}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
     start-cinderhold-clear: {center: {x: 900, z: -170}, kind: clear-scatter, shape: {kind: circle, radius: 22}}
     start-gullrest-clear: {center: {x: 250, z: 1430}, kind: clear-scatter, shape: {kind: circle, radius: 10}}
+    roost-hollowcrypt: {center: {x: 1180, z: -600}, falloff: 12, height: 24, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-hollowcrypt-clear: {center: {x: 1180, z: -600}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    roost-sorrowfen: {center: {x: -1170, z: 760}, falloff: 12, height: 2.4, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-sorrowfen-clear: {center: {x: -1170, z: 760}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    roost-frostveil: {center: {x: -10, z: -3760}, falloff: 12, height: 61, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-frostveil-clear: {center: {x: -10, z: -3760}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    roost-sunscar: {center: {x: 3770, z: -150}, falloff: 12, height: 77, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-sunscar-clear: {center: {x: 3770, z: -150}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    roost-elderveil: {center: {x: -3540, z: -20}, falloff: 12, height: 45, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-elderveil-clear: {center: {x: -3540, z: -20}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    roost-ninthveil: {center: {x: 30, z: -7560}, falloff: 12, height: 130, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-ninthveil-clear: {center: {x: 30, z: -7560}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    roost-bastion: {center: {x: 7560, z: -170}, falloff: 12, height: 25, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
+    roost-bastion-clear: {center: {x: 7560, z: -170}, kind: clear-scatter, shape: {kind: circle, radius: 11}}

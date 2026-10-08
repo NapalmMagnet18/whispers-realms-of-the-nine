@@ -1,4 +1,12 @@
 # spawn-scene v2 yaml x-6z1
+roost-thornhollow:
+  children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:90px;color:#f2b04a;text-shadow:0 0 12px #000\">THORNHOLLOW</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
+  feetPosition: {x: -728, y: 19.6, z: 86}
+  id: roost-thornhollow
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/roost.js}
+  state: {roost: thornhollow}
+  tags: [roost]
 start-thornhollow:
   feetPosition: {x: -720, y: 19.585919813131138, z: 70}
   fx: {script: "fx\npop moth n=?mobile:14|28 on=box(17,2.2,17).c(2.6) life=5..9 size=.05..0.09 acc=curl(.35)*1.6+drag(1.1) sz=$size*flick(4,.5) col=hdr(2.6,2,.75) a=(0>.15:1>.8:1>0)*flick(1.3,.5) r=sprite(mote,add)\npop glim n=?mobile:4|8 on=box(14,1.5,14).c(1.2) life=4..7 size=.12..0.2 acc=curl(.2)+drag(1.4) sz=$size col=hdr(1.2,1.6,.9) a=(0>.3:.6>.7:.6>0)*flick(.7,.6) r=sprite(soft-disc,add)"}
