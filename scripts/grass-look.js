@@ -11,6 +11,9 @@
 // the sun lets light through its tip (builtin/lighting's sunDirection points toward the sun, and
 // sunRadiance is zero at night, so the glow dies with the sun). Every number here is yours to move.
 import { mix, hash, vec2, vec3, cameraPosition, positionWorld } from 'builtin/tsl';
+// The creator's grass strip (/cdn/grass-u4wbj4xul.webp): five painted stripes (olive, lime, deep green, rust, yellow-green)
+// in its left fifth; each blade picks one stripe by its random and reads it root to tip, folded into the ground tint.
+const STRIP = '/cdn/grass-u4wbj4xul.webp';
 import { sunDirection, sunRadiance } from 'builtin/lighting';
 import { MeshStandardNodeMaterial } from 'builtin/three';
 
@@ -23,8 +26,10 @@ export function material(ctx) {
   const clumpHue = hash(cell.x.mul(157).add(cell.y.mul(311)));
   const clumpValue = hash(cell.x.mul(97).add(cell.y.mul(53)).add(7));
   const clump = ground.mul(mix(vec3(1.1, 1.0, 0.85), vec3(0.9, 1.0, 1.12), clumpHue)).mul(mix(0.82, 1.18, clumpValue));
-  const root = clump.mul(0.5);
-  const tip = clump.mul(1.35);
+  const stripe = ctx.texture(STRIP).sample(vec2(ctx.scatter.random.mul(0.2).add(0.008), h.mul(0.9).add(0.05))).rgb;
+  const painted = mix(clump, clump.mul(stripe.mul(2.2)), ctx.param('stripMix', 0.45));
+  const root = painted.mul(0.5);
+  const tip = painted.mul(1.35);
   m.colorNode = mix(root, tip, h.pow(1.3));
   m.roughnessNode = mix(0.95, 0.4, h.pow(2));
   const toEye = cameraPosition.sub(positionWorld).normalize();

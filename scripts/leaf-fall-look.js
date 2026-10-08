@@ -6,7 +6,7 @@ const FRAMES = [[0.052, 0.046, 0.131, 0.384], [0.226, 0.047, 0.131, 0.384], [0.4
 export function material(ctx) {
   const m = new MeshStandardNodeMaterial();
   m.side = DoubleSide;
-  const k = ctx.fx.seed.fract().mul(FRAMES.length).floor();
+  const k = float(ctx.fx.params.fr).floor();
   let rect = vec4(...FRAMES[0]);
   for (let i = 1; i < FRAMES.length; i++) rect = select(k.equal(float(i)), vec4(...FRAMES[i]), rect);
   const p = vec2(ctx.fx.uvAcross, ctx.fx.uvAlong);

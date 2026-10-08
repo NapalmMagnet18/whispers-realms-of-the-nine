@@ -43,9 +43,10 @@ terrain:
     bindings:
       grass:
       - flower
+      - wildflower
       - grass
       - pebble
-      forest: [fern, pebble, woods]
+      forest: [fern, pebble, woods, woodsoak, mushroom]
       gravel:
       - pebble
       blight: [deadwood, pebble]
@@ -115,8 +116,11 @@ terrain:
         material:
           kind: scripted
           script: scripts/grass-look.js
-      woods: {density: 0.008, items: [{kind: scripted, maxDistance: 420, params: {kind: pine}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 21, weight: 3}, {kind: scripted, maxDistance: 420, params: {kind: oak}, randomRotation: true, scale: [0.8, 1.4], script: scripts/gen/tree.js, seed: 22, weight: 2}]}
-      deadwood: {density: 0.004, items: [{kind: scripted, maxDistance: 420, params: {kind: dead}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 23}]}
+      woods: {density: 0.0048, material: {kind: scripted, script: scripts/tree-look.js, params: {kind: pine}}, items: [{kind: scripted, maxDistance: 420, params: {kind: pine}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 21}]}
+      woodsoak: {density: 0.0032, material: {kind: scripted, script: scripts/tree-look.js, params: {kind: oak}}, items: [{kind: scripted, maxDistance: 420, params: {kind: oak}, randomRotation: true, scale: [0.8, 1.4], script: scripts/gen/tree.js, seed: 22}]}
+      mushroom: {density: 0.03, material: {kind: scripted, script: scripts/mushroom-look.js}, items: [{kind: scripted, script: scripts/mushroom.js, params: {cap: orange}, seed: 31, randomRotation: true, scale: [0.7, 1.6], maxDistance: 60, weight: 3}, {kind: scripted, script: scripts/mushroom.js, params: {cap: purple}, seed: 32, randomRotation: true, scale: [0.7, 1.5], maxDistance: 60}, {kind: scripted, script: scripts/mushroom.js, params: {cap: speckle}, seed: 33, randomRotation: true, scale: [0.6, 1.3], maxDistance: 60, weight: 2}, {kind: scripted, script: scripts/mushroom.js, params: {cap: gills}, seed: 34, randomRotation: true, scale: [0.6, 1.2], maxDistance: 60}]}
+      wildflower: {density: 0.18, material: {kind: scripted, script: scripts/flower-look.js}, items: [{kind: scripted, script: scripts/flower.js, params: {frame: 0}, seed: 41, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 1}, seed: 42, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 2}, seed: 43, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 3}, seed: 44, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 4}, seed: 45, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}]}
+      deadwood: {density: 0.004, items: [{kind: scripted, maxDistance: 420, params: {kind: dead}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 23}], material: {kind: scripted, script: scripts/tree-look.js, params: {kind: dead}}}
       reeds: {density: 3, items: [{avoidWater: false, kind: scripted, randomRotation: true, scale: [1.8, 2.8], script: scripts/grass.js, seed: 7, wind: {force: 0.08}}], material: {kind: scripted, script: scripts/grass-look.js}}
   generator: scripts/terrain-reach.js
   kind: heightmap
@@ -132,6 +136,7 @@ terrain:
   - {albedo: cdn/texture-terrain-wet-marsh-mud-moss-realistic-albedo.png, id: mud, pbr: true, tint: oklch(0.8 0.04 110)}
   - {albedo: cdn/texture-terrain-red-sandstone-rock-realistic-albedo.png, antiTiling: stochastic, id: redrock, pbr: true, tint: oklch(0.82 0.06 45)}
   - {albedo: cdn/texture-terrain-dead-grass-ash-blighted-soil-realistic-albedo.png, id: blight, pbr: true, tint: oklch(0.75 0.03 300)}
+  - {albedo: /cdn/pathrocks-diffuse-u6looc2ps.webp, antiTiling: stochastic, id: pathrock, pbr: true, textureScale: 3, tint: oklch(0.9 0.02 110)}
   - {albedo: /cdn/rocks-desert-diffuse-u6937xdf7.webp, antiTiling: stochastic, id: desertrock, pbr: true, textureScale: 3, tint: oklch(0.88 0.04 60)}
   seed: 1
   marks:
@@ -189,7 +194,7 @@ terrain:
       - - -104
         - -26
       width: 3.4
-      material: dirt
+      material: pathrock
       grade: true
       noise: 0.4
     road-quarry:
@@ -344,15 +349,15 @@ terrain:
       falloff: 6
       material: dirt
     farm: {center: {x: -16, z: 52}, falloff: 20, height: 4.2, kind: flatten, shape: {kind: circle, radius: 20}}
-    lane-farm: {grade: true, kind: path, material: dirt, noise: 0.4, points: [[4, 32], [-4, 40], [-10, 44], [-12, 50], [-12, 60]], width: 2.6}
+    lane-farm: {edgeMaterial: dirt, grade: true, kind: path, material: pathrock, noise: 0.4, points: [[4, 32], [-4, 40], [-10, 44], [-12, 50], [-12, 60]], width: 2.6}
     sea: {floorMaterial: sand, kind: sea, level: 0}
-    road-deepwood: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-104, -26], [-160, -40], [-240, -30], [-340, 10], [-460, 40], [-600, 30], [-760, 90], [-900, 200]], width: 3.6}
-    road-fen: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-980, 380], [-1080, 560], [-1180, 720]], width: 3.6}
+    road-deepwood: {edgeMaterial: dirt, grade: true, kind: path, material: pathrock, maxGrade: 0.18, noise: 0.4, points: [[-104, -26], [-160, -40], [-240, -30], [-340, 10], [-460, 40], [-600, 30], [-760, 90], [-900, 200]], width: 3.6}
+    road-fen: {edgeMaterial: dirt, grade: true, kind: path, material: pathrock, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-980, 380], [-1080, 560], [-1180, 720]], width: 3.6}
     road-highlands: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[112, 24], [180, 40], [260, 30], [380, 0], [520, -40], [680, -80], [840, -160], [980, -300], [1100, -460], [1220, -580]], width: 3.6}
     road-north-pass: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-2, -140], [10, -220], [40, -300], [0, -420], [-30, -540], [10, -680], [-20, -820], [20, -960]], width: 3.6}
     road-frostveil: {grade: true, kind: path, material: gravel, maxGrade: 0.2, noise: 0.4, points: [[20, -960], [60, -1200], [10, -1500], [-60, -1850], [0, -2200], [80, -2600], [40, -3000], [0, -3400], [-40, -3800]], width: 3.6}
     road-sunscar: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[1220, -580], [1500, -560], [1850, -480], [2200, -380], [2600, -300], [3000, -240], [3400, -200], [3800, -180]], width: 3.6}
-    road-elderveil: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-1200, 180], [-1600, 120], [-2000, 60], [-2400, 20], [-2800, -20], [-3200, -40], [-3600, -60]], width: 3.6}
+    road-elderveil: {edgeMaterial: dirt, grade: true, kind: path, material: pathrock, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-1200, 180], [-1600, 120], [-2000, 60], [-2400, 20], [-2800, -20], [-3200, -40], [-3600, -60]], width: 3.6}
     road-saltmere: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[6, 29], [10, 120], [30, 260], [60, 420], [110, 620], [150, 860], [200, 1100], [250, 1340], [290, 1560]], width: 3.6}
     start-thornhollow: {center: {x: -720, z: 70}, falloff: 14, height: 19.6, kind: flatten, shape: {kind: circle, radius: 19}}
     start-cinderhold: {center: {x: 900, z: -170}, falloff: 12, height: 40.4, kind: flatten, shape: {kind: circle, radius: 21}}
