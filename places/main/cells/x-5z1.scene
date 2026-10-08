@@ -35,6 +35,16 @@ deepwood-giantpine-8:
   rotation: 176
   scale: 0.85
   tags: [tree, giantpine]
+glade-npc-tamsin:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -698, y: {terrain: 0}, z: 74}
+  id: glade-npc-tamsin
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-ranger-female-green-hooded-leather-bow.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 260}
+  state: {homeYaw: 260, idle: Idle_Shield_Loop, npcName: Tamsin the Ranger, who: tamsin_glade, yaw: 260}
+  tags: [npc, talker, townsfolk, quest-npc, rootwake-glade]
 start-thornhollow/start-thornhollow-prop-5:
   feetPosition: {x: 16, y: -0.09887398745842901, z: 12}
   id: start-thornhollow/start-thornhollow-prop-5
@@ -60,3 +70,16 @@ start-thornhollow/start-thornhollow-tree-7:
   primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 46}
   rotation: {yaw: 318}
   scale: 1.55
+thr-bramble-den:
+  behavior: scripts/wolves.js
+  feetPosition: {x: -688, y: {terrain: 0}, z: 70}
+  id: thr-bramble-den
+  state: {pack: [{id: thr-bramble-1, scale: 1.05, x: -690, yaw: 200, z: 64}, {id: thr-bramble-2, scale: 0.95, x: -684, yaw: 120, z: 75}], respawnAt: {}, tallyKey: bramble_beast}
+  tags: [briar-wolf-den, rootwake-glade]
+thr-quiet-beast:
+  feetPosition: {x: -682, y: {terrain: 0}, z: 83}
+  id: thr-quiet-beast
+  primitive: {kind: scripted, params: {}, script: scripts/gen/wolf.js, seed: 7}
+  rotation: 135
+  scale: 0.9
+  tags: [quest-mark, rootwake-glade]

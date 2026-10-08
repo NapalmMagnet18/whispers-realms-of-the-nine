@@ -1,4 +1,24 @@
 # spawn-scene v2 yaml x-6z1
+glade-npc-ell:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -726, y: {terrain: 0}, z: 76}
+  id: glade-npc-ell
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-singer-female-thren-woven-leaf-dress-flower-crown.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {homeYaw: 120, idle: Idle, npcName: Grove Singer Ell, who: ell, yaw: 120}
+  tags: [npc, talker, townsfolk, quest-npc, rootwake-glade]
+glade-npc-fenna:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -716, y: {terrain: 0}, z: 67}
+  id: glade-npc-fenna
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-elder-female-thren-bark-skin-leaf-hair-moss-robe-wooden-staff.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Elder Fenna Rootwake, who: fenna, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, rootwake-glade]
 roost-thornhollow:
   children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:60px;line-height:1.1;color:#f2b04a;text-shadow:0 0 12px #000\">THORNHOLLOW</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
   feetPosition: {x: -728, y: 19.6, z: 86}
@@ -114,3 +134,93 @@ start-thornhollow/start-thornhollow-tree-8:
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 47}
   rotation: {yaw: 371}
   scale: 1.75
+thr-bellglass:
+  feetPosition: {x: -744, y: {terrain: 0}, z: 85}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.7,.6,1>,3,6)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.7,.6,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-bellglass
+  primitive: {kind: scripted, params: {kind: seed}, script: scripts/gen/glade.js, seed: -11}
+  rotation: -333
+  state: {after: root_tunnel, afterText: "First: climb down into the hollow", mark: bellglass_shard, quest: THR-05, say: You ease the glass out between two roots without nicking either. It hums against your palm., title: Bellglass Shard, verb: Cut free}
+  tags: [quest-mark, rootwake-glade]
+thr-handroot-0:
+  feetPosition: {x: -735, y: {terrain: 0}, z: 81}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.9,.95,.8>,1.2,3)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.9,.95,.8>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-handroot-0
+  primitive: {kind: scripted, params: {kind: handroot}, script: scripts/gen/glade.js, seed: -1}
+  rotation: -52
+  state: {mark: hand_root, quest: THR-02, say: "Five knuckles press into the soil. A breath of a voice: \"...water...\"", title: Hand-Shaped Root, verb: Listen}
+  tags: [quest-mark, rootwake-glade]
+thr-handroot-2:
+  feetPosition: {x: -724, y: {terrain: 0}, z: 91}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.9,.95,.8>,1.2,3)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.9,.95,.8>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-handroot-2
+  primitive: {kind: scripted, params: {kind: handroot}, script: scripts/gen/glade.js, seed: 10}
+  rotation: 125
+  state: {mark: hand_root, quest: THR-02, say: "Five knuckles press into the soil. A breath of a voice: \"...grandmother...\"", title: Hand-Shaped Root, verb: Listen}
+  tags: [quest-mark, rootwake-glade]
+thr-leaf-0:
+  feetPosition: {x: -709, y: {terrain: 0}, z: 79}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.75,.35>,1,3)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.75,.35>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-leaf-0
+  primitive: {kind: scripted, params: {kind: leaf}, script: scripts/gen/glade.js, seed: 21}
+  rotation: 164
+  state: {mark: leaf_note, quest: THR-04, say: "A baker's bread, still warm.", title: Leaf-Note, verb: Gather}
+  tags: [quest-mark, rootwake-glade]
+thr-leaf-1:
+  feetPosition: {x: -729, y: {terrain: 0}, z: 85}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.75,.35>,1,3)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.75,.35>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-leaf-1
+  primitive: {kind: scripted, params: {kind: leaf}, script: scripts/gen/glade.js, seed: 1}
+  rotation: -138
+  state: {mark: leaf_note, quest: THR-04, say: "A first snow, seen from a window.", title: Leaf-Note, verb: Gather}
+  tags: [quest-mark, rootwake-glade]
+thr-leaf-3:
+  feetPosition: {x: -739, y: {terrain: 0}, z: 72}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.75,.35>,1,3)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.75,.35>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-leaf-3
+  primitive: {kind: scripted, params: {kind: leaf}, script: scripts/gen/glade.js, seed: -9}
+  rotation: -317
+  state: {mark: leaf_note, quest: THR-04, say: A road. Houses with blue shutters., title: Leaf-Note, verb: Gather}
+  tags: [quest-mark, rootwake-glade]
+thr-old-maudry:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -733, y: {terrain: 0}, z: 65}
+  id: thr-old-maudry
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-old-woman-thren-shawl-walking-stick-bark-skin.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 30}
+  state: {after: footbridge, afterText: "First: mend the footbridge", homeYaw: 30, idle: Idle, mark: old_witness, npcName: Old Maudry, quest: THR-07, say: "\"There you are. Slowly now, my knees are older than the bridge.\"", title: Old Maudry, verb: Walk with, who: maudry, yaw: 30}
+  tags: [npc, talker, townsfolk, rootwake-glade, quest-mark]
+thr-root-hollow:
+  feetPosition: {x: -744, y: {terrain: 0}, z: 87}
+  id: thr-root-hollow
+  physics: none
+  primitive: {kind: scripted, params: {kind: hollow}, script: scripts/gen/glade.js, seed: -9}
+  rotation: -307
+  state: {mark: root_tunnel, quest: THR-05, say: "The roots make a stair. Below, something hums when the Reach bell rings, far away.", title: Root Hollow, verb: Descend}
+  tags: [quest-mark, rootwake-glade]
+thr-seed-1:
+  feetPosition: {x: -732, y: {terrain: 0}, z: 67}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.5,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-seed-1
+  primitive: {kind: scripted, params: {kind: seed}, script: scripts/gen/glade.js, seed: -2}
+  rotation: -123
+  state: {mark: memory_seed, quest: THR-01, say: Warm as a hand. It turns in your palm toward water., title: Memory Seed, verb: Gather}
+  tags: [quest-mark, rootwake-glade]
+thr-seed-2:
+  feetPosition: {x: -717, y: {terrain: 0}, z: 83}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.5,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: thr-seed-2
+  primitive: {kind: scripted, params: {kind: seed}, script: scripts/gen/glade.js, seed: 13}
+  rotation: 280
+  state: {mark: memory_seed, quest: THR-01, say: Warm as a hand. It turns in your palm toward water., title: Memory Seed, verb: Gather}
+  tags: [quest-mark, rootwake-glade]
+thr-seedling:
+  feetPosition: {x: -714, y: {terrain: 0}, z: 75}
+  fx: {script: "fx\npop rot rate=6 on=disc(.5) life=1..1.6 v=up(.2..0.4) size=.08..0.14 acc=drag(.8) col=<.35,.38,.3> a=0>.5:.5>0 r=sprite(smoke-puff,alpha)"}
+  id: thr-seedling
+  primitive: {kind: scripted, params: {kind: seedling}, script: scripts/gen/glade.js, seed: 18}
+  rotation: 287
+  state: {after: testimony_choice, afterText: "First: choose a testimony at the shrine", mark: rootblight, quest: THR-06, say: Grey rot creeps from the soil. You scrape it back and pack clean earth around the stem. It holds., title: Rootblight on the Seedling, verb: Scrape away the blight}
+  tags: [quest-mark, rootwake-glade]
