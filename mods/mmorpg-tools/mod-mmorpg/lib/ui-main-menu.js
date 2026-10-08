@@ -145,10 +145,9 @@ function titleView(s, hasChar, loading) {
       + realmLine(s)
       + '<div class="wl-mobile" style="gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center;pointer-events:auto">' + side.map(function (it) { return btn(it[0], it[1], it[2], 150, 'button', 12); }).join('') + '</div>';
   var center = '<div style="position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;align-items:center;pointer-events:none;animation:wm-in .7s ease-out">'
-    + '<div style="position:relative;display:flex;flex-direction:column;align-items:center;padding:30px 64px 14px;background:radial-gradient(ellipse at 50% 60%,rgba(10,7,4,.82) 0,rgba(10,7,4,.62) 48%,rgba(10,7,4,0) 74%)">'
+    + '<div style="position:relative;display:flex;flex-direction:column;align-items:center;padding:26px 64px 12px;background:radial-gradient(ellipse at 50% 60%,rgba(10,7,4,.82) 0,rgba(10,7,4,.62) 48%,rgba(10,7,4,0) 74%)">'
     + '<div style="position:absolute;left:50%;top:-8px;transform:translateX(-50%);width:42px;height:42px;border-radius:50%;padding:3px;background:radial-gradient(circle,#3a2a1c,#0e0a07);border:2px solid #c9a46a;box-shadow:0 0 14px rgba(170,110,255,.5),0 3px 8px rgba(0,0,0,.7)"><img src="' + CREST + '" style="width:100%;height:100%;object-fit:contain;-webkit-mask-image:radial-gradient(circle,#000 55%,transparent 72%);mask-image:radial-gradient(circle,#000 55%,transparent 72%)"></div>'
-    + '<div style="width:380px;margin:6px 0 10px">' + ART.rule('title', '100%', 14) + '</div>'
-    + main
+    + '<div style="height:16px"></div>' + main
     + '<div style="width:380px;margin-top:10px">' + ART.rule('fadeBoth', '100%', 10) + '</div></div></div>';
   var r = realmInfo(s);
   var sideStack = '<div class="wl-side" style="position:fixed;right:calc(var(--spawn-chrome-reservation-right-inset,50px) + 34px);bottom:48px;z-index:60;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;' + ART.frame('menu', 14, 'linear-gradient(180deg,rgba(22,15,9,.9),rgba(10,8,6,.93))') + 'padding:12px 16px 12px;box-shadow:0 14px 40px rgba(0,0,0,.55);animation:wm-in .9s ease-out">'
@@ -156,7 +155,7 @@ function titleView(s, hasChar, loading) {
     + side.map(function (it) { return btn(it[0], it[1], it[2], 210, 'button', 15); }).join('')
     + '<div style="width:210px;margin-top:2px">' + ART.rule('fadeBoth', '100%', 8) + '</div>'
     + '<div style="display:flex;align-items:center;gap:7px;font:600 11px Georgia,serif;color:' + DIM + ';letter-spacing:1px"><span style="width:7px;height:7px;border-radius:50%;background:#7fd36b;box-shadow:0 0 6px #7fd36b"></span>Realms online · ' + esc(r.name) + '</div></div>';
-  var copy = '<div class="wl-side" style="position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:60;pointer-events:none;font:500 11px/1.5 Georgia,serif;color:rgba(232,217,181,.45);letter-spacing:1px;text-shadow:0 1px 2px #000">A world by @whispers · Built on Spawn</div>';
+  var copy = '<div class="wl-side" style="position:fixed;left:150px;bottom:20px;z-index:60;pointer-events:none;font:500 11px/1.5 Georgia,serif;color:rgba(232,217,181,.45);letter-spacing:1px;text-shadow:0 1px 2px #000">A world by @whispers · Built on Spawn</div>';
   return LOGIN_CSS + embers() + screenFrame() + loginLogo() + newsBoard() + center + sideStack + copy;
 }
 function creditsView() {
