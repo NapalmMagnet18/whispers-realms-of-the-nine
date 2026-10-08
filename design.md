@@ -17,3 +17,5 @@ The full bible lives in scripts/lib/data/01–05 *.md and the backlog/QA csvs (t
 
 ## Decisions
 - 2026-10-08: map follows the creator's bible (Briarwild W, quarry E), set after their docs landed.
+
+- 2026-10-08: from @whispers reference photos (village w/ windmill, crop plots, fenced dirt lanes): Windmill Farm added south-west of the square (-30,50), fenced wheat/cabbage/carrot beds, hay, scarecrow, dry-stone walls, lane from the south lane. Original art, inspired only.
