@@ -399,6 +399,14 @@ terrain:
     lane-bellyard: {grade: true, kind: path, material: dirt, noise: 0.5, points: [[-4, -104], [-10, -110], [-16, -115], [-21, -122]], width: 2}
     crypt-gate: {center: {x: 1325, z: -688}, falloff: 6, height: 2.1, kind: flatten, material: dirt, shape: {kind: circle, radius: 7}}
     crypt-gate-clear: {center: {x: 1325, z: -688}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
-    fen-pools: {at: {x: -1300, z: 860}, bedMaterial: mud, depth: 0.6, kind: lake, level: 0.37, radius: 170}
     fen-shrine-isle: {center: {x: -1402, z: 836}, falloff: 7, height: 1.1, kind: flatten, material: grass, shape: {kind: circle, radius: 8}}
     fen-shrine-clear: {center: {x: -1402, z: 836}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
+    fen-pool-mourner: {at: {x: -1238, z: 864}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 14}
+    fen-pool-boat: {at: {x: -1302, z: 806}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 13}
+    fen-pool-wisp: {at: {x: -1318, z: 904}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 16}
+    fen-pool-a: {at: {x: -1215, z: 830}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 10}
+    fen-pool-b: {at: {x: -1270, z: 845}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 18}
+    fen-pool-c: {at: {x: -1350, z: 880}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 15}
+    fen-pool-d: {at: {x: -1375, z: 830}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 11}
+    fen-pool-e: {at: {x: -1265, z: 900}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 12}
+    fen-pool-f: {at: {x: -1330, z: 840}, bedMaterial: mud, depth: 0.8, kind: lake, level: 0.42, radius: 9}
