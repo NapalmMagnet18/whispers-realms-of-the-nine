@@ -187,6 +187,7 @@ function stepChop(ctx) {
 }
 
 export function onInput(ctx, input) {
+  if (input.actionData && Object.keys(input.actionData).length) ctx.log('qdbg', { p: playing(ctx), ad: Object.keys(input.actionData), pr: Object.keys(input.pressed || {}), place: ctx.self.place });
   if (!playing(ctx)) return;
   const st = ctx.self.state;
   if (on(input, 'acceptQuest')) return accept(ctx, dataOf(input, 'acceptQuest').questId);
