@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1716,
-  "updatedAt": "2026-10-08T23:03:58.268Z",
+  "basedOnSpecVersion": 1721,
+  "updatedAt": "2026-10-08T23:06:46.867Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -246,7 +246,7 @@
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.8 Alpha is displayed on main menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.9 Alpha is displayed on main menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere plus room weather and Party Finder matching.",
@@ -256,7 +256,7 @@
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency, shop data and UI modules reused by MMORPG behaviors and gameplay scripts.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population and realm list/detail shared by menu and player lifecycle.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world panel action handlers split from MMORPG player.js; dynamically loaded once a hero stands in world.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world panel action handlers; loaded only after a hero stands in-world and imports shop-data.js/profession-data.js for its handlers.",
     "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry used by quests, class actions, vitality, flight and regional music.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose.",
@@ -280,22 +280,22 @@
     "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action/cooldown state and combat effects; wrapper scripts load and forward to the matching core.",
     "scripts/flight-core.js - player roost discovery, flight map, flying mount/route state and fare interaction; saved roosts live on character state.",
     "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
-    "scripts/vendor-core.js - vendor/bank state and shop transactions; copper purse changes use scripts/lib/economy.js, inventory and bank belong to the character save. scripts/vitality-core.js owns health, food, death/rising, PvP-zone and Blood Pact behavior.",
+    "scripts/vendor-core.js - vendor/bank state and shop transactions; copper purse changes use scripts/lib/economy.js, inventory and bank belong to the character save. scripts/vitality-core.js owns health, food, death/rising, PvP-zone and Blood Moon state.",
     "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch live in boss ctx.session."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
-    "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu and crypt/instance gates stamp allowed transitions; routing validates requested room, then saved room, then main.",
-    "main-menu-mgr loads current-room SQL roster; api.enterPlace routes selected character to saved place/position. scripts/lib/data/realms.yml → routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads pulses for realmList/realmDetail.",
+    "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu and crypt/instance gates stamp allowed transitions; routing validates requested room, then saved route.",
+    "main-menu-mgr loads current-room SQL roster; api.enterPlace routes selected character to saved place/position. scripts/lib/data/realms.yml → routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads roster/detail data.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot.",
     "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → guild → guild-flag → trades → flight → vitality → cursor-free → region-music; movement/camera intents are consumed by player.js/wow-move.js.",
-    "MMORPG player.js warms and dynamically imports lib/player-panel-input.js after a created hero stands outside a meta place; player.js passes input, current state and host helpers to panelInput, which handles in-world panel actions.",
+    "MMORPG player.js warms and dynamically imports lib/player-panel-input.js after a created hero stands outside a meta place; panel module imports shop-data.js and profession-data.js and receives input/state/host helpers from player.js.",
+    "MMORPG ui.js starts warming its HUD modules on first paint after the menu stands; chat, tip reminders and buff icons now join the deferred HUD imports and render through lazy wrappers, alongside HUD/quest/vendor/trades and other panels.",
     "On main, scripts/vendor.js warms/forwards input and update to vendor-core.js for created non-creating characters; vendor interactions and vendor/bank UI actions write character state, and coin rewards enter through the coins ear/economy ledger.",
     "In a PLAY place, scripts/vitality.js warms/forwards to vitality-core.js; enemies write state.health, vitality reads it and handles food, death/rise, healing and PvP rules. A change to the template's vitality wrapper reaches this behavior.",
-    "In PLAY, eligible class wrapper input/update → lazy import matching *-core.js; flight wrapper similarly loads flight-core.js. First eligible quest-player input/update → quest-core; quest-core seeds quest-data from quests.yml, quest-text warms dialogue and ui-quest renders it.",
+    "In PLAY, eligible class wrapper input/update → lazy import matching *-core.js; flight wrapper similarly loads flight-core.js. First eligible quest-player input/update → quest-core; quest-core seeds quest-data from quests.yml, quest-text supplies prose.",
     "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
-    "Party Finder board scripts/party-finder.js queues a hero in world.state.lfg; places/main/sim.js prunes absent players and matches from finder.yml, stamps _worldEnterAt, updates eligible quest tallies and crosses to dungeon/battleground. Banner Vale sim assigns teams/bases, runs battleground.yml flags/score/time/rewards, and returns players to +main; scripts/lib/pvp.js permits enemy-team combat.",
-    "places/main/sim.js weather state storm.on → scripts/caravan-route.js freezes/resumes route clock and sets Mott's shop to mott-storm; vendor-core.js reads shop-data.js inventory and offers storm tea while parked."
+    "Party Finder board scripts/party-finder.js queues a hero in world.state.lfg; places/main/sim.js prunes absent players and matches from finder.yml, stamps _worldEnterAt, updates eligible quest tallies and crosses to dungeon/battleground. places/main/sim.js weather state storm.on freezes/resumes caravan-route and switches Mott's shop to mott-storm."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
@@ -316,6 +316,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and associated gear/voice data.",
     "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save (new character initializes it empty). Guild vault moves use SQL version-conditional updates.",
-    "Lazy wrappers remain on templates while heavier behavior lives in dynamically imported cores: player.js loads player-panel-input only after the hero stands in-world; vendor is scoped to main and vitality to PLAY. Keep forwarded exports/handlers aligned with each core. Guild banners are session-local."
+    "MMORPG player.js must keep player-panel-input off the menu boot path; that in-world module now statically imports shop-data.js and profession-data.js once loaded. ui.js defers chat, tip reminder and buff-icon modules with the HUD imports after first paint."
   ]
 }
