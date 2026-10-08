@@ -81,7 +81,6 @@ ambience:
   palechoir: /cdn/moodboard-gothic-horror/sfx-cathedral-ruin-ambience-cold-wind-through-broken-windows-faint-ghostly-choir-loop.mp3
   emberheart: /cdn/moodboard-painterly-fantasy/sfx-lava-caldera-ambience-bubbling-magma-deep-rumble-fire-roar-loop.mp3
   assembly: /cdn/moodboard-painterly-fantasy/sfx-cosmic-void-ambience-deep-sub-hum-shimmering-star-chimes-slow-breath-loop.mp3
-ambienceGain: 0.55
 # Far-off one-shots, Diablo style: every 18-45 s a player hears one of their area's, panned off somewhere unseen.
 stingers:
   every: [18, 45]

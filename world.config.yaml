@@ -87,3 +87,6 @@ authoring:
 routing:
   script: scripts/routing.js
   maxPlayers: 120
+audio:
+  gains: { Master: 1, Music: 0.85, SFX: 1, UI: 0.8, Ambience: 0.55, Voice: 1 }
+  maxVoices: 40
