@@ -281,6 +281,25 @@ briar-bridge:
   primitive: {kind: scripted, params: {L: 22, W: 4.2, arch: 8, depth: 3.4785774302901418, rise: 1.4}, script: scripts/gen/stone-bridge.js}
   rotation: 0
   tags: [bridge]
+briar-jetty:
+  feetPosition: {x: -56.5, y: 0, z: -15}
+  id: briar-jetty
+  physics: static
+  primitive: {kind: scripted, params: {kind: jetty}, script: scripts/gen/briar.js, seed: 1}
+  rotation: {yaw: -90}
+  tags: [briar-discovery]
+briar-lily-0:
+  feetPosition: {x: -51.5, y: 0.02, z: -15.5}
+  id: briar-lily-0
+  primitive: {kind: scripted, params: {kind: lily}, script: scripts/gen/briar.js, seed: 1}
+briar-lily-1:
+  feetPosition: {x: -48.5, y: 0.02, z: -4.5}
+  id: briar-lily-1
+  primitive: {kind: scripted, params: {kind: lily}, script: scripts/gen/briar.js, seed: 2}
+briar-lily-2:
+  feetPosition: {x: -52.5, y: 0.02, z: -19.5}
+  id: briar-lily-2
+  primitive: {kind: scripted, params: {kind: lily}, script: scripts/gen/briar.js, seed: 3}
 briar-mush-0-0:
   feetPosition: {x: -61.8, y: {terrain: 0}, z: -2}
   id: briar-mush-0-0
@@ -288,6 +307,26 @@ briar-mush-0-0:
   rotation: 0
   scale: 1
   tags: [briar-kit]
+briar-reeds-0:
+  feetPosition: {x: -56.5, y: 1.3376592601010362, z: -11.5}
+  id: briar-reeds-0
+  primitive: {kind: scripted, params: {kind: reeds, n: 20}, script: scripts/gen/briar.js, seed: 3}
+briar-reeds-1:
+  feetPosition: {x: -56, y: 0.11459336409431506, z: -19}
+  id: briar-reeds-1
+  primitive: {kind: scripted, params: {kind: reeds, n: 23}, script: scripts/gen/briar.js, seed: 4}
+briar-reeds-2:
+  feetPosition: {x: -44.8, y: 0.5108729378256046, z: -5}
+  id: briar-reeds-2
+  primitive: {kind: scripted, params: {kind: reeds, n: 26}, script: scripts/gen/briar.js, seed: 5}
+briar-reeds-3:
+  feetPosition: {x: -44.5, y: 0.056972614874800154, z: -16.5}
+  id: briar-reeds-3
+  primitive: {kind: scripted, params: {kind: reeds, n: 29}, script: scripts/gen/briar.js, seed: 6}
+briar-reeds-4:
+  feetPosition: {x: -55.8, y: 0.04720688139548837, z: -4}
+  id: briar-reeds-4
+  primitive: {kind: scripted, params: {kind: reeds, n: 32}, script: scripts/gen/briar.js, seed: 7}
 briar-shelf-0:
   feetPosition: {x: -63.55, y: 3.2937862996778495, z: -1.9}
   id: briar-shelf-0
