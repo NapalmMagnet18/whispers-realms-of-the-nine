@@ -274,6 +274,27 @@ quarry-rope:
   model: /cdn/value.b314fa5068dad14ce743e0002e0fa87ee4e016df829babab2f990e3e5ce84f2d.glb
   rotation: 40
   tags: [tool-prop]
+quarry-scav-bedroll:
+  feetPosition: {x: 133.5, y: {terrain: 0.05}, z: 30}
+  id: quarry-scav-bedroll
+  material: {color: oklch(0.42 0.06 40), roughness: 0.95}
+  primitive: {halfHeight: 0.7, kind: capsule, radius: 0.22}
+  rotation: {yaw: 25}
+  scale: {x: 1, y: 0.5, z: 1}
+  tags: [quarry-scavenger-camp]
+quarry-scav-fire:
+  feetPosition: {x: 136, y: {terrain: 0}, z: 31}
+  fx: {script: "fx\npop flame rate=28 on=disc(.25) life=.4..0.8 v=up(1.3)+cone(24)*(.3..0.7) size=.16..0.3 acc=curl(.5)+buoy(2)+drag(1.5) sz=$size*(.5>1:.7>.2) col=hdr(4.6,3.2,1.3)>hdr(2.4,.9,.2)>hdr(.6,.12,.03) a=0>.12:1>.75:.8>0 r=sprite(flame-wisp,add)\npop smoke on=@flame?.2 life=2..3 size=.2..0.3 acc=buoy(.9)+drag(.8) sz=$size*(.7>3) col=<.3,.28,.26> a=0>.22:.3>.7:.2>0 r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.2).c(.4) r=light(<1,.55,.24>,9*fire(),10)"}
+  id: quarry-scav-fire
+  material: {color: oklch(0.3 0.02 50), roughness: 1}
+  primitive: {height: 0.12, kind: cylinder, radiusBottom: 0.6, radiusTop: 0.55}
+  tags: [quarry-scavenger-camp]
+quarry-scavenger-camp:
+  behavior: scripts/scavengers.js
+  feetPosition: {x: 138, y: {terrain: 0}, z: 34}
+  id: quarry-scavenger-camp
+  state: {respawnAt: {}}
+  tags: [quarry-scavenger-camp]
 quarry-tent:
   feetPosition: {x: 121.5, y: 3.2, z: 41}
   id: quarry-tent
