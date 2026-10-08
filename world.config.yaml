@@ -28,6 +28,19 @@ inputs:
     bankTab: {}
     guildVaultDeposit: {}
     guildVaultWithdraw: {}
+    createGuild: {}
+    confirmJoinGuild: {}
+    guildAcceptInvite: {}
+    guildDeclineInvite: {}
+    leaveGuild: {}
+    guildLeave: {}
+    guildKick: {}
+    guildInvite: {}
+    openGuildJoin: {}
+    closeGuildJoin: {}
+    closeGuildPanel: {}
+    toggleGuildInviteInput: {}
+    toggleGuildCreation: {}
     tradeTab: {}
     tradeLearn: {}
     tradeUnlearn: {}
