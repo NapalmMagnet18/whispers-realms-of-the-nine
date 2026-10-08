@@ -62,6 +62,208 @@ boulder-8:
   primitive: {kind: scripted, params: {ore: null, r: 1}, script: scripts/gen/rock.js}
   rotation: 504
   tags: [rock]
+cl-arms-arrow-a:
+  feetPosition: {x: 72.18, y: 1.501671634097825, z: -10.099999999999998}
+  id: cl-arms-arrow-a
+  model: {id: /cdn/value.03b471396952ac9ef550c4dca73b6c7bc727e628d2d3cddd376bf58d068db684.glb}
+  rotation: {yaw: 72}
+  tags: [copperlane, weapon-display]
+cl-arms-arrow-b:
+  feetPosition: {x: 72.65, y: 1.501671634097825, z: -12.299999999999999}
+  id: cl-arms-arrow-b
+  model: {id: /cdn/value.a7e773edc334acfc84a2b71ecb47804f1d48f339341a630796bf8e011e958db4.glb}
+  rotation: {yaw: 85}
+  tags: [copperlane, weapon-display]
+cl-arms-axe-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -7}
+  id: cl-arms-axe-a
+  model: {id: /cdn/value.37775b36195cbbfdc88a57caa5835f9f56f13dc8be8b7b6786a6223e265e2d38.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-axe-b:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -6.5}
+  id: cl-arms-axe-b
+  model: {id: /cdn/value.dddfc1f6e5b5deed178388b099183349159bcf9fa04502f04143fe1b91095313.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-axe-c:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -6}
+  id: cl-arms-axe-c
+  model: {id: /cdn/value.41fc4f6f9bfff39cc0b078deebd57501c6ab6263bfbcc9fb020ba277a3e4073b.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-bow-a:
+  feetPosition: {x: 72.18, y: 1.501671634097825, z: -12.299999999999999}
+  id: cl-arms-bow-a
+  model: {id: /cdn/value.11cb175f888cb5d3902b12d36ee02b48b968527b472e0fee0150f09f307c0fc3.glb}
+  rotation: {yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-bow-a-str:
+  feetPosition: {x: 72.18, y: 1.501671634097825, z: -11.2}
+  id: cl-arms-bow-a-str
+  model: {id: /cdn/value.92afe5bacf5dabe93447e6a5d979eacf1943a3b5acd4a56e0646391a232c6771.glb}
+  rotation: {yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-bow-b:
+  feetPosition: {x: 72.18, y: 1.501671634097825, z: -11.749999999999998}
+  id: cl-arms-bow-b
+  model: {id: /cdn/value.04734d815bf3b7667044c463462120a9cc1368d4c90d888fa740474232ec188c.glb}
+  rotation: {yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-bow-b-str:
+  feetPosition: {x: 72.18, y: 1.501671634097825, z: -10.649999999999999}
+  id: cl-arms-bow-b-str
+  model: {id: /cdn/value.0015ca0dc3d8943a467976d0030e3d0f3fee61c64684aff71f6fd03c58c7216e.glb}
+  rotation: {yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-dagger-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -8}
+  id: cl-arms-dagger-a
+  model: {id: /cdn/value.9fe6cc8b301f4435747af9b10486f52955465e952fcb6997eb3f3884c30d3fdf.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-dagger-b:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -7.5}
+  id: cl-arms-dagger-b
+  model: {id: /cdn/value.7aa89b6e4bc8466012855742b505d426e12feedf2f554a3db240ba8614545041.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-fist-a:
+  feetPosition: {x: 72.65, y: 1.501671634097825, z: -11.749999999999998}
+  id: cl-arms-fist-a
+  model: {id: /cdn/value.c5ad48a7c92439b245e68ad05be0f1587169912655934c1ebd20c9cb4a08c944.glb}
+  rotation: {yaw: 98}
+  tags: [copperlane, weapon-display]
+cl-arms-fist-a-st:
+  feetPosition: {x: 72.65, y: 1.501671634097825, z: -10.649999999999999}
+  id: cl-arms-fist-a-st
+  model: {id: /cdn/value.2a737fb991a84966bdd4120ff5adbb480d5f15c75d7e778320d441443a0226fd.glb}
+  rotation: {yaw: 124}
+  tags: [copperlane, weapon-display]
+cl-arms-fist-b:
+  feetPosition: {x: 72.65, y: 1.501671634097825, z: -11.2}
+  id: cl-arms-fist-b
+  model: {id: /cdn/value.6ac02534ae5d62bcaa279a62ade00308e39d39d43f13c13b4e7618e154fcbb75.glb}
+  rotation: {yaw: 111}
+  tags: [copperlane, weapon-display]
+cl-arms-fist-b-st:
+  feetPosition: {x: 72.65, y: 1.501671634097825, z: -10.099999999999998}
+  id: cl-arms-fist-b-st
+  model: {id: /cdn/value.e6ca0d8cd896e7caca63b49aa622a7fbeeb58c2d4e235a303dc39570dc19fb56.glb}
+  rotation: {yaw: 137}
+  tags: [copperlane, weapon-display]
+cl-arms-halberd:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -13}
+  id: cl-arms-halberd
+  model: {id: /cdn/value.a93014a54e9e1c0071a1002f398a23d48bb83cbceae9b25edbdc9242b916b8d2.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-hammer-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -5.5}
+  id: cl-arms-hammer-a
+  model: {id: /cdn/value.d73eb3ddd4f8c2e91da618bc21208c3a0b31cb75af994fdeef31e2a284f2752a.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-hammer-b:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -5}
+  id: cl-arms-hammer-b
+  model: {id: /cdn/value.fe2a124f36f9c7955a043586028d1dc6c2363d8d4d97bbcb0f8b8704ccabd3cd.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-hammer-c:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -4.5}
+  id: cl-arms-hammer-c
+  model: {id: /cdn/value.4995c2f732030d9171eeb6ce26585de074d5a869c178189e75c66142452e7a72.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-shield-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -4}
+  id: cl-arms-shield-a
+  model: {id: /cdn/value.6f344b10be4171d0bc4f1bae026a1aab584a6fad36d6f7aaa7cd661c74f58a37.glb}
+  rotation: {roll: 0, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-shield-b:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -3.5}
+  id: cl-arms-shield-b
+  model: {id: /cdn/value.48d0544bafd7867ed593fd568e2f11c06beed39b735d15f9b93d13c269c7bb47.glb}
+  rotation: {roll: 0, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-shield-c:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -3}
+  id: cl-arms-shield-c
+  model: {id: /cdn/value.3277825752ae5595f98e7f10305c809682fad2be3fc673c52b4d3748f5a2927e.glb}
+  rotation: {roll: 0, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-spear-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -12.5}
+  id: cl-arms-spear-a
+  model: {id: /cdn/value.03b7d1d3264c35bae83b9ae09b369a2f784ff2ce6a2344650eb414e3ecb774ae.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-staff-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -12}
+  id: cl-arms-staff-a
+  model: {id: /cdn/value.7c324274f5ddfbcbfd823ee7c522734bce08de2fa077547963ee5219f5450d3c.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-staff-b:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -11.5}
+  id: cl-arms-staff-b
+  model: {id: /cdn/value.3474f40723d2efe5af4d6916163cbdbd0b2fe93193b1fe074d155f99a63b9aeb.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-sword-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -10.5}
+  id: cl-arms-sword-a
+  model: {id: /cdn/value.7f49b71b39cc63cf212998d911d4ed7fbd3729fb57c96dbc9ad8adb9465e37d3.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-sword-b:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -10}
+  id: cl-arms-sword-b
+  model: {id: /cdn/value.5c98ced16ff61395bcd7da790c7ba74569ba3a4987a4551524161b70c645f510.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-sword-c:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -9.5}
+  id: cl-arms-sword-c
+  model: {id: /cdn/value.8709558db8a2105d961f6e4e43f3e2e686a64fa43d1b087236e5e5a274f06042.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-sword-d:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -9}
+  id: cl-arms-sword-d
+  model: {id: /cdn/value.96132db55d508f81a5225fcfab0a191fc20ba353e13d87a3cb1ad6e6dba2e2e5.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-sword-e:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -8.5}
+  id: cl-arms-sword-e
+  model: {id: /cdn/value.542619ac962159804bc0bc95988d09855c60c5b321a0f6f0b79a47d8d054ad19.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-arms-wand-a:
+  feetPosition: {x: 75.2, y: 0.8508921417705312, z: -11}
+  id: cl-arms-wand-a
+  model: {id: /cdn/value.52e4223e0afd2cbcfb5203e9092e6217a4522e09eb101145edccf181973bbb27.glb}
+  rotation: {roll: -6, yaw: 90}
+  tags: [copperlane, weapon-display]
+cl-armsrack:
+  children: [{feetPosition: {x: -0.3, y: 0, z: 0}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 11.1, height: 0.2, kind: box, width: 0.5}}, {feetPosition: {x: -0.12, y: 1.45, z: 0}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 11.1, height: 0.08, kind: box, width: 0.2}}, {feetPosition: {x: -0.2, y: 2, z: 0}, material: {color: oklch(0.48 0.13 32), roughness: 0.9}, primitive: {depth: 11.4, height: 0.08, kind: box, width: 0.9}}, {feetPosition: {x: -0.6, y: 1.9, z: 5.25}, light: {color: oklch(0.84 0.14 65), distance: 7, intensity: 1.4, kind: point}}]
+  feetPosition: {x: 75.45, y: 0.6508921417705312, z: -8}
+  id: cl-armsrack
+  material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}
+  physics: {body: static, collider: box}
+  primitive: {depth: 11.1, height: 1.9, kind: box, width: 0.12}
+  tags: [copperlane]
+cl-armstable:
+  children: [{feetPosition: {x: -0.4, y: -0.82, z: -1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: 0.4, y: -0.82, z: -1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: -0.4, y: -0.82, z: 1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: 0.4, y: -0.82, z: 1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}]
+  feetPosition: {x: 72.4, y: 0.6016716340978248, z: -11.2}
+  id: cl-armstable
+  material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}
+  physics: {body: static, collider: box}
+  primitive: {depth: 2.6, height: 0.08, kind: box, width: 1}
+  tags: [copperlane]
 cl-bell:
   feetPosition: {x: 71.5, y: {terrain: 0}, z: -3}
   id: cl-bell
