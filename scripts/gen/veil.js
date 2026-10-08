@@ -295,7 +295,7 @@ const K = {
     const tip = [(q() - 0.5) * r * 0.3, -2.4 * r, (q() - 0.5) * r * 0.3], cap = [0, 0.3 * r, 0];
     P(VGROUND, "oklch(0.86 0.04 300)", 0.95);
     for (let i = 0; i < seg; i++) { const j = (i + 1) % seg; triN(ctx, cap, rings[0][i], rings[0][j], [0, 1, 0]); }
-    P(ROCK, "oklch(0.7 0.04 290)", 0.95); G([0.16, 0.06, 0.28]);
+    P(ROCK, "oklch(0.8 0.05 290)", 0.95); G([0.5, 0.3, 0.72]); // lit from within: seen from below against the sky it must never read black
     for (let k = 0; k < rings.length - 1; k++) for (let i = 0; i < seg; i++) { const j = (i + 1) % seg, A = rings[k][i], B = rings[k][j], C = rings[k + 1][j], Dd = rings[k + 1][i]; quadN(ctx, A, B, C, Dd, [(A[0] + C[0]) / 2, -0.2, (A[2] + C[2]) / 2]); }
     const L = rings[rings.length - 1]; for (let i = 0; i < seg; i++) { const j = (i + 1) % seg; triN(ctx, L[i], L[j], tip, [(L[i][0] + L[j][0]) / 2, -0.5, (L[i][2] + L[j][2]) / 2]); }
     G(null);
