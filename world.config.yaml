@@ -24,7 +24,7 @@ inputs:
       keys: s/w
 player: templates/player.js#player
 ui:
-  render: scripts/ui.js
+  render: mods/mmorpg-tools/mod-mmorpg/ui.js
 # nametag: the tag over other players' heads: this file, yours to edit: export default function (ctx, tag) { return html }, the shape ui.js has.
 nametag: ui/nametag.js
 authoring:
