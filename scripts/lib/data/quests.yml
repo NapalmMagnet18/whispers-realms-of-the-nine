@@ -1271,3 +1271,149 @@ marks:                # objects tagged quest-mark: E while the quest is active
 reading:              # E on anything tagged readable (state.title / state.text) floats its page above it
   reach: 2.6           # metres
   length: 11           # seconds the page stands
+
+# ── Emberstone Quarry chapter: EQU-01..09 (campaign bible, levels 12–17), after Q008. Quarry pit centre ≈ (140, 3.2, 28).
+EQU-01:
+  id: EQU-01
+  title: A Vein Out of Season
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [Q008]
+  giverNpcId: reach-npc-mira
+  giverName: Mira the Forgekeeper
+  text: "The quarry's growing something it shouldn't. Violet crystal, in seams we cut clean a month ago. Chip me three samples from the pit walls, and look at the survey stake on the north rim. Somebody broke it."
+  progressText: "Three crystal samples from the quarry pit, and the broken survey stake on the north rim."
+  turnInText: "Hold one to your ear. ...You hear it too. Ore doesn't hum, friend. Not unless something's talking near it."
+  doneText: "Yurra Flint-Eye's at the quarry camp. She keeps the shift ledgers. Ask her."
+  objectives:
+    - { key: crystal_vein, desc: "Sample the new crystal veins", target: 3 }
+    - { key: survey_stake, desc: "Inspect the damaged survey stake", target: 1 }
+  rewards: { copper: 2200, xp: 220 }
+EQU-02:
+  id: EQU-02
+  title: The Quarry Ledger
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-01]
+  giverNpcId: quarry-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  text: "Two shift ledgers went missing from my tent the night the crystal came. One's in the camp chest, I'd bet my chisel. The other the foreman keeps by his tally board. Bring them, then ask Kiv to his face why six names are gone."
+  progressText: "Two shift ledgers from the quarry camp, then confront Foreman Kiv at his tally board."
+  turnInText: "There. Six miners. Written down as 'picks, iron, six'. Tools. Not people. Someone wanted them forgotten on paper first."
+  doneText: "Kiv will want to make it right, whether he says so or not."
+  objectives:
+    - { key: shift_ledger, desc: "Recover the shift ledgers", target: 2 }
+    - { key: foreman_confront, desc: "Confront the foreman at his tally board", target: 1 }
+  rewards: { copper: 2400, xp: 240 }
+EQU-03:
+  id: EQU-03
+  title: The Machine Beneath
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-02]
+  giverNpcId: quarry-npc-kiv
+  giverName: Quarry Foreman Kiv
+  text: "Fine. Yes. The lift went down on its own the night they vanished. Set the three safe brakes up on the crane rim so it can't drop again, then go into the cave and see the lower gallery. I won't."
+  progressText: "Three lift brakes on the crane rim, then the lower gallery in the quarry cave."
+  turnInText: "An Accord engine. Warm. Somebody restarted it, and its keepers have been dead three hundred years."
+  doneText: "Mira should test that crystal against true copper. Take her what you saw."
+  objectives:
+    - { key: lift_brake, desc: "Set the safe lift brakes", target: 3 }
+    - { key: lower_gallery, desc: "Enter the sealed lower gallery", target: 1 }
+  rewards: { copper: 2600, xp: 260 }
+EQU-04:
+  id: EQU-04
+  title: Ore and Oaths
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-03]
+  giverNpcId: reach-npc-mira
+  giverName: Mira the Forgekeeper
+  text: "Smelt the crystal into a bellglass test bead here at my forge. Then take it to the copper veins in the pit and hold it to the tuning stand there. True copper rings once. Let's hear what this does."
+  progressText: "Smelt the bellglass test bead at Mira's forge, then compare it at the quarry's tuning stand."
+  turnInText: "It rang with a voice. Not an echo. Words nobody said out loud. Pressure turns silence into stone, and the stone remembers."
+  doneText: "Dren's been seeing strangers buy bellglass at the quarry road. Ask him."
+  objectives:
+    - { key: alloy_sample, desc: "Smelt a bellglass test sample", target: 1 }
+    - { key: signal_compare, desc: "Compare the signal against true copper", target: 1 }
+  rewards: { copper: 2800, xp: 280 }
+EQU-05:
+  id: EQU-05
+  title: Sparks for Sale
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-04]
+  giverNpcId: reach-npc-dren
+  giverName: Quartermaster Dren
+  text: "A buyer in a grey coat pays silver for cracked bellglass. Too much silver. His cart waits past the quarry's east road. Find where he camps and lift two purchase orders. I want to know who signs them."
+  progressText: "The buyer's camp past the quarry's east road, and two purchase orders."
+  turnInText: "A hollow crown for a seal. The Hollow Court. They're building something that pulls the erased back out of the stone."
+  doneText: "Yurra says the wall at the back of the pit talks now. Go and listen."
+  objectives:
+    - { key: court_buyer, desc: "Track the Hollow Court buyer", target: 1 }
+    - { key: purchase_order, desc: "Recover the purchase orders", target: 2 }
+  rewards: { copper: 3000, xp: 300 }
+EQU-06:
+  id: EQU-06
+  title: The Man on the Other Side
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-05]
+  giverNpcId: quarry-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  text: "There's a sealed face on the west wall of the pit. Put your hand on it and speak. Then strike the two tuning hammers either side so we can find where the voice really is."
+  progressText: "Speak at the sealed wall on the pit's west side, then strike the two tuning hammers."
+  turnInText: "He says his name is Hadren. He says it's cold. He doesn't know it's been nine years. Maybe he isn't a man. But what happened to him was real."
+  doneText: "Tamsin's tracked a drill crew to the south rim. Whoever's paying them wants the wall opened by force."
+  objectives:
+    - { key: sealed_wall, desc: "Speak across the sealed wall", target: 1 }
+    - { key: tuning_hammer, desc: "Triangulate the voice with the tuning hammers", target: 2 }
+  rewards: { copper: 3200, xp: 320 }
+EQU-07:
+  id: EQU-07
+  title: Break the Drill
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-06]
+  giverNpcId: reach-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "An unlicensed rig on the quarry's south rim, drilling straight at that voice. The crew's armed and paid. Put three of them down, then throw the rig's boiler valve. Not the workers' shacks. They were promised their dead back."
+  progressText: "Defeat three of the drill crew on the south rim, then stop the rig."
+  turnInText: "Promised their dead back. That's what Mareth's people sell. I'd almost buy it, if I didn't know what it costs."
+  doneText: "Sister Vale wants the miners' names on the quarry board. Bring her word when it's done."
+  objectives:
+    - { key: drill_crew, desc: "Defeat the illegal drill crew", target: 3 }
+    - { key: drill_rig, desc: "Stop the unstable rig", target: 1 }
+  rewards: { copper: 3400, xp: 340 }
+EQU-08:
+  id: EQU-08
+  title: Written in the Dust
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-07]
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "Names are how we keep people. Take the six from Yurra's ledger and set them on the quarry board by the west road. Then read what's chalked underneath. Someone left a way out."
+  progressText: "Display the six names on the quarry board, then read the chalk beneath it."
+  turnInText: "All six on the night of the First Silence. And an exit, marked east. They tried to leave a road for whoever came after."
+  doneText: "Elric should hear this before anyone opens that east door."
+  objectives:
+    - { key: miner_names, desc: "Display the miners' names on the quarry board", target: 1 }
+    - { key: exit_coords, desc: "Read the hidden exit coordinates", target: 1 }
+  rewards: { copper: 3600, xp: 360 }
+EQU-09:
+  id: EQU-09
+  title: A Road Below the Town
+  zone: Emberstone Quarry
+  group: "Emberstone Quarry: Voices in the Stone"
+  requires: [EQU-08]
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  text: "An east shaft. Under the Reach. ...Open it. Carefully. Walk to the corridor mouth, look down it, and come tell me where it runs. Nobody else goes until I know."
+  progressText: "Open the iron shaft door in the quarry's east wall, then look down the lost corridor."
+  turnInText: "Beneath the memorial district. Toward the Hollowcrypt. So the gate didn't seal the dead in. It sealed a road out."
+  doneText: "Sister Vale will have the candles ready. The Hollowcrypt waits."
+  objectives:
+    - { key: shaft_connector, desc: "Open the east shaft connector", target: 1 }
+    - { key: lost_corridor, desc: "Report the lost corridor", target: 1 }
+  rewards: { copper: 4000, xp: 400 }
