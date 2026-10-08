@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1347,
-  "updatedAt": "2026-10-08T19:18:59.784Z",
+  "basedOnSpecVersion": 1401,
+  "updatedAt": "2026-10-08T19:31:47.400Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March, entered through realm selection and character creation; six peoples have distinct homelands and race quest arcs. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight and survival, while streamed scenes and YAML registries supply world, encounters, quests and gear.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -137,9 +137,12 @@
     "scripts/gen/realm-gate.js",
     "scripts/gen/rock.js",
     "scripts/gen/roost.js",
+    "scripts/gen/roothome.js",
+    "scripts/gen/ruin.js",
     "scripts/gen/shape.js",
     "scripts/gen/shieldtable.js",
     "scripts/gen/spire.js",
+    "scripts/gen/stilt.js",
     "scripts/gen/stone-bridge.js",
     "scripts/gen/strand.js",
     "scripts/gen/tide.js",
@@ -204,7 +207,7 @@
   "places": [
     "places/main-menu-land/ - realm roster and Enter World/Create Hero front door.",
     "places/character-creation-land/ - race, class and appearance selection with preview character and camera; arrivalBudget is 600000 bytes.",
-    "places/main/config.yaml and places/main/cells/ - Lantern March continent and six homelands; includes race quest marks/bosses and their landmarks, with procedural homeland sites in Ward, Glade, Cradle and Reedhaven.",
+    "places/main/config.yaml and places/main/cells/ - Lantern March continent and six homelands; scenes hold quest marks, bosses, NPCs and landmarks, including Thornhollow root-homes, Breakwater stilt fish-houses, Starfall's Vey crater, the Ward Lamphouse and Gull's Wake wreck.",
     "places/hollowcrypt/ - underground crypt campaign entered from Hollowcrypt Vale; halls, Archive, Candle Warden and paired gate; arrivalBudget is 620000 bytes.",
     "places/drowned-bell/, places/root-archive/ - instanced dungeons with themed halls, encounters and paired entry/return gates.",
     "places/pale-choir/, places/emberheart/, places/ninth-assembly/ - themed raid places with encounter bosses and paired gates; endgame raid path branches through Pale Choir and Emberheart.",
@@ -215,7 +218,7 @@
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
-    "places/main/config.yaml - owns March terrain, regional surfaces/scatter and atmosphere; cell scenes bind local structures, quest marks, bosses and NPCs.",
+    "places/main/config.yaml - owns March terrain, regional surfaces/scatter and atmosphere; flatten/clear-scatter layers ground landmarks and cells bind structures, quest marks, bosses and NPCs.",
     "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - terrain/gravity/spawn environment for crypt and instance play.",
     "places/main/cells/x-10z7.scene - Sorrowfen hub contains instance gates; each entrance pairs with an inside gate in its dungeon/raid scene.",
     "mods/gavi/mod.json - registers Gavi crew behavior and panel, the builder-facing companion tools."
@@ -233,12 +236,12 @@
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
     "scripts/gen/homeland.js - geometry, collider; params.kind selects hollow, vault, reedcage or bloom geometry.",
+    "scripts/gen/roothome.js and scripts/gen/stilt.js - geometry, collider for Thornhollow root-homes and Saltborn stilt fish-houses.",
+    "scripts/gen/ruin.js and scripts/gen/hamlet.js - geometry, collider; ruin kinds dress the Ward Lamphouse, hamlet includes race-hamlet structures.",
     "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update for data-defined boss encounters.",
     "MMORPG main-menu-mgr.js - getMenuRoster, getSelectedRosterIndex, hydrateMenuRoster, update, onSpawn, onInput; character-select.js - preview lifecycle and input/spawn handlers.",
-    "MMORPG ui.js - UI composition/actions; lib/version.js - GAME_VERSION, GAME_TITLE, versionTag (current GAME_VERSION 0.39.0 Alpha).",
-    "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-main-menu.js - renderMainMenu.",
-    "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; scripts/player.js - onInput/update; scripts/vitality.js - scheduled fall/rise, mending and PvP zone/death handling.",
-    "scripts/quest-player.js - lightweight kill ear, per-boss weekly gear loot and deferred quest-core dispatch; scripts/quest-core.js - quest interaction/progression and owed reward delivery; scripts/trades.js - lazy onInput/update door to trades-core."
+    "MMORPG ui.js - UI composition/actions; lib/version.js - GAME_VERSION, GAME_TITLE, versionTag (current GAME_VERSION 0.40.1 Alpha).",
+    "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-main-menu.js - renderMainMenu."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
@@ -261,8 +264,8 @@
     "scripts/townsfolk.js uses local greet reach/cooldown constants; player-side scripts/quest-player.js reads townsfolk.yml for NPC talk, avoiding loading the quest book into resident places.",
     "Main-place entrance gate (state.link, minLevel, enterQuest/enterTally) → instance-gate checks player/level and active quest, stamps _worldEnterAt and ctx.crosses to paired +place#gate; inside twin returns through its link.",
     "Instance scenes bind scripts/gen/instance.js with layout/kind params; LAYOUTS and roomsOf produce shared themed room shells, corridors, floors and furnishings while scene placements supply encounters and props.",
-    "Boss scene state.boss → scripts/boss.js reads bosses.yml; arena entry wakes encounter, class scripts write hp/lastHitBy/lastHitAt, abilities telegraph then land, and each credited kill emits to hero quest-player, which rolls gear.yml once per eligible kill.",
-    "Homeland homecoming encounters share boss.js and the six hc-<people> landmarks/quest sites; scripts/gen/homeland.js generates the hollow, vault, reedcage and bloom props where scenes bind it."
+    "Boss scene state.boss → scripts/boss.js reads bosses.yml; arena entry wakes encounter, class scripts write hp/lastHitBy/lastHitAt, abilities telegraph then land, and each credited kill emits to hero quest-player, which rolls gear.yml once per weekly lockout.",
+    "Homeland homecoming encounters share boss.js and the six hc-<people> landmarks/quest sites; scripts/gen/homeland.js generates hollow, vault, reedcage and bloom props where scenes bind it."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
@@ -271,7 +274,7 @@
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and consolidated graveyard cover; shape helpers, kind, seed, LOD and dimensions vary meshes/colliders.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share length/width/elevation parameters.",
     "scripts/gen/tide.js - Tideglass structures and props share shape helpers; kind/LOD/length/width vary each piece.",
-    "scripts/gen/grove.js and scripts/gen/unseen.js - Deepgrove and Old Bond House structures/quest props reuse geometry/material helpers, varied by kind, seed and LOD.",
+    "scripts/gen/hamlet.js, scripts/gen/roothome.js and scripts/gen/stilt.js - reused in race hamlets and March settlements, varied by kind, seed, dimensions and stilt/deck height; Thornhollow root-homes and Breakwater Saltborn fish-houses use dedicated generators.",
     "scripts/grass.js, flower.js, mushroom.js, pebble.js and scripts/gen/tree.js + tree-look.js - terrain scatter and forest foliage recur across places, varied by layer density, scale, seed, tree kind and LOD."
   ],
   "probableOrphans": [
@@ -283,6 +286,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest before crossing, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Bosses use shared hp/lastHitBy/lastHitAt fields written by class combat; boss.js emits kill to each hero's own behavior machine so quest-player owns tally/XP and gear rolls. Keep scene state.boss IDs aligned with bosses.yml and gear.yml loot keys.",
     "Money is one integer copper amount; 100 copper = 1 silver and 100 silver = 1 gold. Route transactions through scripts/lib/economy.js to preserve purse floor, ledger and UI feedback.",
-    "Homeland landmarks are scene placements tied to specific boss grounds; scripts/gen/homeland.js provides geometry/collider for procedural structures, while crater, lamphouse and wreck are currently engine/blueprint box placeholders."
+    "Main-land landmark placements depend on terrain-relative feetPosition and matching flatten/clear-scatter layers in places/main/config.yaml; scene model URLs must stay aligned with world.assets.yaml. Art builders under art/gulls-wake, art/lamphouse and art/vey-crater produce the uploaded landmark GLBs."
   ]
 }
