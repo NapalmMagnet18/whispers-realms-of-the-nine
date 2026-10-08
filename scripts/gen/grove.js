@@ -154,6 +154,13 @@ export function geometry(ctx) {
     ctx.color("oklch(0.88 0.04 80)"); boxR(ctx, [0.1, 1.1, 0], [0.32, 0.05, 0.22], { yaw: 20 }); ctx.color("oklch(0.4 0.15 25)"); boxR(ctx, [0.1, 1.14, 0], [0.06, 0.03, 0.06]);
     return;
   }
+  if (k === "barkface") { // the old bole: a broken giant's trunk, its -Z face scarred with living letters that glow faintly
+    ctx.albedo(BARK); ctx.color(BARKC); cyl(ctx, 0, -0.3, 0, 1.5, 1.2, 4.6, lod > 2 ? 8 : 14, true, (i, kk) => 1 + 0.1 * Math.sin(i * 2.1 + kk));
+    if (lod < 4) flare(ctx, 0, 0, 1.3, 6, 1.5, 0.2);
+    ctx.albedo(null); ctx.color(MOSS); blob(ctx, 0, 4.4, 0, 1.3, 0.5, 1.3, s, 0.35, 4, 8);
+    glow(ctx, [1.6, 2.2, 0.9]); for (let r = 0; r < 4; r++) for (let c = 0; c < 5; c++) { if ((r * 7 + c * 3) % 4 === 0) continue; const x = -0.55 + c * 0.27, y = 1.4 + r * 0.32; box(ctx, x, y, -1.47, x + 0.16 + ((r + c) % 2) * 0.06, y + 0.05, -1.43); } noglow(ctx);
+    return;
+  }
   if (k === "firepit") {
     ctx.albedo(STONE); ctx.color(STONEC); for (let i = 0; i < 9; i++) { const a = (i / 9) * Math.PI * 2; blob(ctx, Math.cos(a) * 0.75, 0.12, Math.sin(a) * 0.75, 0.22, 0.16, 0.2, i, 0.3, 3, 5); }
     ctx.albedo(BARK); ctx.color("oklch(0.5 0.03 50)"); for (let i = 0; i < 4; i++) { const a = i * 1.57 + 0.3; root(ctx, [Math.cos(a) * 0.55, 0.05, Math.sin(a) * 0.55], [0, 0.35, 0], 0.08, 0.05, 5); }
@@ -186,6 +193,7 @@ export function collider(ctx) {
   if (k === "waystone") return { kind: "box", width: 1.0, height: 3.0, depth: 0.6 };
   if (k === "memorial") return { kind: "box", width: 0.5, height: 2.5, depth: 0.5 };
   if (k === "hollow") return { kind: "box", width: 1.6, height: 1.5, depth: 1.6 };
+  if (k === "barkface") return { kind: "box", width: 2.6, height: 4.4, depth: 2.6 };
   if (k === "leanto") { box(ctx, -2, 0, -1.4, 2, 2.3, -1.0); return; }
   return null;
 }
