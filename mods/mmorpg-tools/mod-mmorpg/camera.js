@@ -94,13 +94,14 @@ export function update(api, dt) {
   if (cinematicOrbit) {
     var s = api.getState();
     var cTime = (typeof s._cinematicTime === 'number' ? s._cinematicTime : 0) + dt;
+    // the title shot: a slow breathing drift on the causeway, the realm gate (0, 0, -26) held in frame
     var angle = (cTime / CINEMATIC_PERIOD) * 2 * Math.PI;
-    var camX = Math.cos(angle) * CINEMATIC_RADIUS;
-    var camZ = Math.sin(angle) * CINEMATIC_RADIUS;
-    var camY = CINEMATIC_HEIGHT;
+    var camX = Math.sin(angle) * 3.2;
+    var camZ = 9 + Math.sin(angle * 0.5) * 2.5;
+    var camY = 3.4 + Math.sin(angle * 1.5) * 0.4;
 
     api.setProperty('feetPosition', { x: camX, y: camY, z: camZ });
-    api.lookAt({ x: 0, y: CINEMATIC_LOOK_Y, z: 0 });
+    api.lookAt({ x: camX * 0.25, y: 6.2, z: -26 });
     api.patchState({ _cinematicTime: cTime, _hideLocalPlayer: true });
     return;
   }
