@@ -267,7 +267,7 @@ export function renderTurnInDialog(localPlayer) {
       + '<div style="width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'
         + '<svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="oklch(0.3 0.02 0)" /><path d="M5 9l3 3 5-5" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>'
       + '</div>'
-      + '<span style="font-size:32px;color:oklch(0.3 0.02 0);font-family:\'Times New Roman\',Times,serif;line-height:1.2;text-decoration:line-through;text-decoration-color:oklch(0.35 0.02 0);">' + obj.desc + progressText + '</span>'
+      + '<span style="font-size:30px;max-width:440px;overflow-wrap:break-word;color:oklch(0.3 0.02 0);font-family:\'Times New Roman\',Times,serif;line-height:1.2;text-decoration:line-through;text-decoration-color:oklch(0.35 0.02 0);">' + obj.desc + progressText + '</span>'
       + '</div>';
   }
 
