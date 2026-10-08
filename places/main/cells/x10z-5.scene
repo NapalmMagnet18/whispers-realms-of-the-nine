@@ -71,6 +71,15 @@ hollowcrypt-twisted-3:
   rotation: 291
   scale: 1.04
   tags: [tree]
+qm-hollowcrypt-seal:
+  feetPosition: {x: 1335, y: {terrain: 0}, z: -690}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-hollowcrypt-seal
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.1, tint: oklch(0.55 0.04 290)}, script: scripts/gen/rock.js}
+  rotation: 345
+  state: {mark: hollowcrypt_seal, quest: Q008, say: "Carved deep, older than the spire: THE GATE ACCEPTS WITNESSES, NOT OWNERS.", title: the Hollowcrypt Seal, verb: Inspect}
+  tags: [quest-mark]
 waystone-crypt-road:
   feetPosition: {x: 1224, y: {terrain: 0}, z: -577}
   id: waystone-crypt-road

@@ -1,0 +1,10 @@
+# spawn-scene v2 yaml x0z-1
+qm-sigil-spire:
+  feetPosition: {x: 25, y: {terrain: 0}, z: -150}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-sigil-spire
+  physics: static
+  primitive: {kind: scripted, params: {r: 0.45, tint: oklch(0.75 0.05 250)}, script: scripts/gen/rock.js}
+  rotation: 175
+  state: {gain: Sigil stone found, mark: sigil_stone, quest: Q007, say: Half buried by the road. The rune flickers when you lift it., title: Sigil Stone, verb: Take}
+  tags: [quest-mark]

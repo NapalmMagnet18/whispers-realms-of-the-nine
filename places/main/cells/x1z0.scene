@@ -118,6 +118,33 @@ kit-fence-east-1:
   physics: {body: static, collider: box}
   rotation: {yaw: 70}
   tags: [kit]
+qm-bellglass-lamp:
+  feetPosition: {x: 138, y: {terrain: 0}, z: 40}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-bellglass-lamp
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: 246
+  state: {mark: bellglass_lamp, quest: Q006, say: "The glass is shattered from inside. Pressed into the iron: a fresh maker seal, a hollow crown, stamped over a far older mark of the Accord.", title: the Broken Bellglass Lamp, verb: Investigate}
+  tags: [quest-mark]
+qm-quarry-stash-a:
+  feetPosition: {x: 128, y: {terrain: 0}, z: 30}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-quarry-stash-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 176
+  state: {gain: Stash recovered, mark: quarry_stash, quest: Q006, title: Scavenger Stash, verb: Search}
+  tags: [quest-mark]
+qm-quarry-stash-b:
+  feetPosition: {x: 146, y: {terrain: 0}, z: 34}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-quarry-stash-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}
+  rotation: 302
+  state: {gain: Stash recovered, mark: quarry_stash, quest: Q006, title: Scavenger Stash, verb: Search}
+  tags: [quest-mark]
 quarry-camp-lantern:
   children: [{feetPosition: {x: 0.72, y: 1.85, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
   feetPosition: {x: 124.2, y: 3.2, z: 43.8}
