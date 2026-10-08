@@ -1731,7 +1731,7 @@ export function renderTalentsTab(s) {
       } else {
         borderStyle = 'border:2px solid rgba(40,25,55,0.4);';
         bgStyle = 'background:linear-gradient(135deg,rgba(14,10,18,0.85),rgba(10,6,14,0.92));';
-        filterStyle = 'filter:grayscale(100%) brightness(0.5);';
+        filterStyle = 'filter:grayscale(70%) brightness(0.75);';
         glowStyle = '';
         cursorStyle = 'cursor:not-allowed;';
       }
@@ -1743,7 +1743,7 @@ export function renderTalentsTab(s) {
       var tooltipId = 'ttip-t' + tierIdx + '-s' + si;
 
       // Name color — void purple themed
-      var nameColor = isChosen ? 'color:rgba(180,120,255,0.95);text-shadow:0 0 5px rgba(140,60,220,0.4);' : (canPick ? 'color:rgba(180,150,220,0.8);' : 'color:rgba(70,50,90,0.45);');
+      var nameColor = isChosen ? 'color:rgba(180,120,255,0.95);text-shadow:0 0 5px rgba(140,60,220,0.4);' : (canPick ? 'color:rgba(200,175,235,0.95);' : 'color:rgba(190,175,150,0.78);text-shadow:0 1px 2px #000;');
 
       // Node wrapper — relative for tooltip
       html += '<div style="position:relative;display:flex;flex-direction:column;align-items:center;width:' + (tierSlots.length === 2 ? '110' : '90') + 'px;"'

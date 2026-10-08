@@ -446,7 +446,9 @@ export function renderQuestTracker(localPlayer, world) {
   }
   if (rows) out += '<div class="fixed qtk" style="top:262px;right:calc(var(--spawn-chrome-reservation-right-inset, 50px) + 12px);pointer-events:none;z-index:40">'
     + '<div class="qtk-h">Quests</div>' + _rule('section', '100%', 8) + rows + '</div>';
-  for (var n = 0; n < QUEST_NPCS.length; n++) {
+  var fp = localPlayer.feetPosition || { x: 999, z: 999 };
+  var nearReach = Math.abs(fp.x) < 90 && Math.abs(fp.z) < 90; // the townsfolk all stand in Lantern's Reach: anchors elsewhere find nobody
+  for (var n = 0; nearReach && n < QUEST_NPCS.length; n++) {
     var st = _qd.questStatus(QUEST_NPCS[n].id, s);
     var mark = st === 'available' ? '!' : st === 'ready' ? '?' : '';
     var markCol = st === 'ready' ? 'oklch(0.86 0.15 85)' : 'oklch(0.9 0.17 90)';

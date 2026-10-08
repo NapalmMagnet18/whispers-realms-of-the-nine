@@ -578,14 +578,15 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
     const { mx, my } = toMini(lm.x, lm.z);
     if (inCircle(mx, my)) {
       // Icon via foreignObject (32x32 image centered on the point)
-      landmarkSvg += '<foreignObject x="' + (mx - 16).toFixed(1) + '" y="' + (my - 16).toFixed(1) + '" width="32" height="32" style="overflow:visible;">'
-        + '<img xmlns="http://www.w3.org/1999/xhtml" src="' + lm.icon + '" style="width:32px;height:32px;display:block;filter:drop-shadow(0 0 3px rgba(200,175,120,0.6));pointer-events:none;" />'
+      landmarkSvg += '<foreignObject x="' + (mx - 12).toFixed(1) + '" y="' + (my - 12).toFixed(1) + '" width="24" height="24" style="overflow:visible;">'
+        + '<img xmlns="http://www.w3.org/1999/xhtml" src="' + lm.icon + '" style="width:24px;height:24px;display:block;filter:drop-shadow(0 0 3px rgba(200,175,120,0.6));pointer-events:none;" />'
         + '</foreignObject>';
       // Zone label below icon — 13px bold with dark outline for readability
       const _w = lm.label.length * 7 + 6, _clash = _placed.some(function (b) { return Math.abs(b.x - mx) < (b.w + _w) / 2 && Math.abs(b.y - my) < 15; });
       if (_clash) continue;
+      if (!inCircle(mx - _w / 2, my + 24) || !inCircle(mx + _w / 2, my + 24)) continue; // a name the ring would cut stays off
       _placed.push({ x: mx, y: my, w: _w });
-      landmarkSvg += '<text x="' + mx.toFixed(1) + '" y="' + (my + 24).toFixed(1) + '" fill="rgba(232,217,181,0.95)" font-size="11" font-family="Cinzel,serif" text-anchor="middle" font-weight="bold" stroke="rgba(0,0,0,0.95)" stroke-width="3" paint-order="stroke fill">' + lm.label + '</text>';
+      landmarkSvg += '<text x="' + mx.toFixed(1) + '" y="' + (my + 20).toFixed(1) + '" fill="rgba(232,217,181,0.95)" font-size="11" font-family="Cinzel,serif" text-anchor="middle" font-weight="bold" stroke="rgba(0,0,0,0.95)" stroke-width="3" paint-order="stroke fill">' + lm.label + '</text>';
     }
   }
 
