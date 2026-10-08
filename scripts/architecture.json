@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1012,
-  "updatedAt": "2026-10-08T11:50:24.039Z",
+  "basedOnSpecVersion": 1025,
+  "updatedAt": "2026-10-08T12:07:44.591Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO spanning the Lantern March and streamed frontier campaigns. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class kits, quests, trade, flight and vitality, while place bindings and YAML registries define content. Each realm is a separate room with its own live world and roster, with shared SQL for saved heroes, population pulses and realm-first records.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -214,7 +214,7 @@
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle/input; player.js - character build/save/load lifecycle.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - version/title/tag.",
+    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - version/title/tag (0.29.5 Alpha).",
     "MMORPG lib/realm-save.js - realm list/detail refresh, roster persistence and realm metadata; lib/ui-character-roster.js - renderCharacterRoster.",
     "MMORPG lib/ui-hud.js - renderTargetDisplay, renderHUD; class-aware action bar presents kit/cooldowns in slots 1–3 unless saved spellBar entries override.",
     "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/vitality.js - scheduled fall/rise, mending and PvP zone/death handling.",
@@ -239,11 +239,11 @@
     "realm-save refreshRealmList → player.state.realmList: pulse/character counts and global hero counts drive population, awake and least-populated-Normal recommendation; realmDetail queries top heroes and recent realm_firsts.",
     "main-menu-mgr realm-list actions → realm-save refreshes selection detail; joinRealm refuses displayed Full realm, otherwise api.cross enters its room; realm-save and realms.yml room IDs must agree.",
     "Character creation race/class → lib/races.js race start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot; each realm has an independent roster.",
+    "New character creation in character-select.js/player.js initializes empty active/completed quests, tally, marks, questFlags, owedItems and roosts rather than copying a previous hero's progress; existing character state is restored from its saved record.",
     "templates/player.js order → locomotion → movement → class handlers including Shade → quest-player → vendor → flight → vitality → cursor-free; movement/camera intents are consumed by player.js/wow-move.js under place gravity.",
-    "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest marks; quests.yml + quest-data define mechanics while quest-text.yml is warmed via quest-text.js and read by quest-player/quest-giver; ui-quest renders dialog/tracker.",
+    "Interact/E → quest-player resolves NPCs, talkers, readable props, caches, timber and quest marks; quests.yml + quest-data define mechanics while quest-text.yml is warmed via quest-text.js and read by quest-player/quest-giver; ui-quest renders offer, turn-in and tracker views.",
     "scripts/wolves.js and scripts/scavengers.js resolve monster death on their simulation machine → targeted kill event to hero's quest-player ears.kill updates tally/XP; targeted coins event goes through vendor.",
-    "Quest completion and level-band crossing in quest-player → realm-firsts questFirst/levelFirst → INSERT OR IGNORE into realm_firsts; winner writes world.state.herald and emits realm-wide horn/stat events; ui-herald renders announcements.",
-    "Attack/cast inputs → class abilities and scripts/lib/kit.js → monster hits or pvpTargets/meleePlayer; realm/config, range, level, sanctuary, shield and Veil filters gate PvP targeting, with victim health changes handled on the victim's machine."
+    "Quest completion and level-band crossing in quest-player → realm-firsts questFirst/levelFirst → INSERT OR IGNORE into realm_firsts; winner writes world.state.herald and emits realm-wide horn/stat events; ui-herald renders announcements."
   ],
   "behaviorFamilies": [
     "scripts/gen/ landmark builders reuse scripts/gen/shape.js procedural geometry helpers, varied by landmark and parameters; crypt.js supplies Hollowcrypt halls, rooms and furniture.",
@@ -262,6 +262,6 @@
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "state.xp remains cumulative while xpInto/xpToLevel are current-bar values; levels.yml owns total-XP anchors and progression cap 60, and class damage derives from configured damagePerLevel through lib/kit.js power.",
     "Monster managers must target kill and coins events to the hero's own behaviors: quest-player ears.kill owns tally/XP persistence, vendor owns coin ledger/purse; do not mutate the remote hero save from the monster's machine.",
-    "Quest mechanics remain in quests.yml; dialogue strings are in quest-text.yml and load asynchronously on warm(), so consumers should use qt()/withText(); completed objective labels in ui-quest.js wrap within the parchment using a 440px max-width."
+    "New heroes must start with fresh quest collections (activeQuests/completedQuests/tally/marks/questFlags/owedItems) and roosts; do not leak account/previous-hero progress into creation defaults. Quest offer UI keeps objectives/rewards in the parchment and story text in a 176px scrolling region; objective labels wrap at 440px max-width."
   ]
 }
