@@ -45,7 +45,7 @@ function halls(ctx, L, lod) {
     B(ctx, r.x0 - T, -0.6, r.z0 - T / 2, r.x1 + T, 0, r.z1 + T / 2);
     B(ctx, r.x0 - T, r.h, r.z0 - T / 2, r.x1 + T, r.h + 0.6, r.z1 + T / 2);
     const gate = [2, 4], gs = i === 0 ? [1.9, 3.8] : gate;
-    wallX(ctx, r.z1, r.x0, r.x1, r.h, T, r.corr ? null : gs); wallX(ctx, r.z0, r.x0, r.x1, r.h, T, r.corr || r.last ? (r.corr ? null : null) : gate);
+    if (!r.corr) { wallX(ctx, r.z1, r.x0, r.x1, r.h, T, gs); wallX(ctx, r.z0, r.x0, r.x1, r.h, T, r.last ? null : gate); }
     if (r.corr) { B(ctx, r.x0 - T, 0, r.z0, r.x0, r.h, r.z1); B(ctx, r.x1, 0, r.z0, r.x1 + T, r.h, r.z1); return; }
     B(ctx, r.x0 - T, 0, r.z0, r.x0, r.h, r.z1); B(ctx, r.x1, 0, r.z0, r.x1 + T, r.h, r.z1);
   });
