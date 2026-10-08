@@ -75,7 +75,8 @@ function die(ctx, w, s, m) {
   ctx.emit("playSound", { clip: W.sounds.yelp, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
   if (p && (p.tags || []).includes("player")) {
-    p.state.tally = { ...(p.state.tally || {}), briar_wolf: (p.state.tally?.briar_wolf || 0) + 1 };
+    const tk = ctx.self.state.tallyKey || "briar_wolf"; // a den names its own kill (THR-03's bramble_beast)
+    p.state.tally = { ...(p.state.tally || {}), [tk]: (p.state.tally?.[tk] || 0) + 1 };
     if (typeof p.state.xp === "number") p.state.xp += W.reward.xp; else p.state.xp = W.reward.xp;
     if (W.reward.copper) ctx.emit("coins", { delta: W.reward.copper, reason: "kill:briar_wolf" }, { to: p.id }); // scripts/vendor.js ear: ledger, clink, purse
     ctx.emit("damageNumber", { position: pos, text: `+${W.reward.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
@@ -104,10 +105,10 @@ export function update(ctx, dt) {
   const den = ctx.self, ds = den.state, now = ctx.now(), S = (ctx.session.wolves ??= {});
   if (now >= (S.census ?? 0)) {
     S.census = now + 1000;
-    for (const def of W.pack) if (!ctx.getObject(def.id) && now >= (ds.respawnAt?.[def.id] ?? 0)) spawnWolf(ctx, def);
+    for (const def of (ds.pack || W.pack)) if (!ctx.getObject(def.id) && now >= (ds.respawnAt?.[def.id] ?? 0)) spawnWolf(ctx, def);
   }
   const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating");
-  for (const def of W.pack) {
+  for (const def of (ds.pack || W.pack)) {
     const w = ctx.getObject(def.id);
     if (!w) { delete S[def.id]; continue; }
     const s = w.state, pos = w.feetPosition, home = s.home ?? { x: def.x, z: def.z };
