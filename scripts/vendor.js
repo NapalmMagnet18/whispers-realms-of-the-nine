@@ -138,6 +138,7 @@ export function onInput(ctx, input) {
     const v = nearVendor(ctx);
     if (v && v.state && v.state.trainer) return train(ctx, v);
     if (v && v.state && v.state.bank) return openBank(ctx, v);
+    if (v && v.state && v.state.guildRegistrar) { st.showGuildPanel = true; st.guildError = null; try { if (ctx.self.camera) ctx.self.camera.pointerLock = false; } catch (e) {} ctx.emit('playSound', { clip: '/cdn/sfx-scroll-paper-unroll-magic-r41hu1b5.mp3', volume: 0.4 }, { audience: { player: ctx.self.id } }); return; }
     if (v) open(ctx, v);
   }
 }

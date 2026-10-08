@@ -36,7 +36,7 @@ const run = (ctx, p) => { p.catch((e) => { ctx.log('guild failed', String(e && e
 
 function enter(ctx, name, role) {
   const st = ctx.self.state;
-  st.guildName = name; st.guildRole = role; st.guildError = null; st.showGuildJoinModal = false; st.showGuildCreation = false;
+  st.guildName = name; st.guildRole = role; st.showGuildPanel = true; st.guildError = null; st.showGuildJoinModal = false; st.showGuildCreation = false;
   st.pendingGuildInvite = null; st._questSave = true;
   chime(ctx, JOIN_SFX);
   tellSelf(ctx, (role === 'leader' ? 'You founded ' : 'You joined ') + '<' + name + '>', '#f2b04a');

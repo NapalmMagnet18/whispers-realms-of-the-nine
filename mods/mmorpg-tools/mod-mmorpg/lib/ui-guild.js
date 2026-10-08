@@ -56,7 +56,13 @@ export function renderGuildPanel(localPlayer, world) {
         // No guild message
         + '<div style="font-family:Times New Roman,serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.8);'
           + 'text-shadow:0 1px 4px rgba(0,0,0,0.8);text-align:center;line-height:1.6;">'
-          + 'You are not part of a guild.<br/>Visit the <span style="color:rgba(220,180,60,0.95);">Tavern</span> to create one.</div>'
+          + 'You are not part of a guild.<br/>Found one under your own banner, or join a guild by its name.</div>'
+        + '<div style="text-align:center;margin-top:16px;"><input data-interactive id="wh-guild-name" type="text" maxlength="24" placeholder="Guild name..." onkeydown="event.stopPropagation()" onkeyup="event.stopPropagation()" onkeypress="event.stopPropagation()" style="width:80%;background:rgba(10,8,14,0.9);border:2px solid rgba(160,100,220,0.4);border-radius:4px;padding:8px 12px;color:#fff;font-family:Cinzel,serif;font-size:16px;text-align:center"/></div>'
+        + '<div style="text-align:center;margin-top:12px;">'
+        + '<div data-interactive onclick="event.stopPropagation();var v=document.getElementById(\'wh-guild-name\');sendAction(\'createGuild\',{guildName:v?v.value:\'\',name:v?v.value:\'\'})" style="display:inline-block;margin:0 5px;padding:8px 18px;cursor:pointer;font-family:Cinzel,serif;font-size:15px;font-weight:700;letter-spacing:1px;border-radius:4px;background:rgba(122,46,34,0.8);border:1px solid rgba(242,176,74,0.6);color:#f2b04a;">Found (10 silver)</div>'
+        + '<div data-interactive onclick="event.stopPropagation();var v=document.getElementById(\'wh-guild-name\');sendAction(\'confirmJoinGuild\',{guildName:v?v.value:\'\',name:v?v.value:\'\'})" style="display:inline-block;margin:0 5px;padding:8px 18px;cursor:pointer;font-family:Cinzel,serif;font-size:15px;font-weight:700;letter-spacing:1px;border-radius:4px;background:rgba(80,40,120,0.6);border:1px solid rgba(160,100,220,0.5);color:#fff;">Join</div>'
+        + '</div>'
+        + (s.guildError ? '<div style="text-align:center;margin-top:10px;font-family:Cinzel,serif;font-size:14px;color:rgba(230,90,70,0.95)">' + escapeHtml(s.guildError) + '</div>' : '')
 
         // Close button
         + '<div style="text-align:center;margin-top:24px;">'
