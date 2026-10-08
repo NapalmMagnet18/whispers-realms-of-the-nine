@@ -5,19 +5,19 @@
 import S from "./lib/data/scavengers.yml";
 import { animate } from "builtin/tween";
 
-const BAR = `<div face="top" facing="player" offset="0.6m" width="0.8m" class="flex flex-col items-center gap-[10px]">
-<div class="text-[60px] font-bold text-amber-100 tracking-wide" style="font-family:Cinzel,serif;text-shadow:0 3px 6px #000">Quarry Scavenger</div>
+const BAR = (name) => `<div face="top" facing="player" offset="0.6m" width="0.8m" class="flex flex-col items-center gap-[10px]">
+<div class="text-[60px] font-bold text-amber-100 tracking-wide" style="font-family:Cinzel,serif;text-shadow:0 3px 6px #000">${name}</div>
 <div hidden="{{ state.unhurt }}" class="w-full h-[52px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[5px]"><div class="h-full rounded bg-red-700" style="width: {{ state.hpPct }}%"></div></div>
 </div>`;
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const arc = (from, to) => ((((to - from) % 360) + 540) % 360) - 180;
 const near = (p) => ({ nearby: p, radius: 40 });
 
-function spawnOne(ctx, def) {
+function spawnOne(ctx, def, cs = {}) {
   ctx.spawn(def.id, {
-    tags: ["enemy", "scavenger", "quarry-scavenger"], physics: "character", model: S.model,
+    tags: ["enemy", "scavenger", "quarry-scavenger"], physics: "character", model: cs.model || S.model, ...(cs.look ? { material: { ...cs.look, dissolve: 0 } } : {}),
     layout: { minExtents: { x: -0.4, y: 0, z: -0.3 }, maxExtents: { x: 0.4, y: 1.8, z: 0.3 } },
-    material: { dissolve: 0 }, feetPosition: { x: def.x, z: def.z, y: { terrain: 0 } }, rotation: def.yaw ?? 0, ui: BAR,
+    ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: { terrain: 0 } }, rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
     state: { hp: S.hp, maxHp: S.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: 0.45, hpPct: 100, unhurt: true },
   });
 }
@@ -86,7 +86,7 @@ export function update(ctx, dt) {
   const camp = ctx.self, cs = camp.state, now = ctx.now(), M = (ctx.session["scav:" + camp.id] ??= {}); // each camp its own scratch: two camps never share a census clock
   if (now >= (M.census ?? 0)) {
     M.census = now + 1000;
-    for (const def of (cs.crew || S.crew)) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def);
+    for (const def of (cs.crew || S.crew)) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def, cs);
   }
   const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating");
   for (const def of (cs.crew || S.crew)) {
