@@ -667,7 +667,16 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
           'character-creation-land': '',
         };
         const placeId = currentPlace || 'main';
-        const placeName = PLACE_NAMES[placeId] !== undefined ? PLACE_NAMES[placeId] : placeId;
+        let placeName = PLACE_NAMES[placeId] !== undefined ? PLACE_NAMES[placeId] : placeId;
+        if (placeId === 'main') {
+          // regions of the Lantern March (mirror of scripts/lib/regions.js)
+          const X = localPlayer.feetPosition?.x ?? 0, Z = localPlayer.feetPosition?.z ?? 0, d = (a, b) => Math.hypot(X - a, Z - b);
+          placeName = d(0, 0) < 70 ? "Lantern's Reach" : d(-18, 52) < 26 ? 'Windmill Farm' : d(135, 30) < 80 ? 'Emberstone Quarry'
+            : d(30, -360) < 90 ? 'The Old Spire' : d(1350, -700) < 330 ? 'Hollowcrypt Vale' : d(-1300, 950) < 520 ? 'Sorrowfen'
+            : d(300, 1650) < 420 ? 'Saltmere Coast' : Math.hypot(X / 3200, Z / (Z > 0 ? 2050 : 3200)) > 1 ? 'The Shrouded Sea'
+            : Z < -800 ? 'Greyspine Mountains' : X > 650 ? 'Emberstone Highlands' : X < -500 ? 'Briarwild Deepwood'
+            : (X < -60 && Math.abs(Z) < 420) ? 'Briarwild' : 'The Lantern March';
+        }
         // Never render any meta place ID (menu, creation, etc.)
         if (!placeName || placeId.indexOf('menu') !== -1 || placeId.indexOf('creation') !== -1) return '';
         return '<div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:rgba(8,6,12,0.9);border:1px solid rgba(90,70,35,0.5);border-radius:3px;padding:2px 10px;white-space:nowrap;z-index:1;"><span style="font-family:Cinzel,Palatino,Georgia,serif;font-size:18px;color:rgba(210,180,100,0.95);text-shadow:0 0 6px rgba(200,170,80,0.25),0 1px 2px rgba(0,0,0,0.9);letter-spacing:1px;">' + placeName + '</span></div>';
