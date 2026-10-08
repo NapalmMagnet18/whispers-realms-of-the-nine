@@ -218,7 +218,8 @@
       "confirmLearnProfession": {},
       "startCharacterCreation": {},
       "toggleGuildInviteInput": {},
-      "closeProfessionDialogue": {}
+      "closeProfessionDialogue": {},
+      "openRealmList": {}
     },
     "axes": {
       "lookX": {

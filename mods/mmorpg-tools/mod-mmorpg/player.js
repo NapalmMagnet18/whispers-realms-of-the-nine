@@ -1583,7 +1583,7 @@ export function onInput(objectApi, input) {
   }
 
   // ── Main Menu (save & return to main-menu-land) ──
-  if (input.actions.goToMainMenu) {
+  if (input.actions.goToMainMenu || input.actions.openRealmList) {
     handleLogout(objectApi);
     return;
   }

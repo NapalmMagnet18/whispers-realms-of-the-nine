@@ -8,6 +8,7 @@ const { renderWelcomeWindow } = require('./lib/ui-welcome.js');
 const { renderQuestDialog, renderTurnInDialog, renderQuestTracker } = require('./lib/ui-quest.js');
 const { renderDoorPanel } = require('./lib/ui-door-panel.js');
 const { renderVendor } = require('./lib/ui-vendor.js');
+const WHF = require('./lib/ui-frames.js');
 const { renderGnomeTipJar } = require('./lib/ui-gnome-tip.js');
 const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
 const { renderBuffIcons } = require('./lib/ui-buff-icons.js');
@@ -188,7 +189,10 @@ export default function(world, localPlayer) {
       try { _hudParts.push(renderTipReminder(localPlayer)); } catch(e14) { _hudParts.push(''); }
       try { _hudParts.push(renderVampireDialog(localPlayer)); } catch(e15) { _hudParts.push(''); }
       try { _hudParts.push(renderCursedItemDialog(localPlayer)); } catch(e16) { _hudParts.push(''); }
-      return FONT_INJECTOR + wrapOpen + _hudParts.join('') + FONT_WRAP_CLOSE;
+      try { _hudParts.push(WHF.CSS + WHF.renderUnitFrames(localPlayer) + WHF.renderDock(localPlayer) + WHF.renderBackpack(localPlayer) + WHF.renderGameMenu()); } catch(e17) { _hudParts.push(''); }
+      var _whCls = ''; try { _whCls = WHF.rootClasses(localPlayer.state || {}); } catch(e18) {}
+      var _wrap = _whCls ? wrapOpen.replace('<div id="fa-ui-root"', '<div id="fa-ui-root" data-wh="1"').replace(/<div id="fa-ui-root"([^>]*?)( class="([^"]*)")?/, function(m, a, b, c) { return '<div id="fa-ui-root"' + a.replace(/ class="[^"]*"/, '') + ' class="' + ((c || '') + ' ' + _whCls).trim() + '"'; }) : wrapOpen;
+      return FONT_INJECTOR + _wrap + _hudParts.join('') + FONT_WRAP_CLOSE;
     } catch(e) {
       return FONT_INJECTOR + wrapOpen + '<div class="fixed top-24 left-4" style="color:red;font-size:14px;background:rgba(0,0,0,0.85);padding:12px;border-radius:8px;max-width:600px;z-index:99999;">HUD error: ' + e.message + ' STACK: ' + (e.stack || '').substring(0, 300) + '</div>' + FONT_WRAP_CLOSE;
     }
