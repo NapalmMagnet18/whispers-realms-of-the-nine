@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1654,
-  "updatedAt": "2026-10-08T22:10:36.107Z",
-  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO across the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors provide combat, quests, trade, guilds, flight and survival, while streamed scenes and shared YAML data define places and progression.",
+  "basedOnSpecVersion": 1672,
+  "updatedAt": "2026-10-08T22:24:04.863Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared YAML data provide combat, quests, trade, guilds, flight and progression, while streamed scenes define the world.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -89,6 +89,7 @@
     "mods/wow-camera-controls/camera.js",
     "mods/wow-camera-controls/lib/config.js",
     "mods/wow-camera-controls/lib/motion.js",
+    "scripts/arcanist-core.js",
     "scripts/arcanist.js",
     "scripts/arrival.js",
     "scripts/bob.js",
@@ -103,6 +104,7 @@
     "scripts/db.js",
     "scripts/elric.js",
     "scripts/flat-starter-terrain.js",
+    "scripts/flight-core.js",
     "scripts/flight.js",
     "scripts/flower-look.js",
     "scripts/flower.js",
@@ -174,6 +176,7 @@
     "scripts/lib/economy.js",
     "scripts/lib/guild-core.js",
     "scripts/lib/kit.js",
+    "scripts/lib/lazy.js",
     "scripts/lib/leveling.js",
     "scripts/lib/missiles.js",
     "scripts/lib/places.js",
@@ -181,6 +184,7 @@
     "scripts/lib/quest-text.js",
     "scripts/lib/realm-firsts.js",
     "scripts/lib/regions.js",
+    "scripts/lib/resident-animation.js",
     "scripts/lib/wow-move.js",
     "scripts/lighting.js",
     "scripts/look-default.js",
@@ -190,6 +194,7 @@
     "scripts/mushroom-look.js",
     "scripts/mushroom.js",
     "scripts/party-finder.js",
+    "scripts/pathfinder-core.js",
     "scripts/pathfinder.js",
     "scripts/pebble.js",
     "scripts/places/banner-vale/sim.js",
@@ -202,6 +207,7 @@
     "scripts/routing.js",
     "scripts/sails-spin.js",
     "scripts/scavengers.js",
+    "scripts/shade-core.js",
     "scripts/shade.js",
     "scripts/sim.js",
     "scripts/templates/camera.js",
@@ -216,6 +222,7 @@
     "scripts/tree-look.js",
     "scripts/ui.js",
     "scripts/ui/nametag.js",
+    "scripts/vanguard-core.js",
     "scripts/vanguard.js",
     "scripts/vendor.js",
     "scripts/vitality.js",
@@ -223,54 +230,54 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main/config.yaml and places/main/cells/ - Lantern March continent; streamed scenes hold towns, regions, quest sites, encounters, gates, landmarks and spatial emitters.",
-    "places/main/cells/x0z0.scene - Lantern's Reach and its Hall of Banners at (5,24); Registrar Ambrose Quill (guild-registrar) offers guild charter/join interaction through the guild UI.",
-    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with matching Discipline Trainers and banners; race hamlets and settlements reuse procedural structures.",
-    "places/main/cells/x-10z7.scene and other board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
-    "places/main/cells/x-1z-5.scene, x-6z1.scene, x-7z0.scene and x0z-4.scene - Starfall giant quest site, Rootwake Glade bounty/raider camp, and blood shrine handled by quest and vitality behaviors.",
+    "places/main/config.yaml and places/main/cells/ - Lantern March continent; streamed cells hold Lantern's Reach, race towns, quest regions, encounters, gates and landmarks.",
+    "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; Registrar Ambrose Quill (guild-registrar) connects nearby interaction to guild UI.",
+    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with matching Discipline Trainers and banners.",
+    "places/main/cells/x-10z7.scene and board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
+    "places/main/cells/x-1z-5.scene, x-6z1.scene, x-7z0.scene and x0z-4.scene - Starfall giant quest site, Rootwake Glade bounty/raider camp and blood shrine.",
     "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's moving caravan on the Reedhaven road.",
-    "places/banner-vale/ - 5v5 capture-the-banner battleground; terrain/config, referee sim and scenes place bases, flags and boards; main finder queues groups here.",
-    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - dungeon/raid instance places; paired gates connect them with the main world."
+    "places/banner-vale/ - 5v5 capture-the-banner battleground; terrain/config, scenes and referee sim manage teams, flags, score and match return.",
+    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - dungeon/raid instances linked to the main world by paired gates."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION is 0.47.1 Alpha; version tag is rendered on main menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.3 Alpha; shown on main menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
-    "places/main/config.yaml - March terrain, roads, surfaces/scatter and atmosphere; places/main/sim.js runs room weather and Party Finder matching.",
-    "places/banner-vale/config.yaml and places/banner-vale/sim.js - battleground terrain and referee; sim assigns teams, manages flags, scores, awards results and returns players.",
-    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - terrain, gravity and spawn environment for instances."
+    "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere plus room weather and Party Finder matching.",
+    "places/banner-vale/config.yaml and places/banner-vale/sim.js - battleground terrain and referee simulation; assigns teams, manages flags/scores and returns players.",
+    "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - instance terrain, gravity and spawn environment."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency, shop data and UI modules reused by MMORPG behaviors, gameplay scripts and ui.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency, shop data and UI modules reused by MMORPG behaviors and gameplay scripts.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population and realm list/detail shared by menu and player lifecycle.",
-    "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry shared by quests, class actions, vitality and regional music; includes banner-vale.",
+    "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry used by quests, class actions, vitality, flight and regional music.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose.",
-    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for instance and open-world bosses; IDs also key gear and voice data.",
-    "scripts/lib/data/music.yml, weather.yml, greet-voices.yml + scripts/region-music.js, quest-core.js - area/audio schedules and voice mappings shared by player behaviors and place weather.",
-    "scripts/lib/data/{finder,battleground}.yml, scripts/party-finder.js, places/main/sim.js and places/banner-vale/sim.js - queue and match rules; scripts/guild.js lazily loads guild-core for SQL guild/vault operations."
+    "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for instance/open-world bosses; IDs also key gear and voice data.",
+    "scripts/lib/data/{music,weather,greet-voices}.yml - area/audio schedules and voice mappings used by region-music, quest-core and place weather.",
+    "scripts/lib/lazy.js and scripts/lib/resident-animation.js - lazy behavior forwarding shared by class/flight wrappers; generated-resident idle, bow and pitch handling shared by Elric and townsfolk."
   ],
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
     "scripts/lib/kit.js - power, gearPower, classOf, canAct, forward, alive, aimPoint, softTargets, launch, materialOf, meleeFoley, applyHit.",
+    "scripts/lib/lazy.js - lazyBehavior; scripts/lib/resident-animation.js - residentIdle, greetResident, residentPitch.",
+    "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action exports; wrappers expose handlers and defer to their matching core module.",
+    "scripts/flight-core.js - updateSchedule, onInput, update; scripts/flight.js exports forwarded behavior handlers.",
     "scripts/gen/homeland.js - geometry, collider; params.kind selects hollow, vault, reedcage or bloom geometry.",
     "scripts/gen/roothome.js and scripts/gen/stilt.js - geometry, collider for Thornhollow root-homes and Saltborn stilt fish-houses.",
-    "scripts/gen/ruin.js and scripts/gen/hamlet.js - geometry, collider; ruin kinds dress the Ward Lamphouse, hamlet includes race-hamlet structures.",
-    "scripts/gen/armory.js, waystone.js, apothecary.js, caravan.js and harbor.js - geometry/collider generators for settlement props and landmarks.",
-    "scripts/gen/camp.js, giant.js, shrine.js and war-banner.js - geometry/collider generators; war-banner varies flag color or stand form.",
     "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; scripts/scavengers.js - update."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment, quest state and trained rank.",
-    "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, gear power and melee foley.",
-    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth; quest-data.js owns quest records.",
+    "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action/cooldown state and combat effects; wrapper scripts load and forward to the matching core.",
+    "scripts/flight-core.js - player roost discovery, flight map, flying mount/route state and fare interaction; saved roosts live on character state.",
+    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
     "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch live in boss ctx.session.",
     "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; stamps player's _worldEnterAt and conditionally increments tally.",
-    "scripts/vitality.js - player health/dying/rise, regen, bloodUntil pact and per-session food-over-time; enemies write state.health. places/main/sim.js owns weather and world.state.lfg; region-music.js owns per-player audio state.",
-    "scripts/guild.js delegates to guild-core, which owns player guildName/guildRole/guildRoster/invite and banker guild-vault state backed by SQL; banner-vale sim owns match/flags/score and player battleground state."
+    "scripts/elric.js and scripts/townsfolk.js - resident homeYaw/idle/nextGreet/yaw and greeting schedule; resident-animation helper uses session bow timer/pitch. Vitality owns player health/dying/rise; main sim owns weather/LFG; region-music owns player audio state."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -279,22 +286,22 @@
     "scripts/lib/data/realms.yml → routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads pulses and refreshes realmList/realmDetail.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot.",
     "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → guild → trades → flight → vitality → cursor-free → region-music; movement/camera intents consumed by player.js/wow-move.js.",
-    "First eligible quest-player input/update in a scripts/lib/places.js isPlay place → dynamic import quest-core; quest-core seeds quest-data's database from quests.yml; quest-text.js warms dialogue and ui-quest renders it.",
+    "In a PLAY place, eligible class wrapper input/update → lazyBehavior dynamically imports the corresponding *-core.js on first need; forwarded releases/timed handlers run in the core. Flight wrapper similarly loads flight-core.js outside creation.",
+    "First eligible quest-player input/update in a PLAY place → dynamic import quest-core; quest-core seeds quest-data's database from quests.yml; quest-text.js warms dialogue and ui-quest renders it.",
     "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
     "Party Finder board scripts/party-finder.js queues a hero in world.state.lfg; places/main/sim.js prunes absent players and matches from finder.yml, stamps _worldEnterAt, updates eligible quest tallies and crosses to dungeon/battleground.",
     "Banner Vale arrivals → places/banner-vale/sim.js assigns teams and bases; battleground.yml configures flags, score/time/rewards; scripts/lib/pvp.js allows enemy-team combat and sim returns players to +main.",
-    "Guild UI actions → scripts/guild.js lazy-loads scripts/lib/guild-core.js; guild SQL stores realm rosters/shared vault, character state carries membership/invites; E near guild-registrar in vendor.js opens guild panel, whose create/join actions are handled by guild-core.",
     "quest-core opens a cache → legacy gold converts at 100 copper each unless explicit copper is present → economy writer credits purse; st.caches claim keys save/load with the character and start empty on new character."
   ],
   "behaviorFamilies": [
-    "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
-    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and sound/clips; boss-taunts.yml adds per-id settings.",
+    "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
+    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage and rewards.",
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed; scenes bind static colliders.",
-    "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and consolidated graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
+    "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
     "scripts/gen/tide.js - Tideglass structures and props share shape helpers; kind/LOD/length/width vary each piece.",
     "scripts/gen/hamlet.js, scripts/gen/roothome.js and scripts/gen/stilt.js - reused in race hamlets and March settlements, varied by kind, seed, dimensions and stilt/deck height.",
-    "scripts/gen/war-banner.js - Banner Vale team flags/stands and Hall of Banners guild standards share one generator; color and stand parameter vary the placed object."
+    "scripts/{vanguard,arcanist,pathfinder,shade}.js + matching *-core.js - same lazy-load/forward pattern for four player class kits; class identity selects warmup and each core owns that kit's actions."
   ],
   "probableOrphans": [
     "scripts/gen/grave-weeds.js - no scene or other package reference; graveyard cover is currently placed through grave-ground.js instead."
@@ -303,8 +310,8 @@
     "Adding a playable place requires a row in scripts/lib/places.js PLAY; dying heroes rise at SAFE_HOME for listed dungeons/raids. Quest and class logic uses isPlay rather than hard-coded place names.",
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
-    "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml, gear.yml, boss-voices.yml and boss-taunts.yml.",
-    "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save (new character initializes it empty). Guild vault moves use SQL ver conditional updates to avoid duplicate items.",
-    "Quarry scavenger camps wake crews within wakeRadius (default 60) and sleep eligible non-dead, non-chasing bodies beyond sleepRadius (default 110); keep persistent camp respawn metadata distinct from transient spawned bodies."
+    "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and associated gear/voice data.",
+    "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save (new character initializes it empty). Guild vault moves use SQL version-conditional updates.",
+    "Class wrappers defer kit modules with dynamic import; keep core exports and wrapper forwarding names aligned with scheduled callbacks (release/land/endAction/wardEnd) so deferred class actions still resolve."
   ]
 }
