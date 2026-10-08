@@ -139,6 +139,7 @@ arc-falselamp:
   state: {after: resonance_signal, afterText: "First: listen to both lamps", mark: false_lamp, quest: ARC-02, say: "Your hand on the brass. The lamp flickers, embarrassed, and its shadow snaps back to where it belongs.", sound: /cdn/moodboard-painterly-fantasy/sfx-soft-magical-chime-release.mp3, title: The Lying Lamp, verb: Mark the liar}
   tags: [quest-mark, observatory]
 arc-forge:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-blacksmith-forge-bellows-roar-and-slow-hammer-on-anvil-ringing-loop.mp3, gain: 0.24, loop: true, maxDistance: 24, spatial: true}
   feetPosition: {x: -24, y: {terrain: 0}, z: -49.5}
   fx: {script: "fx\npop spark rate=8 on=sphere(.25).c(1.55) life=.5..1 v=sdir()*(.3..0.8) size=.03..0.06 col=hdr(4,3.6,2.4) a=1>0 r=sprite(ember,add)\npop glow n=1 pos=<0,1.55,0> r=light(<1,.9,.75>,6,12)"}
   id: arc-forge
@@ -668,6 +669,7 @@ cl-tanner-logs:
   rotation: {yaw: 90}
   tags: [kit, copperlane]
 cl-waystone:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: 56, y: {terrain: 0}, z: 8}
   id: cl-waystone
   layout: {maxExtents: {y: 2.6}, minExtents: {y: 2.6}}
@@ -952,6 +954,7 @@ inn:
   rotation: 180
   tags: [building, inn]
 kit-anvil:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-blacksmith-forge-bellows-roar-and-slow-hammer-on-anvil-ringing-loop.mp3, gain: 0.24, loop: true, maxDistance: 24, spatial: true}
   feetPosition: {x: 24, y: {terrain: 0}, z: -8.8}
   id: kit-anvil
   layout: {maxExtents: {y: 0.9}, minExtents: {y: 0.9}}
@@ -1491,6 +1494,7 @@ qm-equ-alloy:
   state: {gain: Bellglass test bead, mark: alloy_sample, quest: EQU-04, sound: /cdn/moodboard-painterly-fantasy/sfx-forge-bellows-roar.mp3, title: Mira's Forge, verb: Smelt bellglass at}
   tags: [quest-mark, quarry-chapter]
 qm-forge-blade:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-blacksmith-forge-bellows-roar-and-slow-hammer-on-anvil-ringing-loop.mp3, gain: 0.24, loop: true, maxDistance: 24, spatial: true}
   feetPosition: {x: 23.4, y: {terrain: 0}, z: 3.4}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-forge-blade
@@ -1503,6 +1507,7 @@ qm-forge-smelt:
   state: {after: ore, gain: "+1 Copper Bar", mark: forge_smelt, quest: Q003, sound: /cdn/moodboard-painterly-fantasy/sfx-forge-bellows-roar.mp3, title: Mira's Forge, verb: Smelt ore at}
   tags: [quest-mark]
 qm-inn-hearth:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   feetPosition: {x: -6, y: {terrain: 0}, z: -24.6}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-inn-hearth

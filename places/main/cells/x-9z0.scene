@@ -415,6 +415,7 @@ qm-brd-promise:
   state: {after: echo_spoken, burstAt: 1.2, burstFx: "fx\npop mote burst=40 on=disc(.6) life=1.5..2.5 v=up(.6..1.4)+sdir()*.4 size=.04..0.08 acc=curl(.5)+drag(.6) col=hdr(3,2.2,.7)>hdr(1.2,2.4,.8) a=0>.1:1>0 r=sprite(soft-disc,add)\npop glow burst=1 life=1.6 r=light(<1,.8,.4>,10*(1>0),10)", gain: Promise made, mark: echo_promise, quest: BRD-08, say: "You lay your hand among the lilies and promise. The little light leans against your shoulder, warm as a held cup.", title: Eda's lilies, verb: Make your promise at}
   tags: [quest-mark, deepgrove]
 qm-brd-shrine:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   children: [{feetPosition: {x: 0, y: 2.2, z: -0.4}, light: {color: oklch(0.8 0.15 70), distance: 8, intensity: 1.5, kind: point}}]
   feetPosition: {x: -1100, y: 25, z: 68}
   id: qm-brd-shrine
@@ -439,6 +440,7 @@ qm-brd-trunk:
   state: {burstAt: 2.5, burstFx: "fx\npop mote burst=40 on=disc(.6) life=1.5..2.5 v=up(.6..1.4)+sdir()*.4 size=.04..0.08 acc=curl(.5)+drag(.6) col=hdr(3,2.2,.7)>hdr(1.2,2.4,.8) a=0>.1:1>0 r=sprite(soft-disc,add)\npop glow burst=1 life=1.6 r=light(<1,.8,.4>,10*(1>0),10)", gain: Root passage opened, mark: root_passage, quest: BRD-01, say: "The boles creak apart as you pass under them, and for a moment the wood smells of rain on a road you've never walked.", title: the Quiet Trunk, verb: Walk through}
   tags: [quest-mark, deepgrove]
 qm-brd-waystone-east:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: -1030, y: 25, z: 72}
   id: qm-brd-waystone-east
   physics: static
@@ -447,6 +449,7 @@ qm-brd-waystone-east:
   state: {after: archive_opened, gain: Road taken, mark: velthraen_road, quest: BRD-09, say: "The carved arrow points east and north, past Thornhollow, toward the cloud-courts of Velthraen Reach. The road is open.", title: the east waystone, verb: Set out from}
   tags: [quest-mark, deepgrove]
 qm-brd-waystone-west:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: -1148, y: {terrain: 0}, z: 104}
   id: qm-brd-waystone-west
   physics: static

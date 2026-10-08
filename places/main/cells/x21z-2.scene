@@ -1,5 +1,6 @@
 # spawn-scene v2 yaml x21z-2
 frontier-waystone-sunscar-2:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   children: [{feetPosition: {x: 0.75, y: 1.85, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2, kind: point}}]
   feetPosition: {x: 2726.7495612685793, y: {terrain: 0}, z: -277.3472910948049}
   id: frontier-waystone-sunscar-2

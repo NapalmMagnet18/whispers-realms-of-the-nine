@@ -7,6 +7,7 @@ vey-yard-crate-0:
   rotation: {yaw: 15}
   tags: [starfall, vey-build]
 waystone-veylori:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: -200, y: 119.9, z: -1087}
   id: waystone-veylori
   physics: static

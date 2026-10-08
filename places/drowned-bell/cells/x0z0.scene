@@ -38,6 +38,7 @@ bell-brazier-1-0-w:
   physics: static
   primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
 bell-brazier-1-2-e:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
   feetPosition: {x: 7.6, y: 0, z: -41}
   fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
@@ -45,6 +46,7 @@ bell-brazier-1-2-e:
   physics: static
   primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
 bell-brazier-1-2-w:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
   feetPosition: {x: -7.6, y: 0, z: -41}
   fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
@@ -52,6 +54,7 @@ bell-brazier-1-2-w:
   physics: static
   primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
 bell-brazier-2-0-e:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
   feetPosition: {x: 11.6, y: 0, z: -59}
   fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
@@ -59,6 +62,7 @@ bell-brazier-2-0-e:
   physics: static
   primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
 bell-brazier-2-0-w:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
   feetPosition: {x: -11.6, y: 0, z: -59}
   fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}

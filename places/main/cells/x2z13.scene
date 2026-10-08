@@ -6,6 +6,7 @@ saltmere-beached-boat:
   primitive: {kind: scripted, params: {B: 1.4, D: 0.6, L: 4.2, kind: boat, tint: oklch(0.55 0.08 230)}, script: scripts/gen/hamlet.js}
   rotation: {roll: 8, yaw: 70}
 saltmere-campfire:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   feetPosition: {x: 302, y: {terrain: 0}, z: 1660}
   id: saltmere-campfire
   physics: none

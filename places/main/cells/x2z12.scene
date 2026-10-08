@@ -82,6 +82,7 @@ hc-nam-wreck-rope:
   model: /cdn/value.e9247ef86f15b83841bda52056d92c36d77b43aa57bca9526311bf2ace958af2.glb
   rotation: {yaw: 0}
 waystone-saltmere:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: 294, y: {terrain: 0}, z: 1563}
   id: waystone-saltmere
   physics: static

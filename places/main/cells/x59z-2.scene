@@ -195,6 +195,7 @@ bastion-blueprint/sign:
   tags: [bastion]
   ui: "<div face=\"front\" at=\"0.5 0.82\" width=\"1.6m\" class=\"px-2 py-1 text-center font-serif text-amber-200\" style=\"font-size:150px;background:#2a1e16\">EMBERSTONE BASTION</div>"
 bellforged-sentinel:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-blacksmith-forge-bellows-roar-and-slow-hammer-on-anvil-ringing-loop.mp3, gain: 0.24, loop: true, maxDistance: 24, spatial: true}
   behavior: scripts/boss.js
   feetPosition: {x: 7582, y: 25.1, z: -192}
   id: bellforged-sentinel

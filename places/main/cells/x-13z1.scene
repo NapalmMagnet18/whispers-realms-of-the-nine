@@ -1,5 +1,6 @@
 # spawn-scene v2 yaml x-13z1
 frontier-waystone-elderveil-1:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   children: [{feetPosition: {x: 0.75, y: 1.85, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2, kind: point}}]
   feetPosition: {x: -1691.7064657810422, y: {terrain: 0}, z: 102.60375541793543}
   id: frontier-waystone-elderveil-1

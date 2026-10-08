@@ -1,5 +1,6 @@
 # spawn-scene v2 yaml x0z-7
 waystone-north-pass:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: 24, y: {terrain: 0}, z: -957}
   id: waystone-north-pass
   physics: static

@@ -10,6 +10,7 @@ rg-arch:
   scale: 1.35
   tags: [realm-gate]
 rg-brazier-l:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   castShadow: true
   feetPosition: {x: -6, y: {terrain: 0}, z: -18.5}
   id: rg-brazier-l
@@ -19,6 +20,7 @@ rg-brazier-l:
   rotation: {pitch: 0, roll: 0, yaw: 0}
   tags: [realm-gate]
 rg-brazier-r:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}
   castShadow: true
   feetPosition: {x: 6, y: {terrain: 0}, z: -18.5}
   id: rg-brazier-r

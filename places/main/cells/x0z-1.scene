@@ -425,6 +425,7 @@ reach-smith-smithshed:
   rotation: {yaw: -56}
   tags: [smith-yard]
 reach-smith-stand-0:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-blacksmith-forge-bellows-roar-and-slow-hammer-on-anvil-ringing-loop.mp3, gain: 0.24, loop: true, maxDistance: 24, spatial: true}
   feetPosition: {x: -29.16, y: 0.55, z: -72.09}
   id: reach-smith-stand-0
   physics: static
@@ -864,12 +865,14 @@ ward-walled-door:
   rotation: 90
   tags: [lantern-ward]
 ward-well:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-stone-fountain-water-trickling-splashing-into-basin-loop.mp3, gain: 0.16, loop: true, maxDistance: 12, spatial: true}
   feetPosition: {x: 4, y: {terrain: 0}, z: -112}
   id: ward-well
   physics: static
   primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
   tags: [lantern-ward]
 waystone-marchborn:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: 3.5, y: 0.7, z: -91.36}
   id: waystone-marchborn
   physics: static

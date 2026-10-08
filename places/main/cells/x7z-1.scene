@@ -209,6 +209,7 @@ kha-roster:
   state: {after: shift_token, afterText: "First: find the three shift tokens", mark: missing_crew, quest: KHA-03, say: "Every crew, every name, every week for forty years. Night Crew Nine is on none of them. Twelve tags' worth of empty nails.", title: Shift Roster, verb: Check the roster}
   tags: [quest-mark, emberstone-cradle]
 kha-shrine:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: 887, y: {terrain: 0}, z: -150}
   fx: {script: "fx\npop glow n=1 pos=<0,1.6,0> r=light(<1,.7,.35>,2.5,6)"}
   id: kha-shrine
@@ -517,6 +518,7 @@ waystone-emberforged-light:
   id: waystone-emberforged-light
   light: {color: "#ff8a40", distance: 16, intensity: 9, kind: point}
 waystone-highlands:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: 844, y: {terrain: 0}, z: -157}
   id: waystone-highlands
   physics: static

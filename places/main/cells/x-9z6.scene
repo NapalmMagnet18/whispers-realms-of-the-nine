@@ -70,6 +70,7 @@ sorrowfen-dead-10:
   rotation: 410
   scale: 1
 waystone-fen:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: -1176, y: {terrain: 0}, z: 723}
   id: waystone-fen
   physics: static

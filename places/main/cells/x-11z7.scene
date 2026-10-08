@@ -30,6 +30,7 @@ fen-reeds-21:
   rotation: 987
   tags: [sorrowfen]
 fen-shrine:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: -1402, y: 2.1, z: 836}
   id: fen-shrine
   physics: static

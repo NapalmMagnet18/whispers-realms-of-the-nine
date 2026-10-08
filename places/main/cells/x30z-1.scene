@@ -191,6 +191,7 @@ frontier-sunscar-tent-3:
   rotation: 125.00122728484924
   tags: [sunscar]
 frontier-sunscar-well:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-stone-fountain-water-trickling-splashing-into-basin-loop.mp3, gain: 0.16, loop: true, maxDistance: 12, spatial: true}
   feetPosition: {x: 3822, y: {terrain: 0}, z: -182}
   id: frontier-sunscar-well
   physics: static

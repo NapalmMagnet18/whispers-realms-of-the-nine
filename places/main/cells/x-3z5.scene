@@ -58,6 +58,7 @@ reh-npc-ysolde:
   state: {homeYaw: -33.7, idle: idle, npcName: ysolde, who: ysolde, yaw: -33.7}
   tags: [npc, talker, townsfolk]
 waystone-reedbound:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: -430.5, y: 11.9, z: 579.36}
   id: waystone-reedbound
   physics: static
