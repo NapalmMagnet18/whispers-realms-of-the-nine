@@ -5,10 +5,14 @@ const { renderHUD } = require('./lib/ui-hud.js');
 const { renderChat } = require('./lib/ui-chat.js');
 // The game windows (146 KB) and the door panel are not needed to stand: they load on first draw in the world, and the HUD draws them the frame they land.
 var _lazy = {};
+var _LAZY_SRC = { menu: function () { return import('./lib/ui-menu-panel.js'); }, door: function () { return import('./lib/ui-door-panel.js'); },
+  guild: function () { return import('./lib/ui-guild.js'); }, gnome: function () { return import('./lib/ui-gnome-tip.js'); },
+  vamp: function () { return import('./lib/ui-vampire-dialog.js'); }, cursed: function () { return import('./lib/ui-cursed-item-dialog.js'); } };
+var _LAZY_FN = { menu: 'renderMenuPanel', door: 'renderDoorPanel', guild: 'renderGuildPanel', gnome: 'renderGnomeTipJar', vamp: 'renderVampireDialog', cursed: 'renderCursedItemDialog' };
 function _lazyMod(key, path) {
   var e = _lazy[key] || (_lazy[key] = { m: null, p: null });
   if (!e.m && !e.p) {
-    e.p = (key === 'menu' ? import('./lib/ui-menu-panel.js') : import('./lib/ui-door-panel.js')).then(function (m) { e.m = (m && (m.renderMenuPanel || m.renderDoorPanel)) ? m : ((m && m.default) || m); }, function () { e.p = null; });
+    e.p = _LAZY_SRC[key]().then(function (m) { e.m = (m && m.default && !m[_LAZY_FN[key]]) ? m.default : m; }, function () { e.p = null; });
   }
   return e.m;
 }
@@ -20,15 +24,16 @@ function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorP
 const { renderVendor } = require('./lib/ui-vendor.js');
 const WHF = require('./lib/ui-frames.js');
 const { versionTag } = require('./lib/version.js');
-const { renderGnomeTipJar } = require('./lib/ui-gnome-tip.js');
+function renderGnomeTipJar(a, b) { var m = _lazyMod('gnome'); return m ? m.renderGnomeTipJar(a, b) : ''; }
 const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
 const { renderBuffIcons } = require('./lib/ui-buff-icons.js');
-const { renderGuildPanel, renderGuildInvitePopup } = require('./lib/ui-guild.js');
+function renderGuildPanel(a, b) { var m = _lazyMod('guild'); return m ? m.renderGuildPanel(a, b) : ''; }
+function renderGuildInvitePopup(a) { var m = _lazyMod('guild'); return m ? m.renderGuildInvitePopup(a) : ''; }
 const { renderMainMenu } = require('./lib/ui-main-menu.js');
 const { renderSettingsTab } = require('./lib/ui-settings.js');
 const { renderCharacterRoster } = require('./lib/ui-character-roster.js');
-const { renderVampireDialog } = require('./lib/ui-vampire-dialog.js');
-const { renderCursedItemDialog } = require('./lib/ui-cursed-item-dialog.js');
+function renderVampireDialog(a) { var m = _lazyMod('vamp'); return m ? m.renderVampireDialog(a) : ''; }
+function renderCursedItemDialog(a) { var m = _lazyMod('cursed'); return m ? m.renderCursedItemDialog(a) : ''; }
 
 var FONT_INJECTOR = '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="(function(){if(window._FFLA)return;window._FFLA=1;var f1=new FontFace(\'Cinzel\',\'url(/cdn/font-cinzel-regular.woff2)\',{weight:\'400\',display:\'swap\'});var f2=new FontFace(\'Cinzel\',\'url(/cdn/font-cinzel-bold.woff2)\',{weight:\'700\',display:\'swap\'});f1.load().then(function(l){document.fonts.add(l)}).catch(function(){});f2.load().then(function(l){document.fonts.add(l)}).catch(function(){})})()" style="display:none" />';
 
