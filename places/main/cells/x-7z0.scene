@@ -1,0 +1,71 @@
+# spawn-scene v2 yaml x-7z0
+deep-bandit-fire:
+  feetPosition: {x: -943, y: 31, z: 45.5}
+  id: deep-bandit-fire
+  physics: static
+  primitive: {kind: scripted, params: {kind: cookfire}, script: scripts/gen/camp.js}
+  rotation: {yaw: 180}
+  tags: [bandit-camp]
+deep-bandit-fire-crackle:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-campfire-crackle-roasting-spit-sizzle-loop.mp3, gain: 0.18, loop: true, maxDistance: 22, spatial: true}
+  feetPosition: {x: -943, y: 31.55, z: 45.5}
+  id: deep-bandit-fire-crackle
+deep-bandit-fire-fx:
+  feetPosition: {x: -943, y: 31.150000000000002, z: 45.5}
+  fx: {script: "fx\npop flame rate=flick(.45,.2)*50 on=disc(.25) life=.5..0.9 v=up(1.4)+cone(22)*(.3..0.8) size=.2..0.4 acc=curl(.5)*1.2+buoy(2.2)+drag(1.5) sz=$size*(.5>.25:1>.7:.7>.14) col=hdr(4.6,3.4,1.4)>.3:hdr(3.2,1.4,.3)>.65:hdr(1.8,.5,.1)>hdr(.6,.12,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.25) life=.7..1.4 v=up(2.2)+cone(30)*(.4..1.2) size=.02..0.05 acc=curl(.8)+grav()*.45+drag(.5) col=hdr(5,2.8,.8)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke rate=3 on=disc(.2) life=2..3.5 v=up(.8..1.2) size=.25..0.4 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.2) col=<.3,.28,.26>><.15,.15,.16> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)"}
+  id: deep-bandit-fire-fx
+deep-bandit-fire-light:
+  feetPosition: {x: -943, y: 32.25, z: 45.5}
+  id: deep-bandit-fire-light
+  light: {color: "#ff9a40", distance: 14, intensity: 4, kind: point}
+deep-bandit-lookout:
+  feetPosition: {x: -948.8, y: 30.52, z: 46.5}
+  id: deep-bandit-lookout
+  physics: static
+  primitive: {kind: scripted, params: {kind: lookout}, script: scripts/gen/camp.js}
+  rotation: {yaw: 180}
+  tags: [bandit-camp]
+deep-bandit-loot:
+  feetPosition: {x: -938.2, y: 30.54, z: 46}
+  id: deep-bandit-loot
+  physics: static
+  primitive: {kind: scripted, params: {kind: loot, seed: 4}, script: scripts/gen/camp.js}
+  rotation: {yaw: 200}
+  tags: [bandit-camp]
+deep-bandit-palisade:
+  feetPosition: {x: -943, y: 30.78, z: 45}
+  id: deep-bandit-palisade
+  physics: static
+  primitive: {kind: scripted, params: {kind: palisade, radius: 8}, script: scripts/gen/camp.js}
+  rotation: {yaw: 180}
+  tags: [bandit-camp]
+deep-bandit-tent-0:
+  feetPosition: {x: -939, y: 30.65, z: 41.5}
+  id: deep-bandit-tent-0
+  physics: static
+  primitive: {kind: scripted, params: {hide: oklch(0.5 0.05 60), kind: tent, seed: 1}, script: scripts/gen/camp.js}
+  rotation: {yaw: 41.1858755307706}
+  tags: [bandit-camp]
+deep-bandit-tent-1:
+  feetPosition: {x: -946.8, y: 30.57, z: 41}
+  id: deep-bandit-tent-1
+  physics: static
+  primitive: {kind: scripted, params: {hide: oklch(0.42 0.04 40), kind: tent, seed: 2}, script: scripts/gen/camp.js}
+  rotation: {yaw: 133.53118267003617}
+  tags: [bandit-camp]
+deep-bandit-tent-2:
+  feetPosition: {x: -943, y: 30.83, z: 39.4}
+  id: deep-bandit-tent-2
+  physics: static
+  primitive: {kind: scripted, params: {hide: oklch(0.58 0.05 75), kind: tent, seed: 3}, script: scripts/gen/camp.js}
+  rotation: {yaw: 89.99996781922496}
+  tags: [bandit-camp]
+deep-npc-scab:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -944.3, y: 30.93, z: 47.6}
+  id: deep-npc-scab
+  model: /cdn/model-humanoid-fantasy-bandit-male-scarred-hooded-leather-armour-crossbow-ragged-cloak.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {homeYaw: 180, idle: idle, npcName: scab, who: scab, yaw: 180}
+  tags: [npc, talker, townsfolk]

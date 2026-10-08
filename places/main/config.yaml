@@ -469,3 +469,4 @@ terrain:
     hc-mar-lamphouse-flat: {center: {x: 45, z: -149}, falloff: 5, height: 1.8, kind: flatten, material: dirt, shape: {kind: circle, radius: 6.2}}
     hc-mar-lamphouse-clear: {center: {x: 45, z: -149}, kind: clear-scatter, shape: {kind: circle, radius: 7}}
     shrine-clear: {center: {x: -49, z: -563}, kind: clear-scatter, shape: {kind: circle, radius: 5}}
+    bandit-camp-clear: {center: {x: -943, z: 45}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
