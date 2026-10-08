@@ -1,0 +1,43 @@
+# spawn-scene v2 yaml x0z0
+mid-rubble-a:
+  feetPosition: {x: 8, y: 5.311211852439631, z: 2}
+  id: mid-rubble-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: rubble, seed: 3}, script: scripts/gen/ruin.js}
+mid-rubble-b:
+  feetPosition: {x: -9, y: 5.309332710898412, z: -3}
+  id: mid-rubble-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: rubble, seed: 5}, script: scripts/gen/ruin.js}
+road-lamp--30:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.4, kind: point}}]
+  feetPosition: {x: 3, y: -0.26767966979470237, z: -30}
+  id: road-lamp--30
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+road-lamp--60:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.4, kind: point}}]
+  feetPosition: {x: 3, y: 0.6495459373557819, z: -60}
+  id: road-lamp--60
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+road-lamp-30:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.4, kind: point}}]
+  feetPosition: {x: 3, y: -1.0523687682949925, z: 30}
+  id: road-lamp-30
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+road-lamp-60:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.4, kind: point}}]
+  feetPosition: {x: 3, y: -0.46998703110293305, z: 60}
+  id: road-lamp-60
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+vale-bed:
+  audio: {bus: Music, clip: /cdn/moodboard-painterly-fantasy/music-battleground-war-drums-tense-march-loop.mp3, gain: 0.15, loop: true, spatial: false}
+  feetPosition: {x: 0, y: 5, z: 0}
+  id: vale-bed
+vale-wind:
+  audio: {bus: Ambience, clip: /cdn/moodboard-painterly-fantasy/sfx-valley-wind-and-distant-crows-loop.mp3, gain: 0.12, loop: true, spatial: false}
+  feetPosition: {x: 0, y: 5, z: 0}
+  id: vale-wind

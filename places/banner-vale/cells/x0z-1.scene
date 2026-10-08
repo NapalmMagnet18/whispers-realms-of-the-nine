@@ -1,0 +1,119 @@
+# spawn-scene v2 yaml x0z-1
+banner-crimson:
+  children: [{feetPosition: {x: 0.7, y: 3, z: 0}, id: light, light: {color: "#d0473a", distance: 10, intensity: 2.5, kind: point}}]
+  feetPosition: {x: 0, y: 3.1, z: -96}
+  id: banner-crimson
+  interpolation: {teleportThreshold: 30}
+  primitive: {kind: scripted, params: {color: "#d0473a"}, script: scripts/gen/war-banner.js}
+  rotation: 270
+  tags: [bg-banner]
+board-crimson:
+  children: [{feetPosition: {x: 0, y: 1.03, z: -0.1}, id: face, material: {color: "#2a1e16"}, primitive: {depth: 0.02, height: 1.05, kind: box, width: 2.3}, state: {v: {}}, tags: [bg-board], ui: "<div face=\"front\" class=\"w-[2400px] h-[1100px] flex flex-col items-center bg-[#2a1e16] border-[8px] border-[#c9a46a] rounded-xl\">\n<div class=\"text-[70px] font-bold text-[#f2b04a] pt-[20px]\" style=\"font-family:Cinzel,serif\">BANNER VALE</div>\n<div class=\"text-[44px] text-[#e8d9b5]\">{{ state.v.banner | default \"First to 3\" }} · {{ state.v.clock | default \"12:00\" }}</div>\n<div class=\"flex w-full justify-around pt-[40px]\">\n<div class=\"flex flex-col items-center\"><div class=\"text-[56px] text-[#f2b04a]\" style=\"font-family:Cinzel,serif\">LANTERN GOLD</div><div class=\"text-[260px] font-bold text-[#f2b04a]\">{{ state.v.gold | default 0 }}</div><div class=\"text-[38px] text-[#e8d9b5]\">banner: {{ state.v.goldFlag | default \"home\" }}</div></div>\n<div class=\"flex flex-col items-center\"><div class=\"text-[56px] text-[#d0473a]\" style=\"font-family:Cinzel,serif\">CRIMSON WARDENS</div><div class=\"text-[260px] font-bold text-[#d0473a]\">{{ state.v.crimson | default 0 }}</div><div class=\"text-[38px] text-[#e8d9b5]\">banner: {{ state.v.crimsonFlag | default \"home\" }}</div></div>\n</div></div>"}]
+  feetPosition: {x: -9, y: 3, z: -95}
+  id: board-crimson
+  physics: static
+  primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
+  rotation: 205
+fire-crimson:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-campfire-crackle-loop.mp3, gain: 0.2, loop: true, maxDistance: 18, spatial: true}
+  children: [{feetPosition: {x: 0, y: 0.8, z: 0}, id: light, light: {color: "#ff9a3c", distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 0, y: 3, z: -110}
+  id: fire-crimson
+  physics: static
+  primitive: {kind: scripted, params: {kind: cookfire}, script: scripts/gen/camp.js}
+home-gate-crimson:
+  behavior: scripts/instance-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.6 0.02 70), roughness: 0.95, texture: cdn/texture-dark-crypt-stone-blocks.png}, physics: static, primitive: {depth: 0.7, height: 3.9, kind: archway, thickness: 0.5, width: 3.4}}]
+  feetPosition: {x: 9, y: 2.982655927605871, z: -118}
+  id: home-gate-crimson
+  material: {kind: scripted, script: engine/portal-ink, view: {link: "+main", sound: 1, spill: 1.5}}
+  physics: {body: static, collider: box, trigger: true}
+  primitive: {depth: 0.4, height: 3.4, kind: box, width: 2.6}
+  rotation: 360
+  state: {link: "+main", name: Leave Banner Vale}
+  tags: [portal, instance-gate]
+lamp-crimson--5--14:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: -5, y: 3, z: -90}
+  id: lamp-crimson--5--14
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+lamp-crimson--5-2:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: -5, y: 3, z: -106}
+  id: lamp-crimson--5-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+lamp-crimson-5--14:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: 5, y: 3, z: -90}
+  id: lamp-crimson-5--14
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+lamp-crimson-5-2:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, id: light, light: {color: "#f2b04a", distance: 10, intensity: 1.6, kind: point}}]
+  feetPosition: {x: 5, y: 3, z: -106}
+  id: lamp-crimson-5-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+prop-crimson-0:
+  feetPosition: {x: -6, y: 3, z: -113}
+  id: prop-crimson-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 0
+prop-crimson-1:
+  feetPosition: {x: -7, y: 3, z: -114}
+  id: prop-crimson-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 37
+prop-crimson-2:
+  feetPosition: {x: 7, y: 3, z: -114}
+  id: prop-crimson-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 74
+prop-crimson-3:
+  feetPosition: {x: 6.2, y: 3, z: -112.8}
+  id: prop-crimson-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 111
+stand-crimson:
+  children: [{feetPosition: {x: 0, y: 1.2, z: 0}, id: glow, light: {color: "#d0473a", distance: 14, intensity: 4, kind: point}}]
+  feetPosition: {x: 0, y: 3, z: -96}
+  id: stand-crimson
+  physics: static
+  primitive: {kind: scripted, params: {stand: true}, script: scripts/gen/war-banner.js}
+  tags: [bg-stand]
+tent-crimson-1:
+  feetPosition: {x: -9, y: 3, z: -110}
+  id: tent-crimson-1
+  physics: static
+  primitive: {kind: scripted, params: {hide: oklch(0.45 0.12 28), kind: tent, seed: 1}, script: scripts/gen/camp.js}
+  rotation: 250
+tent-crimson-2:
+  feetPosition: {x: 9, y: 3, z: -110}
+  id: tent-crimson-2
+  physics: static
+  primitive: {kind: scripted, params: {hide: oklch(0.45 0.12 28), kind: tent, seed: 2}, script: scripts/gen/camp.js}
+  rotation: 110
+tent-crimson-3:
+  feetPosition: {x: -11, y: 3, z: -102}
+  id: tent-crimson-3
+  physics: static
+  primitive: {kind: scripted, params: {hide: oklch(0.45 0.12 28), kind: tent, seed: 3}, script: scripts/gen/camp.js}
+  rotation: 250
+tower-crimson-e:
+  feetPosition: {x: 16, y: 2.7192328836097515, z: -94}
+  id: tower-crimson-e
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/reach-watchtower.js}
+  rotation: 180
+tower-crimson-w:
+  feetPosition: {x: -16, y: 2.7528231752495325, z: -94}
+  id: tower-crimson-w
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/reach-watchtower.js}
+  rotation: 180
