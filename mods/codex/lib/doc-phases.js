@@ -4,7 +4,7 @@ export const PHASES = [
   {
     "id": "phase-1",
     "title": "Foundation and front door",
-    "stage": "second-draft",
+    "stage": "bug-pass",
     "steps": [
       {
         "id": "steps-1",
@@ -47,7 +47,13 @@ export const PHASES = [
         "done": true
       }
     ],
-    "bugs": [],
+    "bugs": [
+      {"id": "bugs-1", "text": "A hero half-way out of the menu kept the game HUD over the title screen (guard added v0.7.8: 15 s then back to title; unwatched)", "done": false},
+      {"id": "bugs-2", "text": "Realm round trip A → B → A never run end to end; logout from pause must land on the right view (realm list vs title)", "done": false},
+      {"id": "bugs-3", "text": "Character creation arrival 854 KB vs 450 KB budget: ui-menu-panel.js 147 KB, player.js 72 KB, ui.js 64 KB load before standing", "done": false},
+      {"id": "bugs-4", "text": "Title camera drift: confirm it moves on a fresh load with no modal open", "done": false},
+      {"id": "bugs-5", "text": "Version tag shows on menu, settings and pause only; currently also drawn under the in-game hotbar on a stuck hero", "done": false}
+    ],
     "notes": []
   },
   {
