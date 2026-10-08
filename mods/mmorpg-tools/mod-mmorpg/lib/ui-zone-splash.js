@@ -3,30 +3,40 @@
 // - walking into another painted region: the same art as a framed card, top-centre, for 4.5 s
 // Never blocks play (pointer-events none). Region shapes mirror scripts/lib/regions.js (circles first, then the broad bands).
 var ART = {
-  reach: '/cdn/chatgpt-image-oct-7-2026-09-54-03-pm-1-u5u429bhl.webp',
-  briarwild: '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-2-u6195ot7r.webp',
-  hollowcrypt: '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-3-u95wrtxa4.webp',
-  sorrowfen: '/cdn/chatgpt-image-oct-7-2026-09-54-05-pm-4-u2rtupzkq.webp',
-  emberstone: '/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp',
-  velthraen: '/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-6-u3fwls0tp.webp',
-  ninthveil: '/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u6hx0nqke.webp',
+  reach: ['/cdn/chatgpt-image-oct-7-2026-09-54-03-pm-1-u5u429bhl.webp'],
+  briarwild: ['/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-2-u6195ot7r.webp'],
+  deepwood: ['/cdn/chatgpt-image-oct-7-2026-10-01-09-pm-2-u43sdvpt1.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-2-u6195ot7r.webp'],
+  hollowcrypt: ['/cdn/chatgpt-image-oct-7-2026-10-01-10-pm-3-u6p8f7ssa.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-3-u95wrtxa4.webp'],
+  sorrowfen: ['/cdn/chatgpt-image-oct-7-2026-10-01-11-pm-4-u3y6ukact.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-05-pm-4-u2rtupzkq.webp'],
+  emberstone: ['/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp'],
+  ashfall: ['/cdn/chatgpt-image-oct-7-2026-10-01-12-pm-5-u2y69eboa.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp'],
+  saltmere: ['/cdn/chatgpt-image-oct-7-2026-10-01-08-pm-1-u11atau6r.webp'],
+  velthraen: ['/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-6-u3fwls0tp.webp', '/cdn/chatgpt-image-oct-7-2026-10-01-09-pm-2-u43sdvpt1.webp'],
+  spire: ['/cdn/chatgpt-image-oct-7-2026-10-01-12-pm-6-u7md0wibr.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u6hx0nqke.webp'],
+  ninthveil: ['/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u008xoxrq.webp', '/cdn/chatgpt-image-oct-7-2026-10-01-12-pm-6-u7md0wibr.webp'],
 };
+var _pick = 0;
+function srcOf(k) { var a = ART[k] || ART.ninthveil; return a[(_pick++) % a.length]; }
 // region → art; a region missing here shows no card when walked into (the realm-wide Ninth Veil greets those on arrival)
 var CIRCLES = [
   { art: 'reach', x: 0, z: 0, r: 70 },
   { art: 'briarwild', x: -720, z: 70, r: 60 },      // Thornhollow
   { art: 'emberstone', x: 900, z: -170, r: 60 },    // Cinderhold
   { art: 'emberstone', x: 135, z: 30, r: 80 },      // Emberstone Quarry
-  { art: 'ninthveil', x: 30, z: -360, r: 90 },      // The Old Spire
+  { art: 'spire', x: 30, z: -360, r: 90 },          // The Old Spire
+  { art: 'saltmere', x: 250, z: 1430, r: 60 },      // Gullrest
+  { art: 'saltmere', x: 300, z: 1650, r: 420 },     // Saltmere Coast
   { art: 'hollowcrypt', x: 1350, z: -700, r: 330 },
   { art: 'sorrowfen', x: -1300, z: 950, r: 520 },
 ];
 function artAt(x, z) {
   for (var i = 0; i < CIRCLES.length; i++) { var c = CIRCLES[i]; if (Math.hypot(x - c.x, z - c.z) < c.r) return c.art; }
   if (z < -6400) return 'ninthveil';             // the Ninth Veil
+  if (x > 6400) return 'ashfall';               // Ashfall Reaches, Emberstone Bastion
   if (x < -3000) return 'velthraen';            // Elderveil Wilds, the World-Tree
   if (z < -800) return null;                    // Greyspine: no painting yet
   if (x > 650) return 'emberstone';             // Emberstone Highlands
+  if (x < -500) return 'deepwood';              // Briarwild Deepwood
   if (x < -60 && Math.abs(z) < 420) return 'briarwild';
   return null;
 }
@@ -42,13 +52,13 @@ export function renderZoneSplash(localPlayer) {
   var a = artAt(fp.x, fp.z);
   if (_first) {
     _first = false; _cur = a;
-    _splash = { art: a || 'ninthveil', t0: now, full: true }; _shown[_splash.art] = now;
+    _splash = { art: a || 'ninthveil', t0: now, full: true }; _splash.src = srcOf(_splash.art); _shown[_splash.art] = now;
   } else if (a !== _cur) {
     _cur = a;
-    if (a && (!_shown[a] || now - _shown[a] > REPEAT)) { _splash = { art: a, t0: now, full: false }; _shown[a] = now; }
+    if (a && (!_shown[a] || now - _shown[a] > REPEAT)) { _splash = { art: a, t0: now, full: false, src: srcOf(a) }; _shown[a] = now; }
   }
   if (!_splash) return '';
-  var t = now - _splash.t0, src = ART[_splash.art];
+  var t = now - _splash.t0, src = _splash.src;
   if (_splash.full) {
     if (t > END_FULL) { _splash = null; return ''; }
     var op = t < HOLD_FULL ? 1 : Math.max(0, 1 - (t - HOLD_FULL) / (END_FULL - HOLD_FULL));
@@ -64,5 +74,5 @@ export function renderZoneSplash(localPlayer) {
 }
 export function resetZoneSplash() { _first = true; _splash = null; _cur = null; _since = 0; }
 export function zoneSplashActive() { return !!_splash; }
-export function zoneArtFor(x, z) { return ART[artAt(x, z) || 'ninthveil']; }
+export function zoneArtFor(x, z) { return srcOf(artAt(x, z) || 'ninthveil'); }
 module.exports = { renderZoneSplash: renderZoneSplash, resetZoneSplash: resetZoneSplash, zoneSplashActive: zoneSplashActive, zoneArtFor: zoneArtFor };
