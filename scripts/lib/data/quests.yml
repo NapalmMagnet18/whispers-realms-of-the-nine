@@ -1356,6 +1356,12 @@ SHA-07:
 
 
 items:
+  rootway_key: { id: rootway_key, name: Rootway Key, slot: bag, description: "A knot of living root that loosens when the right hand holds it." }
+  nature_ward: { id: nature_ward, name: Nature Ward, slot: neck, description: "Thorn and willow braided by Ell. The brambles let its wearer pass." }
+  living_inscription: { id: living_inscription, name: Living Inscription, slot: bag, description: "A rubbing of bark letters. The name in it is still growing." }
+  seed_elixir: { id: seed_elixir, name: Seed Elixir, slot: bag, description: "Sap of a healthy heart-root, bottled. Smells of rain on moss." }
+  court_letter: { id: court_letter, name: Hollow Court Letter, slot: bag, description: "Mareth's hand, black ink, a promise to return the dead for the price of a memory." }
+  childs_testimony: { id: childs_testimony, name: "Child's Testimony", slot: bag, description: "Eda's words, pressed in a leaf: I am not anyone's banner." }
   lockpick_roll: { id: lockpick_roll, name: Lockpick Roll, slot: bag, description: "Seven picks in oilcloth. One is missing; Arlo says that's tradition." }
   coin_purse: { id: coin_purse, name: Coin Purse, slot: bag, description: "Doubled leather, no clink. Dren swears by it." }
   shadowstep_token: { id: shadowstep_token, name: Shadowstep Token, slot: bag, description: "A black glass bead. Warm when someone's watching." }
@@ -1943,7 +1949,161 @@ TID-09:
   text: "Orin's record can't sit on a beach. The relay skiff runs the new sea road round the headland and up to the Reach. Climb in, and take the captain's account to Magister Leth Sen at the Observatory. She'll know what archive it belongs to."
   progressText: "Board the relay skiff at the ferry landing, then deliver the captain's record to Magister Leth Sen at the Observatory in Lantern's Reach."
   turnInText: "Orin's record cites a register at Glassmere, and that register cites another, and another. A chain of archives, each one holding the key to the next. Someone built this to be followed. Glassmere, then."
-  doneText: "Tideglass remembers its fleet. The archive chain points to Glassmere."
+  doneText: "Tideglass remembers its fleet. The archive chain points to Glassmere. And a seed-runner from Thornhollow left word: Elder Fenna Rootwake has gone into the Briarwild Deepgrove, west of Thornhollow along the root road, and asks for you."
   objectives:
     - { key: skiff_boarded, desc: "Board the relay skiff", target: 1 }
   rewards: { copper: 13000, xp: 1520 }
+
+# ── Briarwild Deepgrove (BRD-01..09): the grove that hid an archive. Hub: Fenna's camp in the Deepgrove clearing, ~360 m west of Thornhollow.
+BRD-01:
+  id: BRD-01
+  title: Through the Quiet Trunk
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [SOR-09]
+  giverNpcId: grove-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "You came by the root road, so you saw the Quiet Trunk at the clearing's edge, two old boles grown into one door. It has been shut since before my grandmother. It opened last night, by itself. Walk through it, then follow the memory pollen. Three knots of white lilies, glowing at the heart. The grove is trying to show us something."
+  progressText: "Pass through the Quiet Trunk at the east edge of the clearing, then follow the three glowing memory-pollen knots."
+  turnInText: "The pollen led you in a circle round something under the hill. An archive. Accord-made. The grove has been sitting on it like a hen on an egg, and it did not want us to know."
+  doneText: "Grove Singer Ell has been trying to sing the brambles calm. It isn't working."
+  objectives:
+    - { key: root_passage, desc: "Pass through the Quiet Trunk", target: 1 }
+    - { key: memory_pollen, desc: "Follow the memory pollen", target: 3 }
+  rewards: { copper: 13400, xp: 1560, items: [rootway_key] }
+
+BRD-02:
+  id: BRD-02
+  title: The Thorn Shepherd
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-01]
+  giverNpcId: grove-npc-ell
+  giverName: Grove Singer Ell
+  text: "The bramble guardians used to walk beside travellers, like dogs. Now they come at anyone on the west path. Someone hung a bellglass snare out there, and the hum drives them mad. Bring two of them down gently if you can, roughly if you must, then smash that snare."
+  progressText: "Calm two bramble guardians on the west side of the clearing, then destroy the bellglass snare."
+  turnInText: "Listen. Quiet. It was fear, nothing else. They were taught that every stranger brings a bell. Wear this. They'll know you."
+  doneText: "Sister Vale came in on the root road with a satchel of letters. She's at the reading stump south of the camp."
+  objectives:
+    - { key: bramble_calmed, desc: "Calm the bramble guardians", target: 2 }
+    - { key: snare_broken, desc: "Destroy the bellglass snare", target: 1 }
+  rewards: { copper: 13800, xp: 1600, items: [nature_ward] }
+
+BRD-03:
+  id: BRD-03
+  title: A Name Grown Crooked
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-02]
+  giverNpcId: grove-npc-vale
+  giverName: Sister Vale
+  text: "There's a name grown into the bark of the old bole behind me. Living letters. They change as the tree grows. Read it for me, then lay it beside the two letters I carried from Sorrowfen, the one on my stand and the one Ell hid in the split stump. I need to know if they speak of the same girl."
+  progressText: "Read the living bark inscription on the old bole, then compare it with the letter on Vale's reading stump and the one in the split stump."
+  turnInText: "The same girl. Eda. The grove didn't lose her, she was given. Given to the Ninth as a witness, while everyone was told she'd wandered off. Somebody wrote the lie down and the tree grew round it."
+  doneText: "Elder Fenna says the orchard roots are sick, and it's getting worse."
+  objectives:
+    - { key: inscription_read, desc: "Read the living bark inscription", target: 1 }
+    - { key: letter_compared, desc: "Compare the handwritten letters", target: 2 }
+  rewards: { copper: 14000, xp: 1640, items: [living_inscription] }
+
+BRD-04:
+  id: BRD-04
+  title: Scars of the Orchard
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-03]
+  giverNpcId: grove-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "North of the camp, where the heart-root breaks the soil, three black growths have swollen on it. Blight. Cut them away. Carefully, the root under them is the oldest thing in this wood. Once they're gone, bind the healthy fibre so it can close."
+  progressText: "Cut away the three blight nodules on the heart-root north of camp, then bind the healthy root fibre."
+  turnInText: "Look at the cut ends. Clean, straight, old. Someone tried to restore this root years ago, grafting memory into it by force. The blight is what grew from the graft. Good intentions, badly kept."
+  doneText: "Grove Singer Ell has two gardeners shouting at each other over the memorial post."
+  objectives:
+    - { key: blight_cut, desc: "Remove the blight nodules", target: 3 }
+    - { key: root_bound, desc: "Preserve the healthy root fibre", target: 1 }
+  rewards: { copper: 14200, xp: 1680, items: [seed_elixir] }
+
+BRD-05:
+  id: BRD-05
+  title: The Garden That Refused
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-04]
+  giverNpcId: grove-npc-ell
+  giverName: Grove Singer Ell
+  text: "Hollen wants the memorial post to say they gave themselves to the grove. Wyn says half of them were given, and didn't choose. They're both right, and both of them need a hand before they'll listen. Help them each, then choose the words for the plaque. Your choice, not mine."
+  progressText: "Help gardener Hollen and gardener Wyn, then choose the words on the memorial post's plaque."
+  turnInText: "Whatever you carved, they both stood at it afterwards and didn't argue. That's the Thren way when it works: you honour the loss and you don't pretend it was all freely given."
+  doneText: "Tamsin the Ranger has climbed the Listening Tree. She says she heard a voice from the old west road."
+  objectives:
+    - { key: gardener_helped, desc: "Assist the two gardeners", target: 2 }
+    - { key: memorial_label, desc: "Choose the memorial's words", target: 1 }
+  rewards: { copper: 14400, xp: 1720 }
+
+BRD-06:
+  id: BRD-06
+  title: Voice of the Buried Path
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-05]
+  giverNpcId: grove-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "Climb the Listening Tree, all the way round, to the lookout. Up there you'll hear it too, a voice off the west. Don't run at it. Mark where it comes from, come down, and walk there like you mean to. The woods eat people who chase voices."
+  progressText: "Climb the spiral walkway of the Listening Tree to the lookout, then find the source of the voice to the west without chasing it."
+  turnInText: "A waystone, under the moss. Accord carving, and the arrow points to Glassmere. This road joined the grove to the archives once. Someone buried it on purpose."
+  doneText: "Sister Vale found a letter sealed with black wax in a hollow stump north-west of the camp."
+  objectives:
+    - { key: walkway_top, desc: "Climb to the Listening Tree's lookout", target: 1 }
+    - { key: voice_found, desc: "Find the voice on the buried path", target: 1 }
+  rewards: { copper: 14800, xp: 1760 }
+
+BRD-07:
+  id: BRD-07
+  title: "Mareth's Offering"
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-06]
+  giverNpcId: grove-npc-vale
+  giverName: Sister Vale
+  text: "Black wax. The Hollow Court's. Fetch the letter from the hollow stump at the clearing's north-west edge, and read it yourself. Then take an answer to the root shrine. The grove should hear that someone answered."
+  progressText: "Recover the Hollow Court letter from the hollow stump, then leave a response at the root shrine."
+  turnInText: "She offered to give back the grove's lost dead, if the grove lent her its memory. Mareth isn't lying. I think she could do it. That's what frightens me."
+  doneText: "Elder Fenna says there's a child by the archive door. A child no one else can quite see."
+  objectives:
+    - { key: court_letter_found, desc: "Recover the Hollow Court letter", target: 1 }
+    - { key: shrine_answer, desc: "Leave a response at the root shrine", target: 1 }
+  rewards: { copper: 15000, xp: 1800, items: [court_letter] }
+
+BRD-08:
+  id: BRD-08
+  title: The Child in the Bark
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-07]
+  giverNpcId: grove-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "By the archive door. A little light that sits like a child sits. It's Eda's echo, I'd stake my staff on it. Speak with her. Then lay your hand on the lilies by her and promise you won't decide what becomes of her without asking her first. Everyone else has."
+  progressText: "Speak with the echo child by the Root Archive door, then make your promise at the lilies beside her."
+  turnInText: "She won't be anyone's banner. Not her mother's, not the Accord's, not ours. I think that's the bravest thing I've heard in this wood."
+  doneText: "The archive door has begun to open on its own. Fenna is waiting for you to decide who may enter."
+  objectives:
+    - { key: echo_spoken, desc: "Speak with the echo child", target: 1 }
+    - { key: echo_promise, desc: "Promise to ask before deciding", target: 1 }
+  rewards: { copper: 15200, xp: 1840, items: [childs_testimony] }
+
+BRD-09:
+  id: BRD-09
+  title: Leaves for All Witnesses
+  zone: Briarwild Deepgrove
+  group: "Briarwild Deepgrove: Leaves for All Witnesses"
+  requires: [BRD-08]
+  giverNpcId: grove-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "For four hundred years the Thren said only Thren hands may hold the grove's truth. Open the Root Archive's door to anyone who comes. Then go. Take the root road east, past the waystone, toward Velthraen Reach. Leth Sen's people need what's written in there."
+  progressText: "Open the Root Archive door to outsiders, then set out on the root road toward Velthraen Reach at the east waystone."
+  turnInText: "It's open. Strangers will read our dead now, and some of them will read them wrong. Better wrong and witnessed than right and buried."
+  doneText: "The Deepgrove keeps its door open. The road runs on toward Velthraen Reach."
+  objectives:
+    - { key: archive_opened, desc: "Open the Root Archive to outsiders", target: 1 }
+    - { key: velthraen_road, desc: "Set out for Velthraen Reach", target: 1 }
+  rewards: { copper: 16000, xp: 1900 }
