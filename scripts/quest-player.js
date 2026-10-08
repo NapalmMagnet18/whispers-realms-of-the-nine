@@ -3,6 +3,7 @@
 // Writes only this body's own state (and a felled oak's logsLeft / depletedUntil); the mod's player.js saves the
 // character when state._questSave is raised (buildCharData carries activeQuests, completedQuests, tally, copper, xp, inventory).
 import Q from './lib/data/quests.yml';
+import { raycast } from 'builtin/physics';
 import TF from './lib/data/townsfolk.yml';
 import { move, formatText } from './lib/economy.js';
 import V from './lib/data/vanguard.yml';
@@ -215,6 +216,21 @@ export function update(ctx) {
   if (st.npcSay && ctx.now() > (ctx.session.sayUntil || 0)) st.npcSay = null;
   if (ctx.now() < (ctx.session.nextScan || 0)) return;
   ctx.session.nextScan = ctx.now() + 200;
+  // nameplates: an NPC behind a wall loses its plate (the HUD reads st.npcHidden); written only when the set changes
+  if (ctx.now() > (ctx.session.nextSight || 0)) {
+    ctx.session.nextSight = ctx.now() + 500;
+    const me = ctx.self.feetPosition, eye = { x: me.x, y: me.y + 1.7, z: me.z };
+    const hid = [];
+    for (const n of ctx.query({ anyTags: ['npc'], radius: 45 })) {
+      const h = { x: n.feetPosition.x, y: n.feetPosition.y + 1.7, z: n.feetPosition.z };
+      const d = { x: h.x - eye.x, y: h.y - eye.y, z: h.z - eye.z }, L = Math.hypot(d.x, d.y, d.z);
+      if (L < 4) continue;
+      const r = raycast(ctx, eye, { x: d.x / L, y: d.y / L, z: d.z / L }, { distance: L - 1, bodies: 'static', physicsOnly: true });
+      if (r && r.id !== n.id) hid.push(n.id);
+    }
+    const key = hid.sort().join('|');
+    if (key !== (ctx.session.hidKey || '')) { ctx.session.hidKey = key; st.npcHidden = hid; }
+  }
   // objective counts follow the tally: written only when one moved
   const aqs = st.activeQuests || [];
   let moved = false;

@@ -475,7 +475,9 @@ export function renderQuestTracker(localPlayer, world) {
   if (_t && _t - _reachSince < 6000) nearReach = false; // the town's people stream in first: an anchor before them finds nobody // the townsfolk all stand in Lantern's Reach: anchors elsewhere find nobody
   var _list = nearReach ? QUEST_NPCS.slice() : [];
   for (var g = 0; g < GREETERS.length; g++) if (Math.abs(fp.x - GREETERS[g].x) < 90 && Math.abs(fp.z - GREETERS[g].z) < 90) _list.push(GREETERS[g]);
+  var _hid = s.npcHidden || [];
   for (var n = 0; n < _list.length; n++) {
+    if (_hid.indexOf(_list[n].id) >= 0) continue;
     var st = _qd.questStatus(_list[n].id, s);
     var mark = st === 'available' ? '!' : st === 'ready' ? '?' : '';
     var markCol = st === 'ready' ? 'oklch(0.86 0.15 85)' : 'oklch(0.9 0.17 90)';
