@@ -149,7 +149,7 @@ nam-lens:
   state: {mark: false_beacon, quest: NAM-03, say: "Under the great lens, a navigation hymn on oiled parchment. One verse has been cut away, neat as a knife makes it.", sound: /cdn/moodboard-painterly-fantasy/sfx-paper-unfold.mp3, title: Lighthouse Lens, verb: Inspect}
   tags: [quest-mark, breakwater-strand]
 nam-market-anchor:
-  feetPosition: {x: 239, y: 3, z: 1423.5}
+  feetPosition: {x: 228.6, y: 3, z: 1423.2}
   id: nam-market-anchor
   physics: static
   primitive: {kind: scripted, params: {kind: anchor}, script: scripts/gen/harbor.js}
@@ -157,39 +157,32 @@ nam-market-anchor:
   tags: [nam-market]
 nam-market-gulls:
   audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-harbor-market-gulls-crying-distant-chatter-loop.mp3, gain: 0.15, loop: true, maxDistance: 30, spatial: true}
-  feetPosition: {x: 238, y: 5, z: 1427}
+  feetPosition: {x: 234, y: 5, z: 1432}
   id: nam-market-gulls
 nam-market-lamp:
-  feetPosition: {x: 238, y: 5.2, z: 1427.5}
+  feetPosition: {x: 234, y: 5.2, z: 1432}
   id: nam-market-lamp
   light: {color: "#ffc480", distance: 10, intensity: 4, kind: point}
 nam-market-pots:
-  feetPosition: {x: 232, y: 3, z: 1424.5}
+  feetPosition: {x: 233.2, y: 3, z: 1435.4}
   id: nam-market-pots
   physics: static
   primitive: {kind: scripted, params: {kind: pots, seed: 1}, script: scripts/gen/harbor.js}
-  rotation: {yaw: 200}
+  rotation: {yaw: 0}
   tags: [nam-market]
 nam-market-stall-0:
-  feetPosition: {x: 234.5, y: 3, z: 1427}
+  feetPosition: {x: 235.2, y: 3, z: 1432.9}
   id: nam-market-stall-0
   physics: static
   primitive: {kind: scripted, params: {kind: fishstall, seed: 1, stripe: oklch(0.55 0.12 240)}, script: scripts/gen/harbor.js}
-  rotation: {yaw: 180}
+  rotation: {yaw: 0}
   tags: [nam-market]
 nam-market-stall-1:
-  feetPosition: {x: 238, y: 3, z: 1426.5}
+  feetPosition: {x: 232.2, y: 3, z: 1432.7}
   id: nam-market-stall-1
   physics: static
   primitive: {kind: scripted, params: {kind: fishstall, seed: 2, stripe: oklch(0.55 0.15 25)}, script: scripts/gen/harbor.js}
-  rotation: {yaw: 175}
-  tags: [nam-market]
-nam-market-stall-2:
-  feetPosition: {x: 241.5, y: 3, z: 1427}
-  id: nam-market-stall-2
-  physics: static
-  primitive: {kind: scripted, params: {kind: fishstall, seed: 3, stripe: oklch(0.55 0.1 160)}, script: scripts/gen/harbor.js}
-  rotation: {yaw: 185}
+  rotation: {yaw: 8}
   tags: [nam-market]
 nam-netpole-0:
   feetPosition: {x: 202.4, y: 8.16, z: 1407.99}
@@ -207,12 +200,12 @@ nam-netpole-1:
   tags: [strand-dressing]
 nam-npc-hask:
   behavior: [scripts/townsfolk.js]
-  feetPosition: {x: 238, y: 3, z: 1425.6}
+  feetPosition: {x: 235.2, y: 3, z: 1433.7}
   id: nam-npc-hask
   model: /cdn/model-humanoid-fantasy-fishmonger-male-oilskin-apron-rolled-sleeves-sea-cap-weathered.glb
   physics: {body: kinematic, collider: capsule}
-  rotation: {yaw: 180}
-  state: {homeYaw: 180, idle: idle, npcName: hask, who: hask, yaw: 180}
+  rotation: {yaw: 0}
+  state: {homeYaw: 0, idle: idle, npcName: hask, who: hask, yaw: 0}
   tags: [npc, talker, townsfolk]
 nam-phantom-camp:
   behavior: scripts/scavengers.js
