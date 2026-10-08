@@ -417,6 +417,7 @@ module.exports = { renderQuestDialog, renderTurnInDialog };
 // ── Quest tracker (SP-009) + quest-giver markers + NPC speech: drawn every frame from player state ──
 var _qd = require('./quest-data.js');
 var _rule = require('./ui-art.js').rule;
+var _reachSince = 0;
 var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' },
   // the Reach's townsfolk (scripts/lib/data/townsfolk.yml): a nameplate each, no quest marker
   { id: 'reach-npc-mira', name: 'Mira the Forgekeeper' }, { id: 'reach-npc-dren', name: 'Quartermaster Dren' }, { id: 'reach-npc-bram', name: 'Bram Alder' },
@@ -447,7 +448,10 @@ export function renderQuestTracker(localPlayer, world) {
   if (rows) out += '<div class="fixed qtk" style="top:262px;right:calc(var(--spawn-chrome-reservation-right-inset, 50px) + 12px);pointer-events:none;z-index:40">'
     + '<div class="qtk-h">Quests</div>' + _rule('section', '100%', 8) + rows + '</div>';
   var fp = localPlayer.feetPosition || { x: 999, z: 999 };
-  var nearReach = Math.abs(fp.x) < 90 && Math.abs(fp.z) < 90; // the townsfolk all stand in Lantern's Reach: anchors elsewhere find nobody
+  var nearReach = Math.abs(fp.x) < 90 && Math.abs(fp.z) < 90;
+  var _t = (typeof performance !== 'undefined' ? performance.now() : 0);
+  if (!nearReach) _reachSince = 0; else if (!_reachSince) _reachSince = _t || 1;
+  if (_t && _t - _reachSince < 6000) nearReach = false; // the town's people stream in first: an anchor before them finds nobody // the townsfolk all stand in Lantern's Reach: anchors elsewhere find nobody
   for (var n = 0; nearReach && n < QUEST_NPCS.length; n++) {
     var st = _qd.questStatus(QUEST_NPCS[n].id, s);
     var mark = st === 'available' ? '!' : st === 'ready' ? '?' : '';
