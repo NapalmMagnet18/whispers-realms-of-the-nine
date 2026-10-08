@@ -16,85 +16,85 @@ crypt-halls:
   physics: static
   primitive: {kind: scripted, params: {kind: halls}, script: scripts/gen/crypt.js}
 crypt-light-a1:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: -9, y: 0, z: -25.5}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-a1
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-a2:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: 9, y: 0, z: -25.5}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-a2
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-a3:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: -1.6, y: 0, z: -35.5}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-a3
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-a4:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: 1.6, y: 0, z: -35.5}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-a4
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-a5:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: -9, y: 0, z: -44.5}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-a5
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-a6:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: 9, y: 0, z: -44.5}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-a6
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-c1:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: 0, y: 0, z: -19}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-c1
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-c2:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: 0, y: 0, z: -50}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-c2
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-v1:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: -6, y: 0, z: -1.6}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-v1
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-v2:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: 6, y: 0, z: -1.6}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-v2
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-v3:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: -6, y: 0, z: -12.6}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-v3
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-v4:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 2.6, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 13, intensity: 10, kind: point}}]
   feetPosition: {x: 6, y: 0, z: -12.6}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-v4
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-w1:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 18, intensity: 4, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 24, intensity: 16, kind: point}}]
   feetPosition: {x: -11.5, y: 0, z: -56}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-w1
   primitive: {kind: scripted, params: {kind: candelabra}, script: scripts/gen/crypt.js}
 crypt-light-w2:
-  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 18, intensity: 4, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.8 0.14 68), distance: 24, intensity: 16, kind: point}}]
   feetPosition: {x: 11.5, y: 0, z: -56}
   fx: {script: "fx\npop flame rate=10 on=box(.8,.01,.8) life=.3..0.5 v=up(.4..0.7) size=.03..0.05 acc=curl(.4)+buoy(.6) sz=$size*(1>.3) col=hdr(4,2.6,.9)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)"}
   id: crypt-light-w2
@@ -246,7 +246,7 @@ qm-dhc-echo-b:
   state: {burstAt: 0.2, burstFx: "fx\npop rise burst=60 on=box(.35,1.7,.2) life=1.2..2 v=up(1.5..3) size=.06..0.12 acc=curl(.6) col=hdr(1.4,2,3) a=1>0 r=sprite(soft-disc,add)", gain: Testimony released, mark: echo_testimony, quest: DHC-04, say: "\"I kept the east row's ledger. I wrote what they told me to strike. I'm done writing now.\" The light lets go of the shelf.", title: An echo testimony, verb: Listen}
   tags: [quest-mark, hollowcrypt]
 qm-dhc-sigil-a:
-  children: [{feetPosition: {x: 0, y: 1.3, z: 0}, light: {color: oklch(0.62 0.2 300), distance: 7, intensity: 1.8, kind: point}}]
+  children: [{feetPosition: {x: 0, y: 1.3, z: 0}, light: {color: oklch(0.62 0.2 300), distance: 9, intensity: 6, kind: point}}]
   feetPosition: {x: 0, y: 0, z: -60.5}
   id: qm-dhc-sigil-a
   physics: static

@@ -13,9 +13,9 @@ atmosphere:
   moon: { enabled: false }
   stars: { enabled: false }
   clouds: { enabled: false }
-  ambient: { light: { color: "oklch(0.55 0.04 290)", intensity: 0.25 } }
-  hemisphere: { sky: "oklch(0.45 0.05 290)", ground: "oklch(0.2 0.02 60)", intensity: 0.2 }
-  fog: { kind: linear, color: "oklch(0.1 0.02 290)", near: 8, far: 70 }
+  ambient: { light: { color: "oklch(0.6 0.05 290)", intensity: 1.4 } }
+  hemisphere: { sky: "oklch(0.45 0.05 290)", ground: "oklch(0.3 0.03 60)", intensity: 1.0 }
+  fog: { kind: linear, color: "oklch(0.14 0.03 290)", near: 14, far: 90 }
   look:
     script: mods/aaa-quality-kit/look-cinema.js
     params: { dayWarmth: 0.04, grain: 0.03 }
