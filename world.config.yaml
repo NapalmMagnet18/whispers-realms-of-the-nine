@@ -3,7 +3,7 @@ name: ""
 description: ""
 camera: templates/camera.js#camera
 lighting: scripts/lighting.js
-defaultPlace: main
+defaultPlace: main-menu-land
 engine:
   behaviors:
     - scripts/arrival.js
