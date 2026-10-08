@@ -1334,6 +1334,33 @@ qm-sigil-farm:
   rotation: -56
   state: {gain: Sigil stone 1 of 3, mark: sigil_stone, quest: Q007, say: "Cold to the touch. A rune glows faintly, then goes still.", title: Sigil Stone, verb: Take}
   tags: [quest-mark]
+qm-sor-table:
+  feetPosition: {x: 28, y: {terrain: 1}, z: 18}
+  id: qm-sor-table
+  primitive: {depth: 1, height: 1, kind: box, width: 1}
+  state: {gain: Testimony laid, mark: testimony_laid, quest: SOR-09, say: "You spread Iona's pages across the war map, over the marsh. A few passers-by slow down to look.", title: the Shield Table, verb: Lay the testimony on}
+  tags: [quest-mark]
+  visible: false
+qm-sor-witness-ada:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 31.5, y: {terrain: 0}, z: 14.5}
+  id: qm-sor-witness-ada
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-clerk-female-young-ink-stained-fingers-spectacles-satchel-of-scrolls.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 300}
+  state: {after: testimony_laid, afterText: "First: lay the testimony on the Shield Table", gain: Witness heard, homeYaw: 300, idle: Idle, mark: witness_heard, npcName: Ada Wren, quest: SOR-09, say: "Ada copies it all, word for word, then signs beneath. \"Witnessed and entered. Now it can't be rubbed off a stone.\"", title: Ada Wren, verb: Ask to witness, who: ada-reach, yaw: 300}
+  tags: [quest-mark, townsfolk]
+qm-sor-witness-corbin:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 24.5, y: {terrain: 0}, z: 21}
+  id: qm-sor-witness-corbin
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-lamplighter-male-old-grey-beard-leather-apron-long-wick-pole.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {after: testimony_laid, afterText: "First: lay the testimony on the Shield Table", gain: Witness heard, homeYaw: 120, idle: Idle, mark: witness_heard, npcName: Corbin the Lamplighter, quest: SOR-09, say: "Corbin leans on his pole and reads to the end. \"A child. Waiting at dusk.\" He takes off his cap. \"I'll stand witness. Write my name.\"", title: Corbin the Lamplighter, verb: Ask to witness, who: corbin-reach, yaw: 120}
+  tags: [quest-mark, townsfolk]
 qm-watch-steps:
   feetPosition: {x: 50, y: {terrain: 0}, z: -25.5}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
