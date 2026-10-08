@@ -23,12 +23,20 @@ export function renderTargetDisplay(s) {
       + '<div style="font-family:Cinzel,serif;font-size:13px;font-weight:bold;color:rgba(255,210,210,0.85);text-shadow:0 1px 2px rgba(0,0,0,0.9);margin-top:1px;letter-spacing:0.5px;">' + th + ' / ' + tmh + '</div>';
   }
 
+  var lname = String(name).toLowerCase();
+  var tPortrait = /wolf|hound|cat/.test(lname) ? '/cdn/icon-bigcatwhite-u36ftl15e.webp'
+    : /dragon|drake|wyrm/.test(lname) ? '/cdn/icon-dragon-u7aezrayn.webp'
+    : /orc|brute|scaveng/.test(lname) ? '/cdn/icon-orc-u3xe7yu0d.webp'
+    : /bird|crow|raven|harpy/.test(lname) ? '/cdn/icon-birdblue-u3gqn02ts.webp'
+    : /warden|elite|boss|hollow/.test(lname) ? '/cdn/icon-aurared-u1ui80s8e.webp'
+    : null;
+  var portraitHtml = tPortrait ? '<div style="width:52px;height:52px;flex:none;border:2px solid rgba(200,170,80,0.6);border-radius:4px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.7);background:#0a0805;"><img src="' + tPortrait + '" style="width:100%;height:100%;object-fit:cover;" /></div>' : '';
   return ''
     + '<div style="'
-    +   'position:fixed; top:140px; left:9px; z-index:90;'
+    +   'position:fixed; top:140px; left:9px; z-index:90; display:flex; gap:6px; align-items:flex-start;'
     +   'pointer-events:none;'
     +   'font-family:Cinzel,Palatino,Georgia,serif;'
-    + '">'
+    + '">' + portraitHtml
     +   '<div style="'
     +     'background:linear-gradient(135deg,rgba(10,8,5,0.92),rgba(18,14,10,0.88));'
     +     'border:2px solid rgba(200,170,80,0.5);'
