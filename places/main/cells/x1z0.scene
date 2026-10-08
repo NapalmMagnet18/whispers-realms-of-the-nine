@@ -236,7 +236,7 @@ qm-equ-hammer-a:
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-equ-hammer-a
   physics: static
-  primitive: {kind: scripted, params: {kind: sledge}, script: scripts/gen/quarry.js}
+  primitive: {kind: scripted, params: {kind: hammer}, script: scripts/gen/quarryworks.js}
   rotation: 30
   state: {after: sealed_wall, gain: "+1 Bearing taken", mark: tuning_hammer, quest: EQU-06, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Tuning Hammer, verb: Strike}
   tags: [quest-mark, quarry-chapter]
@@ -245,7 +245,7 @@ qm-equ-hammer-b:
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-equ-hammer-b
   physics: static
-  primitive: {kind: scripted, params: {kind: sledge}, script: scripts/gen/quarry.js}
+  primitive: {kind: scripted, params: {kind: hammer}, script: scripts/gen/quarryworks.js}
   rotation: 150
   state: {after: sealed_wall, gain: "+1 Bearing taken", mark: tuning_hammer, quest: EQU-06, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Tuning Hammer, verb: Strike}
   tags: [quest-mark, quarry-chapter]
