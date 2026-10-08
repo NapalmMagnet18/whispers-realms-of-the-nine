@@ -1,31 +1,235 @@
 # spawn-scene v2 yaml x0z0
 bank:
-  feetPosition: {x: -16, y: 4, z: 22}
+  children: [{feetPosition: {x: 0, y: 0.12, z: 2}, physics: static, primitive: {kind: scripted, params: {kind: counter}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -3.8, y: 0.12, z: 3.2}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -2.6, y: 0.12, z: 3.4}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.6, y: 0.12, z: 3.3}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 0, y: 3, z: 0.5}, light: {color: oklch(0.82 0.13 65), distance: 11, intensity: 6, kind: point}}]
+  feetPosition: {x: -16, y: 4, z: 24}
   id: bank
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 9, height: 7, kind: box, width: 11}
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 0, d: 9, h: 4.4, rise: 2.4, roof: dark grey slate roof tiles, w: 11, wall: stone, win: 2}, script: scripts/gen/house.js}
+  rotation: -36
+  tags: [building, bank]
+cottage-e:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: 31, y: 4, z: -20}
+  id: cottage-e
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 6, h: 3.2, rise: 2.2, roof: weathered red clay roof shingles, w: 8, win: 1}, script: scripts/gen/house.js}
+  rotation: 123
+  tags: [building, cottage]
+cottage-ne:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: 20, y: 4, z: 24}
+  id: cottage-ne
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 6, h: 3.2, rise: 2.2, roof: golden straw thatch roof, w: 9, win: 1}, script: scripts/gen/house.js}
+  rotation: 37
+  tags: [building, cottage]
+cottage-s:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: 6, y: 4, z: 34}
+  id: cottage-s
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 6, h: 3.2, rise: 2.2, roof: golden straw thatch roof, w: 7, win: 1}, script: scripts/gen/house.js}
+  rotation: 10
+  tags: [building, cottage]
+cottage-sw:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -34, y: 4, z: 30}
+  id: cottage-sw
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 6, h: 3.2, rise: 2.2, roof: golden straw thatch roof, w: 6, win: 1}, script: scripts/gen/house.js}
+  rotation: -45
+  tags: [building, cottage]
+cottage-w:
+  children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
+  feetPosition: {x: -31, y: 4, z: -18}
+  id: cottage-w
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 6, h: 3.2, rise: 2.2, roof: weathered red clay roof shingles, w: 6, win: 1}, script: scripts/gen/house.js}
+  rotation: -121
+  tags: [building, cottage]
 inn:
+  children: [{feetPosition: {x: -3, y: 0.12, z: 3}, physics: static, primitive: {kind: scripted, params: {kind: counter}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -6.4, y: 0.12, z: 4.3}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -5.6, y: 0.12, z: 4.6}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -6.2, y: 0.12, z: 3.5}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -1.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -2.4}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 2, y: 0.12, z: -0.6}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 4.8, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: 3.9, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: 5.7, y: 0.12, z: 1.5}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 90}, {feetPosition: {x: -2.5, y: 0.12, z: -2.5}, physics: static, primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -2.5, y: 0.12, z: -3.4}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 6.6, y: 1, z: 1.1}, light: {color: oklch(0.75 0.17 50), distance: 10, intensity: 22, kind: point}}, {feetPosition: {x: 0, y: 4.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 14, intensity: 5, kind: point}}]
   feetPosition: {x: 0, y: 4, z: -24}
   id: inn
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 11, height: 9, kind: box, width: 16}
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 11, h: 6, rise: 3.4, stories: 2, w: 16, win: 3}, script: scripts/gen/house.js}
+  rotation: 180
+  tags: [building, inn]
+lamp-0:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 12.02381777814507, y: {terrain: 0}, z: 4.9424493966010985}
+  id: lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -22.347
+  tags: [lamp]
+lamp-1:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 5.007283602669747, y: {terrain: 0}, z: 11.996962570685744}
+  id: lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -67.35031476267379
+  tags: [lamp]
+lamp-11:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -64, y: {terrain: 0}, z: 50}
+  id: lamp-11
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: 0
+  tags: [lamp]
+lamp-12:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 2, y: {terrain: 0}, z: -46}
+  id: lamp-12
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: 0
+  tags: [lamp]
+lamp-2:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -4.942449396601099, y: {terrain: 0}, z: 12.02381777814507}
+  id: lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -112.35362952534757
+  tags: [lamp]
+lamp-3:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -11.996962570685744, y: {terrain: 0}, z: 5.007283602669748}
+  id: lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -157.35694428802137
+  tags: [lamp]
+lamp-4:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -12.02381777814507, y: {terrain: 0}, z: -4.9424493966010985}
+  id: lamp-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -202.36025905069513
+  tags: [lamp]
+lamp-5:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -5.007283602669754, y: {terrain: 0}, z: -11.99696257068574}
+  id: lamp-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -247.3635738133689
+  tags: [lamp]
+lamp-6:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 4.942449396601093, y: {terrain: 0}, z: -12.023817778145071}
+  id: lamp-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -292.3668885760427
+  tags: [lamp]
+lamp-7:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 11.99696257068574, y: {terrain: 0}, z: -5.007283602669755}
+  id: lamp-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: -337.37020333871646
+  tags: [lamp]
+lamp-8:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 40, y: {terrain: 0}, z: -14}
+  id: lamp-8
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: 0
+  tags: [lamp]
+lamp-9:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -38, y: {terrain: 0}, z: 32}
+  id: lamp-9
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: 0
+  tags: [lamp]
 merchant:
+  children: [{feetPosition: {x: 2.8, y: 0, z: -5.6}, physics: static, primitive: {kind: scripted, params: {kind: stall}, script: scripts/gen/props.js}}, {feetPosition: {x: 0, y: 0.12, z: 1.8}, physics: static, primitive: {kind: scripted, params: {kind: counter}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.3, y: 0.12, z: 2.8}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.3, y: 0.12, z: 2}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: 12}, {feetPosition: {x: -3.6, y: 0.12, z: 2.8}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -3.2, y: 0.12, z: -2.6}, physics: static, primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -2.2, y: 0, z: -5.4}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: 30}, {feetPosition: {x: -3.1, y: 0, z: -5}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 10, intensity: 6, kind: point}}]
   feetPosition: {x: -24, y: 4, z: 4}
   id: merchant
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 8, height: 6, kind: box, width: 10}
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 8, h: 3.6, rise: 2.4, roof: weathered red clay roof shingles, w: 10, win: 2}, script: scripts/gen/house.js}
+  rotation: -90
+  tags: [building, merchant]
+plaza-0:
+  feetPosition: {x: 9, y: 4, z: 6}
+  id: plaza-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stall}, script: scripts/gen/props.js}
+  rotation: -60
+plaza-1:
+  feetPosition: {x: -8, y: 4, z: -8}
+  id: plaza-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stall}, script: scripts/gen/props.js}
+  rotation: 130
+plaza-2:
+  feetPosition: {x: 12, y: 4, z: -9}
+  id: plaza-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: cart}, script: scripts/gen/props.js}
+  rotation: 40
+plaza-3:
+  feetPosition: {x: 10.5, y: 4, z: 7.8}
+  id: plaza-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 0
+plaza-4:
+  feetPosition: {x: 7.4, y: 4, z: 8.2}
+  id: plaza-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 20
+plaza-5:
+  feetPosition: {x: -6, y: 4, z: 9}
+  id: plaza-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
+  rotation: 25
+plaza-6:
+  feetPosition: {x: 6, y: 4, z: -11}
+  id: plaza-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
+  rotation: 0
+plaza-7:
+  feetPosition: {x: 18, y: 4, z: 7}
+  id: plaza-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: trough}, script: scripts/gen/props.js}
+  rotation: 90
+plaza-8:
+  feetPosition: {x: 15, y: 4, z: -3}
+  id: plaza-8
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/props.js}
+  rotation: -20
+plaza-9:
+  feetPosition: {x: -12, y: 4, z: 12}
+  id: plaza-9
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/props.js}
+  rotation: 40
 plaza-well:
   feetPosition: {x: 0, y: 4, z: 0}
   id: plaza-well
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 3, height: 3, kind: box, width: 3}
+  physics: static
+  primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
+  tags: [landmark]
 smithy:
+  children: [{feetPosition: {x: -2.2, y: 0.12, z: 2.4}, physics: static, primitive: {kind: scripted, params: {kind: forge}, script: scripts/gen/props.js}}, {feetPosition: {x: -1.4, y: 0.12, z: 0.2}, physics: static, primitive: {kind: scripted, params: {kind: anvil}, script: scripts/gen/props.js}, rotation: 20}, {feetPosition: {x: 2.8, y: 0.12, z: 2.6}, physics: static, primitive: {kind: scripted, params: {kind: trough}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.9, y: 0.12, z: -1.2}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.6, y: 0.12, z: -2.9}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: 15}, {feetPosition: {x: 2.8, y: 0.12, z: -3.1}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: -10}, {feetPosition: {x: -2.2, y: 1.6, z: 2}, light: {color: oklch(0.72 0.19 45), distance: 12, intensity: 30, kind: point}}]
   feetPosition: {x: 24, y: 4, z: 2}
   id: smithy
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 9, height: 6, kind: box, width: 10}
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 0, d: 8, h: 3.6, open: true, rise: 2, roof: dark grey slate roof tiles, w: 10, win: 1}, script: scripts/gen/house.js}
+  rotation: 90
+  tags: [building, smithy]
