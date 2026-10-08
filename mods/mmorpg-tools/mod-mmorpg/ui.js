@@ -611,7 +611,7 @@ export function renderCharacterCreation(localPlayer) {
   var classIcon = (CLASS_ICONS && CLASS_ICONS[className]) ? CLASS_ICONS[className] : '';
 
   // --- ALLEGIANCE ---
-  var allegianceColor = isLight ? 'color:rgba(170,130,220,0.85);' : 'color:rgba(100,190,120,0.85);';
+  var allegianceColor = 'color:rgba(242,176,74,0.9);';
   var allegianceText = 'Wayfarer of the March';
 
   // --- BANNER STYLES ---
@@ -797,16 +797,9 @@ export function renderCharacterCreation(localPlayer) {
         <!-- RACE SELECTION -->
         <div class="fa-title" data-font="title" style="font-family:Cinzel,Palatino,Georgia,serif !important;font-size:24px;font-weight:bold;color:rgba(200,175,120,0.9);letter-spacing:2px;text-align:center;margin-bottom:4px;text-shadow:0 0 10px rgba(180,140,60,0.25);">${race.name}</div>
         ${sectionHeader('Race')}
+
         <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:4px;">
-          <div class="fa-title" data-font="title" style="font-family:Cinzel,Palatino,Georgia,serif !important;font-size:16px;color:rgba(40,140,55,0.9);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;margin-top:8px;font-weight:bold;text-shadow:0 0 6px rgba(40,140,55,0.3);">Dark</div>
-          <img src="${darkFactionIcon}" style="width:32px;height:32px;object-fit:contain;opacity:0.8;filter:drop-shadow(0 0 4px rgba(30,100,45,0.4));" />
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(4,77px);gap:8px;margin-bottom:8px;justify-content:center;">
-          ${darkIcons.join('')}
-        </div>
-        ${thinLine()}
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:4px;">
-          <div class="fa-title" data-font="title" style="font-family:Cinzel,Palatino,Georgia,serif !important;font-size:16px;color:rgba(160,100,220,0.9);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;margin-top:8px;font-weight:bold;text-shadow:0 0 6px rgba(160,100,220,0.3);">Light</div>
+          <div class="fa-title" data-font="title" style="font-family:Cinzel,Palatino,Georgia,serif !important;font-size:16px;color:rgba(220,190,120,0.95);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;margin-top:8px;font-weight:bold;text-shadow:0 0 6px rgba(242,176,74,0.3);">Wayfarers</div>
           <img src="${lightFactionIcon}" style="width:32px;height:32px;object-fit:contain;opacity:0.8;filter:drop-shadow(0 0 4px rgba(140,80,200,0.3));" />
         </div>
         <div style="display:grid;grid-template-columns:repeat(4,77px);gap:8px;margin-bottom:10px;justify-content:center;">
@@ -908,7 +901,7 @@ export function renderCharacterCreation(localPlayer) {
         <!-- FACTION LORE -->
         <div style="font-family:'Times New Roman',Georgia,serif !important;text-align:center;font-size:16px;color:rgba(200,180,140,0.65);line-height:1.5;margin-bottom:10px;padding:0 8px;">
           ${isLight
-            ? 'The Light clings to order, honour, and the hope that civilisation can endure the Abyss.'
+            ? 'The borders between the Nine are breaking. Wayfarers gather where the lanterns still burn.'
             : 'The Dark embraces shadow, hunger, and ancient fury. Its children do not seek redemption \u2014 they seek dominion.'
           }
         </div>
