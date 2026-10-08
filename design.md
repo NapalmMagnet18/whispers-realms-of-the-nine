@@ -143,3 +143,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: arrival slim: quest-data.js loads quests.yml lazily (seeded by quest-core). Deepgrove bounty BNT-01 (lvl 8+): board at Rootwake Glade (-742,72), three raiders (scavengers.js crew, tally deepgrove_bandit) at the bandit camp; Scab stays a talker.
 - 2026-10-08: GNT-01 The Heart That Fell (lvl 28, Neris at Starfall Eyrie): skull listen + heart shard marks at the fallen giant, heartbeat loop, amulet giants_heart_shard.
 - 2026-10-08: Mott's caravan travels road-reedhaven (scripts/caravan-route.js on the wagon): stops Reach west edge / fen camp / Reedhaven, 240 s dwell, 1.6 m/s, clock-driven.
+- 2026-10-08: Mott is a vendor; shop follows stop: mott-reach / mott-fen / mott-reed (food items, healOverTime).
