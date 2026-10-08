@@ -11,10 +11,10 @@ elderveil-mushrooms:
 frontier-elderveil:
   feetPosition: {x: -3600, y: {terrain: -0.5}, z: -60}
   id: frontier-elderveil
-  material: {kind: scripted, params: {kind: twisted}, script: scripts/tree-look.js}
+  material: {color: oklch(1 0 0), roughness: 0.9, vertexColors: true}
   physics: static
-  primitive: {kind: scripted, params: {bark: /cdn/bark-twistedtree-u37sw9e2o.webp, kind: twisted}, script: scripts/gen/tree.js, seed: 11}
-  scale: 4.6
+  primitive: {kind: scripted, script: scripts/gen/elder-tree.js, seed: 11}
+  scale: 1
   tags: [landmark, elderveil]
 frontier-elderveil-bush-1:
   feetPosition: {x: -3574.723331345944, y: {terrain: 0}, z: -43.84171971548127}
