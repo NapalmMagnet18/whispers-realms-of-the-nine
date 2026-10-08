@@ -17,8 +17,8 @@ roosts:
   - { id: deepgrove,   name: "Deepgrove",            region: "Briarwild Deepgrove",    x: -1046, z: 88,    y: 25 }
   - { id: sorrowfen,   name: "Sorrowfen Stilts",     region: "Sorrowfen",              x: -1170, z: 760,   y: 2.4 }
   - { id: tideglass,   name: "Tideglass Quay",       region: "Tideglass Coast",        x: -1070, z: 1830,  y: 3.4 }
-  - { id: frostveil,   name: "Frostveil Post",       region: "Frostveil Tundra",       x: -10,   z: -3760, y: 61 }
+  - { id: frostveil,   name: "Frostveil Post",       region: "Glassmere Archive",       x: -10,   z: -3760, y: 61 }
   - { id: sunscar,     name: "Sunscar Oasis",        region: "Sunscar Expanse",        x: 3770,  z: -150,  y: 77 }
-  - { id: elderveil,   name: "Elderveil Bough",      region: "Elderveil Wilds",        x: -3540, z: -20,   y: 45 }
+  - { id: elderveil,   name: "Elderveil Bough",      region: "Velthraen Reach",        x: -3540, z: -20,   y: 45 }
   - { id: ninthveil,   name: "Veilgate Aerie",       region: "The Ninth Veil",         x: 30,    z: -7560, y: 130 }
-  - { id: bastion,     name: "Emberstone Bastion",   region: "Ashfall Reaches",        x: 7560,  z: -170,  y: 25 }
+  - { id: bastion,     name: "Emberstone Bastion",   region: "Emberstone Bastion",     x: 7560,  z: -170,  y: 25 }

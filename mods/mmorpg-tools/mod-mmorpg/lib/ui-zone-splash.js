@@ -30,6 +30,8 @@ var CIRCLES = [
   { art: 'hollowcrypt', x: 1350, z: -700, r: 330 },
   { art: 'tideglass', x: -1000, z: 1920, r: 340 },
   { art: 'sorrowfen', x: -1300, z: 950, r: 520 },
+  { art: 'velthraen', x: -3540, z: -20, r: 320 },     // Velthraen Reach (31-38)
+  { art: 'ashfall', x: 7560, z: -170, r: 260 },       // Emberstone Bastion (38-45)
 ];
 function artAt(x, z) {
   for (var i = 0; i < CIRCLES.length; i++) { var c = CIRCLES[i]; if (Math.hypot(x - c.x, z - c.z) < c.r) return c.art; }

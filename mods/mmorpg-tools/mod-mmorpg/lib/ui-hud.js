@@ -708,7 +708,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
           const X = localPlayer.feetPosition?.x ?? 0, Z = localPlayer.feetPosition?.z ?? 0, d = (a, b) => Math.hypot(X - a, Z - b);
           placeName = d(0, 0) < 70 ? "Lantern's Reach" : d(-720, 70) < 60 ? 'Thornhollow' : d(900, -170) < 60 ? 'Cinderhold' : d(250, 1430) < 60 ? 'Gullrest' : d(-18, 52) < 26 ? 'Windmill Farm' : d(135, 30) < 80 ? 'Emberstone Quarry'
             : d(30, -360) < 90 ? 'The Old Spire' : d(1350, -700) < 330 ? 'Hollowcrypt Vale' : d(-1000, 1920) < 340 ? 'Tideglass Coast' : d(-1300, 950) < 520 ? 'Sorrowfen'
-            : d(300, 1650) < 420 ? 'Saltmere Coast' : (() => { const ss = (a, b, v) => { const t = Math.min(1, Math.max(0, (v - a) / (b - a))); return t * t * (3 - 2 * t); }; const rz = Z > 0 ? 2050 + 1650 * ss(1300, 2800, Math.abs(X)) : 9200; return Math.hypot(X / 9600, Z / rz) > 1; })() ? 'The Shrouded Sea'
+            : d(300, 1650) < 420 ? 'Saltmere Coast' : d(-3540, -20) < 320 ? 'Velthraen Reach' : d(-10, -3760) < 320 ? 'Glassmere Archive' : d(7560, -170) < 260 ? 'Emberstone Bastion' : (() => { const ss = (a, b, v) => { const t = Math.min(1, Math.max(0, (v - a) / (b - a))); return t * t * (3 - 2 * t); }; const rz = Z > 0 ? 2050 + 1650 * ss(1300, 2800, Math.abs(X)) : 9200; return Math.hypot(X / 9600, Z / rz) > 1; })() ? 'The Shrouded Sea'
             : Z < -6400 ? 'The Ninth Veil' : X > 6400 ? 'Ashfall Reaches' : Z < -3000 ? 'Frostveil Tundra' : X > 3000 ? 'Sunscar Expanse' : X < -3000 ? 'Elderveil Wilds'
             : Z < -800 ? 'Greyspine Mountains' : X > 650 ? 'Emberstone Highlands' : X < -500 ? 'Briarwild Deepwood'
             : (X < -60 && Math.abs(Z) < 420) ? 'Briarwild' : 'The Lantern March';
