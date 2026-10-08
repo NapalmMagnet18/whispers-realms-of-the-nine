@@ -431,8 +431,8 @@ export function update(objectApi, dt) {
       RS.upsert(objectApi, newIdx, charData);
       objectApi.patchState({ _worldEnterAt: objectApi.now ? objectApi.now() : 0 });
       objectApi.enterPlace(objectApi.id, {
-        placeId: 'main',
-        spawnPoint: { x: raceStart.x, y: raceStart.y, z: raceStart.z },
+        place: 'main',
+        at: { x: raceStart.x, y: raceStart.y, z: raceStart.z },
       });
     } else {
       objectApi.patchState({ loadingProgress: progress });
@@ -463,7 +463,7 @@ export function onInput(objectApi, input) {
 
   // ── Main Menu from character creation ──
   if (input.actions.goToMainMenu) {
-    objectApi.enterPlace({ placeId: 'main-menu-land', spawnPoint: 'default' });
+    objectApi.enterPlace({ place: 'main-menu-land', at: 'default' });
     return;
   }
 

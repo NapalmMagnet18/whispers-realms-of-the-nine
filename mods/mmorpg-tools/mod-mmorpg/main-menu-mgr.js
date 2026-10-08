@@ -324,8 +324,8 @@ export function onInput(api, input) {
     });
     api.patchState({ _creationEnterAt: api.now ? api.now() : 0 });
     api.enterPlace(api.id, {
-      placeId: 'character-creation-land',
-      spawnPoint: { x: 83.168, y: 1.229, z: 10.812 },
+      place: 'character-creation-land',
+      at: { x: 83.168, y: 1.229, z: 10.812 },
     });
     return;
   }
@@ -464,8 +464,8 @@ export function onInput(api, input) {
       var hasRealPos = (charData.posX !== 0 || charData.posZ !== 0) && charData.lastPlace;
       api.patchState({ _worldEnterAt: api.now ? api.now() : 0 });
       api.enterPlace(api.id, {
-        placeId: savedPlace,
-        spawnPoint: hasRealPos ? { x: charData.posX, y: charData.posY ?? 0.2, z: charData.posZ } : 'default',
+        place: savedPlace,
+        at: hasRealPos ? { x: charData.posX, y: charData.posY ?? 0.2, z: charData.posZ } : 'default',
       });
     } else {
       api.setProperty('feetPosition', targetPos);

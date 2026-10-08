@@ -374,8 +374,8 @@ export function onSpawn(objectApi) {
     });
     objectApi.setProperty('visible', false);
     objectApi.enterPlace(objectApi.id, {
-      placeId: 'main-menu-land',
-      spawnPoint: 'default',
+      place: 'main-menu-land',
+      at: 'default',
     });
     // Don't load storage here — main-menu-mgr.js onSpawn handles roster
     // loading once the player arrives in main-menu-land.
@@ -412,8 +412,8 @@ export function onSpawn(objectApi) {
       var _savedZ = s._savedPosZ;
       var _hasPos = _savedX !== undefined && _savedY !== undefined && _savedZ !== undefined;
       objectApi.enterPlace(objectApi.id, {
-        placeId: lastPlace,
-        spawnPoint: _hasPos ? { x: _savedX, y: _savedY, z: _savedZ } : 'default',
+        place: lastPlace,
+        at: _hasPos ? { x: _savedX, y: _savedY, z: _savedZ } : 'default',
       });
       return;
     } else {
@@ -616,7 +616,7 @@ export function update(objectApi, dt) {
         _redirectingToMenu: true,
       });
       objectApi.setProperty('visible', false);
-      objectApi.enterPlace(objectApi.id, { placeId: 'main-menu-land', spawnPoint: 'default' });
+      objectApi.enterPlace(objectApi.id, { place: 'main-menu-land', at: 'default' });
       return;
     }
     if (lt >= 5 && s._dataLoaded) {
@@ -668,7 +668,7 @@ export function update(objectApi, dt) {
         // Ensure player is in character-creation-land for creation screen
         var creationPlace = objectApi.getEntityPlace(objectApi.id);
         if (creationPlace !== 'character-creation-land') {
-          objectApi.enterPlace(objectApi.id, { placeId: 'character-creation-land', spawnPoint: { x: 83.168, y: 1.229, z: 10.812 } });
+          objectApi.enterPlace(objectApi.id, { place: 'character-creation-land', at: { x: 83.168, y: 1.229, z: 10.812 } });
         }
         objectApi.patchState({
           phase: 'creating',
@@ -678,7 +678,7 @@ export function update(objectApi, dt) {
         });
         objectApi.setProperty('visible', false);
         // Character creation only works in 'character-creation-land'
-        objectApi.enterPlace(objectApi.id, { placeId: 'character-creation-land', spawnPoint: { x: 83.168, y: 1.229, z: 10.812 } });
+        objectApi.enterPlace(objectApi.id, { place: 'character-creation-land', at: { x: 83.168, y: 1.229, z: 10.812 } });
       }
     }
     return;
@@ -1584,7 +1584,7 @@ export function onInput(objectApi, input) {
       previewLightId: null,
     });
     // Character creation only works in 'character-creation-land'
-    objectApi.enterPlace(objectApi.id, { placeId: 'character-creation-land', spawnPoint: { x: 83.168, y: 1.229, z: 10.812 } });
+    objectApi.enterPlace(objectApi.id, { place: 'character-creation-land', at: { x: 83.168, y: 1.229, z: 10.812 } });
     return;
   }
 
@@ -1922,7 +1922,7 @@ export function handleLogout(objectApi, screen) {
     var updatedChars = latestState.characters || [];
 
     // Go to main menu land (not character-creation-land)
-    objectApi.enterPlace(objectApi.id, { placeId: 'main-menu-land', spawnPoint: 'default' });
+    objectApi.enterPlace(objectApi.id, { place: 'main-menu-land', at: 'default' });
 
     // Reset to main menu phase, keeping the characters array intact for the roster UI
     // IMPORTANT: Clear per-character gameplay flags so they don't bleed into the

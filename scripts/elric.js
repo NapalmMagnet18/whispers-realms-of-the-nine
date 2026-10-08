@@ -22,6 +22,6 @@ export function update(ctx, dt) {
   }
   if (best && ctx.now() > (ctx.self.state.nextGreet ?? 0)) {
     ctx.self.state.nextGreet = ctx.now() + N.greetCooldown * 1000;
-    ctx.self.anim.gesture = { clip: 'cdn/clip-salute.glb', weight: 4, loop: 'once', mask: { from: 'Spine' }, duration: 2 };
+    ctx.self.anim.gesture = { clip: 'cdn/clip-salute.glb', weight: 4, loop: 'once', mask: { from: 'spine_02' }, duration: 2 };
   }
 }
