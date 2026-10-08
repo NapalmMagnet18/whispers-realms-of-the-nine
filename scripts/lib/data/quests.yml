@@ -1488,8 +1488,77 @@ DHC-04:
   text: "Two of the people it questioned are still here, caught as echoes between the shelves. Let them speak and let them go. Then lay your hand on the Warden's index stone and give it back its first command: guard the witness. Then get out safe, and meet me at the chapel."
   progressText: "Release the two echo testimonies in the archive, restore the Warden's command at its index stone, then leave the Hollowcrypt and find Sister Vale in the Reach."
   turnInText: "You came back up. Good. A defence that was turned against the people it guarded, mended, not smashed. The Warden still stands down there, and now it guards the right door."
-  doneText: "The Hollowcrypt is quiet. Its Warden keeps the witnesses now."
+  doneText: "The Hollowcrypt is quiet. Its Warden keeps the witnesses now. And word came up from Sorrowfen: Marsh Guide Pell says the ward lanterns are failing. Fly to Sorrowfen Stilts."
   objectives:
     - { key: echo_testimony, desc: "Release echo testimonies", target: 2 }
     - { key: warden_command, desc: "Restore the Warden's original command", target: 1 }
   rewards: { copper: 6000, xp: 700 }
+
+# ── Sorrowfen, act one (SOR-01..04), from quest_database_300.json. The boardwalk village at Mourner Pool, south-west marsh.
+SOR-01:
+  id: SOR-01
+  title: Boardwalk at Dusk
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [DHC-04]
+  giverNpcId: fen-npc-pell
+  giverName: Marsh Guide Pell
+  text: "You're the one who came up out of the Hollowcrypt? Good. Then you know what a candle is for. Our ward lanterns guttered last night, all four along the boardwalk. When they go dark, the fog walks in and people walk out into it. Light them again. Then stake me a safe line back to the stilts, three markers, so the next fog has a road home."
+  progressText: "Light the four ward lanterns along Sorrowfen's boardwalks, then plant three evacuation markers on the line back to Mourner Pool."
+  turnInText: "Look at the wicks. There are names stitched into them. Living names, people here in the stilts. Someone made these lanterns to remember who's still breathing."
+  doneText: "Kele's been watching the wisps all week. Talk to her."
+  objectives:
+    - { key: ward_lantern, desc: "Light ward lanterns", target: 4 }
+    - { key: evac_marker, desc: "Plant evacuation markers", target: 3 }
+  rewards: { copper: 5200, xp: 600 }
+
+SOR-02:
+  id: SOR-02
+  title: Not All Wisps Are Lost
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-01]
+  giverNpcId: fen-npc-kele
+  giverName: Wisp Tender Kele
+  text: "Folk here swat every light on the water like a fly. Most of them are only lost, little blue ones that hum if you stand still. Go to the Blue Wisp Marsh and listen to three. You'll know a gentle one. And the pale things on chains, the tether-spirits, those aren't lost. Put down two of them."
+  progressText: "At the Blue Wisp Marsh, west along the boardwalk: listen to three harmless wisps and defeat two tether-spirits."
+  turnInText: "The tethers all pulled the same way when they broke? South-west. Toward the coast. Something out there is reeling them in, a receiver, like a net on a line."
+  doneText: "Iona's been sitting with a woman at the pool's edge. She needs someone who'll listen."
+  objectives:
+    - { key: gentle_wisp, desc: "Listen to harmless wisps", target: 3 }
+    - { key: tether_spirit, desc: "Defeat tether-spirits", target: 2 }
+  rewards: { copper: 5600, xp: 650 }
+
+SOR-03:
+  id: SOR-03
+  title: Mourner in the Reeds
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-02]
+  giverNpcId: fen-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  text: "Her name's Wenna. She comes to the pool every dusk and talks to the water. She won't talk to me anymore. Sit with her. And if she shows you the footsteps, follow them. I've seen them too, in the reflection only. Never on the mud."
+  progressText: "Speak with Wenna the mourner at the edge of Mourner Pool, then follow her reflected footsteps across the marsh."
+  turnInText: "To the sunken boat. Her family went under there, all four. And the steps only show in the reflection, you said. Not in the water. Something is holding them on the other side of it."
+  doneText: "Sister Vale came down from the Reach this morning. She's asking for you."
+  objectives:
+    - { key: mourner_heard, desc: "Hear the mourner out", target: 1 }
+    - { key: reflected_step, desc: "Follow the reflected footsteps", target: 4 }
+  rewards: { copper: 5400, xp: 650 }
+
+SOR-04:
+  id: SOR-04
+  title: The Bell in the Bog
+  zone: Sorrowfen
+  group: "Sorrowfen: The Drowned Names"
+  requires: [SOR-03]
+  giverNpcId: fen-npc-vale
+  giverName: Sister Vale
+  text: "I followed the Warden's ledger here. The Hollowcrypt's old keepers sank bellglass chimes into this marsh, two of them, out by the shrine isle and under the boat. They ring under the water, and echoes come to the sound. Bring them up. Then lay them face-down in the shrine basin, so they stop calling."
+  progressText: "Recover the two sunken bellglass chimes (by the sunken boat and on Shrine Isle), then turn them face-down in the shrine basin."
+  turnInText: "Hold one to your ear. Do you hear it? It isn't a summons. It's a lighthouse. They were meant to guide the lost home, not pin them in place. Someone turned them."
+  doneText: "Pell says the marsh is quieter tonight. Rest a while."
+  objectives:
+    - { key: bellglass_chime, desc: "Recover sunken bellglass chimes", target: 2 }
+    - { key: chime_turned, desc: "Turn the chimes face-down at the shrine", target: 1 }
+  rewards: { copper: 6400, xp: 750 }

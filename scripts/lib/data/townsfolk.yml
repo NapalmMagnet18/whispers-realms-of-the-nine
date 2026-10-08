@@ -187,3 +187,29 @@ elric-crypt:
     - "Thirty years I kept that gate and never asked what was under it."
     - "Keep your lamp low. The ink moves toward light."
     - "Whatever we find down here, the Reach is going to hear it. All of it."
+pell-fen:
+  name: Marsh Guide Pell
+  lines:
+    - "Step on the dark planks, not the green ones. The green ones are lying."
+    - "Fog's late tonight. Good."
+    - "Every lantern on this walk has a name in its wick. Mine's in the third one."
+kele-fen:
+  name: Wisp Tender Kele
+  lines:
+    - "Stand still. Let it come to you. That's the whole trick."
+    - "A lost wisp hums. A tethered one only pulls."
+iona-fen:
+  name: Reedkeeper Iona Sedge
+  lines:
+    - "The reeds remember the shape of whoever walked through them last."
+    - "Wenna's been coming to the pool for eleven years."
+vale-fen:
+  name: Sister Vale
+  lines:
+    - "Different dark from the crypt. Wetter. Same listening."
+    - "The ledger led here. I wish it hadn't."
+wenna-fen:
+  name: Wenna the Mourner
+  lines:
+    - "Shh. They're nearly here. They always come at dusk."
+    - "Look at the water, not at me."
