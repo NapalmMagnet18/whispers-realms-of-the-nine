@@ -10,7 +10,7 @@ export function realmOf(ctx) {
 
 export function ledger(ctx, delta, reason, balance) {
   const st = ctx.self.state || {};
-  const name = st.characterName || st.name || st.charName || null;
+  const name = st.charName || st.characterName || null;
   try {
     const q = ctx.sql`INSERT INTO ledger (user_id, realm, char_name, delta, reason, balance, at) VALUES (@caller, ${realmOf(ctx)}, ${name}, ${delta}, ${reason}, ${balance}, ${ctx.now()})`;
     if (q && q.catch) q.catch((e) => ctx.log('ledger insert failed', { reason, delta, error: String(e && e.message || e) }));
