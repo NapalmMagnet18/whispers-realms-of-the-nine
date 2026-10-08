@@ -56,7 +56,7 @@ terrain:
       redrock: [pebble]
     layers:
       flower:
-        density: 0.35
+        density: 0.55
         items:
         - colorJitter:
             hue: 8
@@ -104,7 +104,7 @@ terrain:
           script: scripts/pebble.js
           seed: 1
       fern:
-        density: 6
+        density: 8
         items:
         - kind: scripted
           script: scripts/grass.js
@@ -119,9 +119,9 @@ terrain:
           kind: scripted
           script: scripts/grass-look.js
       woods: {density: 0.0048, material: {kind: scripted, script: scripts/tree-look.js, params: {kind: pine}}, items: [{kind: scripted, maxDistance: 420, params: {kind: pine}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 21}]}
-      woodsoak: {density: 0.0032, material: {kind: scripted, script: scripts/tree-look.js, params: {kind: oak}}, items: [{kind: scripted, maxDistance: 420, params: {kind: oak}, randomRotation: true, scale: [0.8, 1.4], script: scripts/gen/tree.js, seed: 22}]}
-      mushroom: {density: 0.03, material: {kind: scripted, script: scripts/mushroom-look.js}, items: [{kind: scripted, script: scripts/mushroom.js, params: {cap: orange}, seed: 31, randomRotation: true, scale: [0.7, 1.6], maxDistance: 60, weight: 3}, {kind: scripted, script: scripts/mushroom.js, params: {cap: purple}, seed: 32, randomRotation: true, scale: [0.7, 1.5], maxDistance: 60}, {kind: scripted, script: scripts/mushroom.js, params: {cap: speckle}, seed: 33, randomRotation: true, scale: [0.6, 1.3], maxDistance: 60, weight: 2}, {kind: scripted, script: scripts/mushroom.js, params: {cap: gills}, seed: 34, randomRotation: true, scale: [0.6, 1.2], maxDistance: 60}]}
-      wildflower: {density: 0.18, material: {kind: scripted, script: scripts/flower-look.js}, items: [{kind: scripted, script: scripts/flower.js, params: {frame: 0}, seed: 41, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 1}, seed: 42, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 2}, seed: 43, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 3}, seed: 44, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 4}, seed: 45, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}]}
+      woodsoak: {density: 0.0045, material: {kind: scripted, script: scripts/tree-look.js, params: {kind: oak}}, items: [{kind: scripted, maxDistance: 420, params: {kind: oak}, randomRotation: true, scale: [0.8, 1.4], script: scripts/gen/tree.js, seed: 22}]}
+      mushroom: {density: 0.05, material: {kind: scripted, script: scripts/mushroom-look.js}, items: [{kind: scripted, script: scripts/mushroom.js, params: {cap: orange}, seed: 31, randomRotation: true, scale: [0.7, 1.6], maxDistance: 60, weight: 3}, {kind: scripted, script: scripts/mushroom.js, params: {cap: purple}, seed: 32, randomRotation: true, scale: [0.7, 1.5], maxDistance: 60}, {kind: scripted, script: scripts/mushroom.js, params: {cap: speckle}, seed: 33, randomRotation: true, scale: [0.6, 1.3], maxDistance: 60, weight: 2}, {kind: scripted, script: scripts/mushroom.js, params: {cap: gills}, seed: 34, randomRotation: true, scale: [0.6, 1.2], maxDistance: 60}]}
+      wildflower: {density: 0.3, material: {kind: scripted, script: scripts/flower-look.js}, items: [{kind: scripted, script: scripts/flower.js, params: {frame: 0}, seed: 41, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 1}, seed: 42, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 2}, seed: 43, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 3}, seed: 44, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 4}, seed: 45, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}]}
       deadwood: {density: 0.004, items: [{kind: scripted, maxDistance: 420, params: {kind: dead}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 23}], material: {kind: scripted, script: scripts/tree-look.js, params: {kind: dead}}}
       reeds: {density: 7, items: [{avoidWater: false, kind: scripted, randomRotation: true, scale: [1.8, 2.8], script: scripts/grass.js, seed: 7, wind: {force: 0.08}}], material: {kind: scripted, script: scripts/grass-look.js}}
   generator: scripts/terrain-reach.js
