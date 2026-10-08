@@ -5,6 +5,9 @@ camera: templates/camera.js#camera
 lighting: scripts/lighting.js
 defaultPlace: main-menu-land
 engine:
+  crons:
+  - schedule: '* * * * *'
+    script: crons/realm-pulse.js
   behaviors:
   - scripts/arrival.js
   networking:
@@ -64,3 +67,6 @@ nametag: ui/nametag.js
 authoring:
   starter:
     id: 3d
+routing:
+  script: scripts/routing.js
+  maxPlayers: 120
