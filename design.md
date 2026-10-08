@@ -134,3 +134,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Equip sound per gear slot (EQUIP_SND in mmorpg player.js uiSound); quest turn-in brass fanfare.
 - 2026-10-08: Footsteps per terrain material (snow, mud, sand, ash, crystal, grass, forest) and wood on decks/bridges/docks via a short down-raycast id match (scripts/player.js).
 - 2026-10-08: Hurt audio (vitality.js): heartbeat under 35% hp quickening to 0.55s, vignette 0.15-0.3 derived per tick, pain grunt on hits >8% max (1.2s cooldown), death sting + rise choir, all heard by the player alone.
+- 2026-10-08: Zone entry sting (enter/discover, discoveredZones saved per character) in region-music.js; gryphon flight wing+wind loop heard by the rider alone (flight.js spawn audio row).

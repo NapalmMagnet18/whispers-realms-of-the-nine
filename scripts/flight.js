@@ -59,6 +59,7 @@ function fly(ctx, toId) {
     tags: ['gryphon', 'flight'], feetPosition: first, model: GRYPHON, physics: 'none',
     layout: { minExtents: { x: -2.2, y: 0, z: -2.4 }, maxExtents: { x: 2.2, y: 2.2, z: 2.4 } },
     behavior: 'scripts/gryphon-flight.js', audience: 'near',
+    audio: { clip: '/cdn/moodboard-painterly-fantasy/sfx-riding-a-gryphon-steady-heavy-wingbeats-high-altitude-wind-rushing-loop.mp3', loop: true, gain: 0.35, spatial: false, listeners: [ctx.self.id] },
     state: { ...route, t0: ctx.now(), dur, rider: ctx.self.id, destName: to.name },
   });
   st.flightMap = null;

@@ -99,3 +99,7 @@ stingers:
     drownedbell: [/cdn/moodboard-gothic-horror/sfx-distant-church-bell-single-toll-heavy-iron.mp3, /cdn/moodboard-gothic-horror/sfx-distant-chains-rattling-dungeon-reverb.mp3]
     palechoir: [/cdn/moodboard-gothic-horror/sfx-ghostly-woman-sigh-whisper-reverb-far.mp3, /cdn/moodboard-gothic-horror/sfx-distant-church-bell-single-toll-heavy-iron.mp3]
     rootarchive: [/cdn/moodboard-painterly-fantasy/sfx-branch-snapping-deep-in-woods-far.mp3, /cdn/moodboard-gothic-horror/sfx-heavy-stone-slab-grinding-far-in-crypt-reverb.mp3]
+# a short sting when you cross into an area (region-music.js zoneSting); discover = the first time ever
+zoneSting:
+  enter: /cdn/moodboard-painterly-fantasy/music-short-zone-entry-sting-soft-harp-arpeggio-warm-strings-two-seconds.mp3
+  discover: /cdn/moodboard-painterly-fantasy/music-short-new-area-discovered-fanfare-rising-strings-french-horn-chime-four-seconds.mp3

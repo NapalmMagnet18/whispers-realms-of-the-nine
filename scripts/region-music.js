@@ -18,8 +18,9 @@ function themeFor(ctx, self) {
   }
   const p = self.feetPosition;
   for (const g of regionsMod.REGIONS) {
-    if (g.test ? g.test(p.x, p.z) : Math.hypot(p.x - g.x, p.z - g.z) < g.r) return MUSIC.regions[g.id] || "wilds";
+    if (g.test ? g.test(p.x, p.z) : Math.hypot(p.x - g.x, p.z - g.z) < g.r) { zoneSting(ctx, self, g.id); return MUSIC.regions[g.id] || "wilds"; }
   }
+  zoneSting(ctx, self, "march");
   return "wilds";
 }
 
@@ -68,4 +69,18 @@ function ambience(ctx, self, area) {
   ctx.session._stingAt = now + (S.every[0] + ctx.random() * (S.every[1] - S.every[0])) * 1000;
   const clip = set[Math.floor(ctx.random() * set.length)];
   ctx.emit("playSound", { clip, volume: S.volume * (0.7 + ctx.random() * 0.3), pitch: 0.92 + ctx.random() * 0.12, bus: "Ambience" });
+}
+
+// WoW-style: crossing into an area plays a short sting under the banner the HUD draws; the first time ever, a bigger one.
+// The sea is skipped: its border wobbles with the coast.
+function zoneSting(ctx, self, id) {
+  const was = ctx.session._zone; ctx.session._zone = id;
+  if (was === id || id === "sea") return;
+  if (was === undefined) return; // the first read after a load: you were already here
+  const st = self.state, seen = st.discoveredZones || [];
+  const fresh = !seen.includes(id);
+  if (fresh) st.discoveredZones = [...seen, id];
+  const Z = MUSIC.zoneSting || {};
+  const clip = fresh ? Z.discover : Z.enter;
+  if (clip && !(st.flying)) ctx.emit("playSound", { clip, volume: fresh ? 0.55 : 0.35, bus: "Music" });
 }
