@@ -1,4 +1,58 @@
 # spawn-scene v2 yaml x-9z6
+fen-reeds-0:
+  feetPosition: {x: -1201, y: {terrain: -0.1}, z: 783}
+  id: fen-reeds-0
+  primitive: {kind: scripted, params: {h: 1.5, kind: reeds, seed: 1}, script: scripts/gen/fen.js}
+  rotation: 0
+  tags: [sorrowfen]
+fen-reeds-1:
+  feetPosition: {x: -1211, y: {terrain: -0.1}, z: 809}
+  id: fen-reeds-1
+  primitive: {kind: scripted, params: {h: 1.8, kind: reeds, seed: 2}, script: scripts/gen/fen.js}
+  rotation: 47
+  tags: [sorrowfen]
+fen-walk-0:
+  feetPosition: {x: -1179, y: 0, z: 772}
+  id: fen-walk-0
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.74, h1: 1.3, kind: boardwalk, len: 22.2, seed: 1}, script: scripts/gen/fen.js}
+  rotation: 144.1623470457217
+  tags: [sorrowfen]
+fen-walk-1:
+  feetPosition: {x: -1192, y: 0, z: 790}
+  id: fen-walk-1
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 33.3, seed: 2}, script: scripts/gen/fen.js}
+  rotation: 138.65222278030632
+  tags: [sorrowfen]
+fen-walk-2:
+  feetPosition: {x: -1214, y: 0, z: 815}
+  id: fen-walk-2
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 33.02, seed: 3}, script: scripts/gen/fen.js}
+  rotation: 144.86580694308435
+  tags: [sorrowfen]
+qm-sor-lantern-a:
+  feetPosition: {x: -1201.8, y: 1.3, z: 803}
+  id: qm-sor-lantern-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: lantern, lit: false, seed: 97}, script: scripts/gen/fen.js}
+  state: {burstAt: 2, burstFx: "fx\npop flare burst=24 on=disc(.05) life=.4..0.9 v=up(1..2)+sdir()*.4 size=.05..0.1 acc=buoy(.6)+drag(1.2) col=hdr(4,2.6,.9)>hdr(1.6,.5,.1) a=1>0 r=sprite(flame-wisp,add)\npop glow n=1 life=1.5 r=light(<1,.6,.25>,10,10)", gain: Lantern lit, mark: ward_lantern, quest: SOR-01, say: "The wick catches. In the light you can read the thread stitched through it: a name, and a date that hasn't come yet.", title: A ward lantern, verb: Light}
+  tags: [quest-mark, sorrowfen]
+qm-sor-marker-a:
+  feetPosition: {x: -1189, y: {terrain: 0}, z: 800}
+  id: qm-sor-marker-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: pole}, script: scripts/gen/fen.js}
+  state: {gain: Marker planted, mark: evac_marker, quest: SOR-01, say: You drive the stake in and knot the pale rag high where the fog can't swallow it., title: An evacuation stake, verb: Plant}
+  tags: [quest-mark, sorrowfen]
+qm-sor-marker-b:
+  feetPosition: {x: -1206, y: {terrain: 0}, z: 826}
+  id: qm-sor-marker-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: pole}, script: scripts/gen/fen.js}
+  state: {gain: Marker planted, mark: evac_marker, quest: SOR-01, say: You drive the stake in and knot the pale rag high where the fog can't swallow it., title: An evacuation stake, verb: Plant}
+  tags: [quest-mark, sorrowfen]
 roost-sorrowfen:
   children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:52px;color:#f2b04a;text-shadow:0 0 12px #000\">SORROWFEN STILTS</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
   feetPosition: {x: -1170, y: 2.4, z: 760}

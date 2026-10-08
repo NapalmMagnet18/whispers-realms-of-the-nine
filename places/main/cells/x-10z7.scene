@@ -1,4 +1,290 @@
 # spawn-scene v2 yaml x-10z7
+fen-hub:
+  feetPosition: {x: -1240, y: 0, z: 850}
+  id: fen-hub
+  physics: static
+  primitive: {kind: scripted, params: {d: 18, h: 1.3, kind: platform, seed: 4, w: 18}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-hub-lamp:
+  children: [{feetPosition: {x: 0.6, y: 1.95, z: 0}, light: {color: oklch(0.82 0.13 70), distance: 16, intensity: 6, kind: point}}]
+  feetPosition: {x: -1236, y: 1.3, z: 855}
+  id: fen-hub-lamp
+  physics: static
+  primitive: {kind: scripted, params: {kind: lantern, lit: true, seed: 9}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-hut-iona:
+  feetPosition: {x: -1246, y: 1.3, z: 856}
+  id: fen-hut-iona
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut, seed: 3}, script: scripts/gen/fen.js}
+  rotation: -45
+  tags: [sorrowfen]
+fen-hut-kele:
+  feetPosition: {x: -1234.5, y: 1.3, z: 845}
+  id: fen-hut-kele
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut, seed: 2}, script: scripts/gen/fen.js}
+  rotation: 135
+  tags: [sorrowfen]
+fen-hut-pell:
+  feetPosition: {x: -1246, y: 1.3, z: 845}
+  id: fen-hut-pell
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut, seed: 1}, script: scripts/gen/fen.js}
+  rotation: 225
+  tags: [sorrowfen]
+fen-npc-iona:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1243, y: 1.3, z: 853}
+  id: fen-npc-iona
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-reedkeeper-female-elder-grey-braids-green-cloak-reed-staff.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 250}
+  state: {homeYaw: 250, idle: Idle, npcName: Reedkeeper Iona Sedge, who: iona-fen, yaw: 250}
+  tags: [npc, talker, townsfolk, quest-npc, sorrowfen]
+fen-npc-kele:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1236.5, y: 1.3, z: 848}
+  id: fen-npc-kele
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-wisp-tender-female-young-reed-woven-shawl-glass-jar-lantern.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 160}
+  state: {homeYaw: 160, idle: Idle, npcName: Wisp Tender Kele, who: kele-fen, yaw: 160}
+  tags: [npc, talker, townsfolk, quest-npc, sorrowfen]
+fen-npc-pell:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1242.5, y: 1.3, z: 848.5}
+  id: fen-npc-pell
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-marsh-guide-male-weathered-oilskin-coat-wide-brim-hat-punt-pole.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Marsh Guide Pell, who: pell-fen, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, sorrowfen]
+fen-npc-vale:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1238, y: 1.3, z: 852.5}
+  id: fen-npc-vale
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-priestess-female-sister-white-robes-blue-sash.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 100}
+  state: {homeYaw: 100, idle: Idle, npcName: Sister Vale, who: vale-fen, yaw: 100}
+  tags: [npc, talker, townsfolk, quest-npc, sorrowfen]
+fen-reeds-12:
+  feetPosition: {x: -1340, y: {terrain: -0.1}, z: 887}
+  id: fen-reeds-12
+  primitive: {kind: scripted, params: {h: 1.5, kind: reeds, seed: 13}, script: scripts/gen/fen.js}
+  rotation: 564
+  tags: [sorrowfen]
+fen-reeds-16:
+  feetPosition: {x: -1251, y: {terrain: -0.1}, z: 864}
+  id: fen-reeds-16
+  primitive: {kind: scripted, params: {h: 1.8, kind: reeds, seed: 17}, script: scripts/gen/fen.js}
+  rotation: 752
+  tags: [sorrowfen]
+fen-reeds-17:
+  feetPosition: {x: -1222, y: {terrain: -0.1}, z: 862}
+  id: fen-reeds-17
+  primitive: {kind: scripted, params: {h: 2.1, kind: reeds, seed: 18}, script: scripts/gen/fen.js}
+  rotation: 799
+  tags: [sorrowfen]
+fen-reeds-18:
+  feetPosition: {x: -1257, y: {terrain: -0.1}, z: 839}
+  id: fen-reeds-18
+  primitive: {kind: scripted, params: {h: 1.5, kind: reeds, seed: 19}, script: scripts/gen/fen.js}
+  rotation: 846
+  tags: [sorrowfen]
+fen-reeds-19:
+  feetPosition: {x: -1330, y: {terrain: -0.1}, z: 909}
+  id: fen-reeds-19
+  primitive: {kind: scripted, params: {h: 1.8, kind: reeds, seed: 20}, script: scripts/gen/fen.js}
+  rotation: 893
+  tags: [sorrowfen]
+fen-reeds-20:
+  feetPosition: {x: -1310, y: {terrain: -0.1}, z: 906}
+  id: fen-reeds-20
+  primitive: {kind: scripted, params: {h: 2.1, kind: reeds, seed: 21}, script: scripts/gen/fen.js}
+  rotation: 940
+  tags: [sorrowfen]
+fen-reeds-3:
+  feetPosition: {x: -1226, y: {terrain: -0.1}, z: 840}
+  id: fen-reeds-3
+  primitive: {kind: scripted, params: {h: 1.5, kind: reeds, seed: 4}, script: scripts/gen/fen.js}
+  rotation: 141
+  tags: [sorrowfen]
+fen-reeds-4:
+  feetPosition: {x: -1260, y: {terrain: -0.1}, z: 865}
+  id: fen-reeds-4
+  primitive: {kind: scripted, params: {h: 1.8, kind: reeds, seed: 5}, script: scripts/gen/fen.js}
+  rotation: 188
+  tags: [sorrowfen]
+fen-reeds-5:
+  feetPosition: {x: -1270, y: {terrain: -0.1}, z: 863}
+  id: fen-reeds-5
+  primitive: {kind: scripted, params: {h: 2.1, kind: reeds, seed: 6}, script: scripts/gen/fen.js}
+  rotation: 235
+  tags: [sorrowfen]
+fen-reeds-6:
+  feetPosition: {x: -1293, y: {terrain: -0.1}, z: 886}
+  id: fen-reeds-6
+  primitive: {kind: scripted, params: {h: 1.5, kind: reeds, seed: 7}, script: scripts/gen/fen.js}
+  rotation: 282
+  tags: [sorrowfen]
+fen-reeds-7:
+  feetPosition: {x: -1308, y: {terrain: -0.1}, z: 871}
+  id: fen-reeds-7
+  primitive: {kind: scripted, params: {h: 1.8, kind: reeds, seed: 8}, script: scripts/gen/fen.js}
+  rotation: 329
+  tags: [sorrowfen]
+fen-reeds-8:
+  feetPosition: {x: -1263, y: {terrain: -0.1}, z: 833}
+  id: fen-reeds-8
+  primitive: {kind: scripted, params: {h: 2.1, kind: reeds, seed: 9}, script: scripts/gen/fen.js}
+  rotation: 376
+  tags: [sorrowfen]
+fen-stump-0:
+  feetPosition: {x: -1250, y: {terrain: 0}, z: 850}
+  id: fen-stump-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 2}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-stump-1:
+  feetPosition: {x: -1308.6498689150324, y: {terrain: 0}, z: 882.065324123599}
+  id: fen-stump-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 3}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-stump-3:
+  feetPosition: {x: -1223.7149680913503, y: {terrain: 0}, z: 889.9123437427858}
+  id: fen-stump-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 5}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-stump-4:
+  feetPosition: {x: -1320.9434320989749, y: {terrain: 0}, z: 859.3613763922104}
+  id: fen-stump-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 6}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-stump-6:
+  feetPosition: {x: -1257.5045882994648, y: {terrain: 0}, z: 914.1713055221991}
+  id: fen-stump-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 8}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-stump-7:
+  feetPosition: {x: -1317.8894448029985, y: {terrain: 0}, z: 834.3350718954557}
+  id: fen-stump-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 9}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-stump-9:
+  feetPosition: {x: -1298.4931457837142, y: {terrain: 0}, z: 914.3972325416419}
+  id: fen-stump-9
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 11}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-walk-3:
+  feetPosition: {x: -1249, y: 0, z: 856}
+  id: fen-walk-3
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 32.2, seed: 5}, script: scripts/gen/fen.js}
+  rotation: 115.76932762433871
+  tags: [sorrowfen]
+fen-walk-4:
+  feetPosition: {x: -1278, y: 0, z: 870}
+  id: fen-walk-4
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 39.45, seed: 6}, script: scripts/gen/fen.js}
+  rotation: 120.46554491945989
+  tags: [sorrowfen]
+fen-walk-5:
+  feetPosition: {x: -1249, y: 0, z: 843}
+  id: fen-walk-5
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 28.6, seed: 8}, script: scripts/gen/fen.js}
+  rotation: 53.53076560994813
+  tags: [sorrowfen]
+fen-walk-7:
+  feetPosition: {x: -1322, y: 0, z: 890}
+  id: fen-walk-7
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 41.62, seed: 11}, script: scripts/gen/fen.js}
+  rotation: 54.78240703180728
+  tags: [sorrowfen]
+fen-wisp-deck:
+  feetPosition: {x: -1318, y: 0, z: 894}
+  id: fen-wisp-deck
+  physics: static
+  primitive: {kind: scripted, params: {d: 9, h: 1.3, kind: platform, seed: 7, w: 9}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+qm-sor-lantern-c:
+  feetPosition: {x: -1288.8, y: 1.3, z: 878}
+  id: qm-sor-lantern-c
+  physics: static
+  primitive: {kind: scripted, params: {kind: lantern, lit: false, seed: 99}, script: scripts/gen/fen.js}
+  state: {burstAt: 2, burstFx: "fx\npop flare burst=24 on=disc(.05) life=.4..0.9 v=up(1..2)+sdir()*.4 size=.05..0.1 acc=buoy(.6)+drag(1.2) col=hdr(4,2.6,.9)>hdr(1.6,.5,.1) a=1>0 r=sprite(flame-wisp,add)\npop glow n=1 life=1.5 r=light(<1,.6,.25>,10,10)", gain: Lantern lit, mark: ward_lantern, quest: SOR-01, say: "The wick catches. In the light you can read the thread stitched through it: a name, and a date that hasn't come yet.", title: A ward lantern, verb: Light}
+  tags: [quest-mark, sorrowfen]
+qm-sor-marker-c:
+  feetPosition: {x: -1226, y: {terrain: 0}, z: 852}
+  id: qm-sor-marker-c
+  physics: static
+  primitive: {kind: scripted, params: {kind: pole}, script: scripts/gen/fen.js}
+  state: {gain: Marker planted, mark: evac_marker, quest: SOR-01, say: You drive the stake in and knot the pale rag high where the fog can't swallow it., title: An evacuation stake, verb: Plant}
+  tags: [quest-mark, sorrowfen]
+qm-sor-step-1:
+  feetPosition: {x: -1252, y: 0.5, z: 835}
+  fx: {script: "fx\npop print n=2 on=box(.25,.01,.5) life=1.2..2 size=.12..0.2 col=hdr(.7,1.3,2.2) a=0>.3:.8>.7:.6>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,.4,0> r=light(<.5,.75,1>,1.5,5)"}
+  id: qm-sor-step-1
+  state: {after: mourner_heard, afterText: "First: sit with Wenna at the pool's edge", gain: Footstep followed, mark: reflected_step, quest: SOR-03, say: The print is in the reflection only. Look up and the mud is bare., title: a reflected footstep, verb: Follow}
+  tags: [quest-mark, sorrowfen]
+qm-sor-wenna:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -1236, y: 1.3, z: 858.4}
+  id: qm-sor-wenna
+  layout: {maxExtents: {x: 0.4, y: 1.7, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-mourner-female-black-shawl-veil-holding-unlit-candle.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {gain: Wenna's story, homeYaw: 180, idle: Idle, mark: mourner_heard, npcName: Wenna the Mourner, quest: SOR-03, say: "\"Four of them. Tam and the little ones. The boat tipped where the reeds bend. Every dusk I see them walking home. In the water. Only in the water.\" She points: there, a footprint of light on the pool, where nothing has stepped.", title: Wenna the Mourner, verb: Sit with, who: wenna-fen, yaw: 180}
+  tags: [quest-mark, townsfolk, sorrowfen]
+qm-sor-wisp-a:
+  children: [{feetPosition: {x: 0, y: 0.3, z: 0}, light: {color: oklch(0.75 0.12 240), distance: 6, intensity: 2, kind: point}}]
+  feetPosition: {x: -1322, y: 1.4, z: 902}
+  id: qm-sor-wisp-a
+  state: {burstAt: 0.4, burstFx: "fx\npop motes burst=30 on=sphere(.2) life=.8..1.4 v=sdir()*(.6..1.2) size=.03..0.06 acc=drag(1.5) col=hdr(.8,1.6,3) a=1>0 r=sprite(soft-disc,add)", gain: A harmless wisp, mark: gentle_wisp, quest: SOR-02, say: "You hold still. The wisp drifts close and hums a few notes, like someone trying to remember a song.", title: a little blue wisp, verb: Listen to}
+  tags: [quest-mark, sorrowfen]
+  wisp: {burnStyle: calm, color: "#7fb8ff", seed: 3, shape: slender, size: 0.5, state: idle}
+qm-sor-wisp-b:
+  children: [{feetPosition: {x: 0, y: 0.3, z: 0}, light: {color: oklch(0.75 0.12 240), distance: 6, intensity: 2, kind: point}}]
+  feetPosition: {x: -1311, y: 1.4, z: 900}
+  id: qm-sor-wisp-b
+  state: {burstAt: 0.4, burstFx: "fx\npop motes burst=30 on=sphere(.2) life=.8..1.4 v=sdir()*(.6..1.2) size=.03..0.06 acc=drag(1.5) col=hdr(.8,1.6,3) a=1>0 r=sprite(soft-disc,add)", gain: A harmless wisp, mark: gentle_wisp, quest: SOR-02, say: "You hold still. The wisp drifts close and hums a few notes, like someone trying to remember a song.", title: a little blue wisp, verb: Listen to}
+  tags: [quest-mark, sorrowfen]
+  wisp: {burnStyle: calm, color: "#7fb8ff", seed: 5, shape: slender, size: 0.5, state: idle}
+qm-sor-wisp-c:
+  children: [{feetPosition: {x: 0, y: 0.3, z: 0}, light: {color: oklch(0.75 0.12 240), distance: 6, intensity: 2, kind: point}}]
+  feetPosition: {x: -1328, y: 1.4, z: 886}
+  id: qm-sor-wisp-c
+  state: {burstAt: 0.4, burstFx: "fx\npop motes burst=30 on=sphere(.2) life=.8..1.4 v=sdir()*(.6..1.2) size=.03..0.06 acc=drag(1.5) col=hdr(.8,1.6,3) a=1>0 r=sprite(soft-disc,add)", gain: A harmless wisp, mark: gentle_wisp, quest: SOR-02, say: "You hold still. The wisp drifts close and hums a few notes, like someone trying to remember a song.", title: a little blue wisp, verb: Listen to}
+  tags: [quest-mark, sorrowfen]
+  wisp: {burnStyle: calm, color: "#7fb8ff", seed: 7, shape: slender, size: 0.5, state: idle}
+qm-sor-wisp-d:
+  children: [{feetPosition: {x: 0, y: 0.3, z: 0}, light: {color: oklch(0.75 0.12 240), distance: 6, intensity: 2, kind: point}}]
+  feetPosition: {x: -1306, y: 1.4, z: 884}
+  id: qm-sor-wisp-d
+  state: {burstAt: 0.4, burstFx: "fx\npop motes burst=30 on=sphere(.2) life=.8..1.4 v=sdir()*(.6..1.2) size=.03..0.06 acc=drag(1.5) col=hdr(.8,1.6,3) a=1>0 r=sprite(soft-disc,add)", gain: A harmless wisp, mark: gentle_wisp, quest: SOR-02, say: "You hold still. The wisp drifts close and hums a few notes, like someone trying to remember a song.", title: a little blue wisp, verb: Listen to}
+  tags: [quest-mark, sorrowfen]
+  wisp: {burnStyle: calm, color: "#7fb8ff", seed: 9, shape: slender, size: 0.5, state: idle}
+sor-tether-crew:
+  behavior: scripts/scavengers.js
+  feetPosition: {x: -1335, y: 0.5, z: 905}
+  id: sor-tether-crew
+  state: {crew: [{id: sor-tether-1, x: -1338, yaw: 30, z: 912}, {id: sor-tether-2, x: -1345, yaw: 200, z: 898}, {id: sor-tether-3, x: -1332, yaw: 90, z: 920}], model: /cdn/model-humanoid-fantasy-tether-spirit-pale-drowned-wraith-trailing-chains-of-light.glb, name: Tether-Spirit, tallyKey: tether_spirit}
+  tags: [sorrowfen]
 sorrowfen-dead-0:
   feetPosition: {x: -1260, y: {terrain: 0}, z: 950}
   id: sorrowfen-dead-0

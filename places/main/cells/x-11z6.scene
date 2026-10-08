@@ -1,4 +1,10 @@
 # spawn-scene v2 yaml x-11z6
+fen-reeds-22:
+  feetPosition: {x: -1409, y: {terrain: -0.1}, z: 827}
+  id: fen-reeds-22
+  primitive: {kind: scripted, params: {h: 1.8, kind: reeds, seed: 23}, script: scripts/gen/fen.js}
+  rotation: 1034
+  tags: [sorrowfen]
 sorrowfen-dead-7:
   feetPosition: {x: -1389.3716459578043, y: {terrain: 0}, z: 777.8119954851882}
   id: sorrowfen-dead-7

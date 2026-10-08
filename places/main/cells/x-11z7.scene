@@ -1,4 +1,55 @@
 # spawn-scene v2 yaml x-11z7
+fen-reeds-13:
+  feetPosition: {x: -1348, y: {terrain: -0.1}, z: 875}
+  id: fen-reeds-13
+  primitive: {kind: scripted, params: {h: 1.8, kind: reeds, seed: 14}, script: scripts/gen/fen.js}
+  rotation: 611
+  tags: [sorrowfen]
+fen-reeds-14:
+  feetPosition: {x: -1373, y: {terrain: -0.1}, z: 857}
+  id: fen-reeds-14
+  primitive: {kind: scripted, params: {h: 2.1, kind: reeds, seed: 15}, script: scripts/gen/fen.js}
+  rotation: 658
+  tags: [sorrowfen]
+fen-reeds-15:
+  feetPosition: {x: -1381, y: {terrain: -0.1}, z: 847}
+  id: fen-reeds-15
+  primitive: {kind: scripted, params: {h: 1.5, kind: reeds, seed: 16}, script: scripts/gen/fen.js}
+  rotation: 705
+  tags: [sorrowfen]
+fen-reeds-21:
+  feetPosition: {x: -1398, y: {terrain: -0.1}, z: 845}
+  id: fen-reeds-21
+  primitive: {kind: scripted, params: {h: 1.5, kind: reeds, seed: 22}, script: scripts/gen/fen.js}
+  rotation: 987
+  tags: [sorrowfen]
+fen-shrine:
+  feetPosition: {x: -1402, y: 1.1, z: 836}
+  id: fen-shrine
+  physics: static
+  primitive: {kind: scripted, params: {kind: shrine, seed: 4}, script: scripts/gen/fen.js}
+  tags: [sorrowfen]
+fen-walk-8:
+  feetPosition: {x: -1356, y: 0, z: 866}
+  id: fen-walk-8
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.15, kind: boardwalk, len: 43.27, seed: 12}, script: scripts/gen/fen.js}
+  rotation: 56.309932474020215
+  tags: [sorrowfen]
+qm-sor-basin:
+  feetPosition: {x: -1402, y: 1.1, z: 836}
+  id: qm-sor-basin
+  primitive: {height: 0.05, kind: cylinder, radiusBottom: 0.8, radiusTop: 0.8}
+  state: {after: bellglass_chime, afterText: "First: recover both sunken chimes", burstAt: 1, burstFx: "fx\npop ring burst=40 on=arc(.4,6.283,.05) life=.8..1.3 v=sdir()*(.3..0.6)+up(.6..1.2) size=.04..0.08 acc=drag(1) col=hdr(1,1.7,2.6) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<.6,.8,1>,8,8)", gain: Chimes stilled, mark: chime_turned, quest: SOR-04, say: "You set both bells mouth-down in the basin. The water in it trembles, then lies flat as glass. For a moment you can see stars in it, though it's still day.", title: the chimes in the shrine basin, verb: Turn face-down}
+  tags: [quest-mark, sorrowfen]
+  visible: false
+qm-sor-chime-b:
+  children: [{feetPosition: {x: 0, y: 0.4, z: 0}, light: {color: oklch(0.72 0.12 225), distance: 6, intensity: 2.5, kind: point}}]
+  feetPosition: {x: -1397, y: 1.15, z: 832}
+  id: qm-sor-chime-b
+  primitive: {kind: scripted, params: {kind: chime}, script: scripts/gen/fen.js}
+  state: {burstAt: 0.5, burstFx: "fx\npop ring burst=40 on=arc(.4,6.283,.05) life=.8..1.3 v=sdir()*(.3..0.6)+up(.6..1.2) size=.04..0.08 acc=drag(1) col=hdr(1,1.7,2.6) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<.6,.8,1>,8,8)", gain: Chime recovered, mark: bellglass_chime, quest: SOR-04, say: "Half in the island mud, a second chime. When it clears the water the ringing stops, and the marsh goes very quiet.", title: a sunken bellglass chime, verb: Recover}
+  tags: [quest-mark, sorrowfen]
 sorrowfen-dead-4:
   feetPosition: {x: -1426.0400455416482, y: {terrain: 0}, z: 927.6861720034586}
   id: sorrowfen-dead-4
