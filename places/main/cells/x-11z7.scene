@@ -30,20 +30,20 @@ fen-reeds-21:
   rotation: 987
   tags: [sorrowfen]
 fen-shrine:
-  feetPosition: {x: -1402, y: 1.1, z: 836}
+  feetPosition: {x: -1402, y: 2.1, z: 836}
   id: fen-shrine
   physics: static
   primitive: {kind: scripted, params: {kind: shrine, seed: 4}, script: scripts/gen/fen.js}
   tags: [sorrowfen]
 fen-walk-8:
-  feetPosition: {x: -1356, y: 0, z: 866}
+  feetPosition: {x: -1356, y: 1, z: 866}
   id: fen-walk-8
   physics: static
   primitive: {kind: scripted, params: {h0: 1.3, h1: 1.15, kind: boardwalk, len: 43.27, seed: 12}, script: scripts/gen/fen.js}
   rotation: 56.309932474020215
   tags: [sorrowfen]
 qm-sor-basin:
-  feetPosition: {x: -1402, y: 1.1, z: 836}
+  feetPosition: {x: -1402, y: 2.1, z: 836}
   id: qm-sor-basin
   primitive: {height: 0.05, kind: cylinder, radiusBottom: 0.8, radiusTop: 0.8}
   state: {after: bellglass_chime, afterText: "First: recover both sunken chimes", burstAt: 1, burstFx: "fx\npop ring burst=40 on=arc(.4,6.283,.05) life=.8..1.3 v=sdir()*(.3..0.6)+up(.6..1.2) size=.04..0.08 acc=drag(1) col=hdr(1,1.7,2.6) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<.6,.8,1>,8,8)", gain: Chimes stilled, mark: chime_turned, quest: SOR-04, say: "You set both bells mouth-down in the basin. The water in it trembles, then lies flat as glass. For a moment you can see stars in it, though it's still day.", title: the chimes in the shrine basin, verb: Turn face-down}
@@ -51,13 +51,13 @@ qm-sor-basin:
   visible: false
 qm-sor-chime-b:
   children: [{feetPosition: {x: 0, y: 0.4, z: 0}, light: {color: oklch(0.72 0.12 225), distance: 6, intensity: 2.5, kind: point}}]
-  feetPosition: {x: -1397, y: 1.15, z: 832}
+  feetPosition: {x: -1397, y: 2.15, z: 832}
   id: qm-sor-chime-b
   primitive: {kind: scripted, params: {kind: chime}, script: scripts/gen/fen.js}
   state: {burstAt: 0.5, burstFx: "fx\npop ring burst=40 on=arc(.4,6.283,.05) life=.8..1.3 v=sdir()*(.3..0.6)+up(.6..1.2) size=.04..0.08 acc=drag(1) col=hdr(1,1.7,2.6) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<.6,.8,1>,8,8)", gain: Chime recovered, mark: bellglass_chime, quest: SOR-04, say: "Half in the island mud, a second chime. When it clears the water the ringing stops, and the marsh goes very quiet.", title: a sunken bellglass chime, verb: Recover}
   tags: [quest-mark, sorrowfen]
 qm-sor-manifest:
-  feetPosition: {x: -1367, y: 0.35, z: 931}
+  feetPosition: {x: -1367, y: 1.35, z: 931}
   id: qm-sor-manifest
   material: {color: oklch(0.5 0.05 60), texture: cdn/texture-weathered-oak-deck-planks.png}
   primitive: {depth: 0.5, height: 0.45, kind: box, width: 0.7}
@@ -66,7 +66,7 @@ qm-sor-manifest:
   tags: [quest-mark, sorrowfen]
 qm-sor-orla:
   behavior: [scripts/townsfolk.js]
-  feetPosition: {x: -1357, y: -0.20767177115740054, z: 922}
+  feetPosition: {x: -1357, y: 0.792, z: 922}
   id: qm-sor-orla
   layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
   model: /cdn/model-humanoid-fantasy-smuggler-female-river-rat-oilskin-vest-bandana-mud-stained.glb

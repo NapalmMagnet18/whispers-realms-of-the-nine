@@ -107,7 +107,12 @@ export function heightAt(ctx) {
   // coast to the sea
   const land = landFactor(x, z, noise, so);
   h = lerp(-18, h, land);
-  return shore(h, 0);
+  h = shore(h, 0);
+  // Sorrowfen stands its floor a metre over the tide line: the engine paints the strand under ~1 m as beach sand,
+  // and the marsh must read as black mud and sedge. Pools (under 0) stay pools.
+  const fl = 1.0 * sstep(720, 480, df);
+  if (fl > 0 && h > -0.4) h += fl * sstep(-0.4, 0.25, h);
+  return h;
 }
 export function materialAt(ctx) {
   const { x, z, slope, noise, seedOffset: so, worldHeight: y } = ctx;
