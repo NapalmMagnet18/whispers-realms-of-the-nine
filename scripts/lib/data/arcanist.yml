@@ -1,0 +1,6 @@
+# Arcanist, the magic discipline: hotbar 1 Firebolt, 2 Frost Shard, 3 Ward. Seconds, metres, hit points.
+# A bolt is a homing missile (scripts/missile.js, looks in scripts/lib/missiles.js) launched castAt after the press.
+firebolt: { slot: 1, name: Firebolt, icon: /cdn/icon-fireball-u1ns0jvs9.webp, damage: 14, cooldown: 1.6, busy: 0.9, castAt: 0.35, range: 30, missile: fire, speed: 22, turn: 540, clip: cdn/clip-cast.glb, speed_anim: 1.4, length: 0.8, sound: /cdn/moodboard-painterly-fantasy/sfx-firebolt-cast-whoosh.mp3 }
+frost:    { slot: 2, name: Frost Shard, icon: /cdn/icon-frostball-u6cleszd4.webp, damage: 10, cooldown: 6, busy: 1.0, castAt: 0.45, range: 28, missile: frost, speed: 13, turn: 400, slow: 0.4, slowFor: 3, clip: cdn/clip-cast.glb, speed_anim: 1.1, length: 1.0, sound: /cdn/moodboard-painterly-fantasy/sfx-frost-shard-cast-chime.mp3 }
+ward:     { slot: 3, name: Ward, icon: /cdn/icon-shield2-u7ym8ql7u.webp, cooldown: 15, busy: 0.4, length: 4, reduce: 0.5, clip: cdn/clip-cast.glb, speed_anim: 1.8, sound: /cdn/moodboard-painterly-fantasy/sfx-arcane-ward-shimmer.mp3 }
+arc: 70          # degrees either side of facing a cast picks its soft target in

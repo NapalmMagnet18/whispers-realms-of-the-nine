@@ -1,0 +1,5 @@
+# Pathfinder, the ranged discipline: hotbar 1 Arrow, 2 Volley, 3 Dodge Roll. Seconds, metres, hit points.
+arrow:  { slot: 1, name: Arrow, icon: /cdn/icon-crossbow-u18wj7tj2.webp, damage: 9, cooldown: 0.9, busy: 0.5, castAt: 0.22, range: 34, missile: arrow, speed: 40, turn: 720, clip: cdn/clip-bow-shot.glb, speed_anim: 1.6, length: 0.6, sound: /cdn/moodboard-painterly-fantasy/sfx-bow-release-twang.mp3 }
+volley: { slot: 2, name: Volley, icon: /cdn/icon-crossbow-u18wj7tj2.webp, damage: 7, cooldown: 6, busy: 0.8, castAt: 0.35, count: 3, fan: 14, range: 30, missile: arrow, speed: 34, turn: 300, clip: cdn/clip-bow-shot.glb, speed_anim: 1.2, length: 0.8, sound: /cdn/moodboard-painterly-fantasy/sfx-bow-release-twang.mp3 }
+roll:   { slot: 3, name: Dodge Roll, icon: /cdn/icon-go-u3btdaqbv.webp, cooldown: 5, busy: 0.45, distance: 6, dash: 0.4, immune: 0.55, clip: cdn/clip-roll.glb, speed_anim: 1.4, length: 0.7, sound: /cdn/moodboard-painterly-fantasy/sfx-dodge-roll-cloth-whoosh.mp3 }
+arc: 70
