@@ -1,4 +1,9 @@
 # WHISPERS : Realm of the Nine — build page
+
+## 2026-10-08 · hidden-cache reward repair (spaiber)
+- Hidden chests credit the copper purse through the existing economy writer/ledger. Legacy `gold` cache values retain the established migration value of 100 copper per coin; explicit `copper` values take precedence.
+- Claimed-cache flags now save/load with each character and reset on new-character creation, preventing repeat claims after reconnect or leakage between character slots.
+- Local regression checks cover reward values, ledger, repeated claims, serialized save and both restoration paths. Full player reconnect playtest remains to verify; missing receipts in older saves cannot be reconstructed retroactively.
 The full bible lives in scripts/lib/data/01–05 *.md and the backlog/QA csvs (the creator's). This page tracks what stands.
 
 ## Stage 1 (now): the place

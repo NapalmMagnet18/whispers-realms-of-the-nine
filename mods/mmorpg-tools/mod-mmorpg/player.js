@@ -146,6 +146,7 @@ export function restoreRosterCharacterState(objectApi, state, opts) {
     tally: charData.tally || {},
     marks: charData.marks || {},
     questFlags: charData.questFlags || {},
+    caches: charData.caches || {},
     owedItems: charData.owedItems || [],
     wraithDefeated: charData.wraithDefeated ?? false,
     activeCharIdx: resume.idx,
@@ -257,6 +258,7 @@ export function buildCharData(objectApi) {
     tally: s.tally || {},
     marks: s.marks || {},
     questFlags: s.questFlags || {},
+    caches: s.caches || {},
     owedItems: s.owedItems || [],
     wraithDefeated: s.wraithDefeated || false,
     className: s.className || null,
@@ -535,6 +537,7 @@ export function onSpawn(objectApi) {
             tally: data.tally || {},
             marks: data.marks || {},
             questFlags: data.questFlags || {},
+            caches: data.caches || {},
             owedItems: data.owedItems || [],
             wraithDefeated: data.wraithDefeated ?? false,
           });
@@ -1993,6 +1996,7 @@ export function handleLogout(objectApi, screen) {
       tally: {},
       marks: {},
       questFlags: {},
+      caches: {},
       owedItems: [],
       roosts: [],
     });

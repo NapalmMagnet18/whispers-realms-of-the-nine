@@ -80,9 +80,11 @@ function openCache(ctx, c) {
   if (live) live.state.openUntil = ctx.now() + 6000;
   if (found[key]) { ctx.emit('damageNumber', { position: head, text: 'Empty. You took this one.', color: 'oklch(0.8 0.02 80)', size: 1, lifetime: 1.8 }, { audience: { player: ctx.self.id } }); return; }
   st.caches = { ...found, [key]: ctx.now() };
-  st.gold = (st.gold || 0) + (cs.gold || 0);
+  // Old cache definitions use legacy coins (one silver each); the live purse is copper.
+  const copper = cs.copper ?? ((cs.gold || 0) * 100);
+  move(ctx, copper, 'cache:' + key, { feedback: false });
   st._questSave = true;
-  ctx.emit('damageNumber', { position: head, text: `${cs.title || 'Hidden cache'}  +${cs.gold || 0} Gold`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.4 }, { audience: { player: ctx.self.id } });
+  ctx.emit('damageNumber', { position: head, text: `${cs.title || 'Hidden cache'}  +${formatText(copper)}`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.4 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-chest-open-coins.mp3', position: head, volume: 0.8 });
   ctx.emit('milestone', { step: 'cache-' + key, name: cs.title || 'Found a hidden cache' }, { audience: { player: ctx.self.id } });
 }
