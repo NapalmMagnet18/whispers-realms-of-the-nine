@@ -22,6 +22,7 @@
 // body moved last tick: a body pressed into a wall reads 0 and stands, whatever the keys and the
 // camera do. Read after the walker's write, the same dot answers the walker's ask, and a blocked body
 // would walk in place for every other player.
+import { wowMove } from './lib/wow-move.js'
 import PLAYER from './lib/data/player.yml'
 import { stepAngle } from 'builtin/math'
 
@@ -116,13 +117,18 @@ export function onInput(ctx, input) {
   const sin = input.axes.aimYawSin
   const cos = input.axes.aimYawCos
   if (typeof sin !== 'number' || typeof cos !== 'number') return
-  const moveX = input.axes.moveX ?? 0
-  const moveZ = input.axes.moveZ ?? 0
   const mode = turnTo(ctx)
   const gait = gaitOf(ctx)
-  const walking = moveX || moveZ
   const viewYaw = (Math.atan2(sin, cos) * 180) / Math.PI
-  if ((mode === 'movement' || mode === 'walk') && walking) {
+  // The hero's WoW steering (lib/wow-move.js): right-drag faces the camera, autorun and both-buttons walk.
+  const wow = ctx.self.tags?.includes?.('player') || ctx.self.isLocal !== undefined ? wowMove(ctx, input, 'gait') : null
+  const moveX = wow ? (wow.mouseForward || wow.autoRun ? (input.axes.moveX ?? 0) : (input.axes.moveX ?? 0)) : (input.axes.moveX ?? 0)
+  const moveZ = wow ? (wow.mouseForward || wow.autoRun ? 1 : (input.axes.moveZ ?? 0)) : (input.axes.moveZ ?? 0)
+  const walking = wow ? (wow.x || wow.z) : (moveX || moveZ)
+  if (wow && wow.heading != null && (wow.steering || walking)) {
+    gait.targetYaw = wow.heading
+    gait.turningInPlace = false
+  } else if ((mode === 'movement' || mode === 'walk') && walking) {
     // The move axes in the camera basis: the body faces where it walks.
     gait.targetYaw = (Math.atan2(-(cos * moveX - sin * moveZ), sin * moveX + cos * moveZ) * 180) / Math.PI
     gait.turningInPlace = false

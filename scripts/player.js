@@ -7,6 +7,7 @@
 // avatar, and its own file carries Idle, Walk, Run, Sprint, Jump; any other clip is an address on a
 // mixer channel (anim.sit = "cdn/clip-sit-loop.glb": →animations).
 import PLAYER from './lib/data/player.yml'
+import { wowMove, modalOpen } from './lib/wow-move.js'
 
 // Footsteps from the creator's foley pack: the ground under the foot picks the set, a floor above the terrain is hard.
 const STEPS = {
@@ -39,25 +40,15 @@ function walkOf(ctx) {
 }
 
 export function onInput(ctx, input) {
-  const facingSin = input.axes.aimYawSin ?? 0
-  const facingCos = input.axes.aimYawCos ?? 1
-
-  const moveX = input.axes.moveX ?? 0
-  const moveZ = input.axes.moveZ ?? 0
-  const mag = Math.hypot(moveX, moveZ)
-  const nx = mag > 1 ? moveX / mag : moveX
-  const nz = mag > 1 ? moveZ / mag : moveZ
-
-  // Where the keys point, at walking speed: the INTENT update() eases the body toward every tick.
-  // Written as intent, never straight into velocity: a key is a level (full or nothing) and a body
-  // that jumps to 6 m/s the tick a key lands overshoots every tap; the ease makes a tap a nudge.
-  walkOf(ctx).moveIntent = {
-    x: (facingCos * nx - facingSin * nz) * PLAYER.walkSpeed,
-    z: -(facingSin * nx + facingCos * nz) * PLAYER.walkSpeed,
-  }
+  // WoW controls: wasd in the camera's basis, right-drag steers, both buttons run, Q autoruns (lib/wow-move.js).
+  const m = wowMove(ctx, input, 'stride')
+  walkOf(ctx).moveIntent = { x: m.x * PLAYER.walkSpeed, z: m.z * PLAYER.walkSpeed }
+  // The look locks while a dialog is open; the camera rig reads this flag.
+  const lock = modalOpen(ctx.self.state)
+  if (!!ctx.self.state.wowCameraLocked !== lock) ctx.self.state.wowCameraLocked = lock
 
   // The jump is your y; x and z stay what the body did last tick (y reads 0 on the ground).
-  if (input.pressed.jump && ctx.self.grounded) {
+  if (input.pressed.jump && ctx.self.grounded && !m.blocked) {
     const v = ctx.self.velocity
     ctx.self.velocity = { x: v.x, y: PLAYER.jumpSpeed, z: v.z }
   }
