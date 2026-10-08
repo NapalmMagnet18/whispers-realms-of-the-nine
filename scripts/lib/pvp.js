@@ -6,6 +6,8 @@ const ROOMS = new Set(P.rooms || [])
 const SAFE = [...(P.sanctuaries || []), ...(F.roosts || []).map((r) => ({ name: r.name, x: r.x, z: r.z, r: P.roostRadius || 35 }))]
 export function pvpRealm(ctx) { try { return ROOMS.has(ctx.getRoomId ? ctx.getRoomId() : '') } catch (e) { return false } }
 export function sanctuaryAt(x, z) { for (const s of SAFE) if (Math.hypot(x - s.x, z - s.z) < s.r) return s; return null }
+// the rise point after a PvP fall: the nearest gryphon roost pad (open ground, y known)
+export function nearestRoost(x, z) { let b = null, bd = Infinity; for (const r of F.roosts || []) { const d = Math.hypot(x - r.x, z - r.z); if (d < bd) { bd = d; b = r } } return b }
 export function nearestSanctuary(x, z) { let b = SAFE[0], bd = Infinity; for (const s of SAFE) { const d = Math.hypot(x - s.x, z - s.z); if (d < bd) { bd = d; b = s } } return b }
 // can this player (a state + position) take part in a fight right now?
 export function inFight(ctx, p) {
