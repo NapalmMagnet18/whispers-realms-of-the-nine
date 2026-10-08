@@ -8,7 +8,7 @@ const P = (ctx, tex, col, r = 0.85, m = 0) => { ctx.albedo(tex); ctx.color(col);
 const glow = (ctx, col, e) => { ctx.albedo(null); ctx.color(col); ctx.emissive(...e); };
 const K = {
   tidepost(ctx, q) { // a barnacled marker post, painted rings, a brass tide notch
-    P(ctx, WOOD, "oklch(0.62 0.02 230)"); cyl(ctx, 0, 0, 0, 0.14, 0.12, 2.4, 7, true, 0.02);
+    P(ctx, WOOD, "oklch(0.62 0.02 230)"); cyl(ctx, 0, 0, 0, 0.14, 0.12, 2.4, 7);
     for (let i = 0; i < 4; i++) { P(ctx, null, i % 2 ? "oklch(0.92 0.02 90)" : "oklch(0.5 0.15 28)", 0.7); cyl(ctx, 0, 0.9 + i * 0.25, 0, 0.15, 0.15, 0.12, 8, false); }
     P(ctx, null, "oklch(0.78 0.11 80)", 0.3, 0.9); box(ctx, -0.04, 1.6, -0.17, 0.04, 1.66, -0.13);
     P(ctx, null, "oklch(0.75 0.02 100)", 1); for (let i = 0; i < 9; i++) { const a = q() * 6.28, y = q() * 0.6; blob(ctx, Math.cos(a) * 0.14, y + 0.05, Math.sin(a) * 0.14, 0.04, 0.03, 0.04, i, 0.3, 3, 4); }
@@ -64,6 +64,6 @@ const K = {
 };
 const HH = { tidepost: 2.4, lamp: 2.9, wreck: 1.3, chart: 1, buoy: 1.6, conch: 1.3, skiff: 0.9, pool: 0.4 };
 export function geometry(ctx) { const p = ctx.params || {}; ctx.flat();
-  if ((ctx.lod || 1) >= 4) { if (p.kind === "shell" || p.kind === "fishspot") return; P(ctx, null, "oklch(0.55 0.02 200)"); const h = HH[p.kind] || 1, w = p.kind === "wreck" ? 1 : 0.4; box(ctx, -w, 0, -w * 2, w, h, w * 2); return; }
+  if ((ctx.lod || 1) >= 4) { P(ctx, null, "oklch(0.55 0.02 200)"); const h = HH[p.kind] || 0.3, w = p.kind === "wreck" ? 1 : p.kind === "shell" || p.kind === "fishspot" ? 0.15 : 0.4; box(ctx, -w, 0, -w * 2, w, h, w * 2); return; }
   (K[p.kind] || K.shell)(ctx, rng((ctx.seed ?? 1) + 11)); ctx.emissive(null); }
 export function collider(ctx) { const k = (ctx.params || {}).kind; if (k === "tidepost") cyl(ctx, 0, 0, 0, 0.16, 0.16, 2.4, 6); else if (k === "lamp" || k === "chart" || k === "conch" || k === "wreck" || k === "skiff" || k === "buoy") return undefined; else return null; }
