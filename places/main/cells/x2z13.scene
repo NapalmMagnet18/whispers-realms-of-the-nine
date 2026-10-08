@@ -1,4 +1,19 @@
 # spawn-scene v2 yaml x2z13
+saltmere-beached-boat:
+  feetPosition: {x: 316, y: {terrain: -0.1}, z: 1669}
+  id: saltmere-beached-boat
+  physics: static
+  primitive: {kind: scripted, params: {B: 1.4, D: 0.6, L: 4.2, kind: boat, tint: oklch(0.55 0.08 230)}, script: scripts/gen/hamlet.js}
+  rotation: {roll: 8, yaw: 70}
+saltmere-campfire:
+  feetPosition: {x: 302, y: {terrain: 0}, z: 1660}
+  id: saltmere-campfire
+  physics: none
+  primitive: {kind: scripted, params: {kind: campfire}, script: scripts/gen/hamlet.js}
+saltmere-campfire-fx:
+  feetPosition: {x: 302, y: {terrain: 0.1}, z: 1660}
+  fx: {script: "fx\npop coals n=8 on=disc(.25) size=.06..0.14 tint=<2.4,.9,.25>..<1.1,.3,.08> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*60 on=disc(.22) life=.5..0.9 v=up(1.5)+cone(22)*(.3..0.8) size=.2..0.4 acc=curl(.5)*1.2+buoy(2.2)+drag(1.5)\n  sz=$size*(.5>.25:1>.7:.7>.14) col=hdr(4.6,3.4,1.4)>.3:hdr(3.2,1.4,.3)>.65:hdr(1.8,.5,.1)>hdr(.6,.12,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=4 on=disc(.22) life=.7..1.4 v=up(2.2)+cone(30)*(.4..1.2) size=.02..0.05 acc=curl(.8)+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.22 inh=p;v:$v*.4 life=1.8..3 size=.16..0.26 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.2) col=<.3,.28,.26>><.15,.15,.16> a=0>.25:.3>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop glow n=1 at=disc(.22).c(.45) glo=fire()*(#flame/40)~ r=light(<1,.55,.24>,$glo*30,12)"}
+  id: saltmere-campfire-fx
 saltmere-crate-1:
   feetPosition: {x: 319.6, y: {terrain: 0}, z: 1658.2}
   id: saltmere-crate-1
@@ -7,6 +22,32 @@ saltmere-crate-1:
   physics: {body: static, collider: box}
   rotation: {yaw: 20}
   tags: [saltmere, kit]
+saltmere-gulls:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-seagulls-distant-cries-gentle-waves-loop.mp3, gain: 0.15, loop: true, maxDistance: 60, spatial: true}
+  feetPosition: {x: 310, y: {terrain: 3}, z: 1665}
+  id: saltmere-gulls
+saltmere-hut-1:
+  feetPosition: {x: 295, y: {terrain: 0}, z: 1657}
+  id: saltmere-hut-1
+  physics: static
+  primitive: {kind: scripted, params: {d: 4, h: 2.4, kind: stilthut, porch: 1.6, rise: 1.8, stilt: 1.2, w: 4.6}, script: scripts/gen/hamlet.js, seed: 7}
+  rotation: {yaw: 172}
+  tags: [building, saltmere]
+saltmere-hut-1-light:
+  feetPosition: {x: 295, y: {terrain: 2.6}, z: 1657}
+  id: saltmere-hut-1-light
+  light: {color: oklch(0.82 0.14 65), distance: 9, intensity: 2.2, kind: point}
+saltmere-hut-2:
+  feetPosition: {x: 307, y: {terrain: 0}, z: 1654}
+  id: saltmere-hut-2
+  physics: static
+  primitive: {kind: scripted, params: {d: 4.2, h: 2.5, kind: stilthut, porch: 1.8, rise: 1.9, stilt: 1.3, w: 5}, script: scripts/gen/hamlet.js, seed: 11}
+  rotation: {yaw: 196}
+  tags: [building, saltmere]
+saltmere-hut-2-light:
+  feetPosition: {x: 307, y: {terrain: 2.7}, z: 1654}
+  id: saltmere-hut-2-light
+  light: {color: oklch(0.82 0.14 65), distance: 9, intensity: 2.2, kind: point}
 saltmere-logs:
   feetPosition: {x: 317.5, y: {terrain: 0}, z: 1661.5}
   id: saltmere-logs
@@ -15,3 +56,42 @@ saltmere-logs:
   physics: {body: static, collider: box}
   rotation: {yaw: 30}
   tags: [saltmere, kit]
+saltmere-netrack-1:
+  feetPosition: {x: 301, y: {terrain: 0}, z: 1666}
+  id: saltmere-netrack-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: netrack}, script: scripts/gen/hamlet.js}
+  rotation: {yaw: 20}
+saltmere-netrack-2:
+  feetPosition: {x: 311, y: {terrain: 0}, z: 1662}
+  id: saltmere-netrack-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: netrack}, script: scripts/gen/tide.js}
+  rotation: {yaw: -15}
+saltmere-npc-corra:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 304, y: {terrain: 0}, z: 1661}
+  id: saltmere-npc-corra
+  layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-fishwife-old-woman-knitted-shawl-oilskin-apron-net-needle.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -30}
+  state: {homeYaw: -30, idle: Idle_FoldArms_Loop, npcName: Corra Netmender, shop: general-shop, who: corra, yaw: -30}
+  tags: [npc, vendor, interactable, merchant-npc, saltmere]
+saltmere-signpost:
+  feetPosition: {x: 299, y: {terrain: 0}, z: 1647}
+  id: saltmere-signpost
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js}
+  rotation: {yaw: -60}
+saltmere-smokehouse:
+  feetPosition: {x: 288, y: {terrain: 0}, z: 1665}
+  id: saltmere-smokehouse
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 4, h: 2.6, rise: 1.8, roof: dark grey slate roof tiles, w: 5, wall: stone, win: 0}, script: scripts/gen/house.js}
+  rotation: {yaw: 150}
+  tags: [building, saltmere]
+saltmere-smokehouse-smoke:
+  feetPosition: {x: 289.6, y: {terrain: 4.9}, z: 1666.4}
+  fx: {script: "fx\npop smoke rate=3 on=disc(.2) life=3..5 v=up(.9..1.3) size=.3..0.5 acc=buoy(.4)+curl(.4)*.6+wind()*.5+drag(.5) sz=$size*(.6>3.5) col=<.55,.53,.5>><.4,.4,.42> a=0>.3:.3>.7:.15>0 rot=spin(.12) r=sprite(smoke-puff,alpha)"}
+  id: saltmere-smokehouse-smoke

@@ -59,3 +59,8 @@ saltmere-surf:
   audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-gentle-waves-lapping-shore-loop.mp3, gain: 0.18, loop: true, maxDistance: 40, spatial: true}
   feetPosition: {x: 328, y: 0.5, z: 1664}
   id: saltmere-surf
+saltmere-tidepost:
+  feetPosition: {x: 322, y: {terrain: -0.3}, z: 1672}
+  id: saltmere-tidepost
+  physics: static
+  primitive: {kind: scripted, params: {kind: tidepost}, script: scripts/gen/strand.js}
