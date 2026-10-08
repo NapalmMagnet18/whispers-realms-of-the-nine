@@ -66,6 +66,13 @@ cl-ambience:
   audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-village-birdsong-distant-hammer-loop.mp3, gain: 0.15, loop: true, maxDistance: 45, spatial: true}
   feetPosition: {x: 68, y: 3, z: 6}
   id: cl-ambience
+cl-arms-anvil:
+  children: [{feetPosition: {x: 0, y: -0.5, z: 0}, material: {color: oklch(0.4 0.05 60), roughness: 0.9}, primitive: {height: 0.5, kind: cylinder, radiusBottom: 0.3, radiusTop: 0.26}}, {feetPosition: {x: 0, y: 0.18, z: -0.62}, material: {color: oklch(0.32 0.01 250), metalness: 0.8, roughness: 0.45}, primitive: {height: 0.36, kind: cone, radius: 0.12}, rotation: {pitch: 90}}]
+  feetPosition: {x: 74.4, y: {terrain: 0}, z: -5.6}
+  id: cl-arms-anvil
+  material: {color: oklch(0.32 0.01 250), metalness: 0.8, roughness: 0.45}
+  physics: static
+  primitive: {depth: 0.95, height: 0.32, kind: box, width: 0.42}
 cl-arms-arrow-a:
   feetPosition: {x: 72.18, y: 1.501671634097825, z: -10.099999999999998}
   id: cl-arms-arrow-a
@@ -156,6 +163,13 @@ cl-arms-fist-b-st:
   model: {id: /cdn/value.e6ca0d8cd896e7caca63b49aa622a7fbeeb58c2d4e235a303dc39570dc19fb56.glb}
   rotation: {yaw: 137}
   tags: [copperlane, weapon-display]
+cl-arms-grindstone:
+  children: [{feetPosition: {x: 0, y: 0.55, z: 0}, material: {color: oklch(0.62 0.02 80), roughness: 1}, pivot: center, primitive: {height: 0.14, kind: cylinder, radiusBottom: 0.38, radiusTop: 0.38}, rotation: {pitch: 90}}]
+  feetPosition: {x: 71.2, y: {terrain: 0}, z: -6.4}
+  id: cl-arms-grindstone
+  material: {color: oklch(0.45 0.06 55), roughness: 0.9}
+  physics: static
+  primitive: {depth: 0.25, height: 0.55, kind: box, width: 0.9}
 cl-arms-halberd:
   feetPosition: {x: 75.2, y: 0.8508921417705312, z: -13}
   id: cl-arms-halberd
@@ -198,6 +212,14 @@ cl-arms-shield-c:
   model: {id: /cdn/value.3277825752ae5595f98e7f10305c809682fad2be3fc673c52b4d3748f5a2927e.glb}
   rotation: {roll: 0, yaw: 90}
   tags: [copperlane, weapon-display]
+cl-arms-sign:
+  children: [{feetPosition: {x: 0, y: 1.55, z: 0}, material: {color: oklch(0.5 0.07 60), roughness: 0.85}, primitive: {depth: 0.06, height: 0.62, kind: box, width: 1.1}, ui: "<div face=\"front\" style=\"width:1100px;height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#5a3d22;border:14px solid #2a1e16;color:#f2b04a;font-family:serif;text-align:center\"><div style=\"font-size:120px;line-height:1\">⚔</div><div style=\"font-size:92px;letter-spacing:6px\">COPPERHAND</div><div style=\"font-size:52px;color:#e8d9b5\">arms &amp; edges</div></div>"}]
+  feetPosition: {x: 71.4, y: {terrain: 0}, z: -8.6}
+  id: cl-arms-sign
+  material: {color: oklch(0.42 0.06 55), roughness: 0.9}
+  physics: static
+  primitive: {depth: 0.12, height: 2.4, kind: box, width: 0.12}
+  rotation: {yaw: 90}
 cl-arms-spear-a:
   feetPosition: {x: 75.2, y: 0.8508921417705312, z: -12.5}
   id: cl-arms-spear-a
@@ -414,6 +436,16 @@ cl-miller-wagon:
   physics: {body: static, collider: box}
   rotation: {yaw: 200}
   tags: [kit, copperlane]
+cl-npc-hild:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 73.8, y: {terrain: 0}, z: -8}
+  id: cl-npc-hild
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-armsmith-female-stocky-soot-streaked-leather-apron-copper-braid.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 90}
+  state: {homeYaw: 90, idle: Idle_FoldArms_Loop, npcName: Hild Copperhand, shop: armsmith, who: hild, yaw: 90}
+  tags: [npc, vendor, interactable, merchant-npc]
 cl-tanner-crate-1:
   feetPosition: {x: 65.2, y: {terrain: 0}, z: -14.4}
   id: cl-tanner-crate-1
