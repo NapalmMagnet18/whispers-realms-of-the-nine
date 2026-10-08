@@ -818,7 +818,145 @@ woodcutting:
   chopSound: /cdn/moodboard-painterly-fantasy/sfx-axe-chop-wood.mp3
   fallSound: /cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3
 
+
+# ── Vanguard Path: A Shield is Not a Crown (Quest Bible VAN-01..VAN-07; the Shield Table east of the Reach training yard) ──
+VAN-01:
+  id: VAN-01
+  group: "Vanguard Path: A Shield is Not a Crown"
+  zone: The Shield Table
+  cls: vanguard   # Vanguards only
+  requires: [Q001]
+  title: The Weight of a Promise
+  giverNpcId: shield-npc-oren
+  giverName: Marshal Oren Flint
+  text: "A shield isn't a wall. It's a promise you make with your arm. The pells by the table swing at the height a raider swings. Stand beside them and raise your guard (3) when the arm comes round. Twice. Then we'll talk."
+  progressText: "Stand at the drill pells by the Shield Table and raise your guard (3) to block their strikes."
+  turnInText: "Again, and you'd have a bruise to show for it. Good. A Vanguard's first lesson is that the hit you take is one somebody else didn't."
+  doneText: "There are folk on the east road who need walking in. Ask me when you're ready."
+  refusedText: "Your arm's learned it. Rest it."
+  objectives:
+    - { key: guard_drill, desc: "Block practice strikes at the drill pells", target: 2 }
+  rewards: { xp: 120, copper: 80, items: [practice_buckler] }
+
+VAN-02:
+  id: VAN-02
+  group: "Vanguard Path: A Shield is Not a Crown"
+  zone: The Shield Table
+  cls: vanguard   # Vanguards only
+  requires: [VAN-01]
+  title: The Door and the Refugee
+  giverNpcId: shield-npc-oren
+  giverName: Marshal Oren Flint
+  text: "Three families came down the east road at dawn with what they could carry. Find them and tell them the Reach is open. Then go up to the old watchtower and pick where you'd stand if something followed them. Pick it like you mean to hold it."
+  progressText: "Find the three families on the east road, then choose a defensive position at the old watchtower."
+  turnInText: "The watchtower stair. Narrow, high, with the road under you. That's where I'd have stood, thirty years ago, if anyone had let me."
+  doneText: "Elric has something he wants found. Ask him."
+  refusedText: "They're in. Thank you."
+  objectives:
+    - { key: evacuee, desc: "Find the families on the east road", target: 3 }
+    - { key: defensive_post, desc: "Choose a defensive position at the watchtower", target: 1 }
+  rewards: { xp: 140, copper: 100 }
+
+VAN-03:
+  id: VAN-03
+  group: "Vanguard Path: A Shield is Not a Crown"
+  zone: The Shield Table
+  cls: vanguard   # Vanguards only
+  requires: [VAN-02]
+  title: The Captain Who Counted
+  giverNpcId: gatekeeper-elric
+  giverName: Gatekeeper Elric
+  turnInNpcId: shield-npc-oren
+  turnInName: Marshal Oren Flint
+  text: "Across the briar bridge, west, there's a split boulder where the old company made its last camp. Their captain kept a register: every soldier, every civilian, every order. Bring it to Oren. He's waited long enough."
+  progressText: "Cross the briar bridge west, recover the battlefield register from the split boulder, and bring it to Oren."
+  turnInText: "...That's her hand. Captain Ide. She counted everyone. Soldiers and the people behind them, the same ink. Leave it with me a while."
+  doneText: "Tamsin's been watching the bridge. Something's crossing at night."
+  refusedText: "The register's safe now."
+  objectives:
+    - { key: battle_register, desc: "Recover the battlefield register", target: 1 }
+  rewards: { xp: 150, copper: 110, items: [shield_pattern] }
+
+VAN-04:
+  id: VAN-04
+  group: "Vanguard Path: A Shield is Not a Crown"
+  zone: The Shield Table
+  cls: vanguard   # Vanguards only
+  requires: [VAN-03]
+  title: Stand Where It Hurts
+  giverNpcId: reach-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "Raiders on the far end of the briar bridge, testing it every night. They want the Reach to wake up to a bridge with nobody on it. Hold it. Drive back five of them, and keep your guard up: they hit hard and they hit together."
+  progressText: "Hold the briar bridge: drive off five bridge raiders on its far bank."
+  turnInText: "You stood on the narrow part. Everyone wants to fight on the wide part. Here, your parry's earned an edge."
+  doneText: "Oren wants a word. He looked like he hadn't slept."
+  refusedText: "Bridge is quiet. Go on."
+  objectives:
+    - { key: bridge_raider, desc: "Drive off bridge raiders", target: 5 }
+  rewards: { xp: 170, copper: 130 }
+
+VAN-05:
+  id: VAN-05
+  group: "Vanguard Path: A Shield is Not a Crown"
+  zone: The Shield Table
+  cls: vanguard   # Vanguards only
+  requires: [VAN-04]
+  title: The Order to Withdraw
+  giverNpcId: shield-npc-oren
+  giverName: Marshal Oren Flint
+  text: "The register has an order in it. 'Withdraw. Leave the civilians at the lane.' Signed by a lord, not by Ide. Two people at the table remember that day: old Hollis, who obeyed, and Wenna, who was left. Hear them both. Then decide whether the order goes on the public board."
+  progressText: "Hear Hollis and Wenna at the Shield Table, then decide at the board whether to publish the order."
+  turnInText: "Whatever comes of it, it's ours now. Not a lord's. That's the whole of the Table, Vanguard: nobody owns the shield."
+  doneText: "Sister Vale asked after you. The memorial."
+  refusedText: "It's decided."
+  objectives:
+    - { key: witness, desc: "Hear the two witnesses", target: 2 }
+    - { key: order_judged, desc: "Decide the captain's order at the board", target: 1 }
+  rewards: { xp: 180, copper: 140 }
+
+VAN-06:
+  id: VAN-06
+  group: "Vanguard Path: A Shield is Not a Crown"
+  zone: The Shield Table
+  cls: vanguard   # Vanguards only
+  requires: [VAN-05]
+  title: Names Behind the Rampart
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  text: "The company's shield-plates were stripped and scattered when the order was buried. Three are still out there past the bridge, by the old camp. Bring them back to the memorial stone at the Shield Table. Each one is a name we owe."
+  progressText: "Recover three shield-plates past the briar bridge, then restore them to the memorial at the Shield Table."
+  turnInText: "Ide. Corvane. Little Ash, who carried the water. Names on iron, where the rain can't wash them off. Thank you."
+  doneText: "Oren has one more thing to ask. The last one, he says."
+  refusedText: "They're home now."
+  objectives:
+    - { key: shield_plate, desc: "Recover shield-plates", target: 3 }
+    - { key: memorial_restored, desc: "Restore the memorial", target: 1 }
+  rewards: { xp: 190, copper: 150, items: [legacy_shield_cosmetic] }
+
+VAN-07:
+  id: VAN-07
+  group: "Vanguard Path: A Shield is Not a Crown"
+  zone: The Shield Table
+  cls: vanguard   # Vanguards only
+  requires: [VAN-06]
+  title: The Open Shield
+  giverNpcId: shield-npc-oren
+  giverName: Marshal Oren Flint
+  text: "The trial's old. Three stones in a ring behind the Table. Stand by each and take its blow on your guard. Then sign the book: never use protection to silence the people you protect. Sign it like you'll be held to it. You will."
+  progressText: "Take a blow on your guard at each of the three trial stones, then sign the vow at the lectern."
+  turnInText: "There. Your name, under Ide's. Welcome to the Table, Vanguard. Sit where you like. Not the bare place. That one stays bare."
+  doneText: "The road west to Hollowcrypt is yours whenever you're ready."
+  refusedText: "You're one of us."
+  objectives:
+    - { key: guardian_trial, desc: "Pass the guardian trial stones", target: 3 }
+    - { key: open_shield_vow, desc: "Sign the vow", target: 1 }
+  rewards: { xp: 250, copper: 200, items: [open_shield_sigil] }
+
 items:
+  practice_buckler: { id: practice_buckler, name: Practice Buckler, slot: bag, description: "Dented in exactly two places." }
+  shield_pattern: { id: shield_pattern, name: Shield Pattern of the Table, slot: bag, description: "A grey shield on deep red. Nine rivets, one left empty." }
+  legacy_shield_cosmetic: { id: legacy_shield_cosmetic, name: Ide's Legacy Shield, slot: bag, description: "Old company paint under new. The names show through in rain." }
+  open_shield_sigil: { id: open_shield_sigil, name: Open Shield Sigil, slot: bag, description: "The Table's mark. It opens no door. It keeps one open." }
   tide_chart: { id: tide_chart, name: Tide Chart, slot: bag, description: "The hours are written twice. One set runs backward." }
   conch_token: { id: conch_token, name: Conch Token, slot: bag, description: "Hold it to your ear: oars, faint and patient." }
   lantern_oil: { id: lantern_oil, name: Flask of Lantern Oil, slot: bag, description: "Whale-pale and slow-burning. Honest light." }
