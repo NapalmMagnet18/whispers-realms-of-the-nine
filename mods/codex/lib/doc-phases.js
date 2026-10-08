@@ -45,30 +45,9 @@ export const PHASES = [
         "id": "steps-8",
         "text": "No loading screen; the world streams",
         "done": true
-      },
-      {
-        "id": "steps-9",
-        "text": "Realm routing wired so picking a realm lands the hero in that room",
-        "done": false
-      },
-      {
-        "id": "steps-10",
-        "text": "Two clients join one realm and see each other move (QA-002)",
-        "done": false
-      },
-      {
-        "id": "steps-11",
-        "text": "A coin reward survives leave and rejoin exactly once (SP-004, QA-003)",
-        "done": false
       }
     ],
-    "bugs": [
-      {
-        "id": "bugs-1",
-        "text": "design.md names scripts/routing.js for realm rooms, but no routing.js exists and world.config.yaml has no routing: realm choice may not reach its room. Check before claiming realms work.",
-        "done": false
-      }
-    ],
+    "bugs": [],
     "notes": []
   },
   {
@@ -120,11 +99,6 @@ export const PHASES = [
         "id": "steps-9",
         "text": "Brass Kenney-style UI frames for dialogs, slots, tooltips, region banner",
         "done": true
-      },
-      {
-        "id": "steps-10",
-        "text": "Six townsfolk standing and talkable (Mira, Dren, Bram, Tamsin, Sister Vale, Rowan)",
-        "done": false
       }
     ],
     "bugs": [],
@@ -223,6 +197,11 @@ export const PHASES = [
         "id": "steps-7",
         "text": "Quest tracker shows counts and survives reconnect",
         "done": false
+      },
+      {
+        "id": "steps-8",
+        "text": "Six townsfolk standing and talkable (Mira, Dren, Bram, Tamsin, Sister Vale, Rowan)",
+        "done": false
       }
     ],
     "bugs": [],
@@ -235,41 +214,62 @@ export const PHASES = [
     "steps": [
       {
         "id": "steps-1",
-        "text": "QA-001 fresh player moves and interacts",
+        "text": "Realm routing wired so picking a realm lands the hero in that room",
         "done": false
       },
       {
         "id": "steps-2",
-        "text": "QA-002 two accounts see each other",
+        "text": "Two clients join one realm and see each other move (QA-002)",
         "done": false
       },
       {
         "id": "steps-3",
-        "text": "QA-003 XP, coin and items remain after rejoin",
+        "text": "A coin reward survives leave and rejoin exactly once (SP-004, QA-003)",
         "done": false
       },
       {
         "id": "steps-4",
-        "text": "QA-004 rapid double reward grants once",
+        "text": "QA-001 fresh player moves and interacts",
         "done": false
       },
       {
         "id": "steps-5",
-        "text": "QA-008 attacks obey range and walls; QA-009 leash returns wolves home",
+        "text": "QA-002 two accounts see each other",
         "done": false
       },
       {
         "id": "steps-6",
-        "text": "QA-010 two players chop one oak by a defined rule",
+        "text": "QA-003 XP, coin and items remain after rejoin",
         "done": false
       },
       {
         "id": "steps-7",
+        "text": "QA-004 rapid double reward grants once",
+        "done": false
+      },
+      {
+        "id": "steps-8",
+        "text": "QA-008 attacks obey range and walls; QA-009 leash returns wolves home",
+        "done": false
+      },
+      {
+        "id": "steps-9",
+        "text": "QA-010 two players chop one oak by a defined rule",
+        "done": false
+      },
+      {
+        "id": "steps-10",
         "text": "QA-013 an update doesn't reset older saves",
         "done": false
       }
     ],
-    "bugs": [],
+    "bugs": [
+      {
+        "id": "bugs-1",
+        "text": "design.md names scripts/routing.js for realm rooms, but no routing.js exists and world.config.yaml has no routing: realm choice may not reach its room. Check before claiming realms work.",
+        "done": false
+      }
+    ],
     "notes": []
   },
   {
