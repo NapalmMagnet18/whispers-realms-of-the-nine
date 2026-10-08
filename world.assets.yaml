@@ -1,4 +1,6 @@
 assets:
   metadata:
+    "/cdn/value.0c3011771783a9f2cf4d9441cc6aab928025abfa2ae4a3d9a71a682753966126.glb": {bytes: 58604, kind: model, name: ashen-bow, uploadedAt: "2026-10-08T17:58:43.754Z"}
     "/cdn/value.183f433a28f0d8000d2871ddd6ba7e5a135ec8ab99a3f493631b20bf876869a7.glb": {bytes: 72920, kind: model, name: ashen-sword, uploadedAt: "2026-10-08T17:58:34.327Z"}
     "/cdn/value.1993a89f3060c27a497903d2ab8a65e6eda465e1c444cd5590a616f93c7b94eb.glb": {bytes: 82572, kind: model, name: ashen-shield, uploadedAt: "2026-10-08T17:58:37.681Z"}
+    "/cdn/value.1f72a5571a665069b6c49155d21308addc0b6327f0077484838f67d8ef0099f2.glb": {bytes: 71452, kind: model, name: ashen-staff, uploadedAt: "2026-10-08T17:58:40.802Z"}
