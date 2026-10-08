@@ -369,6 +369,11 @@ export function update(objectApi, dt) {
         guildRole: null,
         activeQuests: [],
         completedQuests: [],
+        tally: {},
+        marks: {},
+        questFlags: {},
+        owedItems: [],
+        roosts: [],
         playerKills: 0,
       };
 
@@ -412,6 +417,11 @@ export function update(objectApi, dt) {
         guildRole: null,
         activeQuests: [],
         completedQuests: [],
+        tally: {},
+        marks: {},
+        questFlags: {},
+        owedItems: [],
+        roosts: [],
         activeCharIdx: newIdx,
         className: classNameC.toLowerCase(),
         raceName: raceDef.name,

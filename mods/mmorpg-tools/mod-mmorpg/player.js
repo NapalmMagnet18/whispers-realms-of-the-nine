@@ -1975,6 +1975,10 @@ export function handleLogout(objectApi, screen) {
       wraithDefeated: false,
       activeQuests: [],
       completedQuests: [],
+      tally: {},
+      marks: {},
+      questFlags: {},
+      owedItems: [],
       roosts: [],
     });
   });
