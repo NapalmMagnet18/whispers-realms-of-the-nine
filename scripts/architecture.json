@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 132,
-  "updatedAt": "2026-10-08T02:04:49.323Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. The Lantern March is authored across place configs, hand-placed scenes and procedural terrain/prop scripts; the MMORPG Tools mod owns RPG lifecycle, player state, cameras and UI.",
+  "basedOnSpecVersion": 144,
+  "updatedAt": "2026-10-08T02:09:02.860Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. The Lantern March is authored across place configs, hand-placed scenes and procedural terrain/prop scripts; the MMORPG Tools mod owns RPG lifecycle, character state, cameras and UI, while core scripts own movement and locomotion.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -107,28 +107,28 @@
     "scripts/ui/nametag.js"
   ],
   "places": [
-    "places/main-menu-land/ - default title/travel menu scene with authored town art and shared terrain decoration.",
-    "places/character-creation-land/ - character preview scene with terrain off and a preview camera/lighting setup.",
+    "places/main-menu-land/ - title/travel menu scene with authored town art and shared terrain decoration.",
+    "places/character-creation-land/ - character preview scene with preview camera and lighting setup.",
     "places/main/ - Lantern March continent: Reach hub at origin, Windmill Farm SW, Briarwild west, quarry east and distant regions across 29 cells.",
-    "places/main/cells/x0z0.scene - Reach hub scene; smithy is staged as an armory with weapon displays, and townhouse is a carpenter's house with upstairs mapmaker's desk, brick chimney, fieldstone plinth border and yard clutter."
+    "places/main/cells/x0z0.scene - Reach hub scene; smithy armory displays finished weapon models, and townhouse uses the updated round-tile roof with brick/plaster gable kit pieces."
   ],
   "roots": [
-    "world.config.yaml - world entry/defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
-    "mods/mmorpg-tools/mod.json - MMORPG Tools template/behavior registration for menu, player and gameplay/creation camera behaviors.",
-    "templates/player.js#player - native player template; runs humanoid locomotion then core movement behavior.",
+    "world.config.yaml - defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
+    "mods/mmorpg-tools/mod.json - registers MMORPG template and menu, player, interaction, quest and gameplay/creation camera behaviors.",
+    "templates/player.js#player - native player template; runs humanoid-locomotion then core movement behavior.",
     "templates/camera.js#camera - native custom camera template; core scripts/camera.js consumes engine look orientation.",
-    "places/main-menu-land/config.yaml and places/character-creation-land/config.yaml - separate menu/preview place roots and atmosphere settings.",
+    "places/main-menu-land/config.yaml and places/character-creation-land/config.yaml - menu and preview place roots with their atmosphere settings.",
     "places/main/config.yaml - playable-world spawn, gravity, terrain generator/materials, vegetation scatter and cinematic look."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/ - integrated RPG package: lifecycle, character selection, gameplay/creation cameras, interaction, quests and UI.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data registries and panel renderers used by mod behaviors and ui.js.",
+    "mods/mmorpg-tools/mod-mmorpg/ - integrated RPG package for character lifecycle, gameplay/creation cameras, interactions, quests and UI.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data registries and panel renderers consumed by mod behaviors and ui.js.",
     "mods/mmorpg-tools/mod-mmorpg/lib/item-icons.js - item-id icon registry reused by inventory rendering; iconFor falls back to an item's existing icon.",
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural geometry used by authored scene instances with parameters.",
     "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometry/material reused by place scatter bindings.",
     "scripts/lib/regions.js - named Lantern March region definitions and regionAt lookup; ui-hud.js mirrors region tests inline.",
     "scripts/lib/data/{player,camera,world}.yml - shared movement, camera-height and terrain-height values read by core scripts.",
-    "art/tools/build.py and art/townhouse/build.py - Blender asset builders for tool-pack GLBs and the scene's townhouse GLB; townhouse builder combines kit modules and hand-built structure."
+    "art/tools/build.py and art/townhouse/build.py - Blender builders for tool-pack GLBs and the scene townhouse GLB; townhouse combines kit modules and hand-built structure."
   ],
   "notableExports": [
     "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
@@ -136,30 +136,30 @@
     "scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, heightAt, materialAt; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
     "scripts/gen/stone-bridge.js, farm.js, windmill.js and windmill-sails.js - geometry, collider; scripts/gen/shape.js supplies box/quad helpers.",
     "scripts/sails-spin.js - onSpawn; animates the windmill sail assembly.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js - movement/state, avatar and roster/music helpers, saveCharacter, onSpawn and lifecycle handlers.",
-    "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview/model helpers, onSpawn, update, onInput; main-menu-mgr.js owns roster/menu handlers.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js - getMv, setMv, getGameplayCharacterProp, ensureGameplayAvatar, getRosterResumeCandidate, restoreRosterCharacterState, getCurrentPlaceMusic, restorePlaceMusic, setWorldSpatialAudio, buildCharData, saveCharacter, onSpawn.",
+    "mods/mmorpg-tools/mod-mmorpg/building-interact.js - onSpawn, openDoorPanel, onInteract; quest-giver.js - onSpawn, update, onInteract, onDestroy.",
     "mods/mmorpg-tools/mod-mmorpg/lib/shop-data.js - hasShop, getShopItems, findShopItem; lib/item-icons.js - ITEM_ICONS, iconFor; lib/ui-inventory.js - buildItemTooltip, eqSlot, eqSlotLarge, renderInventory."
   ],
   "ownership": [
-    "scripts/player.js - room-local movement intent keyed by body and writes core character velocity; place config owns gravity.",
-    "scripts/humanoid-locomotion.js - transient gait/turn state and character yaw, animation channels and seated locomotion.",
+    "scripts/player.js - room-local movement intent keyed by body, core character velocity and terrain-dependent footstep timing/index; place config owns gravity.",
+    "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw, animation channels and seated locomotion.",
     "scripts/camera.js - core camera rig eye pose and local-player hiding; engine view provides orientation.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js and character-select.js - MMORPG player/character creation state, roster transitions, persistence and preview lifecycle.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js and character-select.js - MMORPG player/character creation state, roster transitions, persistence, UI action handling and UI action sounds.",
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - orbit input/pose and creation-phase framing for the mod camera path.",
-    "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - NPC proximity and quest-dialog handoff; quest definitions live in lib/quest-data.js.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-*.js - render presentation from player/world state; UI is not gameplay-state owner.",
-    "places/main/config.yaml and scripts/terrain-reach.js - terrain shape/material generation inputs; scripts/lib/regions.js owns named-region lookup data."
+    "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - NPC proximity and quest-dialog handoff and its offer/open sounds; quest definitions live in lib/quest-data.js.",
+    "mods/mmorpg-tools/mod-mmorpg/building-interact.js - generic building-panel handoff and building-door open sound.",
+    "mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-*.js - render presentation from player/world state; places/main/config.yaml and scripts/terrain-reach.js own terrain inputs."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → MMORPG menu/player/character-select/main-menu-mgr behaviors → character creation and transition into main.",
     "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading.",
     "Creation camera behavior path in mod.json → character-select.js installs camera-creation.js → frames preview; gameplay camera handles orbit outside creation.",
     "world.config.yaml player template → scripts/humanoid-locomotion.js then scripts/player.js; gait samples movement before this tick's movement velocity write.",
-    "moveX/moveZ/jump input → scripts/player.js onInput stores room-local intent → update eases velocity and applies place gravity.",
+    "moveX/moveZ/jump input → scripts/player.js onInput stores room-local intent → update eases velocity, applies place gravity and emits nearby terrain-selected footsteps when grounded and moving.",
     "world.config.yaml UI renderer → mods/mmorpg-tools/mod-mmorpg/ui.js reads local player/world state → lib/ui-* renderers compose HUD, menu, quest and panels; nametag renders separately.",
     "Main-place local player's feetPosition x/z → ui-hud.js inline region tests → name over minimap; scripts/lib/regions.js exports corresponding lookup data but is not imported by this HUD path.",
     "Character creation state → ui.js creation renderer and injected name input → setCharName/confirmCharacter actions; NAME_SWEEP removes persistent DOM name box outside creation.",
-    "quest-giver.js proximity/interact → lib/quest-data.js and player activeQuests → showQuestDialog/questDialogData on player → ui.js/lib/ui-quest.js.",
+    "quest-giver.js proximity/interact → lib/quest-data.js and player activeQuests → showQuestDialog/questDialogData on player → ui.js/lib/ui-quest.js; quest giver emits parchment/chime sounds on offer.",
     "lib/ui-door-panel.js reads lib/shop-data.js inventories for the interacting building → shopSelectItem/buyShopItem actions in player.js → gold and inventory state are patched on the player.",
     "lib/item-icons.js iconFor(item id) → lib/ui-inventory.js renders icons for equipment and inventory slots; shop-data.js carries matching art URLs for shop items.",
     "places/main/config.yaml terrain generator → scripts/terrain-reach.js heightAt/materialAt and scatter bindings; scene entities use scripts/gen geometry or model assets, while windmill sails animate via scripts/sails-spin.js."
@@ -171,15 +171,15 @@
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - paired gameplay orbit and preview camera modes with creation-phase guards.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character and settings.",
     "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected by place atmosphere.",
-    "art/tools/build.py and art/townhouse/build.py - asset-building pipelines; tool builder exports each OBJ separately and townhouse builder assembles kit modules with hand-built structural parts and added exterior/yard kit pieces."
+    "art/tools/build.py and art/townhouse/build.py - asset-building pipelines; tool builder exports OBJ assets separately and townhouse builder assembles kit modules with hand-built structure and exterior/yard pieces."
   ],
   "probableOrphans": [],
   "migrationNotes": [
     "Keep core movement intent and locomotion scratch in room-local ctx.session; scripts/player.js writes velocity and place config owns gravity.",
-    "templates/player.js runs humanoid-locomotion before player.js; behavior order determines whether gait samples prior-tick or current movement velocity.",
+    "templates/player.js runs humanoid-locomotion before player.js; behavior order means gait samples prior-tick movement velocity.",
     "Core scripts/camera.js uses engine look orientation and feetPosition + eyeHeight × effectiveScale.y; MMORPG orbit/creation cameras are a distinct path.",
     "MMORPG camera.js delegates creation framing to camera-creation.js and guards orbit during creation/dialog states; preserve these phase and panel guards.",
-    "terrain-reach.js blends the March to a coastline via landFactor and builtin shore(h, 0); sea level is 0, while Sorrowfen terrain is shaped near 0.5 and classified as mud around the FEN center.",
+    "Terrain footsteps query heightAt/materialAt beneath feet: elevated floors use hard steps, cobble/rock/redrock are hard, gravel has its own set, remaining ground uses soft steps.",
     "Region labels are duplicated: ui-hud.js hardcodes ordered distance/coordinate tests instead of calling scripts/lib/regions.js; item icon lookup is keyed by item id and falls back to the item's existing icon."
   ]
 }
