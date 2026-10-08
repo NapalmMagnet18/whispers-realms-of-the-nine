@@ -1,0 +1,7 @@
+# spawn-scene v2 yaml x2z0
+ws-spire:
+  castShadow: false
+  feetPosition: {x: 200, y: 7, z: -46.7}
+  id: ws-spire
+  primitive: {kind: scripted, script: scripts/gen/spire.js}
+  scale: 0.42
