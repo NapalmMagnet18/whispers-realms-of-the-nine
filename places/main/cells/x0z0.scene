@@ -774,6 +774,13 @@ quest-board:
   primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
   rotation: 160
   tags: [questboard, interactable]
+reach-east-gate:
+  feetPosition: {x: 60, y: 4, z: 6}
+  id: reach-east-gate
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 4, height: 9, kind: box, width: 10}
+  tags: [blueprint]
 reach-groves:
   feetPosition: {x: 0, y: {terrain: -0.1}, z: 0}
   id: reach-groves
@@ -789,6 +796,13 @@ reach-petals:
   id: reach-petals
   scatter: {bounds: {innerRadius: 62, outerRadius: 95, shape: ring}, count: 220, templates: [{model: /cdn/model-petal-purple-flower-88a9bydy.glb, weight: 1}, {model: /cdn/model-petal-flower-cream-yellow-1bs0rt47.glb, weight: 1}], variation: {scale: [1.5, 2.5], yaw: [0, 360]}}
   tags: [meadow]
+reach-watchtower:
+  feetPosition: {x: 50, y: 4, z: -30}
+  id: reach-watchtower
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 5, height: 14, kind: box, width: 5}
+  tags: [blueprint]
 road-pebbles-0:
   feetPosition: {x: -24, y: {terrain: 0}, z: -4}
   id: road-pebbles-0
