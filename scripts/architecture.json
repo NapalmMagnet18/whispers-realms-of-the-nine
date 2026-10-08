@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 464,
-  "updatedAt": "2026-10-08T03:20:45.638Z",
+  "basedOnSpecVersion": 480,
+  "updatedAt": "2026-10-08T03:29:53.580Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype whose title and character-creation places lead into the streamed Lantern March continent. MMORPG Tools owns the front door, character lifecycle and modular UI; ordered player behaviors compose movement, class combat, quests and trade, while procedural builders and terrain bindings supply settlements, landmarks and painted vegetation.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -179,11 +179,11 @@
   "notableExports": [
     "scripts/routing.js - pickRoom; crons/realm-pulse.js - cron; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
     "mods/mmorpg-tools/mod-mmorpg/main-menu-mgr.js - roster selection/hydration, update, onSpawn and onInput; lib/ui-character-roster.js - renderCharacterRoster.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ui-main-menu.js - renderMainMenu; lib/ui-art.js - BORDERS, DIVIDERS, frame, rule, BRASS_FILTER; lib/version.js - GAME_VERSION (0.8.2 Alpha), GAME_TITLE, versionTag.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-main-menu.js - renderMainMenu; lib/ui-art.js - BORDERS, DIVIDERS, frame, rule, BRASS_FILTER; lib/version.js - GAME_VERSION (0.8.6 Alpha), GAME_TITLE, versionTag.",
     "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview lifecycle, onSpawn, update and onInput; menu-camera.js - update.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - character build/save/load, lifecycle, movement helpers, logout and onLeave.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-hud.js - renderTargetDisplay, renderHUD; lib/ui-menu-panel.js - menu and character/stat/inventory/spellbook/quest renderers and helpers.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - renderMainMenuSettingsOverlay, getRightHudLayout, default, renderZoneBanner, renderWASD, renderCharacterCreation.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; ui.js - main-menu/settings overlay, HUD layout, zone banner, WASD and character-creation renderers.",
     "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - sit/onInput/update; scripts/gen/tree.js - geometry/collider."
   ],
   "ownership": [
@@ -208,7 +208,7 @@
     "moveX/moveZ/jump and orbit/steer/autorun → player.js and wow-move.js room-local intent → body motion under place gravity.",
     "Attack/cast inputs → class abilities and scripts/lib/missiles.js → targets/wolves; wolf slow/hit state is consumed by wolves.js.",
     "Interact/quest inputs → quest-player resolves quest NPC, talker, readable, cache or timber; quest-data/quests.yml drives accept/complete and UI actions.",
-    "main/config.yaml terrain layers bind geometry scripts to scripted looks; ui.js composes lib/ui-* renderers, including shared brass frame/rule helpers from ui-art.js for HUD and windows."
+    "ui.js composes lib/ui-* renderers and defers menu panel, door panel, guild, tip-jar, vampire and cursed-item modules with import() until requested; UI helper panels render from shared game state."
   ],
   "behaviorFamilies": [
     "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js and reach-* - builders recur across placed instances, varied by kind, seed and dimensions.",
@@ -227,6 +227,6 @@
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "Realm sources differ: routing and pulse read scripts/lib/data/realms.yml, while realm-save.js hardcodes room IDs; keep roster, route and save identifiers aligned.",
     "Persisted character fields must travel through player.js build/load data and realm-save signatures while preserving the (user, realm, slot) key; legacy storage roster import is restricted to realm main because player.state rides between rooms.",
-    "Tree leaf look wraps card UVs with fract and cuts by the minimum of painted mask and texture alpha (alphaTest 0.45); retain the geometry/material UV bands and params.kind alignment."
+    "ui.js lazy module wrappers initially return an empty string until import() resolves; keep each deferred export name aligned with _LAZY_FN and the renderer's call site."
   ]
 }
