@@ -109,3 +109,5 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 
 - 2026-10-08: class damage was flat at every level (Strike 7 at lv 1 and lv 21) while health grows 60/level; now every ability hits +8%/level past 1 (levels.yml damagePerLevel). Mirelurker claw 140 -> 110. Measured: lv 21 Shade kills it in ~35 s, ending near 10% hp when tanking every toll. Reason: the elite was unwinnable (110 s to kill vs ~20 s to die).
 - 2026-10-08: monster kill credit (tally + XP) rings the hero's own "kill" ear (quest-player.js) instead of being written from the monster's machine, which got overwritten. Monsters losing their target only heal/reset when no living hero is within 22 m (a Veil no longer resets them).
+
+- 2026-10-08: Quarry scavengers (Q006) tuned: aggro 12→7 m, strike 55→38, hp 80→70. A level-6 Vanguard pulling one at a time was mobbed by the whole camp and died before 3 kills in Savi's builder test.

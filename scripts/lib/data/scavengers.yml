@@ -1,7 +1,7 @@
 # Quarry Scavengers (Q006's enemy, quest bible LANTCB5E-06), run by scripts/scavengers.js on the quarry-scavenger-camp.
 # Seconds, metres, hit points. A cut lands on the mod's player.state.health (HUD max 1000).
-hp: 80
-aggro: 12
+hp: 70
+aggro: 7          # close enough to pull one thief, not the whole camp (was 12)
 dropAggro: 22
 leash: 26
 walk: 1.3
@@ -9,7 +9,7 @@ run: 5.6           # slower than a wolf: a scavenger is a thief, not a hunter
 turn: 360
 roamRadius: 6
 roamPause: [3, 7]
-strike: { damage: 55, windup: 0.75, start: 2.0, reach: 2.2, cooldown: 1.8, stopAt: 1.5 }
+strike: { damage: 38, windup: 0.75, start: 2.0, reach: 2.2, cooldown: 1.8, stopAt: 1.5 }
 corpse: 3
 fadeAt: 1.8
 respawn: 25
