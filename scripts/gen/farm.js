@@ -19,13 +19,26 @@ export function geometry(ctx) {
     box(ctx, -w / 2, -0.1, -d / 2, -w / 2 + 0.15, 0.25, d / 2); box(ctx, w / 2 - 0.15, -0.1, -d / 2, w / 2, 0.25, d / 2);
     ctx.albedo(SOIL); ctx.color("oklch(0.9 0.03 60)"); box(ctx, -w / 2 + 0.15, -0.1, -d / 2 + 0.15, w / 2 - 0.15, 0.2, d / 2 - 0.15);
     if (L >= 4) return;
-    const rows = Math.floor((d - 0.6) / 0.6), cols = Math.floor((w - 0.6) / (crop === "wheat" ? 0.35 : 0.6));
-    ctx.albedo(null);
+    const rows = Math.floor((d - 0.6) / 0.6), step = crop === "wheat" ? 0.45 : 0.6, cols = Math.floor((w - 0.6) / step);
+    ctx.albedo(null); ctx.roughness(0.8);
+    const blade = (x, z, h, lean, yaw, wd) => { // a crossed pair of tapered blades
+      for (const o of [0, 90]) { const a = (yaw + o) * Math.PI / 180, ca = Math.cos(a) * wd, sa = Math.sin(a) * wd, tx = x + Math.cos(a + 1.2) * lean, tz = z + Math.sin(a + 1.2) * lean;
+        ctx.quad(x - ca, 0.2, z - sa, x + ca, 0.2, z + sa, tx + ca * 0.3, 0.2 + h, tz + sa * 0.3, tx - ca * 0.3, 0.2 + h, tz - sa * 0.3); }
+    };
     for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
-      const x = -w / 2 + 0.45 + c * ((w - 0.9) / Math.max(1, cols - 1)) + (R() - 0.5) * 0.08, z = -d / 2 + 0.5 + r * 0.6 + (R() - 0.5) * 0.08;
-      if (crop === "wheat") { ctx.color(`oklch(${0.74 + R() * 0.08} 0.12 ${80 + R() * 10})`); ctx.roughness(0.8); const h = 0.8 + R() * 0.3; boxR(ctx, [x, 0.2 + h / 2, z], [0.04, h, 0.04], { roll: (R() - 0.5) * 12 }); if (L <= 2) { ctx.color("oklch(0.8 0.13 82)"); boxR(ctx, [x, 0.25 + h, z], [0.09, 0.22, 0.09]); } }
-      else if (crop === "cabbage") { ctx.color(`oklch(${0.62 + R() * 0.08} 0.12 ${130 + R() * 15})`); blob(ctx, x, 0.38, z, 0.24, 0.2, 0.24, r * 31 + c, 0.25, L <= 2 ? 4 : 3, L <= 2 ? 6 : 5); }
-      else { ctx.color("oklch(0.6 0.14 140)"); for (let f = 0; f < 3; f++) boxR(ctx, [x, 0.4, z], [0.05, 0.4, 0.05], { roll: (f - 1) * 25, yaw: f * 60 }); }
+      const x = -w / 2 + 0.45 + c * ((w - 0.9) / Math.max(1, cols - 1)) + (R() - 0.5) * 0.1, z = -d / 2 + 0.5 + r * 0.6 + (R() - 0.5) * 0.1;
+      if (crop === "wheat") {
+        for (let t = 0; t < (L <= 2 ? 4 : 2); t++) { const ox = (R() - 0.5) * 0.3, oz = (R() - 0.5) * 0.3, h = 0.85 + R() * 0.3;
+          ctx.color(`oklch(${(0.72 + R() * 0.1).toFixed(3)} 0.11 ${(78 + R() * 12).toFixed(1)})`); blade(x + ox, z + oz, h, 0.08, R() * 180, 0.05);
+          if (L <= 2) { ctx.color("oklch(0.82 0.13 80)"); boxR(ctx, [x + ox + 0.05, 0.25 + h, z + oz], [0.07, 0.2, 0.07], { roll: -10 }); } }
+      } else if (crop === "cabbage") {
+        ctx.color(`oklch(${(0.6 + R() * 0.1).toFixed(3)} 0.13 ${(128 + R() * 15).toFixed(1)})`);
+        for (let f = 0; f < 5; f++) boxR(ctx, [x, 0.32, z], [0.42, 0.14, 0.32], { yaw: f * 36 + R() * 20, roll: (R() - 0.5) * 30, pitch: (R() - 0.5) * 30 });
+        ctx.color("oklch(0.75 0.12 125)"); boxR(ctx, [x, 0.42, z], [0.22, 0.18, 0.22], { yaw: R() * 90 });
+      } else {
+        ctx.color(`oklch(${(0.6 + R() * 0.08).toFixed(3)} 0.15 140)`); for (let f = 0; f < 3; f++) blade(x, z, 0.35 + R() * 0.15, 0.1, f * 60 + R() * 30, 0.06);
+        ctx.color("oklch(0.68 0.16 50)"); cyl(ctx, x, 0.18, z, 0.06, 0.07, 0.06, 6);
+      }
     }
     return;
   }
