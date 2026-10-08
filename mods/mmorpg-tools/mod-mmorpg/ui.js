@@ -19,6 +19,7 @@ const { renderCursedItemDialog } = require('./lib/ui-cursed-item-dialog.js');
 
 var FONT_INJECTOR = '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="(function(){if(window._FFLA)return;window._FFLA=1;var f1=new FontFace(\'Cinzel\',\'url(/cdn/font-cinzel-regular.woff2)\',{weight:\'400\',display:\'swap\'});var f2=new FontFace(\'Cinzel\',\'url(/cdn/font-cinzel-bold.woff2)\',{weight:\'700\',display:\'swap\'});f1.load().then(function(l){document.fonts.add(l)}).catch(function(){});f2.load().then(function(l){document.fonts.add(l)}).catch(function(){})})()" style="display:none" />';
 
+var NAME_SWEEP = '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();" style="display:none" />';
 var FONT_STYLE = '<style>@font-face{font-family:"Cinzel";src:url("/cdn/font-cinzel-regular.woff2") format("woff2");font-weight:400;font-display:swap}@font-face{font-family:"Cinzel";src:url("/cdn/font-cinzel-bold.woff2") format("woff2");font-weight:700;font-display:swap}#fa-ui-root .fa-chat,#fa-ui-root .fa-chat *,#fa-ui-root [data-chat],#fa-ui-root [data-chat] *{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif !important}</style>';
 
 var ART_HIDE_CSS = '<style>'
@@ -197,7 +198,7 @@ export default function(world, localPlayer) {
     // State is flickering — force HUD display with error recovery
     var hideControls2 = localPlayer.state.controlsHidden === true;
     try {
-      return FONT_INJECTOR + wrapOpen + renderHUD(localPlayer, world, rightHudLayout)
+      return FONT_INJECTOR + NAME_SWEEP + wrapOpen + renderHUD(localPlayer, world, rightHudLayout)
         + (hideControls2 ? '' : renderWASD(localPlayer, rightHudLayout))
         + renderChat(localPlayer, world, rightHudLayout)
         + renderMenuPanel(localPlayer, world, rightHudLayout)
@@ -265,7 +266,7 @@ export default function(world, localPlayer) {
   if (characterCreated || phase === 'playing' || localPlayer.state._hasCharacter || localPlayer.state._dataLoaded) {
     __faEverPlayed = true;
     try {
-      return FONT_INJECTOR + wrapOpen + renderHUD(localPlayer, world, rightHudLayout) + FONT_WRAP_CLOSE;
+      return FONT_INJECTOR + NAME_SWEEP + wrapOpen + renderHUD(localPlayer, world, rightHudLayout) + FONT_WRAP_CLOSE;
     } catch(e) {
       return FONT_INJECTOR + wrapOpen + '<div class="fixed inset-0" style="background:#0a0a0f;"></div>' + FONT_WRAP_CLOSE;
     }
