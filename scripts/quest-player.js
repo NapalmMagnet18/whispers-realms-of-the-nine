@@ -354,7 +354,7 @@ export function update(ctx) {
   if (ctx.session.chop) hint = 'Chopping…';
   else if (!st.showQuestDialog && readyMark(ctx)) { const mk = readyMark(ctx); hint = 'E  ' + (mk.state.verb || 'Use') + ' ' + (mk.state.title || ''); }
   else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to ' + npcName(near(ctx, 'quest-npc', N.talkReach));
-  else if (!st.showQuestDialog && nearMark(ctx)) { const mk = nearMark(ctx); hint = 'E  ' + (mk.state.verb || 'Use') + ' ' + (mk.state.title || ''); }
+  else if (!st.showQuestDialog && nearMark(ctx)) { const mk = nearMark(ctx), mm = markFor(ctx, mk), pre = mk.state.after && mm && mm.p.objectives.find((o) => o.key === mk.state.after); hint = pre && pre.current < pre.target ? (mk.state.afterText || ('First: ' + pre.desc)) : 'E  ' + (mk.state.verb || 'Use') + ' ' + (mk.state.title || ''); } // a step still waiting names the step before it, never a press that won't land
   else if (!st.showQuestDialog && near(ctx, 'talker', N.talkReach)) { const f = near(ctx, 'talker', N.talkReach); hint = 'E  Talk to ' + ((TF[f.state && f.state.who] || {}).name || 'them'); }
   else if (near(ctx, 'readable', R.reach)) { const r = near(ctx, 'readable', R.reach); hint = 'E  Read ' + ((r.state && r.state.title) || 'note'); }
   else if (nearCache(ctx)) { const c = nearCache(ctx); hint = (st.caches || {})[c.state.cache || c.id] ? 'Empty chest' : 'E  Open ' + (c.state.title || 'chest'); }
