@@ -10,3 +10,4 @@ dungeons:
   - { id: pale-choir,     name: "The Pale Choir",        kind: raid,    size: 5, minLevel: 60, link: "+pale-choir#choir-gate-in",         tally: pale_choir_entered, quest: END-01 }
   - { id: emberheart,     name: "Emberheart Caldera",    kind: raid,    size: 5, minLevel: 60, link: "+emberheart#caldera-gate-in",       tally: emberheart_entered, quest: END-01 }
   - { id: ninth-assembly, name: "Assembly of the Ninth", kind: raid,    size: 5, minLevel: 60, link: "+ninth-assembly#assembly-gate-in",  tally: assembly_entered,   quest: END-01 }
+  - { id: banner-vale,    name: "Banner Vale (5v5)",     kind: battleground, size: 10, minLevel: 10, link: "+banner-vale" }
