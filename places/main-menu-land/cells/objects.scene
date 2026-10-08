@@ -1,0 +1,6 @@
+# spawn-scene v2 yaml objects
+rg-moonfill:
+  feetPosition: {x: 0, y: 20, z: 0}
+  id: rg-moonfill
+  light: {color: "#7c78c8", groundColor: "#3a2a20", intensity: 0.9, kind: hemisphere}
+  tags: [realm-gate]

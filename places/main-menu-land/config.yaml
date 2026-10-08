@@ -24,7 +24,7 @@ atmosphere:
     density: 0.85
     enabled: true
     milkyWay: 0.8
-  timeOfDay: 18.2
+  timeOfDay: 17.95
   wind:
     direction: 230
     speed: 1.2

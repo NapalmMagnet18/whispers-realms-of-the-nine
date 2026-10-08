@@ -7,6 +7,7 @@ rg-arch:
   primitive: {kind: scripted, params: {kind: arch}, script: scripts/gen/realm-gate.js, seed: 9}
   receiveShadow: true
   rotation: {pitch: 0, roll: 0, yaw: 0}
+  scale: 1.35
   tags: [realm-gate]
 rg-brazier-l:
   castShadow: true
@@ -51,9 +52,9 @@ rg-fire-r:
   id: rg-fire-r
   tags: [realm-gate]
 rg-gatelight:
-  feetPosition: {x: 0, y: 6, z: -23.2}
+  feetPosition: {x: 0, y: 7, z: -22}
   id: rg-gatelight
-  light: {color: "#f2b04a", distance: 70, intensity: 420, kind: point, shadow: {enabled: false}}
+  light: {color: "#f2b04a", distance: 95, intensity: 1600, kind: point, shadow: {enabled: false}}
   tags: [realm-gate]
 rg-lamp-l2:
   feetPosition: {x: -2.9, y: 2.5, z: -7}
@@ -172,20 +173,22 @@ rg-pillar-4:
   tags: [realm-gate]
 rg-veil:
   castShadow: false
-  feetPosition: {x: 0, y: 7, z: -26}
+  feetPosition: {x: 0, y: 9.450000000000001, z: -26}
   id: rg-veil
   material: {kind: scripted, params: {centreY: -0.6, glow: 1, height: 11.6, width: 7.8}, script: scripts/material-realm-veil.js}
   physics: none
   primitive: {height: 11.6, kind: plane, width: 7.8}
+  scale: 1.35
   tags: [realm-gate]
 rg-veil-sparks:
-  feetPosition: {x: 0, y: 6.2, z: -25.4}
+  feetPosition: {x: 0, y: 8.370000000000001, z: -25.2}
   fx: {script: "fx\npop motes rate=?mobile:10|22 on=box(3.6,5.2,.2) life=3..5 v=<0,0,1>*(.3..0.9)+sdir()*.25 size=.03..0.07 acc=curl(.4)*.6+buoy(.15)+drag(.3)\n  sz=$size*(1>.8:.7>.2) col=hdr(5,3.2,1)>.5:hdr(2.6,1,.2)>hdr(1,.25,.05) a=(0>.1:1>.7:.8>0)*flick(6,.3) r=sprite(ember,add,velocity,.03)\npop glints rate=3 on=box(3.4,5.2,.1) life=1.5..2.5 v=<0,.4,1>*(.2..0.5) size=.12..0.22 col=hdr(4,2.6,.9) a=0>.3:.8>1:0 sz=$size*(.4>1:1>.2) r=sprite(soft-disc,add)"}
   id: rg-veil-sparks
+  scale: 1.35
   tags: [realm-gate]
 rg-warden-l1:
   castShadow: true
-  feetPosition: {x: -9.5, y: {terrain: 0}, z: -22}
+  feetPosition: {x: -11, y: {terrain: 0}, z: -22}
   id: rg-warden-l1
   physics: none
   primitive: {kind: scripted, params: {kind: warden}, script: scripts/gen/realm-gate.js, seed: 3}
@@ -203,7 +206,7 @@ rg-warden-l2:
   tags: [realm-gate]
 rg-warden-r1:
   castShadow: true
-  feetPosition: {x: 9.5, y: {terrain: 0}, z: -22}
+  feetPosition: {x: 11, y: {terrain: 0}, z: -22}
   id: rg-warden-r1
   physics: none
   primitive: {kind: scripted, params: {kind: warden}, script: scripts/gen/realm-gate.js, seed: 4}
