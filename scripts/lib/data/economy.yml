@@ -15,3 +15,4 @@ sellOnly:
   log: 3
   timber-logs: 3
   empty-vial: 1
+bankSlots: 40          # the vault a banker keeps for each character (scripts/vendor.js, lib/ui-vendor.js renderBank)
