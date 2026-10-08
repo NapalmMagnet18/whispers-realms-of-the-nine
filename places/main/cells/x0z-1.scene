@@ -1,4 +1,10 @@
 # spawn-scene v2 yaml x0z-1
+ashen-barrel-1:
+  feetPosition: {x: 61.2, y: 5, z: -183.6}
+  id: ashen-barrel-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  tags: [ashen]
 node-sunleaf-15:
   behavior: scripts/gather-node.js
   feetPosition: {x: 38.1, y: {terrain: 0}, z: -80.9}

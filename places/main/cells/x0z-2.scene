@@ -15,3 +15,10 @@ ashen-signpost:
   primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js}
   rotation: 180
   tags: [ashen]
+ashen-woodpile-2:
+  feetPosition: {x: 60, y: 5, z: -197}
+  id: ashen-woodpile-2
+  physics: static
+  primitive: {kind: scripted, params: {L: 2.2, kind: woodpile}, script: scripts/gen/ashen-village.js}
+  rotation: {yaw: -90}
+  tags: [ashen]

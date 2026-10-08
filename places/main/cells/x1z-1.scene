@@ -1,4 +1,11 @@
 # spawn-scene v2 yaml x1z-1
+ashen-barrel-2:
+  feetPosition: {x: 85.4, y: 5, z: -183.8}
+  id: ashen-barrel-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: {yaw: 40}
+  tags: [ashen]
 ashen-bed-graves:
   audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-cold-wind-over-graves-crows-cawing-iron-gate-creak-loop.mp3, gain: 0.18, loop: true, maxDistance: 48, spatial: true}
   feetPosition: {x: 128, y: {terrain: 2}, z: -185}
@@ -63,6 +70,13 @@ ashen-cathedral:
   physics: none
   primitive: {depth: 16, height: 26, kind: box, width: 36}
   tags: [blueprint]
+ashen-crate-1:
+  feetPosition: {x: 86.2, y: 5, z: -184.6}
+  id: ashen-crate-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: {yaw: 20}
+  tags: [ashen]
 ashen-fence-00:
   feetPosition: {x: 89.61868265127458, y: 4.6574076365512775, z: -188.02067518552204}
   id: ashen-fence-00
@@ -302,6 +316,30 @@ ashen-gate:
   primitive: {kind: scripted, params: {kind: gate}, script: scripts/gen/ashen.js, seed: 4}
   rotation: {yaw: 90}
   tags: [ashen]
+ashen-house-n1:
+  children: [{feetPosition: {x: 0.122, y: 2.35, z: -3.46}, id: lamp, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 2.2, kind: point}}, {feetPosition: {x: 1.21, y: 12.18, z: 1.242}, fx: {script: "fx\npop smoke rate=5 on=disc(.12) life=3..5 v=up(.6..1)+sdir()*.15 size=.35..0.6 acc=buoy(.25)+curl(.3)*.4+wind()*.6+drag(.5) sz=$size*(.6>3) col=<.42,.4,.4>><.3,.3,.32> a=0>.3:.28>.7:.15>0 rot=spin(.15) r=sprite(smoke-puff,alpha)"}, id: smoke}]
+  feetPosition: {x: 64, y: 5, z: -180}
+  id: ashen-house-n1
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 6, kind: townhouse, pitch: 0.9, w: 4.6}, script: scripts/gen/ashen-village.js, seed: 1}
+  rotation: {yaw: 0}
+  tags: [ashen, building]
+ashen-house-n2:
+  children: [{feetPosition: {x: -0.02200000000000002, y: 2.35, z: -3.96}, id: lamp, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 2.2, kind: point}}]
+  feetPosition: {x: 73, y: 5, z: -180.5}
+  id: ashen-house-n2
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 7, h1: 3, h2: 2.7, kind: townhouse, w: 5.4}, script: scripts/gen/ashen-village.js, seed: 2}
+  rotation: {yaw: -2}
+  tags: [ashen, building]
+ashen-house-n3:
+  children: [{feetPosition: {x: 1.75, y: 2.35, z: -3.71}, id: lamp, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 2.2, kind: point}}, {feetPosition: {x: -1.254, y: 12.075, z: 1.332}, fx: {script: "fx\npop smoke rate=5 on=disc(.12) life=3..5 v=up(.6..1)+sdir()*.15 size=.35..0.6 acc=buoy(.25)+curl(.3)*.4+wind()*.6+drag(.5) sz=$size*(.6>3) col=<.42,.4,.4>><.3,.3,.32> a=0>.3:.28>.7:.15>0 rot=spin(.15) r=sprite(smoke-puff,alpha)"}, id: smoke}]
+  feetPosition: {x: 82, y: 5, z: -180}
+  id: ashen-house-n3
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 6.5, doorX: 0.8, kind: townhouse, w: 4.8}, script: scripts/gen/ashen-village.js, seed: 3}
+  rotation: {yaw: 3}
+  tags: [ashen, building]
 ashen-lamp-2:
   children: [{feetPosition: {x: 0, y: 2.66, z: -0.9}, id: lantern, light: {color: oklch(0.8 0.14 70), distance: 12, intensity: 2, kind: point}, primitive: {kind: scripted, params: {chain: 0.3, kind: lantern}, script: scripts/gen/ashen.js, seed: 6}}]
   feetPosition: {x: 65, y: 5.025049489918085, z: -189}
@@ -317,6 +355,13 @@ ashen-lamp-3:
   physics: static
   primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/ashen.js, seed: 92}
   rotation: {yaw: 0}
+  tags: [ashen]
+ashen-laundry-2:
+  feetPosition: {x: 77.6, y: 5, z: -176.5}
+  id: ashen-laundry-2
+  physics: static
+  primitive: {kind: scripted, params: {L: 4.2, kind: laundry}, script: scripts/gen/ashen-village.js}
+  rotation: {yaw: 92}
   tags: [ashen]
 ashen-mausoleum:
   feetPosition: {x: 150, y: 5, z: -160}
@@ -365,6 +410,22 @@ ashen-npc-osric:
   rotation: {yaw: 180}
   state: {homeYaw: 180, idle: Idle, npcName: Gravekeeper Osric, who: osric-ashen, yaw: 180}
   tags: [npc, talker, townsfolk, ashen]
+ashen-post-1:
+  children: [{feetPosition: {x: 0.9, y: 2.45, z: 0}, id: l, light: {color: oklch(0.82 0.13 65), distance: 11, intensity: 2.5, kind: point}}]
+  feetPosition: {x: 68.6, y: 5, z: -186.6}
+  id: ashen-post-1
+  physics: static
+  primitive: {kind: scripted, params: {h: 3.2, kind: lanternpost}, script: scripts/gen/ashen-village.js}
+  rotation: {yaw: 0}
+  tags: [ashen]
+ashen-post-2:
+  children: [{feetPosition: {x: 0.9, y: 2.65, z: 0}, id: l, light: {color: oklch(0.82 0.13 65), distance: 11, intensity: 2.5, kind: point}}]
+  feetPosition: {x: 88.5, y: 5, z: -184}
+  id: ashen-post-2
+  physics: static
+  primitive: {kind: scripted, params: {h: 3.4, kind: lanternpost}, script: scripts/gen/ashen-village.js}
+  rotation: {yaw: 10}
+  tags: [ashen]
 ashen-relic-table:
   children: [{feetPosition: {x: -0.5, y: 0.862, z: 0.02}, id: ashen-item-tome, model: /cdn/value.bfe82f4da1223cc5c448786927465c38158327a575eb3533c15dfbc8650e01a6.glb, rotation: {yaw: 14}, tags: [ashen-relic]}, {feetPosition: {x: -0.02, y: 0.862, z: 0.06}, id: ashen-item-daggers, model: /cdn/value.1298b84ae2d73e226d2d150c330b2dac63c1a6938e848745fd69e4276d613a21.glb, rotation: {yaw: -20}, scale: 1.25, tags: [ashen-relic]}, {feetPosition: {x: 0.33, y: 0.862, z: 0.1}, id: ashen-item-flask-1, model: /cdn/value.ae572e81ad4bdeee554a69fc12ffe7bcad33dccb7d35c382ca5e5431f2b4ec24.glb, tags: [ashen-relic]}, {feetPosition: {x: 0.47, y: 0.862, z: -0.08}, id: ashen-item-flask-2, model: /cdn/value.ae572e81ad4bdeee554a69fc12ffe7bcad33dccb7d35c382ca5e5431f2b4ec24.glb, rotation: {yaw: 40}, tags: [ashen-relic]}, {feetPosition: {x: 0.6, y: 0.862, z: 0.12}, id: ashen-item-flask-3, model: /cdn/value.ae572e81ad4bdeee554a69fc12ffe7bcad33dccb7d35c382ca5e5431f2b4ec24.glb, rotation: {yaw: 75}, tags: [ashen-relic]}, {feetPosition: {x: 1.35, y: 0, z: 0.15}, id: ashen-item-chest, model: /cdn/value.a721b4a77fae4d8b72d88b6beb62b06be3175ef4c5685593b4f6ef3eead5bd67.glb, physics: static, rotation: {yaw: -18}, tags: [ashen-relic]}, {feetPosition: {x: 0, y: 2.1, z: 0.5}, id: ashen-table-lamp, light: {color: oklch(0.82 0.13 70), distance: 7, intensity: 2, kind: point}}]
   feetPosition: {x: 102, y: 5, z: -177}
@@ -484,6 +545,20 @@ ashen-tree-6:
   physics: static
   primitive: {kind: scripted, params: {h: 7, kind: deadtree}, script: scripts/gen/ashen.js, seed: 96}
   rotation: {yaw: 335}
+  tags: [ashen]
+ashen-well:
+  feetPosition: {x: 77.6, y: 5, z: -185.4}
+  id: ashen-well
+  physics: static
+  primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
+  rotation: {yaw: 15}
+  tags: [ashen]
+ashen-woodpile:
+  feetPosition: {x: 86.2, y: 5, z: -179.5}
+  id: ashen-woodpile
+  physics: static
+  primitive: {kind: scripted, params: {L: 2.6, kind: woodpile}, script: scripts/gen/ashen-village.js}
+  rotation: {yaw: 90}
   tags: [ashen]
 ashen-yard:
   feetPosition: {x: 128, y: 5, z: -185}
