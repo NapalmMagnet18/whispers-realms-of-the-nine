@@ -1,0 +1,29 @@
+# Quarry Scavengers (Q006's enemy, quest bible LANTCB5E-06), run by scripts/scavengers.js on the quarry-scavenger-camp.
+# Seconds, metres, hit points. A cut lands on the mod's player.state.health (HUD max 1000).
+hp: 80
+aggro: 12
+dropAggro: 22
+leash: 26
+walk: 1.3
+run: 5.6           # slower than a wolf: a scavenger is a thief, not a hunter
+turn: 360
+roamRadius: 6
+roamPause: [3, 7]
+strike: { damage: 55, windup: 0.75, start: 2.0, reach: 2.2, cooldown: 1.8, stopAt: 1.5 }
+corpse: 3
+fadeAt: 1.8
+respawn: 25
+reward: { xp: 30, copper: 6 }
+model: /cdn/model-humanoid-fantasy-scavenger-male-ragged-hood-patched-leather-rusty-pick.glb
+clips: { idle: Idle, walk: Walk, run: Run, attack: cdn/clip-attack.glb, hit: cdn/clip-hit-react.glb, die: cdn/clip-die.glb }
+sounds:
+  shout: /cdn/moodboard-painterly-fantasy/sfx-scavenger-gruff-shout-hey.mp3
+  swing: /cdn/moodboard-painterly-fantasy/sfx-rusty-pick-swing-whoosh.mp3
+  hit: /cdn/moodboard-painterly-fantasy/sfx-blunt-hit-thud.mp3
+  die: /cdn/moodboard-painterly-fantasy/sfx-man-grunt-fall.mp3
+# the crew: around the stashes and the broken lamp (138,40)
+crew:
+  - { id: quarry-scav-1, x: 132, z: 36, yaw: 40 }
+  - { id: quarry-scav-2, x: 142, z: 28, yaw: 200 }
+  - { id: quarry-scav-3, x: 150, z: 40, yaw: -60 }
+  - { id: quarry-scav-4, x: 126, z: 26, yaw: 120 }

@@ -236,12 +236,13 @@ Q006:
   requires: [Q005]
   giverNpcId: reach-npc-mira
   giverName: Mira the Forgekeeper
-  text: "Scavengers have been picking over Emberstone Quarry, and the miners say the old bellglass lamp there has been smashed. Recover the two crates the scavengers stashed, and look closely at that lamp. I want to know who broke it."
+  text: "Scavengers have been picking over Emberstone Quarry, and the miners say the old bellglass lamp there has been smashed. Drive off three of those scavengers, recover the two crates they stashed, and look closely at that lamp. I want to know who broke it."
   progressText: "Two scavenger stashes and the broken bellglass lamp, all in the quarry."
   turnInText: "A maker's seal, fresh, pressed right over an Accord mark centuries old. The Hollow Court. They're signing their work now. That's not a good sign, friend."
   doneText: "Keep your eyes open in the quarry."
   refusedText: "You've already told me what you found."
   objectives:
+    - { key: quarry_scavenger, desc: "Drive off quarry scavengers", target: 3 }
     - { key: quarry_stash, desc: "Recover scavenger stashes in the quarry", target: 2 }
     - { key: bellglass_lamp, desc: "Investigate the broken bellglass lamp", target: 1 }
   rewards: { copper: 1200, xp: 180 }
