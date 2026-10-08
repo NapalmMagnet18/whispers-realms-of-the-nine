@@ -1,21 +1,21 @@
 // MMORPG Tools Mod UI
-const { RACES, CLASSES, CLASS_LORE, CLASS_ICONS, CLASS_COLORS, RACE_DESCRIPTIONS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAIR_STYLES, FACIAL_HAIR } = require('mod-mmorpg/lib/races.js');
-const { RACIAL_ABILITIES } = require('mod-mmorpg/lib/racial-abilities.js');
-const { renderHUD } = require('mod-mmorpg/lib/ui-hud.js');
-const { renderChat } = require('mod-mmorpg/lib/ui-chat.js');
-const { renderMenuPanel, renderWorldMapOverlay } = require('mod-mmorpg/lib/ui-menu-panel.js');
-const { renderWelcomeWindow } = require('mod-mmorpg/lib/ui-welcome.js');
-const { renderQuestDialog, renderTurnInDialog } = require('mod-mmorpg/lib/ui-quest.js');
-const { renderDoorPanel } = require('mod-mmorpg/lib/ui-door-panel.js');
-const { renderGnomeTipJar } = require('mod-mmorpg/lib/ui-gnome-tip.js');
-const { renderTipReminder } = require('mod-mmorpg/lib/ui-tip-reminder.js');
-const { renderBuffIcons } = require('mod-mmorpg/lib/ui-buff-icons.js');
-const { renderGuildPanel, renderGuildInvitePopup } = require('mod-mmorpg/lib/ui-guild.js');
-const { renderMainMenu } = require('mod-mmorpg/lib/ui-main-menu.js');
-const { renderSettingsTab } = require('mod-mmorpg/lib/ui-settings.js');
-const { renderCharacterRoster } = require('mod-mmorpg/lib/ui-character-roster.js');
-const { renderVampireDialog } = require('mod-mmorpg/lib/ui-vampire-dialog.js');
-const { renderCursedItemDialog } = require('mod-mmorpg/lib/ui-cursed-item-dialog.js');
+const { RACES, CLASSES, CLASS_LORE, CLASS_ICONS, CLASS_COLORS, RACE_DESCRIPTIONS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAIR_STYLES, FACIAL_HAIR } = require('./lib/races.js');
+const { RACIAL_ABILITIES } = require('./lib/racial-abilities.js');
+const { renderHUD } = require('./lib/ui-hud.js');
+const { renderChat } = require('./lib/ui-chat.js');
+const { renderMenuPanel, renderWorldMapOverlay } = require('./lib/ui-menu-panel.js');
+const { renderWelcomeWindow } = require('./lib/ui-welcome.js');
+const { renderQuestDialog, renderTurnInDialog } = require('./lib/ui-quest.js');
+const { renderDoorPanel } = require('./lib/ui-door-panel.js');
+const { renderGnomeTipJar } = require('./lib/ui-gnome-tip.js');
+const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
+const { renderBuffIcons } = require('./lib/ui-buff-icons.js');
+const { renderGuildPanel, renderGuildInvitePopup } = require('./lib/ui-guild.js');
+const { renderMainMenu } = require('./lib/ui-main-menu.js');
+const { renderSettingsTab } = require('./lib/ui-settings.js');
+const { renderCharacterRoster } = require('./lib/ui-character-roster.js');
+const { renderVampireDialog } = require('./lib/ui-vampire-dialog.js');
+const { renderCursedItemDialog } = require('./lib/ui-cursed-item-dialog.js');
 
 var FONT_INJECTOR = '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="(function(){if(window._FFLA)return;window._FFLA=1;var f1=new FontFace(\'Cinzel\',\'url(/cdn/font-cinzel-regular.woff2)\',{weight:\'400\',display:\'swap\'});var f2=new FontFace(\'Cinzel\',\'url(/cdn/font-cinzel-bold.woff2)\',{weight:\'700\',display:\'swap\'});f1.load().then(function(l){document.fonts.add(l)}).catch(function(){});f2.load().then(function(l){document.fonts.add(l)}).catch(function(){})})()" style="display:none" />';
 

@@ -3,14 +3,14 @@
 // Settings accessible via cogwheel. Lock/resize pattern from chat box.
 // module.exports = { renderMenuPanel }
 
-const { RACES, CLASSES } = require('mod-mmorpg/lib/races.js');
-const { ATTACK_SPELL, RACIAL_ABILITIES, CLASS_SPELLS, CLASS_EXTRA_SPELLS } = require('mod-mmorpg/lib/racial-abilities.js');
-const { TRACKS } = require('mod-mmorpg/lib/music-tracks.js');
-const { renderMusicTab: renderMusicTabNew } = require('mod-mmorpg/lib/ui-music.js');
-const { renderSettingsTab } = require('mod-mmorpg/lib/ui-settings.js');
-const { renderReputationTab } = require('mod-mmorpg/lib/ui-reputation.js');
-const { ITEM_LOOKUP } = require('mod-mmorpg/lib/class-items.js');
-const { QUEST_DATABASE } = require('mod-mmorpg/lib/quest-data.js');
+const { RACES, CLASSES } = require('./races.js');
+const { ATTACK_SPELL, RACIAL_ABILITIES, CLASS_SPELLS, CLASS_EXTRA_SPELLS } = require('./racial-abilities.js');
+const { TRACKS } = require('./music-tracks.js');
+const { renderMusicTab: renderMusicTabNew } = require('./ui-music.js');
+const { renderSettingsTab } = require('./ui-settings.js');
+const { renderReputationTab } = require('./ui-reputation.js');
+const { ITEM_LOOKUP } = require('./class-items.js');
+const { QUEST_DATABASE } = require('./quest-data.js');
 
 var STAT_NAMES = ['Strength','Dexterity','Intelligence','Wisdom','Vitality','Endurance','Luck','Spirit'];
 var STAT_KEYS  = ['strength','dexterity','intelligence','wisdom','vitality','endurance','luck','spirit'];

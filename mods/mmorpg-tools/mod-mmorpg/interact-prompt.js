@@ -1,7 +1,7 @@
 // Shows green highlight + "Press E" prompt when a player is nearby
 // CLOSEST-ONLY: coordinates with ALL other interactable objects so
 // only the single nearest interactable to each player gets highlighted.
-var { isNearestInteractable } = require('mod-mmorpg/lib/nearest-interactable.js');
+var { isNearestInteractable } = require('./lib/nearest-interactable.js');
 var DEFAULT_PROMPT_RADIUS = 30;
 var HIGHLIGHT_COLOR = 'oklch(0.80 0.30 140)';
 

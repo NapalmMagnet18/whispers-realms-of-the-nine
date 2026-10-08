@@ -2,8 +2,8 @@
 // Empty spellbook with gothic frame styling
 // module.exports = { renderSpellbook, renderSpellbookTab, getKnownSpells, getSpellById, resolveGlobalClassIndex }
 
-var { ATTACK_SPELL, RACIAL_ABILITIES, CLASS_SPELLS, CLASS_EXTRA_SPELLS } = require('mod-mmorpg/lib/racial-abilities.js');
-var { RACES, CLASSES } = require('mod-mmorpg/lib/races.js');
+var { ATTACK_SPELL, RACIAL_ABILITIES, CLASS_SPELLS, CLASS_EXTRA_SPELLS } = require('./racial-abilities.js');
+var { RACES, CLASSES } = require('./races.js');
 
 export function resolveGlobalClassIndex(raceIndex, localClassIndex) {
   var race = RACES[raceIndex];

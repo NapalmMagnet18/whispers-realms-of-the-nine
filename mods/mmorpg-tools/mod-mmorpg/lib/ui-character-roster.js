@@ -1,5 +1,5 @@
 // Character Roster Panel — MMORPG Tools Mod
-var { RACES, CLASS_COLORS, CLASS_ICONS } = require('mod-mmorpg/lib/races.js');
+var { RACES, CLASS_COLORS, CLASS_ICONS } = require('./races.js');
 
 export function renderCharacterRoster(localPlayer) {
   var characters = localPlayer.state.characters || [];

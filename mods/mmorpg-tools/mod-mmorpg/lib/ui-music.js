@@ -1,7 +1,7 @@
 // Music Panel — MMORPG Tools Mod
 // Shows the music jukebox UI with tracks from mod music-tracks.js
 
-const { TRACKS } = require('mod-mmorpg/lib/music-tracks.js');
+const { TRACKS } = require('./music-tracks.js');
 
 export function renderMusicTab(s) {
   var isPlaying = (s.activeTrack !== null && s.activeTrack !== undefined && s.activeTrack !== -1);

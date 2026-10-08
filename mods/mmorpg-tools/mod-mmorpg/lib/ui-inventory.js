@@ -2,8 +2,8 @@
 // Dark gothic floating window: equipment + stats + inventory grid
 // module.exports = { renderInventory }
 
-const { RACES, CLASSES } = require('mod-mmorpg/lib/races.js');
-const { ITEM_LOOKUP } = require('mod-mmorpg/lib/class-items.js');
+const { RACES, CLASSES } = require('./races.js');
+const { ITEM_LOOKUP } = require('./class-items.js');
 
 var STAT_NAMES = ['Strength','Dexterity','Intelligence','Wisdom','Vitality','Endurance','Luck','Spirit'];
 var STAT_KEYS  = ['strength','dexterity','intelligence','wisdom','vitality','endurance','luck','spirit'];

@@ -2,9 +2,9 @@
 // Expects state.quests to be populated (or reads from quest-data.js by NPC id)
 // Handles: proximity highlight + prompt, interact to open dialog, floating quest diamond
 
-var { getAvailableQuests } = require('mod-mmorpg/lib/quest-data.js');
+var { getAvailableQuests } = require('./lib/quest-data.js');
 var { distance } = require('builtin/vec3');
-var { isNearestInteractable } = require('mod-mmorpg/lib/nearest-interactable.js');
+var { isNearestInteractable } = require('./lib/nearest-interactable.js');
 
 var INTERACT_RANGE = 4;
 var DIAMOND_BOB_SPEED = 2.5;

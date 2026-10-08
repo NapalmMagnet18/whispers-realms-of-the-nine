@@ -8,9 +8,9 @@
 //   interactingBuildingId — object ID of the building being interacted with
 // Draggable as a single unified window. Positions locked.
 
-var { QUEST_DATABASE, getAvailableQuests } = require('mod-mmorpg/lib/quest-data.js');
-var { hasShop, getShopItems } = require('mod-mmorpg/lib/shop-data.js');
-var { getProfession } = require('mod-mmorpg/lib/profession-data.js');
+var { QUEST_DATABASE, getAvailableQuests } = require('./quest-data.js');
+var { hasShop, getShopItems } = require('./shop-data.js');
+var { getProfession } = require('./profession-data.js');
 
 // Default heavy assets — preloaded automatically via hidden imgs
 var DEFAULT_GIF = 'https://github.com/rooibosteadrinker/gifs/blob/main/buildings/castle.gif?raw=true';

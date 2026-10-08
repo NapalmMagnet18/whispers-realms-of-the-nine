@@ -1,5 +1,5 @@
 // Reputation tab UI — MMORPG Tools Mod
-var { REP_TIERS, getTierIndex, getTierName, getProgressInTier } = require('mod-mmorpg/lib/reputation.js');
+var { REP_TIERS, getTierIndex, getTierName, getProgressInTier } = require('./reputation.js');
 
 export function renderReputationTab(s) {
   var rep = s.reputation || 0;

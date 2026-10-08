@@ -42,7 +42,7 @@ for (var si = 0; si < starterKeys.length; si++) {
 
 // Add shop items to lookup so equip system can resolve slots/stats
 try {
-  var { SHOP_INVENTORIES } = require('mod-mmorpg/lib/shop-data.js');
+  var { SHOP_INVENTORIES } = require('./shop-data.js');
   var shopBuildingKeys = Object.keys(SHOP_INVENTORIES);
   for (var sbi = 0; sbi < shopBuildingKeys.length; sbi++) {
     var shopItems = SHOP_INVENTORIES[shopBuildingKeys[sbi]];

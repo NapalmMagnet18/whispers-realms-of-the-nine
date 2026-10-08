@@ -2,7 +2,7 @@
 // Shows when player is in main-menu-land (inMainMenu state flag)
 // Logo image → separator → Continue (if character exists) → Create a Character
 
-var { RACES, CLASS_COLORS } = require('mod-mmorpg/lib/races.js');
+var { RACES, CLASS_COLORS } = require('./races.js');
 
 export function renderMainMenu(localPlayer) {
   var characters = localPlayer.state.characters || [];

@@ -2,7 +2,7 @@
 // Returns the string class name or null
 // Export interface matches scripts/lib/class-check.js exactly
 
-var { RACES } = require('mod-mmorpg/lib/races.js');
+var { RACES } = require('./races.js');
 
 export function getClassName(state) {
   var race = RACES[state.raceIndex ?? 0];

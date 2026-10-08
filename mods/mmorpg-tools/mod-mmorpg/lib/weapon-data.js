@@ -1,7 +1,7 @@
 // Weapon data — MMORPG Tools Mod (stub)
 // Export interface matches scripts/lib/weapon-data.js exactly
 
-var classItems = require('mod-mmorpg/lib/class-items.js');
+var classItems = require('./class-items.js');
 var ITEM_LOOKUP = classItems.ITEM_LOOKUP;
 
 var UNARMED_MIN = 1;

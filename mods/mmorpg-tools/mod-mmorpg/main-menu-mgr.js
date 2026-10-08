@@ -3,7 +3,7 @@
 // Sets inMainMenu flag, handles menu button actions (Continue, Create Character)
 // Multi-character roster: loads/saves array of characters to roster_<playerId>
 
-var { getPlaceMusic } = require('mod-mmorpg/lib/place-music.js');
+var { getPlaceMusic } = require('./lib/place-music.js');
 
 export function getMenuRoster(state) {
   var roster = Array.isArray(state.characters) ? state.characters.filter(Boolean) : [];
@@ -303,7 +303,7 @@ export function onInput(api, input) {
     });
 
     // Apply saved character data to player state
-    var { RACES } = require('mod-mmorpg/lib/races.js');
+    var { RACES } = require('./lib/races.js');
     var rIdx = charData.raceIndex ?? 0;
     var gIdx = charData.genderIndex ?? 0;
     var race = RACES[rIdx];

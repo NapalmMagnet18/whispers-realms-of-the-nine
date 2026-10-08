@@ -1,8 +1,8 @@
 // Dark Gothic RPG HUD — MMORPG Tools Mod
-const { RACES } = require('mod-mmorpg/lib/races.js');
-const { ATTACK_SPELL, RACIAL_ABILITIES, CLASS_SPELLS, CLASS_EXTRA_SPELLS } = require('mod-mmorpg/lib/racial-abilities.js');
-const { TRACKS } = require('mod-mmorpg/lib/music-tracks.js');
-const { getRaceDamageMultiplier } = require('mod-mmorpg/lib/race-damage.js');
+const { RACES } = require('./races.js');
+const { ATTACK_SPELL, RACIAL_ABILITIES, CLASS_SPELLS, CLASS_EXTRA_SPELLS } = require('./racial-abilities.js');
+const { TRACKS } = require('./music-tracks.js');
+const { getRaceDamageMultiplier } = require('./race-damage.js');
 
 export function renderTargetDisplay(s) {
   if (!s.targetId) return '';
@@ -682,7 +682,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
   `;
 
   // --- REPUTATION BAR (segmented, gold-toned, above XP bar) ---
-  const { getProgressInTier, getTierName: _getRepTierName } = require('mod-mmorpg/lib/reputation.js');
+  const { getProgressInTier, getTierName: _getRepTierName } = require('./reputation.js');
   const reputation = s.reputation ?? 0;
   const repProgress = getProgressInTier(reputation);
   const repPct = Math.min(1, repProgress.current / repProgress.max);

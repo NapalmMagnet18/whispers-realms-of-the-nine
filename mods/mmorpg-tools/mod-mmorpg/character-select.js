@@ -2,8 +2,8 @@
 // Race/class/gender selection, colors, confirm
 // Stripped: no voice lines, no sword preview, empty spellbar
 
-const { RACES, CLASSES, CLASS_COLORS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAIR_STYLES, FACIAL_HAIR } = require('mod-mmorpg/lib/races.js');
-const { CLASS_STARTING_ITEMS } = require('mod-mmorpg/lib/class-items.js');
+const { RACES, CLASSES, CLASS_COLORS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAIR_STYLES, FACIAL_HAIR } = require('./lib/races.js');
+const { CLASS_STARTING_ITEMS } = require('./lib/class-items.js');
 
 // No-op stub — voice lines removed for mod
 export function playRaceVoice(objectApi, raceIndex, genderIndex) {}
@@ -294,7 +294,7 @@ export function update(objectApi, dt) {
       for (var i = 0; i < 12; i++) initialSpellBar.push(null);
 
       // Base stats
-      var { calcBaseStats } = require('mod-mmorpg/lib/stat-calc.js');
+      var { calcBaseStats } = require('./lib/stat-calc.js');
       var baseStats = calcBaseStats(raceIdx, classIdx, 1);
 
       // Reputation init

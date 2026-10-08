@@ -5,8 +5,8 @@
 // NOTE: char_<playerId> writes removed — roster_ is the single source of truth
 // Active character index tracked in state as activeCharIdx
 
-var { TRACKS } = require('mod-mmorpg/lib/music-tracks.js');
-var { getPlaceMusic } = require('mod-mmorpg/lib/place-music.js');
+var { TRACKS } = require('./lib/music-tracks.js');
+var { getPlaceMusic } = require('./lib/place-music.js');
 
 // ─── PER-ENTITY MOVEMENT stored in state._mv ────────────────────
 // Each player gets their own movement data via state, no shared vars.
@@ -26,7 +26,7 @@ var GAME_CAMERA = {
 };
 
 export function getGameplayCharacterProp(state) {
-  var { RACES } = require('mod-mmorpg/lib/races.js');
+  var { RACES } = require('./lib/races.js');
   var race = RACES[state.raceIndex ?? 0];
   var modelId = race ? ((state.genderIndex ?? 0) === 0 ? race.maleModel : race.femaleModel) : null;
   if (!modelId) return null;
@@ -374,7 +374,7 @@ export function onSpawn(objectApi) {
       var lastPlace = s.lastPlace || 'main';
       objectApi.patchState({ _dataLoaded: true, _hasCharacter: true, _rosterLoaded: true });
       // Re-apply character model so they don't T-pose
-      var { RACES: _rpRaces } = require('mod-mmorpg/lib/races.js');
+      var { RACES: _rpRaces } = require('./lib/races.js');
       var _rpRace = _rpRaces[s.raceIndex ?? 0];
       var _rpModel = _rpRace ? ((s.genderIndex ?? 0) === 0 ? _rpRace.maleModel : _rpRace.femaleModel) : null;
       if (_rpModel) {
@@ -427,7 +427,7 @@ export function onSpawn(objectApi) {
         // so the loading timer can complete or the self-heal can fire properly
         if (currentState.characterCreated) {
           // Re-apply character model on place transition so it doesn't T-pose
-          var { RACES: _transRaces } = require('mod-mmorpg/lib/races.js');
+          var { RACES: _transRaces } = require('./lib/races.js');
           var _transRace = _transRaces[currentState.raceIndex ?? 0];
           var _transModel = _transRace ? ((currentState.genderIndex ?? 0) === 0 ? _transRace.maleModel : _transRace.femaleModel) : null;
           if (_transModel) {
@@ -588,7 +588,7 @@ export function update(objectApi, dt) {
     if (lt >= 5 && s._dataLoaded) {
       if (s._hasCharacter) {
         // Apply saved character — set model, position, camera
-        var { RACES } = require('mod-mmorpg/lib/races.js');
+        var { RACES } = require('./lib/races.js');
         var rIdx = s.raceIndex ?? 0;
         var gIdx = s.genderIndex ?? 0;
         var race = RACES[rIdx];
@@ -950,7 +950,7 @@ export function onInput(objectApi, input) {
     }
     if (input.actions.buyShopItem) {
       if (s.shopSelectedItem == null) return;
-      var shopData = require('mod-mmorpg/lib/shop-data.js');
+      var shopData = require('./lib/shop-data.js');
       var shopItems = shopData.getShopItems(s.interactingBuildingId);
       var item = shopItems[s.shopSelectedItem];
       if (!item) return;
@@ -987,7 +987,7 @@ export function onInput(objectApi, input) {
     // ── Profession learning actions ──
     if (input.actions.learnProfession && input.actionData && input.actionData.learnProfession) {
       var lpData = input.actionData.learnProfession;
-      var profData = require('mod-mmorpg/lib/profession-data.js');
+      var profData = require('./lib/profession-data.js');
       var prof = profData.getProfession(lpData.buildingId);
       if (prof) {
         objectApi.patchState({
@@ -1175,7 +1175,7 @@ export function onInput(objectApi, input) {
     var TIER_LAYOUT = [[0,1,2],[3,4],[5,6,7],[8,9]];
 
     // Class-indexed talent stat data (must match UI CLASS_TALENTS exactly)
-    var { RACES: SAVE_RACES, CLASSES: SAVE_CLASSES } = require('mod-mmorpg/lib/races.js');
+    var { RACES: SAVE_RACES, CLASSES: SAVE_CLASSES } = require('./lib/races.js');
     var pRace = SAVE_RACES[s.raceIndex ?? 0];
     var pRaceClasses = pRace ? pRace.classes : SAVE_CLASSES;
     var pClassName = pRaceClasses[s.classIndex ?? 0] || SAVE_CLASSES[s.classIndex ?? 0] || 'Blood Knight';
@@ -1325,7 +1325,7 @@ export function onInput(objectApi, input) {
       // Look up which equipment slot this item belongs in
       var rawSlot = null;
       try {
-        var { ITEM_LOOKUP } = require('mod-mmorpg/lib/class-items.js');
+        var { ITEM_LOOKUP } = require('./lib/class-items.js');
         var def = ITEM_LOOKUP[bagItem.id];
         rawSlot = def ? def.slot : null;
       } catch(e) { rawSlot = null; }
