@@ -126,7 +126,7 @@ export function restoreRosterCharacterState(objectApi, state, opts) {
     _savedPosZ: savedPos.z,
     raceReputation: rep,
     reputation: charData.reputation ?? 0,
-    gold: charData.gold ?? 0,
+    copper: require('./lib/currency.js').purse(charData),
     inventoryTab: charData.inventoryTab ?? 'equipment',
     bagSlots: charData.bagSlots ?? [null, null, null, null, null],
     library: charData.library || [],
@@ -230,7 +230,7 @@ export function buildCharData(objectApi) {
     discoveredZones: s.discoveredZones || [],
     raceReputation: s.raceReputation || {},
     reputation: s.reputation ?? 0,
-    gold: s.gold ?? 0,
+    copper: require('./lib/currency.js').purse(s),
     inventoryTab: s.inventoryTab || 'equipment',
     bagSlots: s.bagSlots || [null, null, null, null, null],
     library: s.library || [],
@@ -487,7 +487,7 @@ export function onSpawn(objectApi) {
             _savedPosZ: data.posZ ?? 0,
             raceReputation: data.raceReputation || null,
             reputation: data.reputation ?? 0,
-            gold: data.gold ?? 0,
+            copper: require('./lib/currency.js').purse(data),
             inventoryTab: data.inventoryTab ?? 'equipment',
             bagSlots: data.bagSlots ?? [null, null, null, null, null],
             library: data.library ?? [],
@@ -985,9 +985,9 @@ export function onInput(objectApi, input) {
       var shopItems = shopData.getShopItems(s.interactingBuildingId);
       var item = shopItems[s.shopSelectedItem];
       if (!item) return;
-      var playerGold = s.gold ?? 0;
+      var playerGold = require('./lib/currency.js').purse(s);
       if (playerGold < item.price) {
-        objectApi.toast('Not enough gold! Need ' + item.price + 'g', { duration: 2, color: 'oklch(0.55 0.26 27)' });
+        objectApi.toast('Not enough money! Need ' + require('./lib/currency.js').formatText(item.price), { duration: 2, color: 'oklch(0.55 0.26 27)' });
         return;
       }
       // Find empty inventory slot
@@ -1007,7 +1007,7 @@ export function onInput(objectApi, input) {
       }
       buyInv[bslot] = boughtItem;
       objectApi.patchState({
-        gold: playerGold - item.price,
+        copper: Math.max(0, playerGold - item.price),
         inventory: buyInv,
         shopSelectedItem: null,
       });
@@ -1033,7 +1033,7 @@ export function onInput(objectApi, input) {
     }
     if (input.actions.confirmLearnProfession) {
       var cpState = objectApi.getState();
-      var cpGold = cpState.gold ?? 0;
+      var cpGold = require('./lib/currency.js').purse(cpState);
       var cpCost = cpState.profDialogueCost ?? 50;
       var cpName = cpState.profDialogueName || 'Unknown';
       var cpProfs = cpState.professions || [];
@@ -1051,13 +1051,13 @@ export function onInput(objectApi, input) {
         return;
       }
       if (cpGold < cpCost) {
-        objectApi.toast('Not enough gold! Need ' + cpCost + 'g', { duration: 2, color: 'oklch(0.55 0.26 27)' });
+        objectApi.toast('Not enough money! Need ' + require('./lib/currency.js').formatText(cpCost), { duration: 2, color: 'oklch(0.55 0.26 27)' });
         return;
       }
       var newProfs = cpProfs.slice();
       newProfs.push(cpName);
       objectApi.patchState({
-        gold: cpGold - cpCost,
+        copper: Math.max(0, cpGold - cpCost),
         professions: newProfs,
         showProfessionDialogue: false,
         profDialogueName: null,

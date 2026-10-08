@@ -231,7 +231,7 @@ export function _renderProfessionDialogue(s) {
   var profCost = s.profDialogueCost || 50;
   var profText = s.profDialogueText || '';
   var professions = s.professions || [];
-  var gold = s.gold ?? 0;
+  var gold = require('./currency.js').purse(s);
 
   var actionContent = '';
   if (professions.length >= 2) {
@@ -247,7 +247,7 @@ export function _renderProfessionDialogue(s) {
       + 'color:rgba(200,120,120,0.9);'
       + 'text-shadow:0 1px 4px rgba(0,0,0,0.8);'
       + 'text-align:center;line-height:1.5;margin-top:16px;'
-      + '">You lack the coin. Return when you have ' + profCost + ' gold.</div>';
+      + '">You lack the coin. Return when you have ' + require('./currency.js').formatText(profCost) + '.</div>';
   } else {
     actionContent = '<div data-interactive onclick="event.stopPropagation();sendAction(\'confirmLearnProfession\')" style="'
       + 'margin-top:16px;'
@@ -375,7 +375,7 @@ export function _renderGuildCreationOverlay(s) {
   if (!s.showGuildCreation) return '';
   if (s.interactingBuildingId !== 'tavern') return '';
 
-  var gold = s.gold ?? 0;
+  var gold = require('./currency.js').purse(s);
   var actionContent = '';
 
   if (gold < 1000) {
@@ -384,7 +384,7 @@ export function _renderGuildCreationOverlay(s) {
       + 'color:rgba(200,120,120,0.9);'
       + 'text-shadow:0 1px 4px rgba(0,0,0,0.8);'
       + 'text-align:center;line-height:1.5;margin-top:16px;'
-      + '">You lack the coin. Return when you have 1000 gold.</div>';
+      + '">You lack the coin. Return when you have ' + require('./currency.js').formatText(1000) + '.</div>';
   } else {
     actionContent = '<div style="margin-top:8px;text-align:center;">'
       + '<input data-interactive id="fa-guild-name-input" type="text" maxlength="24" value="' + ((typeof window !== 'undefined' && window.__faGuildName) ? window.__faGuildName.replace(/"/g, '&quot;') : '') + '" style="'
@@ -459,7 +459,7 @@ export function _renderGuildCreationOverlay(s) {
         + 'text-align:center;line-height:1.5;'
         + 'letter-spacing:0.5px;'
         + 'max-width:85%;'
-        + '">For <span style="color:rgba(220,180,60,0.95);font-family:Cinzel,serif;font-style:normal;font-weight:700;">1000 gold</span>, you may establish your own guild. Name it wisely &mdash; your banner shall fly across the realm.</div>'
+        + '">For <span style="color:rgba(220,180,60,0.95);font-family:Cinzel,serif;font-style:normal;font-weight:700;">' + require('./currency.js').formatText(1000) + '</span>, you may establish your own guild. Name it wisely &mdash; your banner shall fly across the realm.</div>'
 
       // Action content (input + button, or "not enough gold" message)
       + actionContent
@@ -503,7 +503,7 @@ export function _renderShopOverlay(s) {
   var items = getShopItems(buildingId);
   var selectedIdx = s.shopSelectedItem;
   var selectedItem = (selectedIdx != null && items[selectedIdx]) ? items[selectedIdx] : null;
-  var gold = s.gold ?? 0;
+  var gold = require('./currency.js').purse(s);
 
   // Grid of items
   var gridCells = '';
@@ -538,7 +538,7 @@ export function _renderShopOverlay(s) {
         + 'text-align:center;line-height:1.2;max-width:102px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;'
         + 'text-shadow:0 1px 2px rgba(0,0,0,0.8);word-break:break-word;">' + it.name + '</div>'
       + '<div style="font-family:Times New Roman,serif;font-size:12px;color:rgba(220,180,60,0.9);'
-        + 'text-shadow:0 0 4px rgba(220,180,60,0.3);margin-top:2px;">' + it.price + 'g</div>'
+        + 'text-shadow:0 0 4px rgba(220,180,60,0.3);margin-top:2px;">' + require('./currency.js').formatHtml(it.price) + '</div>'
       + '</div>';
   }
 
@@ -582,7 +582,7 @@ export function _renderShopOverlay(s) {
       + statsHtml
       + '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;">'
         + '<div style="font-family:Times New Roman,serif;font-size:15px;color:rgba(220,180,60,0.95);'
-          + 'text-shadow:0 0 4px rgba(220,180,60,0.3);">Price: ' + selectedItem.price + 'g</div>'
+          + 'text-shadow:0 0 4px rgba(220,180,60,0.3);">Price: ' + require('./currency.js').formatHtml(selectedItem.price) + '</div>'
         + '<div data-interactive onclick="event.stopPropagation();sendAction(\'buyShopItem\')" style="'
           + 'padding:4px 16px;border-radius:3px;cursor:' + (canAfford ? 'pointer' : 'not-allowed') + ';'
           + buyBtnBg + buyBtnColor
@@ -631,7 +631,7 @@ export function _renderShopOverlay(s) {
       + '<div style="display:flex;align-items:center;gap:8px;">'
         + '<div style="font-family:Times New Roman,serif;font-size:16px;color:rgba(220,180,60,0.95);'
           + 'text-shadow:0 0 4px rgba(220,180,60,0.3);">'
-          + '<span style="color:rgba(255,255,255,0.6);font-size:13px;">Gold: </span>' + gold + 'g</div>'
+          + '<span style="color:rgba(255,255,255,0.6);font-size:13px;">Purse: </span>' + require('./currency.js').formatHtml(gold) + '</div>'
         + '<div data-interactive onclick="event.stopPropagation();sendAction(\'toggleShop\')" style="'
           + 'width:24px;height:24px;display:flex;align-items:center;justify-content:center;'
           + 'cursor:pointer;pointer-events:auto;'
