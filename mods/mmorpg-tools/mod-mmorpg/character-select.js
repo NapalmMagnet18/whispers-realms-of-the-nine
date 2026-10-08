@@ -463,7 +463,7 @@ export function onInput(objectApi, input) {
 
   // ── Main Menu from character creation ──
   if (input.actions.goToMainMenu) {
-    objectApi.enterPlace({ place: 'main-menu-land', at: 'default' });
+    objectApi.enterPlace(objectApi.id, { place: 'main-menu-land', at: 'default' });
     return;
   }
 
