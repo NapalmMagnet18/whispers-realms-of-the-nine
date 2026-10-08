@@ -267,7 +267,7 @@ cl-armstable:
 cl-bell:
   feetPosition: {x: 71.5, y: {terrain: 0}, z: -3}
   id: cl-bell
-  layout: {maxExtents: {y: 2.6}, minExtents: {y: 2.6}}
+  layout: {maxExtents: {y: 1.1}, minExtents: {y: 1.1}}
   model: {id: /cdn/value.f14cac9fb5bff249bf7b652f705c948a48a4b4f2caccd807b2aecc01fb34dbf8.glb}
   physics: {body: static, collider: box}
   rotation: {yaw: 0}
