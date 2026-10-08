@@ -224,7 +224,8 @@
       "pickRealm": {},
       "joinRealm": {},
       "confirmDeleteCharacter": {},
-      "cancelDeleteCharacter": {}
+      "cancelDeleteCharacter": {},
+      "setMenuView": {}
     },
     "axes": {
       "lookX": {

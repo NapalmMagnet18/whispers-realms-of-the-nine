@@ -193,6 +193,7 @@ export function onInput(api, input) {
   var s = api.getState();
   if (!s.inMainMenu) return;
 
+  if (input.actions.setMenuView && input.actionData && input.actionData.setMenuView) { api.patchState({ menuView: input.actionData.setMenuView.view || 'title' }); return; }
   // ─── REALM LIST ───
   if (input.actions.openRealmList) { api.patchState({ realmListOpen: true, realmPick: RS.realmOf(api) }); RS.refreshRealmList(api); return; }
   if (input.actions.closeRealmList) { api.patchState({ realmListOpen: false }); return; }
@@ -220,7 +221,7 @@ export function onInput(api, input) {
   if (input.actions.deleteCharacter && input.actionData && input.actionData.deleteCharacter) {
     var delData = input.actionData.deleteCharacter;
     api.patchState({
-      _deleteConfirmIdx: delData.index,
+      _deleteConfirmIdx: delData.index, _deleteError: null,
       _deleteConfirmName: delData.name || 'Unknown',
     });
     return;
