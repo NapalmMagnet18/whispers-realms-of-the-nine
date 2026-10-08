@@ -44,7 +44,7 @@ function dryrack(ctx, P, far, seed) {
   for (let i = 0; i < (far ? 4 : 9); i++) {
     const x = -0.85 + i * (far ? 0.55 : 0.21), r = h(i, seed), len = 0.35 + r * 0.25;
     P(null, 'oklch(0.6 0.05 70)'); box(ctx, x - 0.006, 1.6, -0.006, x + 0.006, 1.76, 0.006);
-    P(null, herbs[(i + seed) % 4], 0.95); cyl(ctx, x, 1.6 - len, 0, 0.11 + r * 0.04, 0.03, len, far ? 4 : 6, true, far ? null : 0.3);
+    P(null, herbs[(i + seed) % 4], 0.95); cyl(ctx, x, 1.6 - len, 0, 0.11 + r * 0.04, 0.03, len, far ? 4 : 6, true);
   }
 }
 
@@ -76,7 +76,7 @@ function hut(ctx, P, far) {
     P(null, 'oklch(0.7 0.18 140)'); ctx.emissive(0.4, 1.4, 0.3); blob(ctx, 0, H - 0.25, -D - 0.04, 0.12, 0.14, 0.03, 5, 0, 3, 6); ctx.emissive(null); // flask emblem
     // herb bunches hung from the lintel
     const herbs = ['oklch(0.55 0.1 140)', 'oklch(0.55 0.1 320)', 'oklch(0.7 0.12 85)'];
-    for (let i = 0; i < 7; i++) { const x = -2 + i * 0.66; P(null, herbs[i % 3], 0.95); cyl(ctx, x, H - 1.0, -D - 0.25, 0.12, 0.03, 0.45, 6, true, 0.3); }
+    for (let i = 0; i < 7; i++) { const x = -2 + i * 0.66; P(null, herbs[i % 3], 0.95); cyl(ctx, x, H - 1.0, -D - 0.25, 0.12, 0.03, 0.45, 6, true); }
     // interior: a back shelf of flasks, a mortar on the counter
     for (let i = 0; i < 10; i++) flask(ctx, P, -2 + i * 0.44, F + 1.6, D - 0.35, 0.1, i, false);
     P(OAK, 'oklch(0.55 0.05 55)'); box(ctx, -W + 0.2, F + 1.58, D - 0.5, W - 0.2, F + 1.62, D - 0.12);
