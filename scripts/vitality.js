@@ -3,6 +3,12 @@
 const FALL_S = 2.5, RISE_PCT = 0.5, CALM_S = 8, MEND_PER_S = 0.03; // mend 3% of max a second once 8 s unhurt
 import { nearestRoost, PVP, pvpRealm, sanctuaryAt } from "./lib/pvp.js";
 import { isPlay, SAFE_HOME } from './lib/places.js';
+const SND = {
+  heart: "/cdn/moodboard-gothic-horror/sfx-low-health-heavy-heartbeat-single-thump-muffled-deep.mp3",
+  grunt: ["/cdn/moodboard-painterly-fantasy/sfx-hero-pain-grunt-sharp-exhale-hit-taken.mp3", "/cdn/moodboard-painterly-fantasy/sfx-hero-pain-grunt-strained-groan-hit-taken.mp3"],
+  fall: "/cdn/moodboard-gothic-horror/sfx-death-sting-dark-low-brass-swell-and-deep-bell-toll.mp3",
+  rise: "/cdn/moodboard-painterly-fantasy/sfx-resurrection-soft-angelic-choir-swell-warm-shimmer.mp3",
+};
 export const updateSchedule = { every: { seconds: 0.25 } };
 export function update(ctx, dt) {
   const me = ctx.self, s = me.state, mem = ctx.session, now = ctx.now();
@@ -20,7 +26,19 @@ export function update(ctx, dt) {
   }
   const max = s.maxHealth || 1000, hp = s.health ?? max;
   if (mem.vitPlace !== me.place) { mem.vitPlace = me.place; mem.safe = null; }
-  if (hp < (mem.lastHp ?? hp)) mem.hurtAt = now;
+  if (hp < (mem.lastHp ?? hp)) {
+    mem.hurtAt = now;
+    if ((mem.lastHp - hp) > max * 0.08 && hp > 0 && now - (mem.gruntAt || 0) > 1200) { mem.gruntAt = now; ctx.emit("playSound", { clip: SND.grunt[Math.floor(ctx.random() * SND.grunt.length)], volume: 0.5, pitch: 0.95 + ctx.random() * 0.1, mode: "restart" }); }
+  }
+  // the hurt pulse: under 35% a heartbeat only you hear, quickening toward zero, and a red edge that breathes with it
+  const frac = hp / max, low = hp > 0 && !s.dying && frac < 0.35;
+  if (low) {
+    const gap = 550 + 1100 * (frac / 0.35);
+    if (now - (mem.heartAt || 0) >= gap) { mem.heartAt = now; ctx.emit("playSound", { clip: SND.heart, volume: 0.55 + 0.35 * (1 - frac / 0.35) }); }
+    const v = Math.round((0.15 + 0.15 * (1 - frac / 0.35)) * 100) / 100;
+    if (me.vignette !== v) me.vignette = v;
+  } else if (mem.vigOn) me.vignette = 0;
+  mem.vigOn = low;
   mem.lastHp = hp;
   if (s.dying) {
     if (s._fellAt && now - s._fellAt >= FALL_S * 1000) {
@@ -31,6 +49,7 @@ export function update(ctx, dt) {
       s.health = Math.round(max * RISE_PCT); mem.lastHp = s.health; mem.hurtAt = now;
       s.dying = false; s._fellAt = null; s._questSave = true;
       ctx.emit("screenFlash", { color: "oklch(0.92 0.06 85)", duration: 0.6, intensity: 0.35 }, { audience: { player: me.id } });
+      ctx.emit("playSound", { clip: SND.rise, volume: 0.6 });
       ctx.emit("damageNumber", { position: { ...me.feetPosition, y: me.feetPosition.y + 2.2 }, text: "On your feet", color: "#f2d48a", size: 1.1, lifetime: 1.6 }, { audience: { player: me.id } });
     } else if (!s._fellAt) s._fellAt = now; // a fall the save carried over
     return;
@@ -47,6 +66,8 @@ export function update(ctx, dt) {
     ctx.emit("screenFlash", { color: "oklch(0.25 0.12 25)", duration: FALL_S, intensity: 0.75 }, { audience: { player: me.id } });
     ctx.emit("damageNumber", { position: { ...me.feetPosition, y: me.feetPosition.y + 2.2 }, text: "You fall", color: "#e25b4a", size: 1.3, lifetime: 2.2 }, { audience: { player: me.id } });
     ctx.emit("playSound", { clip: "/cdn/moodboard-painterly-fantasy/sfx-hero-falls-low-thud-and-fading-breath.mp3", position: me.feetPosition, volume: 0.8 });
+    ctx.emit("playSound", { clip: SND.fall, volume: 0.7 });
+    if (mem.vigOn) { me.vignette = 0; mem.vigOn = false; }
     return;
   }
   const calm = now - (mem.hurtAt ?? 0) > CALM_S * 1000;

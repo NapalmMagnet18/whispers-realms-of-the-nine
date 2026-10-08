@@ -133,3 +133,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Boss wake lines voiced (boss-voices.yml, one throat per boss, Voice bus, boss.js on wake). Homecoming bosses lampless_reeve/hollowsong/gharn/merrow/star got sound sets.
 - 2026-10-08: Equip sound per gear slot (EQUIP_SND in mmorpg player.js uiSound); quest turn-in brass fanfare.
 - 2026-10-08: Footsteps per terrain material (snow, mud, sand, ash, crystal, grass, forest) and wood on decks/bridges/docks via a short down-raycast id match (scripts/player.js).
+- 2026-10-08: Hurt audio (vitality.js): heartbeat under 35% hp quickening to 0.55s, vignette 0.15-0.3 derived per tick, pain grunt on hits >8% max (1.2s cooldown), death sting + rise choir, all heard by the player alone.
