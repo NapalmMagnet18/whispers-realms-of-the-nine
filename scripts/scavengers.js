@@ -83,6 +83,43 @@ function strike(ctx, w, s, m, p, dist) {
   ctx.emit("flash", { target: p.id, color: "#ff3a2a", duration: 0.12 }, { audience: near(hit) });
 }
 
+// A boss toll (camp state.toll = { every, windup, radius, damage, enrageAt, enrageEvery, sound, name }): a filling ring
+// at its feet for windup seconds, then a shockwave that hits every hero still inside. Below enrageAt % it tolls faster.
+function tollBegin(ctx, w, s, m, T) {
+  const now = ctx.now(), p = w.feetPosition, r = T.radius, life = T.windup + 0.2;
+  m.tollAt = now + T.windup * 1000; s.mode = "toll";
+  halt(w, m); gait(w, m, "idle"); once(w, S.clips.attack, 0.55);
+  const base = { feetPosition: { x: p.x, y: p.y + 0.06, z: p.z }, physics: "none", castShadow: false, receiveShadow: false, lifetime: life };
+  ctx.spawn({ ...base, primitive: { kind: "cylinder", radiusTop: r, radiusBottom: r, height: 0.04, radialSegments: 48 }, material: { color: "oklch(0.7 0.14 235 / 0.22)", emissive: "#4aa8ff", emissiveIntensity: 0.6, transparent: true, opacity: 0.22 } });
+  const fill = ctx.spawn({ ...base, feetPosition: { x: p.x, y: p.y + 0.08, z: p.z }, scale: { x: 0.05, y: 1, z: 0.05 }, primitive: { kind: "cylinder", radiusTop: r, radiusBottom: r, height: 0.04, radialSegments: 48 }, material: { color: "oklch(0.75 0.16 230 / 0.45)", emissive: "#7fd0ff", emissiveIntensity: 1.4, transparent: true, opacity: 0.45 } });
+  try { animate(ctx, fill, { "scale.x": 1, "scale.z": 1 }, { duration: T.windup, easing: "easeInQuad" }); } catch (e) {}
+  ctx.emit("highlightSet", { target: w.id, color: "#7fd0ff", style: "glow", duration: T.windup }, { audience: near(p) });
+  ctx.emit("playSound", { clip: T.sound, position: p, volume: 0.55, pitch: 1.35, maxDistance: 45 }, { audience: near(p) });
+}
+function tollLand(ctx, w, s, m, T, players) {
+  const p = w.feetPosition, at = { x: p.x, y: p.y + 0.3, z: p.z }, now = ctx.now(), enraged = s.enraged;
+  s.mode = "chase"; m.nextToll = now + (enraged ? T.enrageEvery : T.every) * 1000; m.nextStrike = now + 900;
+  ctx.emit("shockwave", { position: at, speed: 14, thickness: 1.2, intensity: 0.9 }, { audience: near(at) });
+  ctx.emit("playSound", { clip: T.sound, position: at, volume: 1, pitch: 0.75, maxDistance: 70 }, { audience: { nearby: at, radius: 70 } });
+  for (const q of players) {
+    const d = flat(q.feetPosition, p); if (d > T.radius) continue;
+    const ps = q.state, guarded = (ps.guardUntil ?? 0) > now, health = ps.health ?? 1000;
+    const dmg = Math.min(health, Math.round(T.damage * (enraged ? 1.25 : 1) * (guarded ? 1 - (ps.guardReduce ?? 0) : 1)));
+    if (dmg > 0) ps.health = health - dmg;
+    const hit = { x: q.feetPosition.x, y: q.feetPosition.y + 1.1, z: q.feetPosition.z };
+    ctx.emit("damageNumber", { position: hit, value: dmg, color: "#7fd0ff", crit: true }, { audience: near(hit) });
+    ctx.emit("screenShake", { intensity: 0.55, duration: 0.35 }, { audience: { player: q.id } });
+    ctx.emit("screenFlash", { color: "#6fb8ff", duration: 0.3, intensity: 0.35 }, { audience: { player: q.id } });
+  }
+}
+function tollEnrage(ctx, w, s, m, T) {
+  s.enraged = true; m.nextToll = Math.min(m.nextToll ?? 0, ctx.now() + 1500);
+  const p = w.feetPosition, at = { x: p.x, y: p.y + 3, z: p.z };
+  ctx.emit("damageNumber", { position: at, text: (T.name || "It") + " thrashes in agony!", color: "#7fd0ff", size: 1.4, lifetime: 2.4 }, { audience: { nearby: p, radius: 50 } });
+  ctx.emit("screenShake", { intensity: 0.3, duration: 0.6 }, { audience: { nearby: p, radius: 30 } });
+  ctx.emit("highlightSet", { target: w.id, color: "#3a9cff", style: "pulse" }, { audience: near(p) });
+}
+
 export function update(ctx, dt) {
   const camp = ctx.self, cs = camp.state, now = ctx.now(), M = (ctx.session["scav:" + camp.id] ??= {}); // each camp its own scratch: two camps never share a census clock
   if (now >= (M.census ?? 0)) {
@@ -113,7 +150,7 @@ export function update(ctx, dt) {
     const fromHome = flat(pos, home);
     if (s.mode !== "leash" && fromHome > S.leash) { s.mode = "leash"; s.target = null; }
     if (s.mode === "leash") {
-      if (fromHome < 1.5) { s.mode = "idle"; s.hp = s.maxHp || S.hp; s.lastHitBy = null; m.roamUntil = now + 2000; }
+      if (fromHome < 1.5) { s.mode = "idle"; s.hp = s.maxHp || S.hp; s.lastHitBy = null; m.roamUntil = now + 2000; if (s.enraged) { s.enraged = false; m.nextToll = null; ctx.emit("highlightClear", { target: w.id }, { audience: near(pos) }); } }
       else { gait(w, m, "run"); move(ctx, w, m, home, S.run, dt); m.still = false; continue; }
     }
     if (s.mode === "idle") {
@@ -133,6 +170,13 @@ export function update(ctx, dt) {
     }
     const p = players.find((q) => q.id === s.target);
     const dist = p ? flat(p.feetPosition, pos) : Infinity;
+    const T = cs.toll;
+    if (T) {
+      if (s.mode === "toll") { halt(w, m); if (now >= m.tollAt) tollLand(ctx, w, s, m, T, players); continue; }
+      if (!s.enraged && s.hpPct <= T.enrageAt) tollEnrage(ctx, w, s, m, T);
+      m.nextToll ??= now + 4000;
+      if (p && dist < T.radius + 4 && now >= m.nextToll && s.mode !== "windup") { tollBegin(ctx, w, s, m, T); continue; }
+    }
     if (s.mode === "windup") {
       halt(w, m);
       if (p) face(w, m, p.feetPosition, dt);
