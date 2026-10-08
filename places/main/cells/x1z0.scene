@@ -214,7 +214,7 @@ cl-arms-shield-c:
   tags: [copperlane, weapon-display]
 cl-arms-sign:
   children: [{feetPosition: {x: 0, y: 1.55, z: 0}, material: {color: oklch(0.5 0.07 60), roughness: 0.85}, primitive: {depth: 0.06, height: 0.62, kind: box, width: 1.1}, ui: "<div face=\"front\" style=\"width:1100px;height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#5a3d22;border:14px solid #2a1e16;color:#f2b04a;font-family:serif;text-align:center\"><div style=\"font-size:120px;line-height:1\">⚔</div><div style=\"font-size:92px;letter-spacing:6px\">COPPERHAND</div><div style=\"font-size:52px;color:#e8d9b5\">arms &amp; edges</div></div>"}]
-  feetPosition: {x: 71.4, y: {terrain: 0}, z: -8.6}
+  feetPosition: {x: 71.2, y: 0.5615594988435489, z: -13.9}
   id: cl-arms-sign
   material: {color: oklch(0.42 0.06 55), roughness: 0.9}
   physics: static
