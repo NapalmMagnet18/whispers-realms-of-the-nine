@@ -1266,6 +1266,134 @@ scarecrow:
   primitive: {kind: scripted, params: {kind: scarecrow}, script: scripts/gen/farm.js}
   rotation: 150
   tags: [farm]
+shield-banner-0:
+  feetPosition: {x: 24, y: {terrain: 0}, z: 15.5}
+  id: shield-banner-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner}, script: scripts/gen/shieldtable.js}
+  rotation: 20
+  tags: [shield-table]
+shield-banner-1:
+  feetPosition: {x: 32, y: {terrain: 0}, z: 23}
+  id: shield-banner-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: banner}, script: scripts/gen/shieldtable.js}
+  rotation: 200
+  tags: [shield-table]
+shield-npc-hollis:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 30.5, y: {terrain: 0}, z: 21}
+  id: shield-npc-hollis
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-old-veteran-soldier-male-bald-eyepatch-worn-gambeson-cane.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 230}
+  state: {homeYaw: 230, idle: Idle, npcName: Old Hollis, who: hollis, yaw: 230}
+  tags: [npc, talker, townsfolk]
+shield-npc-oren:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 25, y: {terrain: 0}, z: 13}
+  id: shield-npc-oren
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-grizzled-marshal-male-grey-beard-plate-pauldrons-red-tabard-round-shield.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 35}
+  state: {homeYaw: 35, idle: Idle_FoldArms_Loop, npcName: Marshal Oren Flint, who: oren, yaw: 35}
+  tags: [npc, talker, townsfolk, quest-npc]
+shield-npc-wenna:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 25.2, y: {terrain: 0}, z: 20.8}
+  id: shield-npc-wenna
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-middle-aged-woman-grey-shawl-apron-calm-face.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 130}
+  state: {homeYaw: 130, idle: Idle, npcName: Wenna of the Lane, who: wenna, yaw: 130}
+  tags: [npc, talker, townsfolk]
+shield-pell-0:
+  feetPosition: {x: 23.5, y: {terrain: 0}, z: 20}
+  id: shield-pell-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: pell}, script: scripts/gen/shieldtable.js}
+  rotation: 110
+  state: {blockText: Blocked!, quest: VAN-01, tallyKey: guard_drill}
+  tags: [shield-table, shield-drill]
+shield-pell-1:
+  feetPosition: {x: 23.5, y: {terrain: 0}, z: 23.5}
+  id: shield-pell-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: pell}, script: scripts/gen/shieldtable.js}
+  rotation: 70
+  state: {blockText: Blocked!, quest: VAN-01, tallyKey: guard_drill}
+  tags: [shield-table, shield-drill]
+shield-refugee-0:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 54, y: {terrain: 0}, z: 8}
+  id: shield-refugee-0
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-weary-refugee-woman-travel-cloak-bundle-on-back.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 250}
+  state: {homeYaw: 250, idle: Idle, npcName: East-Road Traveler, who: refugee, yaw: 250}
+  tags: [npc, talker, townsfolk]
+shield-refugee-1:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 61, y: {terrain: 0}, z: 16}
+  id: shield-refugee-1
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-weary-refugee-woman-travel-cloak-bundle-on-back.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 230}
+  state: {homeYaw: 230, idle: Idle, npcName: East-Road Traveler, who: refugee, yaw: 230}
+  tags: [npc, talker, townsfolk]
+shield-refugee-2:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 49, y: {terrain: 0}, z: 23}
+  id: shield-refugee-2
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-weary-refugee-woman-travel-cloak-bundle-on-back.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 280}
+  state: {homeYaw: 280, idle: Idle, npcName: East-Road Traveler, who: refugee, yaw: 280}
+  tags: [npc, talker, townsfolk]
+shield-table:
+  feetPosition: {x: 28, y: {terrain: 0}, z: 18}
+  id: shield-table
+  physics: static
+  primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/shieldtable.js}
+  rotation: 0
+  tags: [shield-table]
+shield-table-lamp:
+  children: [{feetPosition: {x: 0, y: 2.42, z: 0}, fx: {script: "fx\npop flame rate=14 on=disc(.06) life=.3..0.6 v=up(.5) size=.07..0.12 acc=buoy(1.5)+drag(1.5) sz=$size*(.6>1:.7>.2) col=hdr(3.6,2,.6)>hdr(1.6,.5,.1) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)\npop glow n=1 pos=<0,.1,0> r=light(<1,.7,.4>,2.5,11)"}}]
+  feetPosition: {x: 31.5, y: {terrain: 0}, z: 21.8}
+  id: shield-table-lamp
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamp}, script: scripts/gen/strand.js}
+  tags: [shield-table]
+shield-trial-0:
+  feetPosition: {x: 34.5, y: {terrain: 0}, z: 21}
+  id: shield-trial-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: trialstone}, script: scripts/gen/shieldtable.js}
+  rotation: -90
+  state: {blockText: The stone rings, quest: VAN-07, tallyKey: guardian_trial}
+  tags: [shield-table, shield-drill]
+shield-trial-1:
+  feetPosition: {x: 35.5, y: {terrain: 0}, z: 17}
+  id: shield-trial-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: trialstone}, script: scripts/gen/shieldtable.js}
+  rotation: -65
+  state: {blockText: The stone rings, quest: VAN-07, tallyKey: guardian_trial}
+  tags: [shield-table, shield-drill]
+shield-trial-2:
+  feetPosition: {x: 34, y: {terrain: 0}, z: 13.5}
+  id: shield-trial-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: trialstone}, script: scripts/gen/shieldtable.js}
+  rotation: -40
+  state: {blockText: The stone rings, quest: VAN-07, tallyKey: guardian_trial}
+  tags: [shield-table, shield-drill]
 smithy:
   children: [{feetPosition: {x: -2.2, y: 0.12, z: 2.4}, physics: static, primitive: {kind: scripted, params: {kind: forge}, script: scripts/gen/props.js}}, {feetPosition: {x: -1.4, y: 0.12, z: 0.2}, physics: static, primitive: {kind: scripted, params: {kind: anvil}, script: scripts/gen/props.js}, rotation: 20}, {feetPosition: {x: 2.8, y: 0.12, z: 2.6}, physics: static, primitive: {kind: scripted, params: {kind: trough}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.9, y: 0.12, z: -1.2}, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: 3.6, y: 0.12, z: -2.9}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: 15}, {feetPosition: {x: 2.8, y: 0.12, z: -3.1}, physics: static, primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}, rotation: -10}, {feetPosition: {x: -2.2, y: 1.6, z: 2}, light: {color: oklch(0.72 0.19 45), distance: 12, intensity: 30, kind: point}}]
   feetPosition: {x: 24, y: 4, z: 2}
@@ -1661,6 +1789,78 @@ training-yard-lantern:
   feetPosition: {x: 12, y: 4, z: 12.5}
   id: training-yard-lantern
   model: /cdn/model-lantern-grey-metal-candle-4ur9lj8p.glb
+van-evacuee-0:
+  feetPosition: {x: 54.8, y: {terrain: 0}, z: 8.6}
+  id: van-evacuee-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: evacuee, quest: VAN-02, say: They pick up their bundles without a word and start toward the lanterns., sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Weary Family, verb: Tell them the Reach is open}
+  tags: [quest-mark, shield-table]
+van-evacuee-1:
+  feetPosition: {x: 61.8, y: {terrain: 0}, z: 16.6}
+  id: van-evacuee-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: evacuee, quest: VAN-02, say: "The youngest asks if there's bread. You say yes, and hope it's true.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Weary Family, verb: Tell them the Reach is open}
+  tags: [quest-mark, shield-table]
+van-evacuee-2:
+  feetPosition: {x: 49.8, y: {terrain: 0}, z: 23.6}
+  id: van-evacuee-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: evacuee, quest: VAN-02, say: "An old man grips your wrist, once, hard, and then walks on.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Weary Family, verb: Tell them the Reach is open}
+  tags: [quest-mark, shield-table]
+van-memorial:
+  feetPosition: {x: 28, y: {terrain: 0}, z: 25.5}
+  id: van-memorial
+  physics: static
+  primitive: {kind: scripted, params: {kind: memorial}, script: scripts/gen/shieldtable.js}
+  rotation: 180
+  state: {after: shield_plate, afterText: "First: recover the three shield-plates", mark: memorial_restored, quest: VAN-06, say: Three plates on three pegs. Six pegs still empty. The stone looks less like a grave and more like a roll call., sound: /cdn/moodboard-painterly-fantasy/sfx-metal-clank-pickup.mp3, title: Rampart Memorial, verb: Hang the plates}
+  tags: [quest-mark, shield-table]
+van-orderboard:
+  feetPosition: {x: 22, y: {terrain: 0}, z: 26}
+  id: van-orderboard
+  physics: static
+  primitive: {kind: scripted, params: {kind: board}, script: scripts/gen/cradle.js}
+  rotation: 160
+  state: {after: witness, afterText: "First: hear both witnesses", flag: van_order_published, mark: order_judged, quest: VAN-05, say: "You pin the lord's order where the whole Reach walks past. Under it, in your own hand: Captain Ide refused.", sound: /cdn/moodboard-painterly-fantasy/sfx-pin-into-wood.mp3, title: The Public Board, verb: Pin the order}
+  tags: [quest-mark, shield-table]
+van-post:
+  feetPosition: {x: 46.5, y: {terrain: 0}, z: -26}
+  id: van-post
+  physics: static
+  primitive: {kind: scripted, params: {kind: trialstone}, script: scripts/gen/shieldtable.js}
+  rotation: 30
+  state: {after: evacuee, afterText: "First: find the three families on the east road", mark: defensive_post, quest: VAN-02, say: "Narrow, high, the road laid out below. One person could hold this a long while. You plant your feet.", sound: /cdn/moodboard-painterly-fantasy/sfx-wooden-shield-block-thud.mp3, title: Watchtower Stair, verb: Take this position}
+  tags: [quest-mark, shield-table]
+van-vow:
+  feetPosition: {x: 31, y: {terrain: 0}, z: 14}
+  id: van-vow
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern}, script: scripts/gen/shieldtable.js}
+  rotation: -40
+  state: {after: guardian_trial, afterText: "First: pass the three trial stones", mark: open_shield_vow, quest: VAN-07, say: "'I will not use protection to silence the protected.' Your name goes under a column of names. The first is Ide's.", sound: /cdn/moodboard-painterly-fantasy/sfx-quill-scratch-signature.mp3, title: Vow of the Open Shield, verb: Sign the vow}
+  tags: [quest-mark, shield-table]
+van-witness-0:
+  feetPosition: {x: 30.9, y: {terrain: 0}, z: 21.5}
+  id: van-witness-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: witness, quest: VAN-05, say: "'We were told the lane was lost. It wasn't lost. It was left. I left it.' He doesn't look away while he says it.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Old Hollis, verb: Hear him out}
+  tags: [quest-mark, shield-table]
+van-witness-1:
+  feetPosition: {x: 24.8, y: {terrain: 0}, z: 21.3}
+  id: van-witness-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: witness, quest: VAN-05, say: "'One soldier came back. Ide. She carried me to the river on her shield. The order said leave us. She didn't.'", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Wenna of the Lane, verb: Hear her out}
+  tags: [quest-mark, shield-table]
 windmill:
   children: [{feetPosition: {x: 0, y: 3.8, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 3, kind: point}}]
   feetPosition: {x: -30, y: {terrain: 0}, z: 50}
