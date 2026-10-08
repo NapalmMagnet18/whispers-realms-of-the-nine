@@ -57,7 +57,7 @@ export function heightAt(ctx) {
   if (west > 0) h += west * (5 + noise.fbm2({ x, z, frequency: 1 / 200, octaves: 3, seed: so(6) }) * 9);
   // Hollowcrypt Vale: a sunken bowl
   const dc = Math.hypot(x - CRYPT.x, z - CRYPT.z);
-  if (dc < 700) { const v = Math.exp(-((dc / 300) ** 2)); h = lerp(h, 7 + noise.fbm2({ x, z, frequency: 1 / 70, octaves: 2, seed: so(8) }) * 2.5, v); }
+  if (dc < 700) { const v = Math.exp(-((dc / 300) ** 2)); h = lerp(h, 10 + noise.fbm2({ x, z, frequency: 1 / 70, octaves: 2, seed: so(8) }) * 1.5, v); }
   // Sorrowfen: flat marsh at the waterline; pools where the noise dips under 0
   const df = Math.hypot(x - FEN.x, z - FEN.z);
   if (df < 1100) { const v = Math.exp(-((df / 480) ** 2)); h = lerp(h, 0.5 + noise.fbm2({ x, z, frequency: 1 / 55, octaves: 3, seed: so(9) }) * 1.8, v); }
