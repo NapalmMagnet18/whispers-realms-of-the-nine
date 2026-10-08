@@ -11,7 +11,9 @@ function modal(inner, width) {
   return '<div data-modal style="position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;pointer-events:auto;background:radial-gradient(ellipse at 50% 50%,rgba(8,5,3,.55) 30%,rgba(8,5,3,.78) 100%);backdrop-filter:blur(2px)">'
     + '<div style="width:min(' + width + 'px,calc(100vw - 2 * (var(--spawn-chrome-reservation-right-inset,50px) + 24px)));max-height:calc(100vh - 60px);overflow:auto;' + ART.frame('window', 18, 'rgba(14,11,8,.95)') + 'padding:12px 16px;color:' + INK + ';box-shadow:0 18px 60px rgba(0,0,0,.6),0 0 40px rgba(242,176,74,.12)">' + inner + '</div></div>';
 }
-var SIGIL = { Normal: '\u26e8', PvP: '\u2694', RP: '\u2767' };
+function svg(d, c) { return '<svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align:-2px;margin-right:2px"><path d="' + d + '" fill="none" stroke="' + c + '" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
+var SIGIL = { Normal: svg('M8 1.5 L13.5 3.5 V8 C13.5 11 11 13.5 8 14.5 C5 13.5 2.5 11 2.5 8 V3.5 Z', '#9fd0ff'), PvP: svg('M2.5 2.5 L11 11 M13.5 2.5 L5 11 M9.5 12.5 L12.5 9.5 M6.5 12.5 L3.5 9.5', '#ff6a55'), RP: svg('M13 2.5 C8 3.5 5 7 3.5 13.5 M3.5 13.5 C7 12 10.5 9 13 2.5 M6 10 L9 10', '#7fe08a') };
+var STAR = '<svg viewBox="0 0 16 16" width="11" height="11" style="vertical-align:-1px"><path d="M8 1 L9.6 6.4 L15 8 L9.6 9.6 L8 15 L6.4 9.6 L1 8 L6.4 6.4 Z" fill="#f2b04a"/></svg>';
 function popBar(pop) {
   var n = { Low: 1, Medium: 2, High: 3, Full: 4 }[pop] || 1, c = POP[pop] || POP.Low, out = '';
   for (var i = 0; i < 4; i++) out += '<span style="display:inline-block;width:12px;height:8px;margin-right:2px;transform:skewX(-18deg);border:1px solid rgba(201,164,106,.45);background:' + (i < n ? 'linear-gradient(180deg,' + c + ',rgba(0,0,0,.35))' : 'rgba(0,0,0,.45)') + ';' + (i < n ? 'box-shadow:0 0 5px ' + c : '') + '"></span>';
@@ -28,7 +30,7 @@ function realmDetail(s, list, pick) {
     return '<div style="display:flex;justify-content:space-between;font-size:13px;padding:2px 0;border-bottom:1px solid rgba(201,164,106,.15)"><span><span style="color:' + DIM + '">' + (i + 1) + '.</span> ' + esc(h.name) + ' <span style="color:' + DIM + ';font-size:11px">' + esc(h.class) + '</span></span><span style="color:' + GOLD + '">' + (h.level || 1) + '</span></div>';
   }).join('') || '<div style="font-size:12px;font-style:italic;color:' + DIM + '">' + (d.loading ? 'Reading the ledger\u2026' : 'No heroes yet. Be the first.') + '</div>';
   var firsts = (d.firsts || []).map(function (f) {
-    return '<div style="font-size:12px;padding:2px 0"><span style="color:' + GOLD + '">\u2726</span> ' + esc(f.label) + ' <span style="color:' + DIM + '">\u2014</span> ' + esc(f.char_name) + '</div>';
+    return '<div style="font-size:12px;padding:2px 0">' + STAR + ' ' + esc(f.label) + ' <span style="color:' + DIM + '">\u2014</span> ' + esc(f.char_name) + '</div>';
   }).join('') || '<div style="font-size:12px;font-style:italic;color:' + DIM + '">' + (d.loading ? '' : 'Every first is still unclaimed.') + '</div>';
   return '<div style="' + ART.frame('realmRow', 10, 'rgba(20,15,10,.92)') + 'padding:8px 10px;min-height:100%;box-sizing:border-box">'
     + '<div style="font-family:Cinzel,Georgia,serif;font-size:17px;font-weight:700;color:' + GOLD + '">' + esc(r.name || '') + '</div>'
