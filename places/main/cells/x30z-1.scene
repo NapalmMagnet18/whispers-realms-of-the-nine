@@ -1,8 +1,198 @@
 # spawn-scene v2 yaml x30z-1
 frontier-sunscar:
-  feetPosition: {x: 3800, y: 40, z: -180}
+  children: [{feetPosition: {x: 0, y: 7.6, z: 0}, light: {color: oklch(0.85 0.12 70), distance: 16, intensity: 3, kind: point}}]
+  feetPosition: {x: 3800, y: {terrain: 0}, z: -180}
   id: frontier-sunscar
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 30, height: 10, kind: box, width: 30}
-  tags: [blueprint]
+  physics: static
+  primitive: {kind: scripted, params: {kind: gate}, script: scripts/gen/frontier.js, seed: 2}
+  rotation: {yaw: 98.8}
+  tags: [landmark, sunscar]
+frontier-sunscar-boulder-0:
+  feetPosition: {x: 3840.624585885003, y: {terrain: -0.4}, z: -166.25170988900345}
+  id: frontier-sunscar-boulder-0
+  physics: static
+  primitive: {kind: scripted, params: {r: 0.8, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 80}
+  rotation: 0
+frontier-sunscar-boulder-1:
+  feetPosition: {x: 3838.969774445606, y: {terrain: -0.4}, z: -161.842708048389}
+  id: frontier-sunscar-boulder-1
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.25, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 81}
+  rotation: 41
+frontier-sunscar-boulder-10:
+  feetPosition: {x: 3838.1563232302146, y: {terrain: -0.4}, z: -174.97063012109513}
+  id: frontier-sunscar-boulder-10
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.7000000000000002, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 90}
+  rotation: 410
+frontier-sunscar-boulder-11:
+  feetPosition: {x: 3841.2908232794675, y: {terrain: -0.4}, z: -171.1177881245686}
+  id: frontier-sunscar-boulder-11
+  physics: static
+  primitive: {kind: scripted, params: {r: 2.1500000000000004, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 91}
+  rotation: 451
+frontier-sunscar-boulder-2:
+  feetPosition: {x: 3835.1164968522685, y: {terrain: -0.4}, z: -158.7087434988694}
+  id: frontier-sunscar-boulder-2
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.7000000000000002, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 82}
+  rotation: 82
+frontier-sunscar-boulder-3:
+  feetPosition: {x: 3830.252109440301, y: {terrain: -0.4}, z: -159.37533313157462}
+  id: frontier-sunscar-boulder-3
+  physics: static
+  primitive: {kind: scripted, params: {r: 2.1500000000000004, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 83}
+  rotation: 123
+frontier-sunscar-boulder-4:
+  feetPosition: {x: 3825.8430309423075, y: {terrain: -0.4}, z: -161.0299403142716}
+  id: frontier-sunscar-boulder-4
+  physics: static
+  primitive: {kind: scripted, params: {r: 0.8, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 84}
+  rotation: 164
+frontier-sunscar-boulder-5:
+  feetPosition: {x: 3822.70888788615, y: {terrain: -0.4}, z: -164.88307271694177}
+  id: frontier-sunscar-boulder-5
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.25, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 85}
+  rotation: 205
+frontier-sunscar-boulder-6:
+  feetPosition: {x: 3823.375252166662, y: {terrain: -0.4}, z: -169.7474910046507}
+  id: frontier-sunscar-boulder-6
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.7000000000000002, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 86}
+  rotation: 246
+frontier-sunscar-boulder-7:
+  feetPosition: {x: 3825.0296550891085, y: {terrain: -0.4}, z: -174.15664615056028}
+  id: frontier-sunscar-boulder-7
+  physics: static
+  primitive: {kind: scripted, params: {r: 2.1500000000000004, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 87}
+  rotation: 287
+frontier-sunscar-boulder-8:
+  feetPosition: {x: 3828.8826422928414, y: {terrain: -0.4}, z: -177.29096770662878}
+  id: frontier-sunscar-boulder-8
+  physics: static
+  primitive: {kind: scripted, params: {r: 0.8, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 88}
+  rotation: 328
+frontier-sunscar-boulder-9:
+  feetPosition: {x: 3833.7470914458518, y: {terrain: -0.4}, z: -176.62482877974003}
+  id: frontier-sunscar-boulder-9
+  physics: static
+  primitive: {kind: scripted, params: {r: 1.25, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 89}
+  rotation: 369
+frontier-sunscar-crag-0:
+  feetPosition: {x: 3834.306816361588, y: {terrain: -0.8}, z: -164.45263815070754}
+  id: frontier-sunscar-crag-0
+  physics: static
+  primitive: {kind: scripted, params: {r: 2.5, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 90}
+  rotation: 0
+frontier-sunscar-crag-1:
+  feetPosition: {x: 3808.6383413485937, y: {terrain: -0.8}, z: -147.73226633541054}
+  id: frontier-sunscar-crag-1
+  physics: static
+  primitive: {kind: scripted, params: {r: 3.5, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 91}
+  rotation: 63
+frontier-sunscar-crag-2:
+  feetPosition: {x: 3793.019026693988, y: {terrain: -0.8}, z: -174.08522542646762}
+  id: frontier-sunscar-crag-2
+  physics: static
+  primitive: {kind: scripted, params: {r: 4.5, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 92}
+  rotation: 126
+frontier-sunscar-crag-4:
+  feetPosition: {x: 3833.3636812664613, y: {terrain: -0.8}, z: -187.11508193714803}
+  id: frontier-sunscar-crag-4
+  physics: static
+  primitive: {kind: scripted, params: {r: 3.5, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 94}
+  rotation: 252
+frontier-sunscar-lamp-0:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2.5, kind: point}}]
+  feetPosition: {x: 3812, y: {terrain: 0}, z: -176}
+  id: frontier-sunscar-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+frontier-sunscar-lamp-1:
+  children: [{feetPosition: {x: 0.63, y: 2.5, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 2.5, kind: point}}]
+  feetPosition: {x: 3840, y: {terrain: 0}, z: -188}
+  id: frontier-sunscar-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+frontier-sunscar-pool:
+  feetPosition: {x: 3832, y: 49.684192064254596, z: -168}
+  id: frontier-sunscar-pool
+  material: {color: oklch(0.62 0.1 200), kind: water, opacity: 0.85, waveIntensity: 0.25}
+  primitive: {kind: circle, radius: 8, segments: 40}
+  rotation: {pitch: -90}
+  tags: [sunscar]
+frontier-sunscar-prop-0:
+  feetPosition: {x: 3842, y: {terrain: 0}, z: -150}
+  id: frontier-sunscar-prop-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 0
+frontier-sunscar-prop-1:
+  feetPosition: {x: 3844, y: {terrain: 0}, z: -151.5}
+  id: frontier-sunscar-prop-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 47
+frontier-sunscar-prop-2:
+  feetPosition: {x: 3846, y: {terrain: 0}, z: -150.3}
+  id: frontier-sunscar-prop-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 94
+frontier-sunscar-prop-3:
+  feetPosition: {x: 3814, y: {terrain: 0}, z: -158}
+  id: frontier-sunscar-prop-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 141
+frontier-sunscar-prop-4:
+  feetPosition: {x: 3826, y: {terrain: 0}, z: -188}
+  id: frontier-sunscar-prop-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: trough}, script: scripts/gen/props.js}
+  rotation: 188
+frontier-sunscar-prop-5:
+  feetPosition: {x: 3808, y: {terrain: 0}, z: -170}
+  id: frontier-sunscar-prop-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: cart}, script: scripts/gen/props.js}
+  rotation: 235
+frontier-sunscar-tent-0:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.82 0.13 60), distance: 6, intensity: 1.5, kind: point}}]
+  feetPosition: {x: 3818, y: {terrain: -0.05}, z: -150}
+  id: frontier-sunscar-tent-0
+  physics: static
+  primitive: {kind: scripted, params: {h: 2.7, kind: tent, l: 4.4, tint: oklch(0.95 0.02 30), w: 3.8}, script: scripts/gen/frontier.js, seed: 0}
+  rotation: -37.87777357514436
+  tags: [sunscar]
+frontier-sunscar-tent-1:
+  children: []
+  feetPosition: {x: 3836, y: {terrain: -0.05}, z: -145}
+  id: frontier-sunscar-tent-1
+  physics: static
+  primitive: {kind: scripted, params: {h: 3, kind: tent, l: 5, tint: oklch(0.95 0.03 80), w: 4.6}, script: scripts/gen/frontier.js, seed: 1}
+  rotation: 9.866533672164406
+  tags: [sunscar]
+frontier-sunscar-tent-2:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.82 0.13 60), distance: 6, intensity: 1.5, kind: point}}]
+  feetPosition: {x: 3852, y: {terrain: -0.05}, z: -158}
+  id: frontier-sunscar-tent-2
+  physics: static
+  primitive: {kind: scripted, params: {h: 2.7, kind: tent, l: 5.6000000000000005, tint: oklch(0.93 0.04 250), w: 3.8}, script: scripts/gen/frontier.js, seed: 2}
+  rotation: 63.439621529601375
+  tags: [sunscar]
+frontier-sunscar-tent-3:
+  children: []
+  feetPosition: {x: 3852, y: {terrain: -0.05}, z: -182}
+  id: frontier-sunscar-tent-3
+  physics: static
+  primitive: {kind: scripted, params: {h: 3, kind: tent, l: 4.4, tint: oklch(0.95 0.02 30), w: 4.6}, script: scripts/gen/frontier.js, seed: 3}
+  rotation: 125.00122728484924
+  tags: [sunscar]
+frontier-sunscar-well:
+  feetPosition: {x: 3822, y: {terrain: 0}, z: -182}
+  id: frontier-sunscar-well
+  physics: static
+  primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
+  tags: [sunscar]

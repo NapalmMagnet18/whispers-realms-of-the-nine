@@ -1,0 +1,15 @@
+# spawn-scene v2 yaml x30z-2
+frontier-sunscar-crag-3:
+  feetPosition: {x: 3806.3946796406044, y: {terrain: -0.8}, z: -201.64485806890644}
+  id: frontier-sunscar-crag-3
+  physics: static
+  primitive: {kind: scripted, params: {r: 2.5, tex: /cdn/rocks-desert-diffuse-u6937xdf7.webp, tint: oklch(0.95 0.02 70)}, script: scripts/gen/rock.js, seed: 93}
+  rotation: 189
+frontier-sunscar-tent-4:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, light: {color: oklch(0.82 0.13 60), distance: 6, intensity: 1.5, kind: point}}]
+  feetPosition: {x: 3816, y: {terrain: -0.05}, z: -194}
+  id: frontier-sunscar-tent-4
+  physics: static
+  primitive: {kind: scripted, params: {h: 2.7, kind: tent, l: 5, tint: oklch(0.95 0.03 80), w: 3.8}, script: scripts/gen/frontier.js, seed: 4}
+  rotation: -148.4034285518094
+  tags: [sunscar]
