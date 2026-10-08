@@ -1,9 +1,17 @@
 // Quest data module — MMORPG Tools Mod. The quests themselves live in scripts/lib/data/quests.yml.
 // getAvailableQuests / questToActiveFormat keep the interface quest-giver.js reads; questProgress / questStatus serve the tracker.
-import QDATA from '../../../../scripts/lib/data/quests.yml';
-
-var QUEST_DATABASE = {};
-for (var k in QDATA) { if (QDATA[k] && QDATA[k].objectives) QUEST_DATABASE[k] = QDATA[k]; }
+// off the boot: the book loads the first time anything asks (a quest-giver's first tick, the journal); until then it reads empty
+var QUEST_DATABASE = {}, _qPending = null, _qReady = false;
+function warmQuests() {
+  if (_qReady || _qPending) return;
+  _qPending = import('../../../../scripts/lib/data/quests.yml').then(function (m) {
+    var QDATA = (m && m.default) || m || {};
+    for (var k in QDATA) { if (QDATA[k] && QDATA[k].objectives) QUEST_DATABASE[k] = QDATA[k]; }
+    _qReady = true;
+  }, function () { _qPending = null; });
+}
+warmQuests();
+export function questsReady() { warmQuests(); return _qReady; }
 
 function has(list, id) { return Array.isArray(list) && list.indexOf(id) !== -1; }
 // The roadmap's eligibility: every id in requires done, and at least one of requiresAny when it is set.
@@ -25,6 +33,7 @@ function eligible(q, ps) {
 function activeOf(ps, id) { var a = (ps && ps.activeQuests) || []; for (var i = 0; i < a.length; i++) if (a[i] && a[i].questId === id) return a[i]; return null; }
 
 export function getAvailableQuests(npcId, playerState) {
+  warmQuests();
   var out = [];
   for (var id in QUEST_DATABASE) {
     var q = QUEST_DATABASE[id];
