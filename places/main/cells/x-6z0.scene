@@ -169,14 +169,14 @@ thr-memorial-bowl:
   state: {after: leaf_note, afterText: "First: gather four leaf-notes", mark: memorial_bowl, quest: THR-04, say: "You lay the four leaves around the water. It stills, like something listening.", title: Memorial Bowl, verb: Lay the leaves}
   tags: [quest-mark, rootwake-glade]
 thr-roothome-0:
-  feetPosition: {x: -720, y: 19.12, z: 51}
+  feetPosition: {x: -720, y: 18.48, z: 46}
   id: thr-roothome-0
   physics: static
   primitive: {kind: scripted, params: {h: 4.4, r: 3.2, seed: 3}, script: scripts/gen/roothome.js}
   rotation: {yaw: 180}
   tags: [glade-dressing]
 thr-roothome-0-light:
-  feetPosition: {x: -720, y: 20.766751682177805, z: 51}
+  feetPosition: {x: -720, y: 20.13466245418434, z: 46}
   id: thr-roothome-0-light
   light: {color: oklch(0.85 0.11 65), distance: 8, intensity: 7, kind: point}
 thr-roothome-2:
