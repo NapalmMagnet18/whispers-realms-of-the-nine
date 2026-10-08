@@ -53,6 +53,15 @@ hc-reh-summons:
   primitive: {kind: scripted, params: {kind: shrine, seed: 31}, script: scripts/gen/fen.js}
   state: {mark: reh_summons, quest: REH-10, say: Dark to the bottom. No wisps tonight. Not one., title: "The Memorial Pool, Gone Dark", verb: Examine}
   tags: [quest-mark, homecoming]
+march-npc-mott:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -388.914360569773, y: 16.454723093835643, z: 504.9524221869277}
+  id: march-npc-mott
+  model: /cdn/model-humanoid-fantasy-travelling-peddler-male-patched-coat-wide-brim-hat-satchels-grey-stubble.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -127}
+  state: {homeYaw: -127, idle: idle, npcName: "Mott Farwander, Peddler", shop: mott-reed, who: mott, yaw: -127}
+  tags: [npc, vendor, interactable, merchant-npc, townsfolk]
 reh-willow-2:
   feetPosition: {x: -378.2, y: {terrain: 0}, z: 544.8}
   id: reh-willow-2
