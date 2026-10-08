@@ -7,6 +7,16 @@
 
 // Portrait lookup — keyed by giverName (lowercase). Only modify ui-quest.js per instructions.
 var _CUR = require('./currency.js');
+// big coin row for the parchment: zero denominations dropped, discs sized to the text
+function _questCoins(copper) {
+  var p = _CUR.split(copper), out = '';
+  function disc(color, rim) { return '<span style="display:inline-block;width:26px;height:26px;border-radius:50%;margin:0 14px 0 6px;vertical-align:-3px;background:radial-gradient(circle at 35% 30%,#fffa,' + color + ' 45%,' + rim + ');box-shadow:0 0 0 2px #0007,0 2px 4px #0006"></span>'; }
+  if (p.gold) out += p.gold + disc('#f2c14a', '#8a5a10');
+  if (p.silver) out += p.silver + disc('#d8dde2', '#6d747c');
+  if (p.copper || !out) out += p.copper + disc('#d7894a', '#7a3e18');
+  return '<span style="white-space:nowrap;font-variant-numeric:tabular-nums">' + out + '</span>';
+}
+
 var NPC_PORTRAITS = {
   'clawtheus': '/cdn/icon-circular-face-closeup-orange-lobster-face-wearing-morpheus-matrix-round-pince-nez-sunglasses-dark-gothic-tight-crop-filling-frame.png',
   'morwenna blackthorn': '/cdn/portrait-gothic-dark-fantasy-female-black-cloak-pale-face-closeup.png',
@@ -61,7 +71,7 @@ export function renderQuestDialog(localPlayer) {
         + '</div>';
     }
     if (quest.rewards.copper) {
-      rewardItems += '<div style="display:flex;align-items:center;gap:12px;font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;">' + _CUR.formatHtml(quest.rewards.copper) + '</div>';
+      rewardItems += '<div style="display:flex;align-items:center;gap:12px;font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;">' + _questCoins(quest.rewards.copper) + '</div>';
     }
     if (quest.rewards.xp) {
       rewardItems += '<div style="display:flex;align-items:center;gap:12px;">'
@@ -170,7 +180,7 @@ export function renderQuestDialog(localPlayer) {
             + '</div>'
 
             // Quest description — Times New Roman 32px, supports {player}
-            + '<div style="font-family:\'Times New Roman\',Times,serif;font-size:32px;line-height:1.2;color:oklch(0.3 0.02 0);margin-bottom:44px;max-width:740px;padding-left:148px;margin-top:8px;">'
+            + '<div style="font-family:\'Times New Roman\',Times,serif;font-size:32px;line-height:1.2;color:oklch(0.3 0.02 0);margin-bottom:44px;max-width:640px;padding-left:148px;padding-right:12px;margin-top:8px;">'
               + questText
             + '</div>'
 
@@ -246,7 +256,7 @@ export function renderTurnInDialog(localPlayer) {
         + '</div>';
     }
     if (quest.rewards.copper) {
-      rewardItems += '<div style="display:flex;align-items:center;gap:12px;font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;">' + _CUR.formatHtml(quest.rewards.copper) + '</div>';
+      rewardItems += '<div style="display:flex;align-items:center;gap:12px;font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;">' + _questCoins(quest.rewards.copper) + '</div>';
     }
     if (quest.rewards.xp) {
       rewardItems += '<div style="display:flex;align-items:center;gap:12px;">'
