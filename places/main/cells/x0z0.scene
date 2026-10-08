@@ -288,6 +288,13 @@ briar-mush-0-0:
   rotation: 0
   scale: 1
   tags: [briar-kit]
+briar-shelf-0:
+  feetPosition: {x: -63.55, y: 3.2937862996778495, z: -1.9}
+  id: briar-shelf-0
+  model: /cdn/value.aaeddf7af9a3056bab0a92c3c8f0a57426c16032810d6409b717ca78cf127d88.glb
+  rotation: {pitch: 0, roll: -70, yaw: 90}
+  scale: 1.6
+  tags: [briar-kit]
 briar-twisted-0:
   feetPosition: {x: -64, y: {terrain: -0.15}, z: -2}
   id: briar-twisted-0
@@ -428,6 +435,11 @@ farm-steps-8:
   model: /cdn/value.c43e07598a5b74294e17b1d64e37fb9d498079a92e207a7cdf787df91628bf66.glb
   rotation: 296
   tags: [meadow]
+farm-trees:
+  feetPosition: {x: -18, y: {terrain: -0.1}, z: 52}
+  id: farm-trees
+  scatter: {bounds: {innerRadius: 44, outerRadius: 60, shape: ring}, count: 24, templates: [{model: /cdn/value.a4d8136bbddef90eb8e954f2bc1a77cccbbe22c37b6791df998ed0bbfb1629e9.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.a750c1085a8eb3e4d6fc3c00a3d558a3b8a654889e0083cc7cda0b0d665d52ff.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.c6574aba4a93bdf82b54bd6b1f4f29bf4a0664420ba5a83ad336b90bb7c31893.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.ef32d2659a61818b848eafb95c04a0d15e7d0ada365e59a2c8a3785eefe78a0d.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.1751e5ca1724cea51aa7c98343b4012342d47c82c7731bbd8916866008f1b694.glb, physics: {body: static, collider: capsule}, weight: 1}], variation: {scale: [0.9, 1.4], yaw: [0, 360]}}
+  tags: [kit-trees]
 farm-trowel:
   feetPosition: {x: -13.5, y: {terrain: 0.03}, z: 48}
   id: farm-trowel
@@ -640,6 +652,11 @@ lanefence-b:
   primitive: {kind: scripted, params: {kind: fence, len: 8}, script: scripts/gen/farm.js}
   rotation: -45
   tags: [farm]
+meadow-clover:
+  feetPosition: {x: 0, y: {terrain: 0}, z: 0}
+  id: meadow-clover
+  scatter: {bounds: {innerRadius: 64, outerRadius: 95, shape: ring}, count: 160, templates: [{model: /cdn/value.69693b5f815e71fe94943e2ae52a42eb26115ab38a9bda5c0c2be9ba7426d677.glb, weight: 1}, {model: /cdn/value.aecc188afbd565b88a3a4f85133d7ab2b16d7ff2f4b2d19c73f837845d6cbb1d.glb, weight: 1}], variation: {scale: [0.7, 1.2], yaw: [0, 360]}}
+  tags: [meadow]
 meadow-oaks:
   feetPosition: {x: 0, y: {terrain: 0}, z: 0}
   id: meadow-oaks
@@ -754,6 +771,11 @@ quest-board:
   primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
   rotation: 160
   tags: [questboard, interactable]
+reach-groves:
+  feetPosition: {x: 0, y: {terrain: -0.1}, z: 0}
+  id: reach-groves
+  scatter: {bounds: {innerRadius: 100, outerRadius: 170, shape: ring}, count: 90, templates: [{model: /cdn/value.a4d8136bbddef90eb8e954f2bc1a77cccbbe22c37b6791df998ed0bbfb1629e9.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.a750c1085a8eb3e4d6fc3c00a3d558a3b8a654889e0083cc7cda0b0d665d52ff.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.c6574aba4a93bdf82b54bd6b1f4f29bf4a0664420ba5a83ad336b90bb7c31893.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.ef32d2659a61818b848eafb95c04a0d15e7d0ada365e59a2c8a3785eefe78a0d.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.1751e5ca1724cea51aa7c98343b4012342d47c82c7731bbd8916866008f1b694.glb, physics: {body: static, collider: capsule}, weight: 1}], variation: {scale: [0.9, 1.5], yaw: [0, 360]}}
+  tags: [kit-trees]
 reach-meadow:
   feetPosition: {x: 0, y: {terrain: 0}, z: 0}
   id: reach-meadow

@@ -1,0 +1,6 @@
+# spawn-scene v2 yaml x-2z2
+fen-deadwood:
+  feetPosition: {x: -260, y: {terrain: -0.1}, z: 240}
+  id: fen-deadwood
+  scatter: {bounds: {radius: 90, shape: circle}, count: 40, templates: [{model: /cdn/value.f4f4066eaf00d08c0d9c372b2d350763da1546965bc450acfc4ceacacd03f4a6.glb, physics: {body: static, collider: capsule}, weight: 1}, {model: /cdn/value.b870253a285c88c99a4874784255c347c932c4900f2e1d904e8edb852ce06e2e.glb, physics: {body: static, collider: capsule}, weight: 1}], variation: {scale: [0.9, 1.6], yaw: [0, 360]}}
+  tags: [kit-trees]
