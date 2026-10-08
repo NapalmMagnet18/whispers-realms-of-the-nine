@@ -89,6 +89,27 @@ drywall-w:
   primitive: {kind: scripted, params: {kind: drywall, len: 10}, script: scripts/gen/farm.js}
   rotation: 80
   tags: [farm]
+farm-saw:
+  feetPosition: {x: -25, y: {terrain: 0.62}, z: 57.5}
+  id: farm-saw
+  layout: {maxExtents: {x: 0.8, y: 0.8, z: 0.8}}
+  model: /cdn/value.ecb1f5c25a1a8b5fd0d29169aa2fb589b8de90483c3d505d23165ac61d267d27.glb
+  rotation: {pitch: 90, roll: 0, yaw: 15}
+  tags: [tool-prop]
+farm-shovel:
+  feetPosition: {x: -12, y: {terrain: -0.15}, z: 57.5}
+  id: farm-shovel
+  layout: {maxExtents: {x: 1.25, y: 1.25, z: 1.25}}
+  model: /cdn/value.78691190d78c7a285c8e1327506d6279272cc697e28d8862d1de3b4b73326e1b.glb
+  rotation: {pitch: 0, roll: 9, yaw: 20}
+  tags: [tool-prop]
+farm-trowel:
+  feetPosition: {x: -13.5, y: {terrain: 0.03}, z: 48}
+  id: farm-trowel
+  layout: {maxExtents: {x: 0.35, y: 0.35, z: 0.35}}
+  model: /cdn/value.266b3da110ebd40d718eb05bd4be05172f0c2c21251874c627f60482af5975a0.glb
+  rotation: {pitch: 90, roll: 0, yaw: 110}
+  tags: [tool-prop]
 fence-e:
   feetPosition: {x: 0, y: {terrain: 0}, z: 51.5}
   id: fence-e
@@ -416,6 +437,30 @@ smithy:
   primitive: {kind: scripted, params: {chimney: 0, d: 8, h: 3.6, open: true, rise: 2, roof: dark grey slate roof tiles, w: 10, win: 1}, script: scripts/gen/house.js}
   rotation: 90
   tags: [building, smithy]
+smithy/smithy-rope:
+  feetPosition: {x: 3.2, y: 0.1, z: -1.9}
+  id: smithy/smithy-rope
+  layout: {maxExtents: {x: 0.6, y: 0.6, z: 0.6}}
+  model: /cdn/value.1375decf96a67d3858122446e832127098a7fc8599b7d006b54263dba045ee69.glb
+  parent: smithy
+  rotation: 0
+  tags: [tool-prop]
+smithy/smithy-tongs:
+  feetPosition: {x: -1.4, y: 0.82, z: 0.2}
+  id: smithy/smithy-tongs
+  layout: {maxExtents: {x: 0.6, y: 0.6, z: 0.6}}
+  model: /cdn/value.0b84d625c9b53f1c91c4afcf65c6f8bed18337fed31738c8917b15281bd8a193.glb
+  parent: smithy
+  rotation: {pitch: 90, roll: 0, yaw: 30}
+  tags: [tool-prop]
+smithy/smithy-torch:
+  feetPosition: {x: -0.6, y: 0.1, z: 3}
+  id: smithy/smithy-torch
+  layout: {maxExtents: {x: 0.75, y: 0.75, z: 0.75}}
+  model: /cdn/value.36e3f47e75cebaea56191a464dcc04d8c7f98cff4a4b9ee5928ba516ac6f984e.glb
+  parent: smithy
+  rotation: {pitch: 0, roll: 14, yaw: 0}
+  tags: [tool-prop]
 windmill:
   children: [{feetPosition: {x: 0, y: 3.8, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 3, kind: point}}]
   feetPosition: {x: -30, y: {terrain: 0}, z: 50}
