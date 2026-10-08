@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1528,
-  "updatedAt": "2026-10-08T20:37:29.679Z",
+  "basedOnSpecVersion": 1543,
+  "updatedAt": "2026-10-08T20:49:58.986Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, homelands and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, survival and per-player audio, while streamed scenes and shared YAML data define places and encounters.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -216,11 +216,12 @@
   ],
   "places": [
     "places/main/config.yaml and places/main/cells/ - the Lantern March continent; streamed scenes hold towns, regions, quest sites, encounters, gates, landmarks and spatial emitters.",
-    "places/main/cells/x0z-4.scene - Starfall road's blood shrine: blood-shrine tag, offer sign and shrine audio/effects; vitality.js handles the E pact interaction.",
+    "places/main/cells/x-1z-5.scene - fallen giant on the Starfall road (-80,-680): skull/heart quest marks and looping spatial heartbeat beneath the ribs.",
+    "places/main/cells/x-6z1.scene and x-7z0.scene - Rootwake Glade bounty board at (-742,72) and Deepgrove Raider crew/camp at (-943,45).",
+    "places/main/cells/x0z-4.scene - Starfall road blood shrine: blood-shrine tag, offer sign and shrine audio/effects; vitality.js handles the E pact interaction.",
     "places/main/cells/x2z11.scene - Saltmere Hask Brinewell is a vendor as well as townsfolk; shop id hask selects his cooked fish stock.",
     "places/hollowcrypt/ - underground crypt campaign with halls, Archive, Candle Warden and paired gate.",
-    "places/drowned-bell/ and places/root-archive/ - themed dungeons with encounter scenes, paired gates and placed ambience.",
-    "places/pale-choir/, places/emberheart/ and places/ninth-assembly/ - themed raids with encounter bosses, paired gates and scene ambience.",
+    "places/drowned-bell/ and places/root-archive/ - themed dungeons with encounter scenes, paired gates and ambience; places/pale-choir/, emberheart/ and ninth-assembly/ are themed raids.",
     "places/character-creation-land/ and places/main-menu-land/ - character creation and realm/menu entry scenes."
   ],
   "roots": [
@@ -238,7 +239,7 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population and realm list/detail shared by menu and player lifecycle.",
     "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry shared by quests, class actions, vitality and regional music.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
-    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics and lookup shared by quest-core, quest-giver and quest UI; quest-text.js supplies prose.",
+    "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose; quest-data lazily warms or is seeded by quest-core.",
     "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for dungeon, raid and open-world bosses; IDs also key gear and voice data.",
     "scripts/lib/data/boss-voices.yml and boss-taunts.yml - boss wake/arena voice clips keyed by boss id; scripts/boss.js emits them on Voice bus.",
     "scripts/lib/data/music.yml, weather.yml, greet-voices.yml + scripts/region-music.js, quest-core.js - area/audio schedules and voice mappings shared by player behaviors and place weather."
@@ -250,14 +251,14 @@
     "scripts/gen/ruin.js and scripts/gen/hamlet.js - geometry, collider; ruin kinds dress the Ward Lamphouse, hamlet includes race-hamlet structures.",
     "scripts/gen/armory.js, waystone.js, apothecary.js, caravan.js and harbor.js - geometry/collider generators for settlement props and landmarks.",
     "scripts/gen/camp.js, giant.js and shrine.js - geometry, collider; kind/seed vary camp and giant, shrine builds the blood-shrine piece.",
-    "scripts/lib/kit.js - power, gearPower, classOf, canAct, forward, alive, aimPoint, softTargets, launch, materialOf, meleeFoley, applyHit.",
-    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; places/main/sim.js - cadence, tick."
+    "scripts/instance-gate.js - onTriggerEnter, onCross, onRefuse; scripts/boss.js - onSpawn, update, decided; places/main/sim.js - cadence, tick.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - seedQuests, questsReady, getAvailableQuests, questToActiveFormat, questProgress, questStatus, getQuest; scripts/quest-core.js - onInput, update."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment and quest state.",
     "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, gear power and melee foley.",
-    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
+    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth; quest-data.js owns the in-memory QUEST_DATABASE/readiness.",
     "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch (including arena-taunt cooldown) live in boss ctx.session.",
     "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; stamps player's _worldEnterAt and conditionally increments tally.",
     "scripts/vitality.js - player health/dying/rise and regen handling plus bloodUntil pact and per-session food-over-time; enemies write state.health.",
@@ -270,16 +271,16 @@
     "scripts/lib/data/realms.yml → routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads pulses and refreshes realmList/realmDetail.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot.",
     "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → trades → flight → vitality → cursor-free → region-music; movement/camera intents consumed by player.js/wow-move.js.",
-    "First eligible quest-player input/update in a scripts/lib/places.js isPlay place → dynamic import quest-core; quests.yml + quest-data define mechanics, quest-text.js supplies prose, ui-quest renders it.",
-    "quest-core talks/interacts with townsfolk → greet-voices.yml matches resident base name and barks to the pressing player; quest-core also emits quest dialogue and quest audio feedback.",
+    "First eligible quest-player input/update in a scripts/lib/places.js isPlay place → dynamic import quest-core; quest-core seeds quest-data's database from quests.yml; quest-text.js warms dialogue and ui-quest renders it.",
+    "quest-core interactions with townsfolk → greet-voices.yml matches resident base name and barks to the pressing player; quest-core also emits quest dialogue and quest audio feedback.",
+    "BNT-01: Deepgrove Bounty Board quest giver → quests.yml objective deepgrove_bandit → scripts/scavengers.js crew tally; GNT-01: Neris → ordered giant skull/heart quest-mark interactions → rewards and Giant's Heart Shard.",
     "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
     "Instance scenes bind scripts/gen/instance.js with layout/kind params; LAYOUTS and roomsOf produce shared room shells, corridors, floors and furnishings while scenes supply encounters and props.",
-    "Boss state.boss → boss.js reads bosses.yml, boss-voices.yml and boss-taunts.yml; arena entry while asleep can emit keyed taunt to nearby audience (ctx.session cooldown), wake emits voice; credited kills feed quest-player tally/XP and gear.",
-    "places/main/sim.js ticks weather.yml into place.state.storm/atmosphere and emits thunder/flash → region-music.js reads storm for rain FX/bed; vitality.js handles useFood healing and blood-shrine interact, while kit.power reads bloodUntil."
+    "Boss state.boss → boss.js reads bosses.yml, boss-voices.yml and boss-taunts.yml; credited kills feed quest-player tally/XP and gear. places/main/sim.js ticks weather.yml into storm/atmosphere → region-music rain FX/bed; vitality handles food and blood-shrine pact."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
-    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and sound/clips; boss-taunts.yml adds per-id sleeping-arena voice lines.",
+    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and sound/clips; boss-taunts.yml adds per-id sleeping-arena taunts.",
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed; scene binds static colliders for landmark structures.",
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and consolidated graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
@@ -295,7 +296,7 @@
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest before crossing, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml, gear.yml, boss-voices.yml and boss-taunts.yml.",
-    "Arena taunts only fire for non-add bosses while asleep, with a live fighter in the arena but outside aggro; ctx.session.tauntAt enforces a 60,000 ms cooldown and the Voice event audience is spatially nearby.",
-    "Blood pact power is time-gated by player.state.bloodUntil in kit.power; vitality owns its expiry/effects. Food inventory items carry healOverTime/eatSeconds, are consumed via useFood index and healing is interrupted by damage; money remains integer copper."
+    "Quest marks use the mark/quest state on quest-mark objects; keep objective keys aligned with quests.yml and tally writers. GNT-01 heart mark's after: giant_skull_echo enforces listening before prying.",
+    "quest-data.js starts quests.yml loading lazily and exposes seedQuests/questsReady; quest-core seeds the same mechanics data when dynamically imported after play begins. Keep the deferred boot and database interface aligned with quest-giver/tracker callers."
   ]
 }
