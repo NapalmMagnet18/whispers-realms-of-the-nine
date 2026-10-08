@@ -30,6 +30,7 @@ export function update(ctx, dt) {
   const hit = raycast(ctx, p, dir, { distance: step + 0.1, ignoreEntities: [self.id, s.ownerId], excludeTags: ['projectile', 'player'], physicsOnly: true })
   if (hit) {
     const o = hit.id ? ctx.getObject(hit.id) : null
+    ctx.log('missile.ray', { id: hit.id, tags: o && o.tags })
     return finish(ctx, M, hit.position, dir, o && (o.tags || []).includes('enemy') && alive(o) ? o : null, hit.normal)
   }
   m.dir = dir; m.flown += step
