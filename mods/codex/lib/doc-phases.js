@@ -113,7 +113,7 @@ export const PHASES = [
       }
     ],
     "bugs": [
-      {"id": "bugs-1", "text": "Elderveil great tree (frontier-elderveil, x-28z0, twisted kind ×4.6): crown draws as flat pale cards, bark untextured. Leaf images checked fine; roots moved to their own piece, trunk tint added; still pale in the far view", "done": false}
+      {"id": "bugs-1", "text": "Elderveil great tree (frontier-elderveil, x-28z0, twisted kind ×4.6): crown draws as flat pale cards, bark untextured. Leaf images checked fine; roots moved to their own piece, trunk tint added; still pale in the far view. 0.8.7: rebuilt as scripts/gen/elder-tree.js at true size (43 m): flared fluted trunk, 8 limbs, buttress roots, crimson-gold faceted crown, vertex colour only. Seen close and from 140 m: the crown reads red, no pale cards", "done": true}
     ],
     "notes": []
   },
