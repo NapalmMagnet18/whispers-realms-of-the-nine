@@ -1047,13 +1047,14 @@ export function renderMusicTab(s) {
 }
 
 // ─── TAB: PROFESSIONS ───
+function _skillBar(v) { return '<div style="margin-top:6px;height:9px;background:#1d1610;border:1px solid #6b4a2f;border-radius:4px;overflow:hidden"><div style="height:100%;width:' + Math.round(100 * v / 150) + '%;background:linear-gradient(90deg,#3f6a9a,#7ab4e8)"></div></div><div style="font-family:Cinzel,serif;font-size:11px;color:#7ab4e8;margin-top:2px">' + v + ' / 150</div>'; }
 export function renderProfessionsTab(s) {
   var profs = s.professions || [];
   if (profs.length === 0) {
     return '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:0 24px 80px;text-align:center;margin-top:-60px;">'
       + '<img src="/cdn/icon-dark-gothic-painted-anvil-hammer.png" style="width:64px;height:64px;opacity:0.5;margin-bottom:16px;-webkit-user-drag:none;user-select:none;" />'
       + '<div style="font-family:Cinzel,serif;font-size:20px;color:rgba(220,210,190,0.9);margin-bottom:8px;">No Professions Learned</div>'
-      + '<div style="font-family:Cinzel,serif;font-size:16px;color:rgba(180,170,150,0.5);max-width:280px;line-height:1.4;">Seek out master crafters in the world to learn their trade.</div>'
+      + '<div style="font-family:Cinzel,serif;font-size:16px;color:rgba(180,170,150,0.5);max-width:280px;line-height:1.4;">Visit the Trade Forge or the Alchemist\'s Bench beside the Lantern Exchange in the Reach to learn a trade.</div>'
       + '</div>';
   }
 
@@ -1085,6 +1086,7 @@ export function renderProfessionsTab(s) {
       + '<div style="font-family:Cinzel,serif;font-size:18px;color:rgba(230,215,180,0.95);margin-bottom:4px;'
       + 'text-shadow:0 1px 4px rgba(0,0,0,0.5);">' + pname + '</div>'
       + '<div style="font-family:Cinzel,serif;font-size:13px;color:rgba(180,170,150,0.6);line-height:1.45;">' + info.desc + '</div>'
+      + _skillBar((s.tradeSkill || {})[pname] || 0)
       + '</div></div>';
   }
 

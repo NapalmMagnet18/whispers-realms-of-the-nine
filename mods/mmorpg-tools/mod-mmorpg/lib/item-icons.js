@@ -37,6 +37,13 @@ var ITEM_ICONS = {
   'tome': '/cdn/icon-book-u7a5b5oly.webp',
   'holy-tome': '/cdn/icon-bookholy-u1eqmu24i.webp',
   'bag': '/cdn/icon-bag-u4xuwt85v.webp',
+  'iron-ore': '/cdn/value.23ef82e85e270d515a70352601feb923685a47bbab37d5a9786eaa8ed37b3208.png',
+  'copper-bar': '/cdn/value.678ff19de711079fcc05a232529d721362f002b99b8482cf014f4c0c2dddcb54.png',
+  'iron-bar': '/cdn/value.0156940b2f823c2b07bf6bbb300f9a4098397dd866a2537ad7c7d783fc876b05.png',
+  'sunleaf': '/cdn/value.dbaf90aa877bfc0d8c7f4a494b0f0cf24685db425542a959f6039194d52b33f8.png',
+  'briarroot': '/cdn/value.bb1b5492d3b9742993f226c867df34826f1a4a47d43caad53b20e8bff53cea32.png',
+  'gravebloom': '/cdn/value.d1543a4fdf172451b83b8956e29dade556db4ea44e050bfb7bc98e58fa6726dc.png',
+  'ghostlight-oil': '/cdn/icon-potionempty-u99eojpn5.webp',
 };
 function iconFor(item) { return (item && ITEM_ICONS[item.id]) || (item && item.icon) || null; }
 module.exports = { ITEM_ICONS: ITEM_ICONS, UI_ICONS: UI_ICONS, iconFor: iconFor };

@@ -21,6 +21,21 @@ inputs:
     vendorSell: {}
     vendorTab: {}
     vendorClose: {}
+    tradeTab: {}
+    tradeLearn: {}
+    tradeUnlearn: {}
+    tradeCraft: {}
+    tradeClose: {}
+    ahTab: {}
+    ahCat: {}
+    ahRefresh: {}
+    ahBuy: {}
+    ahPick: {}
+    ahPrice: {}
+    ahList: {}
+    ahCancel: {}
+    ahCollect: {}
+    ahClose: {}
     flyTo: {}
     flightClose: {}
     orbit:

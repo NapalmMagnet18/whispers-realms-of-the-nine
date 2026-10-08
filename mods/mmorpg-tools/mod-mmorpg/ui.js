@@ -18,7 +18,7 @@ function _lazyMod(key, path) {
 // the in-world HUD set loads after the menu stands (kicked off on the first paint anywhere), ready long before Enter World
 var _HUD_SRC = { hud: function () { return import('./lib/ui-hud.js'); }, quest: function () { return import('./lib/ui-quest.js'); },
   vendor: function () { return import('./lib/ui-vendor.js'); }, welcome: function () { return import('./lib/ui-welcome.js'); },
-  splash: function () { return import('./lib/ui-zone-splash.js'); }, creation: function () { return import('./lib/ui-creation.js'); }, flight: function () { return import('./lib/ui-flight.js'); } };
+  splash: function () { return import('./lib/ui-zone-splash.js'); }, creation: function () { return import('./lib/ui-creation.js'); }, flight: function () { return import('./lib/ui-flight.js'); }, trades: function () { return import('./lib/ui-trades.js'); } };
 var _hudMods = {};
 function _hm(key) {
   var e = _hudMods[key] || (_hudMods[key] = { m: null, p: null });
@@ -32,11 +32,13 @@ function renderQuestDialog(a, b) { var f = _hf('quest', 'renderQuestDialog'); re
 function renderTurnInDialog(a, b) { var f = _hf('quest', 'renderTurnInDialog'); return f ? f(a, b) : ''; }
 function renderQuestTracker(a, b) { var f = _hf('quest', 'renderQuestTracker'); return f ? f(a, b) : ''; }
 function renderFlightMap(a) { var f = _hf('flight', 'renderFlightMap'); return f ? f(a) : ''; }
+function renderTradeWindow(a) { var f = _hf('trades', 'renderTradeWindow'); return f ? f(a) : ''; }
+function renderAuction(a) { var f = _hf('trades', 'renderAuction'); return f ? f(a) : ''; }
 function renderVendor(a, b) { var f = _hf('vendor', 'renderVendor'); return f ? f(a, b) : ''; }
 function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : ''; }
 function zoneSplashActive() { var f = _hf('splash', 'zoneSplashActive'); return f ? f() : false; }
 function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
-function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('welcome'); _hm('flight'); }
+function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
 function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
 function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
@@ -225,6 +227,8 @@ export default function(world, localPlayer) {
       if (localPlayer.state.showQuestDialog) { try { _hudParts.push(localPlayer.state.questDialogData && localPlayer.state.questDialogData.turnIn ? renderTurnInDialog(localPlayer) : renderQuestDialog(localPlayer)); } catch(e8) { _hudParts.push(''); } }
       try { _hudParts.push(renderDoorPanel(localPlayer)); } catch(e9) { _hudParts.push(''); }
       try { if (localPlayer.state && localPlayer.state.vendorOpen) _hudParts.push(renderVendor(localPlayer)); } catch(e9v) { _hudParts.push(''); }
+      try { if (localPlayer.state && localPlayer.state.tradeOpen) _hudParts.push(renderTradeWindow(localPlayer)); } catch(e9t) { _hudParts.push(''); }
+      try { if (localPlayer.state && localPlayer.state.ahOpen) _hudParts.push(renderAuction(localPlayer)); } catch(e9a) { _hudParts.push(''); }
       try { if (localPlayer.state && localPlayer.state.flightMap) _hudParts.push(renderFlightMap(localPlayer)); } catch(e9f) { _hudParts.push(''); }
       try { _hudParts.push(renderBuffIcons(localPlayer, rightHudLayout)); } catch(e10) { _hudParts.push(''); }
       try { _hudParts.push(renderGuildPanel(localPlayer, world)); } catch(e11) { _hudParts.push(''); }

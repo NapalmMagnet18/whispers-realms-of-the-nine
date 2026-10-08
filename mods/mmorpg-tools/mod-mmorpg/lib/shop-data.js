@@ -4,6 +4,7 @@
 
 var SHOP_INVENTORIES = {
   'general-shop': [
+    { id: 'empty-vial', name: 'Empty Vial', icon: '/cdn/icon-potionempty-u99eojpn5.webp', slot: 'bag', price: 4, stackable: true, sell: 1, description: 'Stoppered glass. Alchemists need one per brew.' },
     {
       id: 'health-potion',
       name: 'Health Potion',
@@ -68,7 +69,7 @@ SHOP_INVENTORIES['armsmith'] = [
 ];
 
 // what a vendor pays for a bag good it never sells (copper)
-var SELL_ONLY = { 'copper-ore': 5, 'log': 3, 'timber-logs': 3, 'empty-vial': 1 };
+var SELL_ONLY = { 'iron-ore': 12, 'sunleaf': 4, 'briarroot': 10, 'gravebloom': 22, 'copper-bar': 14, 'iron-bar': 30, 'ghostlight-oil': 70, 'copper-ore': 5, 'log': 3, 'timber-logs': 3, 'empty-vial': 1 };
 var SELL_RATE = 0.25;
 
 var SHOP_BUILDINGS = Object.keys(SHOP_INVENTORIES);

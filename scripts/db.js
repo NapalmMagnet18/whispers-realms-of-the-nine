@@ -15,4 +15,10 @@ export async function migrate(sql) {
   await sql`CREATE TABLE IF NOT EXISTS realm_firsts (realm TEXT NOT NULL, feat TEXT NOT NULL, label TEXT NOT NULL, char_name TEXT NOT NULL, class TEXT, level INTEGER, at INTEGER NOT NULL, PRIMARY KEY (realm, feat))`;
   await sql`CREATE TABLE IF NOT EXISTS ledger (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id TEXT NOT NULL, realm TEXT NOT NULL, char_name TEXT, delta INTEGER NOT NULL, reason TEXT NOT NULL, balance INTEGER NOT NULL, at INTEGER NOT NULL)`;
   await sql`CREATE INDEX IF NOT EXISTS ledger_user ON ledger (user_id, at)`;
+  // auctions: the Lantern Exchange, one realm per room; status active|sold|cancelled|expired, settled = the seller has their coin or goods back
+  await sql`CREATE TABLE IF NOT EXISTS auctions (id INTEGER PRIMARY KEY AUTOINCREMENT, realm TEXT NOT NULL, seller TEXT NOT NULL, seller_name TEXT,
+    item TEXT NOT NULL, item_id TEXT NOT NULL, item_name TEXT NOT NULL, count INTEGER NOT NULL DEFAULT 1, price INTEGER NOT NULL,
+    created INTEGER NOT NULL, expires INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'active', buyer TEXT, buyer_name TEXT, sold_at INTEGER, settled INTEGER NOT NULL DEFAULT 0)`;
+  await sql`CREATE INDEX IF NOT EXISTS auctions_browse ON auctions (realm, status, expires)`;
+  await sql`CREATE INDEX IF NOT EXISTS auctions_seller ON auctions (seller, realm, settled)`;
 }
