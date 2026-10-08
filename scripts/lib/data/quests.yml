@@ -21,7 +21,7 @@ MAR-01:
   refusedText: "You've read the board already, friend."
   objectives:
     - { key: census_board, desc: "Examine the Ward census board", target: 1 }
-  rewards: { copper: 40, xp: 10, items: [starter_coat] }
+  rewards: { xp: 10, items: [starter_coat] }
 
 MAR-02:
   id: MAR-02
@@ -92,7 +92,7 @@ MAR-05:
   refusedText: "You kept the light already, friend."
   objectives:
     - { key: storm_lamp, desc: "Light the storm lamps", target: 2 }
-    - { key: echo_shade, desc: "Steady the echo shades at the bell rope", target: 2 }
+    - { key: echo_shade, desc: "Defend the bell rope from the echo shades", target: 2 }
   rewards: { copper: 100, xp: 50, items: [ward_gloves] }
 
 MAR-06:
@@ -163,7 +163,7 @@ Q001:
   refusedText: "You're already on the register, friend."
   objectives:
     - { key: beacon_register, desc: "Sign the Beacon Guild register", target: 1 }
-  rewards: { copper: 300, xp: 60 }
+  rewards: { copper: 300, xp: 60, items: [training_blade] }
 
 Q002:
   id: Q002
@@ -204,13 +204,14 @@ Q004:
   giverNpcId: reach-npc-rowan
   giverName: Rowan the Ferryman
   text: "You'll want to eat if you're to keep walking. Cast a line off the jetty past my bridge, catch two river fish, then cook a supper at the inn hearth. Bring word back to me. And while you're at it... ah, never mind. Old men see docks that aren't there."
-  progressText: "Two fish off the western jetty, cooked at the inn hearth."
+  progressText: "Two fish off the western jetty, cooked at the inn hearth, then supper out to the dock watch."
   turnInText: "Smells right. Sit a moment. My ferry book lists a crossing last week, to a dock called the Ninth Landing. I've worked this river forty years. There is no Ninth Landing."
   doneText: "Mind the river. It remembers more than I do."
   refusedText: "You've had your supper, friend."
   objectives:
     - { key: fish, desc: "Catch river fish at the western jetty", target: 2 }
     - { key: cook_meal, desc: "Cook a supper at the inn hearth", target: 1 }
+    - { key: dock_meal, desc: "Bring the supper to the dock watch", target: 1 }
   rewards: { copper: 700, xp: 120 }
 
 Q005:
@@ -349,6 +350,7 @@ woodcutting:
   fallSound: /cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3
 
 items:
+  training_blade: { id: training_blade, name: Beacon Guild Training Blade, slot: mainhand, description: "Blunt-edged, Guild-stamped, handed to every new name on the register." }
   starter_coat: { id: starter_coat, name: Ward Starter Coat, slot: chest, description: "Grey wool, the Ward's lantern stitched on the cuff." }
   lantern_scrap: { id: lantern_scrap, name: Lantern Scrap, slot: bag, description: "Green-tarnished brass from the lamp over a door that should not open." }
   archive_note: { id: archive_note, name: Archive Note, slot: bag, description: "Sister Vale's copy of three notices dated tomorrow." }
