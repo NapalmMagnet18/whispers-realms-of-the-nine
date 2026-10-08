@@ -59,7 +59,8 @@ function die(ctx, w, s, m) {
   ctx.emit("playSound", { clip: S.sounds.die, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
   if (p && (p.tags || []).includes("player")) {
-    p.state.tally = { ...(p.state.tally || {}), quarry_scavenger: (p.state.tally?.quarry_scavenger || 0) + 1 };
+    const tk = ctx.self.state.tallyKey || "quarry_scavenger"; // a camp names its own kill (KHA-06's tunnel_scavenger)
+    p.state.tally = { ...(p.state.tally || {}), [tk]: (p.state.tally?.[tk] || 0) + 1 };
     if (typeof p.state.xp === "number") p.state.xp += S.reward.xp; else p.state.xp = S.reward.xp;
     if (S.reward.copper) ctx.emit("coins", { delta: S.reward.copper, reason: "kill:quarry_scavenger" }, { to: p.id });
     ctx.emit("damageNumber", { position: pos, text: `+${S.reward.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
@@ -85,10 +86,10 @@ export function update(ctx, dt) {
   const camp = ctx.self, cs = camp.state, now = ctx.now(), M = (ctx.session.scav ??= {});
   if (now >= (M.census ?? 0)) {
     M.census = now + 1000;
-    for (const def of S.crew) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def);
+    for (const def of (cs.crew || S.crew)) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def);
   }
   const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating");
-  for (const def of S.crew) {
+  for (const def of (cs.crew || S.crew)) {
     const w = ctx.getObject(def.id);
     if (!w) { delete M[def.id]; continue; }
     const s = w.state, pos = w.feetPosition, home = s.home ?? { x: def.x, z: def.z };
