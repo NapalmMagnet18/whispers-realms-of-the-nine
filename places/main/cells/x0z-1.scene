@@ -37,12 +37,106 @@ hc-mar-boss:
   tags: [enemy, boss, homecoming]
   ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Reeve Ashcombe, the Lampless</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
 hc-mar-lamphouse:
-  feetPosition: {x: 45, y: 0.7, z: -147}
+  feetPosition: {x: 45, y: {terrain: -0.5}, z: -149}
   id: hc-mar-lamphouse
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 7, height: 8, kind: box, width: 9}
-  tags: [blueprint]
+  model: /cdn/value.93219a947d56db9be4a3ef205800e78a7ea73bb4a691e5d596410f0ad912e140.glb
+  physics: {body: static, collider: mesh}
+  rotation: 0
+  tags: [landmark]
+hc-mar-lamphouse-barrel-1:
+  feetPosition: {x: 39.6, y: {terrain: 0.36}, z: -145}
+  id: hc-mar-lamphouse-barrel-1
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: {roll: 90, yaw: 30}
+hc-mar-lamphouse-barrel-2:
+  feetPosition: {x: 38.3, y: {terrain: 0}, z: -146.9}
+  id: hc-mar-lamphouse-barrel-2
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: {yaw: 0}
+hc-mar-lamphouse-candles:
+  feetPosition: {x: 43.1, y: {terrain: 0}, z: -145.3}
+  id: hc-mar-lamphouse-candles
+  material: {pbr: true}
+  primitive: {kind: scripted, params: {kind: candles, n: 7}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 0}
+hc-mar-lamphouse-cart:
+  feetPosition: {x: 36.2, y: {terrain: 0.05}, z: -142.4}
+  id: hc-mar-lamphouse-cart
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {kind: cart}, script: scripts/gen/props.js}
+  rotation: {pitch: 6, roll: -16, yaw: 55}
+hc-mar-lamphouse-coldlight:
+  feetPosition: {x: 45, y: {terrain: 1.9}, z: -149.4}
+  id: hc-mar-lamphouse-coldlight
+  light: {color: oklch(0.85 0.03 220), distance: 12, intensity: 3, kind: point}
+hc-mar-lamphouse-embers:
+  feetPosition: {x: 47.4, y: {terrain: 6.4}, z: -149}
+  id: hc-mar-lamphouse-embers
+  light: {color: oklch(0.75 0.16 55), distance: 10, intensity: 2, kind: point}
+hc-mar-lamphouse-lamppost-1:
+  feetPosition: {x: 52, y: {terrain: 0}, z: -143}
+  id: hc-mar-lamphouse-lamppost-1
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {bend: 28, kind: lamppost}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 200}
+hc-mar-lamphouse-lamppost-2:
+  feetPosition: {x: 54.6, y: {terrain: 0}, z: -146.6}
+  id: hc-mar-lamphouse-lamppost-2
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {kind: lamppost, snapped: true}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 150}
+hc-mar-lamphouse-lamppost-3:
+  feetPosition: {x: 57.2, y: {terrain: 0}, z: -150.2}
+  id: hc-mar-lamphouse-lamppost-3
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {bend: -38, kind: lamppost}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 170}
+hc-mar-lamphouse-parchment-inside:
+  feetPosition: {x: 43.9, y: {terrain: 0.2}, z: -149.6}
+  id: hc-mar-lamphouse-parchment-inside
+  material: {pbr: true}
+  primitive: {kind: scripted, params: {kind: parchment, n: 6}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 70}
+hc-mar-lamphouse-parchment-yard:
+  feetPosition: {x: 46.8, y: {terrain: 0}, z: -143.8}
+  id: hc-mar-lamphouse-parchment-yard
+  material: {pbr: true}
+  primitive: {kind: scripted, params: {kind: parchment, n: 8}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 15}
+hc-mar-lamphouse-rubble-corner:
+  feetPosition: {x: 49.6, y: {terrain: 0}, z: -145.2}
+  id: hc-mar-lamphouse-rubble-corner
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {kind: rubble, n: 9}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 20}
+hc-mar-lamphouse-rubble-side:
+  feetPosition: {x: 50.6, y: {terrain: 0}, z: -149.5}
+  id: hc-mar-lamphouse-rubble-side
+  material: {pbr: true}
+  physics: {body: static, collider: box}
+  primitive: {kind: scripted, params: {kind: rubble, n: 7}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 110}
+hc-mar-lamphouse-wax-door:
+  feetPosition: {x: 44.6, y: {terrain: 0}, z: -144.6}
+  id: hc-mar-lamphouse-wax-door
+  material: {pbr: true}
+  primitive: {kind: scripted, params: {kind: wax, n: 6}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 0}
+hc-mar-lamphouse-wax-inside:
+  feetPosition: {x: 45.8, y: {terrain: 0.2}, z: -148.6}
+  id: hc-mar-lamphouse-wax-inside
+  material: {pbr: true}
+  primitive: {kind: scripted, params: {kind: wax, n: 5}, script: scripts/gen/ruin.js}
+  rotation: {yaw: 40}
 node-sunleaf-15:
   behavior: scripts/gather-node.js
   feetPosition: {x: 38.1, y: {terrain: 0}, z: -80.9}

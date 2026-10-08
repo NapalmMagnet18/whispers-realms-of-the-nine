@@ -466,3 +466,5 @@ terrain:
     lane-saltmere-hamlet: {edgeMaterial: sand, grade: true, kind: path, material: dirt, maxGrade: 0.28, noise: 0.4, points: [[290, 1560], [294, 1598], [298, 1626], [300, 1648]], width: 2.6}
     hc-nam-wreck-flat: {center: {x: 217, z: 1513}, falloff: 9, height: 24, kind: flatten, shape: {kind: circle, radius: 11}}
     hc-nam-wreck-clear: {center: {x: 217, z: 1513}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    hc-mar-lamphouse-flat: {center: {x: 45, z: -149}, falloff: 6, height: 2.8, kind: flatten, material: dirt, shape: {kind: circle, radius: 6.2}}
+    hc-mar-lamphouse-clear: {center: {x: 45, z: -149}, kind: clear-scatter, shape: {kind: circle, radius: 7}}
