@@ -1,0 +1,151 @@
+{
+  "starting_areas": [
+    "Lantern Ward",
+    "Rootwake Glade",
+    "Emberstone Cradle",
+    "Breakwater Strand",
+    "Reedhaven Refuge",
+    "Starfall Eyrie"
+  ],
+  "connections": [
+    [
+      "Lantern Ward",
+      "Lantern's Reach"
+    ],
+    [
+      "Rootwake Glade",
+      "Lantern's Reach"
+    ],
+    [
+      "Emberstone Cradle",
+      "Lantern's Reach"
+    ],
+    [
+      "Breakwater Strand",
+      "Lantern's Reach"
+    ],
+    [
+      "Reedhaven Refuge",
+      "Lantern's Reach"
+    ],
+    [
+      "Starfall Eyrie",
+      "Lantern's Reach"
+    ],
+    [
+      "Lantern's Reach",
+      "Briarwild"
+    ],
+    [
+      "Lantern's Reach",
+      "Emberstone Quarry"
+    ],
+    [
+      "Briarwild",
+      "Emberstone Quarry"
+    ],
+    [
+      "Emberstone Quarry",
+      "The Hollowcrypt"
+    ],
+    [
+      "The Hollowcrypt",
+      "Sorrowfen"
+    ],
+    [
+      "Sorrowfen",
+      "Tideglass Coast"
+    ],
+    [
+      "Sorrowfen",
+      "Briarwild Deepgrove"
+    ],
+    [
+      "Tideglass Coast",
+      "Velthraen Reach"
+    ],
+    [
+      "Briarwild Deepgrove",
+      "Velthraen Reach"
+    ],
+    [
+      "Velthraen Reach",
+      "Emberstone Bastion"
+    ],
+    [
+      "Emberstone Bastion",
+      "Glassmere Archive"
+    ],
+    [
+      "Glassmere Archive",
+      "The Ninth Veil"
+    ]
+  ],
+  "convergence_rule": {
+    "after_origin": "any of six origin finales",
+    "mid_game": "TID-09 OR BRD-09",
+    "end_game": "always reachable solo after story projection fallback"
+  },
+  "level_bands": [
+    [
+      1,
+      5,
+      "Choose a people and finish the eight origin quests",
+      "Origin district; safe tutorial quests; first racial clue"
+    ],
+    [
+      6,
+      11,
+      "Lantern's Reach",
+      "Q001–Q008; basic gathering/crafting and first story clues"
+    ],
+    [
+      12,
+      16,
+      "Emberstone Quarry",
+      "Mine, union, seal; Kharic testimony"
+    ],
+    [
+      17,
+      20,
+      "The Hollowcrypt",
+      "Four-step dungeon chain and story-mode alternative"
+    ],
+    [
+      21,
+      24,
+      "Sorrowfen",
+      "Reedbound testimony and safe marsh traversal"
+    ],
+    [
+      25,
+      30,
+      "Tideglass Coast OR Briarwild Deepgrove",
+      "Choose one; the other is optional but remains accessible"
+    ],
+    [
+      31,
+      37,
+      "Velthraen Reach",
+      "Recover the correct constellation; converge"
+    ],
+    [
+      38,
+      44,
+      "Emberstone Bastion",
+      "Guild politics and memory engine; forge profession"
+    ],
+    [
+      45,
+      51,
+      "Glassmere Archive",
+      "Investigate removal of withdrawal clause; case files"
+    ],
+    [
+      52,
+      60,
+      "The Ninth Veil",
+      "Last assembly and season finale; no forced group gate"
+    ]
+  ]
+}
