@@ -526,7 +526,7 @@ gatekeeper-elric:
   feetPosition: {x: -16, y: 4, z: -3}
   id: gatekeeper-elric
   layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
-  model: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb
+  model: /cdn/model-humanoid-fantasy-gatekeeper-male-old-guard-captain-steel-armor-cloak.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: -90}
   state: {homeYaw: -90, npcName: Gatekeeper Elric, yaw: -90}
@@ -1086,7 +1086,7 @@ reach-npc-bram:
   feetPosition: {x: 13.2, y: {terrain: 0}, z: -32.2}
   id: reach-npc-bram
   layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
-  model: {id: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb, materials: {M_Joints: {color: oklch(0.34 0.04 50)}, M_Main: {color: oklch(0.56 0.09 65)}}}
+  model: /cdn/model-humanoid-fantasy-woodcutter-male-flannel-tunic-axe-belt.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 180}
   state: {homeYaw: 180, idle: Idle_FoldArms_Loop, npcName: Bram Alder, who: bram, yaw: 180}
@@ -1096,7 +1096,7 @@ reach-npc-dren:
   feetPosition: {x: -16.8, y: {terrain: 0}, z: 5.2}
   id: reach-npc-dren
   layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
-  model: {id: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb, materials: {M_Joints: {color: oklch(0.55 0.08 70)}, M_Main: {color: oklch(0.5 0.08 130)}}}
+  model: /cdn/model-humanoid-fantasy-quartermaster-male-stout-leather-apron-beard.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: -90}
   state: {homeYaw: -90, idle: Idle_Rail_Loop, npcName: Quartermaster Dren, who: dren, yaw: -90}
@@ -1106,7 +1106,7 @@ reach-npc-mira:
   feetPosition: {x: 18.2, y: {terrain: 0}, z: 3.5}
   id: reach-npc-mira
   layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
-  model: {id: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb, materials: {M_Joints: {color: oklch(0.3 0.03 50)}, M_Main: {color: oklch(0.46 0.13 35)}}}
+  model: /cdn/model-humanoid-fantasy-blacksmith-female-forgekeeper-leather-apron-braids.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 90}
   state: {homeYaw: 90, idle: Idle_FoldArms_Loop, npcName: Mira the Forgekeeper, who: mira, yaw: 90}
@@ -1116,7 +1116,7 @@ reach-npc-rowan:
   feetPosition: {x: -36.5, y: {terrain: 0}, z: -12.2}
   id: reach-npc-rowan
   layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
-  model: {id: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb, materials: {M_Joints: {color: oklch(0.6 0.05 70)}, M_Main: {color: oklch(0.45 0.07 230)}}}
+  model: /cdn/model-humanoid-fantasy-ferryman-male-old-oilskin-coat-lantern.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 90}
   state: {homeYaw: 90, idle: Idle_Lantern_Loop, npcName: Rowan the Ferryman, who: rowan, yaw: 90}
@@ -1126,7 +1126,7 @@ reach-npc-tamsin:
   feetPosition: {x: -18, y: {terrain: 0}, z: -0.6}
   id: reach-npc-tamsin
   layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
-  model: {id: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb, materials: {M_Joints: {color: oklch(0.5 0.06 80)}, M_Main: {color: oklch(0.42 0.08 150)}}}
+  model: /cdn/model-humanoid-fantasy-ranger-female-green-hooded-leather-bow.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 90}
   state: {homeYaw: 90, idle: Idle_Shield_Loop, npcName: Tamsin the Ranger, who: tamsin, yaw: 90}
@@ -1136,7 +1136,7 @@ reach-npc-vale:
   feetPosition: {x: 3.2, y: {terrain: 0}, z: -15.6}
   id: reach-npc-vale
   layout: {maxExtents: {x: 0.4, y: 1.85, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
-  model: {id: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb, materials: {M_Joints: {color: oklch(0.5 0.1 260)}, M_Main: {color: oklch(0.88 0.03 90)}}}
+  model: /cdn/model-humanoid-fantasy-priestess-female-sister-white-robes-blue-sash.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 180}
   state: {homeYaw: 180, idle: Idle_Lantern_Loop, npcName: Sister Vale, who: vale, yaw: 180}
