@@ -27,3 +27,6 @@ Greyspine Mountains (north, snow peaks ~110 m, north pass road), Emberstone High
 Hollowcrypt Vale (NE sunken blighted bowl, ruined chapel spire: future dungeon hook), Briarwild Deepwood (west forested hills),
 Sorrowfen (SW marsh at sea level, drowned trees), Saltmere Coast (south bay, future harbor town), the river runs north mountains → town → south sea.
 Regions are ground, roads and landmarks only: no NPCs, quests or enemies there yet. Next story beats pick one region at a time.
+
+- 2026-10-08: creator's nature kit (OBJ pines, twisted trees, rocks, path stones, plants, grasses, petals, mushrooms + their bark/leaf/rock textures) converted to GLB and placed: Briarwild gets 5 crimson twisted trees on the road, 110 kit pines, undergrowth, boulders, stepping stones off the road's end; meadows of petals/short grass ring the Reach (r 62–95) and the farm. Procedural trees wear the creator's bark textures.
+- 2026-10-08: "follow the roadmap": next stages SP-007/SP-008 in flight — Briar Wolves (scripts/wolves.js, den at -92,-40) and Gatekeeper Elric's Q002 (3 wolves + 5 logs, 25 coins + 150 XP, claim once) with woodcutting on the timber oaks.
