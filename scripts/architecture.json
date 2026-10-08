@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 766,
-  "updatedAt": "2026-10-08T05:43:42.865Z",
+  "basedOnSpecVersion": 770,
+  "updatedAt": "2026-10-08T05:55:56.163Z",
   "summary": "WHISPERS: Realm of the Nine is a fantasy MMO across the Lantern March, with Lantern's Reach as its hub and origin/class stories distributed through streamed world scenes. MMORPG Tools owns character and realm lifecycle plus modular UI; the ordered player template composes movement, class combat, quests, trade and flight, while scene bindings and YAML registries define places and content.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -176,8 +176,7 @@
     "places/main/cells/x-1z0.scene - Briarwild west of the Reach, including Vanguard battlefield objectives and raider camp.",
     "places/main/cells/x0z-1.scene, x-5z0.scene, x-5z1.scene, x-6z0.scene, x-6z1.scene - Lantern Ward Marchfolk origin and Rootwake Glade Briarkin origin content.",
     "places/main/cells/x1z0.scene, x7z-1.scene, x7z-2.scene - Emberstone Quarry and Cinderhold's Emberstone Cradle Kharic origin content.",
-    "places/main/cells/x2z11.scene - Gullrest's Breakwater Strand Saltborn origin, including coast residents, wreck, phantom current and ferry buoys.",
-    "places/main/cells/x0z1.scene - Wayfarers' Lodge at (-33, 88), Iona Sedge and the placed PAT-01..07 signs, beacon, lure, crossings, markers, travelers and trial props."
+    "places/main/cells/x2z11.scene - Gullrest's Breakwater Strand Saltborn origin, including coast residents, wreck, phantom current and ferry buoys."
   ],
   "roots": [
     "world.config.yaml - main-menu-land default entry; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
@@ -200,7 +199,7 @@
   "notableExports": [
     "scripts/arrival.js - onArrive, onLeave; scripts/routing.js - pickRoom; crons/realm-pulse.js - cron.",
     "MMORPG main-menu-mgr.js - roster selection/hydration and lifecycle; character-select.js - preview lifecycle and input handling; player.js - character build/save/load lifecycle.",
-    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - game version/title constants.",
+    "MMORPG ui.js - UI composition/actions; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker; lib/version.js - GAME_VERSION (v0.17.1 Alpha), GAME_TITLE and versionTag.",
     "scripts/player.js - onInput/update; scripts/humanoid-locomotion.js - gait; scripts/flight.js - onInput/update; scripts/gryphon-flight.js - at/update.",
     "scripts/quest-player.js - onInput/update; scripts/elric.js and scripts/townsfolk.js - resident behavior; scripts/lib/economy.js - realmOf, ledger, feedback, move.",
     "scripts/vanguard.js - onInput, endAction, land; scripts/arcanist.js - onInput, release, wardEnd, endAction; scripts/pathfinder.js - onInput, release, update, endAction; scripts/lib/kit.js - class/combat helpers including drill.",
@@ -232,7 +231,7 @@
     "Vanguard Guard, Arcanist Ward or Pathfinder Dodge Roll beside matching drill props → scripts/lib/kit.js drill → quest tally/_questSave → quest tracker and realm save; PAT trail-drill posts are in the Lodge scene."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, hamlet.js, props.js, tree.js, rock.js, spire.js, farm.js, windmill*, frontier.js, briar.js, quarry.js, reach-*, elder-tree.js, roost.js, stone-bridge.js, veil.js, glade.js, ashfall.js, cradle.js, strand.js, shieldtable.js, observatory.js and lodge.js - procedural landmark geometry/colliders share scripts/gen/shape.js helpers, varied by params and LOD.",
+    "scripts/gen/ landmark builders (house, hamlet, props, tree, rock, farm, windmill, frontier, briar, quarry, reach, veil, glade, ashfall, cradle, strand and more) reuse procedural geometry helpers, varied by landmark and parameters.",
     "scripts/grass.js, flower.js, mushroom.js and pebble.js - terrain scatter geometry reused by place bindings, varied by layer density, scale, seed or per-item params.",
     "scripts/gen/tree.js with scripts/tree-look.js - painted bark/alpha-cut foliage recur in forest layers and placed scatters, varied by tree kind and LOD.",
     "scripts/flower.js and mushroom.js with their look materials - painted wildflower frames and mushroom caps vary by frame/cap parameters in terrain scatter.",
@@ -247,7 +246,7 @@
     "templates/player.js behavior order is significant: locomotion before movement, then classes, quests, vendor and flight; gait samples prior-tick velocity.",
     "Movement intent/locomotion scratch is room-local ctx.session; scripts/player.js writes velocity while place config owns gravity.",
     "Flight roost IDs in flights.yml must correspond to flattened pads and ground y values in main config; saved state.roosts is discovery record, coordinates use place-main meters.",
-    "Quest marks are scene entities tagged quest-mark with state.quest/state.mark; E counts only an active quest's incomplete objective. Drill props use class-specific tags and matching state.quest/state.tallyKey; kit.drill has a 3.5m query and shared quest-save handling.",
+    "Quest marks are scene entities tagged quest-mark with state.quest/state.mark; E counts only an active quest's incomplete objective. Drill props use class-specific tags and matching state.quest/state.tallyKey; kit.drill has a 3.5m query.",
     "Class-path definitions in quests.yml use cls and requires to enforce eligibility/order; keep placed objective quest/mark or drill/tallyKey values aligned with objective keys. PAT Dodge Roll counts only near trail-drill props."
   ]
 }
