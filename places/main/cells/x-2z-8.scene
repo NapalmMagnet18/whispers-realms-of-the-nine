@@ -1,4 +1,11 @@
 # spawn-scene v2 yaml x-2z-8
+vey-yard-crate-0:
+  feetPosition: {x: -211, y: {terrain: -0.3}, z: -1084}
+  id: vey-yard-crate-0
+  model: /cdn/value.2d51c742eac117457070f8dc6a4f619eb4402f031801af0fdaf30f3336192a89.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 15}
+  tags: [starfall, vey-build]
 waystone-veylori:
   feetPosition: {x: -200, y: 119.9, z: -1087}
   id: waystone-veylori

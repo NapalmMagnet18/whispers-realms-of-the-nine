@@ -1,0 +1,20 @@
+# spawn-scene v2 yaml x-1z-8
+vey-home-0:
+  feetPosition: {x: -190, y: {terrain: -0.3}, z: -1085}
+  id: vey-home-0
+  model: /cdn/value.7d63086e18b439175cf078380cf56ba1ff2a5e36f2d1d1690b7b25df374025c3.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 16}
+  tags: [starfall, vey-build]
+vey-home-0-light:
+  feetPosition: {x: -190, y: {terrain: 2.2}, z: -1085}
+  id: vey-home-0-light
+  light: {color: oklch(0.9 0.07 290), distance: 8, intensity: 25, kind: point}
+  tags: [starfall]
+vey-yard-telescope-1:
+  feetPosition: {x: -184, y: {terrain: -0.3}, z: -1084}
+  id: vey-yard-telescope-1
+  model: /cdn/value.b9b07ad540239d9f6677cfae822e7eb743016e360fae7667df3dc4cf85230f7e.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 150}
+  tags: [starfall, vey-build]

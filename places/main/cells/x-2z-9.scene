@@ -170,12 +170,41 @@ vey-counterweight:
   state: {after: aerial_shade, afterText: "First: steady the aerial shades", mark: counterweight, quest: VEY-05, say: You haul the chain until the weights lock. The great lens settles back on true north., title: Lens Counterweights, verb: Reset}
   tags: [quest-mark, starfall]
 vey-hall:
-  feetPosition: {x: -212, y: 120, z: -1120}
+  feetPosition: {x: -219, y: {terrain: -0.3}, z: -1125}
   id: vey-hall
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 10, height: 12, kind: box, width: 12}
-  tags: [blueprint]
+  model: /cdn/value.27b225920bc67326aa3b8e7a695b74118e9003fea70e35404b9c0d2a4ae3f267.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -130}
+  tags: [starfall, vey-build]
+vey-hall-light:
+  feetPosition: {x: -219, y: {terrain: 3.6}, z: -1125}
+  id: vey-hall-light
+  light: {color: oklch(0.9 0.07 290), distance: 8, intensity: 25, kind: point}
+  tags: [starfall]
+vey-home-1:
+  feetPosition: {x: -215, y: {terrain: -0.3}, z: -1089}
+  id: vey-home-1
+  model: /cdn/value.7d63086e18b439175cf078380cf56ba1ff2a5e36f2d1d1690b7b25df374025c3.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -42}
+  tags: [starfall, vey-build]
+vey-home-1-light:
+  feetPosition: {x: -215, y: {terrain: 2.2}, z: -1089}
+  id: vey-home-1-light
+  light: {color: oklch(0.9 0.07 290), distance: 8, intensity: 25, kind: point}
+  tags: [starfall]
+vey-home-2:
+  feetPosition: {x: -225, y: {terrain: -0.3}, z: -1097}
+  id: vey-home-2
+  model: /cdn/value.7d63086e18b439175cf078380cf56ba1ff2a5e36f2d1d1690b7b25df374025c3.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -54}
+  tags: [starfall, vey-build]
+vey-home-2-light:
+  feetPosition: {x: -225, y: {terrain: 2.2}, z: -1097}
+  id: vey-home-2-light
+  light: {color: oklch(0.9 0.07 290), distance: 8, intensity: 25, kind: point}
+  tags: [starfall]
 vey-inscription:
   feetPosition: {x: -200, y: {terrain: 0}, z: -1120}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1.8,1.6,2.4>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.8,1.6,2.4>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
@@ -516,3 +545,66 @@ vey-uncensored:
   rotation: 0
   state: {mark: uncensored_chart, quest: VEY-07, say: "Otho's own chart, the ninth lamp drawn plain. He presses it into your hands. \"Walk slowly. Let them see it.\"", title: Uncensored Chart, verb: Take}
   tags: [quest-mark, starfall]
+vey-yard-bench-0:
+  feetPosition: {x: -217, y: {terrain: -0.3}, z: -1110}
+  id: vey-yard-bench-0
+  model: /cdn/value.42a5a11841076b00c96782c232152d2115a3195d081a77b01479d1edd08f8e1e.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -80}
+  tags: [starfall, vey-build]
+vey-yard-bench-1:
+  feetPosition: {x: -194, y: {terrain: -0.3}, z: -1089}
+  id: vey-yard-bench-1
+  model: /cdn/value.42a5a11841076b00c96782c232152d2115a3195d081a77b01479d1edd08f8e1e.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 10}
+  tags: [starfall, vey-build]
+vey-yard-crate-1:
+  feetPosition: {x: -210, y: {terrain: -0.3}, z: -1124}
+  id: vey-yard-crate-1
+  model: /cdn/value.2d51c742eac117457070f8dc6a4f619eb4402f031801af0fdaf30f3336192a89.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -25}
+  tags: [starfall, vey-build]
+vey-yard-flag-0:
+  feetPosition: {x: -206, y: {terrain: -0.3}, z: -1100}
+  id: vey-yard-flag-0
+  model: /cdn/value.d43afce7cad4157445a482cae27454cbcb00a21c436198efe1f1c50f696c6b5d.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 30}
+  tags: [starfall, vey-build]
+vey-yard-flag-1:
+  feetPosition: {x: -208, y: {terrain: -0.3}, z: -1128}
+  id: vey-yard-flag-1
+  model: /cdn/value.d43afce7cad4157445a482cae27454cbcb00a21c436198efe1f1c50f696c6b5d.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: -60}
+  tags: [starfall, vey-build]
+vey-yard-lantern-0:
+  feetPosition: {x: -209, y: {terrain: -0.3}, z: -1117}
+  id: vey-yard-lantern-0
+  model: /cdn/value.2dd1677308ee4150ddeb6bdb5d7cfb55da1c8a41ca71e5290f69eb23216ba643.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 40}
+  tags: [starfall, vey-build]
+vey-yard-lantern-1:
+  feetPosition: {x: -196, y: {terrain: -0.3}, z: -1090}
+  id: vey-yard-lantern-1
+  model: /cdn/value.2dd1677308ee4150ddeb6bdb5d7cfb55da1c8a41ca71e5290f69eb23216ba643.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 0}
+  tags: [starfall, vey-build]
+vey-yard-lantern-2:
+  feetPosition: {x: -219, y: {terrain: -0.3}, z: -1094}
+  id: vey-yard-lantern-2
+  model: /cdn/value.2dd1677308ee4150ddeb6bdb5d7cfb55da1c8a41ca71e5290f69eb23216ba643.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 120}
+  tags: [starfall, vey-build]
+vey-yard-telescope-0:
+  feetPosition: {x: -207, y: {terrain: -0.3}, z: -1104}
+  id: vey-yard-telescope-0
+  model: /cdn/value.b9b07ad540239d9f6677cfae822e7eb743016e360fae7667df3dc4cf85230f7e.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 200}
+  tags: [starfall, vey-build]
