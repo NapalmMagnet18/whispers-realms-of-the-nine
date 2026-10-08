@@ -10,6 +10,7 @@ export function onSpawn(ctx) {
 }
 export const updateSchedule = { every: { seconds: 0.25 } };
 export function update(ctx, dt) {
+  if (ctx.self.state.traveling) return; // on the road (Mott's caravan walks him), no turning to greet
   const me = ctx.self.feetPosition;
   let best = null, bd = N.greetReach;
   for (const p of ctx.place.players) { const d = Math.hypot(p.feetPosition.x - me.x, p.feetPosition.z - me.z); if (d < bd) { bd = d; best = p; } }

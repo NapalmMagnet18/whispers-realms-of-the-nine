@@ -11,7 +11,7 @@ march-caravan-bells:
 march-caravan-goods:
   feetPosition: {x: -239.5, y: 10.6, z: 277}
   id: march-caravan-goods
-  physics: static
+  physics: kinematic
   primitive: {kind: scripted, params: {kind: goods, seed: 2}, script: scripts/gen/caravan.js}
   rotation: {yaw: -37}
   tags: [march-caravan]
@@ -20,11 +20,13 @@ march-caravan-lamp:
   id: march-caravan-lamp
   light: {color: "#ffbe70", distance: 9, intensity: 3, kind: point}
 march-caravan-wagon:
+  behavior: scripts/caravan-route.js
   feetPosition: {x: -241.4, y: 11, z: 275.2}
   id: march-caravan-wagon
-  physics: static
+  physics: kinematic
   primitive: {kind: scripted, params: {kind: wagon}, script: scripts/gen/caravan.js}
   rotation: {yaw: -37}
+  state: {homeYaw: -37}
   tags: [march-caravan]
 march-npc-mott:
   behavior: [scripts/townsfolk.js]
