@@ -29,14 +29,14 @@ function heroLine(ch) {
 }
 function btn(label, action, payload, w, role, size) {
   var data = payload ? ',' + JSON.stringify(payload).replace(/"/g, "'") : '';
-  return '<div class="wm-btn' + (role === 'buttonHot' ? ' wm-hot' : '') + '" data-interactive onclick="sendAction(\'' + action + '\'' + data + ')" style="' + ART.frame(role || 'button', 12, role === 'buttonHot' ? 'rgba(122,46,34,.96)' : 'rgba(80,30,22,.94)') + 'width:' + (w || 220) + 'px;height:' + (size ? size + 16 : 30) + 'px;font-size:' + (size || 14) + 'px">' + label + '</div>';
+  return '<div class="wm-btn' + (role === 'buttonHot' ? ' wm-hot' : '') + '" data-interactive onclick="sendAction(\'' + action + '\'' + data + ')" style="' + ART.frame(role || 'button', 12, role === 'buttonHot' ? 'rgba(122,46,34,.96)' : 'rgba(80,30,22,.94)') + 'width:' + (w || 220) + 'px;height:' + (size ? size + 24 : 42) + 'px;font-size:' + (size || 16) + 'px">' + label + '</div>';
 }
 function realmBadge(s) {
   var r = realmInfo(s);
   return '<div style="position:fixed;top:24px;right:calc(var(--spawn-chrome-reservation-right-inset,50px) + 24px);width:300px;z-index:60;text-align:center;pointer-events:none;' + ART.frame('realmRow', 12, 'rgba(14,11,8,.92)') + 'padding:6px 10px">'
-    + '<div class="wm-title" style="font-size:18px;letter-spacing:2px">' + esc(r.name) + '</div>'
-    + '<div style="font-size:12px;color:' + DIM + ';letter-spacing:1px">' + esc(r.type || 'Normal') + ' realm · <span style="color:' + (POP[r.population] || POP.Low) + '">' + esc(r.population || 'Low') + '</span> population</div>'
-    + '<div style="display:flex;justify-content:center;margin-top:6px">' + btn('Change Realm', 'openRealmList', null, 180, 'button', 12) + '</div>'
+    + '<div class="wm-title" style="font-size:22px;letter-spacing:2px">' + esc(r.name) + '</div>'
+    + '<div style="font-size:14px;color:' + DIM + ';letter-spacing:1px">' + esc(r.type || 'Normal') + ' realm · <span style="color:' + (POP[r.population] || POP.Low) + '">' + esc(r.population || 'Low') + '</span> population</div>'
+    + '<div style="display:flex;justify-content:center;margin-top:6px">' + btn('Change Realm', 'openRealmList', null, 200, 'button', 14) + '</div>'
     + '</div>';
 }
 
@@ -50,9 +50,9 @@ function titleView(s, hasChar, loading) {
   ];
   var stack = loading
     ? '<div style="color:' + DIM + ';font-style:italic;letter-spacing:2px">Reading the realm\u2019s ledger\u2026</div>'
-    : items.map(function (it, i) { return '<div style="animation:wm-in .3s ' + (i * 0.05) + 's both">' + btn(it[0], it[1], it[2], 250, i === 0 ? 'buttonHot' : 'button', i === 0 ? 17 : 14) + '</div>'; }).join('<div style="height:8px"></div>');
+    : items.map(function (it, i) { return '<div style="animation:wm-in .3s ' + (i * 0.05) + 's both">' + btn(it[0], it[1], it[2], 280, i === 0 ? 'buttonHot' : 'button', i === 0 ? 20 : 16) + '</div>'; }).join('<div style="height:8px"></div>');
   return '<div style="position:fixed;left:48px;top:50%;transform:translateY(-30%);z-index:60;pointer-events:none;' + ART.frame('menu', 16, 'rgba(14,11,8,.86)') + 'padding:18px 18px">'
-    + ART.rule('fadeCross', '250px', 14) + stack + ART.rule('capEnd', '250px', 14) + '</div>';
+    + ART.rule('fadeCross', '280px', 16) + stack + ART.rule('capEnd', '280px', 16) + '</div>';
 }
 function creditsView() {
   return '<div style="position:fixed;left:48px;top:50%;transform:translateY(-40%);width:320px;z-index:60;pointer-events:none;' + ART.frame('dialog', 16, 'rgba(14,11,8,.92)') + 'padding:16px 18px;color:' + INK + '">'
