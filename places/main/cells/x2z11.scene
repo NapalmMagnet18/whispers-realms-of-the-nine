@@ -4,6 +4,11 @@ amb-gullrest:
   feetPosition: {x: 250, y: {terrain: 3}, z: 1430}
   id: amb-gullrest
   tags: [ambience]
+finder-saltborn:
+  overrides:
+    feetPosition: {x: 251.77504062792073, y: 3.8324276031947795, z: 1431.337439058119}
+    rotation: {yaw: 56.309932474020215}
+  template: templates/finder.js#board
 hc-nam-flame:
   feetPosition: {x: 233.7, z: 1419.7}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

@@ -23,6 +23,11 @@ ashen-tavern:
   primitive: {kind: scripted, params: {chimney: 0, chimneyZ: 4.05, d: 9, doorX: -1.6, h1: 3.2, h2: 2.6, kind: townhouse, open: true, pitch: 0.75, w: 7}, script: scripts/gen/ashen-village.js, seed: 9}
   rotation: {yaw: 0}
   tags: [ashen, building, tavern]
+finder-marchborn:
+  overrides:
+    feetPosition: {x: 6.775040627920733, y: 0.800048828125, z: -84.6625609418811}
+    rotation: {yaw: 56.309932474020215}
+  template: templates/finder.js#board
 hc-mar-boss:
   behavior: scripts/boss.js
   feetPosition: {x: 45, z: -132}

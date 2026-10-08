@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x-2z-9
+finder-veylori:
+  overrides:
+    feetPosition: {x: -192.22495937207927, y: 120, z: -1092.662560941881}
+    rotation: {yaw: 56.309932474020215}
+  template: templates/finder.js#board
 hc-vey-flame:
   feetPosition: {x: -202.8, z: -1107.8}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

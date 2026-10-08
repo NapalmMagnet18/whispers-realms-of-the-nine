@@ -44,6 +44,11 @@ cradle-npc-yurra:
   rotation: {yaw: 160}
   state: {homeYaw: 160, idle: Idle, npcName: Mason Yurra Flint-Eye, who: yurra, yaw: 160}
   tags: [npc, talker, townsfolk, quest-npc, emberstone-cradle]
+finder-emberforged:
+  overrides:
+    feetPosition: {x: 895.7750406279207, y: 40.4, z: -163.3374390581189}
+    rotation: {yaw: -56.309932474020215}
+  template: templates/finder.js#board
 hc-kha-boss:
   behavior: scripts/boss.js
   feetPosition: {x: 874, z: -130}

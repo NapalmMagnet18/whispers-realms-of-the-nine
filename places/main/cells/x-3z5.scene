@@ -1,4 +1,9 @@
 # spawn-scene v2 yaml x-3z5
+finder-reedbound:
+  overrides:
+    feetPosition: {x: -434, y: 12, z: 577.2}
+    rotation: {yaw: -90}
+  template: templates/finder.js#board
 hc-reh-mark-0:
   feetPosition: {x: -421.7, z: 586.9}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<.55,.9,1>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

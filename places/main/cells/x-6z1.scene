@@ -4,6 +4,11 @@ amb-thornhollow:
   feetPosition: {x: -720, y: {terrain: 3}, z: 70}
   id: amb-thornhollow
   tags: [ambience]
+finder-briarkin:
+  overrides:
+    feetPosition: {x: -712.2249593720793, y: 19.6, z: 71.3374390581189}
+    rotation: {yaw: 56.309932474020215}
+  template: templates/finder.js#board
 glade-bounty-board:
   feetPosition: {x: -742, y: {terrain: 0}, z: 72}
   id: glade-bounty-board
