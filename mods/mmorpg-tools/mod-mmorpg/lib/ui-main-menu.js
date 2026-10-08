@@ -1,6 +1,6 @@
 // WHISPERS front door: title (logo + brass button stack, left) and character select (hero list, right).
 // The centre stays clear for the realm gate / the hero preview. Art: lib/ui-art.js roles.
-var { RACES, CLASS_COLORS } = require('./races.js');
+var { RACES, CLASS_COLORS, CLASS_ICONS } = require('./races.js');
 var ART = require('./ui-art.js');
 var { UI_ICONS } = require('./item-icons.js');
 
@@ -137,30 +137,41 @@ function creditsView() {
 function selectView(s, chars, sel) {
   var max = 6;
   var rows = chars.map(function (ch, i) {
-    var h = heroLine(ch), on = i === sel;
-    return '<div class="wm-row" data-interactive onclick="sendAction(\'selectCharacter\',{index:' + i + '})" style="display:flex;gap:10px;align-items:center;margin-bottom:6px;' + ART.frame(on ? 'charRowActive' : 'charRow', 10, on ? 'rgba(90,62,24,.9)' : 'rgba(22,16,11,.9)') + 'padding:5px 8px">'
-      + '<div style="width:42px;height:42px;flex:none;' + ART.frame('portrait', 6, '#120d09') + 'overflow:hidden">' + (h.portrait ? '<img src="' + h.portrait + '" style="width:100%;height:100%;object-fit:cover">' : '<img src="' + UI_ICONS.character + '" style="width:100%;height:100%">') + '</div>'
-      + '<div style="min-width:0;line-height:1.25">'
+    var h = heroLine(ch), on = i === sel, icon = CLASS_ICONS && CLASS_ICONS[h.cls];
+    return '<div class="wm-row" data-interactive onclick="sendAction(\'selectCharacter\',{index:' + i + '})" style="position:relative;display:flex;gap:10px;align-items:center;margin-bottom:7px;' + ART.frame(on ? 'charRowActive' : 'charRow', 10, on ? 'linear-gradient(90deg,rgba(110,72,26,.92),rgba(40,26,14,.92))' : 'rgba(20,15,10,.9)') + 'padding:6px 8px;' + (on ? 'box-shadow:0 0 16px rgba(242,176,74,.28)' : '') + '">'
+      + '<div style="position:absolute;left:-4px;top:12%;bottom:12%;width:3px;border-radius:2px;background:' + h.color + ';opacity:' + (on ? 1 : .55) + ';box-shadow:0 0 6px ' + h.color + '"></div>'
+      + '<div style="position:relative;width:46px;height:46px;flex:none;' + ART.frame('portrait', 6, '#120d09') + 'overflow:hidden">' + (h.portrait ? '<img src="' + h.portrait + '" style="width:100%;height:100%;object-fit:cover">' : '<img src="' + UI_ICONS.character + '" style="width:100%;height:100%">') + '</div>'
+      + '<div style="min-width:0;flex:1;line-height:1.25">'
       + '<div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:15px;color:' + (on ? GOLD : INK) + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(ch.charName || 'Unnamed') + '</div>'
       + '<div style="font-size:12px;color:' + INK + '">Level ' + (ch.level ?? 1) + ' ' + esc(h.race.name) + ' <span style="color:' + h.color + '">' + esc(h.cls) + '</span></div>'
-      + '<div style="font-size:11px;color:' + DIM + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(h.zone) + '</div>'
-      + '</div></div>';
+      + '<div style="font-size:11px;color:' + DIM + ';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(h.zone) + '</div></div>'
+      + (icon ? '<img src="' + icon + '" style="width:26px;height:26px;flex:none;border-radius:4px;opacity:' + (on ? 1 : .55) + ';filter:drop-shadow(0 0 4px rgba(0,0,0,.8))">' : '')
+      + '</div>';
   }).join('');
-  if (!chars.length) rows = '<div style="text-align:center;color:' + DIM + ';font-style:italic;padding:18px 4px">No heroes on this realm yet.</div>';
-  var panel = '<div style="position:fixed;right:calc(var(--spawn-chrome-reservation-right-inset,50px) + 24px);top:150px;bottom:96px;width:300px;z-index:60;display:flex;flex-direction:column;pointer-events:auto;' + ART.frame('window', 16, 'rgba(14,11,8,.92)') + 'padding:10px 10px">'
-    + '<div class="wm-title" style="text-align:center;font-size:17px;letter-spacing:3px">Characters <span style="font-size:12px;color:' + DIM + '">' + chars.length + '/' + max + '</span></div>' + ART.rule('title', '100%', 16)
-    + '<div style="flex:1;overflow-y:auto;padding-right:2px">' + rows + '</div>' + ART.rule('fadeLeft', '100%', 12)
+  for (var e = chars.length; e < max; e++) {
+    rows += '<div style="display:flex;align-items:center;justify-content:center;height:52px;margin-bottom:7px;border:1px dashed rgba(201,164,106,.22);border-radius:4px;color:rgba(232,217,181,.28);font:600 11px Cinzel,Georgia,serif;letter-spacing:2px;text-transform:uppercase">Empty slot</div>';
+  }
+  var panel = '<div style="position:fixed;right:calc(var(--spawn-chrome-reservation-right-inset,50px) + 24px);top:170px;bottom:96px;width:310px;z-index:60;display:flex;flex-direction:column;pointer-events:auto;' + ART.frame('window', 16, 'linear-gradient(180deg,rgba(22,15,9,.93),rgba(10,8,6,.94))') + 'padding:10px 12px;box-shadow:0 18px 50px rgba(0,0,0,.55);animation:wm-in .6s ease-out">'
+    + '<div class="wm-title" style="text-align:center;font-size:18px;letter-spacing:3px">Heroes <span style="font-size:12px;color:' + DIM + '">' + chars.length + ' / ' + max + '</span></div>' + ART.rule('title', '100%', 16)
+    + '<div style="flex:1;overflow-y:auto;padding:0 2px 0 6px">' + rows + '</div>' + ART.rule('fadeLeft', '100%', 12)
     + '<div style="display:flex;flex-direction:column;align-items:center;gap:6px">'
-    + (chars.length < max ? btn('Create New Character', 'startCharacterCreation', null, 250, 'button', 13) : '<div style="font-size:12px;color:' + DIM + '">Realm roster full (' + max + ')</div>')
-    + (chars[sel] ? btn('Delete Character', 'deleteCharacter', { index: sel, name: chars[sel].charName || 'Unnamed' }, 250, 'button', 13) : '')
+    + (chars.length < max ? btn('Create New Hero', 'startCharacterCreation', null, 260, 'button', 13) : '<div style="font-size:12px;color:' + DIM + '">Realm roster full (' + max + ')</div>')
+    + (chars[sel] ? '<div class="wm-row" data-interactive onclick="sendAction(\'deleteCharacter\',{index:' + sel + ',name:\'' + esc(chars[sel].charName || 'Unnamed').replace(/'/g, '') + '\'})" style="font:600 11px Cinzel,Georgia,serif;letter-spacing:2px;color:rgba(224,110,90,.8);text-transform:uppercase;cursor:pointer;padding:3px">Delete hero</div>' : '')
     + '</div></div>';
-  var name = chars[sel] ? '<div class="wm-title" style="font-size:26px;letter-spacing:2px;margin-bottom:8px">' + esc(chars[sel].charName || '') + '</div>' : '';
-  var enter = chars[sel]
-    ? '<div style="position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;align-items:center;pointer-events:none">' + name + btn('Enter World', 'continueGame', null, 280, 'buttonHot', 22) + '</div>'
-    : '';
+  var enter = '';
+  if (chars[sel]) {
+    var h = heroLine(chars[sel]), icon = CLASS_ICONS && CLASS_ICONS[h.cls];
+    enter = '<div style="position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;align-items:center;pointer-events:none;animation:wm-in .6s ease-out">'
+      + '<div style="position:relative;text-align:center;padding:10px 70px 12px;margin-bottom:14px;background:linear-gradient(90deg,rgba(10,7,4,0),rgba(10,7,4,.82) 22%,rgba(10,7,4,.82) 78%,rgba(10,7,4,0))">'
+      + (icon ? '<div style="position:absolute;left:50%;top:-30px;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;padding:4px;background:radial-gradient(circle,#2a1e16,#0e0a07);border:2px solid ' + h.color + ';box-shadow:0 0 14px ' + h.color + '"><img src="' + icon + '" style="width:100%;height:100%;border-radius:50%;object-fit:cover"></div>' : '')
+      + '<div class="wl-metal" style="font-size:34px;letter-spacing:.08em;margin-top:' + (icon ? 14 : 0) + 'px">' + esc(chars[sel].charName || '') + '</div>'
+      + '<div style="font-size:14px;color:' + INK + ';letter-spacing:1px;margin-top:2px">Level ' + (chars[sel].level ?? 1) + ' ' + esc(h.race.name) + ' <span style="color:' + h.color + ';font-weight:700">' + esc(h.cls) + '</span></div>'
+      + '<div style="font-size:12px;color:' + DIM + ';letter-spacing:2px;text-transform:uppercase;margin-top:3px">' + esc(h.zone) + '</div></div>'
+      + '<div class="wl-cta" style="border-radius:6px;pointer-events:auto">' + btn('Enter World', 'continueGame', null, 320, 'buttonHot', 26) + '</div></div>';
+  }
   var corners = '<div style="position:fixed;left:24px;bottom:24px;z-index:60;pointer-events:none">' + btn('Menu', 'setMenuTab', { tab: 'settings' }, 140) + '</div>'
-    + '<div style="position:fixed;right:calc(var(--spawn-chrome-reservation-right-inset,50px) + 24px);bottom:24px;z-index:60;pointer-events:none;display:flex;justify-content:flex-end;width:300px">' + btn('Back', 'setMenuView', { view: 'title' }, 140) + '</div>';
-  return panel + enter + corners;
+    + '<div style="position:fixed;right:calc(var(--spawn-chrome-reservation-right-inset,50px) + 24px);bottom:24px;z-index:60;pointer-events:none;display:flex;justify-content:flex-end;width:310px">' + btn('Back', 'setMenuView', { view: 'title' }, 140) + '</div>';
+  return LOGIN_CSS + embers() + loginLogo() + panel + enter + corners;
 }
 
 export function renderMainMenu(localPlayer) {
