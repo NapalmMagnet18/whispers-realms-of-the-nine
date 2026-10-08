@@ -7,6 +7,7 @@ import { raycast } from 'builtin/physics';
 import TF from './lib/data/townsfolk.yml';
 import { move, formatText } from './lib/economy.js';
 import { levelInfo, statsFor } from './lib/leveling.js';
+import { questFirst, levelFirst } from './lib/realm-firsts.js';
 import V from './lib/data/vanguard.yml';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
 
@@ -156,6 +157,7 @@ function complete(ctx, questId) {
   ctx.emit('damageNumber', { position: head, text: `+${formatText(q.rewards.copper || 0)}  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: 'cdn/sfx-reward.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3', position: ctx.self.feetPosition, volume: 0.6 }, { audience: { player: ctx.self.id } });
+  questFirst(ctx, questId);
   ctx.emit('milestone', { step: /^Q00\d$/.test(questId) ? 8 + Number(questId.slice(3)) : /^MAR-0\d$/.test(questId) ? Number(questId.slice(4)) : 1, name: questId + ' complete' });
 }
 
@@ -288,6 +290,7 @@ function syncLevel(ctx, st) {
     ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-level-up-fanfare.mp3', position: fp, volume: 0.7 }, me);
     ctx.emit('fx', { position: fp, script: LEVEL_FX }, { audience: { nearby: fp, radius: 60 } });
     ctx.emit('milestone', { step: li.level, name: 'level ' + li.level });
+    levelFirst(ctx, li.level, was);
   }
   ctx.session.levelSeen = true;
 }
