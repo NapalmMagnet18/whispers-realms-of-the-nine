@@ -12,7 +12,8 @@ function eligible(q, ps) {
   var req = q.requires || [], any = q.requiresAny || [];
   // origin gate: a hero of that race (raceIndex) finishes their origin chain first; every other people passes.
   // Old saves with the quest already done or active never reach here (getAvailableQuests filters them first).
-  if (q.origin && ((ps && ps.raceIndex) || 0) === q.origin.race && done.indexOf(q.origin.quest) === -1) return false;
+  var og = q.origin ? (Array.isArray(q.origin) ? q.origin : [q.origin]) : [];
+  for (var k = 0; k < og.length; k++) if (((ps && ps.raceIndex) || 0) === og[k].race && done.indexOf(og[k].quest) === -1) return false;
   for (var i = 0; i < req.length; i++) if (done.indexOf(req[i]) === -1) return false;
   if (!any.length) return true;
   for (var j = 0; j < any.length; j++) if (done.indexOf(any[j]) !== -1) return true;

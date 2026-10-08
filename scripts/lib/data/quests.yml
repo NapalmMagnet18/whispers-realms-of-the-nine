@@ -150,9 +150,152 @@ MAR-08:
     - { key: reach_visits, desc: "Walk into Lantern's Reach", target: 1 }
   rewards: { copper: 200, xp: 80 }
 
+THR-01:
+  id: THR-01
+  title: A Seed Without Spring
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  giverNpcId: glade-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "Awake, little root? Good. The memory orchard dropped its seeds early this year, and they will not sleep. Gather three from the glade floor, then plant one at the witness stump by the shrine. Gently. A seed that remembers is still a seed."
+  progressText: "Three memory seeds from the glade, one planted at the witness stump."
+  turnInText: "It took. Look: a white root already, thin as a hair. By dusk it will have knuckles. ...Do not be afraid of it. Be patient with it."
+  doneText: "Ell is singing by the old roots. Go and listen with her."
+  refusedText: "Your seed is planted, child."
+  objectives:
+    - { key: memory_seed, desc: "Collect memory seeds from the glade", target: 3 }
+    - { key: witness_stump, desc: "Plant one at the witness stump", target: 1 }
+  rewards: { xp: 10, items: [root_seed] }
+
+THR-02:
+  id: THR-02
+  title: The Branch of Hands
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  requires: [THR-01]
+  giverNpcId: glade-npc-ell
+  giverName: Grove Singer Ell
+  text: "Three roots have come up shaped like hands. Five knuckles, pressed to the soil. The others want fire. I want a record. Kneel at each one and write down what it whispers. Exactly what it whispers, not what you think it meant."
+  progressText: "Three hand-shaped roots around the glade. Kneel and listen at each."
+  turnInText: "'Water.' 'Road.' 'Grandmother.' Three words, three hands. That is not a curse. That is someone trying to speak with the only mouth they have left."
+  doneText: "Tamsin came up from the Reach this morning. She says the brambles are moving."
+  refusedText: "You've written their words already."
+  objectives:
+    - { key: hand_root, desc: "Kneel and record a hand-shaped root", target: 3 }
+  rewards: { xp: 40, copper: 30, items: [lore_glyph] }
+
+THR-03:
+  id: THR-03
+  title: Hungry Bark
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  requires: [THR-02]
+  giverNpcId: glade-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "Bramble-struck beasts on the east fence. Wolves with thorns grown right through their coats. Drive two of them off. And the third one, the quiet one by the fallen post? It's stopped fighting. Spare it. Calm it and let it go."
+  progressText: "Drive off two bramble-struck beasts by the east fence, then calm the quiet one."
+  turnInText: "You let it go. Good. They aren't wicked, they're following something. A pulse, like a bell too far off to hear. I'll be watching where they run."
+  doneText: "Fenna's been asking for you."
+  refusedText: "The fence is quiet now."
+  objectives:
+    - { key: bramble_beast, desc: "Drive off bramble-struck beasts", target: 2 }
+    - { key: spare_beast, desc: "Calm the pacified beast and let it go", target: 1 }
+  rewards: { xp: 60, copper: 50, items: [pathfinder_tonic] }
+
+THR-04:
+  id: THR-04
+  title: Gatherer of Last Words
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  requires: [THR-03]
+  giverNpcId: glade-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "When a Thren dies, they give one memory back to the orchard, and the orchard writes it on a leaf. The storm scattered four of them. Find the leaf-notes, and lay them around the memorial bowl at the shrine. They should not lie alone in the mud."
+  progressText: "Four leaf-notes scattered through the glade, laid around the memorial bowl."
+  turnInText: "A baker's bread. A first snow. A song. ...And one I do not know: a road with blue-shuttered houses. No Thren ever lived on such a road."
+  doneText: "Ell has found something under the oldest tree."
+  refusedText: "The leaves are home."
+  objectives:
+    - { key: leaf_note, desc: "Collect fallen leaf-notes", target: 4 }
+    - { key: memorial_bowl, desc: "Lay them around the memorial bowl", target: 1 }
+  rewards: { xp: 60, items: [memory_leaf] }
+
+THR-05:
+  id: THR-05
+  title: The Root Below
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  requires: [THR-04]
+  giverNpcId: glade-npc-ell
+  giverName: Grove Singer Ell
+  text: "There's a hollow under the oldest tree, roots like a stair. Something down there glows when the bell rings in the Reach. Go down, find it, and cut it free without cutting a single root. If you wound the tree, we lose its voice."
+  progressText: "The root hollow under the oldest tree. Cut the glowing thing free, roots unharmed."
+  turnInText: "Bellglass. Here, in a Thren root. Someone grew it in on purpose, a long time ago, so the tree would ring when the bells did. A listening tree."
+  doneText: "Fenna has to decide something. She wants you there."
+  refusedText: "The shard is safe with you."
+  objectives:
+    - { key: root_tunnel, desc: "Descend into the root hollow", target: 1 }
+    - { key: bellglass_shard, desc: "Cut the bellglass shard free", target: 1 }
+  rewards: { xp: 70, copper: 60, items: [bellglass_shard] }
+
+THR-06:
+  id: THR-06
+  title: What We Do Not Burn
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  requires: [THR-05]
+  giverNpcId: glade-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "The assembly is split. One keeper wants the singing tree's voice cried across the forest. Another wants the recording kept for the elders alone. I will not choose for you. Read both testimonies at the shrine and preserve one publicly. Then the rootblight is creeping at the new seedling. Protect it."
+  progressText: "Choose a testimony at the shrine lecterns, then guard the seedling from rootblight."
+  turnInText: "You chose, and you did not pretend the other choice was wicked. That is the whole of being an elder, child. The rest is just remembering birthdays."
+  doneText: "Tamsin's waiting at the footbridge. An old woman wants to walk to the border."
+  refusedText: "The testimony is kept."
+  objectives:
+    - { key: testimony_choice, desc: "Choose a testimony to preserve publicly", target: 1 }
+    - { key: rootblight, desc: "Protect the seedling from rootblight", target: 1 }
+  rewards: { xp: 80, items: [glade_charm] }
+
+THR-07:
+  id: THR-07
+  title: The Walk of Witnesses
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  requires: [THR-06]
+  giverNpcId: glade-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "The storm cracked the footbridge. Mend it. Then Old Maudry wants to walk to the border stone. She says she was there when the First Silence fell, and she wants to see the road out once more before she forgets it. Walk her there. Slowly."
+  progressText: "Mend the footbridge, meet Old Maudry, and walk with her to the border waystone."
+  turnInText: "She talked the whole way, didn't she? Good. Every word of it is a road someone can follow back."
+  doneText: "Fenna. One more thing, and then the Reach."
+  refusedText: "The bridge holds. Maudry's home."
+  objectives:
+    - { key: footbridge, desc: "Mend the woodland footbridge", target: 1 }
+    - { key: old_witness, desc: "Meet Old Maudry at the shrine", target: 1 }
+    - { key: border_stone, desc: "Walk with her to the border waystone", target: 1 }
+  rewards: { xp: 90, copper: 120, items: [seed_sigil] }
+
+THR-08:
+  id: THR-08
+  title: Between Grove and Bell
+  zone: Rootwake Glade
+  group: "Thren Origin: The Root That Learned a Name"
+  requires: [THR-07]
+  giverNpcId: glade-npc-fenna
+  giverName: Elder Fenna Rootwake
+  text: "The roots spoke a name at last. Eda. Speak it over the stream so the water carries it, then take the road east to Lantern's Reach. Their beacon books may know where she lived. Carry the seed sigil. It turns toward the bell."
+  progressText: "Speak the lost name over the stream, then travel to Lantern's Reach."
+  turnInText: "Go on. The branches will bend over the path as you leave. Don't be frightened. That's only the grove saying goodbye."
+  doneText: "The Reach is east. Find Gatekeeper Elric."
+  refusedText: "The road's open, child."
+  objectives:
+    - { key: stream_name, desc: "Speak the lost name over the stream", target: 1 }
+    - { key: reach_visits, desc: "Travel to Lantern's Reach", target: 1 }
+  rewards: { copper: 200, xp: 80 }
+
 Q001:
   id: Q001
-  origin: { race: 0, quest: MAR-08 }   # a Marchborn hero (raceIndex 0) walks their origin first; other peoples pass
+  origin: [{ race: 0, quest: MAR-08 }, { race: 1, quest: THR-08 }]   # Marchborn walk the Ward, Briarkin the Thren glade first; other peoples pass
   title: Welcome to Lantern's Reach
   giverNpcId: gatekeeper-elric
   giverName: Gatekeeper Elric
@@ -351,6 +494,13 @@ woodcutting:
   fallSound: /cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3
 
 items:
+  root_seed: { id: root_seed, name: Root Seed, slot: bag, description: "Warm as a hand. It turns in your palm toward water." }
+  lore_glyph: { id: lore_glyph, name: Lore Glyph, slot: bag, description: "Three words in Ell's hand: water, road, grandmother." }
+  pathfinder_tonic: { id: pathfinder_tonic, name: Pathfinder Tonic, slot: bag, description: "Bitter bark and honey. Tamsin swears by it." }
+  memory_leaf: { id: memory_leaf, name: Memory Leaf, slot: bag, description: "A road with blue-shuttered houses, written in leaf-veins." }
+  bellglass_shard: { id: bellglass_shard, name: Bellglass Shard, slot: bag, description: "Grown into a root on purpose. It hums when a bell rings far off." }
+  glade_charm: { id: glade_charm, name: Glade Charm, slot: neck, description: "Woven willow. What we do not burn, we keep." }
+  seed_sigil: { id: seed_sigil, name: Rootwake Seed Sigil, slot: bag, description: "A seed in a glass case, offered, not taken. It turns toward the bell." }
   training_blade: { id: training_blade, name: Beacon Guild Training Blade, slot: mainhand, description: "Blunt-edged, Guild-stamped, handed to every new name on the register." }
   starter_coat: { id: starter_coat, name: Ward Starter Coat, slot: chest, description: "Grey wool, the Ward's lantern stitched on the cuff." }
   lantern_scrap: { id: lantern_scrap, name: Lantern Scrap, slot: bag, description: "Green-tarnished brass from the lamp over a door that should not open." }
