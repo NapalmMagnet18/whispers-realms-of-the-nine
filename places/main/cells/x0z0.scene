@@ -735,6 +735,12 @@ object/x2206e59a00f3b523/2:
   primitive: {kind: scripted, params: {shape: arrow}, script: scripts/gen/arrow.js}
   state: {ability: arrow, damage: 9, dir: {x: 0, y: 0, z: -1}, kind: arrow, ownerId: null, range: 40, slow: 0, slowFor: 0, speed: 40, targetId: training-dummy-1, turn: 720}
   tags: [projectile, temp]
+object/x8674eda7bebd3d98/0:
+  behavior: scripts/missile.js
+  feetPosition: {x: 14, y: 5.4, z: 22}
+  id: object/x8674eda7bebd3d98/0
+  state: {ability: firebolt, damage: 14, dir: {x: 0, y: 0, z: -1}, kind: fire, ownerId: null, range: 40, slow: 0, slowFor: 0, speed: 22, targetId: training-dummy-1, turn: 540}
+  tags: [projectile, temp]
 plaza-0:
   feetPosition: {x: 9, y: 4, z: 6}
   id: plaza-0
