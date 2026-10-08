@@ -50,7 +50,7 @@ function titleView(s, hasChar, loading) {
   ];
   var stack = loading
     ? '<div style="color:' + DIM + ';font-style:italic;letter-spacing:2px">Reading the realm\u2019s ledger\u2026</div>'
-    : items.map(function (it, i) { return '<div style="animation:wm-in .3s ' + (i * 0.05) + 's both">' + btn(it[0], it[1], it[2], 280, i === 0 ? 'buttonHot' : 'button', i === 0 ? 20 : 16) + '</div>'; }).join('<div style="height:8px"></div>');
+    : items.map(function (it, i) { return '<div>' + btn(it[0], it[1], it[2], 280, i === 0 ? 'buttonHot' : 'button', i === 0 ? 20 : 16) + '</div>'; }).join('<div style="height:8px"></div>');
   return '<div style="position:fixed;left:48px;top:50%;transform:translateY(-30%);z-index:60;pointer-events:none;' + ART.frame('menu', 16, 'rgba(14,11,8,.86)') + 'padding:18px 18px">'
     + ART.rule('fadeCross', '280px', 16) + stack + ART.rule('capEnd', '280px', 16) + '</div>';
 }
