@@ -175,3 +175,15 @@ iona:
   lines:
     - "The reeds aren't cruel. They're just patient, and paths aren't."
     - "Red rag on a stake. Simplest map there is."
+vale-crypt:
+  name: Sister Vale
+  lines:
+    - "Breathe slow. The air is old but it's honest."
+    - "Every candle here was lit for somebody. Some of them are still waiting for their name."
+    - "If the Warden calls you 'witness', don't answer it with your name."
+elric-crypt:
+  name: Gatekeeper Elric
+  lines:
+    - "Thirty years I kept that gate and never asked what was under it."
+    - "Keep your lamp low. The ink moves toward light."
+    - "Whatever we find down here, the Reach is going to hear it. All of it."

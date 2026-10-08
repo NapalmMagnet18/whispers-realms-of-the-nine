@@ -17,7 +17,7 @@ function spawnOne(ctx, def, cs = {}) {
   ctx.spawn(def.id, {
     tags: ["enemy", "scavenger", "quarry-scavenger"], physics: "character", model: cs.model || S.model, ...(cs.look ? { material: { ...cs.look, dissolve: 0 } } : {}),
     layout: { minExtents: { x: -0.4, y: 0, z: -0.3 }, maxExtents: { x: 0.4, y: 1.8, z: 0.3 } },
-    ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: { terrain: 0 } }, rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
+    ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: cs.floorY != null ? cs.floorY : { terrain: 0 } }, rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
     state: { hp: S.hp, maxHp: S.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: 0.45, hpPct: 100, unhurt: true },
   });
 }

@@ -1417,3 +1417,79 @@ EQU-09:
     - { key: shaft_connector, desc: "Open the east shaft connector", target: 1 }
     - { key: lost_corridor, desc: "Report the lost corridor", target: 1 }
   rewards: { copper: 4000, xp: 400 }
+
+# ── The Hollowcrypt: The Candle Warden (DHC-01..04), campaign data quest_database_300.json. Place: hollowcrypt, gate in Hollowcrypt Vale.
+DHC-01:
+  id: DHC-01
+  title: The Unlit Vestibule
+  zone: The Hollowcrypt
+  group: "Hollowcrypt: The Candle Warden"
+  requires: [Q008, EQU-09]
+  giverNpcId: reach-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: crypt-npc-vale
+  turnInName: Sister Vale
+  text: "The road under the town runs to the gate you witnessed. I've gone ahead with the candles. Fly to Hollowcrypt Watch, walk to the mausoleum below the dead spire, and come down. Three candles in the vestibule have never been claimed. Light them. The dark down there listens to fire."
+  progressText: "Enter the Hollowcrypt through the mausoleum in Hollowcrypt Vale, then light the three unclaimed candles in the vestibule."
+  turnInText: "Three flames, three names the index can't take. Did you feel it? The old index demands names, but it never says what it does with them."
+  doneText: "Elric came down after you. He has the next of it."
+  objectives:
+    - { key: crypt_entered, desc: "Enter the Hollowcrypt", target: 1 }
+    - { key: unclaimed_candle, desc: "Light unclaimed candles", target: 3 }
+  rewards: { copper: 4200, xp: 450 }
+
+DHC-02:
+  id: DHC-02
+  title: The Pages Who Walk
+  zone: The Hollowcrypt
+  group: "Hollowcrypt: The Candle Warden"
+  requires: [DHC-01]
+  giverNpcId: crypt-npc-elric
+  giverName: Gatekeeper Elric
+  text: "Past the ribbed hall there's an archive, and something in it is still filing. Ink that walks. Put down three of the inkbound archivists and bring me the census strips they're guarding. Two at least. I want to read whose names were torn out."
+  progressText: "Defeat three inkbound archivists in the archive and recover two torn census strips."
+  turnInText: "Marrow Lane. The Ostlers. The whole east row. These are families the town erased when it stopped wanting to be responsible for them. The Reach did this. Not some curse. Us."
+  doneText: "The Warden's chamber is past the archive. Vale says it's awake."
+  objectives:
+    - { key: inkbound_archivist, desc: "Defeat inkbound archivists", target: 3 }
+    - { key: census_strip, desc: "Recover torn census strips", target: 2 }
+  rewards: { copper: 4600, xp: 500 }
+
+DHC-03:
+  id: DHC-03
+  title: The Candle Warden
+  zone: The Hollowcrypt
+  group: "Hollowcrypt: The Candle Warden"
+  requires: [DHC-02]
+  giverNpcId: crypt-npc-elric
+  giverName: The Candle Warden
+  turnInNpcId: crypt-npc-vale
+  turnInName: Sister Vale
+  text: "(A voice of guttering flame fills the hall.) WITNESS. GIVE YOUR NAME TO THE INDEX OR BE INDEXED. ...Elric, white-faced: 'That's it. The Warden. It swings its crown of fire in a ring. When you see the floor gather light, get out of the ring. Break the three sigil stones that chain it, then put it down.'"
+  progressText: "In the Warden's chamber: step out of three telegraphed flame sweeps, break the three sigil stones, defeat the Candle Warden."
+  turnInText: "It knelt. Elric, look at the brand under the wax. It was made to keep witnesses safe from forced questioning. Someone gave it the opposite command."
+  doneText: "We can fix what it was told. Come back when you're ready."
+  objectives:
+    - { key: warden_sweep, desc: "Avoid telegraphed sweeps", target: 3 }
+    - { key: warden_sigil, desc: "Break the sigil ring", target: 3 }
+    - { key: candle_warden, desc: "Defeat the Candle Warden", target: 1 }
+  rewards: { copper: 9000, xp: 900 }
+
+DHC-04:
+  id: DHC-04
+  title: A Flame Returned
+  zone: The Hollowcrypt
+  group: "Hollowcrypt: The Candle Warden"
+  requires: [DHC-03]
+  giverNpcId: crypt-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: reach-npc-vale
+  turnInName: Sister Vale
+  text: "Two of the people it questioned are still here, caught as echoes between the shelves. Let them speak and let them go. Then lay your hand on the Warden's index stone and give it back its first command: guard the witness. Then get out safe, and meet me at the chapel."
+  progressText: "Release the two echo testimonies in the archive, restore the Warden's command at its index stone, then leave the Hollowcrypt and find Sister Vale in the Reach."
+  turnInText: "You came back up. Good. A defence that was turned against the people it guarded, mended, not smashed. The Warden still stands down there, and now it guards the right door."
+  doneText: "The Hollowcrypt is quiet. Its Warden keeps the witnesses now."
+  objectives:
+    - { key: echo_testimony, desc: "Release echo testimonies", target: 2 }
+    - { key: warden_command, desc: "Restore the Warden's original command", target: 1 }
+  rewards: { copper: 6000, xp: 700 }
