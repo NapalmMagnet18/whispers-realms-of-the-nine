@@ -14,15 +14,14 @@ function blade(ctx, x, y, z, a, h, w, lean, col) {
 export function geometry(ctx) {
   const { r = 34, n = 700, holeW = 38, holeD = 18, holeX = 2 } = ctx.params || {};
   const lod = ctx.lod, R = () => ctx.random();
-  if (lod >= 4) return;
   ctx.albedo(null); ctx.roughness(0.95); ctx.metalness(0);
   const inHole = (x, z) => Math.abs(x - holeX) < holeW / 2 && Math.abs(z) < holeD / 2;
   const pick = (minR = 0) => { for (let t = 0; t < 8; t++) { const a = R() * Math.PI * 2, d = Math.sqrt(minR * minR / (r * r) + R() * (1 - minR * minR / (r * r))) * r, x = Math.cos(a) * d, z = Math.sin(a) * d; if (!inHole(x, z)) return [x, z]; } return null; };
   const cols = ["oklch(0.62 0.07 85)", "oklch(0.55 0.06 95)", "oklch(0.48 0.05 110)", "oklch(0.68 0.06 80)"];
-  const tufts = lod >= 3 ? n / 3 : n;
+  const tufts = lod >= 4 ? 40 : lod >= 3 ? n / 3 : n;
   for (let i = 0; i < tufts; i++) {
     const p = pick(); if (!p) continue; const [x, z] = p, y = ctx.groundY(x, z) - 0.02, s = 0.7 + R() * 0.8;
-    const k = lod >= 3 ? 4 : 8;
+    const k = lod >= 4 ? 2 : lod >= 3 ? 4 : 8;
     for (let j = 0; j < k; j++) blade(ctx, x + (R() - 0.5) * 0.1, y, z + (R() - 0.5) * 0.1, j * 2.4 + R(), (0.28 + R() * 0.32) * s, 0.025, (0.1 + R() * 0.2) * s, cols[(i + j) % 4]);
   }
   if (lod >= 3) return;
