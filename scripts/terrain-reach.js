@@ -111,7 +111,9 @@ export function materialAt(ctx) {
   if (dq < 60 + n * 10) return { rock: 0.4 + rock * 0.6, grass: 0.6 - rock * 0.6 };
   if (y < 1.6 + n * 0.8) {
     const df = Math.hypot(x - FEN.x, z - FEN.z);
-    return df < 650 ? { mud: 1 } : { sand: 1 };
+    if (df >= 650) return { sand: 1 };
+    const bank = clamp01((y - 0.75 + n * 0.5) * 1.6); // the low ground stays black wet mud; the banks between the pools green over with sedge
+    return { mud: 1 - bank * 0.6, grass: bank * 0.6 };
   }
   if (z < -6500 + n * 160) return { veil: 0.7 - rock * 0.4, snow: 0.3 - rock * 0.1, rock: rock * 0.5 };
   if (x > 6500 + n * 160) return slope > 0.3 ? { ashrock: 1 } : { ashrock: 0.55 + rock * 0.45, blight: 0.45 - rock * 0.45 };
