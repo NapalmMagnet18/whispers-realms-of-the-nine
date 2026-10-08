@@ -140,6 +140,7 @@ export function restoreRosterCharacterState(objectApi, state, opts) {
     professions: charData.professions || [],
     activeQuests: charData.activeQuests || [],
     completedQuests: charData.completedQuests || [],
+    roosts: charData.roosts || [],
     tally: charData.tally || {},
     wraithDefeated: charData.wraithDefeated ?? false,
     activeCharIdx: resume.idx,
@@ -244,6 +245,7 @@ export function buildCharData(objectApi) {
     guildRole: s.guildRole || null,
     activeQuests: s.activeQuests || [],
     completedQuests: s.completedQuests || [],
+    roosts: s.roosts || [],
     tally: s.tally || {},
     wraithDefeated: s.wraithDefeated || false,
     className: s.className || null,
@@ -515,6 +517,7 @@ export function onSpawn(objectApi) {
             professions: data.professions || [],
             activeQuests: data.activeQuests || [],
             completedQuests: data.completedQuests || [],
+            roosts: data.roosts || [],
             tally: data.tally || {},
             wraithDefeated: data.wraithDefeated ?? false,
           });
@@ -1963,6 +1966,7 @@ export function handleLogout(objectApi, screen) {
       wraithDefeated: false,
       activeQuests: [],
       completedQuests: [],
+      roosts: [],
     });
   });
 }
