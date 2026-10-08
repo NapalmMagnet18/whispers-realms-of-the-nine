@@ -277,6 +277,7 @@ function chandler(ctx, p, s) {
   paint(ctx, s, DOOR, "oklch(0.82 0.03 55)");
   boxR(ctx, [0, 0.42, 0], [3, 0.85, 0.9]);
   if (s) { boxR(ctx, [0, 1.3, 0.45], [3.2, 2.6, 0.2]); return; }
+  if (lod >= 4) { paint(ctx, s, CLOTH, "oklch(0.55 0.04 20)", 0.95); boxR(ctx, [0, 2.48, 0.03], [3.5, 0.04, 1.7], { pitch: 12 }); return; }
   paint(ctx, s, OAK, "oklch(0.72 0.03 45)");
   for (const x of [-1.55, 1.55]) for (const z of [-0.55, 0.6]) boxR(ctx, [x, z < 0 ? 1.15 : 1.35, z], [0.12, z < 0 ? 2.3 : 2.7, 0.12]);
   boxR(ctx, [0, 1.25, 0.55], [3, 0.06, 0.4]); boxR(ctx, [0, 1.75, 0.55], [3, 0.06, 0.4]); // back shelves
@@ -322,6 +323,7 @@ function coffins(ctx, p, s) {
   paint(ctx, s, OAK, "oklch(0.78 0.03 50)");
   for (const x of [-0.8, 0.8]) { boxR(ctx, [x, 0.38, 0], [0.1, 0.76, 0.7], {}); boxR(ctx, [x, 0.76, 0], [0.16, 0.06, 0.8]); }
   if (s) { boxR(ctx, [0, 0.5, 0], [2.2, 1, 0.9]); boxR(ctx, [0, 1, 1.0], [2.6, 2, 0.6]); return; }
+  if (lod >= 4) { paint(ctx, s, DOOR, "oklch(0.7 0.03 45)"); boxR(ctx, [0, 1.0, 1.2], [2.8, 2.0, 0.08]); boxR(ctx, [0, 0.95, 0], [2, 0.32, 0.6]); return; }
   paint(ctx, s, T("worn-oak-floor-boards"), "oklch(0.9 0.04 70)");
   coffin([0, 0.79, 0], {}, 2.0, true);
   paint(ctx, s, DOOR, "oklch(0.7 0.03 45)");
