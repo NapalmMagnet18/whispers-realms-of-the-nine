@@ -386,3 +386,8 @@ terrain:
     roost-ninthveil-clear: {center: {x: 30, z: -7560}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
     roost-bastion: {center: {x: 7560, z: -170}, falloff: 12, height: 25, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
     roost-bastion-clear: {center: {x: 7560, z: -170}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
+    veilgate-plaza: {center: {x: -6, z: -7568}, falloff: 10, height: 137, kind: flatten, material: dirt, shape: {kind: circle, radius: 12}}
+    veilgate-camp: {center: {x: -18, z: -7549}, falloff: 8, height: 133, kind: flatten, shape: {kind: circle, radius: 6.5}}
+    veilgate-arch: {center: {x: 30, z: -7605}, falloff: 10, height: 144, kind: flatten, shape: {kind: circle, radius: 9}}
+    veilgate-tower: {center: {x: 52, z: -7562}, falloff: 6, height: 127, kind: flatten, shape: {kind: circle, radius: 4.5}}
+    veilgate-path: {grade: true, kind: path, material: gravel, maxGrade: 0.28, noise: 0.3, points: [[0, -7560], [8, -7572], [18, -7588], [30, -7597], [30, -7618]], width: 3.4}
