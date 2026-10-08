@@ -144,6 +144,26 @@ terrain:
   - {albedo: cdn/texture-terrain-black-volcanic-basalt-ash-realistic-albedo.png, antiTiling: stochastic, id: ashrock, pbr: true, textureScale: 3, tint: oklch(0.8 0.02 40)}
   seed: 1
   marks:
+    reedhaven:
+      kind: flatten
+      center: {x: -430, z: 560}
+      height: 12.0
+      shape: {kind: circle, radius: 48}
+      falloff: 40
+    reedhaven-clear: {kind: clear-scatter, center: {x: -430, z: 560}, shape: {kind: circle, radius: 44}}
+    reedhaven-pool: {at: {x: -430, z: 560}, bedMaterial: mud, depth: 0.8, kind: lake, level: 12.35, radius: 6}
+    reedhaven-pool-w: {at: {x: -454, z: 568}, bedMaterial: mud, depth: 0.7, kind: lake, level: 12.35, radius: 6}
+    reedhaven-pool-ne: {at: {x: -416, z: 582}, bedMaterial: mud, depth: 0.7, kind: lake, level: 12.35, radius: 5}
+    reedhaven-mire: {at: {x: -454, z: 602}, bedMaterial: mud, depth: 0.9, kind: lake, level: 12.35, radius: 5}
+    road-reedhaven: {edgeMaterial: dirt, grade: true, kind: path, material: pathrock, maxGrade: 0.18, noise: 0.4, points: [[-400, 530], [-360, 460], [-280, 340], [-190, 220], [-110, 120], [-50, 50], [-30, 26]], width: 3.0}
+    starfall:
+      kind: flatten
+      center: {x: -200, z: -1100}
+      height: 120.0
+      shape: {kind: circle, radius: 46}
+      falloff: 50
+    starfall-clear: {kind: clear-scatter, center: {x: -200, z: -1100}, shape: {kind: circle, radius: 44}}
+    road-starfall: {edgeMaterial: gravel, grade: true, kind: path, material: pathrock, maxGrade: 0.2, noise: 0.4, points: [[-230, -1078], [-210, -1010], [-170, -900], [-110, -760], [-50, -600], [0, -470], [20, -380]], width: 3.0}
     frostveil-mere:
       kind: flatten
       center:

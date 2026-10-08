@@ -1,0 +1,553 @@
+# spawn-scene v2 yaml x-4z4
+reh-boat-0:
+  feetPosition: {x: -436, y: {terrain: 0}, z: 524}
+  id: reh-boat-0
+  primitive: {kind: scripted, params: {kind: boat}, script: scripts/gen/fen.js}
+  rotation: {yaw: 70}
+reh-boundary:
+  feetPosition: {x: -400, y: {terrain: 0}, z: 590}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<2.4,.6,.4>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<2.4,.6,.4>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-boundary
+  primitive: {kind: scripted, params: {kind: pole, seed: 77}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: danger_boundary, quest: REH-08, say: You tie red cloth to the last post. New travelers will see where the fen stops forgiving., title: Danger Boundary, verb: Mark}
+  tags: [quest-mark, reedhaven]
+reh-cellar:
+  feetPosition: {x: -398, y: {terrain: 0}, z: 542}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-cellar
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 0
+  state: {mark: dry_cellar, quest: REH-05, say: "Below the hut: shelves of sealed jars, a child's boots, and a map of a road that isn't on any map.", title: Dry Cellar Hatch, verb: Descend}
+  tags: [quest-mark, reedhaven]
+reh-chapel:
+  feetPosition: {x: -444, y: {terrain: 0}, z: 530}
+  id: reh-chapel
+  physics: static
+  primitive: {kind: scripted, params: {kind: chapel, seed: 5}, script: scripts/gen/fen.js}
+  rotation: {yaw: 20}
+reh-chest:
+  feetPosition: {x: -448, y: {terrain: 0}, z: 526}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-chest
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}
+  rotation: 0
+  state: {after: name_release, afterText: "First: release three braided names", mark: hidden_map, quest: REH-07, say: "Two locks, two keys, one in Iona's care and one in yours. Inside: a map with a river road to Lantern's Reach, and a street the Reach no longer has.", title: Two-Witness Privacy Chest, verb: Open}
+  tags: [quest-mark, reedhaven]
+reh-hut-0:
+  feetPosition: {x: -410, y: {terrain: 0}, z: 549}
+  id: reh-hut-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut, seed: 11}, script: scripts/gen/fen.js}
+  rotation: {yaw: 200}
+reh-hut-1:
+  feetPosition: {x: -417, y: {terrain: 0}, z: 559}
+  id: reh-hut-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut, seed: 12}, script: scripts/gen/fen.js}
+  rotation: {yaw: 250}
+reh-hut-2:
+  feetPosition: {x: -434, y: {terrain: 0}, z: 539}
+  id: reh-hut-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut, seed: 13}, script: scripts/gen/fen.js}
+  rotation: {yaw: 10}
+reh-hut-3:
+  feetPosition: {x: -406, y: {terrain: 0}, z: 560}
+  id: reh-hut-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: hut, seed: 14}, script: scripts/gen/fen.js}
+  rotation: {yaw: 280}
+reh-knot:
+  feetPosition: {x: -428, y: {terrain: 0}, z: 564}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-knot
+  physics: static
+  primitive: {kind: scripted, params: {kind: pole, seed: 9}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {after: marsh_reed, afterText: "First: gather three marsh reeds", mark: witness_knot, quest: REH-01, say: "You braid the reeds around the post, over-under-over. The knot holds a shape like a name nobody wrote.", title: Witness Post, verb: Braid}
+  tags: [quest-mark, reedhaven]
+reh-lamp-offer:
+  feetPosition: {x: -438, y: {terrain: 0}, z: 570}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-lamp-offer
+  primitive: {kind: scripted, params: {kind: lantern, seed: 700}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: wisp_offer, quest: REH-06, say: "You set the lantern down, door open. A small wisp drifts in, looks around, and stays because it wants to.", title: Unmarked Lantern, verb: Offer}
+  tags: [quest-mark, reedhaven]
+reh-lantern-0:
+  feetPosition: {x: -422, y: {terrain: 0}, z: 556}
+  id: reh-lantern-0
+  primitive: {kind: scripted, params: {kind: lantern, seed: 300}, script: scripts/gen/fen.js}
+reh-lantern-0-light:
+  feetPosition: {x: -422, y: {terrain: 2.2}, z: 556}
+  id: reh-lantern-0-light
+  light: {color: oklch(0.82 0.12 75), distance: 10, intensity: 1.6, kind: point}
+reh-lantern-1:
+  feetPosition: {x: -431, y: {terrain: 0}, z: 546}
+  id: reh-lantern-1
+  primitive: {kind: scripted, params: {kind: lantern, seed: 301}, script: scripts/gen/fen.js}
+reh-lantern-1-light:
+  feetPosition: {x: -431, y: {terrain: 2.2}, z: 546}
+  id: reh-lantern-1-light
+  light: {color: oklch(0.82 0.12 75), distance: 10, intensity: 1.6, kind: point}
+reh-lantern-2:
+  feetPosition: {x: -416, y: {terrain: 0}, z: 566}
+  id: reh-lantern-2
+  primitive: {kind: scripted, params: {kind: lantern, seed: 302}, script: scripts/gen/fen.js}
+reh-lantern-2-light:
+  feetPosition: {x: -416, y: {terrain: 2.2}, z: 566}
+  id: reh-lantern-2-light
+  light: {color: oklch(0.82 0.12 75), distance: 10, intensity: 1.6, kind: point}
+reh-lantern-3:
+  feetPosition: {x: -456, y: {terrain: 0}, z: 570}
+  id: reh-lantern-3
+  primitive: {kind: scripted, params: {kind: lantern, seed: 303}, script: scripts/gen/fen.js}
+reh-lantern-3-light:
+  feetPosition: {x: -456, y: {terrain: 2.2}, z: 570}
+  id: reh-lantern-3-light
+  light: {color: oklch(0.82 0.12 75), distance: 10, intensity: 1.6, kind: point}
+reh-lantern-4:
+  feetPosition: {x: -424, y: {terrain: 0}, z: 578}
+  id: reh-lantern-4
+  primitive: {kind: scripted, params: {kind: lantern, seed: 304}, script: scripts/gen/fen.js}
+reh-lantern-4-light:
+  feetPosition: {x: -424, y: {terrain: 2.2}, z: 578}
+  id: reh-lantern-4-light
+  light: {color: oklch(0.82 0.12 75), distance: 10, intensity: 1.6, kind: point}
+reh-lantern-5:
+  feetPosition: {x: -404, y: {terrain: 0}, z: 552}
+  id: reh-lantern-5
+  primitive: {kind: scripted, params: {kind: lantern, seed: 305}, script: scripts/gen/fen.js}
+reh-lantern-5-light:
+  feetPosition: {x: -404, y: {terrain: 2.2}, z: 552}
+  id: reh-lantern-5-light
+  light: {color: oklch(0.82 0.12 75), distance: 10, intensity: 1.6, kind: point}
+reh-mire:
+  feetPosition: {x: -454, y: {terrain: 0}, z: 600}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-mire
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone, seed: 8}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {after: safe_marker, afterText: "First: set four safe-path markers", mark: mire_cross, quest: REH-03, say: You step only where the poles say. Behind you the mire breathes out a bubble the size of a barrel., title: The Deep Mire, verb: Cross by the roots}
+  tags: [quest-mark, reedhaven]
+reh-mourner-0:
+  feetPosition: {x: -418, y: {terrain: 0}, z: 544}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-mourner-0
+  layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-mourner-reedbound-hooded-woven-reed-shawl-holding-small-lantern.glb
+  rotation: 0
+  state: {mark: mourner_spoken, quest: REH-04, say: "\"My brother mended nets on this porch. Nobody remembers his face but me. I keep saying his name so it stays heavy.\"", title: Mourner, verb: Listen}
+  tags: [quest-mark, reedhaven]
+reh-mourner-1:
+  feetPosition: {x: -446, y: {terrain: 0}, z: 536}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-mourner-1
+  layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-mourner-reedbound-hooded-woven-reed-shawl-holding-small-lantern.glb
+  rotation: 120
+  state: {mark: mourner_spoken, quest: REH-04, say: "\"The water rose in one night. Some of us got out on the roofs. Some of us got written down. Some did not.\"", title: Mourner, verb: Listen}
+  tags: [quest-mark, reedhaven]
+reh-mourner-2:
+  feetPosition: {x: -404, y: {terrain: 0}, z: 572}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-mourner-2
+  layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-mourner-reedbound-hooded-woven-reed-shawl-holding-small-lantern.glb
+  rotation: 240
+  state: {mark: mourner_spoken, quest: REH-04, say: "\"Iona weaves the names so we can hold them. A name in the hand is easier than a name in the throat.\"", title: Mourner, verb: Listen}
+  tags: [quest-mark, reedhaven]
+reh-npc-iona:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -424, y: {terrain: 0}, z: 568}
+  id: reh-npc-iona
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-reedkeeper-woman-reedbound-elder-woven-reed-shawl-river-pearl-braids-staff.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Reedkeeper Iona Sedge, who: iona, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, reedhaven]
+reh-npc-kele:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -436, y: {terrain: 0}, z: 556}
+  id: reh-npc-kele
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-wisp-tender-young-man-reedbound-moss-green-robe-glass-lantern-net.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {homeYaw: 120, idle: Idle, npcName: Wisp Tender Kele, who: kele, yaw: 120}
+  tags: [npc, talker, townsfolk, quest-npc, reedhaven]
+reh-npc-pell:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -452, y: {terrain: 0}, z: 564}
+  id: reh-npc-pell
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-marsh-guide-man-reedbound-wiry-wading-boots-long-pole-oilskin-hood.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 90}
+  state: {homeYaw: 90, idle: Idle, npcName: Marsh Guide Pell, who: pell, yaw: 90}
+  tags: [npc, talker, townsfolk, quest-npc, reedhaven]
+reh-platform-0:
+  feetPosition: {x: -414, y: {terrain: 0}, z: 554}
+  id: reh-platform-0
+  physics: static
+  primitive: {kind: scripted, params: {d: 14, h: 1.3, kind: platform, seed: 60, w: 14}, script: scripts/gen/fen.js}
+reh-platform-1:
+  feetPosition: {x: -432, y: {terrain: 0}, z: 542}
+  id: reh-platform-1
+  physics: static
+  primitive: {kind: scripted, params: {d: 8, h: 1.3, kind: platform, seed: 61, w: 8}, script: scripts/gen/fen.js}
+reh-platform-2:
+  feetPosition: {x: -460, y: {terrain: 0}, z: 566}
+  id: reh-platform-2
+  physics: static
+  primitive: {kind: scripted, params: {d: 7, h: 1.3, kind: platform, seed: 62, w: 7}, script: scripts/gen/fen.js}
+reh-pole-ferry:
+  feetPosition: {x: -432, y: {terrain: 0}, z: 522}
+  id: reh-pole-ferry
+  primitive: {kind: scripted, params: {kind: pole, seed: 3}, script: scripts/gen/fen.js}
+reh-pool:
+  feetPosition: {x: -430, y: {terrain: 0}, z: 560}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-pool
+  material: {color: oklch(0.55 0.08 200), kind: water, opacity: 0.8, waveIntensity: 0.2}
+  primitive: {height: 0.06, kind: cylinder, radiusBottom: 2.4, radiusTop: 2.4}
+  rotation: 0
+  state: {after: stray_wisp, afterText: "First: coax two stray wisps", mark: memorial_pool, quest: REH-02, say: The two wisps drop into the pool and glow beneath the water like lamps someone keeps lit for a friend., title: Memorial Pool, verb: Release}
+  tags: [quest-mark, reedhaven]
+reh-reed-0:
+  feetPosition: {x: -412, y: {terrain: 0}, z: 546}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-reed-0
+  primitive: {kind: scripted, params: {h: 1.6, kind: reeds, seed: 500}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: marsh_reed, quest: REH-01, say: Cool and supple. It bends without breaking., title: Bundle of Marsh Reeds, verb: Gather}
+  tags: [quest-mark, reedhaven]
+reh-reed-1:
+  feetPosition: {x: -450, y: {terrain: 0}, z: 562}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-reed-1
+  primitive: {kind: scripted, params: {h: 1.6, kind: reeds, seed: 501}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: marsh_reed, quest: REH-01, say: The reed sings when the wind crosses its cut end., title: Bundle of Marsh Reeds, verb: Gather}
+  tags: [quest-mark, reedhaven]
+reh-reed-2:
+  feetPosition: {x: -426, y: {terrain: 0}, z: 548}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-reed-2
+  primitive: {kind: scripted, params: {h: 1.6, kind: reeds, seed: 502}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: marsh_reed, quest: REH-01, say: "Three reeds, the length of a forearm. Enough for a knot.", title: Bundle of Marsh Reeds, verb: Gather}
+  tags: [quest-mark, reedhaven]
+reh-reeds-0:
+  feetPosition: {x: -420, y: {terrain: 0}, z: 560}
+  id: reh-reeds-0
+  primitive: {kind: scripted, params: {h: 1.4, kind: reeds, seed: 200}, script: scripts/gen/fen.js}
+  rotation: {yaw: 0}
+reh-reeds-1:
+  feetPosition: {x: -442.5, y: {terrain: 0}, z: 571.5}
+  id: reh-reeds-1
+  primitive: {kind: scripted, params: {h: 1.5999999999999999, kind: reeds, seed: 201}, script: scripts/gen/fen.js}
+  rotation: {yaw: 47}
+reh-reeds-10:
+  feetPosition: {x: -418.4, y: {terrain: 0}, z: 534.5}
+  id: reh-reeds-10
+  primitive: {kind: scripted, params: {h: 1.7999999999999998, kind: reeds, seed: 210}, script: scripts/gen/fen.js}
+  rotation: {yaw: 110}
+reh-reeds-11:
+  feetPosition: {x: -419.2, y: {terrain: 0}, z: 593.3}
+  id: reh-reeds-11
+  primitive: {kind: scripted, params: {h: 2, kind: reeds, seed: 211}, script: scripts/gen/fen.js}
+  rotation: {yaw: 157}
+reh-reeds-12:
+  feetPosition: {x: -443.9, y: {terrain: 0}, z: 552.1}
+  id: reh-reeds-12
+  primitive: {kind: scripted, params: {h: 1.4, kind: reeds, seed: 212}, script: scripts/gen/fen.js}
+  rotation: {yaw: 204}
+reh-reeds-13:
+  feetPosition: {x: -407.6, y: {terrain: 0}, z: 554.8}
+  id: reh-reeds-13
+  primitive: {kind: scripted, params: {h: 1.5999999999999999, kind: reeds, seed: 213}, script: scripts/gen/fen.js}
+  rotation: {yaw: 251}
+reh-reeds-14:
+  feetPosition: {x: -446.9, y: {terrain: 0}, z: 584.8}
+  id: reh-reeds-14
+  primitive: {kind: scripted, params: {h: 1.7999999999999998, kind: reeds, seed: 214}, script: scripts/gen/fen.js}
+  rotation: {yaw: 298}
+reh-reeds-15:
+  feetPosition: {x: -431.6, y: {terrain: 0}, z: 549.1}
+  id: reh-reeds-15
+  primitive: {kind: scripted, params: {h: 2, kind: reeds, seed: 215}, script: scripts/gen/fen.js}
+  rotation: {yaw: 345}
+reh-reeds-16:
+  feetPosition: {x: -416.1, y: {terrain: 0}, z: 571.4}
+  id: reh-reeds-16
+  primitive: {kind: scripted, params: {h: 1.4, kind: reeds, seed: 216}, script: scripts/gen/fen.js}
+  rotation: {yaw: 32}
+reh-reeds-17:
+  feetPosition: {x: -455, y: {terrain: 0}, z: 561.4}
+  id: reh-reeds-17
+  primitive: {kind: scripted, params: {h: 1.5999999999999999, kind: reeds, seed: 217}, script: scripts/gen/fen.js}
+  rotation: {yaw: 79}
+reh-reeds-18:
+  feetPosition: {x: -407.7, y: {terrain: 0}, z: 537}
+  id: reh-reeds-18
+  primitive: {kind: scripted, params: {h: 1.7999999999999998, kind: reeds, seed: 218}, script: scripts/gen/fen.js}
+  rotation: {yaw: 126}
+reh-reeds-19:
+  feetPosition: {x: -430.4, y: {terrain: 0}, z: 573}
+  id: reh-reeds-19
+  primitive: {kind: scripted, params: {h: 2, kind: reeds, seed: 219}, script: scripts/gen/fen.js}
+  rotation: {yaw: 173}
+reh-reeds-2:
+  feetPosition: {x: -427.9, y: {terrain: 0}, z: 536.1}
+  id: reh-reeds-2
+  primitive: {kind: scripted, params: {h: 1.7999999999999998, kind: reeds, seed: 202}, script: scripts/gen/fen.js}
+  rotation: {yaw: 94}
+reh-reeds-20:
+  feetPosition: {x: -443.1, y: {terrain: 0}, z: 544.9}
+  id: reh-reeds-20
+  primitive: {kind: scripted, params: {h: 1.4, kind: reeds, seed: 220}, script: scripts/gen/fen.js}
+  rotation: {yaw: 220}
+reh-reeds-21:
+  feetPosition: {x: -403.2, y: {terrain: 0}, z: 563.1}
+  id: reh-reeds-21
+  primitive: {kind: scripted, params: {h: 1.5999999999999999, kind: reeds, seed: 221}, script: scripts/gen/fen.js}
+  rotation: {yaw: 267}
+reh-reeds-22:
+  feetPosition: {x: -457.5, y: {terrain: 0}, z: 580}
+  id: reh-reeds-22
+  primitive: {kind: scripted, params: {h: 1.7999999999999998, kind: reeds, seed: 222}, script: scripts/gen/fen.js}
+  rotation: {yaw: 314}
+reh-reeds-23:
+  feetPosition: {x: -427, y: {terrain: 0}, z: 545.3}
+  id: reh-reeds-23
+  primitive: {kind: scripted, params: {h: 2, kind: reeds, seed: 223}, script: scripts/gen/fen.js}
+  rotation: {yaw: 1}
+reh-reeds-24:
+  feetPosition: {x: -418.6, y: {terrain: 0}, z: 578.8}
+  id: reh-reeds-24
+  primitive: {kind: scripted, params: {h: 1.4, kind: reeds, seed: 224}, script: scripts/gen/fen.js}
+  rotation: {yaw: 48}
+reh-reeds-25:
+  feetPosition: {x: -457.8, y: {terrain: 0}, z: 551.9}
+  id: reh-reeds-25
+  primitive: {kind: scripted, params: {h: 1.5999999999999999, kind: reeds, seed: 225}, script: scripts/gen/fen.js}
+  rotation: {yaw: 95}
+reh-reeds-3:
+  feetPosition: {x: -411.1, y: {terrain: 0}, z: 584.5}
+  id: reh-reeds-3
+  primitive: {kind: scripted, params: {h: 2, kind: reeds, seed: 203}, script: scripts/gen/fen.js}
+  rotation: {yaw: 141}
+reh-reeds-4:
+  feetPosition: {x: -441.8, y: {terrain: 0}, z: 558}
+  id: reh-reeds-4
+  primitive: {kind: scripted, params: {h: 1.4, kind: reeds, seed: 204}, script: scripts/gen/fen.js}
+  rotation: {yaw: 188}
+reh-reeds-5:
+  feetPosition: {x: -414, y: {terrain: 0}, z: 549.7}
+  id: reh-reeds-5
+  primitive: {kind: scripted, params: {h: 1.5999999999999999, kind: reeds, seed: 205}, script: scripts/gen/fen.js}
+  rotation: {yaw: 235}
+reh-reeds-6:
+  feetPosition: {x: -436.6, y: {terrain: 0}, z: 585.1}
+  id: reh-reeds-6
+  primitive: {kind: scripted, params: {h: 1.7999999999999998, kind: reeds, seed: 206}, script: scripts/gen/fen.js}
+  rotation: {yaw: 282}
+reh-reeds-7:
+  feetPosition: {x: -445.4, y: {terrain: 0}, z: 530.8}
+  id: reh-reeds-7
+  primitive: {kind: scripted, params: {h: 2, kind: reeds, seed: 207}, script: scripts/gen/fen.js}
+  rotation: {yaw: 329}
+reh-reeds-8:
+  feetPosition: {x: -416.8, y: {terrain: 0}, z: 564.7}
+  id: reh-reeds-8
+  primitive: {kind: scripted, params: {h: 1.4, kind: reeds, seed: 208}, script: scripts/gen/fen.js}
+  rotation: {yaw: 16}
+reh-reeds-9:
+  feetPosition: {x: -449.3, y: {terrain: 0}, z: 568.2}
+  id: reh-reeds-9
+  primitive: {kind: scripted, params: {h: 1.5999999999999999, kind: reeds, seed: 209}, script: scripts/gen/fen.js}
+  rotation: {yaw: 63}
+reh-release-0:
+  feetPosition: {x: -454, y: {terrain: 0}, z: 568}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-release-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone, seed: 20}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: name_release, quest: REH-07, say: "The braided name floats a moment, then sinks slow, like a leaf deciding.", title: Pool Edge, verb: Release a name}
+  tags: [quest-mark, reedhaven]
+reh-release-1:
+  feetPosition: {x: -416, y: {terrain: 0}, z: 582}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-release-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone, seed: 21}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: name_release, quest: REH-07, say: The water takes the second name. A ripple goes out wider than it should., title: Pool Edge, verb: Release a name}
+  tags: [quest-mark, reedhaven]
+reh-release-2:
+  feetPosition: {x: -438, y: {terrain: 0}, z: 534}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-release-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone, seed: 22}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: name_release, quest: REH-07, say: "The third name goes under. Somewhere in the reeds, a frog starts singing again.", title: Pool Edge, verb: Release a name}
+  tags: [quest-mark, reedhaven]
+reh-roll:
+  feetPosition: {x: -442, y: {terrain: 0}, z: 532}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-roll
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern}, script: scripts/gen/glade.js}
+  rotation: 0
+  state: {after: mourner_spoken, afterText: "First: listen to three mourners", mark: woven_roll, quest: REH-04, say: "A long braid of reed and thread, each knot a name. Near the end, one knot is tied in bellglass wire. Its name is missing.", title: The Woven Roll of Names, verb: Read}
+  tags: [quest-mark, reedhaven]
+reh-safe-0:
+  feetPosition: {x: -466, y: {terrain: 0}, z: 574}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-safe-0
+  primitive: {kind: scripted, params: {kind: pole, seed: 40}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: safe_marker, quest: REH-03, say: You drive the white-tipped pole in. Firm. The next walker will know., title: Unmarked Firm Ground, verb: Set marker}
+  tags: [quest-mark, reedhaven]
+reh-safe-1:
+  feetPosition: {x: -468, y: {terrain: 0}, z: 582}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-safe-1
+  primitive: {kind: scripted, params: {kind: pole, seed: 41}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: safe_marker, quest: REH-03, say: "A second marker. The mud here drinks, but the root mat beneath holds.", title: Unmarked Firm Ground, verb: Set marker}
+  tags: [quest-mark, reedhaven]
+reh-safe-2:
+  feetPosition: {x: -464, y: {terrain: 0}, z: 590}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-safe-2
+  primitive: {kind: scripted, params: {kind: pole, seed: 42}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: safe_marker, quest: REH-03, say: A third. Pell nods from the boardwalk., title: Unmarked Firm Ground, verb: Set marker}
+  tags: [quest-mark, reedhaven]
+reh-safe-3:
+  feetPosition: {x: -460, y: {terrain: 0}, z: 596}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-safe-3
+  primitive: {kind: scripted, params: {kind: pole, seed: 43}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {mark: safe_marker, quest: REH-03, say: "The last marker. The safe path reads now, white to white.", title: Unmarked Firm Ground, verb: Set marker}
+  tags: [quest-mark, reedhaven]
+reh-stump-0:
+  feetPosition: {x: -436, y: {terrain: 0}, z: 566}
+  id: reh-stump-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 400}, script: scripts/gen/fen.js}
+reh-stump-1:
+  feetPosition: {x: -420, y: {terrain: 0}, z: 574}
+  id: reh-stump-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 401}, script: scripts/gen/fen.js}
+reh-stump-2:
+  feetPosition: {x: -448, y: {terrain: 0}, z: 552}
+  id: reh-stump-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 402}, script: scripts/gen/fen.js}
+reh-stump-3:
+  feetPosition: {x: -400, y: {terrain: 0}, z: 570}
+  id: reh-stump-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 403}, script: scripts/gen/fen.js}
+reh-stump-4:
+  feetPosition: {x: -464, y: {terrain: 0}, z: 556}
+  id: reh-stump-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: stump, seed: 404}, script: scripts/gen/fen.js}
+reh-taint-0:
+  feetPosition: {x: -394, y: {terrain: 0}, z: 536}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<2,1.2,2.4>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<2,1.2,2.4>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-taint-0
+  primitive: {kind: scripted, params: {h: 1.3, kind: reeds, seed: 600}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {after: dry_cellar, afterText: "First: explore the dry cellar", mark: bellglass_knot, quest: REH-05, say: "You draw the wire out of the reed. It hums one cold note, then goes quiet.", title: Tainted Bellglass Knot, verb: Cleanse}
+  tags: [quest-mark, reedhaven]
+reh-taint-1:
+  feetPosition: {x: -402, y: {terrain: 0}, z: 534}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<2,1.2,2.4>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<2,1.2,2.4>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-taint-1
+  primitive: {kind: scripted, params: {h: 1.3, kind: reeds, seed: 601}, script: scripts/gen/fen.js}
+  rotation: 0
+  state: {after: dry_cellar, afterText: "First: explore the dry cellar", mark: bellglass_knot, quest: REH-05, say: The second knot unwinds. The reeds around it straighten like they were holding their breath., title: Tainted Bellglass Knot, verb: Cleanse}
+  tags: [quest-mark, reedhaven]
+reh-walk-0:
+  feetPosition: {x: -421, y: {terrain: 0}, z: 554}
+  id: reh-walk-0
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 15, seed: 30}, script: scripts/gen/fen.js}
+  rotation: {yaw: 90}
+reh-walk-1:
+  feetPosition: {x: -432, y: {terrain: 0}, z: 549}
+  id: reh-walk-1
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 10, seed: 31}, script: scripts/gen/fen.js}
+  rotation: {yaw: 0}
+reh-walk-2:
+  feetPosition: {x: -439, y: {terrain: 0}, z: 556}
+  id: reh-walk-2
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 20, seed: 32}, script: scripts/gen/fen.js}
+  rotation: {yaw: 70}
+reh-walk-3:
+  feetPosition: {x: -460, y: {terrain: 0}, z: 573}
+  id: reh-walk-3
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 22, seed: 33}, script: scripts/gen/fen.js}
+  rotation: {yaw: 0}
+reh-walk-4:
+  feetPosition: {x: -426, y: {terrain: 0}, z: 584}
+  id: reh-walk-4
+  physics: static
+  primitive: {kind: scripted, params: {h0: 1.3, h1: 1.3, kind: boardwalk, len: 14, seed: 34}, script: scripts/gen/fen.js}
+  rotation: {yaw: 200}
+reh-wisp-0:
+  feetPosition: {x: -460, y: {terrain: 1.1}, z: 546}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-wisp-0
+  rotation: 0
+  state: {mark: stray_wisp, quest: REH-02, say: It circles your hand twice and settles in the lantern net. It is not afraid of you., title: Stray Wisp, verb: Coax}
+  tags: [quest-mark, reedhaven]
+  wisp: {burnStyle: calm, color: "#8fe6ff", seed: 7, shape: classic, size: 0.45, state: idle}
+reh-wisp-1:
+  feetPosition: {x: -412, y: {terrain: 1.1}, z: 590}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-wisp-1
+  rotation: 0
+  state: {mark: stray_wisp, quest: REH-02, say: "It was hiding under a lily pad. It follows you, curious, no net needed.", title: Stray Wisp, verb: Coax}
+  tags: [quest-mark, reedhaven]
+  wisp: {burnStyle: calm, color: "#8fe6ff", seed: 8, shape: classic, size: 0.45, state: idle}
+reh-wisp-guard:
+  feetPosition: {x: -440, y: {terrain: 1}, z: 582}
+  fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.55,.9,1>,1.4,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.55,.9,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
+  id: reh-wisp-guard
+  rotation: 0
+  state: {after: wisp_offer, afterText: "First: offer a wisp the unmarked lantern", mark: wisp_protect, quest: REH-06, say: "Something cold presses at the edge of the light. You stand between it and the wisp, and you do not close the lantern. It passes.", title: Frightened Wisp, verb: Shield it}
+  tags: [quest-mark, reedhaven]
+  wisp: {burnStyle: pulse, color: "#bff4ff", seed: 21, shape: slender, size: 0.35, state: idle}
+roost-reedhaven:
+  children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:60px;line-height:1.1;color:#f2b04a;text-shadow:0 0 12px #000\">REEDHAVEN</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
+  feetPosition: {x: -408, y: 12, z: 584}
+  id: roost-reedhaven
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/roost.js}
+  state: {roost: reedhaven}
+  tags: [roost]
+start-reedhaven:
+  feetPosition: {x: -426, y: {terrain: 0}, z: 574}
+  fx: {script: "fx\npop wisp n=?mobile:10|22 on=box(30,2,30).c(1.4) life=5..9 size=.06..0.11 acc=curl(.3)*1.4+drag(1.1) sz=$size*flick(3,.5) col=hdr(1.1,2.2,2.4) a=(0>.15:1>.8:1>0)*flick(1.1,.5) r=sprite(mote,add)\npop mist n=?mobile:6|14 on=box(40,.3,40) life=6..10 size=2.5..4 acc=curl(.1)+drag(1) sz=$size col=<.8,.86,.84> a=0>.12:.5>.12:.5>0 r=sprite(smoke-puff,alpha)"}
+  id: start-reedhaven
+  physics: static
+  primitive: {kind: scripted, params: {kind: plate}, script: scripts/gen/hamlet.js}
+  tags: [start-zone, reedhaven]
