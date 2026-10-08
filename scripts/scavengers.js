@@ -169,7 +169,7 @@ export function update(ctx, dt) {
       }
     }
     const p = players.find((q) => q.id === s.target);
-    const dist = p ? flat(p.feetPosition, pos) : Infinity;
+    const dist = p ? Math.max(0, flat(p.feetPosition, pos) - ((s.radius || 0.45) - 0.45)) : Infinity; // a big body reaches from its edge
     const T = cs.toll;
     if (T) {
       if (s.mode === "toll") { halt(w, m); if (now >= m.tollAt) tollLand(ctx, w, s, m, T, players); continue; }
