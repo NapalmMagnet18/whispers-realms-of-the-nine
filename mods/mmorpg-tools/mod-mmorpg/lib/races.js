@@ -90,7 +90,7 @@ function race(id, name, model, portrait, zone, tint, defaultSkin) {
     malePortrait: portrait, femalePortrait: portrait, maleAnimatedPortrait: portrait, femaleAnimatedPortrait: portrait,
     maleModel: model, femaleModel: model };
 }
-var START = { marchborn: { x: 0, y: 4.6, z: 8 }, briarkin: { x: -720, y: 20.2, z: 70 }, emberforged: { x: 900, y: 41, z: -170 }, saltborn: { x: 244, y: 3.6, z: 1430 } };
+var START = { marchborn: { x: -1, y: 1.6, z: -86 }, briarkin: { x: -720, y: 20.2, z: 70 }, emberforged: { x: 900, y: 41, z: -170 }, saltborn: { x: 244, y: 3.6, z: 1430 } };
 var RACES = [
   race('marchborn', 'Marchborn', WARRIOR_MODEL, WARRIOR_PORTRAIT, "Lantern's Reach", '#e8cfae', 1),
   race('briarkin', 'Briarkin', MAGE_MODEL, MAGE_PORTRAIT, 'Thornhollow, Briarwild Deepwood', '#b8d0a0', 10),
