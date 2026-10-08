@@ -1,34 +1,44 @@
 // === RACE & CLASS DATA FOR MMORPG TOOLS MOD ===
-// Stripped version: 2 races, 1 class each, male-only models, static PNG portraits
+// Four races (races.yml), three classes each; two shared models for now, static PNG portraits
 // Export interface matches scripts/lib/races.js exactly
 
-var CLASSES = [
-  'Vanguard'
-];
+var CLASSES = ['Vanguard', 'Arcanist', 'Pathfinder'];
 
 var CLASS_STATS = {
-  'Vanguard': { str: 50, agi: 50, mag: 50, def: 50 },
+  'Vanguard': { str: 60, agi: 45, mag: 30, def: 60 },
+  'Arcanist': { str: 30, agi: 45, mag: 70, def: 35 },
+  'Pathfinder': { str: 40, agi: 70, mag: 40, def: 45 },
 };
 
 var CLASS_ABILITIES = {
   'Vanguard': ['Strike', 'Heavy Strike', 'Guard'],
+  'Arcanist': ['Firebolt', 'Frost Shard', 'Ward'],
+  'Pathfinder': ['Arrow', 'Volley', 'Dodge Roll'],
 };
 
 var RACE_DESCRIPTIONS = {
   'Marchborn': 'Folk of the Lantern March, raised under the beacon of Lantern\'s Reach. Steady hands, stubborn hearts.',
   'Briarkin': 'Wanderers from the deep Briarwild who hear the old whispers in the trees and follow them home.',
+  'Emberforged': 'Stone-shouldered smiths of the red mesas of Cinderhold, warm as their forges and slow to anger.',
+  'Saltborn': 'Tide-weathered sailors and net-menders of Gullrest on the Saltmere coast, at home in any storm.',
 };
 
 var CLASS_LORE = {
   'Vanguard': 'A shield-bearing guardian of the March. Strikes true, hits hard when it counts, and holds the line with Guard.',
+  'Arcanist': 'A scholar of the old whispers. Hurls firebolts and frost shards from afar and wraps allies in a Ward.',
+  'Pathfinder': 'A scout of the wild roads. Looses arrows and volleys at range and rolls clear of every bite.',
 };
 
 var CLASS_ICONS = {
   'Vanguard': '/cdn/value.063462cc9e460847ae17aea8a9ba80fbdb90fd847808c9fe3e53c1122bc5975a.png',
+  'Arcanist': '/cdn/icon-fantasy-generic-staff.png',
+  'Pathfinder': '/cdn/icon-fantasy-generic-bow.png',
 };
 
 var CLASS_COLORS = {
   'Vanguard': '#AF8951',
+  'Arcanist': '#7FA7D9',
+  'Pathfinder': '#8FB35A',
 };
 
 // 2 race backgrounds
@@ -72,27 +82,19 @@ var WARRIOR_PORTRAIT = '/cdn/value.c4c67311858819ab9e86ef81f51da99f69509138567a3
 var MAGE_MODEL = '/cdn/model-humanoid-fantasy-mage-male-dark-robes.glb?animations=Idle,Walk,Run,Sprint,Jump,BeHit_FlyUp,Dead,Skill_01,Basic_Jump,Combat_Stance,Left_Slash,Reaping_Swing,Roll_Dodge_1';
 var MAGE_PORTRAIT = '/cdn/value.95a07d181d4a68b47e7b0a8bb46cf1769f5776bc254f0976ed6a10af4f5f9a4e.png';
 
+var ALL_CLASSES = ['Vanguard', 'Arcanist', 'Pathfinder'];
+// Four races, two shared bodies for now: Marchborn & Emberforged wear the warrior model, Briarkin & Saltborn the mage model.
+// id / zone / start mirror scripts/lib/data/races.yml (the start point used on Enter World); tint = the body's skin wash.
+function race(id, name, model, portrait, zone, tint, defaultSkin) {
+  return { id: id, name: name, classes: ALL_CLASSES.slice(), zone: zone, tint: tint, defaultSkin: defaultSkin,
+    malePortrait: portrait, femalePortrait: portrait, maleAnimatedPortrait: portrait, femaleAnimatedPortrait: portrait,
+    maleModel: model, femaleModel: model };
+}
 var RACES = [
-  {
-    name: 'Marchborn',
-    classes: ['Vanguard'],
-    malePortrait: WARRIOR_PORTRAIT,
-    femalePortrait: WARRIOR_PORTRAIT,
-    maleAnimatedPortrait: WARRIOR_PORTRAIT,
-    femaleAnimatedPortrait: WARRIOR_PORTRAIT,
-    maleModel: WARRIOR_MODEL,
-    femaleModel: WARRIOR_MODEL,
-  },
-  {
-    name: 'Briarkin',
-    classes: ['Vanguard'],
-    malePortrait: MAGE_PORTRAIT,
-    femalePortrait: MAGE_PORTRAIT,
-    maleAnimatedPortrait: MAGE_PORTRAIT,
-    femaleAnimatedPortrait: MAGE_PORTRAIT,
-    maleModel: MAGE_MODEL,
-    femaleModel: MAGE_MODEL,
-  },
+  race('marchborn', 'Marchborn', WARRIOR_MODEL, WARRIOR_PORTRAIT, "Lantern's Reach", '#e8cfae', 1),
+  race('briarkin', 'Briarkin', MAGE_MODEL, MAGE_PORTRAIT, 'Thornhollow, Briarwild Deepwood', '#b8d0a0', 10),
+  race('emberforged', 'Emberforged', WARRIOR_MODEL, WARRIOR_PORTRAIT, 'Cinderhold, Emberstone Highlands', '#d49a78', 12),
+  race('saltborn', 'Saltborn', MAGE_MODEL, MAGE_PORTRAIT, 'Gullrest, Saltmere Coast', '#a9c4d6', 11),
 ];
 
 module.exports = {

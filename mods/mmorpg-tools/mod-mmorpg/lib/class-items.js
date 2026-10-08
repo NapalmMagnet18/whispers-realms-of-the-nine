@@ -7,6 +7,14 @@ var CLASS_STARTING_ITEMS = {
     { id: 'starter-sword', name: 'Sword', icon: '/cdn/icon-fantasy-generic-sword.png', slot: 'mainHand', stats: { damage: { min: 4, max: 10 } } },
     { id: 'starter-robes', name: 'Robes', icon: '/cdn/icon-fantasy-generic-robes.png', slot: 'chest', stats: { defence: 6 } },
   ],
+  'Arcanist': [
+    { id: 'starter-staff', name: 'Apprentice Staff', icon: '/cdn/icon-fantasy-generic-staff.png', slot: 'mainHand', stats: { damage: { min: 3, max: 7 }, magic: 6 } },
+    { id: 'starter-arcanist-robes', name: 'Initiate Robes', icon: '/cdn/icon-fantasy-generic-dark-robes.png', slot: 'chest', stats: { defence: 3, magic: 3 } },
+  ],
+  'Pathfinder': [
+    { id: 'starter-bow', name: 'Hunting Bow', icon: '/cdn/icon-fantasy-generic-bow.png', slot: 'mainHand', stats: { damage: { min: 3, max: 9 }, range: 30 } },
+    { id: 'starter-leathers', name: 'Scout Leathers', icon: '/cdn/icon-fantasy-generic-leather-armor.png', slot: 'chest', stats: { defence: 5 } },
+  ],
 };
 
 // Universal starter items (fallback)
