@@ -1,5 +1,5 @@
 // The game's update version: bump this line with each release. Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.7.6 Alpha';
+var GAME_VERSION = '0.7.7 Alpha';
 var GAME_TITLE = 'WHISPERS: Realm of the Nine';
 function versionTag(extra) {
   return '<div style="position:fixed;left:50%;bottom:8px;transform:translateX(-50%);z-index:9999;pointer-events:none;'
