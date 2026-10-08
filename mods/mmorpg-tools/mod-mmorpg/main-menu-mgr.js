@@ -84,7 +84,7 @@ export function update(api, dt) {
       // Start menu music
       if (!s.musicMuted) {
         var menuVol = typeof s.musicVolume === 'number' ? s.musicVolume * 0.3 : 0.3;
-        api.musicShift('/cdn/music-instrumental-fantasy-adventure-orchestral.mp3', {
+        api.musicShift('/cdn/moodboard-painterly-fantasy/music-majestic-fantasy-main-theme-solo-horn-rising-strings-choir-swell-loop.mp3', {
           fade: 2, volume: menuVol, audience: { kind: 'player', id: api.id }
         });
       }

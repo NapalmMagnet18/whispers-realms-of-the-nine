@@ -1,0 +1,43 @@
+# One theme per area. scripts/region-music.js plays the row for where each player stands, to that player alone.
+# Region ids come from scripts/lib/regions.js. A region not listed plays `wilds`.
+volume: 0.25          # times the player's own music volume (state.musicVolume, default 1)
+fade: 3.5             # seconds of crossfade when you walk into a new area
+themes:
+  menu: /cdn/moodboard-painterly-fantasy/music-majestic-fantasy-main-theme-solo-horn-rising-strings-choir-swell-loop.mp3
+  creation: /cdn/moodboard-painterly-fantasy/music-gentle-hopeful-fantasy-harp-celesta-soft-strings-hero-awakening-loop.mp3
+  reach: /cdn/moodboard-painterly-fantasy/music-warm-medieval-village-lute-recorder-hand-drum-afternoon-loop.mp3
+  forest: /cdn/moodboard-painterly-fantasy/music-enchanted-forest-wooden-flute-plucked-harp-mysterious-strings-loop.mp3
+  coast: /cdn/moodboard-painterly-fantasy/music-seaside-folk-accordion-fiddle-gentle-waves-sea-shanty-calm-loop.mp3
+  fen: /cdn/moodboard-painterly-fantasy/music-eerie-misty-swamp-low-cello-drones-distant-chimes-melancholy-loop.mp3
+  ember: /cdn/moodboard-painterly-fantasy/music-heroic-dwarven-forge-deep-brass-war-drums-anvil-hits-loop.mp3
+  arcane: /cdn/moodboard-painterly-fantasy/music-ancient-arcane-ruins-ethereal-choir-glass-harmonica-slow-pads-loop.mp3
+  wilds: /cdn/music-instrumental-fantasy-adventure-orchestral.mp3
+  crypt: /cdn/moodboard-gothic-horror/music-hollowcrypt-candlelit-vault-low-choir-slow-bells.mp3
+places:
+  main-menu-land: menu
+  main-menu: menu
+  character-creation-land: creation
+  hollowcrypt: crypt
+regions:
+  reach: reach
+  farm: reach
+  briarwild: forest
+  deepgrove: forest
+  deepwood: forest
+  elderveil: forest
+  thornhollow: forest
+  saltmere: coast
+  gullrest: coast
+  tideglass: coast
+  sea: coast
+  sorrowfen: fen
+  quarry: ember
+  highlands: ember
+  cinderhold: ember
+  ashfall: ember
+  sunscar: ember
+  spire: arcane
+  ninthveil: arcane
+  hollowcrypt: crypt
+  greyspine: wilds
+  frostveil: wilds

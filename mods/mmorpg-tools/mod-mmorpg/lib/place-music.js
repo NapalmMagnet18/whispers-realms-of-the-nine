@@ -2,7 +2,9 @@
 // Export interface matches scripts/lib/place-music.js exactly
 
 var PLACE_MUSIC = {
-  'main': '/cdn/music-instrumental-fantasy-adventure-orchestral.mp3',
+  'main': '/cdn/moodboard-painterly-fantasy/music-warm-medieval-village-lute-recorder-hand-drum-afternoon-loop.mp3',
+  'main-menu-land': '/cdn/moodboard-painterly-fantasy/music-majestic-fantasy-main-theme-solo-horn-rising-strings-choir-swell-loop.mp3',
+  'character-creation-land': '/cdn/moodboard-painterly-fantasy/music-gentle-hopeful-fantasy-harp-celesta-soft-strings-hero-awakening-loop.mp3',
   'hollowcrypt': '/cdn/moodboard-gothic-horror/music-hollowcrypt-candlelit-vault-low-choir-slow-bells.mp3',
 };
 
