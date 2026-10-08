@@ -57,6 +57,12 @@ export function update(api, dt) {
   var isMenu = place === 'main-menu-land';
 
   if (isMenu) {
+    // an Enter World that never left (the cross failed or the page reloaded mid-way) leaves _leavingMenu stuck: 15 s on, it's the title again
+    var _nowM = api.now ? api.now() : 0;
+    if (s._leavingMenu && _nowM && (!s._worldEnterAt || _nowM - s._worldEnterAt > 15000)) {
+      api.patchState({ _leavingMenu: false, characterCreated: false, menuView: 'title' });
+      s = api.getState();
+    }
     if (!s.inMainMenu && !s._leavingMenu && s.phase !== 'creating') {
       var patch = {
         inMainMenu: true,
