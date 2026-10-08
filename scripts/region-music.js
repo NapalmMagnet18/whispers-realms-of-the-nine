@@ -40,7 +40,9 @@ export function update(ctx) {
     }
   }
   const fighting = now0 - (ctx.session._fightAt || 0) < C.holdSeconds * 1000 && !MUSIC.places[self.place];
-  const theme = fighting ? "battle" : themeFor(ctx, self);
+  const area = themeFor(ctx, self);
+  ambience(ctx, self, area);
+  const theme = fighting ? "battle" : area;
   if (!theme) return;
   const vol = typeof s.musicVolume === "number" ? s.musicVolume * MUSIC.volume : MUSIC.volume;
   const key = theme + "|" + vol.toFixed(2);
@@ -49,4 +51,21 @@ export function update(ctx) {
   if (ctx.session._areaTheme === key && now - (ctx.session._areaAt || 0) < 20000) return;
   ctx.session._areaTheme = key; ctx.session._areaAt = now;
   ctx.musicShift(MUSIC.themes[theme], { fade: theme === "battle" ? C.fade : MUSIC.fade, volume: vol, audience: { kind: "player", id: self.id } });
+}
+
+// The area's bed under the music, and now and then a far-off one-shot only this player hears (a crow, a toll, a howl).
+function ambience(ctx, self, area) {
+  const key = MUSIC.places[self.place] ? self.place : area;
+  if (!key) return;
+  const theme = MUSIC.places[self.place] || area;
+  const bed = MUSIC.ambience?.[theme] ?? null;
+  if (ctx.session._ambBed !== bed) { ctx.session._ambBed = bed; self.ambience = bed; }
+  const S = MUSIC.stingers, set = S?.sets?.[theme];
+  if (!set || !set.length) return;
+  const now = ctx.now();
+  if (!ctx.session._stingAt) { ctx.session._stingAt = now + (S.every[0] + ctx.random() * (S.every[1] - S.every[0])) * 1000; return; }
+  if (now < ctx.session._stingAt) return;
+  ctx.session._stingAt = now + (S.every[0] + ctx.random() * (S.every[1] - S.every[0])) * 1000;
+  const clip = set[Math.floor(ctx.random() * set.length)];
+  ctx.emit("playSound", { clip, volume: S.volume * (0.7 + ctx.random() * 0.3), pitch: 0.92 + ctx.random() * 0.12, bus: "Ambience" });
 }
