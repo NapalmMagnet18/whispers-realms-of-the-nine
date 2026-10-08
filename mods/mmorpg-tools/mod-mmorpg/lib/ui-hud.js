@@ -341,7 +341,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
     <div style="
       position:fixed; bottom:22px; left:50%; ${spellScaleStyle}
       z-index:93; pointer-events:none; display:flex; gap:3px; align-items:flex-end;
-      ${_frame('skillRow', 8, 'rgba(14,11,8,0.92)')} padding:1px 4px; box-shadow:0 2px 10px rgba(0,0,0,0.7);
+      border:1px solid #c9a46a; outline:1px solid #2a1e16; border-radius:4px; background:linear-gradient(#2a1e16,#14100b); padding:4px 5px; box-shadow:inset 0 0 0 1px #6b4a2f,0 2px 10px rgba(0,0,0,0.7);
     ">
       ${spellSlotsHtml}
     </div>
