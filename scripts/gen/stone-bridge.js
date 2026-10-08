@@ -41,5 +41,9 @@ function build(ctx, s) {
   // end posts
   for (const sx of [-1, 1]) for (const z of [-W / 2 + 0.22, W / 2 - 0.22]) box(ctx, sx * L / 2 - 0.4, 0, z - 0.4, sx * L / 2 + 0.4, 1.5, z + 0.4);
 }
-export function geometry(ctx) { ctx.flat(); build(ctx, false); }
+export function geometry(ctx) {
+  ctx.flat();
+  if ((ctx.lod ?? 1) >= 4) { ctx.albedo("cdn/texture-rough-fieldstone-wall-mossy.png"); ctx.color("oklch(0.9 0.01 80)"); build(ctx, true); return; } // far: the collider's masses only
+  build(ctx, false);
+}
 export function collider(ctx) { build(ctx, true); }

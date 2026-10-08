@@ -95,5 +95,9 @@ function build(ctx, p, s) {
   }
   if (k === "chest") { P(ctx, s, "dark-oak-timber-beam-hand-painted", "oklch(0.85 0.05 50)"); box(ctx, -0.5, 0, -0.32, 0.5, 0.55, 0.32); if (!s) { P(ctx, s, IRON, "oklch(0.75 0.06 80)", 0.4, 0.8); for (const x of [-0.35, 0.35]) box(ctx, x - 0.04, 0, -0.34, x + 0.04, 0.57, 0.34); box(ctx, -0.07, 0.3, -0.35, 0.07, 0.45, -0.32); } return; }
 }
-export function geometry(ctx) { ctx.flat(); build(ctx, ctx.params || {}, false); }
+export function geometry(ctx) {
+  ctx.flat();
+  if ((ctx.lod ?? 1) >= 4) { P(ctx, false, WOOD, "oklch(0.85 0.03 60)"); build(ctx, ctx.params || {}, true); return; } // far: the collider's masses only
+  build(ctx, ctx.params || {}, false);
+}
 export function collider(ctx) { build(ctx, ctx.params || {}, true); }

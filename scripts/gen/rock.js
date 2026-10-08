@@ -5,6 +5,7 @@ export function geometry(ctx) {
   const { ore = null, r = 1.2, tex = null, tint = null } = ctx.params || {};
   const sd = ctx.random() * 99;
   ctx.albedo(tex || "cdn/texture-granite-boulder-rough-lichen.png"); ctx.color(tint || "oklch(0.92 0.01 70)"); ctx.roughness(0.95);
+  if ((ctx.lod ?? 1) >= 4) { blob(ctx, 0, r * 0.35, 0, r, r * 0.75, r * 0.9, sd, 0.28, 3, 5); return; } // far: one coarse lump
   blob(ctx, 0, r * 0.35, 0, r, r * 0.75, r * 0.9, sd, 0.28, 6, 9);
   blob(ctx, r * 0.6, r * 0.2, r * 0.3, r * 0.55, r * 0.45, r * 0.5, sd + 3, 0.3, 5, 7);
   if (ore) {
