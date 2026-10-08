@@ -289,6 +289,18 @@ export function update(objectApi, dt) {
       var startingEquipment = {};
       var startingInventory = [];
       for (var si = 0; si < 30; si++) startingInventory.push(null);
+      // class starter kit: worn on creation (weapon + chest), from lib/class-items.js
+      var { RACES: RACES_C } = require('./lib/races.js');
+      var raceDef = RACES_C[raceIdx] || RACES_C[0];
+      var classNameC = (raceDef.classes && raceDef.classes[classIdx]) || 'Vanguard';
+      try {
+        var { CLASS_STARTING_ITEMS } = require('./lib/class-items.js');
+        (CLASS_STARTING_ITEMS[classNameC] || []).forEach(function (it) {
+          var key = it.slot === 'chest' ? 'armor' : it.slot;
+          startingEquipment[key] = Object.assign({}, it);
+        });
+      } catch (e) {}
+      var raceStart = raceDef.start || { x: 0, y: 4.6, z: 8 };
 
       // Empty spellbar — 12 null slots. Creators add spells later.
       var initialSpellBar = [];
@@ -322,10 +334,13 @@ export function update(objectApi, dt) {
         faceIndex: s.faceIndex ?? 0,
         hairStyleIndex: s.hairStyleIndex ?? 0,
         facialHairIndex: s.facialHairIndex ?? 0,
-        posX: 0,
-        posY: 0.2,
-        posZ: 0,
+        posX: raceStart.x,
+        posY: raceStart.y,
+        posZ: raceStart.z,
         lastPlace: 'main',
+        className: classNameC.toLowerCase(),
+        raceName: raceDef.name,
+        copper: 0,
         equipment: startingEquipment,
         inventory: startingInventory,
         spellBar: initialSpellBar,
@@ -389,13 +404,16 @@ export function update(objectApi, dt) {
         activeQuests: [],
         completedQuests: [],
         activeCharIdx: newIdx,
+        className: classNameC.toLowerCase(),
+        raceName: raceDef.name,
+        copper: 0,
         characters: characters,
         _menuRosterSnapshot: characters,
         _hasCharacter: true,
         _dataLoaded: true,
-        _savedPosX: 0,
-        _savedPosY: 0.2,
-        _savedPosZ: 0,
+        _savedPosX: raceStart.x,
+        _savedPosY: raceStart.y,
+        _savedPosZ: raceStart.z,
         lastPlace: 'main',
         loadingScreen: false,
         loadingProgress: 0,
@@ -409,10 +427,11 @@ export function update(objectApi, dt) {
         });
       } catch(e) {}
 
-      // Enter main world
+      // the realm's table row, then the race's own starting zone
+      RS.upsert(objectApi, newIdx, charData);
       objectApi.enterPlace(objectApi.id, {
         placeId: 'main',
-        spawnPoint: 'default',
+        spawnPoint: { x: raceStart.x, y: raceStart.y, z: raceStart.z },
       });
     } else {
       objectApi.patchState({ loadingProgress: progress });
