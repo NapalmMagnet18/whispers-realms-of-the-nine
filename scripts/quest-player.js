@@ -67,6 +67,16 @@ function openCache(ctx, c) {
 }
 const felled = (ctx, tree) => (tree.state.depletedUntil || 0) > ctx.now();
 
+// one quest reward into the bag: the first empty slot; a full bag keeps it owed in st.owedItems, paid when a slot frees
+function addItem(st, item) {
+  const inv = (st.inventory || []).slice();
+  while (inv.length < W.bagSlots) inv.push(null);
+  const i = inv.findIndex((it) => !it);
+  if (i < 0) { st.owedItems = [...(st.owedItems || []), item.id]; return false; }
+  inv[i] = { ...item, count: 1 };
+  st.inventory = inv;
+  return true;
+}
 // one log into the mod's 30-slot inventory: stacks on a log stack under stackMax, else the first empty slot; false = full
 function addLog(st) {
   const inv = (st.inventory || []).slice();
@@ -139,12 +149,13 @@ function complete(ctx, questId) {
   st.xp = (st.xp || 0) + (q.rewards.xp || 0);
   st._questSave = true;
   if (q.rewards.copper) move(ctx, q.rewards.copper, 'quest:' + questId, { feedback: false });
+  for (const k of q.rewards.items || []) if (Q.items && Q.items[k]) addItem(st, Q.items[k]); // after the completed flag: paid once
   say(ctx, q.doneText, q.turnInNpcId || q.giverNpcId);
   const head = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 2.2, z: ctx.self.feetPosition.z };
   ctx.emit('damageNumber', { position: head, text: `+${formatText(q.rewards.copper || 0)}  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: 'cdn/sfx-reward.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3', position: ctx.self.feetPosition, volume: 0.6 }, { audience: { player: ctx.self.id } });
-  ctx.emit('milestone', { step: /^Q00\d$/.test(questId) ? Number(questId.slice(3)) : 1, name: questId + ' complete' });
+  ctx.emit('milestone', { step: /^Q00\d$/.test(questId) ? 8 + Number(questId.slice(3)) : /^MAR-0\d$/.test(questId) ? Number(questId.slice(4)) : 1, name: questId + ' complete' });
 }
 
 // A quest mark (tag quest-mark): state { mark: tally key, quest: the quest it serves, verb, title, after?: an objective key
@@ -177,6 +188,7 @@ function useMark(ctx, r) {
   cd[r.id] = ctx.now() + M.cooldown * 1000;
   st.tally = { ...(st.tally || {}), [ms.mark]: ((st.tally || {})[ms.mark] || 0) + 1 };
   if (!ms.repeat) st.marks = { ...(st.marks || {}), [r.id]: ctx.now() };
+  if (ms.flag) st.questFlags = { ...(st.questFlags || {}), [ms.flag]: true }; // a choice the story remembers (MAR-08's memorial)
   st._questSave = true;
   ctx.self.anim.action = { clip: V.strike.clip, weight: 1, loop: 'once', speed: V.strike.speed, blendIn: 0.08 };
   tell(ms.gain || ('+1 ' + m.obj.desc), 'oklch(0.86 0.15 85)');
