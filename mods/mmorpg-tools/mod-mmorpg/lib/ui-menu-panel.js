@@ -1371,13 +1371,14 @@ export function renderGuildTab(s) {
   if (showJoinModal) {
     html += '<div style="position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;" data-interactive onclick="if(event.target===this)sendAction(\'closeGuildJoin\')">'
       + '<div style="background:rgba(15,12,10,0.96);border:1px solid rgba(100,80,45,0.4);padding:28px 32px;min-width:320px;max-width:400px;box-shadow:0 0 30px rgba(0,0,0,0.8),0 0 8px rgba(100,80,45,0.15);">'
-      + '<div style="font-family:Cinzel,Palatino,Georgia,serif;font-size:20px;color:rgba(220,190,100,0.95);text-align:center;margin-bottom:18px;letter-spacing:1px;text-shadow:0 0 6px rgba(200,170,80,0.2);">Join a Guild</div>'
+      + '<div style="font-family:Cinzel,Palatino,Georgia,serif;font-size:20px;color:rgba(220,190,100,0.95);text-align:center;margin-bottom:18px;letter-spacing:1px;text-shadow:0 0 6px rgba(200,170,80,0.2);">Join or Found a Guild</div>'
       + '<div style="margin-bottom:14px;">'
       + '<input data-interactive type="text" placeholder="Enter guild name..." id="guildNameInput" onkeydown="event.stopPropagation()" onkeyup="event.stopPropagation()" onkeypress="event.stopPropagation()" style="width:100%;box-sizing:border-box;padding:10px 14px;font-family:Cinzel,serif;font-size:18px;color:rgba(220,190,100,0.9);background:rgba(30,25,18,0.9);border:1px solid rgba(100,80,45,0.4);outline:none;letter-spacing:0.5px;" onfocus="this.style.borderColor=\'rgba(160,140,80,0.7)\'" onblur="this.style.borderColor=\'rgba(100,80,45,0.4)\'" />'
       + '</div>'
       + (guildError ? '<div style="font-family:Cinzel,serif;font-size:16px;color:rgba(200,70,70,0.9);text-align:center;margin-bottom:12px;">' + esc(guildError) + '</div>' : '')
       + '<div style="display:flex;gap:12px;justify-content:center;">'
       + '<div data-interactive onclick="var v=document.getElementById(\'guildNameInput\');sendAction(\'confirmJoinGuild\',{name:v?v.value:\'\'})" style="cursor:pointer;padding:10px 24px;font-family:Cinzel,Palatino,Georgia,serif;font-size:18px;color:rgba(220,190,100,0.9);border:1px solid rgba(160,140,80,0.4);background:rgba(60,50,30,0.3);letter-spacing:1px;">Join</div>'
+      + '<div data-interactive onclick="var v=document.getElementById(\'guildNameInput\');sendAction(\'createGuild\',{guildName:v?v.value:\'\'})" title="10 silver charter" style="cursor:pointer;padding:10px 18px;font-family:Cinzel,Palatino,Georgia,serif;font-size:18px;color:rgba(242,176,74,0.95);border:1px solid rgba(201,164,106,0.5);background:rgba(122,46,34,0.55);">Found (10s)</div>'
       + '<div data-interactive onclick="sendAction(\'closeGuildJoin\')" style="cursor:pointer;padding:10px 24px;font-family:Cinzel,Palatino,Georgia,serif;font-size:18px;color:rgba(180,155,100,0.55);border:1px solid rgba(100,80,45,0.25);background:rgba(40,35,25,0.3);letter-spacing:1px;">Cancel</div>'
       + '</div>'
       + '</div>'

@@ -16,3 +16,5 @@ sellOnly:
   timber-logs: 3
   empty-vial: 1
 bankSlots: 40          # the vault a banker keeps for each character (scripts/vendor.js, lib/ui-vendor.js renderBank)
+guildFee: 1000         # copper to found a guild (10 silver)
+guildVaultSlots: 48    # the shared guild vault, one per guild per realm

@@ -89,15 +89,16 @@ export function renderGuildPanel(localPlayer, world) {
   var onlinePlayers = world.query({ tags: ['player'] }).filter(function(p) {
     return p.state && p.state.guildName === guildName;
   });
+  if (s.guildRoster) for (var ri = 0; ri < s.guildRoster.length; ri++) if (String(s.guildRoster[ri].id).indexOf('off:') !== 0) onlinePlayers.push({ id: s.guildRoster[ri].id, state: {} });
   var onlineIds = {};
   for (var oi = 0; oi < onlinePlayers.length; oi++) {
     onlineIds[onlinePlayers[oi].id] = true;
   }
 
   // Get full member list from guild-manager state
-  var allMembers = [];
+  var allMembers = (s.guildRoster || []).slice();
   var guildManagers = world.query({ tags: ['guild-manager'] });
-  if (guildManagers.length > 0) {
+  if (allMembers.length === 0 && guildManagers.length > 0) {
     var gmState = guildManagers[0].state || {};
     var gmGuilds = gmState.guilds || {};
     var thisGuild = gmGuilds[guildName];

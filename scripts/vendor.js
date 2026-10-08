@@ -101,7 +101,7 @@ function train(ctx, v) {
 // stacks merge both ways. st.bank rides the character save (mods/mmorpg-tools/mod-mmorpg/player.js).
 function vault(st) { const b = (st.bank || []).slice(0, E.bankSlots); while (b.length < E.bankSlots) b.push(null); return b; }
 function shift(ctx, fromKey, toKey, slot, verb) {
-  const st = ctx.self.state; if (!st.bankOpen) return;
+  const st = ctx.self.state; if (!st.bankOpen || st.bankOpen.tab === 'guild') return;
   const from = fromKey === 'bank' ? vault(st) : bag(st), to = toKey === 'bank' ? vault(st) : bag(st), it = from[slot];
   if (!it) return;
   const all = it.stackable ? (it.count || 1) : 1;
@@ -117,7 +117,7 @@ function shift(ctx, fromKey, toKey, slot, verb) {
 }
 function openBank(ctx, v) {
   const st = ctx.self.state;
-  st.bankOpen = { npc: v.id, name: (v.state && v.state.npcName) || 'Banker' }; st.vendorMsg = null;
+  st.bankOpen = { npc: v.id, name: (v.state && v.state.npcName) || 'Banker', tab: 'mine' }; st.vendorMsg = null;
   try { if (ctx.self.camera) ctx.self.camera.pointerLock = false; } catch (e) {}
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-heavy-vault-door-unlock-and-swing.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
 }

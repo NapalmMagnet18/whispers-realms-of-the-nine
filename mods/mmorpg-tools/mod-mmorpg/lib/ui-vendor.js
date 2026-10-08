@@ -70,9 +70,11 @@ function cell(item, onclick) {
 export function renderBank(player) {
   var st = (player && player.state) || {}, bo = st.bankOpen;
   if (!bo) return '';
-  var inv = st.inventory || [], bank = st.bank || [], a = '', b = '', used = 0;
-  for (var i = 0; i < 30; i++) a += cell(inv[i], act('bankDeposit', { slot: i }));
-  for (var j = 0; j < BANK_SLOTS; j++) { if (bank[j]) used++; b += cell(bank[j], act('bankWithdraw', { slot: j })); }
+  var g = bo.tab === 'guild' && st.guildName, inv = st.inventory || [], bank = g ? (bo.guild || []) : (st.bank || []), a = '', b = '', used = 0, cap = g ? 48 : BANK_SLOTS;
+  for (var i = 0; i < 30; i++) a += cell(inv[i], act(g ? 'guildVaultDeposit' : 'bankDeposit', { slot: i }));
+  for (var j = 0; j < cap; j++) { if (bank[j]) used++; b += cell(bank[j], act(g ? 'guildVaultWithdraw' : 'bankWithdraw', { slot: j })); }
+  function tb(id, label, off) { var on = (bo.tab || 'mine') === id; return '<button ' + (off ? 'disabled title="join a guild first" ' : 'onclick="' + act('bankTab', { tab: id }) + '" ') + 'style="flex:1;padding:5px 0;font-family:Cinzel,serif;font-size:12px;letter-spacing:1px;cursor:' + (off ? 'default;opacity:.4' : 'pointer') + ';border:1px solid ' + (on ? '#c9a46a' : '#6b4a2f') + ';background:' + (on ? '#7a2e22' : 'rgba(30,22,15,.9)') + ';color:' + (on ? '#f2b04a' : '#c9a46a') + ';border-radius:3px">' + label + '</button>'; }
+  var tabs = '<div style="display:flex;gap:6px;margin:2px 0 8px">' + tb('mine', 'MY VAULT') + tb('guild', st.guildName ? 'GUILD · ' + esc(st.guildName).toUpperCase() : 'GUILD VAULT', !st.guildName) + '</div>';
   var msg = st.vendorMsg ? '<div style="margin-top:6px;text-align:center;font-size:13px;color:' + (st.vendorMsg.bad ? '#e0533d' : '#f2b04a') + '">' + esc(st.vendorMsg.text) + '</div>' : '';
   function grid(title, sub, cells, cols) { return '<div><div style="font-family:Cinzel,serif;color:#c9a46a;font-size:13px;letter-spacing:1px;margin:2px 0 4px">' + title + ' <span style="color:#7d6d55;font-family:Georgia,serif;font-size:11px">' + sub + '</span></div><div style="display:grid;grid-template-columns:repeat(' + cols + ',42px);gap:4px">' + cells + '</div></div>'; }
   return '<style>.whv-cell:hover{filter:brightness(1.35);border-color:#c9a46a!important}</style>' +
@@ -81,8 +83,8 @@ export function renderBank(player) {
         '<img src="' + icons.UI_ICONS.bag + '" style="width:28px;height:28px;filter:sepia(.3)">' +
         '<div style="flex:1"><div style="font-family:Cinzel,serif;color:#f2b04a;font-size:18px;letter-spacing:1px">' + esc(bo.name) + '</div><div style="font-size:11px;color:#a8977a">The Lantern Vault · kept safe for this hero</div></div>' +
         '<button onclick="' + act('bankClose') + '" style="width:26px;height:26px;border:1px solid #c9a46a;background:#7a2e22;color:#f2b04a;border-radius:3px;cursor:pointer;font-weight:bold;font-family:Arial,sans-serif;font-size:14px;line-height:1">&times;</button></div>' +
-      rule('title', '100%', 16) +
-      '<div style="display:flex;gap:18px;align-items:flex-start">' + grid('YOUR BAG', 'click to deposit', a, 5) + grid('VAULT', used + ' / ' + BANK_SLOTS + ' · click to withdraw', b, 8) + '</div>' + msg +
+      rule('title', '100%', 16) + tabs +
+      '<div style="display:flex;gap:18px;align-items:flex-start">' + grid('YOUR BAG', 'click to deposit', a, 5) + grid(g ? 'GUILD VAULT' : 'VAULT', (g && bo.loading ? 'opening…' : used + ' / ' + cap) + ' · click to withdraw', b, 8) + '</div>' + msg +
       '<div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:6px;border-top:1px solid #6b4a2f;font-size:13px"><span style="color:#a8977a">E or &times; to close</span><span>' + cur.formatHtml(cur.purse(st)) + '</span></div>' +
     '</div>';
 }

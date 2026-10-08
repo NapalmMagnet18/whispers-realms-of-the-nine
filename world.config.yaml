@@ -25,6 +25,9 @@ inputs:
     bankDeposit: {}
     bankWithdraw: {}
     bankClose: {}
+    bankTab: {}
+    guildVaultDeposit: {}
+    guildVaultWithdraw: {}
     tradeTab: {}
     tradeLearn: {}
     tradeUnlearn: {}
