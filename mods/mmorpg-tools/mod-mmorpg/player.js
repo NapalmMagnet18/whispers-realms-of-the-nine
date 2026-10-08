@@ -244,6 +244,8 @@ export function buildCharData(objectApi) {
     completedQuests: s.completedQuests || [],
     tally: s.tally || {},
     wraithDefeated: s.wraithDefeated || false,
+    className: s.className || null,
+    raceName: s.raceName || null,
   };
 }
 
@@ -259,6 +261,8 @@ export function saveCharacter(objectApi, callback) {
   var data = buildCharData(objectApi);
   var activeIdx = s.activeCharIdx;
   var characters = s.characters;
+  try { require('./lib/realm-save.js').upsert(objectApi, typeof activeIdx === 'number' && activeIdx >= 0 ? activeIdx : 0, data); } catch (e) {}
+  objectApi.patchState({ _saveSig: require('./lib/realm-save.js').signature(s), _saveAt: objectApi.now ? objectApi.now() : 0 });
 
   // Save to roster array if we have a valid roster and active index
   if (Array.isArray(characters) && typeof activeIdx === 'number' && activeIdx >= 0 && activeIdx < characters.length) {
@@ -526,6 +530,15 @@ export function update(objectApi, dt) {
   if (s._questSave && !s._saveInFlight && s.characterCreated) {
     objectApi.patchState({ _questSave: false });
     saveCharacter(objectApi);
+  }
+
+  // ── Live save: bag, gear, purse, level or xp moved → one upsert, at most every 2 s ──
+  if (s.characterCreated && s.phase === 'playing' && !isMetaPlace && !s._saveInFlight) {
+    var nowMs = objectApi.now ? objectApi.now() : 0;
+    if (nowMs - (s._saveAt || 0) >= 2000) {
+      var sig = require('./lib/realm-save.js').signature(s);
+      if (sig !== s._saveSig) saveCharacter(objectApi);
+    }
   }
 
   // ── Continuously save position so CMD-R restores exact location ──
@@ -1939,3 +1952,10 @@ export function handleLogout(objectApi) {
 }
 
 
+
+// the door: one last write of the hero as they stand
+export function onLeave(objectApi) {
+  var s = objectApi.getState();
+  if (!s.characterCreated || !s._rosterLoaded) return;
+  try { require('./lib/realm-save.js').upsert(objectApi, typeof s.activeCharIdx === 'number' ? s.activeCharIdx : 0, buildCharData(objectApi)); } catch (e) {}
+}
