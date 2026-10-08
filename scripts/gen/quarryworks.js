@@ -109,6 +109,16 @@ export function geometry(ctx) {
     ctx.color(ROPE); ctx.metalness(0); beam(ctx, [0, H, 0], [0, 3.7, 0], 0.04);
     if (lod <= 3) { ctx.color(BELL); ctx.emissive("oklch(0.55 0.22 300)"); crystal(ctx, 0.15, 0.05, 0.3, 0.08, 0.25, 0.3, 0.2, 5); crystal(ctx, -0.25, 0.05, -0.2, 0.07, 0.2, -0.3, -0.1, 5); ctx.emissive(null); }
     if (lod <= 2) { ctx.color(RUST); box(ctx, 1.6, 1.25, 0.03, 0.5, 0.05, 0.02); }
+  } else if (k === "hammer") {
+    // a tuning hammer resting in an iron cradle on a cut stone block
+    ctx.color("oklch(0.55 0.04 50)"); ctx.roughness(0.95);
+    box(ctx, 0, 0.4, 0, 0.7, 0.8, 0.5);
+    ctx.color(IRON); ctx.metalness(0.6); ctx.roughness(0.45);
+    box(ctx, -0.25, 0.9, 0, 0.05, 0.2, 0.3); box(ctx, 0.25, 0.9, 0, 0.05, 0.2, 0.3);
+    box(ctx, 0.1, 1.02, 0, 0.32, 0.16, 0.16); // head
+    if (lod <= 3) { ctx.color("oklch(0.75 0.13 85)"); box(ctx, -0.07, 1.02, 0, 0.03, 0.17, 0.17); } // brass ring
+    ctx.metalness(0); ctx.color(OAK); beam(ctx, [0.1, 1.02, 0], [-0.55, 0.98, 0.05], 0.05); // haft
+    if (lod <= 3) { ctx.color(BELL); ctx.emissive("oklch(0.5 0.18 300)"); crystal(ctx, 0.2, 0.8, 0.18, 0.05, 0.15, 0.2, 0.1, 5); ctx.emissive(null); }
   } else if (k === "door") {
     // an iron shaft door set in a dressed-stone frame (doorway faces -Z)
     ctx.color("oklch(0.55 0.04 50)"); ctx.roughness(0.95);
@@ -131,6 +141,7 @@ export function collider(ctx) {
   const k = ctx.params.kind || "crystal";
   if (k === "crystal") return { kind: "box", width: 1.8, height: 1.2, depth: 1.6 };
   if (k === "stake") return null;
+  if (k === "hammer") return { kind: "box", width: 0.7, height: 0.8, depth: 0.5 };
   if (k === "brake") return { kind: "box", width: 1.2, height: 1.5, depth: 0.8 };
   if (k === "rig") { box(ctx, 1.6, 0.6, 0.6, 1.3, 1.2, 1.1); box(ctx, 0, 1.2, 0, 0.5, 2.4, 0.5); return; }
   if (k === "door") { box(ctx, -1.15, 1.45, 0, 0.6, 2.9, 0.8); box(ctx, 1.15, 1.45, 0, 0.6, 2.9, 0.8); box(ctx, 0, 1.3, 0.05, 1.7, 2.6, 0.12); box(ctx, 0, 3.15, 0, 2.9, 0.5, 0.9); return; }
