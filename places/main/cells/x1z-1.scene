@@ -1,4 +1,11 @@
 # spawn-scene v2 yaml x1z-1
+ashen-cathedral:
+  feetPosition: {x: 130, y: 5, z: -185}
+  id: ashen-cathedral
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 16, height: 26, kind: box, width: 36}
+  tags: [blueprint]
 node-sunleaf-5:
   behavior: scripts/gather-node.js
   feetPosition: {x: 113.8, y: {terrain: 0}, z: -108.9}
