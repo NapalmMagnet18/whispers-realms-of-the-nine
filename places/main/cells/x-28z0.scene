@@ -4,7 +4,7 @@ frontier-elderveil:
   feetPosition: {x: -3600, y: {terrain: -0.5}, z: -60}
   id: frontier-elderveil
   physics: static
-  primitive: {kind: scripted, params: {bark: /cdn/bark-twistedtree-u3vvl00p9.webp, kind: oak}, script: scripts/gen/tree.js, seed: 11}
+  primitive: {kind: scripted, params: {bark: /cdn/bark-twistedtree-u37sw9e2o.webp, kind: oak}, script: scripts/gen/tree.js, seed: 11}
   scale: 4.6
   tags: [landmark, elderveil]
 frontier-elderveil-bush-1:

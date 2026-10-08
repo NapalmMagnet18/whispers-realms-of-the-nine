@@ -3,7 +3,7 @@
 // half sunk in a dune, passage along Z), rootarch (Elderveil root you walk under, spans X), roots (buttress roots
 // round the colossal tree's foot). Origin at the ground.
 import { box, boxR, cyl, blob, quadN, triN } from "./shape.js";
-const ROCK = "/cdn/rocks-diffuse-u03avi37y.webp", TWIST = "/cdn/bark-twistedtree-u3vvl00p9.webp";
+const ROCK = "/cdn/rocks-diffuse-u03avi37y.webp", TWIST = "/cdn/bark-twistedtree-u37sw9e2o.webp";
 const FIELD = "cdn/texture-rough-fieldstone-wall-mossy.png", IRON = "cdn/texture-rusted-black-iron-hammered.png", WOOD = "cdn/texture-dark-oak-timber-beam-hand-painted.png";
 const SNOW = "cdn/texture-wind-packed-snow-drift.png", SANDST = "cdn/texture-weathered-carved-sandstone-blocks.png", SAND = "cdn/texture-rippled-desert-sand-dunes.png";
 const norm = (v) => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
