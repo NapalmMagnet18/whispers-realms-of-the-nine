@@ -711,7 +711,7 @@ townhouse:
   children: [{feetPosition: {x: 1.5, y: 1.6, z: -1}, id: townhouse-hearth, light: {color: oklch(0.82 0.14 60), distance: 9, intensity: 1.8, kind: point}}, {feetPosition: {x: 1, y: 4.8, z: 0}, id: townhouse-upstairs, light: {color: oklch(0.82 0.14 60), distance: 8, intensity: 1.4, kind: point}}, {feetPosition: {x: -2.1, y: 2.3, z: 3.38}, id: townhouse-door-lamp, light: {color: oklch(0.85 0.15 65), distance: 7, intensity: 1.2, kind: point}}]
   feetPosition: {x: 14, y: 4.05, z: -38}
   id: townhouse
-  model: /cdn/value.8a07d5eca8fd5e4a6f40578aab3ea5c5e199fe80d9eea163d3951a209e638e48.glb
+  model: /cdn/value.3a16e047180cf38e825557055b3fdf08ad351ec0118224de04c085e82aa9569d.glb
   physics: {body: static, collider: mesh}
   tags: [building]
 townhouse/bench-drill:
