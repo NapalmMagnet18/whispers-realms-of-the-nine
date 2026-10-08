@@ -309,14 +309,21 @@ function syncLevel(ctx, st) {
     const fp = ctx.self.feetPosition, me = { audience: { player: ctx.self.id } };
     ctx.emit('damageNumber', { position: { x: fp.x, y: fp.y + 2.6, z: fp.z }, text: 'LEVEL ' + li.level, color: 'oklch(0.88 0.16 85)', size: 2, lifetime: 3 }, me);
     ctx.emit('screenFlash', { color: '#f2d38a', duration: 0.5, intensity: 0.35 }, me);
+    const near = { audience: { nearby: fp, radius: 60 } };
     ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-level-up-fanfare.mp3', position: fp, volume: 0.7 }, me);
-    ctx.emit('fx', { position: fp, script: LEVEL_FX }, { audience: { nearby: fp, radius: 60 } });
+    ctx.emit('playSound', { clip: LEVEL_CHORD, position: fp, volume: 0.65, maxDistance: 60, priority: 40 }, near); // the room hears a hero rise
+    ctx.music.duck(0.35, { duration: 3 });
+    ctx.emit('fx', { position: fp, script: LEVEL_FX }, near);
+    ctx.emit('shockwave', { position: { x: fp.x, y: fp.y + 0.2, z: fp.z }, speed: 14, thickness: 0.6, intensity: 0.35 }, near);
     ctx.emit('milestone', { step: li.level, name: 'level ' + li.level });
     levelFirst(ctx, li.level, was);
   }
   ctx.session.levelSeen = true;
 }
+const LEVEL_CHORD = '/cdn/moodboard-painterly-fantasy/sfx-level-up-golden-choir-chord-with-ringing-bronze-bells-and-shimmering-rise.mp3';
 const LEVEL_FX = `fx
+pop column burst=1 life=2.2 pos=<0,0,0> size=1 sz=$size*(1.4>1.1:.8>.4) col=hdr(3.4,2.5,1)>hdr(1.6,1,.3) a=0>.1:.85>.6:.6>0 r=mesh(cylinder,1,14,1)
+pop motes burst=60 on=disc(.9) life=1.4..2.4 v=up(4..8)+sdir()*.3 size=.05..0.11 acc=drag(.4)+curl(.4) col=hdr(5,3.5,1.2)>hdr(1.8,.9,.25) a=(1>0)*flick(4,.3) r=sprite(ember,add,velocity,.03)
 pop ring burst=1 life=1.1 pos=<0,.1,0> size=1 sz=$size*(.3>3.2) col=hdr(3,2.2,.8) a=.9>0 r=sprite(soft-disc,add)
 pop rise burst=40 on=disc(.7) life=.9..1.6 v=up(2.5..4.5) size=.05..0.1 acc=drag(.6) col=hdr(4,2.8,1)>hdr(1.6,.8,.2) a=1>0 r=sprite(ember,add,velocity,.03)
 pop glow burst=1 life=1 pos=<0,1,0> r=light(<1,.8,.4>,25>0,8)`;
