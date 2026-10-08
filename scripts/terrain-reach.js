@@ -100,9 +100,9 @@ export function heightAt(ctx) {
   if (df < 1100) { const v = Math.exp(-((df / 480) ** 2)); h = lerp(h, 0.5 + noise.fbm2({ x, z, frequency: 1 / 55, octaves: 3, seed: so(9) }) * 1.8, v); }
   // Tideglass Coast: a low shelf to the sea, a headland at its east horn
   const dt = Math.hypot(x - TIDE.x, (z - TIDE.z) * 1.4);
-  if (dt < 900) { const v = Math.exp(-((dt / 330) ** 2)); h = lerp(h, 2.6 + (z < TIDE.z ? (TIDE.z - z) * 0.03 : 0) + noise.fbm2({ x, z, frequency: 1 / 60, octaves: 2, seed: so(12) }) * 0.9, v); }
+  if (dt < 900) { const v = Math.exp(-((dt / 330) ** 2)); h = lerp(h, 5.2 + (z < TIDE.z ? (TIDE.z - z) * 0.03 : 0) + noise.fbm2({ x, z, frequency: 1 / 60, octaves: 2, seed: so(12) }) * 0.9, v); }
   const dh = Math.hypot(x - HEAD.x, z - HEAD.z);
-  if (dh < 90) h = Math.max(h, 2.6 + 11 * sstep(90, 30, dh));
+  if (dh < 90) h = Math.max(h, 5 + 12 * sstep(90, 30, dh));
   h = quarryShape(x, z, h);
   // coast to the sea
   const land = landFactor(x, z, noise, so);
