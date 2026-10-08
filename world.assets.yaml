@@ -6,6 +6,7 @@ assets:
     "/cdn/value.1993a89f3060c27a497903d2ab8a65e6eda465e1c444cd5590a616f93c7b94eb.glb": {bytes: 82572, kind: model, name: ashen-shield, uploadedAt: "2026-10-08T17:58:37.681Z"}
     "/cdn/value.1f72a5571a665069b6c49155d21308addc0b6327f0077484838f67d8ef0099f2.glb": {bytes: 71452, kind: model, name: ashen-staff, uploadedAt: "2026-10-08T17:58:40.802Z"}
     "/cdn/value.2d96b58403d6647bebd2140268afc438fb02fe3c180aa57e1631a361dd5bd160.glb": {bytes: 113668, kind: model, name: ashen-rack, uploadedAt: "2026-10-08T17:58:57.901Z"}
+    "/cdn/value.40f32259dff04937118710719813179883b08ef0765560a4d676744445685f64.glb": {bytes: 1364528, kind: model, name: ashen-cathedral, uploadedAt: "2026-10-08T18:02:38.144Z"}
     "/cdn/value.a721b4a77fae4d8b72d88b6beb62b06be3175ef4c5685593b4f6ef3eead5bd67.glb": {bytes: 70160, kind: model, name: ashen-chest, uploadedAt: "2026-10-08T17:58:54.040Z"}
     "/cdn/value.ae572e81ad4bdeee554a69fc12ffe7bcad33dccb7d35c382ca5e5431f2b4ec24.glb": {bytes: 22096, kind: model, name: ashen-flask, uploadedAt: "2026-10-08T17:58:48.782Z"}
     "/cdn/value.bfe82f4da1223cc5c448786927465c38158327a575eb3533c15dfbc8650e01a6.glb": {bytes: 46872, kind: model, name: ashen-tome, uploadedAt: "2026-10-08T17:58:51.323Z"}

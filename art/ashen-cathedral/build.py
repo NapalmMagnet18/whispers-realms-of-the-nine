@@ -146,7 +146,7 @@ FAC = [(-7, 0), (7, 0), (7, 14), (0.6, 19.0), (-0.4, 18.2), (-1.2, 18.4), (-2.2,
 fac = prism(FAC, -17, -15.8, YZ, "stone")
 ROSE_Z, ROSE_R = 10.5, 2.6
 courses = []
-for z, hgt, pr in [(0, .7, .2)] + [(z, .14, .1) for z in (1.4, 2.8, 4.2, 5.6, 7.0, 8.4, 9.8, 11.2, 12.6)] + [(13.75, .28, .24)]:
+for z, hgt, pr in [(0, .7, .2)] + [(z, .16, .12) for z in (2.8, 5.6, 8.4, 11.2)] + [(13.75, .28, .24)]:
     segs = [(-7.0, 7.0)]; zm = z + hgt / 2
     ex = 2.75 if zm < 7.4 else 0
     if abs(zm - ROSE_Z) < 3.1: ex = max(ex, math.sqrt(3.1 ** 2 - (zm - ROSE_Z) ** 2))
@@ -348,6 +348,8 @@ for f in bm.faces:
         c = l.vert.co; l[uv].uv = (c.y, c.z) if ax == 0 else ((c.x, c.z) if ax == 1 else (c.x, c.y))
 bm.to_mesh(me); bm.free()
 me.shade_smooth(); me.set_sharp_from_angle(angle=math.radians(38))
+for v in me.vertices:
+    if v.co.z < 0: v.co.z = 0.0
 tris = sum(len(p.vertices) - 2 for p in me.polygons)
 print("TRIS", tris, "MATS", [m.name for m in me.materials])
 if tris > 70000:
