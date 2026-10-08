@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 99,
-  "updatedAt": "2026-10-08T01:40:39.899Z",
-  "summary": "WHISPERS : Realm of the Nine is a fantasy MMO prototype whose MMORPG Tools menu and character-creation flow lead into the Lantern March. Its main place combines the Lantern's Reach hub and authored farm/landmarks with procedural continent terrain, roads, river, coast and named regions; the MMORPG Tools mod owns RPG lifecycle, player state, cameras and UI.",
+  "basedOnSpecVersion": 119,
+  "updatedAt": "2026-10-08T01:55:13.535Z",
+  "summary": "WHISPERS : Realm of the Nine is a fantasy MMO prototype whose MMORPG Tools menu and character-creation flow lead into the Lantern March. Its main place combines the Lantern's Reach hub, Windmill Farm, newly authored tool props and a townhouse with procedural continent terrain; the MMORPG Tools mod owns RPG lifecycle, player state, cameras and UI.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -29,6 +29,7 @@
     "mods/mmorpg-tools/mod-mmorpg/interact-prompt.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/class-check.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/class-items.js",
+    "mods/mmorpg-tools/mod-mmorpg/lib/item-icons.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/loot-drop.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/music-tracks.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/nearest-interactable.js",
@@ -106,12 +107,10 @@
     "scripts/ui/nametag.js"
   ],
   "places": [
-    "places/main-menu-land/ - default title/travel menu scene, with authored town art and shared terrain decoration.",
+    "places/main-menu-land/ - default title/travel menu scene with authored town art and shared terrain decoration.",
     "places/character-creation-land/ - character preview scene with terrain off and a preview camera/lighting setup.",
-    "places/main/ - Lantern March continent: Reach hub at origin, farm SW, Briarwild west, quarry east, and distant Greyspine, Highlands, Hollowcrypt, Sorrowfen, Saltmere and Shrouded Sea regions; 29 cells now cover the expanded area.",
-    "places/main/cells/x0z0.scene - Reach hub buildings and props plus Windmill Farm: windmill, turning sails, crop plots, fenced lane, hay, scarecrow and stone walls.",
-    "places/main/cells/x-1z0.scene and places/main/cells/x1z0.scene - west tagged timber trees and east tagged copper nodes, respectively.",
-    "places/main/config.yaml - main terrain-reach heightmap, cinematic atmosphere, terrain materials/scatter, sea, river, farm flattening and roads out to the regions."
+    "places/main/ - Lantern March continent: Reach hub at origin, farm SW, Briarwild west, quarry east, and distant regions; 29 cells cover the expanded area.",
+    "places/main/cells/x0z0.scene - Reach hub and Windmill Farm props, smithy tool props, and the two-storey townhouse north of the inn; x1z0 adds quarry tool props among east-side copper nodes."
   ],
   "roots": [
     "world.config.yaml - world entry/defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
@@ -124,12 +123,12 @@
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/ - integrated RPG package: lifecycle, character selection, gameplay/creation cameras, interaction, quests and UI.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data registries and panel renderers used by mod behaviors and ui.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/item-icons.js - item-id icon registry reused by inventory rendering; iconFor falls back to an item's existing icon.",
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural geometry used by authored scene instances with parameters.",
     "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometry/material reused by place scatter bindings.",
     "scripts/lib/regions.js - named Lantern March region definitions and regionAt lookup; ui-hud.js currently mirrors its tests inline rather than importing it.",
     "scripts/lib/data/{player,camera,world}.yml - shared movement, camera-height and terrain-height values read by core scripts.",
-    "mods/aaa-quality-kit/look-cinema.js and scripts/look-default.js - alternative post-process looks selected by place atmosphere; main uses cinema.",
-    "mods/codex/ and mods/wow-camera-controls/ - creator-facing document tools and a separately packaged reusable camera-controls mod."
+    "art/tools/build.py and art/townhouse/build.py - Blender asset builders for tool-pack GLBs and the scene's textured townhouse GLB, respectively."
   ],
   "notableExports": [
     "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
@@ -139,7 +138,7 @@
     "scripts/sails-spin.js - onSpawn; animates the windmill sail assembly.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - movement/state, avatar and roster/music helpers, saveCharacter, onSpawn and lifecycle handlers.",
     "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview/model helpers, onSpawn, update, onInput; main-menu-mgr.js owns roster/menu handlers.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - renderer/composition; lib/ui-hud.js exports renderTargetDisplay, renderHUD and lib/ui-main-menu.js exports menu rendering."
+    "mods/mmorpg-tools/mod-mmorpg/lib/shop-data.js - hasShop, getShopItems, findShopItem; lib/item-icons.js - ITEM_ICONS, iconFor; lib/ui-inventory.js - buildItemTooltip, eqSlot, eqSlotLarge, renderInventory."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent keyed by body and writes core character velocity; place config owns gravity.",
@@ -161,9 +160,9 @@
     "Main-place local player's feetPosition x/z → ui-hud.js inline region tests → name over minimap; scripts/lib/regions.js separately exports the corresponding lookup table, not imported by this HUD path.",
     "Character creation state → ui.js creation renderer and injected name input → setCharName/confirmCharacter actions; NAME_SWEEP removes the persistent DOM name box outside creation.",
     "quest-giver.js proximity/interact → lib/quest-data.js and player activeQuests → showQuestDialog/questDialogData on player → ui.js/lib/ui-quest.js.",
-    "places/main/config.yaml terrain generator → scripts/terrain-reach.js heightAt/materialAt (including builtin shore at sea level 0); terrain materials select scatter bindings such as woods, deadwood and reeds.",
-    "places/main/config.yaml heightmap modifiers → sea and river plus graded roads to Deepwood, Fen, Highlands, north pass and Saltmere; expanded main cells carry the continent terrain around authored cells.",
-    "places/main/cells/*.scene scripted objects → scripts/gen geometry; windmill-sails scene entity → scripts/sails-spin.js onSpawn continuously rotates the separate sail assembly."
+    "lib/ui-door-panel.js reads lib/shop-data.js inventories for the interacting building → shopSelectItem/buyShopItem actions in player.js → gold and inventory state are patched on the player.",
+    "lib/item-icons.js iconFor(item id) → lib/ui-inventory.js renders icons for equipment and inventory slots; shop-data.js carries matching art URLs for shop items.",
+    "places/main/config.yaml terrain generator → scripts/terrain-reach.js heightAt/materialAt and scatter bindings; authored scene entities use procedural scripts/gen geometry or model assets, while windmill sails animate via scripts/sails-spin.js."
   ],
   "behaviorFamilies": [
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural scene geometry reused by instances, varied by kind/shape parameters, dimensions, seed and transforms.",
@@ -171,7 +170,8 @@
     "mods/mmorpg-tools/mod-mmorpg/player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle behaviors registered by mod.json.",
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - paired gameplay orbit and preview camera modes with creation-phase guards.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character and settings.",
-    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected by place atmosphere."
+    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected by place atmosphere.",
+    "art/tools/build.py and art/townhouse/build.py - asset-building pipelines; tool builder exports each OBJ separately and townhouse builder assembles kit modules plus hand-built structural parts."
   ],
   "probableOrphans": [],
   "migrationNotes": [
@@ -180,6 +180,6 @@
     "Core scripts/camera.js uses engine look orientation and feetPosition + eyeHeight × effectiveScale.y; MMORPG orbit/creation cameras are a distinct path.",
     "MMORPG camera.js delegates creation framing to camera-creation.js and guards orbit during creation/dialog states; preserve these phase and panel guards.",
     "terrain-reach.js blends the March to a coastline via landFactor and builtin shore(h, 0); sea level is 0, while Sorrowfen terrain is shaped near 0.5 and classified as mud around the FEN center.",
-    "Region labels are duplicated: ui-hud.js hardcodes ordered distance/coordinate tests instead of calling scripts/lib/regions.js; keep their names, thresholds and precedence aligned when editing region behavior."
+    "Region labels are duplicated: ui-hud.js hardcodes ordered distance/coordinate tests instead of calling scripts/lib/regions.js; item icon lookup is keyed by item id and falls back to the item's existing icon."
   ]
 }
