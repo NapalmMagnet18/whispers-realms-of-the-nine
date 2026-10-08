@@ -99,5 +99,5 @@ export function update(ctx) {
   if (st.flightMap && (!roost || d > F.useRadius + 3)) st.flightMap = null;
   const hint = roost && d < F.useRadius && !st.flightMap ? 'Press E to fly from ' + roost.name : null;
   if (hint) { if (!st.interactHint) { st.interactHint = hint; ctx.session.flyHint = hint; } }
-  else if (ctx.session.flyHint && st.interactHint === ctx.session.flyHint) { st.interactHint = null; ctx.session.flyHint = null; }
+  else if (typeof st.interactHint === 'string' && st.interactHint.startsWith('Press E to fly from ')) { st.interactHint = null; ctx.session.flyHint = null; } // a reload forgets the session mark; the text itself says it is ours
 }
