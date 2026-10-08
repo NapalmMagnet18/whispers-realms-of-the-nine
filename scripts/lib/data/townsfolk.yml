@@ -55,3 +55,21 @@ kestrel:
     - "Past the arch, the ground stops making sense. Don't go alone."
     - "I've seen rocks float up off that ridge like bubbles from a pond. They never come down."
     - "Need to get out fast? The roostmaster's gryphon will take you south. Just don't look back at the gate when you lift off."
+brannoc:
+  name: Forgemaster Brannoc
+  lines:
+    - "Every blade in the March was born in these fires, or wishes it had been."
+    - "The Stonewrought set the first stone of this keep on a river of fire. It has never once gone cold."
+    - "Those two at the gate? Our first smiths. We carved them so they'd never have to stop watching."
+hilde:
+  name: Ashwarden Hilde
+  lines:
+    - "The mountain breathes. When it holds its breath, run."
+    - "Walk the bridge, not the crust. The black skin on the lava lies about how thick it is."
+    - "Ash on the wind means the shelves are waking. Ash in your boots means you stood still too long."
+toma:
+  name: Toma the Apprentice
+  lines:
+    - "Bring me ore from the shelves and I'll show you real steel."
+    - "Master Brannoc says I hammer like a woodpecker. Fast, he means. I'm fairly sure he means fast."
+    - "Hold your hand over the channel a moment. Feel that? That's the whole Reaches, humming."
