@@ -1086,7 +1086,146 @@ ARC-07:
   rewards: { xp: 250, copper: 200, items: [listening_flame_sigil] }
 
 
+
+# ── Pathfinder Path: Leave a Way Home (Quest Bible PAT-01..PAT-07; the Wayfarers' Lodge on the river meadow south of the farms) ──
+PAT-01:
+  id: PAT-01
+  group: "Pathfinder Path: Leave a Way Home"
+  zone: The Wayfarers' Lodge
+  cls: pathfinder   # Pathfinders only
+  requires: [Q001]
+  title: Pathmakers
+  giverNpcId: reach-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "Past the windmill, down where the meadow meets the river, the Wayfarers keep a lodge. Walk there by the trail signs, not the road: three of them, read each. Then light a beacon on the cairn by the lodge so the next walker knows the way is safe."
+  progressText: "Follow the three trail signs south to the Wayfarers' Lodge, then light the beacon cairn."
+  turnInText: "You came by the signs. Good. Roads are for people who already know where they're going."
+  doneText: "Iona's at the lodge if you want her. I've a wolf to show you first."
+  refusedText: "The beacon's yours now. Keep it lit."
+  objectives:
+    - { key: trail_sign, desc: "Follow the trail signs", target: 3 }
+    - { key: beacon_lit, desc: "Light the safe-route beacon", target: 1 }
+  rewards: { xp: 120, copper: 80, items: [trail_mark] }
+
+PAT-02:
+  id: PAT-02
+  group: "Pathfinder Path: Leave a Way Home"
+  zone: The Wayfarers' Lodge
+  cls: pathfinder   # Pathfinders only
+  requires: [PAT-01]
+  title: The Predator and the Bell
+  giverNpcId: reach-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "A bramblewolf's been circling the lodge, and someone's hung a bellglass lure to draw it in close to the meadow. Somebody wants it hungry here. Follow its tracks along the bank to the lure, and break the glass. Don't kill the wolf. It isn't the one doing wrong."
+  progressText: "Follow the bramblewolf's tracks along the river bank, then disable the bellglass lure."
+  turnInText: "Glass is broken, wolf's gone back to the briars where it belongs. Now, who hung that lure? That's a better hunt."
+  doneText: "Rowan needs a crossing surveyed. He'll pay in stories."
+  refusedText: "No lure, no wolf. Quiet meadow."
+  objectives:
+    - { key: wolf_tracked, desc: "Follow the bramblewolf tracks", target: 3 }
+    - { key: lure_disabled, desc: "Disable the bellglass lure", target: 1 }
+  rewards: { xp: 140, copper: 100 }
+
+PAT-03:
+  id: PAT-03
+  group: "Pathfinder Path: Leave a Way Home"
+  zone: The Wayfarers' Lodge
+  cls: pathfinder   # Pathfinders only
+  requires: [PAT-02]
+  title: Crossing Without a Map
+  giverNpcId: reach-npc-rowan
+  giverName: Rowan the Ferryman
+  text: "My ferry's the only way over below the farms, and when the river's up it's no way at all. Look at the two shallows south of the lodge and tell me which holds. Then tie a rope line there, so folk can cross without me."
+  progressText: "Survey the two river crossings south of the lodge, then rig the rope line at the sound one."
+  turnInText: "The south shallow, yes. I'd have said the north and drowned a cart. Here, a trap kit. You'll want it out there."
+  doneText: "Bram has something he's been chewing on. Mind your fingers."
+  refusedText: "The rope holds. I checked twice."
+  objectives:
+    - { key: crossing_surveyed, desc: "Survey a river crossing", target: 2 }
+    - { key: rope_bridge, desc: "Rig the rope line", target: 1 }
+  rewards: { xp: 150, copper: 110, items: [trap_kit] }
+
+PAT-04:
+  id: PAT-04
+  group: "Pathfinder Path: Leave a Way Home"
+  zone: The Wayfarers' Lodge
+  cls: pathfinder   # Pathfinders only
+  requires: [PAT-03]
+  title: The Ranger Who Lied
+  giverNpcId: reach-npc-bram
+  giverName: Bram Alder
+  text: "Tamsin filed a report, years back: 'south road unsafe, closed.' Her name's on it. But the mile markers on that road were reset after her report, and somebody walked it to do that. Go read the two markers by the lodge and tell me what they say."
+  progressText: "Read the two mile markers on the old south road near the lodge."
+  turnInText: "Freshly reset, both. She lied, then. To keep folk off a road that was still dangerous to someone she was hiding. Ask her. Kindly."
+  doneText: "Tamsin will want to talk. Let her."
+  refusedText: "Some lies are fences. Some are walls."
+  objectives:
+    - { key: mile_marker, desc: "Compare the mile markers", target: 2 }
+  rewards: { xp: 160, copper: 120, items: [pathfinder_journal] }
+
+PAT-05:
+  id: PAT-05
+  group: "Pathfinder Path: Leave a Way Home"
+  zone: The Wayfarers' Lodge
+  cls: pathfinder   # Pathfinders only
+  requires: [PAT-04]
+  title: The Long Way Home
+  giverNpcId: reach-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "The road I closed? Families came up it, once, running from a lord's men. I closed it so nobody would follow. Three more are on the meadow tonight. Walk them by the slow trail along the river. It's long. It's safe."
+  progressText: "Guide the three travelers waiting on the meadow onto the slow safe trail."
+  turnInText: "All three on the trail. You walked slow. That's harder than walking fast."
+  doneText: "Iona Sedge has a marsh path that's eaten two of her markers. Go help."
+  refusedText: "They're home. Or near enough."
+  objectives:
+    - { key: refugee_guided, desc: "Guide travelers onto the safe trail", target: 3 }
+  rewards: { xp: 170, copper: 130 }
+
+PAT-06:
+  id: PAT-06
+  group: "Pathfinder Path: Leave a Way Home"
+  zone: The Wayfarers' Lodge
+  cls: pathfinder   # Pathfinders only
+  requires: [PAT-05]
+  title: No Trail Left Behind
+  giverNpcId: lodge-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  text: "The reeds take every path I cut. Open the marsh footpath where it meets the river, then drive three return markers, so anyone who goes in can find their own way back out."
+  progressText: "Open the marsh footpath by the river, then place three return markers."
+  turnInText: "Three markers, all red rag. Anyone lost can walk home on them. That's the whole of the Wayfarers, right there."
+  doneText: "Tamsin has your trial ready."
+  refusedText: "The marsh lets people through now. For a while."
+  objectives:
+    - { key: footpath_opened, desc: "Open the marsh footpath", target: 1 }
+    - { key: return_marker, desc: "Place return markers", target: 3 }
+  rewards: { xp: 180, copper: 140, items: [traveler_bow_cosmetic] }
+
+PAT-07:
+  id: PAT-07
+  group: "Pathfinder Path: Leave a Way Home"
+  zone: The Wayfarers' Lodge
+  cls: pathfinder   # Pathfinders only
+  requires: [PAT-06]
+  title: Wayfarer's Witness
+  giverNpcId: reach-npc-tamsin
+  giverName: Tamsin the Ranger
+  text: "Last thing. The red posts in the meadow: Dodge Roll (3) past each, quick and clean. Then report both routes at the lodge door: the safe one, and the one I closed. Write them both. A lie that keeps people safe still has to be written down where someone can find it."
+  progressText: "Dodge Roll (3) past the three red trial posts, then report both routes at the lodge door."
+  turnInText: "Both routes, written plain. Welcome, Pathfinder. We don't inherit land or law. Only the duty to leave a way home."
+  doneText: "The world's wide. Go walk it."
+  refusedText: "You're a Wayfarer."
+  objectives:
+    - { key: trail_trial, desc: "Roll past the trial posts", target: 3 }
+    - { key: routes_reported, desc: "Report both routes at the lodge", target: 1 }
+  rewards: { xp: 250, copper: 200, items: [wayfarer_compass] }
+
+
 items:
+  trail_mark: { id: trail_mark, name: Trail Mark, slot: bag, description: "A notched bone token. The lodge knows you by it." }
+  trap_kit: { id: trap_kit, name: Trap Kit, slot: bag, description: "Snare wire, stakes, a little bell." }
+  pathfinder_journal: { id: pathfinder_journal, name: Pathfinder Journal, slot: bag, description: "Tamsin's old report, and yours under it." }
+  traveler_bow_cosmetic: { id: traveler_bow_cosmetic, name: Traveler's Bow, slot: bag, description: "Ash and sinew, a red rag tied at the grip." }
+  wayfarer_compass: { id: wayfarer_compass, name: Wayfarer's Compass, slot: bag, description: "Its needle points the way you came." }
   resonance_lens: { id: resonance_lens, name: Resonance Lens, slot: bag, description: "Hold it up: what's remembered shimmers." }
   focus_tonic: { id: focus_tonic, name: Focus Tonic, slot: bag, description: "Bitter, clear, a little cold going down." }
   bound_page: { id: bound_page, name: Bound Page, slot: bag, description: "Here, by our own hands, we kept the lamps." }
