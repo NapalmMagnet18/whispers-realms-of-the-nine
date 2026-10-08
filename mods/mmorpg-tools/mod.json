@@ -219,7 +219,12 @@
       "startCharacterCreation": {},
       "toggleGuildInviteInput": {},
       "closeProfessionDialogue": {},
-      "openRealmList": {}
+      "openRealmList": {},
+      "closeRealmList": {},
+      "pickRealm": {},
+      "joinRealm": {},
+      "confirmDeleteCharacter": {},
+      "cancelDeleteCharacter": {}
     },
     "axes": {
       "lookX": {

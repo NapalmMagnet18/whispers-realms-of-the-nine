@@ -95,6 +95,22 @@ export function update(api, dt) {
 }
 
 export function onSpawn(api) {
+  // the realm's characters table first; the old storage roster only when the table has none (imported once into realm main)
+  RS.loadRoster(api, function (rows) {
+    if (rows && rows.length) {
+      var s0 = api.getState();
+      api.patchState({ characters: rows, _menuRosterSnapshot: rows, selectedCharIdx: Math.min(s0.selectedCharIdx ?? 0, rows.length - 1), _hasCharacter: true, _dataLoaded: true, _rosterLoaded: true, realmName: realmName(api) });
+    } else {
+      legacyLoad(api);
+    }
+    var sv = api.getState();
+    if (!sv._realmSeen) api.patchState({ _realmSeen: true, realmListOpen: true });
+    RS.refreshRealmList(api);
+  });
+}
+function realmName(api) { var cur = RS.realmOf(api); var r = RS.REALMS.find(function (x) { return x.room === cur; }); return r ? r.name : cur; }
+
+function legacyLoad(api) {
   // Load roster from storage on spawn
   try {
     api.job('storage:get', { key: 'roster_' + api.id }, function(res) {
@@ -102,6 +118,10 @@ export function onSpawn(api) {
       var s = api.getState();
 
       if (roster && Array.isArray(roster) && roster.length > 0) {
+        if (RS.realmOf(api) !== 'main') roster = []; // the old roster belongs to realm main
+      }
+      if (roster && Array.isArray(roster) && roster.length > 0) {
+        RS.importLegacy(api, roster);
         api.patchState({
           characters: roster,
           _menuRosterSnapshot: roster,
@@ -173,6 +193,19 @@ export function onInput(api, input) {
   var s = api.getState();
   if (!s.inMainMenu) return;
 
+  // ─── REALM LIST ───
+  if (input.actions.openRealmList) { api.patchState({ realmListOpen: true, realmPick: RS.realmOf(api) }); RS.refreshRealmList(api); return; }
+  if (input.actions.closeRealmList) { api.patchState({ realmListOpen: false }); return; }
+  if (input.actions.pickRealm && input.actionData && input.actionData.pickRealm) { api.patchState({ realmPick: input.actionData.pickRealm.room }); return; }
+  if (input.actions.joinRealm) {
+    var pick = s.realmPick || RS.realmOf(api);
+    if (pick === RS.realmOf(api) || !RS.REALMS.some(function (r) { return r.room === pick; })) { api.patchState({ realmListOpen: false }); return; }
+    api.patchState({ realmListOpen: false });
+    var out = api.cross(api.self || api.id, 'world:' + api.world.id + '/room:' + pick + '+main-menu-land');
+    if (out && out.crossed === false) api.patchState({ realmError: 'The way to that realm is shut. Try again.' });
+    return;
+  }
+
   // ─── SELECT CHARACTER ───
   if (input.actions.selectCharacter && input.actionData && input.actionData.selectCharacter) {
     var selIdx = input.actionData.selectCharacter.index;
@@ -194,8 +227,11 @@ export function onInput(api, input) {
   }
 
   // ─── CONFIRM DELETE ───
-  if (input.actions.confirmDeleteChar) {
+  if (input.actions.confirmDeleteChar || input.actions.confirmDeleteCharacter) {
     var delIdx = s._deleteConfirmIdx;
+    var typed = (input.actionData && (input.actionData.confirmDeleteChar || input.actionData.confirmDeleteCharacter) || {}).typed;
+    if (String(typed || '').trim().toLowerCase() !== String(s._deleteConfirmName || '').toLowerCase()) { api.patchState({ _deleteError: 'Type the name to confirm.' }); return; }
+    if (typeof delIdx === 'number') RS.removeSlot(api, delIdx);
     var chars = s.characters ? s.characters.slice() : [];
     if (delIdx !== null && delIdx !== undefined && delIdx >= 0 && delIdx < chars.length) {
       var deletedChar = chars[delIdx];
@@ -244,7 +280,7 @@ export function onInput(api, input) {
   }
 
   // ─── CANCEL DELETE ───
-  if (input.actions.cancelDeleteChar) {
+  if (input.actions.cancelDeleteChar || input.actions.cancelDeleteCharacter) {
     api.patchState({ _deleteConfirmIdx: null, _deleteConfirmName: '' });
     return;
   }
