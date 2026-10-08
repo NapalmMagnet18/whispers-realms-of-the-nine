@@ -234,3 +234,24 @@ ada-reach:
   name: Ada Wren
   lines:
     - "Clerk of the Shield Table. If it isn't written, it didn't happen."
+sena-tide:
+  name: Pilot Sena Wavebound
+  lines:
+    - "A chart is a promise. Somebody broke this one."
+    - "Tide's turning. It always turns, here."
+ruun-tide:
+  name: Shellkeeper Ruun
+  lines:
+    - "She faces inland. I've stopped asking why and started asking who."
+sari-tide:
+  name: Netmaker Sari
+  lines:
+    - "Hold a shell to your ear. That's not the sea."
+rowan-tide:
+  name: Rowan the Ferryman
+  lines:
+    - "Ferry's free for anyone with somewhere to be."
+hale-tide:
+  name: The Hale Crew
+  lines:
+    - "Nets don't mend themselves. Neither do crews."

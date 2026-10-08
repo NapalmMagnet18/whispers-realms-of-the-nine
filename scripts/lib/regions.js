@@ -11,6 +11,7 @@ export const REGIONS = [
   { id: "quarry", name: "Emberstone Quarry", x: 135, z: 30, r: 80 },
   { id: "spire", name: "The Old Spire", x: 30, z: -360, r: 90 },
   { id: "hollowcrypt", name: "Hollowcrypt Vale", x: 1350, z: -700, r: 330 },
+  { id: "tideglass", name: "Tideglass Coast", x: -1000, z: 1920, r: 340 },
   { id: "sorrowfen", name: "Sorrowfen", x: -1300, z: 950, r: 520 },
   { id: "saltmere", name: "Saltmere Coast", x: 300, z: 1650, r: 420 },
   { id: "ninthveil", name: "The Ninth Veil", test: (x, z) => z < -6400 },

@@ -1645,8 +1645,77 @@ SOR-09:
   text: "A testimony means nothing if it stays in the marsh. Take Eda's words to Lantern's Reach. Lay them on the Shield Table, and ask two living people to stand and hear it, so it's witnessed. Then give it to Sister Vale. She'll know what to do."
   progressText: "Carry Eda's testimony to Lantern's Reach: lay it at the Shield Table, ask two witnesses to hear it, then bring it to Sister Vale in the Reach."
   turnInText: "Eda's mother is Mareth Sable. Everything the Court has done, the tethers, the turned chimes, the volunteers in the water, she did to bring one drowned girl home. She isn't a monster. But thousands are standing in the way of her grief. That's worse."
-  doneText: "Sorrowfen's names are carried out. The March will have to decide what it does with them."
+  doneText: "Sorrowfen's names are carried out. Pilot Sena Wavebound sent word from Tideglass Quay on the south-west coast: an old fleet sailed from there with volunteers too. Fly to Tideglass Quay."
   objectives:
     - { key: testimony_laid, desc: "Lay the testimony at the Shield Table", target: 1 }
     - { key: witness_heard, desc: "Ask witnesses to hear it", target: 2 }
   rewards: { copper: 9400, xp: 1100 }
+
+# ── Tideglass Coast (TID-01..04): the harbour that never was. Hub: Tideglass Quay on the south-west shore.
+TID-01:
+  id: TID-01
+  title: Salt on the Charts
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [SOR-09]
+  giverNpcId: tide-npc-sena
+  giverName: Pilot Sena Wavebound
+  text: "Every chart of this coast I own shows three inlets that aren't on the Crown survey. Somebody erased them, the way your fen folk erased names. Plant a survey stake at each one, west past the dry docks, the harbour mouth, and the cove under the headland. Then go and lean on the dock registry. The clerk keeps old ledgers she pretends not to have."
+  progressText: "Plant survey stakes at the three uncharted inlets along the shore, then question the dock registry on the quay."
+  turnInText: "The registry lists a fleet that left this quay eleven years ago. Forty ships. The passengers signed on as volunteers, told they could come home whenever they liked. Not one ship is logged back in."
+  doneText: "Shellkeeper Ruun keeps the lighthouse on the headland now. He says it has always faced the wrong way."
+  objectives:
+    - { key: tide_inlet, desc: "Survey the uncharted inlets", target: 3 }
+    - { key: dock_registry, desc: "Question the dock registry", target: 1 }
+  rewards: { copper: 9800, xp: 1200 }
+
+TID-02:
+  id: TID-02
+  title: The Lighthouse Faces Inland
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-01]
+  giverNpcId: tide-npc-ruun
+  giverName: Shellkeeper Ruun
+  text: "Look up at her. A lighthouse with its lamp turned to the land, its back to the sea. Sailors laugh at it. I don't. Light her three lenses, the great lens by the door and the two beacons on the headland, and when they're burning, turn the great lens on its rail toward the old inland sea. Then we'll see what she was built to show."
+  progressText: "Light the three lighthouse lenses on the headland, then turn the great lens toward the lost inland sea."
+  turnInText: "Did you see it? A line of light across the dunes, straight inland, like a road. She was never a warning to ships. She's an Accord station. She was built to guide someone home, from the other direction."
+  doneText: "Netmaker Sari has been hearing singing on the Lost-Fleet shore since the lens turned."
+  objectives:
+    - { key: lighthouse_lens, desc: "Light the lighthouse lenses", target: 3 }
+    - { key: lens_turned, desc: "Turn the great lens inland", target: 1 }
+  rewards: { copper: 10200, xp: 1240 }
+
+TID-03:
+  id: TID-03
+  title: A Song Without a Singer
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-02]
+  giverNpcId: tide-npc-sari
+  giverName: Netmaker Sari
+  text: "There's a song coming off the shells on the Lost-Fleet shore. Three phrases, each caught in a different shell. Gather them. Then teach the whole refrain to the Hale crew mending nets by the racks. A song that only shells remember is a ghost. A song a living crew sings is a memory."
+  progressText: "Listen to the three singing shells on the Lost-Fleet shore, then teach the refrain to the Hale crew by the net racks."
+  turnInText: "Listen to them. They don't know the words yet, but they're singing it. That's how you remember a lost fleet without dragging it back. You keep its song in living mouths."
+  doneText: "Rowan the Ferryman crossed over from the Reach. He's at the ferry landing, swearing at a snapped rope."
+  objectives:
+    - { key: melody_fragment, desc: "Gather the melody fragments", target: 3 }
+    - { key: crew_taught, desc: "Teach the refrain to a living crew", target: 1 }
+  rewards: { copper: 10600, xp: 1280 }
+
+TID-04:
+  id: TID-04
+  title: Drowned in Air
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-03]
+  giverNpcId: tide-npc-rowan
+  giverName: Rowan the Ferryman
+  text: "Two dry docks west of the quay, both empty eleven years, and both wet this morning. Wet slipways, in a drought. Search them. And while you're there, my ferry rope's snapped clean through at the landing post. Splice it so I can get people across."
+  progressText: "Search the two empty dry docks west of Tideglass Quay, and repair the ferry rope at the landing east of the headland."
+  turnInText: "Salt water in the cradles and fresh rope-burn on the bollards, like ships had berthed overnight and left again. The fleet's still out there. But it only comes in when someone agrees to hear it."
+  doneText: "The fleet answers listeners. Pilot Sena will want to know."
+  objectives:
+    - { key: drydock_searched, desc: "Search the empty dry docks", target: 2 }
+    - { key: ferry_rope, desc: "Repair the ferry rope", target: 1 }
+  rewards: { copper: 11000, xp: 1320 }
