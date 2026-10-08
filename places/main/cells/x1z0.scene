@@ -137,6 +137,13 @@ equ-lamp-2:
   physics: static
   primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
   tags: [quarry-chapter]
+equ-lamp-3:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 14, intensity: 3, kind: point}}]
+  feetPosition: {x: 154.2, y: {terrain: 0}, z: 32.6}
+  id: equ-lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [quarry-chapter]
 equ-rig-smoke:
   feetPosition: {x: 155.9, y: {terrain: 2.6}, z: 61.3}
   fx: {script: "fx\npop smoke rate=6 on=disc(.12) life=2.5..4 v=up(1..1.6)+sdir()*.2 size=.25..0.45 acc=buoy(.4)+curl(.4)*.6+drag(.7) sz=$size*(.6>2.6) col=<.25,.23,.22>><.4,.39,.38> a=0>.2:.35>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)"}
