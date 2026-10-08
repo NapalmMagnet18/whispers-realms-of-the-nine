@@ -15,7 +15,7 @@ brd-firepit:
   tags: [deepgrove]
 brd-glowcaps:
   feetPosition: {x: -1085, y: 25, z: 62}
-  fx: {script: "fx\npop mote n=?mobile:30|70 on=disc(45) life=4..7 v=up(.05..0.2)+sdir()*.1 size=.03..0.06 acc=curl(.3)*.4 pos=<0,.5..3,0> col=hdr(2.4,2,.6)>hdr(1,2.2,.8) a=(0>.2:1>.8:1>0)*flick(1.5,.4) r=sprite(soft-disc,add)"}
+  fx: {script: "fx\npop mote n=?mobile:30|70 on=disc(45).c(1.5) life=4..7 v=up(.05..0.2)+sdir()*.1 size=.03..0.06 acc=curl(.3)*.4 col=hdr(2.4,2,.6)>hdr(1,2.2,.8) a=(0>.2:1>.8:1>0)*flick(1.5,.4) r=sprite(soft-disc,add)"}
   id: brd-glowcaps
   tags: [deepgrove]
 brd-lantern-1:
