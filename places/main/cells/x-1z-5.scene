@@ -1,0 +1,75 @@
+# spawn-scene v2 yaml x-1z-5
+giant-arm:
+  feetPosition: {x: -68.3, y: 33.02, z: -680.12}
+  id: giant-arm
+  physics: static
+  primitive: {kind: scripted, params: {kind: bones, seed: 3}, script: scripts/gen/giant.js}
+  rotation: {yaw: -89.46000000000001}
+  tags: [fallen-giant]
+giant-rib-0:
+  feetPosition: {x: -83.37, y: 38.32, z: -688.99}
+  id: giant-rib-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: rib, s: 0.82, seed: 1}, script: scripts/gen/giant.js}
+  rotation: {yaw: -159.46}
+  tags: [fallen-giant]
+giant-rib-1:
+  feetPosition: {x: -82.25, y: 37.68, z: -685.99}
+  id: giant-rib-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: rib, s: 0.9, seed: 2}, script: scripts/gen/giant.js}
+  rotation: {yaw: -159.46}
+  tags: [fallen-giant]
+giant-rib-2:
+  feetPosition: {x: -81.12, y: 37.04, z: -683}
+  id: giant-rib-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: rib, s: 0.96, seed: 3}, script: scripts/gen/giant.js}
+  rotation: {yaw: -159.46}
+  tags: [fallen-giant]
+giant-rib-3:
+  feetPosition: {x: -80, y: 36.4, z: -680}
+  id: giant-rib-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: rib, s: 0.96, seed: 4}, script: scripts/gen/giant.js}
+  rotation: {yaw: -159.46}
+  tags: [fallen-giant]
+giant-rib-4:
+  feetPosition: {x: -78.88, y: 35.76, z: -677}
+  id: giant-rib-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: rib, s: 0.9, seed: 5}, script: scripts/gen/giant.js}
+  rotation: {yaw: -159.46}
+  tags: [fallen-giant]
+giant-rib-5:
+  feetPosition: {x: -77.75, y: 35.12, z: -674.01}
+  id: giant-rib-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: rib, s: 0.82, seed: 6}, script: scripts/gen/giant.js}
+  rotation: {yaw: -159.46}
+  tags: [fallen-giant]
+giant-rib-6:
+  feetPosition: {x: -76.63, y: 34.48, z: -671.01}
+  id: giant-rib-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: rib, s: 0.76, seed: 7}, script: scripts/gen/giant.js}
+  rotation: {yaw: -159.46}
+  tags: [fallen-giant]
+giant-skull:
+  feetPosition: {x: -81.87, y: 38.54, z: -696.38}
+  id: giant-skull
+  physics: static
+  primitive: {kind: scripted, params: {kind: skull}, script: scripts/gen/giant.js}
+  rotation: {yaw: 40.53999999999999}
+  tags: [fallen-giant]
+giant-sword:
+  feetPosition: {x: -81.17, y: 31.77, z: -664.61}
+  id: giant-sword
+  physics: static
+  primitive: {kind: scripted, params: {kind: sword}, script: scripts/gen/giant.js}
+  rotation: {yaw: -129.46}
+  tags: [fallen-giant]
+giant-wind:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-wind-moaning-through-giant-bones-hollow-loop.mp3, gain: 0.15, loop: true, maxDistance: 35, spatial: true}
+  feetPosition: {x: -80, y: 39.79917449145569, z: -680}
+  id: giant-wind
