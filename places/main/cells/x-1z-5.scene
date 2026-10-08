@@ -7,49 +7,49 @@ giant-arm:
   rotation: {yaw: -89.46000000000001}
   tags: [fallen-giant]
 giant-rib-0:
-  feetPosition: {x: -83.37, y: 38.32, z: -688.99}
+  feetPosition: {x: -83.37, y: 37.52, z: -688.99}
   id: giant-rib-0
   physics: static
   primitive: {kind: scripted, params: {kind: rib, s: 0.82, seed: 1}, script: scripts/gen/giant.js}
   rotation: {yaw: -159.46}
   tags: [fallen-giant]
 giant-rib-1:
-  feetPosition: {x: -82.25, y: 37.68, z: -685.99}
+  feetPosition: {x: -82.25, y: 36.88, z: -685.99}
   id: giant-rib-1
   physics: static
   primitive: {kind: scripted, params: {kind: rib, s: 0.9, seed: 2}, script: scripts/gen/giant.js}
   rotation: {yaw: -159.46}
   tags: [fallen-giant]
 giant-rib-2:
-  feetPosition: {x: -81.12, y: 37.04, z: -683}
+  feetPosition: {x: -81.12, y: 36.24, z: -683}
   id: giant-rib-2
   physics: static
   primitive: {kind: scripted, params: {kind: rib, s: 0.96, seed: 3}, script: scripts/gen/giant.js}
   rotation: {yaw: -159.46}
   tags: [fallen-giant]
 giant-rib-3:
-  feetPosition: {x: -80, y: 36.4, z: -680}
+  feetPosition: {x: -80, y: 35.6, z: -680}
   id: giant-rib-3
   physics: static
   primitive: {kind: scripted, params: {kind: rib, s: 0.96, seed: 4}, script: scripts/gen/giant.js}
   rotation: {yaw: -159.46}
   tags: [fallen-giant]
 giant-rib-4:
-  feetPosition: {x: -78.88, y: 35.76, z: -677}
+  feetPosition: {x: -78.88, y: 34.96, z: -677}
   id: giant-rib-4
   physics: static
   primitive: {kind: scripted, params: {kind: rib, s: 0.9, seed: 5}, script: scripts/gen/giant.js}
   rotation: {yaw: -159.46}
   tags: [fallen-giant]
 giant-rib-5:
-  feetPosition: {x: -77.75, y: 35.12, z: -674.01}
+  feetPosition: {x: -77.75, y: 34.32, z: -674.01}
   id: giant-rib-5
   physics: static
   primitive: {kind: scripted, params: {kind: rib, s: 0.82, seed: 6}, script: scripts/gen/giant.js}
   rotation: {yaw: -159.46}
   tags: [fallen-giant]
 giant-rib-6:
-  feetPosition: {x: -76.63, y: 34.48, z: -671.01}
+  feetPosition: {x: -76.63, y: 33.68, z: -671.01}
   id: giant-rib-6
   physics: static
   primitive: {kind: scripted, params: {kind: rib, s: 0.76, seed: 7}, script: scripts/gen/giant.js}
