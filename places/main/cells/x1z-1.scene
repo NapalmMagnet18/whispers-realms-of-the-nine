@@ -64,12 +64,17 @@ ashen-candles-1:
   rotation: {yaw: 180}
   tags: [ashen]
 ashen-cathedral:
-  children: [{feetPosition: {x: 13, y: 3.5, z: 0}, id: light-altar, light: {color: oklch(0.8 0.14 60), distance: 18, intensity: 25, kind: point}}, {feetPosition: {x: 0, y: 5, z: 0}, id: light-nave, light: {color: oklch(0.8 0.14 60), distance: 18, intensity: 25, kind: point}}, {feetPosition: {x: -19.8, y: 21, z: -9.1}, id: light-belfry, light: {color: oklch(0.8 0.14 60), distance: 9, intensity: 4, kind: point}}, {feetPosition: {x: 14, y: 1.4, z: 0}, fx: {script: "fx\npop flame n=9 at=box(.9,0,.5) size=.05..0.08 sz=$size*flick(6,.3) col=hdr(4,2.4,.8) a=.9 r=sprite(soft-disc,add)\npop glow n=1 r=light(<1,.6,.25>,6*flick(3,.15),7)"}, id: altar-candles}]
+  children: [{feetPosition: {x: 13, y: 3.5, z: 0}, id: light-altar, light: {color: oklch(0.8 0.14 60), distance: 20, intensity: 35, kind: point}}, {feetPosition: {x: 0, y: 5, z: 0}, id: light-nave, light: {color: oklch(0.8 0.14 60), distance: 24, intensity: 45, kind: point}}, {feetPosition: {x: -19.8, y: 21, z: -9.1}, id: light-belfry, light: {color: oklch(0.8 0.14 60), distance: 9, intensity: 4, kind: point}}, {feetPosition: {x: 14, y: 1.4, z: 0}, fx: {script: "fx\npop flame n=9 at=box(.9,0,.5) size=.05..0.08 sz=$size*flick(6,.3) col=hdr(4,2.4,.8) a=.9 r=sprite(soft-disc,add)\npop glow n=1 r=light(<1,.6,.25>,6*flick(3,.15),7)"}, id: altar-candles}]
   feetPosition: {x: 130, y: 5, z: -185}
   id: ashen-cathedral
   model: {id: /cdn/value.40f32259dff04937118710719813179883b08ef0765560a4d676744445685f64.glb, materials: {flame: {color: oklch(0.9 0.14 75), emissive: oklch(0.85 0.16 70), emissiveIntensity: 4}, floor: {color: oklch(0.9 0.01 70), roughness: 0.9, texture: cdn/texture-worn-cathedral-flagstones-cracked.png}, glass_glow: {color: oklch(0.78 0.15 65), emissive: oklch(0.78 0.16 65), emissiveIntensity: 2.5}, roof_slate: {color: oklch(0.9 0.01 200), roughness: 0.8, texture: cdn/texture-dark-slate-roof-tiles-mossy.png}, stone: {color: oklch(0.88 0.015 70), roughness: 0.92, texture: cdn/texture-soot-stained-gothic-limestone-blocks.png}, stone_dark: {color: oklch(0.86 0.01 60), roughness: 0.95, texture: cdn/texture-soot-stained-gothic-limestone-blocks.png}, wood: {color: oklch(0.88 0.02 60), roughness: 0.85, texture: cdn/texture-old-dark-oak-planks.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: 0}
+ashen-cathedral/light-narthex:
+  feetPosition: {x: -10, y: 5.5, z: 0}
+  id: ashen-cathedral/light-narthex
+  light: {color: oklch(0.78 0.13 55), distance: 16, intensity: 28, kind: point}
+  parent: ashen-cathedral
 ashen-crate-1:
   feetPosition: {x: 86.2, y: 5, z: -184.6}
   id: ashen-crate-1
