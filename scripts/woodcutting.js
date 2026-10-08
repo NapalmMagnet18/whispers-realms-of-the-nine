@@ -8,7 +8,10 @@ export const updateSchedule = { every: { seconds: 0.05 } };
 export function onSpawn(ctx) {
   const st = ctx.self.state;
   st.logsLeft ??= W.logsPerTree;
-  if (st.baseYaw === undefined) { const r = ctx.self.rotation; st.baseYaw = (r && typeof r.yaw === 'number') ? r.yaw : 0; }
+  if (!st.tilt) { // the oak's own heading, read while it stands (rotation reads back as a quaternion)
+    const r = ctx.self.rotation || {};
+    st.baseYaw = typeof r.yaw === 'number' ? r.yaw : (typeof r.w === 'number' ? 2 * Math.atan2(r.y || 0, r.w) * 180 / Math.PI : 0);
+  }
 }
 export function update(ctx, dt) {
   const st = ctx.self.state;
