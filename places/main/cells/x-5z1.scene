@@ -1,0 +1,24 @@
+# spawn-scene v2 yaml x-5z1
+start-thornhollow/start-thornhollow-prop-5:
+  feetPosition: {x: 16, y: -0.09887398745842901, z: 12}
+  id: start-thornhollow/start-thornhollow-prop-5
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: {yaw: 185}
+start-thornhollow/start-thornhollow-tree-4:
+  feetPosition: {x: 26, y: -14.452016347891728, z: 26}
+  id: start-thornhollow/start-thornhollow-tree-4
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 43}
+  rotation: {yaw: 159}
+  scale: 2.1
+start-thornhollow/start-thornhollow-tree-7:
+  feetPosition: {x: 31, y: -13.069276652979134, z: 7}
+  id: start-thornhollow/start-thornhollow-tree-7
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 46}
+  rotation: {yaw: 318}
+  scale: 2.1

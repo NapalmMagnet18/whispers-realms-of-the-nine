@@ -1,8 +1,105 @@
 # spawn-scene v2 yaml x-6z1
 start-thornhollow:
-  feetPosition: {x: -720, y: 20, z: 70}
+  feetPosition: {x: -720, y: 19.585919813131138, z: 70}
+  fx: {script: "fx\npop moth n=?mobile:14|28 on=box(17,2.2,17).c(2.6) life=5..9 size=.05..0.09 acc=curl(.35)*1.6+drag(1.1) sz=$size*flick(4,.5) col=hdr(2.6,2,.75) a=(0>.15:1>.8:1>0)*flick(1.3,.5) r=sprite(mote,add)\npop glim n=?mobile:4|8 on=box(14,1.5,14).c(1.2) life=4..7 size=.12..0.2 acc=curl(.2)+drag(1.4) sz=$size col=hdr(1.2,1.6,.9) a=(0>.3:.6>.7:.6>0)*flick(.7,.6) r=sprite(soft-disc,add)"}
   id: start-thornhollow
-  material: {kind: scripted, script: engine/blueprint}
-  physics: none
-  primitive: {depth: 40, height: 10, kind: box, width: 40}
-  tags: [blueprint]
+  physics: static
+  primitive: {kind: scripted, params: {kind: plate}, script: scripts/gen/hamlet.js}
+  tags: [start-zone, thornhollow]
+start-thornhollow/start-thornhollow-bench-1:
+  feetPosition: {x: 7, y: -1.3264241492169973, z: -2.4000000000000057}
+  id: start-thornhollow/start-thornhollow-bench-1
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
+start-thornhollow/start-thornhollow-bench-2:
+  feetPosition: {x: 4.399999999999977, y: -0.8160013343245041, z: -5.599999999999994}
+  id: start-thornhollow/start-thornhollow-bench-2
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
+  rotation: {yaw: 70}
+start-thornhollow/start-thornhollow-campfire:
+  feetPosition: {x: 7, y: -1.5223959592032728, z: -5}
+  id: start-thornhollow/start-thornhollow-campfire
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: campfire}, script: scripts/gen/hamlet.js}
+start-thornhollow/start-thornhollow-campfire-fx:
+  feetPosition: {x: 7, y: -1.4223959592032727, z: -5}
+  fx: {script: "fx\npop coals n=10 on=disc(.2) size=.07..0.15 tint=<2.6,1,.28>..<1.2,.35,.09> sz=$size*flick(.5,.12) col=$tint*flick(.8,.3) a=.9 r=sprite(soft-disc,add)\npop flame rate=flick(.45,.2)*70 on=disc(.22) life=.5..0.95 v=up(1.6)+cone(24)*(.35..0.9) size=.22..0.42 acc=curl(.5)*1.3+buoy(2.4)+drag(1.5) sz=$size*(.5>.25:1>.7:.72>.14) col=hdr(4.8,3.6,1.5)>.3:hdr(3.4,1.5,.35)>.65:hdr(1.9,.55,.12)>hdr(.7,.14,.03) a=0>.12:1>.75:.85>0 rot=spin(.2) r=sprite(flame-wisp,add)\npop embers rate=5 on=disc(.22) life=.7..1.5 v=up(2.4)+cone(32)*(.4..1.3) size=.02..0.05 acc=curl(.8)*1.1+grav()*.45+drag(.5) sz=$size*(1>.7:.8>.3) col=hdr(5,2.8,.8)>.6:hdr(2.4,.8,.15)>hdr(1,.22,.04) a=(0>.08:1>.65:.9>0)*flick(11,.35) r=sprite(ember,add,velocity,.02)\npop smoke on=@flame?.22 inh=p;v:$v*.4 life=1.8..3.2 size=.16..0.26 acc=buoy(.9)+curl(.35)*.5+drag(.8) sz=$size*(.7>3.4) col=<.3,.28,.26>><.15,.15,.16> a=0>.25:.3>.7:.21>0 rot=spin(.15) r=sprite(smoke-puff,alpha)\npop hearth n=1 at=disc(.22).c(.45) glo=fire()*(#flame/45)~ r=light(<1,.55,.24>,$glo*30,12)"}
+  id: start-thornhollow/start-thornhollow-campfire-fx
+  parent: start-thornhollow
+start-thornhollow/start-thornhollow-greeter:
+  feetPosition: {x: 2.6000000000000227, y: -0.10968787322480367, z: 1.2999999999999972}
+  id: start-thornhollow/start-thornhollow-greeter
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-ual2-standard-yellow-7be72mab.glb
+  parent: start-thornhollow
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 63.43494882292216}
+  state: {line: "Easy now, little sapling, the old trees woke you gently. Warm your hands by the fire, then follow the lanterns east to Lantern's Reach.", npcName: Elder Fennick Thornwhisper}
+  tags: [npc, zone-greeter]
+start-thornhollow/start-thornhollow-hut-3:
+  feetPosition: {x: -10, y: 0.4333436136752198, z: 23}
+  id: start-thornhollow/start-thornhollow-hut-3
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {d: 4.4, h: 2.5, kind: stilthut, porch: 1.8, rise: 1.9, stilt: 2, w: 5}, script: scripts/gen/hamlet.js, seed: 5}
+  rotation: {yaw: -23.498565675952097}
+start-thornhollow/start-thornhollow-hut-3-light:
+  feetPosition: {x: -10, y: 4.333343613675218, z: 23}
+  id: start-thornhollow/start-thornhollow-hut-3-light
+  light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 2.5, kind: point}
+  parent: start-thornhollow
+start-thornhollow/start-thornhollow-hut-4:
+  feetPosition: {x: 13, y: -0.30522744483666386, z: 17}
+  id: start-thornhollow/start-thornhollow-hut-4
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {d: 4.4, h: 2.5, kind: stilthut, porch: 1.8, rise: 1.9, stilt: 1.8, w: 5}, script: scripts/gen/hamlet.js, seed: 5}
+  rotation: {yaw: 37.40535663140855}
+start-thornhollow/start-thornhollow-hut-4-light:
+  feetPosition: {x: 13, y: 3.3947725551633354, z: 17}
+  id: start-thornhollow/start-thornhollow-hut-4-light
+  light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 2.5, kind: point}
+  parent: start-thornhollow
+start-thornhollow/start-thornhollow-prop-4:
+  feetPosition: {x: -6, y: 0.014080186868863365, z: 16}
+  id: start-thornhollow/start-thornhollow-prop-4
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: {yaw: 148}
+start-thornhollow/start-thornhollow-signpost:
+  children: [{feetPosition: {x: 0.86, y: 2.02, z: 0}, material: {color: oklch(0.55 0.05 60), roughness: 0.9}, primitive: {depth: 0.08, height: 0.36, kind: box, width: 1.5}, ui: "<div face=\"front\" class=\"w-full h-full flex items-center justify-center\" style=\"background:#5a3f28;color:#f2d79a;font-family:Cinzel,serif;font-size:150px;font-weight:700\">Lantern's Reach</div>"}]
+  feetPosition: {x: 15, y: -1.4102552808043285, z: -3.5}
+  id: start-thornhollow/start-thornhollow-signpost
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js}
+  rotation: {yaw: 19.290046219188735}
+start-thornhollow/start-thornhollow-tree-2:
+  feetPosition: {x: -23, y: 8.145359152379473, z: 28}
+  id: start-thornhollow/start-thornhollow-tree-2
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 41}
+  rotation: {yaw: 53}
+  scale: 2.45
+start-thornhollow/start-thornhollow-tree-6:
+  feetPosition: {x: -30, y: 12.002657383417436, z: 4}
+  id: start-thornhollow/start-thornhollow-tree-6
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 45}
+  rotation: {yaw: 265}
+  scale: 2.8
+start-thornhollow/start-thornhollow-tree-8:
+  feetPosition: {x: -15, y: 1.968040231130498, z: 38}
+  id: start-thornhollow/start-thornhollow-tree-8
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 47}
+  rotation: {yaw: 371}
+  scale: 2.45

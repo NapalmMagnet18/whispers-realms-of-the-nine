@@ -1,0 +1,80 @@
+# spawn-scene v2 yaml x-6z0
+start-thornhollow/start-thornhollow-bridge:
+  feetPosition: {x: -8.200000000000045, y: 2.2140801868688627, z: -10.899999999999999}
+  id: start-thornhollow/start-thornhollow-bridge
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {L: 12.4, kind: ropebridge, sag: 0.4, wd: 1.2}, script: scripts/gen/hamlet.js}
+start-thornhollow/start-thornhollow-hut-1:
+  feetPosition: {x: -11, y: 0.014080186868863365, z: -14}
+  id: start-thornhollow/start-thornhollow-hut-1
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {d: 4.4, h: 2.5, kind: stilthut, porch: 1.8, rise: 1.9, stilt: 2.1999999999999993, w: 5}, script: scripts/gen/hamlet.js, seed: 5}
+  rotation: {yaw: 180}
+start-thornhollow/start-thornhollow-hut-1-light:
+  feetPosition: {x: -11, y: 4.114080186868861, z: -14}
+  id: start-thornhollow/start-thornhollow-hut-1-light
+  light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 2.5, kind: point}
+  parent: start-thornhollow
+start-thornhollow/start-thornhollow-hut-2:
+  feetPosition: {x: 7, y: 0.014080186868863365, z: -14}
+  id: start-thornhollow/start-thornhollow-hut-2
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {d: 4.4, h: 2.5, kind: stilthut, porch: 1.8, rise: 1.9, stilt: 2.1999999999999993, w: 5}, script: scripts/gen/hamlet.js, seed: 5}
+  rotation: {yaw: 180}
+start-thornhollow/start-thornhollow-hut-2-light:
+  feetPosition: {x: 7, y: 4.114080186868861, z: -14}
+  id: start-thornhollow/start-thornhollow-hut-2-light
+  light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 2.5, kind: point}
+  parent: start-thornhollow
+start-thornhollow/start-thornhollow-prop-1:
+  feetPosition: {x: -8, y: 0.014080186868863365, z: -8.5}
+  id: start-thornhollow/start-thornhollow-prop-1
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: {yaw: 37}
+start-thornhollow/start-thornhollow-prop-2:
+  feetPosition: {x: -9, y: 0.014080186868863365, z: -7.700000000000003}
+  id: start-thornhollow/start-thornhollow-prop-2
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: {yaw: 74}
+start-thornhollow/start-thornhollow-prop-3:
+  feetPosition: {x: 10, y: -1.7254169392733623, z: -8.600000000000001}
+  id: start-thornhollow/start-thornhollow-prop-3
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: {yaw: 111}
+start-thornhollow/start-thornhollow-shrine:
+  feetPosition: {x: -17, y: 0.014080186868863365, z: -7}
+  id: start-thornhollow/start-thornhollow-shrine
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: shrine}, script: scripts/gen/hamlet.js}
+  rotation: {yaw: 67.61986494804042}
+start-thornhollow/start-thornhollow-shrine-glow:
+  feetPosition: {x: -17, y: 2.2140801868688627, z: -7}
+  id: start-thornhollow/start-thornhollow-shrine-glow
+  light: {color: oklch(0.8 0.13 65), distance: 9, intensity: 1.2, kind: point}
+  parent: start-thornhollow
+start-thornhollow/start-thornhollow-tree-1:
+  feetPosition: {x: -25, y: 9.726425648891741, z: -16}
+  id: start-thornhollow/start-thornhollow-tree-1
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 40}
+  rotation: {yaw: 0}
+  scale: 2.1
+start-thornhollow/start-thornhollow-tree-5:
+  feetPosition: {x: -2, y: 3.880518236520814, z: -30}
+  id: start-thornhollow/start-thornhollow-tree-5
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 44}
+  rotation: {yaw: 212}
+  scale: 2.45

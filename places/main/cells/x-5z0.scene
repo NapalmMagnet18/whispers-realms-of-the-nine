@@ -1,4 +1,12 @@
 # spawn-scene v2 yaml x-5z0
+start-thornhollow/start-thornhollow-tree-3:
+  feetPosition: {x: 21, y: -7.307199613837794, z: -21}
+  id: start-thornhollow/start-thornhollow-tree-3
+  parent: start-thornhollow
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 42}
+  rotation: {yaw: 106}
+  scale: 2.8
 waystone-deepwood:
   feetPosition: {x: -596, y: {terrain: 0}, z: 33}
   id: waystone-deepwood
