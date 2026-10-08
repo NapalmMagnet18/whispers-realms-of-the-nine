@@ -1,8 +1,8 @@
 // On each timber oak (tags timber, gatherable): logsLeft / depletedUntil are written by the chopper's
 // scripts/quest-player.js; this behavior only shows it: a felled oak tips over away from its chopper with a crash,
 // lies there regrowSeconds, then stands again full (logsLeft back to logsPerTree). Numbers: quests.yml woodcutting.
-import Q from './lib/data/quests.yml';
-const W = Q.woodcutting;
+// numbers mirror quests.yml woodcutting (inlined so the spawn cell's trees don't ship the quest book on boot)
+const W = { logsPerTree: 3, regrowSeconds: 30, fallSeconds: 1.6, fallAngle: 82, fallSound: '/cdn/moodboard-painterly-fantasy/sfx-tree-falling-crash.mp3' };
 
 export const updateSchedule = { every: { seconds: 0.05 } };
 export function onSpawn(ctx) {
