@@ -1,0 +1,9 @@
+# spawn-scene v2 yaml x-3z4
+reh-willow-2:
+  feetPosition: {x: -378.2, y: {terrain: 0}, z: 544.8}
+  id: reh-willow-2
+  material: {kind: scripted, params: {kind: oak}, script: scripts/tree-look.js}
+  physics: static
+  primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 982}
+  rotation: {yaw: 206}
+  scale: 1.8
