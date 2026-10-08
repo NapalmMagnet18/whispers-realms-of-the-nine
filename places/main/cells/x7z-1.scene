@@ -453,6 +453,17 @@ start-cinderhold/start-cinderhold-signpost:
   physics: static
   primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js}
   rotation: {yaw: 171.41637851988605}
+waystone-emberforged:
+  feetPosition: {x: 906.06, y: 40.3, z: -166.5}
+  id: waystone-emberforged
+  physics: static
+  primitive: {kind: scripted, params: {emit: [3, 1.1, 0.3], seed: 11, tint: oklch(0.75 0.19 45)}, script: scripts/gen/waystone.js}
+  rotation: {yaw: -120}
+  tags: [waystone]
+waystone-emberforged-light:
+  feetPosition: {x: 906.062177826491, y: 46, z: -166.5}
+  id: waystone-emberforged-light
+  light: {color: "#ff8a40", distance: 16, intensity: 9, kind: point}
 waystone-highlands:
   feetPosition: {x: 844, y: {terrain: 0}, z: -157}
   id: waystone-highlands

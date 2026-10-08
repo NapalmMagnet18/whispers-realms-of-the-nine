@@ -264,3 +264,14 @@ thr-seedling:
   rotation: 287
   state: {after: testimony_choice, afterText: "First: choose a testimony at the shrine", mark: rootblight, quest: THR-06, say: Grey rot creeps from the soil. You scrape it back and pack clean earth around the stem. It holds., title: Rootblight on the Seedling, verb: Scrape away the blight}
   tags: [quest-mark, rootwake-glade]
+waystone-briarkin:
+  feetPosition: {x: -720, y: 19.5, z: 77}
+  id: waystone-briarkin
+  physics: static
+  primitive: {kind: scripted, params: {emit: [0.9, 2.4, 0.6], seed: 8, tint: oklch(0.85 0.17 140)}, script: scripts/gen/waystone.js}
+  rotation: {yaw: 180}
+  tags: [waystone]
+waystone-briarkin-light:
+  feetPosition: {x: -720, y: 25.200000000000003, z: 77}
+  id: waystone-briarkin-light
+  light: {color: "#a8f070", distance: 16, intensity: 9, kind: point}

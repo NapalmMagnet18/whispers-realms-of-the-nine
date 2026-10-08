@@ -567,3 +567,14 @@ strand-npc-sena:
   rotation: {yaw: 225}
   state: {homeYaw: 225, idle: Idle_FoldArms_Loop, npcName: Pilot Sena Wavebound, who: sena, yaw: 225}
   tags: [npc, talker, townsfolk, quest-npc, breakwater-strand]
+waystone-saltborn:
+  feetPosition: {x: 237.94, y: 2.9, z: 1426.5}
+  id: waystone-saltborn
+  physics: static
+  primitive: {kind: scripted, params: {emit: [0.6, 1.9, 2.6], seed: 8, tint: oklch(0.85 0.12 210)}, script: scripts/gen/waystone.js}
+  rotation: {yaw: 60}
+  tags: [waystone]
+waystone-saltborn-light:
+  feetPosition: {x: 237.93782217350892, y: 8.6, z: 1426.5}
+  id: waystone-saltborn-light
+  light: {color: "#80d8ff", distance: 16, intensity: 9, kind: point}

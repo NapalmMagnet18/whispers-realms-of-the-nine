@@ -7,3 +7,14 @@ hc-reh-mark-0:
   rotation: {yaw: 0}
   state: {mark: loose_braid, quest: REH-11, say: "Over, under, through. You say the name as you knot it.", title: Loosened Name-Braid, verb: Retie}
   tags: [quest-mark, homecoming]
+waystone-reedbound:
+  feetPosition: {x: -430.5, y: 11.9, z: 579.36}
+  id: waystone-reedbound
+  physics: static
+  primitive: {kind: scripted, params: {emit: [0.6, 2.3, 1.6], seed: 9, tint: oklch(0.85 0.13 170)}, script: scripts/gen/waystone.js}
+  rotation: {yaw: 140}
+  tags: [waystone]
+waystone-reedbound-light:
+  feetPosition: {x: -430.49951326780575, y: 17.6, z: 579.3623111018328}
+  id: waystone-reedbound-light
+  light: {color: "#80ffd0", distance: 16, intensity: 9, kind: point}

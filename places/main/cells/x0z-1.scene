@@ -793,3 +793,14 @@ ward-well:
   physics: static
   primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
   tags: [lantern-ward]
+waystone-marchborn:
+  feetPosition: {x: 3.5, y: 0.7, z: -91.36}
+  id: waystone-marchborn
+  physics: static
+  primitive: {kind: scripted, params: {emit: [2.6, 1.7, 0.6], seed: 9, tint: oklch(0.88 0.13 80)}, script: scripts/gen/waystone.js}
+  rotation: {yaw: -40}
+  tags: [waystone]
+waystone-marchborn-light:
+  feetPosition: {x: 3.499513267805776, y: 6.3999999999999995, z: -91.36231110183284}
+  id: waystone-marchborn-light
+  light: {color: "#ffcf80", distance: 16, intensity: 9, kind: point}
