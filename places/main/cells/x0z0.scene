@@ -535,6 +535,22 @@ briar-twisted-0:
   rotation: 0
   scale: 0.75
   tags: [forest, briar-kit]
+cl-house-miller:
+  children: [{feetPosition: {x: 1.5, y: 1.6, z: -1}, id: cl-house-miller-hearth, light: {color: oklch(0.82 0.14 60), distance: 9, intensity: 1.8, kind: point}}, {feetPosition: {x: 1, y: 4.8, z: 0}, id: cl-house-miller-upstairs, light: {color: oklch(0.82 0.14 60), distance: 8, intensity: 1.4, kind: point}}, {feetPosition: {x: -2.1, y: 2.3, z: 3.38}, id: cl-house-miller-door-lamp, light: {color: oklch(0.85 0.15 65), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: 63, y: 0.55, z: 30}
+  id: cl-house-miller
+  model: /cdn/value.444ed3715c3d2e201e60f9e3f4cb0d79fa1f4f289a4f9ca558c57903baebd51c.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 180}
+  tags: [building]
+cl-house-tanner:
+  children: [{feetPosition: {x: 1.5, y: 1.6, z: -1}, id: cl-house-tanner-hearth, light: {color: oklch(0.82 0.14 60), distance: 9, intensity: 1.8, kind: point}}, {feetPosition: {x: 1, y: 4.8, z: 0}, id: cl-house-tanner-upstairs, light: {color: oklch(0.82 0.14 60), distance: 8, intensity: 1.4, kind: point}}, {feetPosition: {x: -2.1, y: 2.3, z: 3.38}, id: cl-house-tanner-door-lamp, light: {color: oklch(0.85 0.15 65), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: 62, y: 0.4, z: -19}
+  id: cl-house-tanner
+  model: /cdn/value.8a07d5eca8fd5e4a6f40578aab3ea5c5e199fe80d9eea163d3951a209e638e48.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 0}
+  tags: [building]
 cottage-e:
   children: [{feetPosition: {x: 0, y: 2.2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 8, intensity: 4, kind: point}}]
   feetPosition: {x: 31, y: 4, z: -20}

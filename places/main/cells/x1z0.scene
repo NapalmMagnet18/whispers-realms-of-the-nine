@@ -62,6 +62,14 @@ boulder-8:
   primitive: {kind: scripted, params: {ore: null, r: 1}, script: scripts/gen/rock.js}
   rotation: 504
   tags: [rock]
+cl-house-chandler:
+  children: [{feetPosition: {x: 1.5, y: 1.6, z: -1}, id: cl-house-chandler-hearth, light: {color: oklch(0.82 0.14 60), distance: 9, intensity: 1.8, kind: point}}, {feetPosition: {x: 1, y: 4.8, z: 0}, id: cl-house-chandler-upstairs, light: {color: oklch(0.82 0.14 60), distance: 8, intensity: 1.4, kind: point}}, {feetPosition: {x: -2.1, y: 2.3, z: 3.38}, id: cl-house-chandler-door-lamp, light: {color: oklch(0.85 0.15 65), distance: 7, intensity: 1.2, kind: point}}]
+  feetPosition: {x: 74, y: 0.45, z: -21}
+  id: cl-house-chandler
+  model: /cdn/value.0e96ccd845ad42740f5cb2d4473ceef7141a7aa1e476cf2046251c847dfcca45.glb
+  physics: {body: static, collider: mesh}
+  rotation: {yaw: 0}
+  tags: [building]
 copper-0:
   feetPosition: {x: 141, y: {terrain: -0.2}, z: 24}
   id: copper-0
