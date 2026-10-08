@@ -418,7 +418,7 @@ sor-mirelurker-lair:
   behavior: scripts/scavengers.js
   feetPosition: {x: -1265, y: 0.4, z: 902}
   id: sor-mirelurker-lair
-  state: {crew: [{id: sor-mirelurker, x: -1265, yaw: 270, z: 902}], damage: 140, hp: 900, model: /cdn/model-creature-fantasy-mirelurker-hulking-swamp-crab-beast-mossy-shell-glowing-blue-splinter-in-side.glb, name: Mirelurker (Elite), reward: {copper: 400, xp: 300}, scale: 1.9, tallyKey: elite_mirelurker, toll: {damage: 260, enrageAt: 50, enrageEvery: 7, every: 11, name: The Mirelurker, radius: 7, sound: /cdn/moodboard-painterly-fantasy/sfx-bell-buoy-ding.mp3, windup: 1.8}}
+  state: {crew: [{id: sor-mirelurker, x: -1265, yaw: 270, z: 902}], damage: 140, extents: {x: 3.4, y: 2.2, z: 3.8}, hp: 900, model: /cdn/model-creature-fantasy-mirelurker-hulking-swamp-crab-beast-mossy-shell-glowing-blue-splinter-in-side.glb, name: Mirelurker (Elite), radius: 1.8, reward: {copper: 400, xp: 300}, scale: 1, tallyKey: elite_mirelurker, toll: {damage: 260, enrageAt: 50, enrageEvery: 7, every: 11, name: The Mirelurker, radius: 7, sound: /cdn/moodboard-painterly-fantasy/sfx-bell-buoy-ding.mp3, windup: 1.8}}
   tags: [sorrowfen]
 sor-tether-crew:
   behavior: scripts/scavengers.js

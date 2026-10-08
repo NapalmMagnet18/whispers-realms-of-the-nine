@@ -16,9 +16,9 @@ const near = (p) => ({ nearby: p, radius: 40 });
 function spawnOne(ctx, def, cs = {}) {
   ctx.spawn(def.id, {
     tags: ["enemy", "scavenger", "quarry-scavenger"], physics: "character", model: cs.model || S.model, ...(cs.look ? { material: { ...cs.look, dissolve: 0 } } : {}),
-    layout: { minExtents: { x: -0.4, y: 0, z: -0.3 }, maxExtents: { x: 0.4, y: 1.8, z: 0.3 } },
+    layout: cs.extents ? { minExtents: { x: -cs.extents.x / 2, y: 0, z: -cs.extents.z / 2 }, maxExtents: { x: cs.extents.x / 2, y: cs.extents.y, z: cs.extents.z / 2 } } : { minExtents: { x: -0.4, y: 0, z: -0.3 }, maxExtents: { x: 0.4, y: 1.8, z: 0.3 } },
     ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: cs.floorY != null ? cs.floorY : { terrain: 0 } }, ...(cs.scale ? { scale: cs.scale } : {}), rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
-    state: { hp: cs.hp || S.hp, maxHp: cs.hp || S.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: 0.45, hpPct: 100, unhurt: true },
+    state: { hp: cs.hp || S.hp, maxHp: cs.hp || S.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: cs.radius || 0.45, hpPct: 100, unhurt: true },
   });
 }
 function gait(w, m, name, speed = 1) {
