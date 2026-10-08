@@ -173,7 +173,7 @@ function complete(ctx, questId) {
   say(ctx, qt(q.id, 'doneText'), q.turnInNpcId || q.giverNpcId);
   const head = { x: ctx.self.feetPosition.x, y: ctx.self.feetPosition.y + 2.2, z: ctx.self.feetPosition.z };
   ctx.emit('damageNumber', { position: head, text: `+${formatText(q.rewards.copper || 0)}  +${q.rewards.xp} XP`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.2 }, { audience: { player: ctx.self.id } });
-  ctx.emit('playSound', { clip: 'cdn/sfx-reward.mp3', position: ctx.self.feetPosition, volume: 0.5 }, { audience: { player: ctx.self.id } });
+  ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-quest-complete-triumphant-short-brass-fanfare-timpani-hit-shimmer.mp3', position: ctx.self.feetPosition, volume: 0.6 }, { audience: { player: ctx.self.id } });
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-coins-clink.mp3', position: ctx.self.feetPosition, volume: 0.6 }, { audience: { player: ctx.self.id } });
   questFirst(ctx, questId);
   ctx.emit('milestone', { step: /^Q00\d$/.test(questId) ? 8 + Number(questId.slice(3)) : /^MAR-0\d$/.test(questId) ? Number(questId.slice(4)) : 1, name: questId + ' complete' });

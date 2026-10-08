@@ -848,12 +848,19 @@ export function update(objectApi, dt) {
 // UI sounds from the creator's pack: parchment for the book-like panels, a soft click for every other button
 var UI_SCROLL = ['toggleQuests', 'toggleSpellbook', 'toggleMap', 'toggleWorldMap', 'toggleTalents', 'toggleProfessions'];
 var UI_SND = { scroll: '/cdn/sfx-scroll-paper-unroll-magic-r41hu1b5.mp3', click: '/cdn/sfx-menu-select-click-hxtrmn8i.mp3', toggle: '/cdn/sfx-toggle-switch-ui-click-uz2we2q1.mp3', equip: '/cdn/sfx-handle-small-leather-movement-rs0cnxf1.mp3', unequip: '/cdn/drop-leather-item-inventory-sound-g55w76vw.mp3', coins: '/cdn/handle-coins-currency-pickup-phoc2e1u.mp3', doorClose: '/cdn/sfx-door-close-mechanical-wood-2zwf6s21.mp3', draw: '/cdn/sfx-draw-knife-metal-blade-3xr007v1.mp3' };
+// Diablo-style: every kind of gear has its own sound going on
+var EQUIP_SND = { weapon: '/cdn/moodboard-painterly-fantasy/sfx-equip-weapon-steel-sword-drawn-ringing-scrape.mp3', offHand: '/cdn/moodboard-painterly-fantasy/sfx-equip-heavy-wooden-shield-strapped-on-thunk-buckle.mp3',
+  head: '/cdn/moodboard-painterly-fantasy/sfx-equip-iron-helmet-set-down-metal-clank-chainmail-jingle.mp3', chest: '/cdn/moodboard-painterly-fantasy/sfx-equip-plate-armour-chest-heavy-metal-clank-straps-cinched.mp3', armor: '/cdn/moodboard-painterly-fantasy/sfx-equip-plate-armour-chest-heavy-metal-clank-straps-cinched.mp3',
+  legs: '/cdn/moodboard-painterly-fantasy/sfx-equip-chainmail-leggings-rustle-metal-rings-jingle.mp3', feet: '/cdn/moodboard-painterly-fantasy/sfx-equip-armoured-boots-stomp-buckle-leather-creak.mp3', hands: '/cdn/moodboard-painterly-fantasy/sfx-equip-leather-gauntlets-pulled-on-creak-metal-tap.mp3',
+  ring1: '/cdn/moodboard-painterly-fantasy/sfx-equip-gold-ring-small-bright-metal-clink-sparkle.mp3', ring2: '/cdn/moodboard-painterly-fantasy/sfx-equip-gold-ring-small-bright-metal-clink-sparkle.mp3', ring3: '/cdn/moodboard-painterly-fantasy/sfx-equip-gold-ring-small-bright-metal-clink-sparkle.mp3',
+  amulet: '/cdn/moodboard-painterly-fantasy/sfx-equip-amulet-chain-jingle-gem-chime.mp3', belt: '/cdn/moodboard-painterly-fantasy/sfx-equip-leather-belt-buckle-cinched.mp3' };
 function uiSound(objectApi, input) {
   var acts = input.actions || {};
   if (acts.equipItem) {
     var ei = input.actionData && input.actionData.equipItem, it = ei && (objectApi.getState().inventory || [])[ei.index];
     var blade = it && it.stats && (it.stats.damage || it.stats.attack);
-    objectApi.playSound(blade ? UI_SND.draw : UI_SND.equip, { volume: 0.3 }); return;
+    var sl = it && it.slot, clip = blade || sl === 'mainHand' ? EQUIP_SND.weapon : EQUIP_SND[sl] || UI_SND.equip;
+    objectApi.playSound(clip, { volume: 0.4 }); return;
   }
   if (acts.unequipItem) { objectApi.playSound(UI_SND.unequip, { volume: 0.3 }); return; }
   if (acts.buyShopItem || acts.sellItem) { objectApi.playSound(UI_SND.coins, { volume: 0.3 }); return; }
