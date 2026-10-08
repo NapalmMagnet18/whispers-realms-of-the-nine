@@ -123,7 +123,13 @@ export function update(ctx, dt) {
   const camp = ctx.self, cs = camp.state, now = ctx.now(), M = (ctx.session["scav:" + camp.id] ??= {}); // each camp its own scratch: two camps never share a census clock
   if (now >= (M.census ?? 0)) {
     M.census = now + 1000;
-    for (const def of (cs.crew || S.crew)) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def, cs);
+    // a crew stands only while someone rides near: its bodies (and their heavy model) never load into a town's first picture
+    const cp = camp.feetPosition, nearest = Math.min(Infinity, ...ctx.place.players.map((p) => flat(p.feetPosition, cp)));
+    if (nearest < (cs.wakeRadius || 60)) {
+      for (const def of (cs.crew || S.crew)) if (!ctx.getObject(def.id) && now >= (cs.respawnAt?.[def.id] ?? 0)) spawnOne(ctx, def, cs);
+    } else if (nearest > (cs.sleepRadius || 110)) {
+      for (const def of (cs.crew || S.crew)) { const w = ctx.getObject(def.id); if (w && w.state?.mode !== "dead" && w.state?.mode !== "chase") { ctx.destroy(def.id); delete M[def.id]; } }
+    }
   }
   const players = ctx.place.players.filter((p) => (p.state?.health ?? 1000) > 0 && !p.state?.dying && !p.state?.pvpDead && p.state?.phase !== "creating" && !((p.state?.veiledUntil || 0) > ctx.now()));
   for (const def of (cs.crew || S.crew)) {
