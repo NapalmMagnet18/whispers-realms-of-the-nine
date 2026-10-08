@@ -702,7 +702,7 @@ export function update(objectApi, dt) {
     var isMetaPlace = currentPlace.indexOf('menu') !== -1 || currentPlace.indexOf('creation') !== -1;
     if (!isMetaPlace) {
       var PLACE_NAMES = {
-        'main': 'The World',
+        'main': "Lantern's Reach",
       };
       var displayName = PLACE_NAMES[currentPlace] || currentPlace;
       patch._zoneBanner = displayName;

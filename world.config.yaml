@@ -1,12 +1,12 @@
-# name: the game's name: fill it once you know what this is. description: one line for the box art.
-name: ""
-description: ""
+name: 'WHISPERS: Realms of the Nine'
+description: A lantern-lit frontier town, a wolf-haunted forest and a copper quarry.
+  Gather, craft, fight together.
 camera: templates/camera.js#camera
 lighting: scripts/lighting.js
 defaultPlace: main-menu-land
 engine:
   behaviors:
-    - scripts/arrival.js
+  - scripts/arrival.js
   networking:
     mode: multiplayer
   ui:
@@ -16,7 +16,7 @@ inputs:
   actions:
     jump:
       keys:
-        - space
+      - space
   axes:
     moveX:
       keys: a/d
@@ -25,7 +25,6 @@ inputs:
 player: templates/player.js#player
 ui:
   render: mods/mmorpg-tools/mod-mmorpg/ui.js
-# nametag: the tag over other players' heads: this file, yours to edit: export default function (ctx, tag) { return html }, the shape ui.js has.
 nametag: ui/nametag.js
 authoring:
   starter:
