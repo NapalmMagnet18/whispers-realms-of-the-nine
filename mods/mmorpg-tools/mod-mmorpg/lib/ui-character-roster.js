@@ -30,7 +30,7 @@ function realmDetail(s, list, pick) {
     return '<div style="display:flex;justify-content:space-between;font-size:13px;padding:2px 0;border-bottom:1px solid rgba(201,164,106,.15)"><span><span style="color:' + DIM + '">' + (i + 1) + '.</span> ' + esc(h.name) + ' <span style="color:' + DIM + ';font-size:11px">' + esc(h.class) + '</span></span><span style="color:' + GOLD + '">' + (h.level || 1) + '</span></div>';
   }).join('') || '<div style="font-size:12px;font-style:italic;color:' + DIM + '">' + (d.loading ? 'Reading the ledger\u2026' : 'No heroes yet. Be the first.') + '</div>';
   var firsts = (d.firsts || []).map(function (f) {
-    return '<div style="font-size:12px;padding:2px 0">' + STAR + ' ' + esc(f.label) + ' <span style="color:' + DIM + '">\u2014</span> ' + esc(f.char_name) + '</div>';
+    return '<div style="display:flex;align-items:center;gap:6px;font-size:12px;padding:2px 0">' + STAR + ' '<span>' + esc(f.label) + ' <span style="color:' + DIM + '">\u2014</span> ' + esc(f.char_name) + '</span></div>';
   }).join('') || '<div style="font-size:12px;font-style:italic;color:' + DIM + '">' + (d.loading ? '' : 'Every first is still unclaimed.') + '</div>';
   return '<div style="' + ART.frame('realmRow', 10, 'rgba(20,15,10,.92)') + 'padding:8px 10px;min-height:100%;box-sizing:border-box">'
     + '<div style="font-family:Cinzel,Georgia,serif;font-size:17px;font-weight:700;color:' + GOLD + '">' + esc(r.name || '') + '</div>'
