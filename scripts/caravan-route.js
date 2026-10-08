@@ -6,7 +6,7 @@ const ROAD = [[-30, 26], [-50, 50], [-110, 120], [-190, 220], [-280, 340], [-360
 const SIDE = 4.5;            // metres right of the road's centre line, so the road stays clear
 const WALK = 1.6;            // m/s, a mule's patient pace
 const DWELL = 240;           // seconds parked at each stop
-const STOPS = [6, 315, 588]; // arc metres along ROAD: Reach edge, fen camp, Reedhaven gate
+const STOPS = [6, 326, 600]; // arc metres along ROAD: Reach edge, fen camp, Reedhaven gate
 const RIDERS = ["march-caravan-goods", "march-caravan-lamp", "march-caravan-bells", "march-npc-mott"];
 
 const SEG = []; let LEN = 0;
