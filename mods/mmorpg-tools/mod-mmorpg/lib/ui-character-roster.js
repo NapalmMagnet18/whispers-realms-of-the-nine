@@ -47,7 +47,7 @@ function realmList(s) {
     var on = r.room === pick, here = r.room === cur, full = r.population === 'Full';
     return '<div class="wm-row" data-interactive onclick="sendAction(\'pickRealm\',{room:\'' + r.room + '\'})" style="display:grid;grid-template-columns:2.2fr 1fr 1.3fr .8fr;gap:6px;align-items:center;margin-bottom:5px;min-height:38px;' + ART.frame('realmRow', 10, on ? 'rgba(110,78,26,.92)' : 'rgba(24,18,12,.9)') + 'padding:4px 6px;' + (here ? 'box-shadow:0 0 0 2px ' + GOLD + ';' : '') + (full ? 'opacity:.6;' : '') + '">'
       + '<div style="display:flex;align-items:center;gap:8px;font-family:Cinzel,Georgia,serif;font-weight:700;color:' + (on || here ? GOLD : INK) + '">' + emblem(r.name, r.type, on) + '<span>' + (r.awake ? '<span style="color:#7fd36b;font-size:10px">\u25cf</span> ' : '') + esc(r.name) + (r.recommended ? ' <span style="font-size:10px;padding:1px 5px;background:#3f5a3a;color:#d8f0c0;letter-spacing:1px">RECOMMENDED</span>' : '') + (here ? ' <span style="font-size:10px;color:' + DIM + '">(current)</span>' : '') + '</span></div>'
-      + '<div style="color:' + (TYPE[r.type] || INK) + ';font-size:13px"><span style="font-size:15px;margin-right:4px">' + (SIGIL[r.type] || '') + '</span>' + esc(r.type) + '</div>'
+      + '<div style="display:flex;align-items:center;gap:5px;color:' + (TYPE[r.type] || INK) + ';font-size:13px">' + (SIGIL[r.type] || '') + '<span>' + esc(r.type) + '</span></div>'
       + '<div>' + popBar(r.population) + '</div>'
       + '<div style="text-align:right;font-family:Cinzel,Georgia,serif;font-weight:700;color:' + ((r.chars || 0) ? GOLD : DIM) + '">' + (r.chars || 0) + ' <span style="font-size:10px;color:' + DIM + ';font-weight:400">/ 6</span></div></div>';
   }).join('');
