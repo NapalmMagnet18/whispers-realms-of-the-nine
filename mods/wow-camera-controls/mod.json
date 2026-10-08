@@ -1,0 +1,69 @@
+{
+  "name": "wow-camera-controls",
+  "displayName": "World of Warcraft Camera Controls",
+  "description": "Camera controls exactly like World of Warcraft, for anyone who wants that classic MMO feel: hold left mouse to orbit, hold right mouse to steer, both buttons run forward, wheel zooms smoothly all the way into first person. Eased, collision-aware, touch-drag and pinch friendly.",
+  "tags": [
+    "camera",
+    "controls",
+    "mmo",
+    "third-person",
+    "mouse"
+  ],
+  "visibility": "public",
+  "version": "1.1.0",
+  "inputs": {
+    "actions": {
+      "orbit": {
+        "mouse": "left",
+        "touch": {
+          "button": false
+        },
+        "activeOn": "hold"
+      },
+      "steer": {
+        "mouse": "right",
+        "touch": {
+          "button": false
+        },
+        "activeOn": "hold"
+      },
+      "autoRun": {
+        "keys": [
+          "q"
+        ],
+        "touch": {
+          "button": false
+        }
+      },
+      "release": {
+        "keys": [
+          "escape"
+        ],
+        "touch": {
+          "button": false
+        }
+      },
+      "autoRunStop": {
+        "keys": [
+          "w"
+        ],
+        "touch": {
+          "button": false
+        }
+      }
+    },
+    "axes": {
+      "zoom": {
+        "mouse": "wheelY"
+      }
+    }
+  },
+  "attach": [
+    {
+      "target": {
+        "kind": "camera"
+      },
+      "behavior": "camera.js"
+    }
+  ]
+}
