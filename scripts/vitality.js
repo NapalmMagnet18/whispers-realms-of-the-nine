@@ -34,7 +34,7 @@ function eat(ctx, me, s, now, dt, hurt) {
   if (hurt) { ctx.session.food = null; ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'Meal interrupted', color: '#e2876a', size: 0.95, lifetime: 1.4 }, to); return; }
   const max = s.maxHealth || 1000;
   if (now >= f.until || (s.health ?? 0) >= max) { ctx.session.food = null; ctx.emit('playSound', { clip: FOOD.done, volume: 0.4 }, to); return; }
-  s.health = Math.min(max, (s.health ?? 0) + Math.round(f.perSec * dt)); ctx.session.lastHp = s.health;
+  s.health = Math.min(max, (s.health ?? 0) + Math.round(f.perSec * dt));
   if (now >= f.biteAt) { f.biteAt = now + 2500; ctx.emit('playSound', { clip: FOOD.bite, volume: 0.45, pitch: 0.92 + ctx.random() * 0.16 }, to); }
 }
 export const updateSchedule = { every: { seconds: 0.25 } };
