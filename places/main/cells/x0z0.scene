@@ -1159,7 +1159,7 @@ reach-npc-bram:
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 180}
   state: {homeYaw: 180, idle: Idle_FoldArms_Loop, npcName: Bram Alder, who: bram, yaw: 180}
-  tags: [npc, talker, townsfolk]
+  tags: [npc, talker, townsfolk, quest-npc]
 reach-npc-dren:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -16.8, y: {terrain: 0}, z: 5.2}
@@ -1179,7 +1179,7 @@ reach-npc-mira:
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 90}
   state: {homeYaw: 90, idle: Idle_FoldArms_Loop, npcName: Mira the Forgekeeper, who: mira, yaw: 90}
-  tags: [npc, talker, townsfolk]
+  tags: [npc, talker, townsfolk, quest-npc]
 reach-npc-rowan:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -36.5, y: {terrain: 0}, z: -12.2}
@@ -1189,7 +1189,7 @@ reach-npc-rowan:
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 90}
   state: {homeYaw: 90, idle: Idle_Lantern_Loop, npcName: Rowan the Ferryman, who: rowan, yaw: 90}
-  tags: [npc, talker, townsfolk]
+  tags: [npc, talker, townsfolk, quest-npc]
 reach-npc-tamsin:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -18, y: {terrain: 0}, z: -0.6}
@@ -1199,7 +1199,7 @@ reach-npc-tamsin:
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 90}
   state: {homeYaw: 90, idle: Idle_Shield_Loop, npcName: Tamsin the Ranger, who: tamsin, yaw: 90}
-  tags: [npc, talker, townsfolk]
+  tags: [npc, talker, townsfolk, quest-npc]
 reach-npc-vale:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: 3.2, y: {terrain: 0}, z: -15.6}
@@ -1209,7 +1209,7 @@ reach-npc-vale:
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: 180}
   state: {homeYaw: 180, idle: Idle_Lantern_Loop, npcName: Sister Vale, who: vale, yaw: 180}
-  tags: [npc, talker, townsfolk]
+  tags: [npc, talker, townsfolk, quest-npc]
 reach-petals:
   feetPosition: {x: 0, y: {terrain: 0}, z: 0}
   id: reach-petals

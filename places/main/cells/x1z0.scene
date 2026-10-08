@@ -68,48 +68,48 @@ copper-0:
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 0
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 copper-1:
   feetPosition: {x: 129, y: {terrain: -0.2}, z: 36}
   id: copper-1
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 71
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 copper-2:
   feetPosition: {x: 145, y: {terrain: -0.2}, z: 38}
   id: copper-2
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 142
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 copper-3:
   feetPosition: {x: 125, y: {terrain: -0.2}, z: 22}
   id: copper-3
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 213
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 copper-4:
   feetPosition: {x: 135, y: {terrain: -0.2}, z: 44}
   id: copper-4
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 284
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 copper-5:
   feetPosition: {x: 149, y: {terrain: -0.2}, z: 28}
   id: copper-5
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 355
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 kit-fence-east-1:
   feetPosition: {x: 64, y: {terrain: 0}, z: -7.5}
   id: kit-fence-east-1
@@ -182,16 +182,16 @@ quarry-cave-vein-0:
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 180
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 quarry-cave-vein-1:
   feetPosition: {x: 137.4, y: 3, z: 9.2}
   id: quarry-cave-vein-1
   physics: static
   primitive: {kind: scripted, params: {ore: copper, r: 1}, script: scripts/gen/rock.js}
   rotation: 0
-  state: {resource: copper}
-  tags: [ore, copper, gatherable]
+  state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
+  tags: [ore, copper, gatherable, quest-mark]
 quarry-crane:
   feetPosition: {x: 161.8, y: 20.2, z: 11.8}
   id: quarry-crane
