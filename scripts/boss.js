@@ -101,6 +101,7 @@ export function update(ctx, dt) {
     for (const [i, a] of (D.abilities || []).entries()) m.clocks[i] = now + (a.first ?? a.every * 0.6) * 1000;
     m.nextSwing = now + 1500;
     if (D.sounds?.wake) ctx.emit("playSound", { clip: D.sounds.wake, position: w.feetPosition, volume: 0.9, maxDistance: 80 }, { audience: near(w.feetPosition, 90) });
+    if (VOICES[s.boss] && !s.add) for (const p of fighters) { const h = ctx.getObject(p.id); if (h && h.state) h.state._hushUntil = now + 2400; } // their music drops out for the line
     if (VOICES[s.boss] && !s.add) ctx.emit("playSound", { clip: VOICES[s.boss], position: w.feetPosition, volume: 1, maxDistance: 90, refDistance: 12, bus: "Voice", mode: "restart" }, { audience: near(w.feetPosition, 95) });
     if (D.wakeLine && !s.add) for (const p of fighters) ctx.emit("damageNumber", { position: { x: w.feetPosition.x, y: w.feetPosition.y + (D.height ?? 3) + 0.5, z: w.feetPosition.z }, text: D.wakeLine, color: "oklch(0.85 0.12 60)", size: 1.2, lifetime: 3 }, { audience: { player: p.id } });
     ctx.emit("screenShake", { intensity: 0.25, duration: 0.6 }, { audience: near(w.feetPosition) });
