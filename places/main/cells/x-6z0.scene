@@ -70,7 +70,7 @@ start-thornhollow/start-thornhollow-tree-1:
   physics: static
   primitive: {kind: scripted, params: {kind: pine}, script: scripts/gen/tree.js, seed: 40}
   rotation: {yaw: 0}
-  scale: 2.1
+  scale: 1.55
 start-thornhollow/start-thornhollow-tree-5:
   feetPosition: {x: -2, y: 3.880518236520814, z: -30}
   id: start-thornhollow/start-thornhollow-tree-5
@@ -79,4 +79,4 @@ start-thornhollow/start-thornhollow-tree-5:
   physics: static
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 44}
   rotation: {yaw: 212}
-  scale: 2.45
+  scale: 1.75

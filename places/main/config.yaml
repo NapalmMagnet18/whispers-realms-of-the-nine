@@ -363,3 +363,6 @@ terrain:
     start-cinderhold: {center: {x: 900, z: -170}, falloff: 12, height: 40.4, kind: flatten, shape: {kind: circle, radius: 21}}
     start-gullrest: {center: {x: 247, z: 1430}, falloff: 16, height: 3, kind: flatten, shape: {kind: circle, radius: 24}}
     start-gullrest-cove: {at: {x: 222, z: 1402}, bedMaterial: sand, depth: 2.6, kind: lake, level: 0.4, radius: 16}
+    start-thornhollow-clear: {center: {x: -720, z: 70}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
+    start-cinderhold-clear: {center: {x: 900, z: -170}, kind: clear-scatter, shape: {kind: circle, radius: 22}}
+    start-gullrest-clear: {center: {x: 250, z: 1430}, kind: clear-scatter, shape: {kind: circle, radius: 10}}
