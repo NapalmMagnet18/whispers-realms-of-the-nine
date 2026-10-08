@@ -110,6 +110,38 @@ copper-5:
   rotation: 355
   state: {gain: "+1 Copper Ore", mark: ore, quest: Q003, repeat: true, resource: copper, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Copper Vein, verb: Mine, waitText: The vein needs a moment...}
   tags: [ore, copper, gatherable, quest-mark]
+equ-drill-camp:
+  behavior: scripts/scavengers.js
+  feetPosition: {x: 151, y: {terrain: 0}, z: 58}
+  id: equ-drill-camp
+  state: {crew: [{id: equ-driller-1, x: 147, yaw: 60, z: 56}, {id: equ-driller-2, x: 151, yaw: 200, z: 62}, {id: equ-driller-3, x: 156, yaw: -90, z: 57}, {id: equ-driller-4, x: 149, yaw: 10, z: 59.5}], model: /cdn/model-humanoid-fantasy-miner-male-soot-goggles-heavy-apron-hand-drill.glb, name: Drill Crew Breaker, respawnAt: {}, tallyKey: drill_crew}
+  tags: [equ-drill-camp, quarry-chapter]
+equ-lamp-0:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 14, intensity: 3, kind: point}}]
+  feetPosition: {x: 150, y: {terrain: 0}, z: 57}
+  id: equ-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [quarry-chapter]
+equ-lamp-1:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 14, intensity: 3, kind: point}}]
+  feetPosition: {x: 178.5, y: {terrain: 0}, z: 31.5}
+  id: equ-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [quarry-chapter]
+equ-lamp-2:
+  children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 14, intensity: 3, kind: point}}]
+  feetPosition: {x: 121, y: {terrain: 0}, z: 24}
+  id: equ-lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [quarry-chapter]
+equ-rig-smoke:
+  feetPosition: {x: 155.9, y: {terrain: 2.6}, z: 61.3}
+  fx: {script: "fx\npop smoke rate=6 on=disc(.12) life=2.5..4 v=up(1..1.6)+sdir()*.2 size=.25..0.45 acc=buoy(.4)+curl(.4)*.6+drag(.7) sz=$size*(.6>2.6) col=<.25,.23,.22>><.4,.39,.38> a=0>.2:.35>.7:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)"}
+  id: equ-rig-smoke
+  tags: [quarry-chapter]
 kit-fence-east-1:
   feetPosition: {x: 64, y: {terrain: 0}, z: -7.5}
   id: kit-fence-east-1
@@ -127,6 +159,204 @@ qm-bellglass-lamp:
   rotation: 246
   state: {mark: bellglass_lamp, quest: Q006, say: "The glass is shattered from inside. Pressed into the iron: a fresh maker seal, a hollow crown, stamped over a far older mark of the Accord.", title: the Broken Bellglass Lamp, verb: Investigate}
   tags: [quest-mark]
+qm-equ-board:
+  feetPosition: {x: 116, y: {terrain: 0}, z: 31}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-board
+  physics: static
+  primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
+  rotation: -90
+  state: {gain: Six names displayed, mark: miner_names, quest: EQU-08, say: "Hadren Coe. Ula Vey. Brannoch. Little Sef. Morrow Tull. Ilse of the Third Seam. Six names, back where people walk past them.", title: The Quarry Board, verb: Set the names on}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-brake-0:
+  feetPosition: {x: 158, y: {terrain: 0}, z: 4}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-brake-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: brake}, script: scripts/gen/quarryworks.js}
+  rotation: -60
+  state: {gain: "+1 Brake set", mark: lift_brake, quest: EQU-03, sound: /cdn/moodboard-painterly-fantasy/sfx-iron-lever-clank.mp3, title: Lift Brake, verb: Set}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-brake-1:
+  feetPosition: {x: 160.5, y: {terrain: 0}, z: 8.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-brake-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: brake}, script: scripts/gen/quarryworks.js}
+  rotation: -35
+  state: {gain: "+1 Brake set", mark: lift_brake, quest: EQU-03, sound: /cdn/moodboard-painterly-fantasy/sfx-iron-lever-clank.mp3, title: Lift Brake, verb: Set}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-brake-2:
+  feetPosition: {x: 166, y: {terrain: 0}, z: 14}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-brake-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: brake}, script: scripts/gen/quarryworks.js}
+  rotation: -10
+  state: {gain: "+1 Brake set", mark: lift_brake, quest: EQU-03, sound: /cdn/moodboard-painterly-fantasy/sfx-iron-lever-clank.mp3, title: Lift Brake, verb: Set}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-buyer:
+  feetPosition: {x: 178, y: {terrain: 0}, z: 30}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-buyer
+  physics: static
+  primitive: {kind: scripted, params: {kind: cart}, script: scripts/gen/props.js}
+  rotation: 80
+  state: {gain: Buyer's camp found, mark: court_buyer, quest: EQU-05, say: "A tidy cart, a cold fire, and a wax seal pressed with a hollow crown.", title: Grey Coat's Cart, verb: Search}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-chalk:
+  feetPosition: {x: 116.8, y: {terrain: 0}, z: 33.6}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-chalk
+  state: {after: miner_names, gain: Exit coordinates read, mark: exit_coords, quest: EQU-08, say: "Scratched small: EAST SHAFT, 40 PACES, LEFT AT THE BELL. They left a road.", title: Chalk Under the Board, verb: Read}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-corridor:
+  feetPosition: {x: 156, y: {terrain: 0}, z: 30}
+  fx: {script: "fx\npop hum rate=4 on=sphere(.6) life=1.6..2.6 v=up(.2..0.5) size=.03..0.06 acc=curl(.6)+drag(.8) col=hdr(1.8,1.1,3.2) a=0>.25:1>.7:.7>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,.7,0> r=light(<.75,.5,1>,1.6,5)"}
+  id: qm-equ-corridor
+  state: {after: shaft_connector, gain: Corridor charted, mark: lost_corridor, quest: EQU-09, say: "Forty paces of cut stone, a bell hanging at the turn, and cold air from the north. Toward the Reach. Toward the Hollowcrypt.", title: The Lost Corridor, verb: Look down}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-door:
+  feetPosition: {x: 158.3, y: {terrain: 0}, z: 30}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-door
+  physics: static
+  primitive: {kind: scripted, params: {kind: door}, script: scripts/gen/quarryworks.js}
+  rotation: 90
+  state: {gain: Shaft door opened, mark: shaft_connector, quest: EQU-09, sound: /cdn/moodboard-painterly-fantasy/sfx-iron-door-grind-open.mp3, title: East Shaft Door, verb: Open}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-gallery:
+  feetPosition: {x: 135, y: 3, z: 12.5}
+  fx: {script: "fx\npop hum rate=4 on=sphere(.6) life=1.6..2.6 v=up(.2..0.5) size=.03..0.06 acc=curl(.6)+drag(.8) col=hdr(1.8,1.1,3.2) a=0>.25:1>.7:.7>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,.7,0> r=light(<.75,.5,1>,1.6,5)"}
+  id: qm-equ-gallery
+  state: {after: lift_brake, gain: Gallery seen, mark: lower_gallery, quest: EQU-03, say: "Below the veins the floor drops into dressed stone. An engine of brass and glass ticks in the dark, warm as a hearth.", title: The Lower Gallery, verb: Enter}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-hammer-a:
+  feetPosition: {x: 123, y: {terrain: 0}, z: 18.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-hammer-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: sledge}, script: scripts/gen/quarry.js}
+  rotation: 30
+  state: {after: sealed_wall, gain: "+1 Bearing taken", mark: tuning_hammer, quest: EQU-06, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Tuning Hammer, verb: Strike}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-hammer-b:
+  feetPosition: {x: 123.5, y: {terrain: 0}, z: 26}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-hammer-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: sledge}, script: scripts/gen/quarry.js}
+  rotation: 150
+  state: {after: sealed_wall, gain: "+1 Bearing taken", mark: tuning_hammer, quest: EQU-06, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Tuning Hammer, verb: Strike}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-ledger-a:
+  feetPosition: {x: 123.5, y: {terrain: 0}, z: 38.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-ledger-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}
+  rotation: 160
+  state: {gain: "+1 Shift Ledger", mark: shift_ledger, quest: EQU-02, title: Camp Chest, verb: Search}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-ledger-b:
+  feetPosition: {x: 126, y: {terrain: 0}, z: 45}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-ledger-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}
+  rotation: 10
+  state: {gain: "+1 Shift Ledger", mark: shift_ledger, quest: EQU-02, title: Ledger Table, verb: Take}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-order-a:
+  feetPosition: {x: 176, y: {terrain: 0}, z: 33.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-order-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 20
+  state: {after: court_buyer, gain: "+1 Purchase Order", mark: purchase_order, quest: EQU-05, title: Order Crate, verb: Search}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-order-b:
+  feetPosition: {x: 181, y: {terrain: 0}, z: 27}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-order-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 0
+  state: {after: court_buyer, gain: "+1 Purchase Order", mark: purchase_order, quest: EQU-05, title: Order Barrel, verb: Search}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-rig:
+  feetPosition: {x: 154, y: {terrain: -0.2}, z: 60.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-rig
+  physics: static
+  primitive: {kind: scripted, params: {kind: rig}, script: scripts/gen/quarryworks.js}
+  rotation: 30
+  state: {after: drill_crew, gain: Rig stopped, mark: drill_rig, quest: EQU-07, say: "The boiler shrieks, then sighs. The bit stops a hand's width from a vein that glows like a held breath.", sound: /cdn/moodboard-painterly-fantasy/sfx-steam-valve-hiss.mp3, title: Unlicensed Drill Rig, verb: Throw the valve on}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-stake:
+  feetPosition: {x: 140, y: {terrain: 0}, z: 1}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-stake
+  physics: static
+  primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/quarryworks.js}
+  rotation: 15
+  state: {gain: Stake inspected, mark: survey_stake, quest: EQU-01, say: "Snapped, not rotted. Fresh boot prints around it, and the ribbon torn off toward the east road.", title: Broken Survey Stake, verb: Inspect}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-tally:
+  feetPosition: {x: 132.6, y: {terrain: 0}, z: 42}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-tally
+  physics: static
+  primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
+  rotation: -150
+  state: {after: shift_ledger, gain: Kiv confronted, mark: foreman_confront, quest: EQU-02, say: "Kiv won't meet your eye. \"Six picks short that night. I wrote what the Guild told me to write. ...I'm sorry.\"", title: Kiv's Tally Board, verb: Confront Kiv at}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-tuning:
+  feetPosition: {x: 143.5, y: {terrain: 0}, z: 22}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-tuning
+  physics: static
+  primitive: {kind: scripted, params: {kind: anvil}, script: scripts/gen/props.js}
+  rotation: 40
+  state: {after: alloy_sample, gain: Signals compared, mark: signal_compare, quest: EQU-04, say: "The copper rings once. The bead rings, and keeps ringing, and in the ringing someone says: don't let them close the lift.", title: Tuning Stand, verb: Compare at}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-vein-a:
+  feetPosition: {x: 128, y: {terrain: -0.3}, z: 18}
+  fx: {script: "fx\npop hum rate=4 on=sphere(.6) life=1.6..2.6 v=up(.2..0.5) size=.03..0.06 acc=curl(.6)+drag(.8) col=hdr(1.8,1.1,3.2) a=0>.25:1>.7:.7>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,.7,0> r=light(<.75,.5,1>,1.6,5)"}
+  id: qm-equ-vein-a
+  physics: static
+  primitive: {kind: scripted, params: {kind: crystal}, script: scripts/gen/quarryworks.js}
+  rotation: 30
+  state: {gain: "+1 Crystal Sample", mark: crystal_vein, quest: EQU-01, say: "It chips like glass and rings like a struck bell. Under the ring, faint, a word you almost catch.", sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Violet Crystal Seam, verb: Sample}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-vein-b:
+  feetPosition: {x: 148, y: {terrain: -0.3}, z: 31}
+  fx: {script: "fx\npop hum rate=4 on=sphere(.6) life=1.6..2.6 v=up(.2..0.5) size=.03..0.06 acc=curl(.6)+drag(.8) col=hdr(1.8,1.1,3.2) a=0>.25:1>.7:.7>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,.7,0> r=light(<.75,.5,1>,1.6,5)"}
+  id: qm-equ-vein-b
+  physics: static
+  primitive: {kind: scripted, params: {kind: crystal}, script: scripts/gen/quarryworks.js}
+  rotation: 200
+  state: {gain: "+1 Crystal Sample", mark: crystal_vein, quest: EQU-01, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Violet Crystal Seam, verb: Sample}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-vein-c:
+  feetPosition: {x: 144, y: {terrain: -0.3}, z: 13}
+  fx: {script: "fx\npop hum rate=4 on=sphere(.6) life=1.6..2.6 v=up(.2..0.5) size=.03..0.06 acc=curl(.6)+drag(.8) col=hdr(1.8,1.1,3.2) a=0>.25:1>.7:.7>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,.7,0> r=light(<.75,.5,1>,1.6,5)"}
+  id: qm-equ-vein-c
+  physics: static
+  primitive: {kind: scripted, params: {kind: crystal}, script: scripts/gen/quarryworks.js}
+  rotation: 110
+  state: {gain: "+1 Crystal Sample", mark: crystal_vein, quest: EQU-01, sound: /cdn/moodboard-painterly-fantasy/sfx-pickaxe-stone-hit.mp3, title: Violet Crystal Seam, verb: Sample}
+  tags: [quest-mark, quarry-chapter]
+qm-equ-wall:
+  feetPosition: {x: 121.5, y: {terrain: 0}, z: 22}
+  fx: {script: "fx\npop hum rate=4 on=sphere(.6) life=1.6..2.6 v=up(.2..0.5) size=.03..0.06 acc=curl(.6)+drag(.8) col=hdr(1.8,1.1,3.2) a=0>.25:1>.7:.7>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,.7,0> r=light(<.75,.5,1>,1.6,5)"}
+  id: qm-equ-wall
+  physics: static
+  primitive: {kind: scripted, params: {kind: seal}, script: scripts/gen/cradle.js}
+  rotation: 90
+  state: {gain: Someone answered, mark: sealed_wall, quest: EQU-06, say: "\"Is it morning? Tell Yurra I left the chisel by the third seam. Tell her it's cold.\"", title: The Sealed Face, verb: Speak at}
+  tags: [quest-mark, quarry-chapter]
 qm-quarry-stash-a:
   feetPosition: {x: 128, y: {terrain: 0}, z: 30}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
@@ -240,6 +470,26 @@ quarry-minecart:
   physics: static
   primitive: {kind: scripted, params: {kind: minecart}, script: scripts/gen/quarry.js}
   tags: [quarry]
+quarry-npc-kiv:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 131, y: {terrain: 0}, z: 40}
+  id: quarry-npc-kiv
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-quarry-foreman-male-burly-leather-cap-soot-beard-ledger.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -120}
+  state: {homeYaw: -120, idle: Idle_FoldArms_Loop, npcName: Quarry Foreman Kiv, who: kiv, yaw: -120}
+  tags: [npc, talker, townsfolk, quest-npc, quarry-chapter]
+quarry-npc-yurra:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 146, y: {terrain: 0}, z: 39}
+  id: quarry-npc-yurra
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-mason-female-stout-grey-braids-stone-dust-leather-apron-ledger.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -140}
+  state: {homeYaw: -140, idle: Idle, npcName: Mason Yurra Flint-Eye, who: yurra, yaw: -140}
+  tags: [npc, talker, townsfolk, quest-npc, quarry-chapter]
 quarry-overlook:
   feetPosition: {x: 108, y: 23.6, z: 11}
   id: quarry-overlook

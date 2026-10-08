@@ -1286,6 +1286,12 @@ qm-dock-watch:
   rotation: {yaw: 60}
   state: {after: cook_meal, afterText: "First: cook the supper at the inn hearth", gain: Supper delivered, homeYaw: 60, idle: Idle_FoldArms_Loop, mark: dock_meal, npcName: Corin of the Dock Watch, quest: Q004, say: "Hot trout. Bless you. ...Rowan asked you about the Ninth Landing, didn't he? I hear oars out there some nights. No boat.", title: Corin of the Dock Watch, verb: Give supper to, who: dockwatch, yaw: 60}
   tags: [quest-mark, npc]
+qm-equ-alloy:
+  feetPosition: {x: 24.6, y: {terrain: 0}, z: 4.3}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-equ-alloy
+  state: {gain: Bellglass test bead, mark: alloy_sample, quest: EQU-04, sound: /cdn/moodboard-painterly-fantasy/sfx-forge-bellows-roar.mp3, title: Mira's Forge, verb: Smelt bellglass at}
+  tags: [quest-mark, quarry-chapter]
 qm-forge-blade:
   feetPosition: {x: 23.4, y: {terrain: 0}, z: 3.4}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
