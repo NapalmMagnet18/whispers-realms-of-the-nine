@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 179,
-  "updatedAt": "2026-10-08T02:26:40.946Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. The Lantern March is authored as a multi-cell continent with a procedural terrain/prop layer; MMORPG Tools owns character lifecycle and presentation, while core scripts and place entities supply movement, combat, gathering and world behaviors.",
+  "basedOnSpecVersion": 195,
+  "updatedAt": "2026-10-08T02:29:16.370Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. The Lantern March spans 30 cells with a procedural terrain and prop layer; MMORPG Tools owns character lifecycle and presentation, while player and scene behaviors implement movement, combat, Q002 questing and timber gathering.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -78,6 +78,7 @@
     "mods/wow-camera-controls/lib/motion.js",
     "scripts/arrival.js",
     "scripts/camera.js",
+    "scripts/elric.js",
     "scripts/flat-starter-terrain.js",
     "scripts/flower.js",
     "scripts/gen/farm.js",
@@ -109,28 +110,29 @@
     "scripts/ui.js",
     "scripts/ui/nametag.js",
     "scripts/vanguard.js",
-    "scripts/wolves.js"
+    "scripts/wolves.js",
+    "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main-menu-land/ - title and travel menu scene; the world.config.yaml default entry.",
+    "places/main-menu-land/ - title and travel menu scene; world.config.yaml default entry.",
     "places/character-creation-land/ - character preview scene and creation camera/lighting setup.",
     "places/main/ - Lantern March continent: Reach hub at origin, Windmill Farm southwest, Briarwild west, quarry east and further regions across 30 cells.",
-    "places/main/cells/x0z0.scene - Reach hub, armory/training yard and Gatekeeper Elric (gatekeeper-elric, quest-npc); this is the Q002 giver location.",
-    "places/main/cells/x-1z0.scene - Briarwild: briar-wolf-den manager at (-92,-40) plus eight timber-tagged oak trees for gathering.",
+    "places/main/cells/x0z0.scene - Reach hub, armory/training yard and Gatekeeper Elric (gatekeeper-elric), Q002 giver with scripts/elric.js behavior.",
+    "places/main/cells/x-1z0.scene - Briarwild wolf den and eight timber-tagged oak gatherables; each oak has scripts/woodcutting.js and logsLeft/depletedUntil state.",
     "places/main/cells/x-2z2.scene - fen-deadwood scatter landmark at (-260,240), with radius-90 scatter of two static tree models.",
     "places/main/config.yaml - playable-world spawn, gravity, terrain, vegetation scatter and cinematic look."
   ],
   "roots": [
-    "world.config.yaml - defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
+    "world.config.yaml - defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior, and declares interact/quest actions.",
     "mods/mmorpg-tools/mod.json - registers MMORPG template and menu, player, interaction, quest and gameplay/creation camera behaviors.",
-    "templates/player.js#player - native player template runs humanoid-locomotion.js, scripts/player.js, then scripts/vanguard.js.",
+    "templates/player.js#player - native player template runs humanoid-locomotion.js, scripts/player.js, scripts/vanguard.js, then scripts/quest-player.js.",
     "templates/camera.js#camera - native custom camera template using scripts/camera.js and engine look orientation.",
     "places/main-menu-land/config.yaml and places/character-creation-land/config.yaml - menu and preview place roots with their atmosphere settings."
   ],
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG data registries and modular panel renderers consumed by mod behaviors and ui.js.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - quest registry/progress API shared by quest-giver.js, the quest tracker and scripts/quest-player.js; definitions are imported from scripts/lib/data/quests.yml.",
-    "scripts/lib/data/quests.yml - Q002 objectives/rewards and NPC/woodcutting tuning; imported by quest-data.js and scripts/quest-player.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - quest registry/progress API shared by quest-giver.js, quest tracker and scripts/quest-player.js; definitions come from scripts/lib/data/quests.yml.",
+    "scripts/lib/data/quests.yml - Q002 objectives/rewards, NPC proximity and woodcutting tuning consumed by quest-data.js, quest-player.js, elric.js and woodcutting.js.",
     "scripts/lib/data/wolves.yml - Briar Wolf stats, timings, sounds and six pack spawn rows consumed by scripts/wolves.js.",
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural scene geometry reused by authored instances with parameters.",
     "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain scatter geometry/material reused by place bindings.",
@@ -141,11 +143,11 @@
     "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
     "scripts/vanguard.js - onInput, endAction, land; scripts/training-dummy.js - onSpawn, update, settle, standUp.",
     "scripts/wolves.js - update; scripts/gen/wolf.js - skeleton, geometry.",
-    "scripts/quest-player.js - onInput, update (player quest/interact and timber-chopping behavior; currently has no tree attachment/reference).",
+    "scripts/quest-player.js - onInput, update; scripts/elric.js - onSpawn, updateSchedule, update; scripts/woodcutting.js - updateSchedule, onSpawn, update.",
     "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - getAvailableQuests, questToActiveFormat, questProgress, questStatus, getQuest.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-hud.js - renderTargetDisplay, renderHUD; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker.",
     "scripts/camera.js - finiteNumber, update; scripts/arrival.js - onArrive, onLeave; sim.js - cadence, tick.",
-    "scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, heightAt, materialAt; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
-    "scripts/gen/tree.js, stone-bridge.js, farm.js, windmill.js and windmill-sails.js - geometry/collider exports; scripts/sails-spin.js - onSpawn."
+    "scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, heightAt, materialAt; scripts/lib/regions.js - REGIONS, MARCH, regionAt."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and core character velocity/footstep state; place config owns gravity.",
@@ -154,21 +156,22 @@
     "mods/mmorpg-tools/mod-mmorpg/player.js and character-select.js - RPG character/roster state, persistence, transitions and UI actions.",
     "scripts/vanguard.js - player action/cooldown/guard state; scripts/training-dummy.js - dummy hp, down and hit-reaction state.",
     "scripts/wolves.js - den respawnAt and spawned wolf AI/death state; scripts/lib/data/wolves.yml owns pack rows and combat tuning.",
-    "scripts/quest-player.js - if invoked, writes its player's quest/tally/inventory/gold/xp/interact state and timber-tree logsLeft/depletedUntil; mod player.js persists character data when _questSave is raised.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-*.js - presentation from player/world state; places/main/config.yaml and scripts/terrain-reach.js own terrain inputs."
+    "scripts/quest-player.js - player's active/completed quest, tally, inventory, gold, xp and dialog/hint state; also writes timber oak logsLeft/depletedUntil; mod player.js persists RPG character fields when _questSave is raised.",
+    "scripts/elric.js - Elric greeting timing and facing/home yaw; scripts/woodcutting.js - oak tilt/baseYaw and regrowth presentation; player chopper writes depletion fields."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → MMORPG menu/player/character-select/main-menu-mgr behaviors → character creation and transition into main.",
     "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading.",
-    "world.config.yaml player template → humanoid-locomotion.js then player.js then vanguard.js; gait samples prior-tick movement velocity.",
+    "world.config.yaml player template → humanoid-locomotion.js then player.js then vanguard.js then quest-player.js; gait samples prior-tick movement velocity.",
     "moveX/moveZ/jump input → scripts/player.js onInput stores room-local intent → update eases velocity, applies place gravity and emits terrain-selected footsteps.",
-    "attack/castSlot2/castSlot3 inputs → scripts/vanguard.js maps slots to strike/heavy/guard and schedules action hits from vanguard.yml → nearby live enemy state.hp is reduced and hit metadata/FX are emitted.",
+    "attack/castSlot2/castSlot3 inputs → scripts/vanguard.js maps slots to strike/heavy/guard and schedules hits from vanguard.yml → nearby live enemy state.hp is reduced and hit metadata/FX are emitted.",
     "training-dummy.js observes changed state.lastHitAt → hit-reel/down animation; scheduled settle/standUp restores hp using vanguard.yml dummyReset.",
     "places/main/cells/x-1z0.scene briar-wolf-den behavior → scripts/wolves.js reads wolves.yml, spawns scripts/gen/wolf.js pack entities, and updates chase/bite/death/respawn behavior.",
-    "quest definitions in scripts/lib/data/quests.yml → mod lib/quest-data.js filters by giverNpcId and calculates baseline-relative objectives → quest-giver.js and quest tracker consumers.",
-    "scripts/quest-player.js (unreferenced in the current tree) describes E-talk/accept/complete and timber-chopping handlers → player quest state/tally and timber tree depletion; _questSave is the mod player.js persistence signal.",
-    "world.config.yaml UI renderer → mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-* renderers compose HUD/menu/quest/panels; nametag renders separately.",
-    "places/main/config.yaml terrain generator → scripts/terrain-reach.js heightAt/materialAt and scatter bindings; scene entities use scripts/gen geometry or model assets, windmill sails animate via scripts/sails-spin.js."
+    "world.config.yaml interact/acceptQuest/declineQuest/completeQuest/closeQuestDialog actions → scripts/quest-player.js onInput; E finds quest-npc or timber targets, while quest dialog UI actions accept/close/turn in Q002.",
+    "scripts/quest-player.js talk/accept/complete → quest-data.js and quests.yml → player activeQuests, completedQuests, tally, inventory/gold/xp; _questSave signals MMORPG player.js persistence.",
+    "scripts/quest-player.js E chop → one log in player inventory/tally and oak logsLeft/depletedUntil; scripts/woodcutting.js tips depleted oak and restores it after configured regrow interval.",
+    "places/main/cells/x0z0.scene Gatekeeper Elric → scripts/elric.js turns toward nearby players and salutes; quest/dialog behavior itself runs on each player in quest-player.js.",
+    "world.config.yaml UI renderer → mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-* renderers compose HUD/menu/quest/panels; nametag renders separately; main terrain config → terrain-reach.js and scatter bindings."
   ],
   "behaviorFamilies": [
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural geometry reused by scene instances, varied by kind/shape, dimensions, seed and transforms.",
@@ -178,17 +181,15 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character and settings.",
     "scripts/vanguard.js and scripts/training-dummy.js with scripts/lib/data/vanguard.yml - player melee discipline and target reaction loop shared across three placed training dummies, varied by ability and per-dummy state.",
     "scripts/wolves.js with scripts/lib/data/wolves.yml and scripts/gen/wolf.js - one den manager steps six configured Briar Wolves through shared AI/combat logic; per-row position, yaw and scale vary.",
-    "scripts/look-default.js and mods/aaa-quality-kit/look-cinema.js - alternative whole-frame post-process looks selected by place atmosphere."
+    "scripts/quest-player.js on the player template, scripts/elric.js on the Q002 giver and scripts/woodcutting.js on eight timber oaks - shared Q002 interaction/gathering loop, with per-player quest state and per-tree depletion state."
   ],
-  "probableOrphans": [
-    "scripts/quest-player.js - added quest/gathering behavior with no reference or behavior attachment anywhere in the current tree."
-  ],
+  "probableOrphans": [],
   "migrationNotes": [
     "Keep core movement intent and locomotion scratch in room-local ctx.session; scripts/player.js writes velocity and place config owns gravity.",
-    "templates/player.js runs humanoid-locomotion before player.js; gait samples prior-tick movement velocity, with vanguard.js last for combat input.",
+    "templates/player.js runs humanoid-locomotion before player.js; gait samples prior-tick movement velocity; quest-player.js follows vanguard.js in the behavior list.",
     "Core scripts/camera.js uses engine look orientation and feetPosition + eyeHeight × effectiveScale.y; MMORPG orbit/creation cameras are a distinct path.",
     "Vanguard and wolf tuning uses seconds, metres and hit points; Vanguard applies scheduled damage to target.state.hp, while wolves bite the MMORPG player's state.health.",
-    "Quest objectives use player.state.tally deltas from the accept-time baseline; completedQuests is written before Q002 rewards so a repeated claim cannot pay twice.",
-    "quest-data.js now keys QUEST_DATABASE by quest id with quest objects; consumers relying on the old NPC-keyed array shape must use its exported filtering API or adapt."
+    "Quest objectives use player.state.tally deltas from the accept-time baseline; completedQuests is written before Q002 rewards, preventing a repeated claim; _questSave is the mod persistence signal.",
+    "One E chop press awards one log and stops; player-side quest-player.js decrements oak logsLeft and sets depletedUntil, while woodcutting.js owns the fall/regrow visual response."
   ]
 }
