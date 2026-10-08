@@ -1,0 +1,2216 @@
+{
+  "Lantern Ward": {
+    "title": "Lantern Ward",
+    "biome": "market",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "LANTF147-01",
+        "name": "Gatehouse and Census",
+        "x": 130,
+        "y": 345,
+        "role": "Entry"
+      },
+      {
+        "id": "LANTF147-02",
+        "name": "Bellward Lane",
+        "x": 332,
+        "y": 220,
+        "role": "Safe hub"
+      },
+      {
+        "id": "LANTF147-03",
+        "name": "Gilded Lantern",
+        "x": 575,
+        "y": 350,
+        "role": "Quest site"
+      },
+      {
+        "id": "LANTF147-04",
+        "name": "Old River Steps",
+        "x": 780,
+        "y": 198,
+        "role": "Encounter site"
+      },
+      {
+        "id": "LANTF147-05",
+        "name": "Archive Annex",
+        "x": 952,
+        "y": 350,
+        "role": "Discovery"
+      },
+      {
+        "id": "LANTF147-06",
+        "name": "East Departure",
+        "x": 1060,
+        "y": 240,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "LANTF147-01",
+        "LANTF147-02"
+      ],
+      [
+        "LANTF147-02",
+        "LANTF147-03"
+      ],
+      [
+        "LANTF147-03",
+        "LANTF147-04"
+      ],
+      [
+        "LANTF147-04",
+        "LANTF147-05"
+      ],
+      [
+        "LANTF147-05",
+        "LANTF147-06"
+      ],
+      [
+        "LANTF147-02",
+        "LANTF147-04"
+      ]
+    ],
+    "recommended_content": [
+      "MAR-01",
+      "MAR-02",
+      "MAR-03",
+      "MAR-04",
+      "MAR-05",
+      "MAR-06",
+      "MAR-07",
+      "MAR-08",
+      "CIV-01",
+      "CIV-02",
+      "CIV-03",
+      "CIV-04",
+      "CIV-05",
+      "CIV-06",
+      "CIV-07",
+      "CIV-08",
+      "CIV-09"
+    ],
+    "entry": "LANTF147-01",
+    "exit": "LANTF147-06",
+    "build_guidance": "Block out six points of interest for market environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Rootwake Glade": {
+    "title": "Rootwake Glade",
+    "biome": "forest",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "ROOT2375-01",
+        "name": "Orchard Gate",
+        "x": 140,
+        "y": 350,
+        "role": "Entry"
+      },
+      {
+        "id": "ROOT2375-02",
+        "name": "Memorial Trees",
+        "x": 330,
+        "y": 210,
+        "role": "Safe hub"
+      },
+      {
+        "id": "ROOT2375-03",
+        "name": "Learning Clearing",
+        "x": 540,
+        "y": 380,
+        "role": "Quest site"
+      },
+      {
+        "id": "ROOT2375-04",
+        "name": "Root-Water Spring",
+        "x": 750,
+        "y": 200,
+        "role": "Encounter site"
+      },
+      {
+        "id": "ROOT2375-05",
+        "name": "Hand-Root Tree",
+        "x": 950,
+        "y": 350,
+        "role": "Discovery"
+      },
+      {
+        "id": "ROOT2375-06",
+        "name": "North Forest Road",
+        "x": 1060,
+        "y": 190,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "ROOT2375-01",
+        "ROOT2375-02"
+      ],
+      [
+        "ROOT2375-02",
+        "ROOT2375-03"
+      ],
+      [
+        "ROOT2375-03",
+        "ROOT2375-04"
+      ],
+      [
+        "ROOT2375-04",
+        "ROOT2375-05"
+      ],
+      [
+        "ROOT2375-05",
+        "ROOT2375-06"
+      ],
+      [
+        "ROOT2375-02",
+        "ROOT2375-04"
+      ]
+    ],
+    "recommended_content": [
+      "THR-01",
+      "THR-02",
+      "THR-03",
+      "THR-04",
+      "THR-05",
+      "THR-06",
+      "THR-07",
+      "THR-08",
+      "CIW-01",
+      "CIW-02",
+      "CIW-03",
+      "CIW-04",
+      "CIW-05",
+      "CIW-06",
+      "CIW-07",
+      "CIW-08",
+      "CIW-09"
+    ],
+    "entry": "ROOT2375-01",
+    "exit": "ROOT2375-06",
+    "build_guidance": "Block out six points of interest for forest environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Emberstone Cradle": {
+    "title": "Emberstone Cradle",
+    "biome": "forge",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "EMBED524-01",
+        "name": "Apprentice Forge",
+        "x": 140,
+        "y": 360,
+        "role": "Entry"
+      },
+      {
+        "id": "EMBED524-02",
+        "name": "Old Shift Board",
+        "x": 330,
+        "y": 455,
+        "role": "Safe hub"
+      },
+      {
+        "id": "EMBED524-03",
+        "name": "Lower Shaft",
+        "x": 540,
+        "y": 245,
+        "role": "Quest site"
+      },
+      {
+        "id": "EMBED524-04",
+        "name": "Rock Chapel",
+        "x": 735,
+        "y": 440,
+        "role": "Encounter site"
+      },
+      {
+        "id": "EMBED524-05",
+        "name": "Warm Seam",
+        "x": 940,
+        "y": 270,
+        "role": "Discovery"
+      },
+      {
+        "id": "EMBED524-06",
+        "name": "Upper Lift",
+        "x": 1060,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "EMBED524-01",
+        "EMBED524-02"
+      ],
+      [
+        "EMBED524-02",
+        "EMBED524-03"
+      ],
+      [
+        "EMBED524-03",
+        "EMBED524-04"
+      ],
+      [
+        "EMBED524-04",
+        "EMBED524-05"
+      ],
+      [
+        "EMBED524-05",
+        "EMBED524-06"
+      ],
+      [
+        "EMBED524-02",
+        "EMBED524-04"
+      ]
+    ],
+    "recommended_content": [
+      "KHA-01",
+      "KHA-02",
+      "KHA-03",
+      "KHA-04",
+      "KHA-05",
+      "KHA-06",
+      "KHA-07",
+      "KHA-08",
+      "CIS-01",
+      "CIS-02",
+      "CIS-03",
+      "CIS-04",
+      "CIS-05",
+      "CIS-06",
+      "CIS-07",
+      "CIS-08",
+      "CIS-09"
+    ],
+    "entry": "EMBED524-01",
+    "exit": "EMBED524-06",
+    "build_guidance": "Block out six points of interest for forge environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Breakwater Strand": {
+    "title": "Breakwater Strand",
+    "biome": "coast",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "BREA57E6-01",
+        "name": "Fisher Jetty",
+        "x": 130,
+        "y": 340,
+        "role": "Entry"
+      },
+      {
+        "id": "BREA57E6-02",
+        "name": "Pilot House",
+        "x": 300,
+        "y": 465,
+        "role": "Safe hub"
+      },
+      {
+        "id": "BREA57E6-03",
+        "name": "Lighthouse Path",
+        "x": 515,
+        "y": 295,
+        "role": "Quest site"
+      },
+      {
+        "id": "BREA57E6-04",
+        "name": "False-Harbor Hill",
+        "x": 740,
+        "y": 430,
+        "role": "Encounter site"
+      },
+      {
+        "id": "BREA57E6-05",
+        "name": "Rope Shed",
+        "x": 930,
+        "y": 250,
+        "role": "Discovery"
+      },
+      {
+        "id": "BREA57E6-06",
+        "name": "River Launch",
+        "x": 1050,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "BREA57E6-01",
+        "BREA57E6-02"
+      ],
+      [
+        "BREA57E6-02",
+        "BREA57E6-03"
+      ],
+      [
+        "BREA57E6-03",
+        "BREA57E6-04"
+      ],
+      [
+        "BREA57E6-04",
+        "BREA57E6-05"
+      ],
+      [
+        "BREA57E6-05",
+        "BREA57E6-06"
+      ],
+      [
+        "BREA57E6-02",
+        "BREA57E6-04"
+      ]
+    ],
+    "recommended_content": [
+      "NAM-01",
+      "NAM-02",
+      "NAM-03",
+      "NAM-04",
+      "NAM-05",
+      "NAM-06",
+      "NAM-07",
+      "NAM-08",
+      "CIT-01",
+      "CIT-02",
+      "CIT-03",
+      "CIT-04",
+      "CIT-05",
+      "CIT-06",
+      "CIT-07",
+      "CIT-08",
+      "CIT-09"
+    ],
+    "entry": "BREA57E6-01",
+    "exit": "BREA57E6-06",
+    "build_guidance": "Block out six points of interest for coast environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Reedhaven Refuge": {
+    "title": "Reedhaven Refuge",
+    "biome": "swamp",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "REEDAE5C-01",
+        "name": "Refuge Porch",
+        "x": 130,
+        "y": 340,
+        "role": "Entry"
+      },
+      {
+        "id": "REEDAE5C-02",
+        "name": "Memorial Pool",
+        "x": 300,
+        "y": 465,
+        "role": "Safe hub"
+      },
+      {
+        "id": "REEDAE5C-03",
+        "name": "Raised Boardwalk",
+        "x": 515,
+        "y": 295,
+        "role": "Quest site"
+      },
+      {
+        "id": "REEDAE5C-04",
+        "name": "Old Ferry Post",
+        "x": 740,
+        "y": 430,
+        "role": "Encounter site"
+      },
+      {
+        "id": "REEDAE5C-05",
+        "name": "Privacy Chest",
+        "x": 930,
+        "y": 250,
+        "role": "Discovery"
+      },
+      {
+        "id": "REEDAE5C-06",
+        "name": "Dryland Exit",
+        "x": 1050,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "REEDAE5C-01",
+        "REEDAE5C-02"
+      ],
+      [
+        "REEDAE5C-02",
+        "REEDAE5C-03"
+      ],
+      [
+        "REEDAE5C-03",
+        "REEDAE5C-04"
+      ],
+      [
+        "REEDAE5C-04",
+        "REEDAE5C-05"
+      ],
+      [
+        "REEDAE5C-05",
+        "REEDAE5C-06"
+      ],
+      [
+        "REEDAE5C-02",
+        "REEDAE5C-04"
+      ]
+    ],
+    "recommended_content": [
+      "REH-01",
+      "REH-02",
+      "REH-03",
+      "REH-04",
+      "REH-05",
+      "REH-06",
+      "REH-07",
+      "REH-08",
+      "CIR-01",
+      "CIR-02",
+      "CIR-03",
+      "CIR-04",
+      "CIR-05",
+      "CIR-06",
+      "CIR-07",
+      "CIR-08",
+      "CIR-09"
+    ],
+    "entry": "REEDAE5C-01",
+    "exit": "REEDAE5C-06",
+    "build_guidance": "Block out six points of interest for swamp environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Starfall Eyrie": {
+    "title": "Starfall Eyrie",
+    "biome": "sky",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "STARC3FE-01",
+        "name": "Aerial Gate",
+        "x": 135,
+        "y": 425,
+        "role": "Entry"
+      },
+      {
+        "id": "STARC3FE-02",
+        "name": "Windharp Gallery",
+        "x": 337,
+        "y": 240,
+        "role": "Safe hub"
+      },
+      {
+        "id": "STARC3FE-03",
+        "name": "Old Observatory",
+        "x": 535,
+        "y": 380,
+        "role": "Quest site"
+      },
+      {
+        "id": "STARC3FE-04",
+        "name": "South Span",
+        "x": 744,
+        "y": 180,
+        "role": "Encounter site"
+      },
+      {
+        "id": "STARC3FE-05",
+        "name": "Lost Star Platform",
+        "x": 942,
+        "y": 410,
+        "role": "Discovery"
+      },
+      {
+        "id": "STARC3FE-06",
+        "name": "Valley Descent",
+        "x": 1060,
+        "y": 250,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "STARC3FE-01",
+        "STARC3FE-02"
+      ],
+      [
+        "STARC3FE-02",
+        "STARC3FE-03"
+      ],
+      [
+        "STARC3FE-03",
+        "STARC3FE-04"
+      ],
+      [
+        "STARC3FE-04",
+        "STARC3FE-05"
+      ],
+      [
+        "STARC3FE-05",
+        "STARC3FE-06"
+      ],
+      [
+        "STARC3FE-02",
+        "STARC3FE-04"
+      ]
+    ],
+    "recommended_content": [
+      "VEY-01",
+      "VEY-02",
+      "VEY-03",
+      "VEY-04",
+      "VEY-05",
+      "VEY-06",
+      "VEY-07",
+      "VEY-08",
+      "CIVY-01",
+      "CIVY-02",
+      "CIVY-03",
+      "CIVY-04",
+      "CIVY-05",
+      "CIVY-06",
+      "CIVY-07",
+      "CIVY-08",
+      "CIVY-09"
+    ],
+    "entry": "STARC3FE-01",
+    "exit": "STARC3FE-06",
+    "build_guidance": "Block out six points of interest for sky environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Lantern's Reach / Lantern March": {
+    "title": "Lantern's Reach / Lantern March",
+    "biome": "market",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "LANTCB5E-01",
+        "name": "East Gate",
+        "x": 130,
+        "y": 345,
+        "role": "Entry"
+      },
+      {
+        "id": "LANTCB5E-02",
+        "name": "Market Square",
+        "x": 332,
+        "y": 220,
+        "role": "Safe hub"
+      },
+      {
+        "id": "LANTCB5E-03",
+        "name": "Blacksmith Forge",
+        "x": 575,
+        "y": 350,
+        "role": "Quest site"
+      },
+      {
+        "id": "LANTCB5E-04",
+        "name": "Riverside Docks",
+        "x": 780,
+        "y": 198,
+        "role": "Encounter site"
+      },
+      {
+        "id": "LANTCB5E-05",
+        "name": "Sister Vale Archive",
+        "x": 952,
+        "y": 350,
+        "role": "Discovery"
+      },
+      {
+        "id": "LANTCB5E-06",
+        "name": "Hollowcrypt Road",
+        "x": 1060,
+        "y": 240,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "LANTCB5E-01",
+        "LANTCB5E-02"
+      ],
+      [
+        "LANTCB5E-02",
+        "LANTCB5E-03"
+      ],
+      [
+        "LANTCB5E-03",
+        "LANTCB5E-04"
+      ],
+      [
+        "LANTCB5E-04",
+        "LANTCB5E-05"
+      ],
+      [
+        "LANTCB5E-05",
+        "LANTCB5E-06"
+      ],
+      [
+        "LANTCB5E-02",
+        "LANTCB5E-04"
+      ]
+    ],
+    "recommended_content": [
+      "Q001",
+      "Q002",
+      "Q003",
+      "Q004",
+      "Q005",
+      "Q006",
+      "Q007",
+      "Q008"
+    ],
+    "entry": "LANTCB5E-01",
+    "exit": "LANTCB5E-06",
+    "build_guidance": "Block out six points of interest for market environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Lantern's Reach": {
+    "title": "Lantern's Reach",
+    "biome": "market",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "LANT1E2B-01",
+        "name": "East Gate",
+        "x": 130,
+        "y": 345,
+        "role": "Entry"
+      },
+      {
+        "id": "LANT1E2B-02",
+        "name": "Market Square",
+        "x": 332,
+        "y": 220,
+        "role": "Safe hub"
+      },
+      {
+        "id": "LANT1E2B-03",
+        "name": "Blacksmith Forge",
+        "x": 575,
+        "y": 350,
+        "role": "Quest site"
+      },
+      {
+        "id": "LANT1E2B-04",
+        "name": "Riverside Docks",
+        "x": 780,
+        "y": 198,
+        "role": "Encounter site"
+      },
+      {
+        "id": "LANT1E2B-05",
+        "name": "Sister Vale Archive",
+        "x": 952,
+        "y": 350,
+        "role": "Discovery"
+      },
+      {
+        "id": "LANT1E2B-06",
+        "name": "Hollowcrypt Road",
+        "x": 1060,
+        "y": 240,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "LANT1E2B-01",
+        "LANT1E2B-02"
+      ],
+      [
+        "LANT1E2B-02",
+        "LANT1E2B-03"
+      ],
+      [
+        "LANT1E2B-03",
+        "LANT1E2B-04"
+      ],
+      [
+        "LANT1E2B-04",
+        "LANT1E2B-05"
+      ],
+      [
+        "LANT1E2B-05",
+        "LANT1E2B-06"
+      ],
+      [
+        "LANT1E2B-02",
+        "LANT1E2B-04"
+      ]
+    ],
+    "recommended_content": [
+      "SLN-01",
+      "SLN-02"
+    ],
+    "entry": "LANT1E2B-01",
+    "exit": "LANT1E2B-06",
+    "build_guidance": "Block out six points of interest for market environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Briarwild": {
+    "title": "Briarwild",
+    "biome": "forest",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "BRIA78C9-01",
+        "name": "Forest Entrance",
+        "x": 140,
+        "y": 350,
+        "role": "Entry"
+      },
+      {
+        "id": "BRIA78C9-02",
+        "name": "Ranger Camp",
+        "x": 330,
+        "y": 210,
+        "role": "Safe hub"
+      },
+      {
+        "id": "BRIA78C9-03",
+        "name": "Briarwolf Glade",
+        "x": 540,
+        "y": 380,
+        "role": "Quest site"
+      },
+      {
+        "id": "BRIA78C9-04",
+        "name": "Old Cedar Crossing",
+        "x": 750,
+        "y": 200,
+        "role": "Encounter site"
+      },
+      {
+        "id": "BRIA78C9-05",
+        "name": "Rootwake Outpost",
+        "x": 950,
+        "y": 350,
+        "role": "Discovery"
+      },
+      {
+        "id": "BRIA78C9-06",
+        "name": "Deepgrove Pass",
+        "x": 1060,
+        "y": 190,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "BRIA78C9-01",
+        "BRIA78C9-02"
+      ],
+      [
+        "BRIA78C9-02",
+        "BRIA78C9-03"
+      ],
+      [
+        "BRIA78C9-03",
+        "BRIA78C9-04"
+      ],
+      [
+        "BRIA78C9-04",
+        "BRIA78C9-05"
+      ],
+      [
+        "BRIA78C9-05",
+        "BRIA78C9-06"
+      ],
+      [
+        "BRIA78C9-02",
+        "BRIA78C9-04"
+      ]
+    ],
+    "recommended_content": [
+      "SBR-01",
+      "SBR-02",
+      "PRW-01",
+      "PRW-02",
+      "PRW-03",
+      "PRW-04",
+      "PRW-05",
+      "PRW-06",
+      "PRW-07",
+      "PRW-08",
+      "PRW-09"
+    ],
+    "entry": "BRIA78C9-01",
+    "exit": "BRIA78C9-06",
+    "build_guidance": "Block out six points of interest for forest environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Emberstone Quarry": {
+    "title": "Emberstone Quarry",
+    "biome": "forge",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "EMBE2DE0-01",
+        "name": "Quarry Lift",
+        "x": 140,
+        "y": 360,
+        "role": "Entry"
+      },
+      {
+        "id": "EMBE2DE0-02",
+        "name": "Union Table",
+        "x": 330,
+        "y": 455,
+        "role": "Safe hub"
+      },
+      {
+        "id": "EMBE2DE0-03",
+        "name": "Bellglass Seam",
+        "x": 540,
+        "y": 245,
+        "role": "Quest site"
+      },
+      {
+        "id": "EMBE2DE0-04",
+        "name": "Worker Canteen",
+        "x": 735,
+        "y": 440,
+        "role": "Encounter site"
+      },
+      {
+        "id": "EMBE2DE0-05",
+        "name": "Mine Watchpost",
+        "x": 940,
+        "y": 270,
+        "role": "Discovery"
+      },
+      {
+        "id": "EMBE2DE0-06",
+        "name": "Hollowcrypt Tunnel",
+        "x": 1060,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "EMBE2DE0-01",
+        "EMBE2DE0-02"
+      ],
+      [
+        "EMBE2DE0-02",
+        "EMBE2DE0-03"
+      ],
+      [
+        "EMBE2DE0-03",
+        "EMBE2DE0-04"
+      ],
+      [
+        "EMBE2DE0-04",
+        "EMBE2DE0-05"
+      ],
+      [
+        "EMBE2DE0-05",
+        "EMBE2DE0-06"
+      ],
+      [
+        "EMBE2DE0-02",
+        "EMBE2DE0-04"
+      ]
+    ],
+    "recommended_content": [
+      "EQU-01",
+      "EQU-02",
+      "EQU-03",
+      "EQU-04",
+      "EQU-05",
+      "EQU-06",
+      "EQU-07",
+      "EQU-08",
+      "EQU-09",
+      "SEQ-01",
+      "SEQ-02",
+      "PRM-01",
+      "PRM-02",
+      "PRM-03",
+      "PRM-04",
+      "PRM-05",
+      "PRM-06",
+      "PRM-07",
+      "PRM-08",
+      "PRM-09"
+    ],
+    "entry": "EMBE2DE0-01",
+    "exit": "EMBE2DE0-06",
+    "build_guidance": "Block out six points of interest for forge environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "The Hollowcrypt": {
+    "title": "The Hollowcrypt",
+    "biome": "crypt",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "THEHA2C9-01",
+        "name": "Outer Crypt Gate",
+        "x": 138,
+        "y": 300,
+        "role": "Entry"
+      },
+      {
+        "id": "THEHA2C9-02",
+        "name": "Candle Gallery",
+        "x": 336,
+        "y": 300,
+        "role": "Safe hub"
+      },
+      {
+        "id": "THEHA2C9-03",
+        "name": "Broken Index",
+        "x": 534,
+        "y": 300,
+        "role": "Quest site"
+      },
+      {
+        "id": "THEHA2C9-04",
+        "name": "Warden Chamber",
+        "x": 735,
+        "y": 300,
+        "role": "Encounter site"
+      },
+      {
+        "id": "THEHA2C9-05",
+        "name": "Witness Register",
+        "x": 936,
+        "y": 300,
+        "role": "Discovery"
+      },
+      {
+        "id": "THEHA2C9-06",
+        "name": "South Return Gate",
+        "x": 1060,
+        "y": 300,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "THEHA2C9-01",
+        "THEHA2C9-02"
+      ],
+      [
+        "THEHA2C9-02",
+        "THEHA2C9-03"
+      ],
+      [
+        "THEHA2C9-03",
+        "THEHA2C9-04"
+      ],
+      [
+        "THEHA2C9-04",
+        "THEHA2C9-05"
+      ],
+      [
+        "THEHA2C9-05",
+        "THEHA2C9-06"
+      ],
+      [
+        "THEHA2C9-02",
+        "THEHA2C9-04"
+      ]
+    ],
+    "recommended_content": [
+      "DHC-01",
+      "DHC-02",
+      "DHC-03",
+      "DHC-04"
+    ],
+    "entry": "THEHA2C9-01",
+    "exit": "THEHA2C9-06",
+    "build_guidance": "Block out six points of interest for crypt environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Hollowcrypt": {
+    "title": "Hollowcrypt",
+    "biome": "crypt",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "HOLL5240-01",
+        "name": "Outer Crypt Gate",
+        "x": 138,
+        "y": 300,
+        "role": "Entry"
+      },
+      {
+        "id": "HOLL5240-02",
+        "name": "Candle Gallery",
+        "x": 336,
+        "y": 300,
+        "role": "Safe hub"
+      },
+      {
+        "id": "HOLL5240-03",
+        "name": "Broken Index",
+        "x": 534,
+        "y": 300,
+        "role": "Quest site"
+      },
+      {
+        "id": "HOLL5240-04",
+        "name": "Warden Chamber",
+        "x": 735,
+        "y": 300,
+        "role": "Encounter site"
+      },
+      {
+        "id": "HOLL5240-05",
+        "name": "Witness Register",
+        "x": 936,
+        "y": 300,
+        "role": "Discovery"
+      },
+      {
+        "id": "HOLL5240-06",
+        "name": "South Return Gate",
+        "x": 1060,
+        "y": 300,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "HOLL5240-01",
+        "HOLL5240-02"
+      ],
+      [
+        "HOLL5240-02",
+        "HOLL5240-03"
+      ],
+      [
+        "HOLL5240-03",
+        "HOLL5240-04"
+      ],
+      [
+        "HOLL5240-04",
+        "HOLL5240-05"
+      ],
+      [
+        "HOLL5240-05",
+        "HOLL5240-06"
+      ],
+      [
+        "HOLL5240-02",
+        "HOLL5240-04"
+      ]
+    ],
+    "recommended_content": [],
+    "entry": "HOLL5240-01",
+    "exit": "HOLL5240-06",
+    "build_guidance": "Block out six points of interest for crypt environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Sorrowfen": {
+    "title": "Sorrowfen",
+    "biome": "swamp",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "SORRF6BC-01",
+        "name": "Raised Entry",
+        "x": 130,
+        "y": 340,
+        "role": "Entry"
+      },
+      {
+        "id": "SORRF6BC-02",
+        "name": "Mourner Pool",
+        "x": 300,
+        "y": 465,
+        "role": "Safe hub"
+      },
+      {
+        "id": "SORRF6BC-03",
+        "name": "Sunken Boat",
+        "x": 515,
+        "y": 295,
+        "role": "Quest site"
+      },
+      {
+        "id": "SORRF6BC-04",
+        "name": "Blue Wisp Marsh",
+        "x": 740,
+        "y": 430,
+        "role": "Encounter site"
+      },
+      {
+        "id": "SORRF6BC-05",
+        "name": "Shrine Isle",
+        "x": 930,
+        "y": 250,
+        "role": "Discovery"
+      },
+      {
+        "id": "SORRF6BC-06",
+        "name": "Coast Path",
+        "x": 1050,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "SORRF6BC-01",
+        "SORRF6BC-02"
+      ],
+      [
+        "SORRF6BC-02",
+        "SORRF6BC-03"
+      ],
+      [
+        "SORRF6BC-03",
+        "SORRF6BC-04"
+      ],
+      [
+        "SORRF6BC-04",
+        "SORRF6BC-05"
+      ],
+      [
+        "SORRF6BC-05",
+        "SORRF6BC-06"
+      ],
+      [
+        "SORRF6BC-02",
+        "SORRF6BC-04"
+      ]
+    ],
+    "recommended_content": [
+      "SOR-01",
+      "SOR-02",
+      "SOR-03",
+      "SOR-04",
+      "SOR-05",
+      "SOR-06",
+      "SOR-07",
+      "SOR-08",
+      "SOR-09",
+      "DSB-01",
+      "DSB-02",
+      "DSB-03",
+      "DSB-04",
+      "SSF-01",
+      "SSF-02",
+      "PRA-01",
+      "PRA-02",
+      "PRA-03",
+      "PRA-04",
+      "PRA-05",
+      "PRA-06",
+      "PRA-07",
+      "PRA-08",
+      "PRA-09"
+    ],
+    "entry": "SORRF6BC-01",
+    "exit": "SORRF6BC-06",
+    "build_guidance": "Block out six points of interest for swamp environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Tideglass Coast": {
+    "title": "Tideglass Coast",
+    "biome": "coast",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "TIDE37C7-01",
+        "name": "Coastal Arrival",
+        "x": 130,
+        "y": 340,
+        "role": "Entry"
+      },
+      {
+        "id": "TIDE37C7-02",
+        "name": "Harbor Quay",
+        "x": 300,
+        "y": 465,
+        "role": "Safe hub"
+      },
+      {
+        "id": "TIDE37C7-03",
+        "name": "Inland Lighthouse",
+        "x": 515,
+        "y": 295,
+        "role": "Quest site"
+      },
+      {
+        "id": "TIDE37C7-04",
+        "name": "Lost-Fleet Shore",
+        "x": 740,
+        "y": 430,
+        "role": "Encounter site"
+      },
+      {
+        "id": "TIDE37C7-05",
+        "name": "Pilot Council",
+        "x": 930,
+        "y": 250,
+        "role": "Discovery"
+      },
+      {
+        "id": "TIDE37C7-06",
+        "name": "Velthraen Ferry",
+        "x": 1050,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "TIDE37C7-01",
+        "TIDE37C7-02"
+      ],
+      [
+        "TIDE37C7-02",
+        "TIDE37C7-03"
+      ],
+      [
+        "TIDE37C7-03",
+        "TIDE37C7-04"
+      ],
+      [
+        "TIDE37C7-04",
+        "TIDE37C7-05"
+      ],
+      [
+        "TIDE37C7-05",
+        "TIDE37C7-06"
+      ],
+      [
+        "TIDE37C7-02",
+        "TIDE37C7-04"
+      ]
+    ],
+    "recommended_content": [
+      "TID-01",
+      "TID-02",
+      "TID-03",
+      "TID-04",
+      "TID-05",
+      "TID-06",
+      "TID-07",
+      "TID-08",
+      "TID-09",
+      "STD-01",
+      "STD-02",
+      "PRF-01",
+      "PRF-02",
+      "PRF-03",
+      "PRF-04",
+      "PRF-05",
+      "PRF-06",
+      "PRF-07",
+      "PRF-08",
+      "PRF-09"
+    ],
+    "entry": "TIDE37C7-01",
+    "exit": "TIDE37C7-06",
+    "build_guidance": "Block out six points of interest for coast environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Briarwild Deepgrove": {
+    "title": "Briarwild Deepgrove",
+    "biome": "forest",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "BRIA23C3-01",
+        "name": "Root Border",
+        "x": 140,
+        "y": 350,
+        "role": "Entry"
+      },
+      {
+        "id": "BRIA23C3-02",
+        "name": "Orchard of Ash",
+        "x": 330,
+        "y": 210,
+        "role": "Safe hub"
+      },
+      {
+        "id": "BRIA23C3-03",
+        "name": "Hand-Root Witness",
+        "x": 540,
+        "y": 380,
+        "role": "Quest site"
+      },
+      {
+        "id": "BRIA23C3-04",
+        "name": "Hollow Sapling",
+        "x": 750,
+        "y": 200,
+        "role": "Encounter site"
+      },
+      {
+        "id": "BRIA23C3-05",
+        "name": "Skyward Bridge",
+        "x": 950,
+        "y": 350,
+        "role": "Discovery"
+      },
+      {
+        "id": "BRIA23C3-06",
+        "name": "Velthraen Trail",
+        "x": 1060,
+        "y": 190,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "BRIA23C3-01",
+        "BRIA23C3-02"
+      ],
+      [
+        "BRIA23C3-02",
+        "BRIA23C3-03"
+      ],
+      [
+        "BRIA23C3-03",
+        "BRIA23C3-04"
+      ],
+      [
+        "BRIA23C3-04",
+        "BRIA23C3-05"
+      ],
+      [
+        "BRIA23C3-05",
+        "BRIA23C3-06"
+      ],
+      [
+        "BRIA23C3-02",
+        "BRIA23C3-04"
+      ]
+    ],
+    "recommended_content": [
+      "BRD-01",
+      "BRD-02",
+      "BRD-03",
+      "BRD-04",
+      "BRD-05",
+      "BRD-06",
+      "BRD-07",
+      "BRD-08",
+      "BRD-09",
+      "DRT-01",
+      "DRT-02",
+      "DRT-03",
+      "DRT-04",
+      "SBD-01",
+      "SBD-02"
+    ],
+    "entry": "BRIA23C3-01",
+    "exit": "BRIA23C3-06",
+    "build_guidance": "Block out six points of interest for forest environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Velthraen Reach": {
+    "title": "Velthraen Reach",
+    "biome": "sky",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "VELTD712-01",
+        "name": "Lower Viaduct",
+        "x": 135,
+        "y": 425,
+        "role": "Entry"
+      },
+      {
+        "id": "VELTD712-02",
+        "name": "Skywatch Camp",
+        "x": 337,
+        "y": 240,
+        "role": "Safe hub"
+      },
+      {
+        "id": "VELTD712-03",
+        "name": "Observatory",
+        "x": 535,
+        "y": 380,
+        "role": "Quest site"
+      },
+      {
+        "id": "VELTD712-04",
+        "name": "Missing Star Balcony",
+        "x": 744,
+        "y": 180,
+        "role": "Encounter site"
+      },
+      {
+        "id": "VELTD712-05",
+        "name": "Highroad Gate",
+        "x": 942,
+        "y": 410,
+        "role": "Discovery"
+      },
+      {
+        "id": "VELTD712-06",
+        "name": "Bastion Lift",
+        "x": 1060,
+        "y": 250,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "VELTD712-01",
+        "VELTD712-02"
+      ],
+      [
+        "VELTD712-02",
+        "VELTD712-03"
+      ],
+      [
+        "VELTD712-03",
+        "VELTD712-04"
+      ],
+      [
+        "VELTD712-04",
+        "VELTD712-05"
+      ],
+      [
+        "VELTD712-05",
+        "VELTD712-06"
+      ],
+      [
+        "VELTD712-02",
+        "VELTD712-04"
+      ]
+    ],
+    "recommended_content": [
+      "VEL-01",
+      "VEL-02",
+      "VEL-03",
+      "VEL-04",
+      "VEL-05",
+      "VEL-06",
+      "VEL-07",
+      "VEL-08",
+      "VEL-09",
+      "SVR-01",
+      "SVR-02"
+    ],
+    "entry": "VELTD712-01",
+    "exit": "VELTD712-06",
+    "build_guidance": "Block out six points of interest for sky environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Emberstone Bastion": {
+    "title": "Emberstone Bastion",
+    "biome": "forge",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "EMBEECE4-01",
+        "name": "Outer Forge Gate",
+        "x": 140,
+        "y": 360,
+        "role": "Entry"
+      },
+      {
+        "id": "EMBEECE4-02",
+        "name": "Union Assembly",
+        "x": 330,
+        "y": 455,
+        "role": "Safe hub"
+      },
+      {
+        "id": "EMBEECE4-03",
+        "name": "Bellglass Turbine",
+        "x": 540,
+        "y": 245,
+        "role": "Quest site"
+      },
+      {
+        "id": "EMBEECE4-04",
+        "name": "Warmth Exchange",
+        "x": 735,
+        "y": 440,
+        "role": "Encounter site"
+      },
+      {
+        "id": "EMBEECE4-05",
+        "name": "Memory Engine",
+        "x": 940,
+        "y": 270,
+        "role": "Discovery"
+      },
+      {
+        "id": "EMBEECE4-06",
+        "name": "Glassmere Tram",
+        "x": 1060,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "EMBEECE4-01",
+        "EMBEECE4-02"
+      ],
+      [
+        "EMBEECE4-02",
+        "EMBEECE4-03"
+      ],
+      [
+        "EMBEECE4-03",
+        "EMBEECE4-04"
+      ],
+      [
+        "EMBEECE4-04",
+        "EMBEECE4-05"
+      ],
+      [
+        "EMBEECE4-05",
+        "EMBEECE4-06"
+      ],
+      [
+        "EMBEECE4-02",
+        "EMBEECE4-04"
+      ]
+    ],
+    "recommended_content": [
+      "BAS-01",
+      "BAS-02",
+      "BAS-03",
+      "BAS-04",
+      "BAS-05",
+      "BAS-06",
+      "BAS-07",
+      "BAS-08",
+      "BAS-09",
+      "DBF-01",
+      "DBF-02",
+      "DBF-03",
+      "DBF-04",
+      "SBF-01",
+      "SBF-02",
+      "PRS-01",
+      "PRS-02",
+      "PRS-03",
+      "PRS-04",
+      "PRS-05",
+      "PRS-06",
+      "PRS-07",
+      "PRS-08",
+      "PRS-09"
+    ],
+    "entry": "EMBEECE4-01",
+    "exit": "EMBEECE4-06",
+    "build_guidance": "Block out six points of interest for forge environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Glassmere Archive": {
+    "title": "Glassmere Archive",
+    "biome": "archive",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "GLASA846-01",
+        "name": "Archive Causeway",
+        "x": 138,
+        "y": 300,
+        "role": "Entry"
+      },
+      {
+        "id": "GLASA846-02",
+        "name": "Public Reading Hall",
+        "x": 336,
+        "y": 300,
+        "role": "Safe hub"
+      },
+      {
+        "id": "GLASA846-03",
+        "name": "Mirror Pool",
+        "x": 534,
+        "y": 300,
+        "role": "Quest site"
+      },
+      {
+        "id": "GLASA846-04",
+        "name": "Restricted Index",
+        "x": 735,
+        "y": 300,
+        "role": "Encounter site"
+      },
+      {
+        "id": "GLASA846-05",
+        "name": "Withdrawal Clause",
+        "x": 936,
+        "y": 300,
+        "role": "Discovery"
+      },
+      {
+        "id": "GLASA846-06",
+        "name": "Veil Door",
+        "x": 1060,
+        "y": 300,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "GLASA846-01",
+        "GLASA846-02"
+      ],
+      [
+        "GLASA846-02",
+        "GLASA846-03"
+      ],
+      [
+        "GLASA846-03",
+        "GLASA846-04"
+      ],
+      [
+        "GLASA846-04",
+        "GLASA846-05"
+      ],
+      [
+        "GLASA846-05",
+        "GLASA846-06"
+      ],
+      [
+        "GLASA846-02",
+        "GLASA846-04"
+      ]
+    ],
+    "recommended_content": [
+      "VAN-01",
+      "VAN-02",
+      "VAN-03",
+      "VAN-04",
+      "VAN-05",
+      "VAN-06",
+      "VAN-07",
+      "ARC-01",
+      "ARC-02",
+      "ARC-03",
+      "ARC-04",
+      "ARC-05",
+      "ARC-06",
+      "ARC-07",
+      "PAT-01",
+      "PAT-02",
+      "PAT-03",
+      "PAT-04",
+      "PAT-05",
+      "PAT-06",
+      "PAT-07",
+      "SHA-01",
+      "SHA-02",
+      "SHA-03",
+      "SHA-04",
+      "SHA-05",
+      "SHA-06",
+      "SHA-07",
+      "GLA-01",
+      "GLA-02",
+      "GLA-03",
+      "GLA-04",
+      "GLA-05",
+      "GLA-06",
+      "GLA-07",
+      "GLA-08",
+      "GLA-09",
+      "DMR-01",
+      "DMR-02",
+      "DMR-03",
+      "DMR-04",
+      "SGA-01",
+      "SGA-02"
+    ],
+    "entry": "GLASA846-01",
+    "exit": "GLASA846-06",
+    "build_guidance": "Block out six points of interest for archive environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "The Ninth Veil": {
+    "title": "The Ninth Veil",
+    "biome": "cosmic",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "THEN5FC1-01",
+        "name": "Arrival Stair",
+        "x": 140,
+        "y": 280,
+        "role": "Entry"
+      },
+      {
+        "id": "THEN5FC1-02",
+        "name": "Eight Seals",
+        "x": 337,
+        "y": 440,
+        "role": "Safe hub"
+      },
+      {
+        "id": "THEN5FC1-03",
+        "name": "Ninth Chair",
+        "x": 540,
+        "y": 170,
+        "role": "Quest site"
+      },
+      {
+        "id": "THEN5FC1-04",
+        "name": "Witness Tables",
+        "x": 740,
+        "y": 440,
+        "role": "Encounter site"
+      },
+      {
+        "id": "THEN5FC1-05",
+        "name": "Engine Core",
+        "x": 945,
+        "y": 200,
+        "role": "Discovery"
+      },
+      {
+        "id": "THEN5FC1-06",
+        "name": "Return Threshold",
+        "x": 1060,
+        "y": 335,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "THEN5FC1-01",
+        "THEN5FC1-02"
+      ],
+      [
+        "THEN5FC1-02",
+        "THEN5FC1-03"
+      ],
+      [
+        "THEN5FC1-03",
+        "THEN5FC1-04"
+      ],
+      [
+        "THEN5FC1-04",
+        "THEN5FC1-05"
+      ],
+      [
+        "THEN5FC1-05",
+        "THEN5FC1-06"
+      ],
+      [
+        "THEN5FC1-02",
+        "THEN5FC1-04"
+      ]
+    ],
+    "recommended_content": [
+      "VEI-01",
+      "VEI-02",
+      "VEI-03",
+      "VEI-04",
+      "VEI-05",
+      "VEI-06",
+      "VEI-07",
+      "VEI-08",
+      "VEI-09",
+      "RAC-01",
+      "RAC-02",
+      "RAC-03",
+      "RAC-04",
+      "RAC-05",
+      "SVI-01",
+      "SVI-02"
+    ],
+    "entry": "THEN5FC1-01",
+    "exit": "THEN5FC1-06",
+    "build_guidance": "Block out six points of interest for cosmic environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "The Drowned Bell": {
+    "title": "The Drowned Bell",
+    "biome": "coast",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "THED8300-01",
+        "name": "Flooded Entry",
+        "x": 130,
+        "y": 340,
+        "role": "Entry"
+      },
+      {
+        "id": "THED8300-02",
+        "name": "Old Harbor Signal",
+        "x": 300,
+        "y": 465,
+        "role": "Safe hub"
+      },
+      {
+        "id": "THED8300-03",
+        "name": "Sunken Bell",
+        "x": 515,
+        "y": 295,
+        "role": "Quest site"
+      },
+      {
+        "id": "THED8300-04",
+        "name": "Lost-Fleet Memory",
+        "x": 740,
+        "y": 430,
+        "role": "Encounter site"
+      },
+      {
+        "id": "THED8300-05",
+        "name": "Choir Chamber",
+        "x": 930,
+        "y": 250,
+        "role": "Discovery"
+      },
+      {
+        "id": "THED8300-06",
+        "name": "Return Skiff",
+        "x": 1050,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "THED8300-01",
+        "THED8300-02"
+      ],
+      [
+        "THED8300-02",
+        "THED8300-03"
+      ],
+      [
+        "THED8300-03",
+        "THED8300-04"
+      ],
+      [
+        "THED8300-04",
+        "THED8300-05"
+      ],
+      [
+        "THED8300-05",
+        "THED8300-06"
+      ],
+      [
+        "THED8300-02",
+        "THED8300-04"
+      ]
+    ],
+    "recommended_content": [],
+    "entry": "THED8300-01",
+    "exit": "THED8300-06",
+    "build_guidance": "Block out six points of interest for coast environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Root Archive": {
+    "title": "Root Archive",
+    "biome": "forest",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "ROOT4A44-01",
+        "name": "Root Gate",
+        "x": 140,
+        "y": 350,
+        "role": "Entry"
+      },
+      {
+        "id": "ROOT4A44-02",
+        "name": "Undergrove",
+        "x": 330,
+        "y": 210,
+        "role": "Safe hub"
+      },
+      {
+        "id": "ROOT4A44-03",
+        "name": "Memory Fruit Vault",
+        "x": 540,
+        "y": 380,
+        "role": "Quest site"
+      },
+      {
+        "id": "ROOT4A44-04",
+        "name": "Frost Chamber",
+        "x": 750,
+        "y": 200,
+        "role": "Encounter site"
+      },
+      {
+        "id": "ROOT4A44-05",
+        "name": "Root Heart",
+        "x": 950,
+        "y": 350,
+        "role": "Discovery"
+      },
+      {
+        "id": "ROOT4A44-06",
+        "name": "Return Walk",
+        "x": 1060,
+        "y": 190,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "ROOT4A44-01",
+        "ROOT4A44-02"
+      ],
+      [
+        "ROOT4A44-02",
+        "ROOT4A44-03"
+      ],
+      [
+        "ROOT4A44-03",
+        "ROOT4A44-04"
+      ],
+      [
+        "ROOT4A44-04",
+        "ROOT4A44-05"
+      ],
+      [
+        "ROOT4A44-05",
+        "ROOT4A44-06"
+      ],
+      [
+        "ROOT4A44-02",
+        "ROOT4A44-04"
+      ]
+    ],
+    "recommended_content": [],
+    "entry": "ROOT4A44-01",
+    "exit": "ROOT4A44-06",
+    "build_guidance": "Block out six points of interest for forest environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Bell Foundry": {
+    "title": "Bell Foundry",
+    "biome": "forge",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "BELL005E-01",
+        "name": "Foundry Gate",
+        "x": 140,
+        "y": 360,
+        "role": "Entry"
+      },
+      {
+        "id": "BELL005E-02",
+        "name": "Worker Passage",
+        "x": 330,
+        "y": 455,
+        "role": "Safe hub"
+      },
+      {
+        "id": "BELL005E-03",
+        "name": "Warmth Manifold",
+        "x": 540,
+        "y": 245,
+        "role": "Quest site"
+      },
+      {
+        "id": "BELL005E-04",
+        "name": "Bellglass Heart",
+        "x": 735,
+        "y": 440,
+        "role": "Encounter site"
+      },
+      {
+        "id": "BELL005E-05",
+        "name": "Final Switch",
+        "x": 940,
+        "y": 270,
+        "role": "Discovery"
+      },
+      {
+        "id": "BELL005E-06",
+        "name": "Rally Stair",
+        "x": 1060,
+        "y": 350,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "BELL005E-01",
+        "BELL005E-02"
+      ],
+      [
+        "BELL005E-02",
+        "BELL005E-03"
+      ],
+      [
+        "BELL005E-03",
+        "BELL005E-04"
+      ],
+      [
+        "BELL005E-04",
+        "BELL005E-05"
+      ],
+      [
+        "BELL005E-05",
+        "BELL005E-06"
+      ],
+      [
+        "BELL005E-02",
+        "BELL005E-04"
+      ]
+    ],
+    "recommended_content": [],
+    "entry": "BELL005E-01",
+    "exit": "BELL005E-06",
+    "build_guidance": "Block out six points of interest for forge environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Mirror Hall": {
+    "title": "Mirror Hall",
+    "biome": "archive",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "MIRRDD9D-01",
+        "name": "Mirror Entrance",
+        "x": 138,
+        "y": 300,
+        "role": "Entry"
+      },
+      {
+        "id": "MIRRDD9D-02",
+        "name": "Hall of Choices",
+        "x": 336,
+        "y": 300,
+        "role": "Safe hub"
+      },
+      {
+        "id": "MIRRDD9D-03",
+        "name": "False Accession",
+        "x": 534,
+        "y": 300,
+        "role": "Quest site"
+      },
+      {
+        "id": "MIRRDD9D-04",
+        "name": "Hidden Clause",
+        "x": 735,
+        "y": 300,
+        "role": "Encounter site"
+      },
+      {
+        "id": "MIRRDD9D-05",
+        "name": "Reflection Engine",
+        "x": 936,
+        "y": 300,
+        "role": "Discovery"
+      },
+      {
+        "id": "MIRRDD9D-06",
+        "name": "Exit Archive",
+        "x": 1060,
+        "y": 300,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "MIRRDD9D-01",
+        "MIRRDD9D-02"
+      ],
+      [
+        "MIRRDD9D-02",
+        "MIRRDD9D-03"
+      ],
+      [
+        "MIRRDD9D-03",
+        "MIRRDD9D-04"
+      ],
+      [
+        "MIRRDD9D-04",
+        "MIRRDD9D-05"
+      ],
+      [
+        "MIRRDD9D-05",
+        "MIRRDD9D-06"
+      ],
+      [
+        "MIRRDD9D-02",
+        "MIRRDD9D-04"
+      ]
+    ],
+    "recommended_content": [],
+    "entry": "MIRRDD9D-01",
+    "exit": "MIRRDD9D-06",
+    "build_guidance": "Block out six points of interest for archive environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  },
+  "Assembly of the Ninth": {
+    "title": "Assembly of the Ninth",
+    "biome": "cosmic",
+    "scale": "Schematic design topology — not measured engine geometry",
+    "nodes": [
+      {
+        "id": "ASSEF8E3-01",
+        "name": "Arrival Stair",
+        "x": 140,
+        "y": 280,
+        "role": "Entry"
+      },
+      {
+        "id": "ASSEF8E3-02",
+        "name": "Eight Seals",
+        "x": 337,
+        "y": 440,
+        "role": "Safe hub"
+      },
+      {
+        "id": "ASSEF8E3-03",
+        "name": "Ninth Chair",
+        "x": 540,
+        "y": 170,
+        "role": "Quest site"
+      },
+      {
+        "id": "ASSEF8E3-04",
+        "name": "Witness Tables",
+        "x": 740,
+        "y": 440,
+        "role": "Encounter site"
+      },
+      {
+        "id": "ASSEF8E3-05",
+        "name": "Engine Core",
+        "x": 945,
+        "y": 200,
+        "role": "Discovery"
+      },
+      {
+        "id": "ASSEF8E3-06",
+        "name": "Return Threshold",
+        "x": 1060,
+        "y": 335,
+        "role": "Exit"
+      }
+    ],
+    "connections": [
+      [
+        "ASSEF8E3-01",
+        "ASSEF8E3-02"
+      ],
+      [
+        "ASSEF8E3-02",
+        "ASSEF8E3-03"
+      ],
+      [
+        "ASSEF8E3-03",
+        "ASSEF8E3-04"
+      ],
+      [
+        "ASSEF8E3-04",
+        "ASSEF8E3-05"
+      ],
+      [
+        "ASSEF8E3-05",
+        "ASSEF8E3-06"
+      ],
+      [
+        "ASSEF8E3-02",
+        "ASSEF8E3-04"
+      ]
+    ],
+    "recommended_content": [],
+    "entry": "ASSEF8E3-01",
+    "exit": "ASSEF8E3-06",
+    "build_guidance": "Block out six points of interest for cosmic environment, maintain at least one alternate path, mark hazard boundaries and ensure entry-to-exit traversal."
+  }
+}
