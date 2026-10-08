@@ -1032,6 +1032,7 @@ training-dummy-1:
   behavior: scripts/training-dummy.js
   feetPosition: {x: 14, y: 4, z: 14}
   id: training-dummy-1
+  mixer: {idle: {clip: cdn/clip-idle-loop.glb, loop: loop, weight: 1}}
   model: /cdn/model-humanoid-mannequin-female-purple-a71rld2m.glb
   physics: {body: static, collider: capsule}
   rotation: 180
@@ -1042,6 +1043,7 @@ training-dummy-2:
   behavior: scripts/training-dummy.js
   feetPosition: {x: 16.5, y: 4, z: 15}
   id: training-dummy-2
+  mixer: {idle: {clip: cdn/clip-idle-loop.glb, loop: loop, weight: 1}}
   model: /cdn/model-humanoid-mannequin-female-purple-a71rld2m.glb
   physics: {body: static, collider: capsule}
   rotation: 180
@@ -1052,6 +1054,7 @@ training-dummy-3:
   behavior: scripts/training-dummy.js
   feetPosition: {x: 19, y: 4, z: 14}
   id: training-dummy-3
+  mixer: {idle: {clip: cdn/clip-idle-loop.glb, loop: loop, weight: 1}}
   model: /cdn/model-humanoid-mannequin-female-purple-a71rld2m.glb
   physics: {body: static, collider: capsule}
   rotation: 180
