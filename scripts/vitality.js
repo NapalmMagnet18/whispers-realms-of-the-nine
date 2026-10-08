@@ -1,13 +1,22 @@
 // A player's fall and rise, and mending out of combat. Enemies write state.health; this reads it.
 // health ≤ 0 → dying for FALL_S (input already blocked by the mod while dying) → stand where they last stood safe at RISE_PCT.
 const FALL_S = 2.5, RISE_PCT = 0.5, CALM_S = 8, MEND_PER_S = 0.03; // mend 3% of max a second once 8 s unhurt
-import { nearestRoost, PVP } from "./lib/pvp.js";
+import { nearestRoost, PVP, pvpRealm, sanctuaryAt } from "./lib/pvp.js";
 const SAFE_HOME = { hollowcrypt: { x: 0, y: 0.3, z: -4 } }; // the vestibule, by the residents
 export const updateSchedule = { every: { seconds: 0.25 } };
 export function update(ctx, dt) {
   const me = ctx.self, s = me.state, mem = ctx.session, now = ctx.now();
   if (!s.characterCreated || s.phase !== "playing" || s.pvpDead) return;
   if (me.place !== "main" && me.place !== "hollowcrypt") return;
+  if (mem.zoneAt !== Math.floor(now / 1000)) { // once a second: which ground am I on, on a PvP realm
+    mem.zoneAt = Math.floor(now / 1000);
+    const fp = me.feetPosition, safe = me.place === "main" && pvpRealm(ctx) ? sanctuaryAt(fp.x, fp.z) : null;
+    const zone = me.place === "main" && pvpRealm(ctx) ? (safe ? "sanctuary" : "contested") : null;
+    if (s.pvpZone !== zone) {
+      const was = s.pvpZone; s.pvpZone = zone; s.pvpSanctuary = safe ? safe.name : null;
+      if (was !== undefined && zone) ctx.emit("damageNumber", { position: { ...fp, y: fp.y + 2.6 }, text: zone === "sanctuary" ? "Sanctuary: " + safe.name : "Contested ground", color: zone === "sanctuary" ? "#9fe08a" : "#ff6a55", size: 1.1, lifetime: 2 }, { audience: { player: me.id } });
+    }
+  }
   const max = s.maxHealth || 1000, hp = s.health ?? max;
   if (mem.vitPlace !== me.place) { mem.vitPlace = me.place; mem.safe = null; }
   if (hp < (mem.lastHp ?? hp)) mem.hurtAt = now;
