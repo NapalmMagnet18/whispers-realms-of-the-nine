@@ -253,7 +253,7 @@ function lanternpost(ctx, p, s) {
 
 function woodpile(ctx, p, s) {
   const L = p.L ?? 2.4;
-  if (s) { boxR(ctx, [0, 0.6, 0], [L, 1.2, 0.8]); return; }
+  if (s || ctx.lod >= 4) { if (!s) paint(ctx, s, BARK, "oklch(0.8 0.03 60)"); boxR(ctx, [0, 0.5, 0], [L, 1.0, 0.75]); return; }
   paint(ctx, s, OAK, "oklch(0.75 0.03 50)");
   for (const x of [-L / 2, L / 2]) boxR(ctx, [x, 0.7, 0.35], [0.1, 1.4, 0.1]);
   boxR(ctx, [0, 1.45, 0.25], [L + 0.3, 0.06, 0.9], { pitch: -12 });
