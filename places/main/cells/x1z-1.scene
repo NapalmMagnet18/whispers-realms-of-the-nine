@@ -10,6 +10,245 @@ ashen-cathedral:
   physics: none
   primitive: {depth: 16, height: 26, kind: box, width: 36}
   tags: [blueprint]
+ashen-fence-00:
+  feetPosition: {x: 89.61868265127458, y: 4.6574076365512775, z: -188.02067518552204}
+  id: ashen-fence-00
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 100}
+  rotation: {yaw: 82.52542372881366}
+  tags: [ashen]
+ashen-fence-01:
+  feetPosition: {x: 90.1384745183376, y: 4.614942572738929, z: -191.98247006448497}
+  id: ashen-fence-01
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 101}
+  rotation: {yaw: 76.57627118644072}
+  tags: [ashen]
+ashen-fence-28:
+  feetPosition: {x: 166.03398477222282, y: 4.634012026134756, z: -190.97210200401187}
+  id: ashen-fence-28
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 128}
+  rotation: {yaw: -84.05084745762711}
+  tags: [ashen]
+ashen-fence-29:
+  feetPosition: {x: 166.44812738532255, y: 4.622750358629077, z: -186.99787401054482}
+  id: ashen-fence-29
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 129}
+  rotation: {yaw: -90}
+  tags: [ashen]
+ashen-fence-30:
+  feetPosition: {x: 166.44812738532255, y: 4.611997203551437, z: -183.0021259894552}
+  id: ashen-fence-30
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 130}
+  rotation: {yaw: -95.94915254237284}
+  tags: [ashen]
+ashen-fence-31:
+  feetPosition: {x: 166.03398477222282, y: 4.611997203551437, z: -179.02789799598813}
+  id: ashen-fence-31
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 131}
+  rotation: {yaw: -101.89830508474573}
+  tags: [ashen]
+ashen-fence-32:
+  feetPosition: {x: 165.21016046819693, y: 4.612005517399346, z: -175.11799828319005}
+  id: ashen-fence-32
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 132}
+  rotation: {yaw: -107.84745762711887}
+  tags: [ashen]
+ashen-fence-33:
+  feetPosition: {x: 163.9855282669302, y: 4.635038196006582, z: -171.3145421943595}
+  id: ashen-fence-33
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 133}
+  rotation: {yaw: -113.7966101694912}
+  tags: [ashen]
+ashen-fence-34:
+  feetPosition: {x: 162.3732792498721, y: 4.666629745056073, z: -167.65849851915027}
+  id: ashen-fence-34
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 134}
+  rotation: {yaw: -119.74576271186486}
+  tags: [ashen]
+ashen-fence-35:
+  feetPosition: {x: 160.39077969897954, y: 4.679362761501037, z: -164.18924819973643}
+  id: ashen-fence-35
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 135}
+  rotation: {yaw: -125.69491525423726}
+  tags: [ashen]
+ashen-fence-36:
+  feetPosition: {x: 158.05938403643938, y: 4.701281588881046, z: -160.94416014041803}
+  id: ashen-fence-36
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 136}
+  rotation: {yaw: -131.64406779661007}
+  tags: [ashen]
+ashen-fence-37:
+  feetPosition: {x: 155.40420480628208, y: 4.758110666514553, z: -157.95818868982062}
+  id: ashen-fence-37
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 137}
+  rotation: {yaw: -137.59322033898303}
+  tags: [ashen]
+ashen-fence-38:
+  feetPosition: {x: 152.4538421755223, y: 4.81632713193478, z: -155.26349713139345}
+  id: ashen-fence-38
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 138}
+  rotation: {yaw: -143.54237288135576}
+  tags: [ashen]
+ashen-fence-39:
+  feetPosition: {x: 149.24007586849496, y: 4.828433232505682, z: -152.8891112377658}
+  id: ashen-fence-39
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 139}
+  rotation: {yaw: -149.49152542372912}
+  tags: [ashen]
+ashen-fence-40:
+  feetPosition: {x: 145.79752285270393, y: 4.863437104918449, z: -150.860606620687}
+  id: ashen-fence-40
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 140}
+  rotation: {yaw: -155.44067796610162}
+  tags: [ashen]
+ashen-fence-41:
+  feetPosition: {x: 142.1632644634092, y: 4.963883396225876, z: -149.1998332442497}
+  id: ashen-fence-41
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 141}
+  rotation: {yaw: -161.38983050847452}
+  tags: [ashen]
+ashen-fence-42:
+  feetPosition: {x: 138.37644698336567, y: 4.992991298898508, z: -147.92468006879238}
+  id: ashen-fence-42
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 142}
+  rotation: {yaw: -167.3389830508473}
+  tags: [ashen]
+ashen-fence-43:
+  feetPosition: {x: 134.47785998005475, y: 4.87885626804701, z: -147.04888236061018}
+  id: ashen-fence-43
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 143}
+  rotation: {yaw: -173.2881355932206}
+  tags: [ashen]
+ashen-fence-44:
+  feetPosition: {x: 130.50949694233393, y: 4.844568469537925, z: -146.58187374303094}
+  id: ashen-fence-44
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 144}
+  rotation: {yaw: -179.23728813559296}
+  tags: [ashen]
+ashen-fence-45:
+  feetPosition: {x: 126.51410294909091, y: 4.844568469537925, z: -146.52868458248275}
+  id: ashen-fence-45
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 145}
+  rotation: {yaw: 174.81355932203388}
+  tags: [ashen]
+ashen-fence-46:
+  feetPosition: {x: 122.5347142421729, y: 4.909246050393481, z: -146.88988780408417}
+  id: ashen-fence-46
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 146}
+  rotation: {yaw: 168.8644067796608}
+  tags: [ashen]
+ashen-fence-47:
+  feetPosition: {x: 118.61419466306442, y: 4.992165322510865, z: -147.6615927204018}
+  id: ashen-fence-47
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 147}
+  rotation: {yaw: 162.91525423728825}
+  tags: [ashen]
+ashen-fence-48:
+  feetPosition: {x: 114.79477394656962, y: 4.907904545260554, z: -148.8354869398494}
+  id: ashen-fence-48
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 148}
+  rotation: {yaw: 156.9661016949152}
+  tags: [ashen]
+ashen-fence-49:
+  feetPosition: {x: 111.11759284475181, y: 4.791941215340008, z: -150.398925903313}
+  id: ashen-fence-49
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 149}
+  rotation: {yaw: 151.01694915254234}
+  tags: [ashen]
+ashen-fence-50:
+  feetPosition: {x: 107.62225998081091, y: 4.713637355952939, z: -152.33506908456198}
+  id: ashen-fence-50
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 150}
+  rotation: {yaw: 145.06779661016967}
+  tags: [ashen]
+ashen-fence-51:
+  feetPosition: {x: 104.34642520623177, y: 4.676676137725492, z: -154.623061387368}
+  id: ashen-fence-51
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 151}
+  rotation: {yaw: 139.11864406779648}
+  tags: [ashen]
+ashen-fence-52:
+  feetPosition: {x: 101.32537405677084, y: 4.65825207462153, z: -157.2382577854198}
+  id: ashen-fence-52
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 152}
+  rotation: {yaw: 133.1694915254239}
+  tags: [ashen]
+ashen-fence-53:
+  feetPosition: {x: 98.59164767558467, y: 4.65825207462153, z: -160.15248878533194}
+  id: ashen-fence-53
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 153}
+  rotation: {yaw: 127.2203389830509}
+  tags: [ashen]
+ashen-fence-54:
+  feetPosition: {x: 96.1746922974836, y: 4.671954920962492, z: -163.33436385332408}
+  id: ashen-fence-54
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 154}
+  rotation: {yaw: 121.27118644067806}
+  tags: [ashen]
+ashen-fence-55:
+  feetPosition: {x: 94.10054206987871, y: 4.739139212072954, z: -166.74960953721984}
+  id: ashen-fence-55
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 155}
+  rotation: {yaw: 115.32203389830515}
+  tags: [ashen]
+ashen-fence-56:
+  feetPosition: {x: 92.39153862690507, y: 4.813085754505026, z: -170.36143864169682}
+  id: ashen-fence-56
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 156}
+  rotation: {yaw: 109.37288135593211}
+  tags: [ashen]
+ashen-fence-57:
+  feetPosition: {x: 91.06609043731801, y: 4.823987265185328, z: -174.13094648022985}
+  id: ashen-fence-57
+  physics: static
+  primitive: {kind: scripted, params: {endPier: false, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 157}
+  rotation: {yaw: 103.42372881355928}
+  tags: [ashen]
+ashen-fence-58:
+  feetPosition: {x: 90.1384745183376, y: 4.784962880330125, z: -178.01752993551503}
+  id: ashen-fence-58
+  physics: static
+  primitive: {kind: scripted, params: {endPier: true, kind: fence, len: 3.996}, script: scripts/gen/ashen.js, seed: 158}
+  rotation: {yaw: 97.4745762711864}
+  tags: [ashen]
+ashen-gate:
+  children: [{feetPosition: {x: 0, y: 3.81, z: 0}, id: lantern, light: {color: oklch(0.8 0.14 70), distance: 12, intensity: 2, kind: point}, primitive: {kind: scripted, params: {chain: 0.4, kind: lantern}, script: scripts/gen/ashen.js, seed: 2}}]
+  feetPosition: {x: 89.5, y: 4.805744192772084, z: -185}
+  id: ashen-gate
+  physics: static
+  primitive: {kind: scripted, params: {kind: gate}, script: scripts/gen/ashen.js, seed: 4}
+  rotation: {yaw: 90}
+  tags: [ashen]
 ashen-npc-corwen:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: 90, y: {terrain: 0}, z: -190}
@@ -61,10 +300,10 @@ ashen-relic-table:
 ashen-yard:
   feetPosition: {x: 128, y: 5, z: -185}
   id: ashen-yard
-  material: {kind: scripted, script: engine/blueprint}
   physics: none
-  primitive: {depth: 64, height: 3, kind: box, width: 64}
-  tags: [blueprint]
+  primitive: {kind: scripted, params: {kind: yard}, script: scripts/gen/ashen.js, seed: 11}
+  receiveShadow: true
+  tags: [ashen]
 node-sunleaf-5:
   behavior: scripts/gather-node.js
   feetPosition: {x: 113.8, y: {terrain: 0}, z: -108.9}
