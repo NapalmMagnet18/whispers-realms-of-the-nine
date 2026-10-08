@@ -411,6 +411,13 @@ kit-mushrooms-1:
   physics: {body: static, collider: box}
   rotation: {yaw: 0}
   tags: [kit]
+object/x8f86c51c40e35747/0:
+  behavior: scripts/missile.js
+  feetPosition: {x: -68.5093311130402, y: 1.7145904139697605, z: -31.315122838718693}
+  id: object/x8f86c51c40e35747/0
+  primitive: {kind: scripted, params: {shape: shard}, script: scripts/gen/arrow.js}
+  state: {ability: frost, damage: 10, dir: {x: -1, y: 0, z: 0}, kind: frost, ownerId: null, range: 40, slow: 0.4, slowFor: 3, speed: 13, targetId: briar-wolf-1, turn: 400}
+  tags: [projectile, temp]
 road-pebbles-2:
   feetPosition: {x: -68, y: {terrain: 0}, z: -14}
   id: road-pebbles-2
