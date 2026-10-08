@@ -6,6 +6,7 @@
 // nothing below 36px pre-zoom.
 
 // Portrait lookup — keyed by giverName (lowercase). Only modify ui-quest.js per instructions.
+var _CUR = require('lib/currency.js');
 var NPC_PORTRAITS = {
   'clawtheus': '/cdn/icon-circular-face-closeup-orange-lobster-face-wearing-morpheus-matrix-round-pince-nez-sunglasses-dark-gothic-tight-crop-filling-frame.png',
   'morwenna blackthorn': '/cdn/portrait-gothic-dark-fantasy-female-black-cloak-pale-face-closeup.png',
@@ -58,6 +59,9 @@ export function renderQuestDialog(localPlayer) {
         + '<img src="/cdn/sprite-transparent-fantasy-gold-coin-shiny.png" draggable="false" style="width:24px;height:24px;filter:drop-shadow(0 2px 4px rgba(180,130,30,0.5));-webkit-user-drag:none;user-select:none;" />'
         + '<span style="font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;filter:drop-shadow(0 1px 2px rgba(180,130,30,0.3));">' + quest.rewards.gold + ' Gold</span>'
         + '</div>';
+    }
+    if (quest.rewards.copper) {
+      rewardItems += '<div style="display:flex;align-items:center;gap:12px;font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;">' + _CUR.formatHtml(quest.rewards.copper) + '</div>';
     }
     if (quest.rewards.xp) {
       rewardItems += '<div style="display:flex;align-items:center;gap:12px;">'
@@ -241,6 +245,9 @@ export function renderTurnInDialog(localPlayer) {
         + '<span style="font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;filter:drop-shadow(0 1px 2px rgba(180,130,30,0.3));">' + quest.rewards.gold + ' Gold</span>'
         + '</div>';
     }
+    if (quest.rewards.copper) {
+      rewardItems += '<div style="display:flex;align-items:center;gap:12px;font-size:36px;color:oklch(0.3 0.08 50);font-family:Cinzel,serif;font-weight:700;">' + _CUR.formatHtml(quest.rewards.copper) + '</div>';
+    }
     if (quest.rewards.xp) {
       rewardItems += '<div style="display:flex;align-items:center;gap:12px;">'
         + '<img src="/cdn/sprite-gothic-dark-fantasy-green-xp-star-icon.png" draggable="false" style="width:24px;height:24px;filter:drop-shadow(0 2px 4px rgba(60,180,60,0.5));-webkit-user-drag:none;user-select:none;" />'
@@ -360,7 +367,7 @@ export function renderTurnInDialog(localPlayer) {
 
             // NPC name
             + '<div style="font-family:Cinzel,serif;font-size:30px;font-weight:700;color:oklch(0.95 0 0);letter-spacing:4px;text-transform:uppercase;margin-top:-130px;margin-left:300px;">'
-              + 'Clawtheus'
+              + (quest.giverName || 'Quest Giver')
             + '</div>'
 
             // "Quest Complete" header

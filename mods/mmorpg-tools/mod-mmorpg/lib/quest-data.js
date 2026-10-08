@@ -30,7 +30,7 @@ export function questToActiveFormat(quest, playerState) {
     baseline[o.key] = tally[o.key] || 0;
     objs.push({ key: o.key, desc: o.desc, target: o.target, current: 0 });
   }
-  return { questId: quest.id, title: quest.title, giverNpcId: quest.giverNpcId, giverName: quest.giverName, turnInNpcId: quest.turnInNpcId || quest.giverNpcId, objectives: objs, rewards: quest.rewards, baseline: baseline };
+  return { questId: quest.id, title: quest.title, giverNpcId: quest.giverNpcId, giverName: quest.giverName, turnInNpcId: quest.turnInNpcId || quest.giverNpcId, turnInName: quest.turnInName || quest.giverName, objectives: objs, rewards: quest.rewards, baseline: baseline };
 }
 
 // Fresh objective counts from the tally: min(target, tally − baseline).
