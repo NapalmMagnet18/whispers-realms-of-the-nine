@@ -7,7 +7,7 @@ const STONE = 'cdn/texture-weathered-carved-sandstone-blocks.png', IRON = 'cdn/t
 function h(i, s) { const n = Math.sin(i * 127.1 + s * 311.7) * 43758.5453; return n - Math.floor(n); }
 
 function build(ctx, col) {
-  const p = ctx.params || {}, s = p.seed || 1, lod = ctx.lod || 1, far = lod >= 4;
+  const p = ctx.params || {}, s = p.seed || 1, lod = ctx.lod || 1, far = lod >= 5;
   const tint = p.tint || 'oklch(0.85 0.13 75)', emit = p.emit || [2.6, 1.7, 0.6];
   const paint = (tex, c, r = 0.9, m = 0) => { if (col) return; ctx.albedo(far ? null : tex); ctx.color(c); ctx.roughness(r); ctx.metalness(m); ctx.emissive(null); };
   const glow = () => { if (col) return; ctx.albedo(null); ctx.color(tint); ctx.emissive(...emit); };
