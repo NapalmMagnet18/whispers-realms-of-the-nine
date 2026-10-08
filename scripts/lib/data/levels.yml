@@ -7,3 +7,4 @@ growth: 1.09
 cap: 60
 perLevel: { health: 60, mana: 25 }   # added to the 1000 / 500 a level-1 hero starts with
 base: { health: 1000, mana: 500 }
+damagePerLevel: 0.08   # every class ability hits this much harder per level past 1 (level 21 = x2.6), matching health growth

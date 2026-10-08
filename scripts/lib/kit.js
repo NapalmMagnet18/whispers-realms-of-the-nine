@@ -1,6 +1,9 @@
 // Shared by the class kits (vanguard.js, arcanist.js, pathfinder.js) and scripts/missile.js:
 // which class a body plays, soft targeting, launching a missile and landing a hit into target.state.hp.
 import { rotate, rotationFromDirection } from 'builtin/vec3'
+import LV from './data/levels.yml'
+// a hero's hits grow with their level, as their health does: every class reads this one number
+export function power(ctx) { return 1 + (LV.damagePerLevel ?? 0.08) * Math.max(0, (ctx.self.state?.level ?? 1) - 1) }
 import { MISSILES, impactFx } from './missiles.js'
 import { pvpTargets, isPlayer, strikePlayer, canPvp } from './pvp.js'
 
@@ -43,7 +46,7 @@ export function launch(ctx, a, targetId, yawOff = 0) {
   return ctx.spawn({
     tags: ['projectile'], lifetime: 5, castShadow: false, feetPosition: origin, rotation: rotationFromDirection(dir),
     ...(M.primitive ? { primitive: M.primitive } : {}), fx: { script: M.trail }, behavior: 'scripts/missile.js',
-    state: { kind: a.missile, ability: a.kind, ownerId: self.id, targetId: t && alive(t) ? t.id : null, dir, speed: a.speed, turn: a.turn, damage: a.damage, slow: a.slow ?? 0, slowFor: a.slowFor ?? 0, range: a.range + 8 },
+    state: { kind: a.missile, ability: a.kind, ownerId: self.id, targetId: t && alive(t) ? t.id : null, dir, speed: a.speed, turn: a.turn, damage: Math.round(a.damage * power(ctx)), slow: a.slow ?? 0, slowFor: a.slowFor ?? 0, range: a.range + 8 },
   })
 }
 export function materialOf(t) { return t.state?.material || ((t.tags || []).includes('wolf') ? 'fur' : 'wood') }

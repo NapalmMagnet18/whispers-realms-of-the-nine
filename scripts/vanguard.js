@@ -3,7 +3,7 @@
 // target's state (target.state.hp -= d). Anything tagged "enemy" with state.hp is struck.
 import V from './lib/data/vanguard.yml'
 import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
-import { drill, classOf, meleePlayer, strikePlayer } from './lib/kit.js'
+import { drill, classOf, meleePlayer, strikePlayer, power } from './lib/kit.js'
 
 const WHOOSH = '/cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3'
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
@@ -62,7 +62,7 @@ export function land(ctx, { kind }) {
   if (!hit) {
     const pt = meleePlayer(ctx, a.reach, cosArc)
     if (!pt) return
-    const dmg = strikePlayer(ctx, pt, a.damage, kind), pos = { x: pt.feetPosition.x, y: pt.feetPosition.y + 1.2, z: pt.feetPosition.z }
+    const dmg = strikePlayer(ctx, pt, Math.round(a.damage * power(ctx)), kind), pos = { x: pt.feetPosition.x, y: pt.feetPosition.y + 1.2, z: pt.feetPosition.z }
     const n = normalize({ x: pt.feetPosition.x - self.feetPosition.x, y: 0.4, z: pt.feetPosition.z - self.feetPosition.z }), near = { nearby: pos, radius: 40 }
     ctx.emit('damageNumber', { position: pos, value: dmg, crit: kind === 'heavy', color: '#ff6a55' }, { audience: near })
     ctx.emit('fx', { position: pos, script: SPARKS, params: { normal: n } }, { audience: near })
@@ -73,7 +73,8 @@ export function land(ctx, { kind }) {
   }
   const target = ctx.getObject(hit.id)
   if (!target) return
-  target.state.hp -= a.damage
+  const dealt = Math.round(a.damage * power(ctx))
+  target.state.hp -= dealt
   target.state.lastHitBy = self.id
   target.state.lastHitAt = ctx.now()
   target.state.lastHitKind = kind
