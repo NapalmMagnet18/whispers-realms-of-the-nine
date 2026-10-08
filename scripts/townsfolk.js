@@ -3,9 +3,10 @@
 // player's side (scripts/quest-player.js reads scripts/lib/data/townsfolk.yml). Distances mirror quests.yml npc, inlined so a
 // resident never carries the whole quest book into a place's boot.
 const N = { greetReach: 7, greetCooldown: 20 };
+import { residentIdle, greetResident, residentPitch } from './lib/resident-animation.js';
 
 export function onSpawn(ctx) {
-  ctx.self.anim.base = { clip: ctx.self.state.idle || 'Idle_FoldArms_Loop', weight: 1, loop: 'loop' };
+  ctx.self.anim.base = { clip: residentIdle(ctx, 'Idle_FoldArms_Loop'), weight: 1, loop: 'loop' };
   ctx.self.state.homeYaw ??= ctx.self.state.yaw ?? 0;
 }
 export const updateSchedule = { every: { seconds: 0.25 } };
@@ -19,10 +20,13 @@ export function update(ctx, dt) {
   const diff = ((want - yaw + 540) % 360) - 180;
   if (Math.abs(diff) > 2) {
     const ny = yaw + Math.sign(diff) * Math.min(Math.abs(diff), 200 * dt);
-    ctx.self.state.yaw = ny; ctx.self.rotation = { yaw: ny };
+    ctx.self.state.yaw = ny;
   }
   if (best && ctx.now() > (ctx.self.state.nextGreet ?? 0)) {
     ctx.self.state.nextGreet = ctx.now() + N.greetCooldown * 1000;
-    ctx.self.anim.gesture = { clip: 'Yes', weight: 3, loop: 'once', mask: { from: 'spine_02' } };
+    if (!greetResident(ctx)) ctx.self.anim.gesture = { clip: 'Yes', weight: 3, loop: 'once', mask: { from: 'spine_02' } };
   }
+  const pitch = residentPitch(ctx);
+  if (Math.abs(diff) > 2 || pitch !== (ctx.session.residentPitch || 0)) ctx.self.rotation = { yaw: ctx.self.state.yaw ?? yaw, pitch };
+  ctx.session.residentPitch = pitch;
 }

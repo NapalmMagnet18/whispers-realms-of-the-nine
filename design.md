@@ -1,5 +1,10 @@
 # WHISPERS : Realm of the Nine — build page
 
+## 2026-10-08 · resident animation compatibility (spaiber)
+- Generated fantasy townsfolk and Elric now use their supported `idle` clip instead of mannequin-only idle names. They acknowledge nearby heroes with a small timed bow rather than requesting a missing masked nod/salute. Other models retain their existing gestures; explicit custom idle clips stay intact.
+- The greeting preserves turn-to-face and cooldown behavior; rotation writes occur only while turning or bow pitch changes. No character models, dialogue, quests or saved progression replaced.
+- Local behavior regression checks pass. Runtime and visual verification are recorded in the external development log.
+
 ## 2026-10-08 · hidden-cache reward repair (spaiber)
 - Hidden chests credit the copper purse through the existing economy writer/ledger. Legacy `gold` cache values retain the established migration value of 100 copper per coin; explicit `copper` values take precedence.
 - Claimed-cache flags now save/load with each character and reset on new-character creation, preventing repeat claims after reconnect or leakage between character slots.

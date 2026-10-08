@@ -3,9 +3,10 @@
 // his quest marker and nameplate are drawn by the HUD (lib/ui-quest.js renderQuestTracker).
 // distances mirror quests.yml npc, inlined so the spawn cell's boot never carries the quest book
 const N = { talkReach: 3.5, greetReach: 7, greetCooldown: 20, sayLength: 5 };
+import { residentIdle, greetResident, residentPitch } from './lib/resident-animation.js';
 
 export function onSpawn(ctx) {
-  ctx.self.anim.base = { clip: 'Idle_FoldArms_Loop', weight: 1, loop: 'loop' }; // the mannequin's own guard-at-ease idle
+  ctx.self.anim.base = { clip: residentIdle(ctx, 'Idle_FoldArms_Loop'), weight: 1, loop: 'loop' };
   ctx.self.state.homeYaw ??= ctx.self.state.yaw ?? -90;
 }
 export const updateSchedule = { every: { seconds: 0.25 } };
@@ -18,10 +19,13 @@ export function update(ctx, dt) {
   const diff = ((want - yaw + 540) % 360) - 180;
   if (Math.abs(diff) > 2) {
     const ny = yaw + Math.sign(diff) * Math.min(Math.abs(diff), 240 * dt);
-    ctx.self.state.yaw = ny; ctx.self.rotation = { yaw: ny };
+    ctx.self.state.yaw = ny;
   }
   if (best && ctx.now() > (ctx.self.state.nextGreet ?? 0)) {
     ctx.self.state.nextGreet = ctx.now() + N.greetCooldown * 1000;
-    ctx.self.anim.gesture = { clip: 'cdn/clip-salute.glb', weight: 4, loop: 'once', mask: { from: 'spine_02' }, duration: 2 };
+    if (!greetResident(ctx)) ctx.self.anim.gesture = { clip: 'cdn/clip-salute.glb', weight: 4, loop: 'once', mask: { from: 'spine_02' }, duration: 2 };
   }
+  const pitch = residentPitch(ctx);
+  if (Math.abs(diff) > 2 || pitch !== (ctx.session.residentPitch || 0)) ctx.self.rotation = { yaw: ctx.self.state.yaw ?? yaw, pitch };
+  ctx.session.residentPitch = pitch;
 }
