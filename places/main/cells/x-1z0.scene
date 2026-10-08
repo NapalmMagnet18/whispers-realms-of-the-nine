@@ -214,6 +214,13 @@ briar-undergrowth:
   id: briar-undergrowth
   scatter: {bounds: {radius: 66, shape: circle}, count: 480, templates: [{model: /cdn/value.dfd7a6e41f3e3432bc71bd2abb438ffda85273438378a234058ba799b1cf9e1e.glb, weight: 4}, {model: /cdn/value.9fcb9aae2f178ac8e7727e11b3cdae8aa7116ac627758076373093e081f7dd2b.glb, weight: 1}, {model: /cdn/value.3be3450f71803361eabb7a9d8f521199dd2278d78cc640b6f68e4c17a1b0fd4e.glb, weight: 3}, {model: /cdn/value.f6a5f2cc3ae89ececf13b231c784ef3264c2bd8bafb9088a27a642043487bb63.glb, weight: 2}, {model: /cdn/value.6d1658e7f2a3ea09559f9d7cb0975f03d36250c6212b62357214b0b819640605.glb, weight: 4}, {model: /cdn/value.1b3dfa6c9e39eb3f77f598274b2cb936f33e7bb8991dfc8b26c0e1e24fa37021.glb, weight: 4}, {model: /cdn/value.45731cd2d3e98b3f767b8aaefb0bcdf7f9ced27091f0e8f644f86415abcdf8bf.glb, weight: 2}, {model: /cdn/value.9e5e26478753e9acfc04265fa3f9fcb3ef42f8d83e6b60510d670218d2c6bfee.glb, weight: 1.2}], variation: {scale: [0.6, 1.2], yaw: [0, 360]}}
   tags: [briar-kit]
+briar-wolf-den:
+  feetPosition: {x: -92, y: 0, z: -40}
+  id: briar-wolf-den
+  material: {kind: scripted, script: engine/blueprint}
+  physics: none
+  primitive: {depth: 40, height: 2, kind: box, width: 50}
+  tags: [blueprint]
 thornwood-pines:
   feetPosition: {x: -130, y: {terrain: 0}, z: -30}
   id: thornwood-pines
