@@ -37,7 +37,7 @@ export function renderSettingsTab(s) {
     + ' onmouseleave="this.style.borderColor=\'rgba(80,65,40,0.3)\';this.style.color=\'rgba(200,175,120,0.5)\'">'
     + 'Main Menu</div>';
 
-  if (!s.inMainMenu) html += versionTag();
+  if (!s.inMainMenu) html += versionTag('left:16px;bottom:6px;transform:none;'); // clear of the XP bar at bottom-centre
   return html;
 }
 
