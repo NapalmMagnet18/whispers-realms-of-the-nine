@@ -383,6 +383,33 @@ reach-smith-grind:
   primitive: {kind: scripted, params: {kind: grindstone}, script: scripts/gen/armory.js}
   rotation: {yaw: -26}
   tags: [smith-yard]
+reach-smith-npc-garrick:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -28.99, y: 0.48, z: -67.38}
+  id: reach-smith-npc-garrick
+  model: /cdn/model-humanoid-fantasy-burly-armourer-male-leather-apron-soot-bald-braided-beard-hammer.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -56}
+  state: {homeYaw: -56, idle: idle, npcName: garrick, who: garrick, yaw: -56}
+  tags: [npc, talker, townsfolk]
+reach-smith-npc-pip:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -25.38, y: 0.48, z: -66.68}
+  id: reach-smith-npc-pip
+  model: /cdn/model-humanoid-fantasy-apprentice-smith-boy-teen-rolled-sleeves-sooty-cap.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: -56}
+  state: {homeYaw: -56, idle: idle, npcName: pip, who: pip, yaw: -56}
+  tags: [npc, talker, townsfolk]
+reach-smith-npc-wenna:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -29.67, y: 0.5, z: -69.82}
+  id: reach-smith-npc-wenna
+  model: /cdn/model-humanoid-fantasy-veteran-knight-woman-grey-braid-blue-surcoat-scarred.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 34}
+  state: {homeYaw: 34, idle: idle, npcName: wenna, who: wenna, yaw: 34}
+  tags: [npc, talker, townsfolk]
 reach-smith-shields:
   feetPosition: {x: -32.83, y: 0.49, z: -66}
   id: reach-smith-shields
