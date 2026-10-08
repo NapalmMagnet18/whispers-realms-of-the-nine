@@ -18,11 +18,9 @@ export const ears = {
   coins: (ctx, p) => coins_ear(ctx, p),
 };
 export function coins_ear(ctx, p) {
-  {
-    const d = Math.trunc(Number(p && p.delta) || 0);
-    if (d > 0) move(ctx, d, String((p && p.reason) || 'reward'));
-  },
-};
+  const d = Math.trunc(Number(p && p.delta) || 0);
+  if (d > 0) move(ctx, d, String((p && p.reason) || 'reward'));
+}
 
 function say(ctx, text, bad) { ctx.self.state.vendorMsg = { text, bad: !!bad, at: ctx.now() }; }
 
