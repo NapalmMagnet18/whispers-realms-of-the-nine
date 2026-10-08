@@ -1,0 +1,20 @@
+# spawn-scene v2 yaml x0z-4
+wild-blood-shrine:
+  feetPosition: {x: -49, y: 19.76, z: -563}
+  id: wild-blood-shrine
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/shrine.js}
+  rotation: {yaw: -69}
+  tags: [shrine]
+wild-blood-shrine-fx:
+  feetPosition: {x: -49, y: 20.26, z: -563}
+  fx: {script: "fx\npop motes rate=6 on=disc(3) life=3..5 v=up(.2..0.5) size=.03..0.06 acc=curl(.4)+buoy(.1) col=hdr(3,.4,.2) a=0>.2:1>.8:1>0 sz=$size r=sprite(ember,add)\npop haze rate=2 on=disc(2.5) life=4..6 v=up(.05..0.15) size=1.2..2 acc=curl(.2)+drag(.5) col=<.35,.05,.05> a=0>.3:.18>.7:.12>0 sz=$size*(.7>1.4) rot=spin(.1) r=sprite(smoke-puff,alpha)"}
+  id: wild-blood-shrine-fx
+wild-blood-shrine-glow:
+  feetPosition: {x: -49, y: 21.96, z: -563}
+  id: wild-blood-shrine-glow
+  light: {color: "#ff3a22", distance: 14, intensity: 5, kind: point}
+wild-blood-shrine-hum:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-forsaken-shrine-low-chant-drone-chains-creak-loop.mp3, gain: 0.15, loop: true, maxDistance: 28, spatial: true}
+  feetPosition: {x: -49, y: 20.76, z: -563}
+  id: wild-blood-shrine-hum
