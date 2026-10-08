@@ -1,7 +1,6 @@
 // MMORPG Tools Mod UI
 const { RACES, CLASSES, CLASS_LORE, CLASS_ICONS, CLASS_COLORS, RACE_DESCRIPTIONS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAIR_STYLES, FACIAL_HAIR } = require('./lib/races.js');
 const { RACIAL_ABILITIES } = require('./lib/racial-abilities.js');
-const { renderHUD } = require('./lib/ui-hud.js');
 const { renderChat } = require('./lib/ui-chat.js');
 // The game windows (146 KB) and the door panel are not needed to stand: they load on first draw in the world, and the HUD draws them the frame they land.
 var _lazy = {};
@@ -16,12 +15,26 @@ function _lazyMod(key, path) {
   }
   return e.m;
 }
+// the in-world HUD set loads after the menu stands (kicked off on the first paint anywhere), ready long before Enter World
+var _HUD_SRC = { hud: function () { return import('./lib/ui-hud.js'); }, quest: function () { return import('./lib/ui-quest.js'); },
+  vendor: function () { return import('./lib/ui-vendor.js'); }, welcome: function () { return import('./lib/ui-welcome.js'); } };
+var _hudMods = {};
+function _hm(key) {
+  var e = _hudMods[key] || (_hudMods[key] = { m: null, p: null });
+  if (!e.m && !e.p) e.p = _HUD_SRC[key]().then(function (m) { e.m = m; }, function () { e.p = null; });
+  return e.m;
+}
+function _hf(key, fn) { var m = _hm(key); if (!m) return null; return m[fn] || (m.default && m.default[fn]) || null; }
+function renderHUD(a, b, c) { var f = _hf('hud', 'renderHUD'); return f ? f(a, b, c) : ''; }
+function renderWelcomeWindow(a) { var f = _hf('welcome', 'renderWelcomeWindow'); return f ? f(a) : ''; }
+function renderQuestDialog(a, b) { var f = _hf('quest', 'renderQuestDialog'); return f ? f(a, b) : ''; }
+function renderTurnInDialog(a, b) { var f = _hf('quest', 'renderTurnInDialog'); return f ? f(a, b) : ''; }
+function renderQuestTracker(a, b) { var f = _hf('quest', 'renderQuestTracker'); return f ? f(a, b) : ''; }
+function renderVendor(a, b) { var f = _hf('vendor', 'renderVendor'); return f ? f(a, b) : ''; }
+function _warmHud() { _hm('hud'); _hm('quest'); _hm('vendor'); _hm('welcome'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
 function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
-const { renderWelcomeWindow } = require('./lib/ui-welcome.js');
-const { renderQuestDialog, renderTurnInDialog, renderQuestTracker } = require('./lib/ui-quest.js');
 function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
-const { renderVendor } = require('./lib/ui-vendor.js');
 const WHF = require('./lib/ui-frames.js');
 const { versionTag } = require('./lib/version.js');
 function renderGnomeTipJar(a, b) { var m = _lazyMod('gnome'); return m ? m.renderGnomeTipJar(a, b) : ''; }
