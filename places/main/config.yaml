@@ -433,6 +433,9 @@ terrain:
     roost-tideglass: {center: {x: -1070, z: 1830}, falloff: 14, height: 3.4, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
     roost-tideglass-clear: {center: {x: -1070, z: 1830}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
     tide-quay-clear: {center: {x: -1010, z: 1880}, kind: clear-scatter, shape: {kind: circle, radius: 46}}
+    ashen-close: {center: {x: 128, z: -185}, falloff: 14, height: 5, kind: flatten, material: dirt, shape: {kind: circle, radius: 36}}
+    ashen-close-clear: {center: {x: 128, z: -185}, kind: clear-scatter, shape: {kind: circle, radius: 40}}
+    road-ashen: {edgeMaterial: dirt, grade: true, kind: path, material: cobble, maxGrade: 0.18, noise: 0.35, points: [[8, -205], [40, -200], [70, -190], [92, -186]], width: 3.2}
     unseen-yard: {center: {x: 46, z: -47}, falloff: 8, height: 0.6, kind: flatten, shape: {kind: circle, radius: 15}}
     unseen-yard-clear: {center: {x: 46, z: -47}, kind: clear-scatter, shape: {kind: circle, radius: 16}}
     saltmere-hamlet: {center: {x: 301, z: 1659}, falloff: 8, height: 1.1, kind: flatten, shape: {kind: circle, radius: 13}}
