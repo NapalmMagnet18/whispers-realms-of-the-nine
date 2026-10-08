@@ -8,3 +8,600 @@ qm-sigil-spire:
   rotation: 175
   state: {gain: Sigil stone found, mark: sigil_stone, quest: Q007, say: Half buried by the road. The rune flickers when you lift it., title: Sigil Stone, verb: Take}
   tags: [quest-mark]
+qm-ward-bell-roll:
+  feetPosition: {x: -13.5, y: {terrain: 0}, z: -113.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-bell-roll
+  physics: static
+  primitive: {kind: scripted, params: {kind: table}, script: scripts/gen/props.js}
+  rotation: 35
+  state: {after: lost_notice, mark: bell_roll, quest: MAR-04, say: "Orren Tallow. The Wen family. Ash Correy. All three, rung for, a hundred and one years ago. Same night.", title: The Bell Roll, verb: Read}
+  tags: [quest-mark, lantern-ward]
+qm-ward-census:
+  feetPosition: {x: 5, y: {terrain: 0}, z: -79}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-census
+  physics: static
+  primitive: {kind: scripted, params: {kind: questboard}, script: scripts/gen/props.js}
+  rotation: 200
+  state: {mark: census_board, quest: MAR-01, say: "Bellward Lane, Nos. 1 to 12. Numbers 9 to 12 are rubbed away so hard the board is bare wood. Your own name is there, near the bottom, in fresh chalk.", title: Ward Census Board, verb: Examine}
+  tags: [quest-mark, lantern-ward]
+qm-ward-door-latch:
+  feetPosition: {x: 29.4, y: {terrain: 0}, z: -100.8}
+  id: qm-ward-door-latch
+  material: {color: oklch(0.95 0.01 90), opacity: 0, transparent: true}
+  primitive: {depth: 0.3, height: 0.05, kind: box, width: 0.3}
+  state: {after: walled_door, mark: door_latch, quest: MAR-03, say: "The latch is warm, like a hand let go of it a moment ago.", title: Iron Latch, verb: Inspect}
+  tags: [quest-mark, lantern-ward]
+qm-ward-furnace:
+  feetPosition: {x: -26, y: {terrain: 0}, z: -106}
+  fx: {script: "fx\npop smoke rate=3 on=disc(.3).c(1.6) life=2..3.4 v=up(.5..0.9) size=.25..0.4 acc=buoy(.4)+curl(.3)+drag(.6) col=<.18,.17,.17> a=0>.25:.35>.7:.2>0 sz=$size*(.7>2.6) r=sprite(smoke-puff,alpha)"}
+  id: qm-ward-furnace
+  physics: static
+  primitive: {kind: scripted, params: {kind: forge}, script: scripts/gen/props.js}
+  rotation: 70
+  state: {mark: furnace_soot, quest: MAR-06, say: "The soot comes away in flakes, black and glossy. Ink. Somebody burned paper here.", title: Old Ward Furnace, verb: Scrape}
+  tags: [quest-mark, lantern-ward]
+qm-ward-hesk:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -15.5, y: {terrain: 0}, z: -95.4}
+  id: qm-ward-hesk
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-woodcutter-male-flannel-tunic-axe-belt.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {homeYaw: 180, idle: Idle_FoldArms_Loop, mark: ward_neighbour, npcName: Old Hesk, quest: MAR-02, say: "Number nine? Blue door. Blue as a jay. Lived next to it sixty years... funny, I cannot picture who lived there.", title: Old Hesk, verb: Ask, who: hesk, yaw: 180}
+  tags: [quest-mark, npc, lantern-ward]
+qm-ward-maker-mark:
+  feetPosition: {x: -24.6, y: {terrain: 0}, z: -108}
+  id: qm-ward-maker-mark
+  material: {color: oklch(0.95 0.01 90), opacity: 0, transparent: true}
+  primitive: {depth: 0.3, height: 0.05, kind: box, width: 0.3}
+  state: {after: furnace_soot, mark: maker_mark, quest: MAR-06, say: "Under the grime: a lantern inside a bell. The old Beacon Guild seal.", title: Brass Maker's Mark, verb: Polish}
+  tags: [quest-mark, lantern-ward]
+qm-ward-memorial-archive:
+  feetPosition: {x: -24.5, y: {terrain: 0}, z: -126.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-memorial-archive
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/props.js}
+  rotation: 20
+  state: {flag: memorial_archived, mark: memorial_choice, quest: MAR-08, say: "You wrap the plaque in oilcloth and lock it in the archive chest. Recorded, kept, not shouted.", title: the plaque in the archive chest, verb: Seal}
+  tags: [quest-mark, lantern-ward]
+qm-ward-memorial-public:
+  feetPosition: {x: -19, y: {terrain: 0}, z: -125.5}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-memorial-public
+  material: {color: oklch(0.7 0.03 80), texture: cdn/texture-mossy-fieldstone-wall.png}
+  physics: static
+  primitive: {height: 0.9, kind: cylinder, radiusBottom: 0.55, radiusTop: 0.45}
+  state: {flag: memorial_public, mark: memorial_choice, quest: MAR-08, say: You set the plaque on the plinth facing the lane. Anyone walking to the bell will read it now., title: the plaque in the open, verb: Raise}
+  tags: [quest-mark, lantern-ward]
+qm-ward-notice-0:
+  children: [{feetPosition: {x: 0, y: 1.25, z: -0.07}, material: {color: oklch(0.9 0.03 90), emissive: oklch(0.5 0.05 90), emissiveIntensity: 0.3}, primitive: {depth: 0.02, height: 0.6, kind: box, width: 0.45}}]
+  feetPosition: {x: -24.6, y: {terrain: 0}, z: -95}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-notice-0
+  material: {color: oklch(0.4 0.05 50)}
+  physics: static
+  primitive: {depth: 0.1, height: 1.6, kind: box, width: 0.1}
+  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN ORREN TALLOW, No. 9. Dated the 14th of Harrowmonth. Tomorrow.", title: A nailed notice, verb: Take}
+  tags: [quest-mark, lantern-ward]
+qm-ward-notice-1:
+  children: [{feetPosition: {x: 0, y: 1.25, z: -0.07}, material: {color: oklch(0.9 0.03 90), emissive: oklch(0.5 0.05 90), emissiveIntensity: 0.3}, primitive: {depth: 0.02, height: 0.6, kind: box, width: 0.45}}]
+  feetPosition: {x: 6, y: {terrain: 0}, z: -111}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-notice-1
+  material: {color: oklch(0.4 0.05 50)}
+  physics: static
+  primitive: {depth: 0.1, height: 1.6, kind: box, width: 0.1}
+  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN THE WEN FAMILY, No. 10. Dated tomorrow.", title: A notice on the well post, verb: Take}
+  tags: [quest-mark, lantern-ward]
+qm-ward-notice-2:
+  children: [{feetPosition: {x: 0, y: 1.25, z: -0.07}, material: {color: oklch(0.9 0.03 90), emissive: oklch(0.5 0.05 90), emissiveIntensity: 0.3}, primitive: {depth: 0.02, height: 0.6, kind: box, width: 0.45}}]
+  feetPosition: {x: -7, y: {terrain: 0}, z: -121}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-notice-2
+  material: {color: oklch(0.4 0.05 50)}
+  physics: static
+  primitive: {depth: 0.1, height: 1.6, kind: box, width: 0.1}
+  state: {mark: lost_notice, quest: MAR-04, say: "HAVE YOU SEEN ASH CORREY, No. 11. Dated tomorrow, in a hand you almost know.", title: A notice on the fence, verb: Take}
+  tags: [quest-mark, lantern-ward]
+qm-ward-parcel-0:
+  feetPosition: {x: -20, y: {terrain: 0}, z: -104.6}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-parcel-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  scale: 0.6
+  state: {mark: ward_parcel, quest: MAR-02, say: You set the parcel on the step. A curtain twitches., title: Parcel for No. 1, verb: Deliver}
+  tags: [quest-mark, lantern-ward]
+qm-ward-parcel-1:
+  feetPosition: {x: 10, y: {terrain: 0}, z: -104.6}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-parcel-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  scale: 0.6
+  state: {mark: ward_parcel, quest: MAR-02, say: You set the parcel on the step. A curtain twitches., title: Parcel for No. 6, verb: Deliver}
+  tags: [quest-mark, lantern-ward]
+qm-ward-parcel-2:
+  feetPosition: {x: 20, y: {terrain: 0}, z: -95}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-ward-parcel-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  scale: 0.6
+  state: {mark: ward_parcel, quest: MAR-02, say: You set the parcel on the step. A curtain twitches., title: Parcel for No. 8, verb: Deliver}
+  tags: [quest-mark, lantern-ward]
+qm-ward-pell:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 16, y: {terrain: 0}, z: -104}
+  id: qm-ward-pell
+  layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-scholar-female-violet-robes-hood-tome.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 0}
+  state: {homeYaw: 0, idle: Idle_Lantern_Loop, mark: ward_neighbour, npcName: Widow Pell, quest: MAR-02, say: "Nine? Green shutters, always open. I brought them bread every week. ...Who did I bring it to?", title: Widow Pell, verb: Ask, who: pell, yaw: 0}
+  tags: [quest-mark, npc, lantern-ward]
+qm-ward-plaque:
+  children: [{feetPosition: {x: 0, y: 0.25, z: -0.14}, material: {color: oklch(0.55 0.09 70), metalness: 0.8, roughness: 0.4}, primitive: {depth: 0.03, height: 0.6, kind: box, width: 1}, ui: "<div face='front' class='w-full h-full flex flex-col items-center justify-center font-serif text-center' style='color:#2a1e16'><div style='font-size:70px'>BELLWARD LANE</div><div style='font-size:46px'>Nos. 9 to 12</div><div style='font-size:40px'>Sealed in the Year of the First Silence</div></div>"}]
+  feetPosition: {x: -22, y: {terrain: 0}, z: -124}
+  id: qm-ward-plaque
+  material: {color: oklch(0.55 0.02 120), texture: cdn/texture-mossy-fieldstone-wall.png}
+  physics: static
+  primitive: {depth: 0.25, height: 1.2, kind: box, width: 1.4}
+  rotation: 20
+  state: {mark: memorial_plaque, quest: MAR-07, say: "BELLWARD LANE, Nos. 9 to 12. SEALED FOR THE SAFETY OF THE WARD. Below, scratched small: signed, E.", title: Forgotten Plaque, verb: Read}
+  tags: [quest-mark, lantern-ward]
+qm-ward-shade-0:
+  feetPosition: {x: -19.5, y: {terrain: 0}, z: -112.5}
+  fx: {script: "fx\npop wisp rate=9 on=disc(.35) life=1.2..2 v=up(.5..1)+sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(.8) col=hdr(.9,1.6,2.4) a=0>.2:.7>.7:.5>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,1.1,0> r=light(<.55,.8,1>,3,6)"}
+  id: qm-ward-shade-0
+  material: {color: oklch(0.85 0.06 220), emissive: oklch(0.7 0.1 220), emissiveIntensity: 1.2, opacity: 0.35, transparent: true}
+  primitive: {halfHeight: 0.55, kind: capsule, radius: 0.32}
+  rotation: -40
+  state: {after: storm_lamp, afterText: "First: light the storm lamps", mark: echo_shade, quest: MAR-05, say: "It flickers toward you and speaks, very softly: Tallow, Orren. Number nine. Then it is gone.", title: Echo Shade, verb: Steady}
+  tags: [quest-mark, lantern-ward]
+qm-ward-shade-1:
+  feetPosition: {x: -13, y: {terrain: 0}, z: -119.5}
+  fx: {script: "fx\npop wisp rate=9 on=disc(.35) life=1.2..2 v=up(.5..1)+sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(.8) col=hdr(.9,1.6,2.4) a=0>.2:.7>.7:.5>0 sz=$size r=sprite(soft-disc,add)\npop glow n=1 at=<0,1.1,0> r=light(<.55,.8,1>,3,6)"}
+  id: qm-ward-shade-1
+  material: {color: oklch(0.85 0.06 220), emissive: oklch(0.7 0.1 220), emissiveIntensity: 1.2, opacity: 0.35, transparent: true}
+  primitive: {halfHeight: 0.55, kind: capsule, radius: 0.32}
+  rotation: 120
+  state: {after: storm_lamp, afterText: "First: light the storm lamps", mark: echo_shade, quest: MAR-05, say: "It does not strike. It whispers: Wen. Wen. Wen. Then it is only lamplight.", title: Echo Shade, verb: Steady}
+  tags: [quest-mark, lantern-ward]
+qm-ward-storm-lamp-0:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, light: {color: oklch(0.85 0.12 75), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: -6, y: {terrain: 0}, z: -97.4}
+  id: qm-ward-storm-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  state: {mark: storm_lamp, quest: MAR-05, say: "The wick takes. The flame leans east, toward the bricked door, though there is no wind.", title: Storm Lamp, verb: Light}
+  tags: [quest-mark, lantern-ward]
+qm-ward-storm-lamp-1:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, light: {color: oklch(0.85 0.12 75), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: 15, y: {terrain: 0}, z: -97.6}
+  id: qm-ward-storm-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  state: {mark: storm_lamp, quest: MAR-05, say: "The wick takes. The flame leans east, toward the bricked door, though there is no wind.", title: Storm Lamp, verb: Light}
+  tags: [quest-mark, lantern-ward]
+qm-ward-walled-door:
+  feetPosition: {x: 28.6, y: {terrain: 0}, z: -99}
+  id: qm-ward-walled-door
+  material: {color: oklch(0.95 0.01 90), opacity: 0, transparent: true}
+  primitive: {depth: 0.3, height: 0.05, kind: box, width: 0.3}
+  state: {mark: walled_door, quest: MAR-03, say: "Old brick, older door. The hinges sit on the far side, as if it opens from a street beyond the wall.", title: Bricked Doorway, verb: Examine}
+  tags: [quest-mark, lantern-ward]
+ward-arrival-plate:
+  feetPosition: {x: -1, y: {terrain: 0}, z: -84}
+  id: ward-arrival-plate
+  physics: static
+  primitive: {kind: scripted, params: {kind: plate}, script: scripts/gen/hamlet.js}
+  tags: [lantern-ward]
+ward-bell-rope:
+  feetPosition: {x: -15.6, y: {terrain: 0}, z: -116.4}
+  id: ward-bell-rope
+  material: {color: oklch(0.6 0.06 75)}
+  physics: none
+  primitive: {height: 6, kind: cylinder, radiusBottom: 0.04, radiusTop: 0.04}
+  tags: [lantern-ward]
+ward-bell-tower:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-distant-bell-tower-toll-ambience.mp3, gain: 0.12, loop: true, maxDistance: 60, spatial: true}
+  children: [{feetPosition: {x: 0, y: 9, z: 0}, light: {color: oklch(0.82 0.15 65), distance: 16, intensity: 4, kind: point}}]
+  feetPosition: {x: -18, y: {terrain: 0}, z: -118}
+  id: ward-bell-tower
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/reach-watchtower.js}
+  tags: [building, lantern-ward]
+ward-bench-hesk:
+  feetPosition: {x: -15.5, y: {terrain: 0}, z: -96.4}
+  id: ward-bench-hesk
+  physics: static
+  primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
+  rotation: 180
+  tags: [lantern-ward]
+ward-chalk-0:
+  feetPosition: {x: 6, y: {terrain: 0.03}, z: -98.6}
+  id: ward-chalk-0
+  rotation: {pitch: -90, yaw: -90}
+  tags: [lantern-ward]
+  vector: "<svg viewBox='0 0 100 60' width='0.9m'><path d='M8 30 L72 30 M52 10 L80 30 L52 50' stroke='#f4f0e6' stroke-width='9' fill='none' stroke-linecap='round' opacity='0.85'/></svg>"
+ward-chalk-1:
+  feetPosition: {x: 13, y: {terrain: 0.03}, z: -99.2}
+  id: ward-chalk-1
+  rotation: {pitch: -90, yaw: -90}
+  tags: [lantern-ward]
+  vector: "<svg viewBox='0 0 100 60' width='0.9m'><path d='M8 30 L72 30 M52 10 L80 30 L52 50' stroke='#f4f0e6' stroke-width='9' fill='none' stroke-linecap='round' opacity='0.85'/></svg>"
+ward-chalk-2:
+  feetPosition: {x: 20, y: {terrain: 0.03}, z: -99.6}
+  id: ward-chalk-2
+  rotation: {pitch: -90, yaw: -90}
+  tags: [lantern-ward]
+  vector: "<svg viewBox='0 0 100 60' width='0.9m'><path d='M8 30 L72 30 M52 10 L80 30 L52 50' stroke='#f4f0e6' stroke-width='9' fill='none' stroke-linecap='round' opacity='0.85'/></svg>"
+ward-chalk-3:
+  feetPosition: {x: 25.5, y: {terrain: 0.03}, z: -99.8}
+  id: ward-chalk-3
+  rotation: {pitch: -90, yaw: -90}
+  tags: [lantern-ward]
+  vector: "<svg viewBox='0 0 100 60' width='0.9m'><path d='M8 30 L72 30 M52 10 L80 30 L52 50' stroke='#f4f0e6' stroke-width='9' fill='none' stroke-linecap='round' opacity='0.85'/></svg>"
+ward-house-1:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 7, intensity: 3, kind: point}}]
+  feetPosition: {x: -20, y: {terrain: 0}, z: -108}
+  id: ward-house-1
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 5.5, h: 3.1, rise: 2.1, roof: weathered red clay roof shingles, w: 6, wall: timber, win: 1}, script: scripts/gen/house.js}
+  rotation: 180
+  tags: [building, cottage, lantern-ward]
+ward-house-2:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 7, intensity: 3, kind: point}}]
+  feetPosition: {x: -10, y: {terrain: 0}, z: -109}
+  id: ward-house-2
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 5.5, h: 3.4, rise: 2.1, roof: weathered red clay roof shingles, w: 7, wall: stone, win: 1}, script: scripts/gen/house.js}
+  rotation: 180
+  tags: [building, cottage, lantern-ward]
+ward-house-3:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 7, intensity: 3, kind: point}}]
+  feetPosition: {x: 10, y: {terrain: 0}, z: -108}
+  id: ward-house-3
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 5.5, h: 3.7, rise: 2.1, roof: weathered red clay roof shingles, w: 6, wall: timber, win: 1}, script: scripts/gen/house.js}
+  rotation: 180
+  tags: [building, cottage, lantern-ward]
+ward-house-4:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 7, intensity: 3, kind: point}}]
+  feetPosition: {x: 20, y: {terrain: 0}, z: -107}
+  id: ward-house-4
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 5.5, h: 3.1, rise: 2.1, roof: weathered red clay roof shingles, w: 7, wall: timber, win: 1}, script: scripts/gen/house.js}
+  rotation: 175
+  tags: [building, cottage, lantern-ward]
+ward-house-5:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 7, intensity: 3, kind: point}}]
+  feetPosition: {x: -20, y: {terrain: 0}, z: -92}
+  id: ward-house-5
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 5.5, h: 3.4, rise: 2.1, roof: weathered red clay roof shingles, w: 6, wall: stone, win: 1}, script: scripts/gen/house.js}
+  rotation: 3
+  tags: [building, cottage, lantern-ward]
+ward-house-7:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 7, intensity: 3, kind: point}}]
+  feetPosition: {x: 11, y: {terrain: 0}, z: -92}
+  id: ward-house-7
+  physics: static
+  primitive: {kind: scripted, params: {chimney: 1, d: 5.5, h: 3.7, rise: 2.1, roof: weathered red clay roof shingles, w: 7, wall: timber, win: 1}, script: scripts/gen/house.js}
+  rotation: -4
+  tags: [building, cottage, lantern-ward]
+ward-house-8:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 7, intensity: 3, kind: point}}]
+  feetPosition: {x: 20, y: {terrain: 0}, z: -91.5}
+  id: ward-house-8
+  physics: static
+  primitive: {kind: scripted, params: {chimney: -1, d: 5.5, h: 3.1, rise: 2.1, roof: weathered red clay roof shingles, w: 6, wall: timber, win: 1}, script: scripts/gen/house.js}
+  rotation: 2
+  tags: [building, cottage, lantern-ward]
+ward-lamp-0:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, light: {color: oklch(0.82 0.14 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: -8, y: {terrain: 0}, z: -80}
+  id: ward-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [lantern-ward]
+ward-lamp-1:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, light: {color: oklch(0.82 0.14 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: 8, y: {terrain: 0}, z: -118}
+  id: ward-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [lantern-ward]
+ward-lamp-2:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, light: {color: oklch(0.82 0.14 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: -28, y: {terrain: 0}, z: -98}
+  id: ward-lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [lantern-ward]
+ward-lamp-3:
+  children: [{feetPosition: {x: 0, y: 3, z: 0}, light: {color: oklch(0.82 0.14 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: 24, y: {terrain: 0}, z: -120}
+  id: ward-lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  tags: [lantern-ward]
+ward-lot9-sign:
+  children: [{feetPosition: {x: 0, y: 0.95, z: 0}, material: {color: oklch(0.62 0.06 70)}, primitive: {depth: 0.04, height: 0.4, kind: box, width: 0.7}, ui: "<div face='front' class='w-full h-full flex items-center justify-center text-[60px] font-serif' style='color:#2a1e16'>No. 9</div>"}]
+  feetPosition: {x: -11, y: {terrain: 0}, z: -96.2}
+  id: ward-lot9-sign
+  material: {color: oklch(0.4 0.05 50)}
+  physics: static
+  primitive: {depth: 0.08, height: 1.1, kind: box, width: 0.08}
+  tags: [lantern-ward]
+ward-lot9-stone-0:
+  feetPosition: {x: -12.5, y: {terrain: 0}, z: -90.5}
+  id: ward-lot9-stone-0
+  physics: static
+  primitive: {kind: scripted, params: {seed: 40, size: 0.5}, script: scripts/gen/rock.js}
+  scale: 0.6
+  tags: [lantern-ward]
+ward-lot9-stone-1:
+  feetPosition: {x: -9.5, y: {terrain: 0}, z: -90.5}
+  id: ward-lot9-stone-1
+  physics: static
+  primitive: {kind: scripted, params: {seed: 41, size: 0.5}, script: scripts/gen/rock.js}
+  scale: 0.6
+  tags: [lantern-ward]
+ward-lot9-stone-2:
+  feetPosition: {x: -12.5, y: {terrain: 0}, z: -94}
+  id: ward-lot9-stone-2
+  physics: static
+  primitive: {kind: scripted, params: {seed: 42, size: 0.5}, script: scripts/gen/rock.js}
+  scale: 0.6
+  tags: [lantern-ward]
+ward-lot9-stone-3:
+  feetPosition: {x: -9.2, y: {terrain: 0}, z: -93.8}
+  id: ward-lot9-stone-3
+  physics: static
+  primitive: {kind: scripted, params: {seed: 43, size: 0.5}, script: scripts/gen/rock.js}
+  scale: 0.6
+  tags: [lantern-ward]
+ward-lot9-stone-4:
+  feetPosition: {x: -11, y: {terrain: 0}, z: -89.8}
+  id: ward-lot9-stone-4
+  physics: static
+  primitive: {kind: scripted, params: {seed: 44, size: 0.5}, script: scripts/gen/rock.js}
+  scale: 0.6
+  tags: [lantern-ward]
+ward-north-post-e:
+  feetPosition: {x: 3, y: {terrain: 0}, z: -131}
+  id: ward-north-post-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js}
+  tags: [lantern-ward]
+ward-north-post-w:
+  feetPosition: {x: -7, y: {terrain: 0}, z: -131}
+  id: ward-north-post-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js}
+  tags: [lantern-ward]
+ward-prop-0:
+  feetPosition: {x: -23, y: {terrain: 0}, z: -112}
+  id: ward-prop-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 0
+  tags: [lantern-ward]
+ward-prop-1:
+  feetPosition: {x: -22.4, y: {terrain: 0}, z: -113.1}
+  id: ward-prop-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 47
+  tags: [lantern-ward]
+ward-prop-2:
+  feetPosition: {x: 12.8, y: {terrain: 0}, z: -111.5}
+  id: ward-prop-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: crate}, script: scripts/gen/props.js}
+  rotation: 94
+  tags: [lantern-ward]
+ward-prop-3:
+  feetPosition: {x: 22, y: {terrain: 0}, z: -112}
+  id: ward-prop-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: cart}, script: scripts/gen/props.js}
+  rotation: 141
+  tags: [lantern-ward]
+ward-prop-4:
+  feetPosition: {x: -6, y: {terrain: 0}, z: -88}
+  id: ward-prop-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: trough}, script: scripts/gen/props.js}
+  rotation: 188
+  tags: [lantern-ward]
+ward-prop-5:
+  feetPosition: {x: -25, y: {terrain: 0}, z: -89}
+  id: ward-prop-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}
+  rotation: 235
+  tags: [lantern-ward]
+ward-prop-6:
+  feetPosition: {x: 8, y: {terrain: 0}, z: -88}
+  id: ward-prop-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}
+  rotation: 282
+  tags: [lantern-ward]
+ward-reach-gate:
+  children: [{feetPosition: {x: -2.9, y: 4.6, z: 2.8}, light: {color: oklch(0.82 0.15 65), distance: 11, intensity: 3, kind: point}}, {feetPosition: {x: 2.9, y: 4.6, z: 2.8}, light: {color: oklch(0.82 0.15 65), distance: 11, intensity: 3, kind: point}}]
+  feetPosition: {x: -1, y: 0.8, z: -71}
+  id: ward-reach-gate
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/reach-gate.js}
+  rotation: 180
+  tags: [building, gate, lantern-ward]
+ward-signpost:
+  feetPosition: {x: -5, y: {terrain: 0}, z: -78}
+  id: ward-signpost
+  physics: static
+  primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js}
+  rotation: -90
+  tags: [lantern-ward]
+ward-wall-1:
+  feetPosition: {x: 8, y: {terrain: 0}, z: -70.1}
+  id: ward-wall-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 105
+  tags: [lantern-ward]
+ward-wall-10:
+  feetPosition: {x: 15.5, y: {terrain: 0}, z: -126.8}
+  id: ward-wall-10
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 240.00000000000003
+  tags: [lantern-ward]
+ward-wall-11:
+  feetPosition: {x: 8, y: {terrain: 0}, z: -129.9}
+  id: ward-wall-11
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 254.99999999999997
+  tags: [lantern-ward]
+ward-wall-14:
+  feetPosition: {x: -15.5, y: {terrain: 0}, z: -126.8}
+  id: ward-wall-14
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 300
+  tags: [lantern-ward]
+ward-wall-15:
+  feetPosition: {x: -21.9, y: {terrain: 0}, z: -121.9}
+  id: ward-wall-15
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 315
+  tags: [lantern-ward]
+ward-wall-16:
+  feetPosition: {x: -26.8, y: {terrain: 0}, z: -115.5}
+  id: ward-wall-16
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 330
+  tags: [lantern-ward]
+ward-wall-17:
+  feetPosition: {x: -29.9, y: {terrain: 0}, z: -108}
+  id: ward-wall-17
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 345
+  tags: [lantern-ward]
+ward-wall-18:
+  feetPosition: {x: -31, y: {terrain: 0}, z: -100}
+  id: ward-wall-18
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 360
+  tags: [lantern-ward]
+ward-wall-19:
+  feetPosition: {x: -29.9, y: {terrain: 0}, z: -92}
+  id: ward-wall-19
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 375
+  tags: [lantern-ward]
+ward-wall-2:
+  feetPosition: {x: 15.5, y: {terrain: 0}, z: -73.2}
+  id: ward-wall-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 120
+  tags: [lantern-ward]
+ward-wall-20:
+  feetPosition: {x: -26.8, y: {terrain: 0}, z: -84.5}
+  id: ward-wall-20
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 390.00000000000006
+  tags: [lantern-ward]
+ward-wall-21:
+  feetPosition: {x: -21.9, y: {terrain: 0}, z: -78.1}
+  id: ward-wall-21
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 405
+  tags: [lantern-ward]
+ward-wall-22:
+  feetPosition: {x: -15.5, y: {terrain: 0}, z: -73.2}
+  id: ward-wall-22
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 419.99999999999994
+  tags: [lantern-ward]
+ward-wall-23:
+  feetPosition: {x: -8, y: {terrain: 0}, z: -70.1}
+  id: ward-wall-23
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 435
+  tags: [lantern-ward]
+ward-wall-3:
+  feetPosition: {x: 21.9, y: {terrain: 0}, z: -78.1}
+  id: ward-wall-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 135
+  tags: [lantern-ward]
+ward-wall-4:
+  feetPosition: {x: 26.8, y: {terrain: 0}, z: -84.5}
+  id: ward-wall-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 150
+  tags: [lantern-ward]
+ward-wall-5:
+  feetPosition: {x: 29.9, y: {terrain: 0}, z: -92}
+  id: ward-wall-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 165
+  tags: [lantern-ward]
+ward-wall-7:
+  feetPosition: {x: 29.9, y: {terrain: 0}, z: -108}
+  id: ward-wall-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 195
+  tags: [lantern-ward]
+ward-wall-8:
+  feetPosition: {x: 26.8, y: {terrain: 0}, z: -115.5}
+  id: ward-wall-8
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 210
+  tags: [lantern-ward]
+ward-wall-9:
+  feetPosition: {x: 21.9, y: {terrain: 0}, z: -121.9}
+  id: ward-wall-9
+  physics: static
+  primitive: {kind: scripted, params: {kind: drywall, len: 8.2}, script: scripts/gen/farm.js}
+  rotation: 225
+  tags: [lantern-ward]
+ward-walled-door:
+  children: [{feetPosition: {x: 0, y: 0, z: -0.6}, material: {color: oklch(0.42 0.05 45), texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.12, height: 2.3, kind: box, width: 1.4}}, {feetPosition: {x: 0.5, y: 1.1, z: -0.7}, material: {color: oklch(0.55 0.1 70), metalness: 0.8, roughness: 0.35}, primitive: {depth: 0.06, height: 0.08, kind: box, width: 0.25}}, {feetPosition: {x: 0, y: 2.5, z: -0.75}, light: {color: oklch(0.8 0.08 200), distance: 5, intensity: 1.2, kind: point}}]
+  feetPosition: {x: 30.5, y: {terrain: 0}, z: -100}
+  id: ward-walled-door
+  material: {color: oklch(0.55 0.03 70), repeat: [2, 1.2], texture: cdn/texture-mossy-fieldstone-wall.png}
+  physics: static
+  primitive: {depth: 1.1, height: 3.2, kind: box, width: 6}
+  rotation: 90
+  tags: [lantern-ward]
+ward-well:
+  feetPosition: {x: 4, y: {terrain: 0}, z: -112}
+  id: ward-well
+  physics: static
+  primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
+  tags: [lantern-ward]
