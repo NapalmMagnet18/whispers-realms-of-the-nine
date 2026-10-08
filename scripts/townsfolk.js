@@ -1,8 +1,8 @@
 // A resident of Lantern's Reach at their post (Elric's pattern): idles in their own clip, turns to whoever walks up,
 // nods to them now and then, turns back to their watch. state: { who, homeYaw, idle }. Their talk lives on the
-// player's side (scripts/quest-player.js reads scripts/lib/data/townsfolk.yml); distances are quests.yml npc.
-import Q from './lib/data/quests.yml';
-const N = Q.npc;
+// player's side (scripts/quest-player.js reads scripts/lib/data/townsfolk.yml). Distances mirror quests.yml npc, inlined so a
+// resident never carries the whole quest book into a place's boot.
+const N = { greetReach: 7, greetCooldown: 20 };
 
 export function onSpawn(ctx) {
   ctx.self.anim.base = { clip: ctx.self.state.idle || 'Idle_FoldArms_Loop', weight: 1, loop: 'loop' };
