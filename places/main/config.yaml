@@ -429,3 +429,6 @@ terrain:
     tide-quay-clear: {center: {x: -1010, z: 1880}, kind: clear-scatter, shape: {kind: circle, radius: 46}}
     unseen-yard: {center: {x: 46, z: -47}, falloff: 8, height: 0.6, kind: flatten, shape: {kind: circle, radius: 15}}
     unseen-yard-clear: {center: {x: 46, z: -47}, kind: clear-scatter, shape: {kind: circle, radius: 16}}
+    saltmere-hamlet: {center: {x: 301, z: 1659}, falloff: 8, height: 1.1, kind: flatten, shape: {kind: circle, radius: 13}}
+    saltmere-hamlet-clear: {center: {x: 301, z: 1659}, kind: clear-scatter, shape: {kind: circle, radius: 15}}
+    lane-saltmere-hamlet: {edgeMaterial: sand, grade: true, kind: path, material: dirt, maxGrade: 0.28, noise: 0.4, points: [[290, 1560], [294, 1598], [298, 1626], [300, 1648]], width: 2.6}
