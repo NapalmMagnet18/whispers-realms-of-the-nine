@@ -27,7 +27,19 @@ export function update(ctx) {
   const s = self.state || {};
   if (typeof s.activeTrack === "number" && s.activeTrack >= 0) { ctx.session._areaTheme = null; return; } // the jukebox has it
   if (s.musicMuted) { ctx.session._areaTheme = null; return; }
-  const theme = themeFor(ctx, self);
+  const now0 = ctx.now(), C = MUSIC.combat;
+  // a fight: my hp dropped, or something near me carries my last hit
+  const hp = s.hp;
+  if (typeof hp === "number" && typeof ctx.session._lastHp === "number" && hp < ctx.session._lastHp) ctx.session._fightAt = now0;
+  ctx.session._lastHp = hp;
+  if (self.place === "main" || self.place === "hollowcrypt") {
+    for (const r of ctx.query({ radius: C.radius, excludeTags: ["player", "dummy", "training-dummy"] })) {
+      const st = r.state;
+      if (st && st.lastHitBy === self.id && now0 - (st.lastHitAt || 0) < 4000 && (st.hp ?? 1) > 0) { ctx.session._fightAt = now0; break; }
+    }
+  }
+  const fighting = now0 - (ctx.session._fightAt || 0) < C.holdSeconds * 1000 && !MUSIC.places[self.place];
+  const theme = fighting ? "battle" : themeFor(ctx, self);
   if (!theme) return;
   const vol = typeof s.musicVolume === "number" ? s.musicVolume * MUSIC.volume : MUSIC.volume;
   const key = theme + "|" + vol.toFixed(2);
@@ -35,5 +47,5 @@ export function update(ctx) {
   // re-assert every 20 s too: a menu or place change elsewhere in the kit may have set its own track
   if (ctx.session._areaTheme === key && now - (ctx.session._areaAt || 0) < 20000) return;
   ctx.session._areaTheme = key; ctx.session._areaAt = now;
-  ctx.musicShift(MUSIC.themes[theme], { fade: MUSIC.fade, volume: vol, audience: { kind: "player", id: self.id } });
+  ctx.musicShift(MUSIC.themes[theme], { fade: theme === "battle" ? C.fade : MUSIC.fade, volume: vol, audience: { kind: "player", id: self.id } });
 }

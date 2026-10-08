@@ -12,7 +12,9 @@ themes:
   ember: /cdn/moodboard-painterly-fantasy/music-heroic-dwarven-forge-deep-brass-war-drums-anvil-hits-loop.mp3
   arcane: /cdn/moodboard-painterly-fantasy/music-ancient-arcane-ruins-ethereal-choir-glass-harmonica-slow-pads-loop.mp3
   wilds: /cdn/music-instrumental-fantasy-adventure-orchestral.mp3
+  battle: /cdn/moodboard-painterly-fantasy/music-tense-fantasy-battle-war-drums-low-brass-staccato-strings-loop.mp3
   crypt: /cdn/moodboard-gothic-horror/music-hollowcrypt-candlelit-vault-low-choir-slow-bells.mp3
+combat: { holdSeconds: 10, radius: 35, fade: 1.2 }   # battle theme while you strike or are struck, then back
 places:
   main-menu-land: menu
   main-menu: menu
