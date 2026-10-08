@@ -2,25 +2,25 @@
 armory-barrel-fist-a:
   feetPosition: {x: 22.7, y: 5.07, z: -1.85}
   id: armory-barrel-fist-a
-  model: /cdn/value.2a737fb991a84966bdd4120ff5adbb480d5f15c75d7e778320d441443a0226fd.glb
+  model: /cdn/model-fistweapon-knuckle-duster-ice-blue-a4qran5t.glb
   rotation: 25
   tags: [weapon-display]
 armory-barrel-fist-b:
   feetPosition: {x: 22.95, y: 5.07, z: -2}
   id: armory-barrel-fist-b
-  model: /cdn/value.e6ca0d8cd896e7caca63b49aa622a7fbeeb58c2d4e235a303dc39570dc19fb56.glb
+  model: /cdn/model-fist-weapon-stacked-blue-blades-h8zqon4p.glb
   rotation: -40
   tags: [weapon-display]
 armory-barrel-fist-c:
   feetPosition: {x: 22.6, y: 5.07, z: -2.1}
   id: armory-barrel-fist-c
-  model: /cdn/value.c5ad48a7c92439b245e68ad05be0f1587169912655934c1ebd20c9cb4a08c944.glb
+  model: /cdn/model-fist-weapon-knuckle-duster-blue-9bccwiiu.glb
   rotation: 70
   tags: [weapon-display]
 armory-barrel-fist-d:
   feetPosition: {x: 23, y: 5.07, z: -1.7}
   id: armory-barrel-fist-d
-  model: /cdn/value.6ac02534ae5d62bcaa279a62ade00308e39d39d43f13c13b4e7618e154fcbb75.glb
+  model: /cdn/model-fistweapon-knuckle-claws-blue-jwusxvxz.glb
   rotation: 160
   tags: [weapon-display]
 armory-peg-shield-a:
@@ -46,55 +46,55 @@ armory-quiver-shelf:
 armory-rack-axe-a:
   feetPosition: {x: 23.7, y: 4.22, z: -2.38}
   id: armory-rack-axe-a
-  model: /cdn/value.37775b36195cbbfdc88a57caa5835f9f56f13dc8be8b7b6786a6223e265e2d38.glb
+  model: /cdn/model-axe-double-headed-blue-fantasy-27ghev1f.glb
   rotation: 0
   tags: [weapon-display]
 armory-rack-axe-b:
   feetPosition: {x: 24.18, y: 4.22, z: -2.38}
   id: armory-rack-axe-b
-  model: /cdn/value.dddfc1f6e5b5deed178388b099183349159bcf9fa04502f04143fe1b91095313.glb
+  model: /cdn/model-axe-double-blade-blue-ts1livwh.glb
   rotation: 0
   tags: [weapon-display]
 armory-rack-axe-c:
   feetPosition: {x: 24.66, y: 4.22, z: -2.38}
   id: armory-rack-axe-c
-  model: /cdn/value.41fc4f6f9bfff39cc0b078deebd57501c6ab6263bfbcc9fb020ba277a3e4073b.glb
+  model: /cdn/model-axe-fantasy-blue-blade-mgdrmq9g.glb
   rotation: 0
   tags: [weapon-display]
 armory-rack-dagger-a:
   feetPosition: {x: 23.5, y: 4.22, z: 6.42}
   id: armory-rack-dagger-a
-  model: /cdn/value.9fe6cc8b301f4435747af9b10486f52955465e952fcb6997eb3f3884c30d3fdf.glb
+  model: /cdn/model-dagger-blue-fantasy-acz2o47q.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-dagger-b:
   feetPosition: {x: 23.94, y: 4.22, z: 6.42}
   id: armory-rack-dagger-b
-  model: /cdn/value.7aa89b6e4bc8466012855742b505d426e12feedf2f554a3db240ba8614545041.glb
+  model: /cdn/model-dagger-blue-fantasy-rif6xamb.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-halberd:
   feetPosition: {x: 26.14, y: 4.22, z: 6.42}
   id: armory-rack-halberd
-  model: /cdn/value.a93014a54e9e1c0071a1002f398a23d48bb83cbceae9b25edbdc9242b916b8d2.glb
+  model: /cdn/model-halberd-fantasy-blue-ibsofzev.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-hammer-a:
   feetPosition: {x: 25.14, y: 4.22, z: -2.38}
   id: armory-rack-hammer-a
-  model: /cdn/value.d73eb3ddd4f8c2e91da618bc21208c3a0b31cb75af994fdeef31e2a284f2752a.glb
+  model: /cdn/model-hammer-fantasy-blue-yf4281v6.glb
   rotation: 0
   tags: [weapon-display]
 armory-rack-hammer-b:
   feetPosition: {x: 25.619999999999997, y: 4.22, z: -2.38}
   id: armory-rack-hammer-b
-  model: /cdn/value.fe2a124f36f9c7955a043586028d1dc6c2363d8d4d97bbcb0f8b8704ccabd3cd.glb
+  model: /cdn/model-hammer-spiked-blue-fantasy-eya4j4u7.glb
   rotation: 0
   tags: [weapon-display]
 armory-rack-hammer-c:
   feetPosition: {x: 26.099999999999998, y: 4.22, z: -2.38}
   id: armory-rack-hammer-c
-  model: /cdn/value.4995c2f732030d9171eeb6ce26585de074d5a869c178189e75c66142452e7a72.glb
+  model: /cdn/model-hammer-spiked-ice-mace-bin3dm2a.glb
   rotation: 0
   tags: [weapon-display]
 armory-rack-n-base:
@@ -140,109 +140,109 @@ armory-rack-s-rail:
 armory-rack-spear-a:
   feetPosition: {x: 25.700000000000003, y: 4.22, z: 6.42}
   id: armory-rack-spear-a
-  model: /cdn/value.03b7d1d3264c35bae83b9ae09b369a2f784ff2ce6a2344650eb414e3ecb774ae.glb
+  model: /cdn/model-spear-fantasy-blue-crystal-vbj3gl54.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-staff-a:
   feetPosition: {x: 24.82, y: 4.22, z: 6.42}
   id: armory-rack-staff-a
-  model: /cdn/value.7c324274f5ddfbcbfd823ee7c522734bce08de2fa077547963ee5219f5450d3c.glb
+  model: /cdn/model-staff-wooden-beaded-grip-wbgsdh3l.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-staff-b:
   feetPosition: {x: 25.26, y: 4.22, z: 6.42}
   id: armory-rack-staff-b
-  model: /cdn/value.3474f40723d2efe5af4d6916163cbdbd0b2fe93193b1fe074d155f99a63b9aeb.glb
+  model: /cdn/model-staff-magic-blue-crystal-gold-8jnkjico.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-sword-a:
   feetPosition: {x: 21.3, y: 4.22, z: 6.42}
   id: armory-rack-sword-a
-  model: /cdn/value.7f49b71b39cc63cf212998d911d4ed7fbd3729fb57c96dbc9ad8adb9465e37d3.glb
+  model: /cdn/model-sword-wooden-toy-lowpoly-y363mwq0.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-sword-b:
   feetPosition: {x: 21.740000000000002, y: 4.22, z: 6.42}
   id: armory-rack-sword-b
-  model: /cdn/value.5c98ced16ff61395bcd7da790c7ba74569ba3a4987a4551524161b70c645f510.glb
+  model: /cdn/model-sword-b-blue-stylized-mflts6qr.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-sword-c:
   feetPosition: {x: 22.18, y: 4.22, z: 6.42}
   id: armory-rack-sword-c
-  model: /cdn/value.8709558db8a2105d961f6e4e43f3e2e686a64fa43d1b087236e5e5a274f06042.glb
+  model: /cdn/model-sword-curved-blue-blade-u935461r.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-sword-d:
   feetPosition: {x: 22.62, y: 4.22, z: 6.42}
   id: armory-rack-sword-d
-  model: /cdn/value.96132db55d508f81a5225fcfab0a191fc20ba353e13d87a3cb1ad6e6dba2e2e5.glb
+  model: /cdn/model-sword-ice-blue-orb-vwqovqda.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-sword-e:
   feetPosition: {x: 23.060000000000002, y: 4.22, z: 6.42}
   id: armory-rack-sword-e
-  model: /cdn/value.542619ac962159804bc0bc95988d09855c60c5b321a0f6f0b79a47d8d054ad19.glb
+  model: /cdn/model-sword-fantasy-blue-blade-cwtmnc5a.glb
   rotation: 180
   tags: [weapon-display]
 armory-rack-wand-a:
   feetPosition: {x: 24.380000000000003, y: 4.22, z: 6.42}
   id: armory-rack-wand-a
-  model: /cdn/value.52e4223e0afd2cbcfb5203e9092e6217a4522e09eb101145edccf181973bbb27.glb
+  model: /cdn/model-wand-blue-crystal-0i21d6k8.glb
   rotation: 180
   tags: [weapon-display]
 armory-shelf-arrow-a:
   feetPosition: {x: 27.5, y: 5.17, z: -1.6}
   id: armory-shelf-arrow-a
-  model: /cdn/value.03b471396952ac9ef550c4dca73b6c7bc727e628d2d3cddd376bf58d068db684.glb
-  rotation: 0
+  model: /cdn/model-arrow-a-blue-fletching-mffevjts.glb
+  rotation: {pitch: 90, roll: 0, yaw: 0}
   tags: [weapon-display]
 armory-shelf-arrow-b:
   feetPosition: {x: 27.5, y: 5.17, z: -0.95}
   id: armory-shelf-arrow-b
-  model: /cdn/value.a7e773edc334acfc84a2b71ecb47804f1d48f339341a630796bf8e011e958db4.glb
-  rotation: 0
+  model: /cdn/model-arrow-blue-crystal-fletching-oghqedi1.glb
+  rotation: {pitch: 90, roll: 0, yaw: 0}
   tags: [weapon-display]
 armory-wall-bow-a:
   feetPosition: {x: 27.62, y: 6.17, z: -0.9600000000000002}
   id: armory-wall-bow-a
-  model: /cdn/value.11cb175f888cb5d3902b12d36ee02b48b968527b472e0fee0150f09f307c0fc3.glb
-  rotation: {pitch: 0, roll: 90, yaw: 0}
+  model: /cdn/model-bow-wooden-beaded-gray-xwbwk0fs.glb
+  rotation: {pitch: 0, roll: 0, yaw: 90}
   tags: [weapon-display]
 armory-wall-bow-a-withstring:
   feetPosition: {x: 27.62, y: 6.17, z: -2.2}
   id: armory-wall-bow-a-withstring
-  model: /cdn/value.92afe5bacf5dabe93447e6a5d979eacf1943a3b5acd4a56e0646391a232c6771.glb
-  rotation: {pitch: 0, roll: 90, yaw: 0}
+  model: /cdn/model-bow-wooden-string-beads-9nw6cnxc.glb
+  rotation: {pitch: 0, roll: 90, yaw: 90}
   tags: [weapon-display]
 armory-wall-bow-b:
   feetPosition: {x: 27.62, y: 6.17, z: -0.3400000000000003}
   id: armory-wall-bow-b
-  model: /cdn/value.04734d815bf3b7667044c463462120a9cc1368d4c90d888fa740474232ec188c.glb
-  rotation: {pitch: 0, roll: 90, yaw: 0}
+  model: /cdn/model-bow-ice-crystal-bone-gk5xyvor.glb
+  rotation: {pitch: 0, roll: 90, yaw: 90}
   tags: [weapon-display]
 armory-wall-bow-b-withstring:
   feetPosition: {x: 27.62, y: 6.17, z: -1.58}
   id: armory-wall-bow-b-withstring
-  model: /cdn/value.0015ca0dc3d8943a467976d0030e3d0f3fee61c64684aff71f6fd03c58c7216e.glb
-  rotation: {pitch: 0, roll: 90, yaw: 0}
+  model: /cdn/model-bow-fantasy-blue-crystal-pt660s1g.glb
+  rotation: {pitch: 0, roll: 90, yaw: 90}
   tags: [weapon-display]
 armory-wall-shield-a:
   feetPosition: {x: 24, y: 5.57, z: -2.62}
   id: armory-wall-shield-a
-  model: /cdn/value.6f344b10be4171d0bc4f1bae026a1aab584a6fad36d6f7aaa7cd661c74f58a37.glb
+  model: /cdn/model-shield-a-tan-riveted-gwyh62ww.glb
   rotation: 0
   tags: [weapon-display]
 armory-wall-shield-b:
   feetPosition: {x: 24.95, y: 5.57, z: -2.62}
   id: armory-wall-shield-b
-  model: /cdn/value.48d0544bafd7867ed593fd568e2f11c06beed39b735d15f9b93d13c269c7bb47.glb
+  model: /cdn/model-shield-blue-white-heraldic-z5jgrxtp.glb
   rotation: 0
   tags: [weapon-display]
 armory-wall-shield-c:
   feetPosition: {x: 25.9, y: 5.57, z: -2.62}
   id: armory-wall-shield-c
-  model: /cdn/value.3277825752ae5595f98e7f10305c809682fad2be3fc673c52b4d3748f5a2927e.glb
+  model: /cdn/model-shield-spiked-blue-stone-1zjmstmh.glb
   rotation: 0
   tags: [weapon-display]
 bank:
