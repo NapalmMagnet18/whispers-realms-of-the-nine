@@ -249,18 +249,18 @@ cl-arms-wand-a:
   rotation: {roll: -6, yaw: 90}
   tags: [copperlane, weapon-display]
 cl-armsrack:
-  children: [{feetPosition: {x: -0.3, y: 0, z: 0}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 11.1, height: 0.2, kind: box, width: 0.5}}, {feetPosition: {x: -0.12, y: 1.45, z: 0}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 11.1, height: 0.08, kind: box, width: 0.2}}, {feetPosition: {x: -0.2, y: 2, z: 0}, material: {color: oklch(0.48 0.13 32), roughness: 0.9}, primitive: {depth: 11.4, height: 0.08, kind: box, width: 0.9}}, {feetPosition: {x: -0.6, y: 1.9, z: 5.25}, light: {color: oklch(0.84 0.14 65), distance: 7, intensity: 1.4, kind: point}}]
+  children: [{feetPosition: {x: -0.3, y: 0, z: 0}, material: {color: oklch(0.52 0.07 60), roughness: 0.85}, primitive: {depth: 11.1, height: 0.2, kind: box, width: 0.5}}, {feetPosition: {x: -0.12, y: 1.45, z: 0}, material: {color: oklch(0.52 0.07 60), roughness: 0.85}, primitive: {depth: 11.1, height: 0.08, kind: box, width: 0.2}}, {feetPosition: {x: -0.2, y: 2, z: 0}, material: {color: oklch(0.48 0.13 32), roughness: 0.9}, primitive: {depth: 11.4, height: 0.08, kind: box, width: 0.9}}, {feetPosition: {x: -0.6, y: 1.9, z: 5.25}, light: {color: oklch(0.84 0.14 65), distance: 7, intensity: 1.4, kind: point}}]
   feetPosition: {x: 75.45, y: 0.6508921417705312, z: -8}
   id: cl-armsrack
-  material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}
+  material: {color: oklch(0.52 0.07 60), roughness: 0.85}
   physics: {body: static, collider: box}
   primitive: {depth: 11.1, height: 1.9, kind: box, width: 0.12}
   tags: [copperlane]
 cl-armstable:
-  children: [{feetPosition: {x: -0.4, y: -0.82, z: -1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: 0.4, y: -0.82, z: -1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: -0.4, y: -0.82, z: 1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: 0.4, y: -0.82, z: 1.2}, material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}]
-  feetPosition: {x: 72.4, y: 0.6016716340978248, z: -11.2}
+  children: [{feetPosition: {x: -0.4, y: -0.82, z: -1.2}, material: {color: oklch(0.52 0.07 60), roughness: 0.85}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: 0.4, y: -0.82, z: -1.2}, material: {color: oklch(0.52 0.07 60), roughness: 0.85}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: -0.4, y: -0.82, z: 1.2}, material: {color: oklch(0.52 0.07 60), roughness: 0.85}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}, {feetPosition: {x: 0.4, y: -0.82, z: 1.2}, material: {color: oklch(0.52 0.07 60), roughness: 0.85}, primitive: {depth: 0.08, height: 0.82, kind: box, width: 0.08}}]
+  feetPosition: {x: 72.4, y: 1.4216716340978248, z: -11.2}
   id: cl-armstable
-  material: {color: oklch(0.42 0.06 55), roughness: 0.85, texture: cdn/texture-dark-oak-planks.png}
+  material: {color: oklch(0.52 0.07 60), roughness: 0.85}
   physics: {body: static, collider: box}
   primitive: {depth: 2.6, height: 0.08, kind: box, width: 1}
   tags: [copperlane]
