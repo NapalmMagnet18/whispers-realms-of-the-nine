@@ -16,7 +16,7 @@ ashen-signpost:
   rotation: 180
   tags: [ashen]
 ashen-woodpile-2:
-  feetPosition: {x: 60, y: 5, z: -197}
+  feetPosition: {x: 60, y: 5.01, z: -197}
   id: ashen-woodpile-2
   physics: static
   primitive: {kind: scripted, params: {L: 2.2, kind: woodpile}, script: scripts/gen/ashen-village.js}
