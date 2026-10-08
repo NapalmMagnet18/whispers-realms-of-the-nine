@@ -1,16 +1,12 @@
-# The art direction of this world, how everything built here LOOKS: its light, palette, material
-# finishes, air and grade. What is built is the creator's ask; this file adds, removes and replaces
-# nothing. It stands until an ask names a theme; then the theme wins: replace this look with one that
-# fits and tune the place's light and grade to it. This file holds the look and nothing else; a note on
-# a build or a decision belongs in memory/game/ or design.md. A script may import it.
-name: briar-grey
-palette: ["#0e0d0f", "#3a3a3d", "#6e6a5e", "#a89f91", "#a4161a"]
-finish: ["black briar", "grey ashlar", "rusted iron", "ivy"]
-era: "centuries after the fall: briar and grey stone"
-mood: "an overcast afternoon, grey light, one red accent"
-hour: 15
-clouds: { density: 0.85, opacity: 0.8 }
-fog: { near: 250, far: 650 }
-ground: oklch(0.45 0.02 140)
-grade: { exposure: 1, saturation: 0.8, contrast: 1, temperature: -0.04, grain: 0.03 }
-reference: "Grey stone, black thorns, a single red rose."
+# The art direction of WHISPERS: Realms of the Nine. Stands until an ask names another theme.
+name: lantern-gold
+palette: ["#2a1e16", "#6b4a2f", "#c9a46a", "#e8d9b5", "#3f5a3a", "#7a2e22", "#f2b04a"]
+finish: ["limewash plaster", "dark oak timber", "red clay shingle", "mossy fieldstone", "hammered iron", "lantern glow"]
+era: "a stylized medieval frontier, ancient gothic ruins at its edges"
+mood: "late golden afternoon, warm windows, long shadows, a hush of old magic"
+hour: 16.9
+clouds: { density: 0.55, opacity: 0.75 }
+fog: { near: 140, far: 700 }
+ground: oklch(0.78 0.06 125)
+grade: { exposure: 1.02, saturation: 1.08, contrast: 1.05, temperature: 0.08, grain: 0.02 }
+reference: "Hand-painted warm village under a gold sky; pine woods dark beyond; a lantern in every window."
