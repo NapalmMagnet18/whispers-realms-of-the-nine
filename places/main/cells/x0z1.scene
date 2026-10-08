@@ -1,4 +1,246 @@
 # spawn-scene v2 yaml x0z1
+lodge-hall:
+  children: [{feetPosition: {x: 0, y: 2, z: 0}, light: {color: oklch(0.85 0.12 70), distance: 12, intensity: 3, kind: point}}, {feetPosition: {x: 3.8, y: 6.3, z: -1}, fx: {script: "fx\npop smoke rate=3 on=disc(.2) life=3..5 v=up(.6) size=.3..0.5 acc=buoy(.3)+curl(.3)+drag(.5) sz=$size*(.6>2.6) col=<.42,.4,.38> a=0>.25:.25>0 r=sprite(smoke-puff,alpha)"}}]
+  feetPosition: {x: -33, y: {terrain: -0.2}, z: 88}
+  id: lodge-hall
+  physics: static
+  primitive: {kind: scripted, params: {kind: lodge}, script: scripts/gen/lodge.js}
+  rotation: 180
+  tags: [wayfarers-lodge]
+lodge-npc-iona:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -46, y: {terrain: 0}, z: 90}
+  id: lodge-npc-iona
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-marsh-warden-woman-reed-cloak-braided-grey-hair-wading-boots-staff.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 250}
+  state: {homeYaw: 250, idle: Idle, npcName: Reedkeeper Iona Sedge, who: iona, yaw: 250}
+  tags: [npc, talker, townsfolk, quest-npc]
+lodge-traveler-0:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -10, y: {terrain: 0}, z: 92}
+  id: lodge-traveler-0
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-weary-refugee-woman-travel-cloak-bundle-on-back.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 270}
+  state: {homeYaw: 270, idle: Idle, npcName: East-Road Traveler, who: refugee, yaw: 270}
+  tags: [npc, talker, townsfolk]
+lodge-traveler-1:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -8, y: {terrain: 0}, z: 100}
+  id: lodge-traveler-1
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-weary-refugee-woman-travel-cloak-bundle-on-back.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 250}
+  state: {homeYaw: 250, idle: Idle, npcName: East-Road Traveler, who: refugee, yaw: 250}
+  tags: [npc, talker, townsfolk]
+lodge-traveler-2:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -12, y: {terrain: 0}, z: 108}
+  id: lodge-traveler-2
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-weary-refugee-woman-travel-cloak-bundle-on-back.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 290}
+  state: {homeYaw: 290, idle: Idle, npcName: East-Road Traveler, who: refugee, yaw: 290}
+  tags: [npc, talker, townsfolk]
+pat-beacon:
+  feetPosition: {x: -26.5, y: {terrain: 0}, z: 84}
+  fx: {script: "fx\npop flame rate=10 on=disc(.04).c(1.6) life=.3..0.6 v=up(.4) size=.05..0.09 acc=buoy(1.2)+drag(1.5) sz=$size*(.6>1:.7>.2) col=hdr(3.6,2,.6)>hdr(1.6,.5,.1) a=0>.2:1>.7:.8>0 r=sprite(flame-wisp,add)\npop glow n=1 pos=<.26,1.6,0> r=light(<1,.7,.4>,2,9)"}
+  id: pat-beacon
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {after: trail_sign, afterText: "First: follow the three trail signs here", mark: beacon_lit, quest: PAT-01, say: "The wick catches. Someone at the lodge window lifts a hand: safe road.", sound: /cdn/moodboard-painterly-fantasy/sfx-torch-ignite-whoosh.mp3, title: Beacon Cairn, verb: Light the beacon}
+  tags: [quest-mark, wayfarers-lodge]
+pat-cross-0:
+  feetPosition: {x: -50, y: {terrain: 0}, z: 98}
+  id: pat-cross-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: crossing_surveyed, quest: PAT-03, say: "Your stick sinks to the elbow. Soft bottom, fast water. A cart would roll here.", sound: /cdn/moodboard-painterly-fantasy/sfx-water-splash-small.mp3, title: North Shallow, verb: Survey the crossing}
+  tags: [quest-mark, wayfarers-lodge]
+pat-cross-1:
+  feetPosition: {x: -50, y: {terrain: 0}, z: 108}
+  id: pat-cross-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: crossing_surveyed, quest: PAT-03, say: "Gravel bar, knee-deep, steady. This one holds.", sound: /cdn/moodboard-painterly-fantasy/sfx-water-splash-small.mp3, title: South Shallow, verb: Survey the crossing}
+  tags: [quest-mark, wayfarers-lodge]
+pat-footpath:
+  feetPosition: {x: -49, y: {terrain: 0}, z: 86}
+  id: pat-footpath
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {mark: footpath_opened, quest: PAT-06, say: Ten minutes with a knife and the old boards show under the reeds again., sound: /cdn/moodboard-painterly-fantasy/sfx-grass-rustle-cut.mp3, title: Overgrown Footpath, verb: Cut the reeds back}
+  tags: [quest-mark, wayfarers-lodge]
+pat-guide-0:
+  feetPosition: {x: -9.2, y: {terrain: 0}, z: 92.6}
+  id: pat-guide-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {mark: refugee_guided, quest: PAT-05, say: You point along the river. 'Slow is safe.' She nods and shoulders her bundle., sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Traveler, verb: Show them the slow trail}
+  tags: [quest-mark, wayfarers-lodge]
+pat-guide-1:
+  feetPosition: {x: -7.2, y: {terrain: 0}, z: 100.6}
+  id: pat-guide-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {mark: refugee_guided, quest: PAT-05, say: Two kids and a goat. The goat objects. The kids walk., sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Traveler, verb: Show them the slow trail}
+  tags: [quest-mark, wayfarers-lodge]
+pat-guide-2:
+  feetPosition: {x: -11.2, y: {terrain: 0}, z: 108.6}
+  id: pat-guide-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: stake}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {mark: refugee_guided, quest: PAT-05, say: "'They told us the south road was closed.' 'It is,' you say. 'This way.'", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Traveler, verb: Show them the slow trail}
+  tags: [quest-mark, wayfarers-lodge]
+pat-lure:
+  feetPosition: {x: -46, y: {terrain: 0}, z: 113}
+  fx: {script: "fx\npop note rate=2 on=point().c(1.6) life=1..1.5 v=sdir()*.3 size=.15..0.25 col=hdr(.6,1.6,1) a=.6>0 sz=$size*(.5>2) r=sprite(soft-disc,add)"}
+  id: pat-lure
+  physics: static
+  primitive: {kind: scripted, params: {kind: lure}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {after: wolf_tracked, afterText: "First: follow the wolf's tracks along the bank", mark: lure_disabled, quest: PAT-02, say: "One tap and the bellglass cracks. The note stops. Far off in the briars, a wolf shakes its head and lopes home.", sound: /cdn/moodboard-painterly-fantasy/sfx-glass-shatter-small.mp3, title: Bellglass Lure, verb: Break the glass}
+  tags: [quest-mark, wayfarers-lodge]
+pat-mile-0:
+  feetPosition: {x: -18, y: {terrain: 0}, z: 94}
+  id: pat-mile-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: marker}, script: scripts/gen/lodge.js}
+  rotation: 90
+  state: {mark: mile_marker, quest: PAT-04, say: "'IV to the Reach.' The moss is scraped off and the cut is sharp. Reset, and not long ago.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Mile Marker, verb: Read the marker}
+  tags: [quest-mark, wayfarers-lodge]
+pat-mile-1:
+  feetPosition: {x: -18, y: {terrain: 0}, z: 104}
+  id: pat-mile-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: marker}, script: scripts/gen/lodge.js}
+  rotation: 90
+  state: {mark: mile_marker, quest: PAT-04, say: "'V to the Reach.' Same fresh chisel marks. Someone walked this 'closed' road on purpose.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Mile Marker, verb: Read the marker}
+  tags: [quest-mark, wayfarers-lodge]
+pat-report:
+  feetPosition: {x: -33, y: {terrain: 0.4}, z: 84.6}
+  id: pat-report
+  physics: static
+  primitive: {kind: scripted, params: {kind: board}, script: scripts/gen/cradle.js}
+  rotation: 180
+  state: {after: trail_trial, afterText: "First: roll past the three trial posts", mark: routes_reported, quest: PAT-07, say: "Safe route: the slow trail by the river. Closed route: the south road. Why it was closed, in full. You sign it.", sound: /cdn/moodboard-painterly-fantasy/sfx-quill-scratch-signature.mp3, title: Lodge Door Ledger, verb: Write both routes}
+  tags: [quest-mark, wayfarers-lodge]
+pat-return-0:
+  feetPosition: {x: -52, y: {terrain: 0}, z: 82}
+  id: pat-return-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {after: footpath_opened, afterText: "First: open the footpath", gain: "+1 Return Marker placed", mark: return_marker, quest: PAT-06, sound: /cdn/moodboard-painterly-fantasy/sfx-wooden-stake-hammer.mp3, title: Return Marker Spot, verb: Drive a marker}
+  tags: [quest-mark, wayfarers-lodge]
+pat-return-1:
+  feetPosition: {x: -52.5, y: {terrain: 0}, z: 90}
+  id: pat-return-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {after: footpath_opened, afterText: "First: open the footpath", gain: "+1 Return Marker placed", mark: return_marker, quest: PAT-06, sound: /cdn/moodboard-painterly-fantasy/sfx-wooden-stake-hammer.mp3, title: Return Marker Spot, verb: Drive a marker}
+  tags: [quest-mark, wayfarers-lodge]
+pat-return-2:
+  feetPosition: {x: -51, y: {terrain: 0}, z: 96}
+  id: pat-return-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: shell}, script: scripts/gen/strand.js}
+  rotation: 0
+  state: {after: footpath_opened, afterText: "First: open the footpath", gain: "+1 Return Marker placed", mark: return_marker, quest: PAT-06, sound: /cdn/moodboard-painterly-fantasy/sfx-wooden-stake-hammer.mp3, title: Return Marker Spot, verb: Drive a marker}
+  tags: [quest-mark, wayfarers-lodge]
+pat-rope:
+  feetPosition: {x: -48.5, y: {terrain: 0}, z: 109}
+  id: pat-rope
+  physics: static
+  primitive: {kind: scripted, params: {kind: ropeposts}, script: scripts/gen/lodge.js}
+  rotation: 90
+  state: {after: crossing_surveyed, afterText: "First: survey both shallows", mark: rope_bridge, quest: PAT-03, say: "Post, knot, wade, post, knot. The line stretches taut over the south shallow. Rowan will grumble that it's well done.", sound: /cdn/moodboard-painterly-fantasy/sfx-rope-creak-tighten.mp3, title: Rope Line, verb: Rig the rope}
+  tags: [quest-mark, wayfarers-lodge]
+pat-sign-0:
+  feetPosition: {x: -22, y: {terrain: 0}, z: 68}
+  id: pat-sign-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: sign}, script: scripts/gen/lodge.js}
+  rotation: 200
+  state: {mark: trail_sign, quest: PAT-01, say: "Carved arrow: south, and a little notch that means 'water near'.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Trail Sign, verb: Read the sign}
+  tags: [quest-mark, wayfarers-lodge]
+pat-sign-1:
+  feetPosition: {x: -26, y: {terrain: 0}, z: 76}
+  id: pat-sign-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: sign}, script: scripts/gen/lodge.js}
+  rotation: 190
+  state: {mark: trail_sign, quest: PAT-01, say: "A second arrow, and under it a tiny wolf's head. Mind the bank.", sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Trail Sign, verb: Read the sign}
+  tags: [quest-mark, wayfarers-lodge]
+pat-sign-2:
+  feetPosition: {x: -30, y: {terrain: 0}, z: 81}
+  id: pat-sign-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: sign}, script: scripts/gen/lodge.js}
+  rotation: 170
+  state: {mark: trail_sign, quest: PAT-01, say: The last post leans toward a thatched roof and a thin line of smoke., sound: /cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3, title: Trail Sign, verb: Read the sign}
+  tags: [quest-mark, wayfarers-lodge]
+pat-tracks-0:
+  feetPosition: {x: -46, y: {terrain: 0.02}, z: 80}
+  id: pat-tracks-0
+  physics: none
+  primitive: {kind: scripted, params: {kind: tracks}, script: scripts/gen/lodge.js}
+  rotation: 180
+  state: {mark: wolf_tracked, quest: PAT-02, say: "Deep prints, a big one, heading south. It isn't hunting. It's being called.", sound: /cdn/moodboard-painterly-fantasy/sfx-footstep-mud-squelch.mp3, title: Bramblewolf Tracks, verb: Read the tracks}
+  tags: [quest-mark, wayfarers-lodge]
+pat-tracks-1:
+  feetPosition: {x: -47.5, y: {terrain: 0.02}, z: 94}
+  id: pat-tracks-1
+  physics: none
+  primitive: {kind: scripted, params: {kind: tracks}, script: scripts/gen/lodge.js}
+  rotation: 180
+  state: {mark: wolf_tracked, quest: PAT-02, say: "It stopped here, turned three times. Confused. Something keeps ringing it on.", sound: /cdn/moodboard-painterly-fantasy/sfx-footstep-mud-squelch.mp3, title: Bramblewolf Tracks, verb: Read the tracks}
+  tags: [quest-mark, wayfarers-lodge]
+pat-tracks-2:
+  feetPosition: {x: -46.5, y: {terrain: 0.02}, z: 104}
+  id: pat-tracks-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: tracks}, script: scripts/gen/lodge.js}
+  rotation: 180
+  state: {mark: wolf_tracked, quest: PAT-02, say: Fresh. The prints quicken toward a thin glassy note in the reeds., sound: /cdn/moodboard-painterly-fantasy/sfx-footstep-mud-squelch.mp3, title: Bramblewolf Tracks, verb: Read the tracks}
+  tags: [quest-mark, wayfarers-lodge]
+pat-trial-0:
+  feetPosition: {x: -24, y: {terrain: 0}, z: 96}
+  id: pat-trial-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: trialpost}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {blockText: Clean roll!, quest: PAT-07, sound: /cdn/moodboard-painterly-fantasy/sfx-cloth-whoosh-dodge.mp3, tallyKey: trail_trial}
+  tags: [wayfarers-lodge, trail-drill]
+pat-trial-1:
+  feetPosition: {x: -22, y: {terrain: 0}, z: 101}
+  id: pat-trial-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: trialpost}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {blockText: Clean roll!, quest: PAT-07, sound: /cdn/moodboard-painterly-fantasy/sfx-cloth-whoosh-dodge.mp3, tallyKey: trail_trial}
+  tags: [wayfarers-lodge, trail-drill]
+pat-trial-2:
+  feetPosition: {x: -26, y: {terrain: 0}, z: 105}
+  id: pat-trial-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: trialpost}, script: scripts/gen/lodge.js}
+  rotation: 0
+  state: {blockText: Clean roll!, quest: PAT-07, sound: /cdn/moodboard-painterly-fantasy/sfx-cloth-whoosh-dodge.mp3, tallyKey: trail_trial}
+  tags: [wayfarers-lodge, trail-drill]
 start-gullrest-way-22:
   feetPosition: {x: 18.45699710299111, y: 3.542848756269974, z: 155.15734916059515}
   id: start-gullrest-way-22
