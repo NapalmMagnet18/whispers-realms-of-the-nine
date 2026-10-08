@@ -171,12 +171,15 @@ function markFor(ctx, r) {
 }
 function nearMark(ctx) {
   const me = ctx.self.feetPosition;
-  let best = null, bd = M.reach;
+  let best = null, bd = M.reach, waiting = null;
   for (const r of ctx.query({ tags: ['quest-mark'], radius: M.reach + 2 })) {
     const d = flat(r.feetPosition, me); if (d > bd || Math.abs(r.feetPosition.y - me.y) > 3) continue;
-    if (markFor(ctx, r)) { bd = d; best = r; }
+    const m = markFor(ctx, r); if (!m) continue;
+    const pre = r.state && r.state.after && m.p.objectives.find((o) => o.key === r.state.after);
+    if (pre && pre.current < pre.target) { if (!best && d <= bd) { waiting = r; } continue; } // a step still waiting on an earlier one yields to its neighbours
+    bd = d; best = r;
   }
-  return best;
+  return best || waiting; // alone, the waiting step still answers with its 'First: …' line
 }
 function useMark(ctx, r) {
   const st = ctx.self.state, ms = r.state || {}, m = markFor(ctx, r); if (!m) return;
