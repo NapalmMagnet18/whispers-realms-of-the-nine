@@ -17,9 +17,7 @@ function _panelMod() { return _panelM; }
 function _anyPress(input) { var a = input.actions || {}; for (var k in a) { if (a[k] && k !== 'sprint' && k !== 'jump' && k !== 'mouseLeft' && k !== 'mouseRight') return true; } return false; }
 function _req(p) {
   switch (p) {
-    case './lib/shop-data.js': return require('./lib/shop-data.js');
     case './lib/currency.js': return require('./lib/currency.js');
-    case './lib/profession-data.js': return require('./lib/profession-data.js');
     case './lib/races.js': return require('./lib/races.js');
     case './lib/class-items.js': return require('./lib/class-items.js');
   }

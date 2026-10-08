@@ -1,7 +1,6 @@
 // MMORPG Tools Mod UI
 const { RACES, CLASSES, CLASS_LORE, CLASS_ICONS, CLASS_COLORS, RACE_DESCRIPTIONS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAIR_STYLES, FACIAL_HAIR } = require('./lib/races.js');
 const { RACIAL_ABILITIES } = require('./lib/racial-abilities.js');
-const { renderChat } = require('./lib/ui-chat.js');
 // The game windows (146 KB) and the door panel are not needed to stand: they load on first draw in the world, and the HUD draws them the frame they land.
 var _lazy = {};
 var _LAZY_SRC = { menu: function () { return import('./lib/ui-menu-panel.js'); }, door: function () { return import('./lib/ui-door-panel.js'); },
@@ -18,7 +17,7 @@ function _lazyMod(key, path) {
 // the in-world HUD set loads after the menu stands (kicked off on the first paint anywhere), ready long before Enter World
 var _HUD_SRC = { hud: function () { return import('./lib/ui-hud.js'); }, quest: function () { return import('./lib/ui-quest.js'); },
   vendor: function () { return import('./lib/ui-vendor.js'); }, welcome: function () { return import('./lib/ui-welcome.js'); },
-  splash: function () { return import('./lib/ui-zone-splash.js'); }, creation: function () { return import('./lib/ui-creation.js'); }, flight: function () { return import('./lib/ui-flight.js'); }, trades: function () { return import('./lib/ui-trades.js'); } };
+  splash: function () { return import('./lib/ui-zone-splash.js'); }, creation: function () { return import('./lib/ui-creation.js'); }, flight: function () { return import('./lib/ui-flight.js'); }, chat: function () { return import('./lib/ui-chat.js'); }, tips: function () { return import('./lib/ui-tip-reminder.js'); }, buffs: function () { return import('./lib/ui-buff-icons.js'); }, trades: function () { return import('./lib/ui-trades.js'); } };
 var _hudMods = {};
 function _hm(key) {
   var e = _hudMods[key] || (_hudMods[key] = { m: null, p: null });
@@ -26,6 +25,9 @@ function _hm(key) {
   return e.m;
 }
 function _hf(key, fn) { var m = _hm(key); if (!m) return null; return m[fn] || (m.default && m.default[fn]) || null; }
+function renderChat(a, b, c) { var f = _hf('chat', 'renderChat'); return f ? f(a, b, c) : ''; }
+function renderTipReminder(a) { var f = _hf('tips', 'renderTipReminder'); return f ? f(a) : ''; }
+function renderBuffIcons(a, b) { var f = _hf('buffs', 'renderBuffIcons'); return f ? f(a, b) : ''; }
 function renderHUD(a, b, c) { var f = _hf('hud', 'renderHUD'); return f ? f(a, b, c) : ''; }
 function renderWelcomeWindow(a) { var f = _hf('welcome', 'renderWelcomeWindow'); return f ? f(a) : ''; }
 function renderQuestDialog(a, b) { var f = _hf('quest', 'renderQuestDialog'); return f ? f(a, b) : ''; }
@@ -39,7 +41,7 @@ function renderBank(a) { var f = _hf('vendor', 'renderBank'); return f ? f(a) : 
 function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : ''; }
 function zoneSplashActive() { var f = _hf('splash', 'zoneSplashActive'); return f ? f() : false; }
 function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
-function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); }
+function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); _hm('chat'); _hm('tips'); _hm('buffs'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
 function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
 function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
@@ -47,8 +49,6 @@ const WHF = require('./lib/ui-frames.js');
 const { versionTag } = require('./lib/version.js');
 const { renderHerald, renderRealmChip } = require('./lib/ui-herald.js');
 function renderGnomeTipJar(a, b) { var m = _lazyMod('gnome'); return m ? m.renderGnomeTipJar(a, b) : ''; }
-const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
-const { renderBuffIcons } = require('./lib/ui-buff-icons.js');
 function renderGuildPanel(a, b) { var m = _lazyMod('guild'); return m ? m.renderGuildPanel(a, b) : ''; }
 function renderGuildInvitePopup(a) { var m = _lazyMod('guild'); return m ? m.renderGuildInvitePopup(a) : ''; }
 const { renderMainMenu } = require('./lib/ui-main-menu.js');

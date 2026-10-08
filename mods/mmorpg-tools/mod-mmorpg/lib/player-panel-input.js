@@ -1,6 +1,8 @@
 // In-world panel input for the MMORPG player (Escape, door panels, shops, professions, spellbar, music, settings…).
 // Split out of player.js so the main menu boots without it: player.js imports this the moment a hero stands in the
 // world and forwards every in-world press here. Returns FALL when the press is not a panel's, so movement runs.
+import * as SHOP_DATA from './shop-data.js';
+import * as PROF_DATA from './profession-data.js';
 export var FALL = 'fall';
 export function panelInput(objectApi, input, s, H) {
   var saveCharacter = H.saveCharacter, TRACKS = H.TRACKS, setWorldSpatialAudio = H.setWorldSpatialAudio,
@@ -132,7 +134,7 @@ export function panelInput(objectApi, input, s, H) {
     }
     if (input.actions.buyShopItem) {
       if (s.shopSelectedItem == null) return;
-      var shopData = H.req('./lib/shop-data.js');
+      var shopData = SHOP_DATA;
       var shopItems = shopData.getShopItems(s.interactingBuildingId);
       var item = shopItems[s.shopSelectedItem];
       if (!item) return;
@@ -169,7 +171,7 @@ export function panelInput(objectApi, input, s, H) {
     // ── Profession learning actions ──
     if (input.actions.learnProfession && input.actionData && input.actionData.learnProfession) {
       var lpData = input.actionData.learnProfession;
-      var profData = H.req('./lib/profession-data.js');
+      var profData = PROF_DATA;
       var prof = profData.getProfession(lpData.buildingId);
       if (prof) {
         objectApi.patchState({
