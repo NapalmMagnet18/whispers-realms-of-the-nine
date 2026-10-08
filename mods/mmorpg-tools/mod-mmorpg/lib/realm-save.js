@@ -102,13 +102,13 @@ function refreshRealmList(api) {
 function refreshRealmDetail(api, room) {
   if (!REALMS.some(function (r) { return r.room === room; })) return;
   api.patchState({ realmDetail: { room: room, loading: true, top: [], firsts: [] } });
-  if (!hasSql(api)) { api.patchState({ realmDetail: { room: room, top: [], firsts: [] } }); return; }
+  if (!hasSql(api)) { api.patchState({ realmDetail: { room: room, loading: false, top: [], firsts: [] } }); return; }
   var firsts = api.sql`SELECT feat, label, char_name, class FROM realm_firsts WHERE realm = ${room} ORDER BY at DESC LIMIT 6`.then(function (r) { return r.rows || []; }, function () { return []; });
   var top = api.sql`SELECT name, race, class, level FROM characters WHERE realm = ${room} ORDER BY level DESC, updated_at ASC LIMIT 5`.then(function (r) { return r.rows || []; }, function () { return []; });
   Promise.all([top, firsts]).then(function (out) {
     var s = api.getState();
     if ((s.realmPick || realmOf(api)) !== room) return; // a later pick won
-    api.patchState({ realmDetail: { room: room, top: out[0], firsts: out[1] } });
+    api.patchState({ realmDetail: { room: room, loading: false, top: out[0], firsts: out[1] } });
   });
 }
 module.exports = { REALMS: REALMS, MAX_PER_REALM: MAX_PER_REALM, CHARS_PER_REALM: CHARS_PER_REALM, realmOf: realmOf, signature: signature, upsert: upsert, removeSlot: removeSlot, loadRoster: loadRoster, importLegacy: importLegacy, refreshRealmList: refreshRealmList, refreshRealmDetail: refreshRealmDetail, population: population, classOf: classOf };
