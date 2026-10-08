@@ -21,3 +21,5 @@ atmosphere:
     params: { dayWarmth: 0.04, grain: 0.03 }
 acoustics:
   reverb: 0.5
+# heroes arrive here from the open world, its game code already loaded; a cold boot only on a reconnect inside
+arrivalBudget: { bytes: 720000 }
