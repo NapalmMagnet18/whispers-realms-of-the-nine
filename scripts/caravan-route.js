@@ -7,6 +7,7 @@ const SIDE = 4.5;            // metres right of the road's centre line, so the r
 const WALK = 1.6;            // m/s, a mule's patient pace
 const DWELL = 240;           // seconds parked at each stop
 const STOPS = [6, 326, 600]; // arc metres along ROAD: Reach edge, fen camp, Reedhaven gate
+const SHOPS = ["mott-reach", "mott-fen", "mott-reed"]; // his stock follows the stop he last stood at
 const RIDERS = ["march-caravan-goods", "march-caravan-lamp", "march-caravan-bells", "march-npc-mott"];
 
 const SEG = []; let LEN = 0;
@@ -16,18 +17,18 @@ function at(s) {
   const g = SEG.find((q) => s < q.s + q.l) || SEG[SEG.length - 1], t = s - g.s;
   return { x: g.ax + g.dx * t - g.dz * SIDE, z: g.az + g.dz * t + g.dx * SIDE, dx: g.dx, dz: g.dz };
 }
-const LEGS = [[0, 1], [1, 2], [2, 1], [1, 0]].map(([a, b]) => ({ from: STOPS[a], to: STOPS[b], time: Math.abs(STOPS[b] - STOPS[a]) / WALK }));
+const LEGS = [[0, 1], [1, 2], [2, 1], [1, 0]].map(([a, b]) => ({ a, from: STOPS[a], to: STOPS[b], time: Math.abs(STOPS[b] - STOPS[a]) / WALK }));
 const CYCLE = LEGS.reduce((n, l) => n + DWELL + l.time, 0);
 
 function where(now) {
   let t = (now / 1000) % CYCLE;
   for (const l of LEGS) {
-    if (t < DWELL) { const p = at(l.from), dir = Math.sign(l.to - l.from); return { ...p, dx: p.dx * dir, dz: p.dz * dir, moving: false, left: DWELL - t }; }
+    if (t < DWELL) { const p = at(l.from), dir = Math.sign(l.to - l.from); return { ...p, dx: p.dx * dir, dz: p.dz * dir, moving: false, left: DWELL - t, stop: l.a }; }
     t -= DWELL;
-    if (t < l.time) { const dir = Math.sign(l.to - l.from), p = at(l.from + dir * WALK * t); return { ...p, dx: p.dx * dir, dz: p.dz * dir, moving: true }; }
+    if (t < l.time) { const dir = Math.sign(l.to - l.from), p = at(l.from + dir * WALK * t); return { ...p, dx: p.dx * dir, dz: p.dz * dir, moving: true, stop: l.a }; }
     t -= l.time;
   }
-  return { ...at(STOPS[0]), moving: false, left: 1 };
+  return { ...at(STOPS[0]), moving: false, left: 1, stop: 0 };
 }
 
 export function onSpawn(ctx) {
@@ -49,6 +50,7 @@ export function update(ctx) {
     const r = rotate(yaw, off), px = here.x + r.x, pz = here.z + r.z, oy = id === "march-npc-mott" ? (terr.heightAt(px, pz) ?? gy) : gy + off.y;
     o.feetPosition = { x: px, y: oy, z: pz };
     if (id === "march-npc-mott") {
+      const shop = SHOPS[here.stop ?? 1]; if (o.state.shop !== shop) o.state.shop = shop;
       if (here.moving !== !!o.state.traveling) {
         o.state.traveling = here.moving;
         o.anim.base = { clip: here.moving ? "Walk" : (o.state.idle || "idle"), weight: 1, loop: "loop" };

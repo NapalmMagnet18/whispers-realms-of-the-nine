@@ -76,6 +76,20 @@ SHOP_INVENTORIES['hask'] = [
   { id: 'saltborn-fish-stew', name: 'Saltborn Fish Stew', icon: '/cdn/value.6f70b3531cdca8f325a168e649b5e0125b2c2b0b36fd10fa38e1ee2c22abbd1a.png', slot: 'bag', price: 90, stackable: true, consumable: true, description: 'Hask\'s grandmother\'s pot. Restores 1400 health over 15 sec. Eating stops if you are struck.', stats: { healOverTime: 1400, eatSeconds: 15 } },
 ];
 
+// Mott Farwander's caravan (scripts/caravan-route.js swaps state.shop by the stop it stands at)
+SHOP_INVENTORIES['mott-reach'] = [
+  { id: 'mott-waybread', name: "Mott's Waybread", icon: '/cdn/value.da27050004cfd3d7a59925f477676b26297dcb98663be58be06d4659b108ed73.png', slot: 'bag', price: 10, stackable: true, consumable: true, description: "Baked in the Reach, three days ago. Still good. Mostly. Restores 200 health over 8 sec. Eating stops if you are struck.", stats: { healOverTime: 200, eatSeconds: 8 } },
+  { id: 'mott-smoked-sausage', name: "Smoked Sausage Coil", icon: '/cdn/value.8d8e8e7b83ed8167e1914bb71573af62fefbae593da830520eb55cca9e83d9f3.png', slot: 'bag', price: 30, stackable: true, consumable: true, description: "Cured over applewood on the long road. Restores 450 health over 12 sec. Eating stops if you are struck.", stats: { healOverTime: 450, eatSeconds: 12 } },
+];
+SHOP_INVENTORIES['mott-fen'] = [
+  { id: 'mott-myrtle-tea', name: "Bog-Myrtle Tea", icon: '/cdn/value.bf15ca9abbc166c1a5f7548006e86c429025517b089efcc37e77909cb6bb0ae9.png', slot: 'bag', price: 25, stackable: true, consumable: true, description: "Bitter, green, and it keeps the fen-chill out. Restores 350 health over 8 sec. Eating stops if you are struck.", stats: { healOverTime: 350, eatSeconds: 8 } },
+  { id: 'mott-marsh-honeycomb', name: "Marsh Honeycomb", icon: '/cdn/value.00e2e23c067f445dbceadd74cc472ea874c09043628f42e056bb4e91894ee6f8.png', slot: 'bag', price: 60, stackable: true, consumable: true, description: "Cut from a reed-hive. Mott wears the stings proudly. Restores 700 health over 12 sec. Eating stops if you are struck.", stats: { healOverTime: 700, eatSeconds: 12 } },
+];
+SHOP_INVENTORIES['mott-reed'] = [
+  { id: 'mott-reed-ricecake', name: "Reedhaven Rice Cake", icon: '/cdn/value.47acf3e56c201b22b952954752c278bd167127117d6cb2de45bd15c176a125da.png', slot: 'bag', price: 30, stackable: true, consumable: true, description: "Pressed in reed leaves by the Reedbound. Restores 400 health over 10 sec. Eating stops if you are struck.", stats: { healOverTime: 400, eatSeconds: 10 } },
+  { id: 'mott-eel-skewer', name: "Lantern-Eel Skewer", icon: '/cdn/value.2c34dafd2c7a4f2088c6bf2c994715734c5697c7d1f6c9bc9595dcd1be231e7d.png', slot: 'bag', price: 95, stackable: true, consumable: true, description: "Glows faintly. So will you, for a minute. Restores 900 health over 14 sec. Eating stops if you are struck.", stats: { healOverTime: 900, eatSeconds: 14 } },
+];
+
 // what a vendor pays for a bag good it never sells (copper)
 var SELL_ONLY = { 'iron-ore': 12, 'sunleaf': 4, 'briarroot': 10, 'gravebloom': 22, 'copper-bar': 14, 'iron-bar': 30, 'ghostlight-oil': 70, 'copper-ore': 5, 'log': 3, 'timber-logs': 3, 'empty-vial': 1 };
 var SELL_RATE = 0.25;

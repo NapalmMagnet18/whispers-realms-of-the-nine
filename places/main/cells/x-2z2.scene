@@ -35,5 +35,5 @@ march-npc-mott:
   model: /cdn/model-humanoid-fantasy-travelling-peddler-male-patched-coat-wide-brim-hat-satchels-grey-stubble.glb
   physics: {body: kinematic, collider: capsule}
   rotation: {yaw: -127}
-  state: {homeYaw: -127, idle: idle, npcName: mott, who: mott, yaw: -127}
-  tags: [npc, talker, townsfolk]
+  state: {homeYaw: -127, idle: idle, npcName: "Mott Farwander, Peddler", shop: mott-fen, who: mott, yaw: -127}
+  tags: [npc, vendor, interactable, merchant-npc, townsfolk]
