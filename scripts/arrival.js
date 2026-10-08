@@ -25,3 +25,4 @@ export function onArrive(ctx, player) {
 }
 
 export function onLeave(ctx, player) {}
+
