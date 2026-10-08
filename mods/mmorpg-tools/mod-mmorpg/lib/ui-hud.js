@@ -470,19 +470,15 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
 
   // Overworld landmarks (synced with actual building positions)
   const LANDMARKS_MAIN = [
-    { x: 0, z: 0, label: 'The Hollow', icon: '/cdn/icon-minimap-skull-marker-dark.png' },
-    { x: -80, z: -50, label: 'Chapel Quarter', icon: '/cdn/icon-minimap-chapel-gothic-dark.png' },
-    { x: -115, z: 131, label: 'Crypt Chapel', icon: '/cdn/icon-minimap-mushroom-glowing-dark.png' },
-    { x: -197, z: 29, label: 'Abbey Ruins', icon: '/cdn/icon-minimap-ruins-archway-dark.png' },
-    { x: 15, z: 140, label: "Elder's Village", icon: '/cdn/icon-minimap-village-houses-dark.png' },
-    { x: -164, z: -50, label: 'Western Ruins', icon: '/cdn/icon-minimap-watchtower-dark.png' },
-    { x: 116, z: -90, label: "Mage's Quarter", icon: '/cdn/icon-minimap-mage-tower-dark.png' },
-    { x: 58, z: -189, label: 'Thornwood', icon: '/cdn/icon-minimap-thorny-tree-dark.png' },
-    { x: -12, z: -57, label: 'Mausoleum', icon: '/cdn/icon-minimap-chapel-gothic-dark.png' },
-    { x: -56, z: 44, label: 'Engineers Guild', icon: '/cdn/icon-minimap-watchtower-dark.png' },
-    { x: -201, z: 95, label: 'Clocktower', icon: '/cdn/icon-minimap-watchtower-dark.png' },
-    { x: -171, z: 32, label: 'Demonic Portal', icon: '/cdn/icon-minimap-skull-marker-dark.png' },
-    { x: 21, z: -82, label: 'Apothecary', icon: '/cdn/icon-minimap-mushroom-glowing-dark.png' },
+    { x: 0, z: 0, label: 'Well', icon: '/cdn/icon-minimap-village-houses-dark.png' },
+    { x: 0, z: -24, label: 'Inn', icon: '/cdn/icon-minimap-village-houses-dark.png' },
+    { x: 24, z: 2, label: 'Smithy', icon: '/cdn/icon-minimap-weapon-rack-dark.png' },
+    { x: -24, z: 4, label: 'Merchant', icon: '/cdn/icon-minimap-village-houses-dark.png' },
+    { x: -16, z: 24, label: 'Bank', icon: '/cdn/icon-minimap-watchtower-dark.png' },
+    { x: 8, z: -12, label: 'Quest Board', icon: '/cdn/icon-minimap-gate-archway-dark.png' },
+    { x: -50, z: -9, label: 'Old Bridge', icon: '/cdn/icon-minimap-ruins-archway-dark.png' },
+    { x: -100, z: 5, label: 'Briarwild', icon: '/cdn/icon-minimap-thorny-tree-dark.png' },
+    { x: 140, z: 20, label: 'Emberstone Quarry', icon: '/cdn/icon-minimap-watchtower-dark.png' },
   ];
 
   // Dojo landmarks (training hall ~40x50m, origin-centered)
@@ -659,7 +655,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
       <!-- Place Name (above minimap) -->
       ${(() => {
         const PLACE_NAMES = {
-          'main': 'The Abyss',
+          'main': "Lantern's Reach",
           'sanctum': 'The Sanctum',
           'dojo': 'The Dojo',
           'crucible': 'The Crucible',
