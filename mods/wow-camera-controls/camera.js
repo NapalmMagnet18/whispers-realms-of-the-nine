@@ -15,7 +15,8 @@ function softState(rig){
  if(typeof s.wowZoomGoal!=='number')s.wowZoomGoal=s.desiredDist??C.distance;
  return s;
 }
-function locked(rig){return !!rig.target?.state?.wowCameraLocked;}
+function menuPhase(t){const st=t?.state;if(!st)return false;if(st._cinematicOrbit&&st.phase!=='playing'&&!st.characterCreated)return true;return !!st.phase&&st.phase!=='playing';}
+function locked(rig){return !!rig.target?.state?.wowCameraLocked||menuPhase(rig.target);}
 function stop(s){s.wowYawGoal=s.yaw;s.wowPitchGoal=s.pitch;s.wowZoomGoal=s.desiredDist??C.distance;}
 function ease(value,goal,dt,response=C.lookResponse,settle=C.lookSettle){
  const next=value+(goal-value)*(1-Math.exp(-response*Math.max(0,dt)));
@@ -35,7 +36,7 @@ export function onInput(ctx,input){
  if(z)s.wowZoomGoal=Math.max(C.minDistance,Math.min(C.maxDistance,s.wowZoomGoal-z*C.zoomRate));
 }
 export function update(ctx,dt=0){
- const rig=ctx.self,t=rig.target;if(!t)return;
+ const rig=ctx.self,t=rig.target;if(!t||menuPhase(t))return;
  const k=t.effectiveScale?.y??1,s=softState(rig);
  if(!s.wowInit){s.desiredDist=C.distance;rig.pointerLock=false;s.wowInit=true;}
  if(locked(rig))stop(s);

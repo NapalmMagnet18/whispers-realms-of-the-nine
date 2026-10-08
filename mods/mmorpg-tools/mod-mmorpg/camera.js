@@ -105,7 +105,8 @@ export function update(api, dt) {
     return;
   }
 
-  if (!target) return;
+  // gameplay camera is wow-camera-controls' rig
+  return;
 
   // === FORCED CAMERA ANGLE ===
   if (target.state && typeof target.state._forceCameraYaw === 'number') {
