@@ -37,6 +37,10 @@ export function buildItemTooltip(item) {
     if (itemStats.armour !== undefined) {
       statLines += '<div style="font-family:Cinzel,serif;font-size:18px;color:rgba(220,200,170,0.9);margin-top:4px;line-height:1.5;">Armour: +' + itemStats.armour + '</div>';
     }
+    var tierCol = item.tier === 'raid2' ? '#f2b04a' : item.tier === 'raid1' ? '#c38cff' : item.tier === 'dungeon' ? '#7fb2ff' : null;
+    if (item.ilvl) statLines += '<div style="font-family:Cinzel,serif;font-size:16px;color:' + (tierCol || 'rgba(220,200,170,0.9)') + ';margin-top:2px;">Item Level ' + item.ilvl + '</div>';
+    if (itemStats.power) statLines += '<div style="font-family:Cinzel,serif;font-size:18px;color:rgba(140,230,140,0.95);margin-top:4px;line-height:1.5;">+' + itemStats.power + '% Power</div>';
+    if (itemStats.stamina) statLines += '<div style="font-family:Cinzel,serif;font-size:18px;color:rgba(140,230,140,0.95);line-height:1.5;">+' + itemStats.stamina + ' Stamina</div>';
     if (itemStats.attack !== undefined && !itemStats.damage) {
       statLines += '<div style="font-family:Cinzel,serif;font-size:18px;color:rgba(220,200,170,0.9);margin-top:4px;line-height:1.5;">Attack: +' + itemStats.attack + '</div>';
     }
