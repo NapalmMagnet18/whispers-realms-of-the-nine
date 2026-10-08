@@ -43,6 +43,24 @@ function chat(ctx, r) {
   ctx.self.state.npcSay = { text: '<b>' + row.name + '</b><br>' + row.lines[i], id: ctx.now(), anchor: r.id, offset: '0 2.35 0' };
   ctx.session.sayUntil = ctx.now() + (TF.sayLength || 7) * 1000;
 }
+// anything tagged 'cache' (a hidden chest) carries state { cache, gold, title, lid? }: E opens it once per player
+function nearCache(ctx) {
+  const c = near(ctx, 'cache', R.reach);
+  return c && Math.abs(c.feetPosition.y - ctx.self.feetPosition.y) < 1.6 ? c : null;
+}
+function openCache(ctx, c) {
+  const st = ctx.self.state, cs = c.state || {}, key = cs.cache || c.id, found = st.caches || {};
+  const head = { x: c.feetPosition.x, y: c.feetPosition.y + 1, z: c.feetPosition.z };
+  const live = ctx.place.objects[c.id];
+  if (live) live.state.openUntil = ctx.now() + 6000;
+  if (found[key]) { ctx.emit('damageNumber', { position: head, text: 'Empty. You took this one.', color: 'oklch(0.8 0.02 80)', size: 1, lifetime: 1.8 }, { audience: { player: ctx.self.id } }); return; }
+  st.caches = { ...found, [key]: ctx.now() };
+  st.gold = (st.gold || 0) + (cs.gold || 0);
+  st._questSave = true;
+  ctx.emit('damageNumber', { position: head, text: `${cs.title || 'Hidden cache'}  +${cs.gold || 0} Gold`, color: 'oklch(0.86 0.15 85)', size: 1.3, lifetime: 2.4 }, { audience: { player: ctx.self.id } });
+  ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-chest-open-coins.mp3', position: head, volume: 0.8 });
+  ctx.emit('milestone', { step: 'cache-' + key, name: cs.title || 'Found a hidden cache' }, { audience: { player: ctx.self.id } });
+}
 const felled = (ctx, tree) => (tree.state.depletedUntil || 0) > ctx.now();
 
 // one log into the mod's 30-slot inventory: stacks on a log stack under stackMax, else the first empty slot; false = full
@@ -173,6 +191,8 @@ export function onInput(ctx, input) {
   if (folk) return chat(ctx, folk);
   const page = near(ctx, 'readable', R.reach);
   if (page) return read(ctx, page);
+  const cache = nearCache(ctx);
+  if (cache) return openCache(ctx, cache);
   const tree = near(ctx, 'timber', W.reach);
   if (tree && !felled(ctx, tree)) startChop(ctx, tree);
 }
@@ -200,6 +220,7 @@ export function update(ctx) {
   else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to Elric';
   else if (!st.showQuestDialog && near(ctx, 'talker', N.talkReach)) { const f = near(ctx, 'talker', N.talkReach); hint = 'E  Talk to ' + ((TF[f.state && f.state.who] || {}).name || 'them'); }
   else if (near(ctx, 'readable', R.reach)) { const r = near(ctx, 'readable', R.reach); hint = 'E  Read ' + ((r.state && r.state.title) || 'note'); }
+  else if (nearCache(ctx)) { const c = nearCache(ctx); hint = (st.caches || {})[c.state.cache || c.id] ? 'Empty chest' : 'E  Open ' + (c.state.title || 'chest'); }
   else { const t = near(ctx, 'timber', W.reach); if (t) hint = felled(ctx, t) ? 'Felled · regrowing' : 'E  Chop Oak'; }
   if (hint !== ctx.session.hint) {
     if (hint) st.interactHint = hint;
