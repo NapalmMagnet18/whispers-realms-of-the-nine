@@ -6,6 +6,46 @@ ashen-cathedral:
   physics: none
   primitive: {depth: 16, height: 26, kind: box, width: 36}
   tags: [blueprint]
+ashen-npc-corwen:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 90, y: {terrain: 0}, z: -190}
+  id: ashen-npc-corwen
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-pilgrim-male-barefoot-brown-hooded-robe-walking-staff-prayer-beads.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 300}
+  state: {homeYaw: 300, idle: Idle, npcName: Pilgrim Corwen, who: corwen-ashen, yaw: 300}
+  tags: [npc, talker, townsfolk, ashen]
+ashen-npc-halric:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 108, y: {terrain: 0}, z: -189.5}
+  id: ashen-npc-halric
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-templar-knight-male-dented-steel-plate-tattered-red-tabard-greatsword.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 270}
+  state: {homeYaw: 270, idle: Idle, npcName: Ser Halric of the Nine, who: halric-ashen, yaw: 270}
+  tags: [npc, talker, townsfolk, ashen]
+ashen-npc-nyssa:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 96, y: {terrain: 0}, z: -172}
+  id: ashen-npc-nyssa
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-plague-herbalist-female-beaked-leather-mask-dark-hooded-robe-herb-satchel.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Nyssa the Bonewort, who: nyssa-ashen, yaw: 200}
+  tags: [npc, talker, townsfolk, ashen]
+ashen-npc-osric:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 118, y: {terrain: 0}, z: -160}
+  id: ashen-npc-osric
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-gravekeeper-old-man-hunched-patched-grey-coat-shovel-lantern.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {homeYaw: 180, idle: Idle, npcName: Gravekeeper Osric, who: osric-ashen, yaw: 180}
+  tags: [npc, talker, townsfolk, ashen]
 ashen-relic-table:
   feetPosition: {x: 102, y: 5, z: -177}
   id: ashen-relic-table
