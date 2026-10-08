@@ -168,7 +168,7 @@ export default function(world, localPlayer) {
     isGameplay = false;
   }
   if (isGameplay) {
-    var hideControls = localPlayer.state.controlsHidden === true;
+    var hideControls = localPlayer.state.controlsHidden === true || (localPlayer.state.level || 1) >= 2;
     try {
       var _hudParts = [];
       _hudParts.push('<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();window.__faCharName=undefined;" style="display:none" />');
@@ -204,7 +204,7 @@ export default function(world, localPlayer) {
   // unless the player is explicitly in character creation.
   if (__faEverPlayed && !isCreating) {
     // State is flickering — force HUD display with error recovery
-    var hideControls2 = localPlayer.state.controlsHidden === true;
+    var hideControls2 = localPlayer.state.controlsHidden === true || (localPlayer.state.level || 1) >= 2;
     try {
       return FONT_INJECTOR + NAME_SWEEP + wrapOpen + renderHUD(localPlayer, world, rightHudLayout)
         + (hideControls2 ? '' : renderWASD(localPlayer, rightHudLayout))
@@ -323,7 +323,7 @@ export function renderZoneBanner(localPlayer) {
 
 
 export function renderWASD(localPlayer, rightHudLayout) {
-  var wasdScale = (rightHudLayout && rightHudLayout.rightHudScale) || 1;
+  var wasdScale = ((rightHudLayout && rightHudLayout.rightHudScale) || 1) * 0.72;
   var wasdScaleStyle = wasdScale < 1 ? "transform:translateY(-50%) scale(" + wasdScale + ");transform-origin:top left;" : "transform:translateY(-50%);";
   const keyStyle = `
     width: 40px; height: 40px;
@@ -369,7 +369,7 @@ export function renderWASD(localPlayer, rightHudLayout) {
     <div style="
       position:fixed; top:50%; left:-58px; ${wasdScaleStyle}
       pointer-events:none;
-      opacity: 0.9;
+      opacity: 0.72;
       width: 370px;
       height: 528px;
     ">
