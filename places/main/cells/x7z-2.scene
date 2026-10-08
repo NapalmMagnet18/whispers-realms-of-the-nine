@@ -2,7 +2,7 @@
 kha-hall:
   feetPosition: {x: 914, y: {terrain: -0.3}, z: -207}
   id: kha-hall
-  model: /cdn/value.65ab69ae50c29de80ba35bdadc0dbd74ed2010325e83626ebc096fc3058b13be.glb
+  model: {id: /cdn/value.65ab69ae50c29de80ba35bdadc0dbd74ed2010325e83626ebc096fc3058b13be.glb, materials: {flagstone: {color: "#b9a48c", roughness: 0.9, texture: cdn/texture-red-sandstone-block-masonry-weathered.png}, oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}, sandstone: {roughness: 0.9, texture: cdn/texture-red-sandstone-block-masonry-weathered.png}, slate: {roughness: 0.7, texture: cdn/texture-dark-slate-roof-tiles-mossy.png}, turf: {roughness: 0.95, texture: cdn/texture-mossy-turf-grass-thatch.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: 146}
   tags: [emberstone-cradle, kha-building]
@@ -14,7 +14,7 @@ kha-hall-light:
 kha-home-0:
   feetPosition: {x: 874.4, y: {terrain: -0.3}, z: -197.9}
   id: kha-home-0
-  model: /cdn/value.981a47348b4ddf4902733736ac1bd947a0f5090cad10ef017281d14be11054b7.glb
+  model: {id: /cdn/value.981a47348b4ddf4902733736ac1bd947a0f5090cad10ef017281d14be11054b7.glb, materials: {flagstone: {color: "#b9a48c", roughness: 0.9, texture: cdn/texture-red-sandstone-block-masonry-weathered.png}, oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}, sandstone: {roughness: 0.9, texture: cdn/texture-red-sandstone-block-masonry-weathered.png}, turf: {roughness: 0.95, texture: cdn/texture-mossy-turf-grass-thatch.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: -140}
   tags: [emberstone-cradle, kha-building]
@@ -62,42 +62,42 @@ kha-tunnel:
 kha-yard-0:
   feetPosition: {x: 913.2473740660806, y: {terrain: -0.05}, z: -196.048582091638}
   id: kha-yard-0
-  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  model: {id: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb, materials: {oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: 163}
   tags: [emberstone-cradle, kha-yard]
 kha-yard-1:
   feetPosition: {x: 905.8754317889606, y: {terrain: -0.05}, z: -212.48009045401332}
   id: kha-yard-1
-  model: /cdn/value.b18da9f01c0c114ff2106aed1363f59994660980a1101f5e9bd6c784089a6e12.glb
+  model: {id: /cdn/value.b18da9f01c0c114ff2106aed1363f59994660980a1101f5e9bd6c784089a6e12.glb, materials: {oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: 150}
   tags: [emberstone-cradle, kha-yard]
 kha-yard-2:
   feetPosition: {x: 923.2429540179809, y: {terrain: -0.05}, z: -203.17798469109675}
   id: kha-yard-2
-  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  model: {id: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb, materials: {oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: 137}
   tags: [emberstone-cradle, kha-yard]
 kha-yard-4:
   feetPosition: {x: 881.092814403993, y: {terrain: -0.05}, z: -198.94701258526553}
   id: kha-yard-4
-  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  model: {id: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb, materials: {oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: -115}
   tags: [emberstone-cradle, kha-yard]
 kha-yard-8:
   feetPosition: {x: 919.8877965971565, y: {terrain: -0.05}, z: -198.2037592557665}
   id: kha-yard-8
-  model: /cdn/value.54ae9d955191660ad244358c4bf2a740380ee303d502fbadf6dae6ac20b1bb47.glb
+  model: {id: /cdn/value.54ae9d955191660ad244358c4bf2a740380ee303d502fbadf6dae6ac20b1bb47.glb, materials: {oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: 119}
   tags: [emberstone-cradle, kha-yard]
 kha-yard-9:
   feetPosition: {x: 902.5202743681361, y: {terrain: -0.05}, z: -207.50586501868307}
   id: kha-yard-9
-  model: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb
+  model: {id: /cdn/value.84faeace1a0a3baa1c24daa9b778812ae29f3376b1bbd67f74ed9356b075ca42.glb, materials: {oak: {roughness: 0.8, texture: cdn/texture-old-dark-oak-planks.png}}}
   physics: {body: static, collider: mesh}
   rotation: {yaw: 166}
   tags: [emberstone-cradle, kha-yard]
