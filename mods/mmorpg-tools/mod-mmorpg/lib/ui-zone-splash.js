@@ -3,17 +3,17 @@
 // - walking into another painted region: the same art as a framed card, top-centre, for 4.5 s
 // Never blocks play (pointer-events none). Region shapes mirror scripts/lib/regions.js (circles first, then the broad bands).
 var ART = {
-  reach: ['/cdn/chatgpt-image-oct-7-2026-09-54-03-pm-1-u5u429bhl.webp'],
-  briarwild: ['/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-2-u6195ot7r.webp'],
-  deepwood: ['/cdn/chatgpt-image-oct-7-2026-10-01-09-pm-2-u43sdvpt1.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-2-u6195ot7r.webp'],
-  hollowcrypt: ['/cdn/chatgpt-image-oct-7-2026-10-01-10-pm-3-u6p8f7ssa.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-3-u95wrtxa4.webp'],
-  sorrowfen: ['/cdn/chatgpt-image-oct-7-2026-10-01-11-pm-4-u3y6ukact.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-05-pm-4-u2rtupzkq.webp'],
-  emberstone: ['/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp'],
-  ashfall: ['/cdn/chatgpt-image-oct-7-2026-10-01-12-pm-5-u2y69eboa.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp'],
+  reach: ['/cdn/00-key-art-u4k2ellba.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-03-pm-1-u5u429bhl.webp'],
+  briarwild: ['/cdn/04-briarwild-loading-u2dtrlb01.webp'],
+  deepwood: ['/cdn/04-briarwild-loading-u2dtrlb01.webp', '/cdn/chatgpt-image-oct-7-2026-10-01-09-pm-2-u43sdvpt1.webp'],
+  hollowcrypt: ['/cdn/05-hollowcrypt-loading-u4vyudn4f.webp'],
+  sorrowfen: ['/cdn/06-sorrowfen-loading-u1aqmb6c3.webp'],
+  emberstone: ['/cdn/07-emberstone-loading-u7mciofoy.webp'],
+  ashfall: ['/cdn/07-emberstone-loading-u7mciofoy.webp'],
   saltmere: ['/cdn/chatgpt-image-oct-7-2026-10-01-08-pm-1-u11atau6r.webp'],
-  velthraen: ['/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-6-u3fwls0tp.webp', '/cdn/chatgpt-image-oct-7-2026-10-01-09-pm-2-u43sdvpt1.webp'],
+  velthraen: ['/cdn/08-velthraen-loading-u09qyl6yt.webp'],
   spire: ['/cdn/chatgpt-image-oct-7-2026-10-01-12-pm-6-u7md0wibr.webp', '/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u6hx0nqke.webp'],
-  ninthveil: ['/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u008xoxrq.webp', '/cdn/chatgpt-image-oct-7-2026-10-01-12-pm-6-u7md0wibr.webp'],
+  ninthveil: ['/cdn/09-ninth-veil-loading-u8xh7ka90.webp'],
 };
 var _pick = 0;
 function srcOf(k) { var a = ART[k] || ART.ninthveil; return a[(_pick++) % a.length]; }
