@@ -8,7 +8,7 @@ giant-arm:
   tags: [fallen-giant]
 giant-heartbeat:
   audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-colossal-slow-deep-heartbeat-thud-in-stone-cavern-loop.mp3, gain: 0.22, loop: true, maxDistance: 26, spatial: true}
-  feetPosition: {x: -80, y: 35.8, z: -680}
+  feetPosition: {x: -80, y: 37.9, z: -680}
   id: giant-heartbeat
 giant-rib-0:
   feetPosition: {x: -83.37, y: 37.52, z: -688.99}
@@ -84,7 +84,7 @@ qm-giant-heart:
   state: {after: giant_skull_echo, afterText: "First: listen at the giant's skull", mark: giant_heart, quest: GNT-01, say: "Your fingers close on hot crystal. The ribs groan. It comes loose with a sound like a struck bell, and for one breath the whole road goes quiet.", title: The Giant's Heart, verb: Pry free}
   tags: [quest-mark, fallen-giant]
 qm-giant-skull-echo:
-  feetPosition: {x: -80.5, y: 38.6, z: -693.5}
+  feetPosition: {x: -80.5, y: 39.4, z: -693.5}
   id: qm-giant-skull-echo
   state: {mark: giant_skull_echo, quest: GNT-01, say: "You press your ear to the bone. Far down, under the wind, something thuds. Slow. Patient. Then a voice, or the memory of one: the sky was my home.", title: The Giant's Skull, verb: Listen}
   tags: [quest-mark, fallen-giant]
