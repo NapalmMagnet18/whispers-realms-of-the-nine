@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1525,
-  "updatedAt": "2026-10-08T20:36:55.456Z",
+  "basedOnSpecVersion": 1528,
+  "updatedAt": "2026-10-08T20:37:29.679Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, homelands and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors compose movement, class combat, quests, trade, flight, survival and per-player audio, while streamed scenes and shared YAML data define places and encounters.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -240,7 +240,7 @@
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics and lookup shared by quest-core, quest-giver and quest UI; quest-text.js supplies prose.",
     "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for dungeon, raid and open-world bosses; IDs also key gear and voice data.",
-    "scripts/lib/data/gear.yml - boss loot tables, item stats and tier data consumed by quest-player, quest-core and kit.js.",
+    "scripts/lib/data/boss-voices.yml and boss-taunts.yml - boss wake/arena voice clips keyed by boss id; scripts/boss.js emits them on Voice bus.",
     "scripts/lib/data/music.yml, weather.yml, greet-voices.yml + scripts/region-music.js, quest-core.js - area/audio schedules and voice mappings shared by player behaviors and place weather."
   ],
   "notableExports": [
@@ -258,7 +258,7 @@
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment and quest state.",
     "scripts/vanguard.js, arcanist.js, pathfinder.js and shade.js - class action/cooldown/combat state; kit.js supplies common targeting, damage, gear power and melee foley.",
     "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
-    "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch live in boss ctx.session.",
+    "scripts/boss.js - placed boss hp/mode/cast/enrage/target fields; encounter clocks, damage attribution and target scratch (including arena-taunt cooldown) live in boss ctx.session.",
     "scripts/instance-gate.js - gate state.link/minLevel/entry quest tally configuration; stamps player's _worldEnterAt and conditionally increments tally.",
     "scripts/vitality.js - player health/dying/rise and regen handling plus bloodUntil pact and per-session food-over-time; enemies write state.health.",
     "places/main/sim.js owns place.state.storm/calm/thunderAt and atmosphere storm changes; region-music.js owns per-player theme, ambience, rain FX and transition session."
@@ -274,12 +274,12 @@
     "quest-core talks/interacts with townsfolk → greet-voices.yml matches resident base name and barks to the pressing player; quest-core also emits quest dialogue and quest audio feedback.",
     "Main-place entrance gate config → instance-gate checks player/level and active quest, stamps _worldEnterAt and crosses to paired +place#gate; inside twin returns through its link.",
     "Instance scenes bind scripts/gen/instance.js with layout/kind params; LAYOUTS and roomsOf produce shared room shells, corridors, floors and furnishings while scenes supply encounters and props.",
-    "Boss state.boss → boss.js reads bosses.yml/voice data; class scripts write hp/lastHitBy/lastHitAt, credited kills feed quest-player tally/XP and gear; voiced wakes set player _hushUntil for region-music.",
+    "Boss state.boss → boss.js reads bosses.yml, boss-voices.yml and boss-taunts.yml; arena entry while asleep can emit keyed taunt to nearby audience (ctx.session cooldown), wake emits voice; credited kills feed quest-player tally/XP and gear.",
     "places/main/sim.js ticks weather.yml into place.state.storm/atmosphere and emits thunder/flash → region-music.js reads storm for rain FX/bed; vitality.js handles useFood healing and blood-shrine interact, while kit.power reads bloodUntil."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind (halls, pillar, brazier, dais, bell, organ, seat, rootcol); scene placements share layout coordinates.",
-    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and sound/clips.",
+    "scripts/boss.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and sound/clips; boss-taunts.yml adds per-id sleeping-arena voice lines.",
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed; scene binds static colliders for landmark structures.",
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and consolidated graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
@@ -294,8 +294,8 @@
     "Adding a playable place requires a row in scripts/lib/places.js PLAY; dying heroes rise at SAFE_HOME for listed dungeons/raids. Quest and class logic uses isPlay rather than hard-coded place names.",
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest before crossing, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
-    "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and gear.yml; voiced boss _hushUntil is consumed by region-music.",
-    "Blood pact power is time-gated by player.state.bloodUntil in kit.power; vitality owns its expiry/effects. Food inventory items carry healOverTime/eatSeconds, are consumed via useFood index and healing is interrupted by damage.",
-    "March weather stores a saved calm atmosphere before storm overrides it; sim.js restores that baseline, while region-music samples storm state for per-player rain and ambience. Money remains integer copper; route transactions through scripts/lib/economy.js."
+    "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml, gear.yml, boss-voices.yml and boss-taunts.yml.",
+    "Arena taunts only fire for non-add bosses while asleep, with a live fighter in the arena but outside aggro; ctx.session.tauntAt enforces a 60,000 ms cooldown and the Voice event audience is spatially nearby.",
+    "Blood pact power is time-gated by player.state.bloodUntil in kit.power; vitality owns its expiry/effects. Food inventory items carry healOverTime/eatSeconds, are consumed via useFood index and healing is interrupted by damage; money remains integer copper."
   ]
 }
