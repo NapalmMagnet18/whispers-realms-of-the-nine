@@ -33,3 +33,5 @@ gravity:
 mode: 3d
 terrain:
   kind: "off"
+
+arrivalBudget: { bytes: 600000 }
