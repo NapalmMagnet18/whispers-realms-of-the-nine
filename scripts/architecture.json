@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 119,
-  "updatedAt": "2026-10-08T01:55:13.535Z",
-  "summary": "WHISPERS : Realm of the Nine is a fantasy MMO prototype whose MMORPG Tools menu and character-creation flow lead into the Lantern March. Its main place combines the Lantern's Reach hub, Windmill Farm, newly authored tool props and a townhouse with procedural continent terrain; the MMORPG Tools mod owns RPG lifecycle, player state, cameras and UI.",
+  "basedOnSpecVersion": 125,
+  "updatedAt": "2026-10-08T01:58:36.598Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. Its Lantern March continent is authored from place configs, scene entities and procedural terrain/prop scripts; the MMORPG Tools mod owns the RPG lifecycle, player state, cameras and UI.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -109,8 +109,8 @@
   "places": [
     "places/main-menu-land/ - default title/travel menu scene with authored town art and shared terrain decoration.",
     "places/character-creation-land/ - character preview scene with terrain off and a preview camera/lighting setup.",
-    "places/main/ - Lantern March continent: Reach hub at origin, farm SW, Briarwild west, quarry east, and distant regions; 29 cells cover the expanded area.",
-    "places/main/cells/x0z0.scene - Reach hub and Windmill Farm props, smithy tool props, and the two-storey townhouse north of the inn; x1z0 adds quarry tool props among east-side copper nodes."
+    "places/main/ - Lantern March continent: Reach hub at origin, Windmill Farm SW, Briarwild west, quarry east and distant regions across 29 cells.",
+    "places/main/cells/x0z0.scene - Reach hub, farm/smithy props and townhouse now staged as a carpenter's house, with a tool-covered bench below and mapmaker's desk upstairs; includes added grindstone, door bucket and lantern details."
   ],
   "roots": [
     "world.config.yaml - world entry/defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior.",
@@ -126,9 +126,9 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/item-icons.js - item-id icon registry reused by inventory rendering; iconFor falls back to an item's existing icon.",
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural geometry used by authored scene instances with parameters.",
     "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometry/material reused by place scatter bindings.",
-    "scripts/lib/regions.js - named Lantern March region definitions and regionAt lookup; ui-hud.js currently mirrors its tests inline rather than importing it.",
+    "scripts/lib/regions.js - named Lantern March region definitions and regionAt lookup; ui-hud.js mirrors region tests inline.",
     "scripts/lib/data/{player,camera,world}.yml - shared movement, camera-height and terrain-height values read by core scripts.",
-    "art/tools/build.py and art/townhouse/build.py - Blender asset builders for tool-pack GLBs and the scene's textured townhouse GLB, respectively."
+    "art/tools/build.py and art/townhouse/build.py - Blender asset builders for tool-pack GLBs and the scene's townhouse GLB."
   ],
   "notableExports": [
     "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
@@ -148,21 +148,21 @@
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - orbit input/pose and creation-phase framing for the mod camera path.",
     "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - NPC proximity and quest-dialog handoff; quest definitions live in lib/quest-data.js.",
     "mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-*.js - render presentation from player/world state; UI is not gameplay-state owner.",
-    "places/main/config.yaml and scripts/terrain-reach.js - terrain shape/material generation inputs; scripts/lib/regions.js owns the named-region lookup data."
+    "places/main/config.yaml and scripts/terrain-reach.js - terrain shape/material generation inputs; scripts/lib/regions.js owns named-region lookup data."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → MMORPG menu/player/character-select/main-menu-mgr behaviors → character creation and transition into main.",
-    "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading rather than blocking the form.",
+    "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading.",
     "Creation camera behavior path in mod.json → character-select.js installs camera-creation.js → frames preview; gameplay camera handles orbit outside creation.",
     "world.config.yaml player template → scripts/humanoid-locomotion.js then scripts/player.js; gait samples movement before this tick's movement velocity write.",
     "moveX/moveZ/jump input → scripts/player.js onInput stores room-local intent → update eases velocity and applies place gravity.",
     "world.config.yaml UI renderer → mods/mmorpg-tools/mod-mmorpg/ui.js reads local player/world state → lib/ui-* renderers compose HUD, menu, quest and panels; nametag renders separately.",
-    "Main-place local player's feetPosition x/z → ui-hud.js inline region tests → name over minimap; scripts/lib/regions.js separately exports the corresponding lookup table, not imported by this HUD path.",
-    "Character creation state → ui.js creation renderer and injected name input → setCharName/confirmCharacter actions; NAME_SWEEP removes the persistent DOM name box outside creation.",
+    "Main-place local player's feetPosition x/z → ui-hud.js inline region tests → name over minimap; scripts/lib/regions.js exports corresponding lookup data but is not imported by this HUD path.",
+    "Character creation state → ui.js creation renderer and injected name input → setCharName/confirmCharacter actions; NAME_SWEEP removes persistent DOM name box outside creation.",
     "quest-giver.js proximity/interact → lib/quest-data.js and player activeQuests → showQuestDialog/questDialogData on player → ui.js/lib/ui-quest.js.",
     "lib/ui-door-panel.js reads lib/shop-data.js inventories for the interacting building → shopSelectItem/buyShopItem actions in player.js → gold and inventory state are patched on the player.",
     "lib/item-icons.js iconFor(item id) → lib/ui-inventory.js renders icons for equipment and inventory slots; shop-data.js carries matching art URLs for shop items.",
-    "places/main/config.yaml terrain generator → scripts/terrain-reach.js heightAt/materialAt and scatter bindings; authored scene entities use procedural scripts/gen geometry or model assets, while windmill sails animate via scripts/sails-spin.js."
+    "places/main/config.yaml terrain generator → scripts/terrain-reach.js heightAt/materialAt and scatter bindings; scene entities use scripts/gen geometry or model assets, while windmill sails animate via scripts/sails-spin.js."
   ],
   "behaviorFamilies": [
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural scene geometry reused by instances, varied by kind/shape parameters, dimensions, seed and transforms.",
