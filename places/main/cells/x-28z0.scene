@@ -9,7 +9,6 @@ elderveil-mushrooms:
   id: elderveil-mushrooms
   scatter: {bounds: {innerRadius: 2.5, outerRadius: 14, shape: ring}, count: 220, templates: [{material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: orange}, script: scripts/mushroom.js, seed: 300}, weight: 3}, {material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: purple}, script: scripts/mushroom.js, seed: 301}, weight: 2}, {material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: speckle}, script: scripts/mushroom.js, seed: 302}, weight: 2}, {material: {kind: scripted, script: scripts/mushroom-look.js}, primitive: {kind: scripted, params: {cap: gills}, script: scripts/mushroom.js, seed: 303}, weight: 2}], variation: {scale: [0.8, 2.2], yaw: [0, 360]}}
 frontier-elderveil:
-  children: [{feetPosition: {x: 0, y: 1.6, z: 0}, material: {color: oklch(0.32 0.03 50), roughness: 0.95, texture: /cdn/bark-twistedtree-u37sw9e2o.webp}, physics: static, primitive: {kind: scripted, params: {kind: roots, n: 9, reach: 13}, script: scripts/gen/frontier.js, seed: 3}, scale: 0.2173913043478261}]
   feetPosition: {x: -3600, y: {terrain: -0.5}, z: -60}
   id: frontier-elderveil
   material: {kind: scripted, params: {kind: twisted}, script: scripts/tree-look.js}
@@ -97,6 +96,13 @@ frontier-elderveil-rootarch:
   primitive: {kind: scripted, params: {kind: rootarch, span: 12, top: 5.6}, script: scripts/gen/frontier.js, seed: 5}
   rotation: {yaw: 95}
   tags: [elderveil]
+frontier-elderveil-roots:
+  feetPosition: {x: -3600, y: {terrain: 6.86}, z: -60}
+  id: frontier-elderveil-roots
+  material: {color: oklch(0.32 0.03 50), roughness: 0.95, texture: /cdn/bark-twistedtree-u37sw9e2o.webp}
+  physics: static
+  primitive: {kind: scripted, params: {kind: roots, n: 9, reach: 13}, script: scripts/gen/frontier.js, seed: 3}
+  tags: [landmark, elderveil]
 frontier-elderveil-shelf-0:
   feetPosition: {x: -3597.5525050006895, y: {terrain: 1.2}, z: -57.93850340083939}
   id: frontier-elderveil-shelf-0
