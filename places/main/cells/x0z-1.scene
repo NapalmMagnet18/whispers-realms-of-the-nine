@@ -7,7 +7,7 @@ ashen-barrel-1:
   tags: [ashen]
 ashen-npc-marta:
   behavior: [scripts/townsfolk.js]
-  feetPosition: {x: 56.95, y: 5.45, z: -181.2}
+  feetPosition: {x: 56.95, y: 5, z: -181.2}
   id: ashen-npc-marta
   layout: {maxExtents: {x: 0.4, y: 1.75, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
   model: /cdn/model-humanoid-fantasy-innkeeper-woman-stout-linen-apron-rolled-sleeves-auburn-braid-tankard.glb
