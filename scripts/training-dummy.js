@@ -2,7 +2,7 @@
 import V from './lib/data/vanguard.yml'
 const REEL = 'cdn/clip-vanguard-knockback-ad0aee61.glb'
 const DOWN = 'cdn/clip-die.glb'
-export function onSpawn(ctx) { if (ctx.self.state.hp == null) ctx.self.state.hp = V.dummyHp; ctx.self.state.maxHp = V.dummyHp }
+export function onSpawn(ctx) { if (ctx.self.state.hp == null) ctx.self.state.hp = V.dummyHp; ctx.self.state.maxHp = V.dummyHp; ctx.self.anim.idle = { clip: 'cdn/clip-idle-loop.glb', weight: 1, loop: 'loop' } }
 export function update(ctx) {
   const s = ctx.self.state
   if (s.lastHitAt && s.lastHitAt !== s.seenHit) {
