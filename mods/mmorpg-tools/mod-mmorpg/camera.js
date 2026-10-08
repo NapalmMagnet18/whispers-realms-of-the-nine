@@ -101,7 +101,7 @@ export function update(api, dt) {
     var camY = 3.4 + Math.sin(angle * 1.5) * 0.4;
 
     api.setProperty('feetPosition', { x: camX, y: camY, z: camZ });
-    api.lookAt({ x: camX * 0.25, y: 6.2, z: -26 });
+    api.lookAt({ x: camX * 0.25 - 5.5, y: 6.2, z: -26 });
     api.patchState({ _cinematicTime: cTime, _hideLocalPlayer: true });
     return;
   }
