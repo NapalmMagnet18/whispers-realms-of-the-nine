@@ -1,0 +1,38 @@
+# Banner Vale: the 5v5 capture-the-banner battleground (scripts/lib/data/battleground.yml, places/banner-vale/sim.js).
+# Heroes arrive from a Party Finder pop (stamped _worldEnterAt); the referee sets each on a team base.
+mode: 3d
+gravity: { x: 0, y: -24, z: 0 }
+defaultSpawnPoint: { x: 0, y: { terrain: 0.5 }, z: 0 }
+worldBounds: { bottom: -40 }
+arrivalBudget: { bytes: 720000 }
+terrain:
+  kind: heightmap
+  generator: scripts/terrain-vale.js
+  seed: 7
+  materials:
+    - {albedo: cdn/texture-terrain-grass-realistic-albedo-summer-exploration.png, antiTiling: stochastic, id: grass, pbr: true, tint: oklch(0.78 0.07 128)}
+    - {albedo: cdn/texture-terrain-rock-realistic-albedo.png, antiTiling: stochastic, id: rock, pbr: true, tint: oklch(0.74 0.04 60)}
+    - {albedo: cdn/texture-terrain-packed-dirt-path-realistic-albedo.png, id: dirt, pbr: true, tint: oklch(0.85 0.03 70)}
+    - {albedo: cdn/texture-terrain-worn-cobblestone-realistic-albedo.png, id: cobble, pbr: true, textureScale: 3, tint: oklch(0.85 0.02 70)}
+    - {albedo: cdn/texture-terrain-wet-marsh-mud-moss-realistic-albedo.png, id: mud, pbr: true, tint: oklch(0.6 0.07 128)}
+  decorations:
+    bindings:
+      grass: [grass, flower, woods]
+    layers:
+      grass: {density: 22, items: [{kind: scripted, randomRotation: true, scale: [0.8, 1.4], script: scripts/grass.js, seed: 3, wind: {force: 0.06}}], material: {kind: scripted, script: scripts/grass-look.js}}
+      flower: {density: 0.2, material: {kind: scripted, script: scripts/flower-look.js}, items: [{kind: scripted, script: scripts/flower.js, params: {frame: 0}, seed: 41, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 2}, seed: 43, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}]}
+      woods: {density: 0.003, material: {kind: scripted, script: scripts/tree-look.js, params: {kind: pine}}, items: [{kind: scripted, maxDistance: 420, params: {kind: pine}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 21}]}
+  marks:
+    gold-base: {kind: clear-scatter, center: {x: 0, z: 104}, shape: {kind: circle, radius: 24}}
+    crimson-base: {kind: clear-scatter, center: {x: 0, z: -104}, shape: {kind: circle, radius: 24}}
+    road: {kind: clear-scatter, center: {x: 0, z: 0}, shape: {kind: rectangle, width: 7, depth: 200}}
+atmosphere:
+  sky: { kind: realistic, model: hosek }
+  timeOfDay: 17.6
+  clouds: { enabled: true, density: 0.5, opacity: 0.75, altitude: 700, thickness: 800, speed: 1.5 }
+  fog: { kind: linear, near: 160, far: 900 }
+  stars: { enabled: true, density: 0.5 }
+  wind: { direction: 200, speed: 4 }
+  look:
+    script: mods/aaa-quality-kit/look-cinema.js
+    params: { dayWarmth: 0.1, grain: 0.02 }

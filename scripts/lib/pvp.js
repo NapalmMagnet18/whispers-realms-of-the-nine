@@ -15,16 +15,18 @@ export function inFight(ctx, p) {
   if (!s.characterCreated || s.phase !== 'playing' || s.dying || s.pvpDead || (s.health ?? 1) <= 0) return false
   if ((s.level || 1) < (P.minLevel || 1)) return false
   if ((s.pvpShieldUntil || 0) > ctx.now()) return false
+  if (p.place === 'banner-vale' || ctx.self?.place === 'banner-vale') return !!fp && !!s.bgTeam
   return !!fp && !sanctuaryAt(fp.x, fp.z)
 }
 // may the body running this script strike players now?
-export function canPvp(ctx) { return ctx.self.place === 'main' && pvpRealm(ctx) && inFight(ctx, ctx.self) }
+export function canPvp(ctx) { if (ctx.self.place === 'banner-vale') return inFight(ctx, ctx.self); return ctx.self.place === 'main' && pvpRealm(ctx) && inFight(ctx, ctx.self) }
 // hostile players within range: rows of ctx.place.players
 export function pvpTargets(ctx, range) {
   if (!canPvp(ctx)) return []
   const me = ctx.self, p = me.feetPosition, now = ctx.now(), out = []
   for (const o of ctx.place.players) {
     if (o.id === me.id || !inFight(ctx, o) || (o.state.veiledUntil || 0) > now) continue
+    if (me.place === 'banner-vale' && o.state.bgTeam === me.state.bgTeam) continue // no friendly fire in the vale
     const d = Math.hypot(o.feetPosition.x - p.x, o.feetPosition.z - p.z)
     if (d <= range && Math.abs(o.feetPosition.y - p.y) < 6) out.push(o)
   }

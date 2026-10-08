@@ -1,0 +1,19 @@
+# Banner Vale (2026-10-08): 5v5 capture the banner. Queue at any Party Finder board; places/banner-vale/sim.js referees.
+# Grab the enemy banner (walk into it), carry it to your own stand while yours is home: +1. First to `toWin`, or the most at `matchMin`.
+toWin: 3
+matchMin: 12
+endHoldSec: 14        # the victory screen holds, then everyone is carried home to Lantern's Reach
+grabRadius: 2.6
+capRadius: 6
+dropReturnSec: 20     # a dropped banner left alone goes home by itself
+riseShieldSec: 5      # after rising at your base in the vale
+reward: { win: 1500, loss: 500, honorWin: 3, honorLoss: 1 }   # copper (15s / 5s) and Honor marks
+teams:
+  gold:    { name: "Lantern Gold",    color: "#f2b04a", base: { x: 0, y: 3, z: 104 },  stand: { x: 0, z: 96 } }
+  crimson: { name: "Crimson Wardens", color: "#d0473a", base: { x: 0, y: 3, z: -104 }, stand: { x: 0, z: -96 } }
+sounds:
+  horn: /cdn/moodboard-painterly-fantasy/sfx-war-horn-long-call-across-valley.mp3
+  grab: /cdn/moodboard-painterly-fantasy/sfx-banner-cloth-snap-and-war-drum-hit.mp3
+  capture: /cdn/moodboard-painterly-fantasy/sfx-banner-captured-brass-fanfare-short.mp3
+  ret: /cdn/moodboard-painterly-fantasy/sfx-banner-returned-bell-chime.mp3
+  win: /cdn/moodboard-painterly-fantasy/sfx-victory-fanfare-choir-and-brass.mp3

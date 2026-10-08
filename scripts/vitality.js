@@ -2,6 +2,7 @@
 // health ≤ 0 → dying for FALL_S (input already blocked by the mod while dying) → stand where they last stood safe at RISE_PCT.
 const FALL_S = 2.5, RISE_PCT = 0.5, CALM_S = 8, MEND_PER_S = 0.03; // mend 3% of max a second once 8 s unhurt
 import { nearestRoost, PVP, pvpRealm, sanctuaryAt } from "./lib/pvp.js";
+import BG from "./lib/data/battleground.yml";
 import { isPlay, SAFE_HOME } from './lib/places.js';
 const SND = {
   heart: "/cdn/moodboard-gothic-horror/sfx-low-health-heavy-heartbeat-single-thump-muffled-deep.mp3",
@@ -97,6 +98,7 @@ export function update(ctx, dt) {
   if (s.dying) {
     if (s._fellAt && now - s._fellAt >= FALL_S * 1000) {
       let at = mem.safe || SAFE_HOME[me.place] || null;
+      if (me.place === "banner-vale") { const b = BG.teams[s.bgTeam]?.base; if (b) at = b; s.pvpShieldUntil = now + (BG.riseShieldSec || 5) * 1000; s._pvpFall = false; }
       if (s._pvpFall) { const g = nearestRoost(me.feetPosition.x, me.feetPosition.z); if (g) { const h = ctx.place.terrain?.heightAt?.(g.x + 4, g.z + 4); at = { x: g.x + 4, y: Math.max(g.y, typeof h === "number" ? h : g.y), z: g.z + 4 }; } s.pvpShieldUntil = now + (PVP.shieldSeconds || 15) * 1000; s._pvpFall = false; }
       if (at) { me.feetPosition = { x: at.x, y: at.y + 0.3, z: at.z }; }
       me.velocity = { x: 0, y: 0, z: 0 };
