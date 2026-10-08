@@ -123,3 +123,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Weaponsmith's yard at (-27,-68) in Lantern's Reach (reach-smith-*, scripts/gen/armory.js): smithy shed + forge fx/light/hammer loop, iron/gilded/warden armour stands, weapon rack, shield wall, grindstone. Decorative; no smith vendor wired.
 - 2026-10-08: Reedhaven apothecary at (-438,592) (reh-apoth-*, scripts/gen/apothecary.js) + Old Ysolde (townsfolk). Smith's yard folk Garrick/Pip/Wenna. Crew landed Emberforged forge-halls (kha-*) and Veylori star-houses + Hall of Watchers on Starfall Eyrie.
 - 2026-10-08: Gullrest fish market at (238,1427) (nam-market-*, scripts/gen/harbor.js) + Hask Brinewell fishmonger (townsfolk). Decorative; no vendor wired.
+- 2026-10-08: Peddler's caravan beside road-reedhaven at (-241,275) (march-caravan-*, scripts/gen/caravan.js: wagon+hitched mule, goods rug) + Mott Farwander peddler (townsfolk, talk only). Decorative; no vendor wired.
