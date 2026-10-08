@@ -43,7 +43,7 @@ function realmList(s) {
   var body = '<div style="display:flex;gap:12px;flex-wrap:wrap"><div style="flex:1.5 1 360px">' + head + rows + '</div><div style="flex:1 1 220px">' + realmDetail(s, list, pick) + '</div></div>';
   return modal('<div class="wm-title" style="text-align:center;font-size:22px;letter-spacing:3px">Realm Selection</div>' + ART.rule('title', '100%', 16) + body + err
     + '<div style="font-size:11px;color:' + DIM + ';text-align:center;margin-top:6px">A hero lives on one realm. Each realm keeps its own world, its own heroes and its own firsts.</div>' + ART.rule('crossEnd', '100%', 14)
-    + '<div style="display:flex;justify-content:center;gap:12px;margin-top:6px">' + b(pick === cur ? 'Stay Here' : 'Travel There', "sendAction('joinRealm')", true) + b('Cancel', "sendAction('closeRealmList')") + '</div>', 900);
+    + '<div style="display:flex;justify-content:center;gap:12px;margin-top:6px">' + b(pick === cur ? 'Stay Here' : 'Travel There', "sendAction('joinRealm')", true, 190) + b('Cancel', "sendAction('closeRealmList')") + '</div>', 900);
 }
 function deleteConfirm(s) {
   var name = s._deleteConfirmName || '';
