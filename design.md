@@ -38,3 +38,5 @@ Regions are ground, roads and landmarks only: no NPCs, quests or enemies there y
 - 2026-10-08: loading screens declined: Spawn streams the world, a loading screen would only stand in front of it. The main menu stays (creator's call).
 
 - 2026-10-08: version tag (mods/mmorpg-tools/mod-mmorpg/lib/version.js, GAME_VERSION) shows on main menu, settings and pause only. @whispers: "update the version number at the bottom on every update". Every landed update bumps the patch number (0.7.1 → 0.7.2…); a big milestone bumps the minor.
+
+- 2026-10-08: every join, rejoin, realm link or portal lands on the realm gate main menu (was: a rejoin landed where you last stood). Only Enter World and Create step past it. @whispers: "anyone and everyone who joins from any part loads into the starting main menu every time". Code: scripts/arrival.js.
