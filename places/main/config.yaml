@@ -164,6 +164,17 @@ terrain:
         kind: circle
         radius: 9
       falloff: 8
+    deepgrove:
+      kind: flatten
+      center: {x: -1085, z: 64}
+      height: 25
+      shape: {kind: circle, radius: 50}
+      falloff: 30
+    deepgrove-clear:
+      kind: clear-scatter
+      center: {x: -1085, z: 64}
+      shape: {kind: circle, radius: 46}
+    road-deepgrove: {edgeMaterial: dirt, grade: true, kind: path, material: pathrock, maxGrade: 0.18, noise: 0.4, points: [[-760, 90], [-830, 76], [-910, 70], [-980, 64], [-1036, 62], [-1058, 56]], width: 3.2}
     town:
       kind: flatten
       center:

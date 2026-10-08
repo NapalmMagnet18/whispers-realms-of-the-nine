@@ -14,6 +14,7 @@ roosts:
   - { id: cinderhold,  name: "Cinderhold",           region: "Emberstone Highlands",   x: 912,   z: -156,  y: 40.4 }
   - { id: gullrest,    name: "Gullrest",             region: "Saltmere Coast",         x: 255,   z: 1450,  y: 3 }
   - { id: hollowcrypt, name: "Hollowcrypt Watch",    region: "Hollowcrypt Vale",       x: 1180,  z: -600,  y: 24 }
+  - { id: deepgrove,   name: "Deepgrove",            region: "Briarwild Deepgrove",    x: -1046, z: 88,    y: 25 }
   - { id: sorrowfen,   name: "Sorrowfen Stilts",     region: "Sorrowfen",              x: -1170, z: 760,   y: 2.4 }
   - { id: tideglass,   name: "Tideglass Quay",       region: "Tideglass Coast",        x: -1070, z: 1830,  y: 3.4 }
   - { id: frostveil,   name: "Frostveil Post",       region: "Frostveil Tundra",       x: -10,   z: -3760, y: 61 }

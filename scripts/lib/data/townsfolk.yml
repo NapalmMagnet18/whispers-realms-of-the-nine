@@ -279,3 +279,31 @@ informant:
   name: Informant
   lines:
     - "Don't say my name. Please. Just cut the rope."
+fenna-grove:
+  name: Elder Fenna Rootwake
+  lines:
+    - "The grove kept its secret four hundred years. It's tired. You can hear it in the leaves."
+    - "Sit by the fire. The Deepgrove talks more to people who aren't in a hurry."
+ell-grove:
+  name: Grove Singer Ell
+  lines:
+    - "The brambles used to hum along with me. I want that back."
+    - "Sing to a root long enough and it starts finishing your verses."
+vale-grove:
+  name: Sister Vale
+  lines:
+    - "Letters lie. Bark lies slower. Between the two you can sometimes catch the truth."
+    - "I've read more names this year than in all my years at the chapel."
+tamsin-grove:
+  name: Tamsin the Ranger
+  lines:
+    - "Up the Listening Tree you hear the whole wood. Most of it is birds. Not all of it."
+    - "Walk to a voice, never run. That's the first thing the Deepgrove teaches, or the last."
+hollen-grove:
+  name: Gardener Hollen
+  lines:
+    - "My father gave himself to this ground. Gave. Write that down."
+wyn-grove:
+  name: Gardener Wyn
+  lines:
+    - "Nobody asked my aunt. Nobody asks the young ones anything."
