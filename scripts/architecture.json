@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 64,
-  "updatedAt": "2026-10-08T01:28:35.559Z",
-  "summary": "WHISPERS: Realms of the Nine is a fantasy MMO prototype whose MMORPG Tools menu and character-creation flow lead into the Lantern March. Place configs and scenes define the hub and resource regions, procedural scripts supply geometry, and the MMORPG Tools mod owns character lifecycle, movement-facing RPG state, camera modes and UI.",
+  "basedOnSpecVersion": 68,
+  "updatedAt": "2026-10-08T01:31:00.174Z",
+  "summary": "WHISPERS : Realm of the Nine is a fantasy MMO prototype whose MMORPG Tools title menu and character-creation flow lead into the Lantern March. Place configs and scenes define the hub and resource regions, procedural scripts supply geometry, and the MMORPG Tools mod owns character lifecycle, RPG state, camera modes and UI.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -118,7 +118,7 @@
   ],
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/ - integrated RPG package: lifecycle, character selection, gameplay/orbit camera, interaction, quests and UI.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data and panel renderers used by mod behaviors and ui.js; races now define Marchborn/Briarkin and Vanguard.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - shared RPG data and panel renderers used by mod behaviors and ui.js; races define Marchborn/Briarkin and Vanguard.",
     "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js and stone-bridge.js - procedural geometry used by authored scene instances with parameters.",
     "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain decoration geometries/material reused by place scatter bindings.",
     "scripts/lib/data/{player,camera,world}.yml - shared movement, camera-height and terrain-height values read by core scripts.",
@@ -133,7 +133,7 @@
     "mods/mmorpg-tools/mod-mmorpg/player.js - movement/state, avatar and roster/music helpers, saveCharacter, onSpawn and lifecycle handlers.",
     "mods/mmorpg-tools/mod-mmorpg/character-select.js - preview/model helpers, onSpawn, update, onInput; main-menu-mgr.js owns roster/menu handlers.",
     "mods/mmorpg-tools/mod-mmorpg/lib/stat-calc.js - statBonus, damage/power/crit/dodge calculations and calcBaseStats.",
-    "mods/mmorpg-tools/mod-mmorpg/ui.js - default renderer, main-menu settings, HUD layout, zone banner, WASD and character-creation renderers; lib/ui-hud.js exports renderTargetDisplay, renderHUD.",
+    "mods/mmorpg-tools/mod-mmorpg/ui.js - default renderer and menu/HUD/zone/WASD/creation renderers; lib/ui-main-menu.js exports renderMainMenu and renders the REALM OF THE NINE logo; lib/ui-hud.js exports renderTargetDisplay, renderHUD.",
     "mods/mmorpg-tools/mod-mmorpg/quest-giver.js - onSpawn, update, onInteract; mods/codex/lib/codex-ops.js - document operations/serializers."
   ],
   "ownership": [
