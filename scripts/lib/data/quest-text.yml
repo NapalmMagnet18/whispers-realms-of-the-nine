@@ -833,3 +833,9 @@ BNT-01:
   turnInText: "You pin a raider's torn hood beneath the notice. Behind the board, a pouch hangs on a nail where the elders said it would be. Heavier than you expected."
   doneText: "The notice has been struck through in charcoal. Someone has drawn a little pair of boots beside it."
   refusedText: "The bounty is paid. The Deepgrove trail is quiet now."
+GNT-01:
+  text: "My instruments say it plainly: the giant on the southern road did not die. Something in its chest still keeps time, one beat in every nine breaths, and my star-charts shiver with it. Go down the Starfall road. Listen at its skull first, so you know what you are robbing. Then bring me its heart, or what is left of it."
+  progressText: "The fallen giant lies across the Starfall road, south. Listen at the skull, then find what beats beneath the ribs."
+  turnInText: "Set it on the lens. Gently. ...There. Every chart in the Eyrie just went still. It was never the stars shaking, hero. It was this, calling up to where it fell from. Wear it. It has decided it likes you."
+  doneText: "The charts are quiet. Otho sleeps through the night for the first time in a year."
+  refusedText: "The heart is safe on my lens. Thank you again."

@@ -1012,6 +1012,7 @@ items:
   unbraided_wraps: {"id": "unbraided_wraps", "icon": "/cdn/value.4b5ddbcad90695cf2ba4fe47bf123a46a28e559d63ee3712db83a9d79f7051fa.png", "name": "Rebraided Fen-Wraps", "slot": "legs", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 190}, "description": "Reed and river wool, every braid tied with a name. They never quite dry, and never get cold."}
   ninth_reed_knot: {"id": "ninth_reed_knot", "icon": "/cdn/value.45d4167a434e4719ebdd650bd5fb733f5e1cf32353ec768ff4556d0539b46fdf.png", "name": "The Ninth Knot", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "A single reed braid, nine strands. The ninth strand is a lantern-wick, still faintly lit."}
   starfall_circlet: {"id": "starfall_circlet", "icon": "/cdn/value.be6eadb1c4b231d74c3be0286be2d7650579a2c10081426465d8a0c2c3b1c444.png", "name": "Circlet of the True Chart", "slot": "head", "ilvl": 32, "tier": "homecoming", "stats": {"power": 3, "stamina": 170}, "description": "Thin sky-iron set with a lens shard. Close your eyes and you still know where north is."}
+  giants_heart_shard: {"id": "giants_heart_shard", "icon": "/cdn/value.19f5df6f60a79ccd1e725f84cbc833c744ba73f1ce8e6c699db294f7733855b4.png", "name": "Giant's Heart Shard", "slot": "amulet", "ilvl": 34, "tier": "rare", "stats": {"power": 3, "stamina": 140}, "description": "A splinter of the giant that fell on the Starfall road. Hold it to your ear and it still beats, slow as tides."}
   ninth_lamp_star: {"id": "ninth_lamp_star", "icon": "/cdn/value.d4750fb211f23c742f0a0f3e86a0efb2ae8a243626d5bb8c143de654267ab820.png", "name": "Star of the Ninth Lamp", "slot": "amulet", "ilvl": 70, "tier": "homecoming", "stats": {"power": 6, "stamina": 320}, "description": "The ninth lamp on Otho's chart, made real in sky-glass. Every Veylori who sees it bows, a little."}
   marsh_reed_bundle: { id: marsh_reed_bundle, name: "Marsh Reed Bundle", slot: bag, description: "Three supple reeds, the first knot still in them." }
   lantern_net: { id: lantern_net, name: "Lantern Net", slot: bag, description: "A soft net that never closes. For wisps who want to come along." }
@@ -3142,3 +3143,15 @@ BNT-01:
   objectives:
     - { key: deepgrove_bandit, desc: "Put down Deepgrove raiders west of the glade", target: 3 }
   rewards: { copper: 1800, xp: 320 }
+
+# ── The fallen giant (Road-Starfall, -80,-680): Neris at Starfall Eyrie wants the heart that still beats under its ribs.
+GNT-01:
+  id: GNT-01
+  title: The Heart That Fell
+  minLevel: 28
+  giverNpcId: vey-npc-neris
+  giverName: Astromer Neris Sol
+  objectives:
+    - { key: giant_skull_echo, desc: "Listen at the fallen giant's skull", target: 1 }
+    - { key: giant_heart, desc: "Pry the heart shard from under the giant's ribs", target: 1 }
+  rewards: { copper: 2600, xp: 900, items: [giants_heart_shard] }
