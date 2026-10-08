@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 195,
-  "updatedAt": "2026-10-08T02:29:16.370Z",
-  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through the MMORPG Tools menu and character-creation flow. The Lantern March spans 30 cells with a procedural terrain and prop layer; MMORPG Tools owns character lifecycle and presentation, while player and scene behaviors implement movement, combat, Q002 questing and timber gathering.",
+  "basedOnSpecVersion": 225,
+  "updatedAt": "2026-10-08T02:37:44.070Z",
+  "summary": "WHISPERS: Realm of the Nine is a fantasy MMO prototype entered through MMORPG Tools' menu and character-creation flow. The main place is the expanded Lantern March continent, with procedural terrain and scene props; MMORPG Tools owns character lifecycle and presentation, while world scripts supply movement, combat, questing and gathering.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -29,6 +29,7 @@
     "mods/mmorpg-tools/mod-mmorpg/interact-prompt.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/class-check.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/class-items.js",
+    "mods/mmorpg-tools/mod-mmorpg/lib/currency.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/item-icons.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/loot-drop.js",
     "mods/mmorpg-tools/mod-mmorpg/lib/music-tracks.js",
@@ -78,10 +79,12 @@
     "mods/wow-camera-controls/lib/motion.js",
     "scripts/arrival.js",
     "scripts/camera.js",
+    "scripts/db.js",
     "scripts/elric.js",
     "scripts/flat-starter-terrain.js",
     "scripts/flower.js",
     "scripts/gen/farm.js",
+    "scripts/gen/frontier.js",
     "scripts/gen/house.js",
     "scripts/gen/props.js",
     "scripts/gen/rock.js",
@@ -96,6 +99,7 @@
     "scripts/grass.js",
     "scripts/humanoid-locomotion.js",
     "scripts/lib/regions.js",
+    "scripts/lib/wow-move.js",
     "scripts/lighting.js",
     "scripts/look-default.js",
     "scripts/pebble.js",
@@ -114,82 +118,88 @@
     "scripts/woodcutting.js"
   ],
   "places": [
-    "places/main-menu-land/ - title and travel menu scene; world.config.yaml default entry.",
+    "places/main-menu-land/ - title and travel/menu entry scene; world.config.yaml defaults here.",
     "places/character-creation-land/ - character preview scene and creation camera/lighting setup.",
-    "places/main/ - Lantern March continent: Reach hub at origin, Windmill Farm southwest, Briarwild west, quarry east and further regions across 30 cells.",
-    "places/main/cells/x0z0.scene - Reach hub, armory/training yard and Gatekeeper Elric (gatekeeper-elric), Q002 giver with scripts/elric.js behavior.",
-    "places/main/cells/x-1z0.scene - Briarwild wolf den and eight timber-tagged oak gatherables; each oak has scripts/woodcutting.js and logsLeft/depletedUntil state.",
-    "places/main/cells/x-2z2.scene - fen-deadwood scatter landmark at (-260,240), with radius-90 scatter of two static tree models.",
-    "places/main/config.yaml - playable-world spawn, gravity, terrain, vegetation scatter and cinematic look."
+    "places/main/ - Lantern March continent across 38 cells: Reach hub, farm, Briarwild, quarry, Saltmere and the Frostveil, Sunscar and Elderveil frontiers.",
+    "places/main/cells/x0z0.scene - Lantern's Reach hub, training yard and Gatekeeper Elric (gatekeeper-elric) with scripts/elric.js.",
+    "places/main/cells/x-1z0.scene - Briarwild wolf den and eight timber-tagged oak gatherables; trees use scripts/woodcutting.js.",
+    "places/main/cells/x0z-30.scene, x0z-29.scene, x-1z-30.scene and neighbouring frontier cells - Frostveil landmark/altar, frozen mere, hut and dressing; landmark props use scripts/gen/frontier.js.",
+    "places/main/cells/x-28z0.scene and x30z-1.scene - far-west Elderveil and far-east Sunscar landmark areas.",
+    "places/main/config.yaml - main spawn, gravity, terrain, vegetation scatter and look configuration."
   ],
   "roots": [
-    "world.config.yaml - defaultPlace main-menu-land; binds shared player, camera, arrival, MMORPG UI and nametag behavior, and declares interact/quest actions.",
-    "mods/mmorpg-tools/mod.json - registers MMORPG template and menu, player, interaction, quest and gameplay/creation camera behaviors.",
-    "templates/player.js#player - native player template runs humanoid-locomotion.js, scripts/player.js, scripts/vanguard.js, then scripts/quest-player.js.",
-    "templates/camera.js#camera - native custom camera template using scripts/camera.js and engine look orientation.",
-    "places/main-menu-land/config.yaml and places/character-creation-land/config.yaml - menu and preview place roots with their atmosphere settings."
+    "world.config.yaml - defaults to main-menu-land; binds player/camera templates, arrival, MMORPG UI and nametag behaviors, player actions, and WoW orbit/steer/autorun/release inputs.",
+    "mods/mmorpg-tools/mod.json - registers MMORPG menu, player, character-selection, interaction and gameplay/creation camera behaviors.",
+    "templates/player.js#player - native player behavior chain: humanoid-locomotion.js, scripts/player.js, scripts/vanguard.js, scripts/quest-player.js.",
+    "templates/camera.js#camera - native camera template using scripts/camera.js and engine look orientation.",
+    "places/main-menu-land/config.yaml and places/character-creation-land/config.yaml - menu and character-preview place atmosphere/setup roots."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG data registries and modular panel renderers consumed by mod behaviors and ui.js.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - quest registry/progress API shared by quest-giver.js, quest tracker and scripts/quest-player.js; definitions come from scripts/lib/data/quests.yml.",
-    "scripts/lib/data/quests.yml - Q002 objectives/rewards, NPC proximity and woodcutting tuning consumed by quest-data.js, quest-player.js, elric.js and woodcutting.js.",
-    "scripts/lib/data/wolves.yml - Briar Wolf stats, timings, sounds and six pack spawn rows consumed by scripts/wolves.js.",
-    "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural scene geometry reused by authored instances with parameters.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries and panel renderers consumed by mod behaviors and ui.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js and scripts/lib/data/quests.yml - quest API/definitions and Q002 tuning used by quest UI, quest-player, Elric and woodcutting behaviors.",
+    "scripts/lib/data/wolves.yml - Briar Wolf timings, stats and spawn rows consumed by scripts/wolves.js.",
+    "scripts/lib/regions.js - ordered region lookup consumed by HUD/region banner; uses coastD from scripts/terrain-reach.js for sea bounds.",
+    "scripts/terrain-reach.js - shared procedural continent height/material and coast functions used by main terrain and regions.",
+    "scripts/gen/shape.js plus gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js, windmill*.js and frontier.js - procedural geometry helpers/builders reused by scene instances.",
     "scripts/grass.js, flower.js, pebble.js and grass-look.js - terrain scatter geometry/material reused by place bindings.",
-    "scripts/lib/regions.js and scripts/lib/data/{player,camera,world}.yml - shared region lookup and core movement/camera/world tuning; region UI tests also exist inline in ui-hud.js.",
-    "scripts/lib/data/vanguard.yml - Vanguard combat and training-dummy tuning consumed by scripts/vanguard.js and scripts/training-dummy.js."
+    "scripts/lib/wow-move.js and mods/wow-camera-controls/lib/{config,motion}.js - shared WoW-style movement mapping/motion; player and locomotion call wowMove."
   ],
   "notableExports": [
     "scripts/player.js - onInput, update; scripts/humanoid-locomotion.js - sit, onInput, update.",
     "scripts/vanguard.js - onInput, endAction, land; scripts/training-dummy.js - onSpawn, update, settle, standUp.",
-    "scripts/wolves.js - update; scripts/gen/wolf.js - skeleton, geometry.",
+    "scripts/wolves.js - update; scripts/gen/wolf.js - skeleton, geometry; scripts/gen/frontier.js - geometry, collider.",
     "scripts/quest-player.js - onInput, update; scripts/elric.js - onSpawn, updateSchedule, update; scripts/woodcutting.js - updateSchedule, onSpawn, update.",
     "mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js - getAvailableQuests, questToActiveFormat, questProgress, questStatus, getQuest.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-hud.js - renderTargetDisplay, renderHUD; lib/ui-quest.js - getPortrait, renderQuestDialog, renderTurnInDialog, renderQuestTracker.",
-    "scripts/camera.js - finiteNumber, update; scripts/arrival.js - onArrive, onLeave; sim.js - cadence, tick.",
-    "scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, heightAt, materialAt; scripts/lib/regions.js - REGIONS, MARCH, regionAt."
+    "scripts/terrain-reach.js - QUARRY, FOREST, CRYPT, FEN, BAY, COAST, coastD, heightAt, materialAt; scripts/lib/regions.js - REGIONS, MARCH, regionAt.",
+    "scripts/db.js - migrate; mods/mmorpg-tools/mod-mmorpg/lib/currency.js - CommonJS currency conversion/formatting helpers."
   ],
   "ownership": [
-    "scripts/player.js - room-local movement intent and core character velocity/footstep state; place config owns gravity.",
+    "scripts/player.js - room-local movement intent and core velocity/footstep state; place config owns gravity.",
     "scripts/humanoid-locomotion.js - transient gait/turn state, character yaw, animation channels and seated locomotion.",
-    "scripts/camera.js and MMORPG camera behaviors - core camera rig pose/local-player hiding versus mod orbit and creation framing, respectively.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js and character-select.js - RPG character/roster state, persistence, transitions and UI actions.",
+    "scripts/camera.js and MMORPG camera behaviors - core camera rig pose/local-player hiding versus mod orbit and creation framing.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js, character-select.js and main-menu-mgr.js - active RPG character/roster state, persistence and lifecycle transitions.",
     "scripts/vanguard.js - player action/cooldown/guard state; scripts/training-dummy.js - dummy hp, down and hit-reaction state.",
-    "scripts/wolves.js - den respawnAt and spawned wolf AI/death state; scripts/lib/data/wolves.yml owns pack rows and combat tuning.",
-    "scripts/quest-player.js - player's active/completed quest, tally, inventory, gold, xp and dialog/hint state; also writes timber oak logsLeft/depletedUntil; mod player.js persists RPG character fields when _questSave is raised.",
-    "scripts/elric.js - Elric greeting timing and facing/home yaw; scripts/woodcutting.js - oak tilt/baseYaw and regrowth presentation; player chopper writes depletion fields."
+    "scripts/wolves.js - den respawnAt and spawned wolf AI/death state; wolves.yml owns pack rows and tuning.",
+    "scripts/quest-player.js - player's active/completed quest, tally, inventory, gold, xp and dialog/hint state; it also writes timber oak logsLeft/depletedUntil.",
+    "scripts/elric.js - Elric greeting/facing state; scripts/woodcutting.js - oak fall/regrowth presentation; scripts/quest-player.js writes oak depletion."
   ],
   "flows": [
-    "world.config.yaml defaultPlace main-menu-land → MMORPG menu/player/character-select/main-menu-mgr behaviors → character creation and transition into main.",
-    "Character creation confirm in character-select.js → name registry check and character state/persistence; registry failure creates an active character id and continues loading.",
+    "world.config.yaml defaultPlace main-menu-land → MMORPG menu/player/character-select/main-menu-mgr behaviors → character creation and transition to main.",
+    "Character creation confirm in character-select.js → race/class and character state, roster storage; no caller connects the newly added SQL schema to this path.",
     "world.config.yaml player template → humanoid-locomotion.js then player.js then vanguard.js then quest-player.js; gait samples prior-tick movement velocity.",
-    "moveX/moveZ/jump input → scripts/player.js onInput stores room-local intent → update eases velocity, applies place gravity and emits terrain-selected footsteps.",
-    "attack/castSlot2/castSlot3 inputs → scripts/vanguard.js maps slots to strike/heavy/guard and schedules hits from vanguard.yml → nearby live enemy state.hp is reduced and hit metadata/FX are emitted.",
-    "training-dummy.js observes changed state.lastHitAt → hit-reel/down animation; scheduled settle/standUp restores hp using vanguard.yml dummyReset.",
-    "places/main/cells/x-1z0.scene briar-wolf-den behavior → scripts/wolves.js reads wolves.yml, spawns scripts/gen/wolf.js pack entities, and updates chase/bite/death/respawn behavior.",
-    "world.config.yaml interact/acceptQuest/declineQuest/completeQuest/closeQuestDialog actions → scripts/quest-player.js onInput; E finds quest-npc or timber targets, while quest dialog UI actions accept/close/turn in Q002.",
-    "scripts/quest-player.js talk/accept/complete → quest-data.js and quests.yml → player activeQuests, completedQuests, tally, inventory/gold/xp; _questSave signals MMORPG player.js persistence.",
-    "scripts/quest-player.js E chop → one log in player inventory/tally and oak logsLeft/depletedUntil; scripts/woodcutting.js tips depleted oak and restores it after configured regrow interval.",
-    "places/main/cells/x0z0.scene Gatekeeper Elric → scripts/elric.js turns toward nearby players and salutes; quest/dialog behavior itself runs on each player in quest-player.js.",
-    "world.config.yaml UI renderer → mods/mmorpg-tools/mod-mmorpg/ui.js and lib/ui-* renderers compose HUD/menu/quest/panels; nametag renders separately; main terrain config → terrain-reach.js and scatter bindings."
+    "moveX/moveZ/jump plus orbit/steer/autoRun inputs → scripts/player.js onInput + wow-move.js room-local intent; update moves body and applies place gravity, while modal state locks look/movement.",
+    "attack/castSlot2/castSlot3 → scripts/vanguard.js schedules strikes/guard from vanguard.yml → nearby live enemy state.hp and hit metadata/FX.",
+    "training-dummy.js observes state.lastHitAt → hit-reel/down reaction; scheduled settle/standUp restores hp using vanguard.yml.",
+    "places/main/cells/x-1z0.scene briar-wolf-den → scripts/wolves.js reads wolves.yml, creates scripts/gen/wolf.js entities and updates chase/bite/death/respawn.",
+    "world.config.yaml interact/quest actions → scripts/quest-player.js onInput; E finds quest NPC or timber target, while quest UI actions accept/close/turn in Q002.",
+    "quest-player talk/accept/complete → quest-data.js and quests.yml → player quest/tally/inventory/gold/xp state; _questSave signals MMORPG player.js persistence.",
+    "quest-player E chop → one log in inventory/tally and oak logsLeft/depletedUntil; woodcutting.js handles fall/regrowth presentation.",
+    "Main terrain bindings → terrain-reach.js height/material and scatter scripts; regions.js classifies positions and HUD displays the current region, including new far-north/east/west frontiers and sea.",
+    "scripts/db.js migrate defines characters, realm_pulse and ledger tables; no world/mod file imports it, and realms.yml/currency.js likewise have no consumers."
   ],
   "behaviorFamilies": [
-    "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js and windmill*.js - procedural geometry reused by scene instances, varied by kind/shape, dimensions, seed and transforms.",
-    "scripts/grass.js, flower.js and pebble.js - terrain scatter geometry reused by place bindings, varied by density, scale and seed; grass-look supplies material separately.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle behaviors registered by mod.json.",
+    "scripts/gen/house.js, props.js, tree.js, rock.js, spire.js, stone-bridge.js, farm.js, windmill*.js and frontier.js - procedural scene geometry reused by instances, varied by kind, dimensions, seed and transforms.",
+    "scripts/grass.js, flower.js and pebble.js - terrain scatter reused by place bindings, varied by density, scale and seed; grass-look supplies material separately.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js, character-select.js and main-menu-mgr.js - coordinated character/menu lifecycle registered by mod.json.",
     "mods/mmorpg-tools/mod-mmorpg/camera.js and camera-creation.js - paired gameplay orbit and preview camera modes with creation-phase guards.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-*.js - modular panel renderers composed by ui.js for HUD, menu, quest, inventory, map, character and settings.",
-    "scripts/vanguard.js and scripts/training-dummy.js with scripts/lib/data/vanguard.yml - player melee discipline and target reaction loop shared across three placed training dummies, varied by ability and per-dummy state.",
-    "scripts/wolves.js with scripts/lib/data/wolves.yml and scripts/gen/wolf.js - one den manager steps six configured Briar Wolves through shared AI/combat logic; per-row position, yaw and scale vary.",
-    "scripts/quest-player.js on the player template, scripts/elric.js on the Q002 giver and scripts/woodcutting.js on eight timber oaks - shared Q002 interaction/gathering loop, with per-player quest state and per-tree depletion state."
+    "scripts/vanguard.js and scripts/training-dummy.js with vanguard.yml - player melee discipline and target reaction shared across three dummies, varied by ability and per-dummy state.",
+    "scripts/wolves.js with wolves.yml and gen/wolf.js - one den manager runs the configured wolf pack through shared AI/combat behavior, varied by spawn row.",
+    "scripts/quest-player.js on the player template, scripts/elric.js on the Q002 giver and scripts/woodcutting.js on timber oaks - shared quest/gathering loop with per-player quest and per-tree depletion state."
   ],
-  "probableOrphans": [],
+  "probableOrphans": [
+    "scripts/db.js - schema migration only; no world or mod code calls migrate.",
+    "scripts/lib/data/realms.yml - realm roster definitions have no code consumer.",
+    "scripts/lib/data/races.yml - starting-zone table has no consumer; character selection uses the separate mod lib/races.js registry.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/currency.js - copper formatting/conversion helpers have no imports or call sites."
+  ],
   "migrationNotes": [
-    "Keep core movement intent and locomotion scratch in room-local ctx.session; scripts/player.js writes velocity and place config owns gravity.",
-    "templates/player.js runs humanoid-locomotion before player.js; gait samples prior-tick movement velocity; quest-player.js follows vanguard.js in the behavior list.",
-    "Core scripts/camera.js uses engine look orientation and feetPosition + eyeHeight × effectiveScale.y; MMORPG orbit/creation cameras are a distinct path.",
-    "Vanguard and wolf tuning uses seconds, metres and hit points; Vanguard applies scheduled damage to target.state.hp, while wolves bite the MMORPG player's state.health.",
-    "Quest objectives use player.state.tally deltas from the accept-time baseline; completedQuests is written before Q002 rewards, preventing a repeated claim; _questSave is the mod persistence signal.",
-    "One E chop press awards one log and stops; player-side quest-player.js decrements oak logsLeft and sets depletedUntil, while woodcutting.js owns the fall/regrow visual response."
+    "Keep movement intent and locomotion scratch in room-local ctx.session; scripts/player.js writes velocity and place config owns gravity.",
+    "templates/player.js runs humanoid-locomotion before player.js; gait samples prior-tick velocity; quest-player follows vanguard in the behavior chain.",
+    "Core scripts/camera.js uses engine look orientation and feetPosition + eyeHeight × effectiveScale.y; MMORPG orbit/creation cameras are distinct paths.",
+    "Vanguard/wolf tuning uses seconds, metres and hit points; vanguard hits target.state.hp while wolves bite the MMORPG player's state.health.",
+    "Quest objectives use accept-time tally baselines; completedQuests is written before Q002 rewards, and _questSave is the MMORPG persistence signal.",
+    "Terrain coast, region classification and frontier cells must stay aligned; terrain-reach.js COAST/coastD defines expanded land bounds, and regions.js checks named regions before the Shrouded Sea."
   ]
 }
