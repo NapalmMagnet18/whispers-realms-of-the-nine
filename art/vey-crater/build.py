@@ -153,7 +153,7 @@ def torus(name, R, r, mat_, c, m, a0=0, a1=360, seg=28, ring=6, wob=0.0, ell=1.0
 
 # ---------------- the crater ----------------
 AX, AY, RIM = 6.0, 5.0, 0.72
-MB = Vector((0.2, -3.75, 0))               # monolith base: the near (arena, -Y = engine +Z) rim
+MB = Vector((0.2, -3.2, 0))               # monolith base: the near (arena, -Y = engine +Z) rim
 def sm(t): t = min(max(t, 0), 1); return t * t * (3 - 2 * t)
 def H(x, y):
     rn = math.hypot(x / AX, y / AY)
@@ -208,7 +208,7 @@ for k, (dx, dy, t, L, r) in enumerate([(-1, .4, 52, 2.6, .38), (1, .5, 48, 2.9, 
     hull(f"sec{k}", xf(crystal_pts(L, r, 5), lean(MB + off + Vector((0, 0, -.3)), dx, dy, t)), M["skyglass"], C, .45)
 # cooled black-glass crust collar
 for k in range(4):
-    o = Vector((U(-.6, .6), U(-.5, .5), 0)); s = U(.8, 1.3)
+    o = Vector((U(-.6, .6), U(-.2, .5), 0)); s = U(.7, 1.1)
     hull(f"crust{k}", xf(rock_pts(s, s * U(.7, 1), U(.35, .6), .5), Matrix.Translation(MB + o) @ Matrix.Rotation(U(0, 6), 4, 'Z')), M["blackglass"], C, .6)
 # shard fan spraying into the bowl
 for k in range(18):

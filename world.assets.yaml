@@ -1,5 +1,6 @@
 assets:
   metadata:
+    "/cdn/value.06a62a6fc18eddb15c275865370cd4c5be3c65b97b67de6d727762fc4965677b.glb": {bytes: 3625372, kind: model, name: vey-crater-hc-vey-crater-v2, uploadedAt: "2026-10-08T19:24:03.873Z"}
     "/cdn/value.0c3011771783a9f2cf4d9441cc6aab928025abfa2ae4a3d9a71a682753966126.glb": {bytes: 58604, kind: model, name: ashen-bow, uploadedAt: "2026-10-08T17:58:43.754Z"}
     "/cdn/value.1298b84ae2d73e226d2d150c330b2dac63c1a6938e848745fd69e4276d613a21.glb": {bytes: 64216, kind: model, name: ashen-daggers, uploadedAt: "2026-10-08T17:58:46.433Z"}
     "/cdn/value.183f433a28f0d8000d2871ddd6ba7e5a135ec8ab99a3f493631b20bf876869a7.glb": {bytes: 72920, kind: model, name: ashen-sword, uploadedAt: "2026-10-08T17:58:34.327Z"}
