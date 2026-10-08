@@ -444,6 +444,7 @@ export function onInput(api, input) {
     var currentPlace = api.getEntityPlace(api.id);
     if (currentPlace !== savedPlace) {
       var hasRealPos = (charData.posX !== 0 || charData.posZ !== 0) && charData.lastPlace;
+      api.patchState({ _worldEnterAt: api.now ? api.now() : 0 });
       api.enterPlace(api.id, {
         placeId: savedPlace,
         spawnPoint: hasRealPos ? { x: charData.posX, y: charData.posY ?? 0.2, z: charData.posZ } : 'default',

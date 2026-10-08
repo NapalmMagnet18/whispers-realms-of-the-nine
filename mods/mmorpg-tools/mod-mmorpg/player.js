@@ -71,6 +71,7 @@ export function getRosterResumeCandidate(state) {
 export function restoreRosterCharacterState(objectApi, state, opts) {
   var resume = getRosterResumeCandidate(state);
   if (!resume) return false;
+  objectApi.patchState({ _worldEnterAt: objectApi.now ? objectApi.now() : 0 });
 
   var charData = resume.charData;
   var placeId = (opts && opts.placeId) || objectApi.getEntityPlace(objectApi.id) || charData.lastPlace || 'main';
@@ -346,6 +347,16 @@ export function onSpawn(objectApi) {
   // persistence dropped them into 'main' or any gameplay place.
   var spawnPlace = objectApi.getEntityPlace(objectApi.id);
   var s = objectApi.getState();
+  var _nowJ = objectApi.now ? objectApi.now() : 0;
+  var _fresh = !(s._worldEnterAt && _nowJ && _nowJ - s._worldEnterAt < 20000);
+  if (_fresh && META_PLACES.indexOf(spawnPlace) === -1 && s.characterCreated && s._rosterLoaded) {
+    // a reload or a new visit while a hero was out in the world: their spot is saved, then the title screen
+    try { saveCharacter(objectApi, function () {}); } catch (e) {}
+  }
+  if (_fresh && (s.phase === 'playing' || s.characterCreated)) {
+    objectApi.patchState({ phase: 'mainMenu', characterCreated: false, menuView: 'title', realmListOpen: false });
+    s = objectApi.getState();
+  }
   if (META_PLACES.indexOf(spawnPlace) === -1 && s.phase !== 'playing' && s.phase !== 'creating') {
     // If a roster character is already loaded in menu state, treat this as an
     // intentional gameplay transfer and restore the selected character instead
@@ -1584,7 +1595,7 @@ export function onInput(objectApi, input) {
 
   // ── Main Menu (save & return to main-menu-land) ──
   if (input.actions.goToMainMenu || input.actions.openRealmList) {
-    handleLogout(objectApi);
+    handleLogout(objectApi, input.actions.openRealmList ? 'realms' : 'select');
     return;
   }
 
@@ -1895,7 +1906,7 @@ export function onDisconnect(objectApi) {
 }
 
 // ─── LOGOUT ──────────────────────────────────────────────────────
-export function handleLogout(objectApi) {
+export function handleLogout(objectApi, screen) {
   saveCharacter(objectApi, function() {
     // Stop music
     objectApi.musicShift(null, { fade: 0.5 });
@@ -1919,6 +1930,9 @@ export function handleLogout(objectApi) {
       characterCreated: false,
       phase: 'mainMenu',
       inMainMenu: true,
+      menuView: screen === 'select' || screen === 'realms' ? 'select' : 'title',
+      realmListOpen: screen === 'realms',
+      _worldEnterAt: 0,
       loadingTimer: 0,
       _dataLoaded: true,
       _hasCharacter: updatedChars.length > 0,

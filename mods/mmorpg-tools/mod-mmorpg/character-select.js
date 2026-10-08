@@ -429,6 +429,7 @@ export function update(objectApi, dt) {
 
       // the realm's table row, then the race's own starting zone
       RS.upsert(objectApi, newIdx, charData);
+      objectApi.patchState({ _worldEnterAt: objectApi.now ? objectApi.now() : 0 });
       objectApi.enterPlace(objectApi.id, {
         placeId: 'main',
         spawnPoint: { x: raceStart.x, y: raceStart.y, z: raceStart.z },
