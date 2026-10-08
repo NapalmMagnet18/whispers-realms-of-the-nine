@@ -477,7 +477,7 @@ export function renderQuestTracker(localPlayer, world) {
   var _place = localPlayer.place || 'main', _t = (typeof performance !== 'undefined' ? performance.now() : 0);
   var _list = [];
   for (var qi = 0; qi < QUEST_NPCS.length; qi++) { var P = NPC_POS[QUEST_NPCS[qi].id]; if (P && P[2] === _place && Math.abs(fp.x - P[0]) < 90 && Math.abs(fp.z - P[1]) < 90) _list.push(QUEST_NPCS[qi]); }
-  var _key = _place + ':' + _list.map(function (q) { return q.id; }).join(',');
+  var _key = _list.length ? _place : ''; // a fresh neighbourhood (arrived from the empty wild, or a new place) waits; walking within one does not
   if (_key !== _nearKey) { _nearKey = _key; _reachSince = _t || 1; }
   if (_t && _t - _reachSince < 6000) _list = [];
   for (var g = 0; g < GREETERS.length; g++) if (Math.abs(fp.x - GREETERS[g].x) < 90 && Math.abs(fp.z - GREETERS[g].z) < 90) _list.push(GREETERS[g]);
