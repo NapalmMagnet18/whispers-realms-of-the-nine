@@ -3,7 +3,7 @@
 // No guild: the Reach's lantern-gold charter banner. Only in main, only near the hall; checked every 2 s.
 export const updateSchedule = { every: { seconds: 2 } };
 const HALL = { x: 5, z: 24 }, NEAR = 160;
-const BAR = { x: 5, y: 16.6, z: 22.3 };  // under the crossbar of guild-flagpole (ridge 12.2 + pole)
+const BAR = { x: 3.3, y: 16.75, z: 24 };  // under the crossbar of guild-flagpole, on the hall's ridge, reaching toward the square
 const FIELDS = ["#7a2e22", "#24406e", "#2f5a34", "#4b2a5e", "#1d1a1c", "#8a5a1a", "#1f5c5c", "#6e2440"];
 const TRIMS = ["#e3b04a", "#d8d8dc", "#e8d9b5", "#c98a3a"];
 const CHARGES = ["chevron", "pale", "fess", "saltire", "bend", "plain"];
