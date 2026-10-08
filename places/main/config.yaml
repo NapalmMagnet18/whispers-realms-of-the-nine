@@ -8,8 +8,8 @@ atmosphere:
     speed: 1
   fog:
     kind: linear
-    near: 140
-    far: 700
+    near: 260
+    far: 1700
   look:
     script: mods/aaa-quality-kit/look-cinema.js
     params:
@@ -45,11 +45,12 @@ terrain:
       - flower
       - grass
       - pebble
-      forest:
-      - fern
-      - pebble
+      forest: [fern, pebble, woods]
       gravel:
       - pebble
+      blight: [deadwood, pebble]
+      mud: [reeds]
+      redrock: [pebble]
     layers:
       flower:
         density: 0.35
@@ -114,36 +115,23 @@ terrain:
         material:
           kind: scripted
           script: scripts/grass-look.js
+      woods: {density: 0.008, items: [{kind: scripted, maxDistance: 420, params: {kind: pine}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 21, weight: 3}, {kind: scripted, maxDistance: 420, params: {kind: oak}, randomRotation: true, scale: [0.8, 1.4], script: scripts/gen/tree.js, seed: 22, weight: 2}]}
+      deadwood: {density: 0.004, items: [{kind: scripted, maxDistance: 420, params: {kind: dead}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 23}]}
+      reeds: {density: 3, items: [{avoidWater: false, kind: scripted, randomRotation: true, scale: [1.8, 2.8], script: scripts/grass.js, seed: 7, wind: {force: 0.08}}], material: {kind: scripted, script: scripts/grass-look.js}}
   generator: scripts/terrain-reach.js
   kind: heightmap
   materials:
-  - id: grass
-    albedo: cdn/texture-terrain-grass-realistic-albedo-summer-exploration.png
-    pbr: true
-    tint: oklch(0.78 0.06 125)
-    antiTiling: stochastic
-  - id: gravel
-    albedo: cdn/texture-terrain-gravel-realistic-albedo.png
-    pbr: true
-    tint: oklch(0.80 0.03 70)
-  - id: rock
-    albedo: cdn/texture-terrain-rock-realistic-albedo.png
-    pbr: true
-    tint: oklch(0.72 0.06 40)
-    antiTiling: stochastic
-  - id: forest
-    albedo: cdn/texture-terrain-forest-floor-moss-pine-needles-realistic-albedo.png
-    pbr: true
-    tint: oklch(0.85 0.03 100)
-  - id: cobble
-    albedo: cdn/texture-terrain-worn-cobblestone-realistic-albedo.png
-    pbr: true
-    tint: oklch(0.85 0.02 70)
-    textureScale: 3
-  - id: dirt
-    albedo: cdn/texture-terrain-packed-dirt-path-realistic-albedo.png
-    pbr: true
-    tint: oklch(0.85 0.03 70)
+  - {albedo: cdn/texture-terrain-grass-realistic-albedo-summer-exploration.png, antiTiling: stochastic, id: grass, pbr: true, tint: oklch(0.78 0.06 125)}
+  - {albedo: cdn/texture-terrain-gravel-realistic-albedo.png, id: gravel, pbr: true, tint: oklch(0.80 0.03 70)}
+  - {albedo: cdn/texture-terrain-rock-realistic-albedo.png, antiTiling: stochastic, id: rock, pbr: true, tint: oklch(0.72 0.06 40)}
+  - {albedo: cdn/texture-terrain-forest-floor-moss-pine-needles-realistic-albedo.png, id: forest, pbr: true, tint: oklch(0.85 0.03 100)}
+  - {albedo: cdn/texture-terrain-worn-cobblestone-realistic-albedo.png, id: cobble, pbr: true, textureScale: 3, tint: oklch(0.85 0.02 70)}
+  - {albedo: cdn/texture-terrain-packed-dirt-path-realistic-albedo.png, id: dirt, pbr: true, tint: oklch(0.85 0.03 70)}
+  - {albedo: cdn/texture-terrain-sand-realistic-albedo.png, id: sand, pbr: true, textureScale: 2.5, tint: oklch(0.84 0.05 80)}
+  - {albedo: cdn/texture-terrain-snow-realistic-albedo.png, antiTiling: stochastic, id: snow, pbr: true, tint: oklch(0.97 0.01 240)}
+  - {albedo: cdn/texture-terrain-wet-marsh-mud-moss-realistic-albedo.png, id: mud, pbr: true, tint: oklch(0.8 0.04 110)}
+  - {albedo: cdn/texture-terrain-red-sandstone-rock-realistic-albedo.png, antiTiling: stochastic, id: redrock, pbr: true, tint: oklch(0.82 0.06 45)}
+  - {albedo: cdn/texture-terrain-dead-grass-ash-blighted-soil-realistic-albedo.png, id: blight, pbr: true, tint: oklch(0.75 0.03 300)}
   seed: 1
   marks:
     town:
@@ -308,21 +296,7 @@ terrain:
       noise: 0.3
     river:
       kind: river
-      points:
-      - - -70
-        - -320
-      - - -62
-        - -160
-      - - -52
-        - -60
-      - - -50
-        - -8
-      - - -56
-        - 60
-      - - -66
-        - 160
-      - - -78
-        - 320
+      points: [[-60, -760], [-66, -480], [-70, -320], [-62, -160], [-52, -60], [-50, -8], [-56, 60], [-66, 160], [-78, 320], [-110, 560], [-170, 860], [-230, 1180], [-210, 1500], [-180, 1800], [-170, 2150]]
       width: 11
       depth: 2.2
       bedMaterial: gravel
@@ -350,3 +324,9 @@ terrain:
       material: dirt
     farm: {center: {x: -16, z: 52}, falloff: 20, height: 4.2, kind: flatten, shape: {kind: circle, radius: 20}}
     lane-farm: {grade: true, kind: path, material: dirt, noise: 0.4, points: [[4, 32], [-4, 40], [-10, 44], [-12, 50], [-12, 60]], width: 2.6}
+    sea: {floorMaterial: sand, kind: sea, level: 0}
+    road-deepwood: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-104, -26], [-160, -40], [-240, -30], [-340, 10], [-460, 40], [-600, 30], [-760, 90], [-900, 200]], width: 3.6}
+    road-fen: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-980, 380], [-1080, 560], [-1180, 720]], width: 3.6}
+    road-highlands: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[112, 24], [180, 40], [260, 30], [380, 0], [520, -40], [680, -80], [840, -160], [980, -300], [1100, -460], [1220, -580]], width: 3.6}
+    road-north-pass: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-2, -140], [10, -220], [40, -300], [0, -420], [-30, -540], [10, -680], [-20, -820], [20, -960]], width: 3.6}
+    road-saltmere: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[6, 29], [10, 120], [30, 260], [60, 420], [110, 620], [150, 860], [200, 1100], [250, 1340], [290, 1560]], width: 3.6}
