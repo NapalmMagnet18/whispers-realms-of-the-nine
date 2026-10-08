@@ -1,7 +1,7 @@
 // Pathfinder on the player's body: 1 Arrow, 2 Volley (three arrows in a fan, each to its own target when the pack allows),
 // 3 Dodge Roll (a 6 m dash, damage immunity for its length). Arrows are scripts/missile.js rows; numbers in pathfinder.yml.
 import P from './lib/data/pathfinder.yml'
-import { classOf, canAct, softTargets, launch, forward } from './lib/kit.js'
+import { classOf, canAct, softTargets, launch, forward, drill } from './lib/kit.js'
 const DUST = `fx
 pop dust burst=6..9 on=disc(.4) life=.5..0.9 v=up(.4..0.9)+sdir()*(.4..0.9) size=.25..0.4 acc=buoy(.2)+drag(1.6) sz=$size*(.6>1.8) col=<.66,.58,.46> a=0>.35:.3>0 rot=spin(.2) r=sprite(smoke-puff,alpha)`
 function me(ctx) { return (ctx.session.pathfinder ??= {})[ctx.self.id] ??= { ready: {} } }
@@ -24,6 +24,7 @@ function use(ctx, kind, input) {
   const near = { audience: { nearby: self.feetPosition, radius: 30 } }
   if (a.sound) ctx.emit('playSound', { clip: a.sound, position: self.feetPosition, volume: 0.45, pitch: 0.95 + ctx.random() * 0.12 }, near)
   if (kind === 'roll') {
+    drill(ctx, 'trail-drill')
     const v = self.velocity || { x: 0, z: 0 }, sp = Math.hypot(v.x, v.z)
     const dir = sp > 1 ? { x: v.x / sp, z: v.z / sp } : forward(self)
     m.rollDir = dir; m.rollSpeed = a.distance / a.dash; m.rollUntil = now + a.dash * 1000
