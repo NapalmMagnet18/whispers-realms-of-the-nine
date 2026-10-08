@@ -1,3 +1,4 @@
+var { versionTag } = require('./version.js');
 // Settings tab UI for MMORPG Tools Mod
 // Dark gothic styling — near-black marble, gold accents, Cinzel font
 
@@ -36,6 +37,7 @@ export function renderSettingsTab(s) {
     + ' onmouseleave="this.style.borderColor=\'rgba(80,65,40,0.3)\';this.style.color=\'rgba(200,175,120,0.5)\'">'
     + 'Main Menu</div>';
 
+  if (!s.inMainMenu) html += versionTag();
   return html;
 }
 

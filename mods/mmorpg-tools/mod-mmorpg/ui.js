@@ -151,7 +151,7 @@ export default function(world, localPlayer) {
 
   // Main menu — show only the title screen + character roster
   if (localPlayer.state.inMainMenu && !characterCreated && !__faEverPlayed) {
-    return FONT_INJECTOR + FONT_WRAP_OPEN + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();" style="display:none" />' + renderMainMenu(localPlayer) + renderCharacterRoster(localPlayer) + renderGnomeTipJar(localPlayer) + FONT_WRAP_CLOSE;
+    return FONT_INJECTOR + FONT_WRAP_OPEN + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();" style="display:none" />' + renderMainMenu(localPlayer) + renderCharacterRoster(localPlayer) + renderGnomeTipJar(localPlayer) + versionTag() + FONT_WRAP_CLOSE;
   }
   var hideArt = localPlayer.state.hideUiArt === true;
   var wrapOpen = hideArt

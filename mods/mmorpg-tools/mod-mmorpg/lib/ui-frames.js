@@ -5,6 +5,7 @@ var ICONS = require('./item-icons.js');
 var ART = require('./ui-art.js');
 var CUR = require('./currency.js');
 var RACES = require('./races.js').RACES;
+var versionTag = require('./version.js').versionTag;
 var UI = ICONS.UI_ICONS, iconFor = ICONS.iconFor;
 var BR = ART.BORDERS, FR = ART.frame, RULE = ART.rule;
 var QUALITY = { poor: '#9d9d9d', common: '#f4efe4', uncommon: '#3fd23f', rare: '#3d8fe8', epic: '#b25cf0', legendary: '#ff9a2e', quest: '#f2b04a' };
@@ -189,7 +190,7 @@ function renderGameMenu() {
     + b('Log Out', "whT('menu',false);sendAction('logout')")
     + RULE('fadeDouble', '100%', 8)
     + b('Return to Game', "whT('menu',false)")
-    + '</div></div>';
+    + '</div>' + versionTag() + '</div>';
 }
 
 module.exports = { CSS: CSS, rootClasses: rootClasses, renderUnitFrames: renderUnitFrames, renderDock: renderDock, renderBackpack: renderBackpack, renderGameMenu: renderGameMenu, itemTooltip: itemTooltip, QUALITY: QUALITY };
