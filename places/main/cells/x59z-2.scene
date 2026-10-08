@@ -1,4 +1,74 @@
 # spawn-scene v2 yaml x59z-2
+bas-npc-dren:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7569.6, y: {terrain: 0}, z: -167.4}
+  id: bas-npc-dren
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-quartermaster-male-stout-leather-apron-beard.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 74}
+  state: {homeYaw: 74, idle: Idle, npcName: Quartermaster Dren, who: bas-dren, yaw: 74}
+  tags: [npc, talker, townsfolk, quest-npc, spine, bas]
+bas-npc-mareth:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7566.2, y: {terrain: 0}, z: -162.2}
+  id: bas-npc-mareth
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-regent-woman-grieving-black-court-gown-silver-mask-held-in-hand.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 38}
+  state: {homeYaw: 38, idle: Idle, npcName: Regent Mareth Sable, who: bas-mareth, yaw: 38}
+  tags: [npc, talker, townsfolk, quest-npc, spine, bas]
+bas-npc-mira:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7568.3, y: {terrain: 0}, z: -164.5}
+  id: bas-npc-mira
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-blacksmith-female-forgekeeper-leather-apron-braids.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 56}
+  state: {homeYaw: 56, idle: Idle, npcName: Mira the Forgekeeper, who: bas-mira, yaw: 56}
+  tags: [npc, talker, townsfolk, quest-npc, spine, bas]
+bas-npc-nala:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7569.3, y: {terrain: 0}, z: -173.6}
+  id: bas-npc-nala
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-regent-female-stern-iron-circlet-ember-red-mantle-gauntlets.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 111}
+  state: {homeYaw: 111, idle: Idle, npcName: Regent Nala Vorn, who: bas-nala, yaw: 111}
+  tags: [npc, talker, townsfolk, quest-npc, spine, bas]
+bas-npc-oren:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7565.4, y: {terrain: 0}, z: -178.4}
+  id: bas-npc-oren
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-grizzled-marshal-male-grey-beard-plate-pauldrons-red-tabard-round-shield.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 147}
+  state: {homeYaw: 147, idle: Idle, npcName: Marshal Oren Flint, who: bas-oren, yaw: 147}
+  tags: [npc, talker, townsfolk, quest-npc, spine, bas]
+bas-npc-vale:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7570, y: {terrain: 0}, z: -170.5}
+  id: bas-npc-vale
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-priestess-female-sister-white-robes-blue-sash.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 92}
+  state: {homeYaw: 92, idle: Idle, npcName: Sister Vale, who: bas-vale, yaw: 92}
+  tags: [npc, talker, townsfolk, quest-npc, spine, bas]
+bas-npc-yurra:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7567.8, y: {terrain: 0}, z: -176.3}
+  id: bas-npc-yurra
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-mason-female-stout-grey-braids-stone-dust-leather-apron-ledger.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 128}
+  state: {homeYaw: 128, idle: Idle, npcName: Mason Yurra Flint-Eye, who: bas-yurra, yaw: 128}
+  tags: [npc, talker, townsfolk, quest-npc, spine, bas]
 bastion-blueprint/bn-gate-n:
   feetPosition: {x: -41, y: 0, z: -37}
   id: bastion-blueprint/bn-gate-n
@@ -124,3 +194,187 @@ bastion-blueprint/sign:
   rotation: {yaw: 90}
   tags: [bastion]
   ui: "<div face=\"front\" at=\"0.5 0.82\" width=\"1.6m\" class=\"px-2 py-1 text-center font-serif text-amber-200\" style=\"font-size:150px;background:#2a1e16\">EMBERSTONE BASTION</div>"
+bellforged-sentinel:
+  behavior: scripts/boss.js
+  feetPosition: {x: 7582, y: 25.1, z: -192}
+  id: bellforged-sentinel
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-bellforged-sentinel-bronze-bell-headed-golem-riveted-plates-furnace-glow-chest.glb
+  physics: character
+  rotation: 180
+  scale: 1.6
+  state: {arena: {r: 13, x: 7582, z: -192}, boss: bellforged_sentinel, home: {x: 7582, z: -192}, hp: 6400, hpPct: 100, maxHp: 6400, mode: asleep, radius: 0.75, title: The Bellforged Sentinel, unhurt: true, yaw: 180}
+  tags: [enemy, boss, spine, bas]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[60px] font-bold text-amber-100 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Bellforged Sentinel</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+qm-bas-01-0-0:
+  feetPosition: {x: 7572.4, y: {terrain: 0}, z: -139.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-01-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 90}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 157}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Speak to the Bastion wardens, mark: bas1_speak_to_the, quest: BAS-01, title: Speak to the Bastion wardens, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-01-1-2:
+  feetPosition: {x: 7552.1, y: {terrain: 0}, z: -188.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-01-1-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest, seed: 95}, script: scripts/gen/props.js}
+  rotation: {yaw: 336}
+  state: {after: bas1_speak_to_the, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Clear 3/3, mark: bas1_clear_three_blocked, quest: BAS-01, title: Clear three blocked supply points, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-02-0-0:
+  feetPosition: {x: 7554, y: {terrain: 0}, z: -157.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-02-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 100}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 205}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Inspect the central forge, mark: bas2_inspect_the_central, quest: BAS-02, title: Inspect the central forge, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-02-1-1:
+  feetPosition: {x: 7554.1, y: {terrain: 0}, z: -190.1}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-02-1-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 104}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 343}
+  state: {after: bas2_inspect_the_central, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Gather 2/3, mark: bas2_gather_three_damaged, quest: BAS-02, title: Gather three damaged resonance bolts, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-02-1-2:
+  feetPosition: {x: 7570.3, y: {terrain: 0}, z: -192.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-02-1-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 105}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 24}
+  state: {after: bas2_inspect_the_central, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Gather 3/3, mark: bas2_gather_three_damaged, quest: BAS-02, title: Gather three damaged resonance bolts, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-03-1-0:
+  feetPosition: {x: 7556.4, y: {terrain: 0}, z: -191.7}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-03-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 113}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 350}
+  state: {after: bas3_bring_the_evidence, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Meet the other side afterward, mark: bas3_meet_the_other, quest: BAS-03, say: Both sides fear losing the jobs that feed the city., title: Meet the other side afterward, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-04-0-2:
+  feetPosition: {x: 7572, y: {terrain: 0}, z: -199.7}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-04-0-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 122}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 22}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Free 3/3, mark: bas4_free_three_captive, quest: BAS-04, title: Free three captive echoes from power conduits, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-04-1-0:
+  feetPosition: {x: 7576.6, y: {terrain: 0}, z: -191.3}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-04-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 123}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 38}
+  state: {after: bas4_free_three_captive, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Stabilize the furnace, mark: bas4_stabilize_the_furnace, quest: BAS-04, say: The engine burns unspoken memories as fuel., title: Stabilize the furnace, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-05-0-0:
+  feetPosition: {x: 7554.1, y: {terrain: 0}, z: -198.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-05-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 130}, script: scripts/gen/grove.js}
+  rotation: {yaw: 348}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Read Mareth's contracts, mark: bas5_read_mareth_s_contracts, quest: BAS-05, title: Read Mareth's contracts, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-05-1-0:
+  feetPosition: {x: 7591.9, y: {terrain: 0}, z: -172.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-05-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 133}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 85}
+  state: {after: bas5_read_mareth_s_contracts, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Interview 1/2, mark: bas5_interview_two_workers, quest: BAS-05, say: Mareth has promised to return erased families rather than conquer the Bastion., title: Interview two workers who believed her promise, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-05-1-1:
+  feetPosition: {x: 7569.7, y: {terrain: 0}, z: -162.9}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-05-1-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 134}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 126}
+  state: {after: bas5_read_mareth_s_contracts, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Interview 2/2, mark: bas5_interview_two_workers, quest: BAS-05, title: Interview two workers who believed her promise, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-06-0-0:
+  feetPosition: {x: 7579.9, y: {terrain: 0}, z: -197.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-06-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 140}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 35}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Rescue 1/2, mark: bas6_rescue_two_workers, quest: BAS-06, title: Rescue two workers trapped in a test cell, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-06-0-1:
+  feetPosition: {x: 7573.6, y: {terrain: 0}, z: -173.3}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-06-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 141}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 76}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Rescue 2/2, mark: bas6_rescue_two_workers, quest: BAS-06, title: Rescue two workers trapped in a test cell, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-06-1-0:
+  feetPosition: {x: 7569.5, y: {terrain: 0}, z: -161.1}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-06-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, seed: 143}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 133}
+  state: {after: bas6_rescue_two_workers, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Disable the consent override, mark: bas6_disable_the_consent, quest: BAS-06, say: A voluntary sacrifice becomes coercive when a rescuer locks the door., title: Disable the consent override, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-07-0-0:
+  feetPosition: {x: 7574.9, y: {terrain: 0}, z: -171.7}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-07-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon, seed: 150}, script: scripts/gen/tide.js}
+  rotation: {yaw: 83}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Activate 1/3, mark: bas7_activate_three_emergency, quest: BAS-07, title: Activate three emergency vents, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-07-0-1:
+  feetPosition: {x: 7575.7, y: {terrain: 0}, z: -159.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-07-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon, seed: 151}, script: scripts/gen/tide.js}
+  rotation: {yaw: 124}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Activate 2/3, mark: bas7_activate_three_emergency, quest: BAS-07, title: Activate three emergency vents, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-07-0-2:
+  feetPosition: {x: 7566.1, y: {terrain: 0}, z: -147.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-07-0-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: beacon, seed: 152}, script: scripts/gen/tide.js}
+  rotation: {yaw: 164}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Activate 3/3, mark: bas7_activate_three_emergency, quest: BAS-07, title: Activate three emergency vents, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-08-0-0:
+  feetPosition: {x: 7575.1, y: {terrain: 0}, z: -156.9}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-08-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: candles, seed: 160}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 130}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Confront Mareth, mark: bas8_confront_mareth, quest: BAS-08, title: Confront Mareth, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-bas-09-0-0:
+  feetPosition: {x: 7560.7, y: {terrain: 0}, z: -145}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.8,1.3,.4) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-09-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 170}, script: scripts/gen/grove.js}
+  rotation: {yaw: 178}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.8,1.3,.4)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Place a full public list of costs in the forge, mark: bas9_place_a_full, quest: BAS-09, title: Place a full public list of costs in the forge, verb: Use}
+  tags: [quest-mark, spine, bas]

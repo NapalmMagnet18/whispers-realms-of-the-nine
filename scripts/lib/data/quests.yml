@@ -1842,7 +1842,7 @@ RAC-01:
   title: The Gathering of Delegates
   zone: Ninth Veil Assembly
   group: "Raid \xB7 Assembly of the Ninth, season finale (lv 60)"
-  requires: [RPC-03, RCE-03]
+  requires: [VEI-09, RPC-03, RCE-03]
   minLevel: 60
   giverNpcId: assembly-npc-leth
   giverName: Magister Leth Sen
@@ -1915,3 +1915,548 @@ RAC-05:
   - {key: ceremony, desc: Attend the open remembrance ceremony, target: 1}
   - {key: crest_chosen, desc: Choose a commemorative crest, target: 1}
   rewards: {copper: 50000, xp: 5000}
+
+# ── The level 31–60 story spine (canon VEL/BAS/GLA/VEI, quest_database_300.json): Velthraen Reach → Emberstone Bastion → Glassmere Archive → the Ninth Veil. minLevel bands 30/37/44/51; each chain ends at a mark in the next hub, so the story flies you on.
+VEL-01:
+  id: VEL-01
+  title: The Observatory Road
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: []
+  minLevel: 30
+  giverNpcId: vel-npc-ires
+  giverName: Glidewarden Ires
+  turnInNpcId: vel-npc-ires
+  turnInName: Glidewarden Ires
+  objectives:
+  - {key: vel1_repair_the_mountain, desc: Repair the mountain lift, target: 1}
+  - {key: vel1_survey_three_cliff, desc: Survey three cliff beacons, target: 3}
+  rewards: {copper: 30600, xp: 3400}
+  requiresAny: [TID-09, BRD-09]
+VEL-02:
+  id: VEL-02
+  title: A Map of Absences
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-01]
+  minLevel: 30
+  giverNpcId: vel-npc-neris
+  giverName: Astromer Neris Sol
+  turnInNpcId: vel-npc-neris
+  turnInName: Astromer Neris Sol
+  objectives:
+  - {key: vel2_align_three_star, desc: Align three star charts, target: 3}
+  - {key: vel2_name_the_missing, desc: Name the missing constellation, target: 1}
+  rewards: {copper: 32220, xp: 3580}
+VEL-03:
+  id: VEL-03
+  title: The Skyborn Accord
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-02]
+  minLevel: 30
+  giverNpcId: vel-npc-leth
+  giverName: Magister Leth Sen
+  turnInNpcId: vel-npc-leth
+  turnInName: Magister Leth Sen
+  objectives:
+  - {key: vel3_interview_two_order, desc: Interview two order delegates, target: 2}
+  - {key: vel3_present_one_dissenting, desc: Present one dissenting record, target: 1}
+  rewards: {copper: 33750, xp: 3750}
+VEL-04:
+  id: VEL-04
+  title: Windharps and Warnings
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-03]
+  minLevel: 30
+  giverNpcId: vel-npc-ires
+  giverName: Glidewarden Ires
+  turnInNpcId: vel-npc-ires
+  turnInName: Glidewarden Ires
+  objectives:
+  - {key: vel4_tune_four_windharps, desc: Tune four windharps, target: 4}
+  - {key: vel4_cross_the_windharp, desc: Cross the windharp bridge before its pulse collapses, target: 1}
+  rewards: {copper: 35280, xp: 3920}
+VEL-05:
+  id: VEL-05
+  title: The Price of Prediction
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-04]
+  minLevel: 30
+  giverNpcId: vel-npc-neris
+  giverName: Astromer Neris Sol
+  turnInNpcId: vel-npc-neris
+  turnInName: Astromer Neris Sol
+  objectives:
+  - {key: vel5_review_a_prophecy, desc: Review a prophecy board, target: 1}
+  - {key: vel5_reject_one_false, desc: Reject one false certainty, target: 1}
+  rewards: {copper: 36900, xp: 4100}
+VEL-06:
+  id: VEL-06
+  title: The Court Among Clouds
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-05]
+  minLevel: 30
+  giverNpcId: vel-npc-arlo
+  giverName: Keeper Sen Arlo
+  turnInNpcId: vel-npc-arlo
+  turnInName: Keeper Sen Arlo
+  objectives:
+  - {key: vel6_infiltrate_an_eyrie, desc: Infiltrate an eyrie vault, target: 1}
+  - {key: vel6_retrieve_two_stolen, desc: Retrieve two stolen resonance lenses, target: 2}
+  rewards: {copper: 38520, xp: 4280}
+VEL-07:
+  id: VEL-07
+  title: The Unseen Ninth
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-06]
+  minLevel: 30
+  giverNpcId: vel-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: vel-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: vel7_visit_the_hidden, desc: Visit the hidden observatory, target: 1}
+  - {key: vel7_read_its_last, desc: Read its last keeper inscription, target: 1}
+  rewards: {copper: 40050, xp: 4450}
+VEL-08:
+  id: VEL-08
+  title: Who Gets to Publish
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-07]
+  minLevel: 30
+  giverNpcId: vel-npc-leth
+  giverName: Magister Leth Sen
+  turnInNpcId: vel-npc-leth
+  turnInName: Magister Leth Sen
+  objectives:
+  - {key: vel8_host_an_open, desc: Host an open hearing, target: 1}
+  - {key: vel8_raise_three_hearing, desc: Raise three hearing wards against the echo attacks, target: 3}
+  rewards: {copper: 41580, xp: 4620}
+VEL-09:
+  id: VEL-09
+  title: A Signal Toward Emberstone
+  zone: Velthraen Reach
+  group: 'Velthraen Reach: The Missing Star (lv 31+)'
+  requires: [VEL-08]
+  minLevel: 30
+  giverNpcId: vel-npc-neris
+  giverName: Astromer Neris Sol
+  turnInNpcId: vel-npc-neris
+  turnInName: Astromer Neris Sol
+  objectives:
+  - {key: vel9_activate_two_light, desc: Activate two light relays, target: 2}
+  - {key: vel9_send_a_warning, desc: Send a warning to Emberstone Bastion, target: 1}
+  rewards: {copper: 43200, xp: 4800}
+BAS-01:
+  id: BAS-01
+  title: Gates of the Forge
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [VEL-09]
+  minLevel: 37
+  giverNpcId: bas-npc-oren
+  giverName: Marshal Oren Flint
+  turnInNpcId: bas-npc-oren
+  turnInName: Marshal Oren Flint
+  objectives:
+  - {key: bas1_speak_to_the, desc: Speak to the Bastion wardens, target: 1}
+  - {key: bas1_clear_three_blocked, desc: Clear three blocked supply points, target: 3}
+  rewards: {copper: 35100, xp: 3900}
+BAS-02:
+  id: BAS-02
+  title: Hammer and Witness
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-01]
+  minLevel: 37
+  giverNpcId: bas-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  turnInNpcId: bas-npc-yurra
+  turnInName: Mason Yurra Flint-Eye
+  objectives:
+  - {key: bas2_inspect_the_central, desc: Inspect the central forge, target: 1}
+  - {key: bas2_gather_three_damaged, desc: Gather three damaged resonance bolts, target: 3}
+  rewards: {copper: 36810, xp: 4090}
+BAS-03:
+  id: BAS-03
+  title: The Warden's Ultimatum
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-02]
+  minLevel: 37
+  giverNpcId: bas-npc-nala
+  giverName: Regent Nala Vorn
+  turnInNpcId: bas-npc-nala
+  turnInName: Regent Nala Vorn
+  objectives:
+  - {key: bas3_bring_the_evidence, desc: Bring the evidence to the forge union or the council, target: 1}
+  - {key: bas3_meet_the_other, desc: Meet the other side afterward, target: 1}
+  rewards: {copper: 38520, xp: 4280}
+BAS-04:
+  id: BAS-04
+  title: A Chain of Names
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-03]
+  minLevel: 37
+  giverNpcId: bas-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: bas-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: bas4_free_three_captive, desc: Free three captive echoes from power conduits, target: 3}
+  - {key: bas4_stabilize_the_furnace, desc: Stabilize the furnace, target: 1}
+  rewards: {copper: 40140, xp: 4460}
+BAS-05:
+  id: BAS-05
+  title: The Woman Who Hired Them
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-04]
+  minLevel: 37
+  giverNpcId: bas-npc-dren
+  giverName: Quartermaster Dren
+  turnInNpcId: bas-npc-dren
+  turnInName: Quartermaster Dren
+  objectives:
+  - {key: bas5_read_mareth_s_contracts, desc: Read Mareth's contracts, target: 1}
+  - {key: bas5_interview_two_workers, desc: Interview two workers who believed her promise, target: 2}
+  rewards: {copper: 41850, xp: 4650}
+BAS-06:
+  id: BAS-06
+  title: No More Volunteers
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-05]
+  minLevel: 37
+  giverNpcId: bas-npc-oren
+  giverName: Marshal Oren Flint
+  turnInNpcId: bas-npc-oren
+  turnInName: Marshal Oren Flint
+  objectives:
+  - {key: bas6_rescue_two_workers, desc: Rescue two workers trapped in a test cell, target: 2}
+  - {key: bas6_disable_the_consent, desc: Disable the consent override, target: 1}
+  rewards: {copper: 43560, xp: 4840}
+BAS-07:
+  id: BAS-07
+  title: The Furnace Witness
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-06]
+  minLevel: 37
+  giverNpcId: bas-npc-mira
+  giverName: Mira the Forgekeeper
+  turnInNpcId: bas-npc-mira
+  turnInName: Mira the Forgekeeper
+  objectives:
+  - {key: bas7_activate_three_emergency, desc: Activate three emergency vents, target: 3}
+  - {key: bellforged_sentinel, desc: Defeat the Bellforged Sentinel, target: 1}
+  rewards: {copper: 45180, xp: 5020}
+BAS-08:
+  id: BAS-08
+  title: Mareth at the Crucible
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-07]
+  minLevel: 37
+  giverNpcId: bas-npc-mareth
+  giverName: Regent Mareth Sable
+  turnInNpcId: bas-npc-mareth
+  turnInName: Regent Mareth Sable
+  objectives:
+  - {key: bas8_confront_mareth, desc: Confront Mareth, target: 1}
+  - {key: bas8_listen_to_eda_s, desc: Listen to Eda's recording, target: 1}
+  - {key: bas8_refuse_her_forced, desc: Refuse her forced activation, target: 1}
+  rewards: {copper: 46890, xp: 5210}
+BAS-09:
+  id: BAS-09
+  title: The Cost Written Down
+  zone: Emberstone Bastion
+  group: 'Emberstone Bastion: The Engine of Mercy (lv 38+)'
+  requires: [BAS-08]
+  minLevel: 37
+  giverNpcId: bas-npc-yurra
+  giverName: Mason Yurra Flint-Eye
+  turnInNpcId: bas-npc-yurra
+  turnInName: Mason Yurra Flint-Eye
+  objectives:
+  - {key: bas9_place_a_full, desc: Place a full public list of costs in the forge, target: 1}
+  - {key: bas9_travel_to_glassmere, desc: Travel to Glassmere, target: 1}
+  rewards: {copper: 48600, xp: 5400}
+GLA-01:
+  id: GLA-01
+  title: An Archive of Empty Books
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [BAS-09]
+  minLevel: 44
+  giverNpcId: gla-npc-ossa
+  giverName: Curator Ossa
+  turnInNpcId: gla-npc-ossa
+  turnInName: Curator Ossa
+  objectives:
+  - {key: gla1_find_three_books, desc: Find three books with blank titles, target: 3}
+  - {key: gla1_read_their_paper, desc: Read their paper grains, target: 1}
+  rewards: {copper: 39600, xp: 4400}
+GLA-02:
+  id: GLA-02
+  title: The Woman in the Margin
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-01]
+  minLevel: 44
+  giverNpcId: gla-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: gla-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: gla2_search_two_marginalia, desc: Search two marginalia trails, target: 2}
+  - {key: gla2_compare_vale_s_handwriting, desc: Compare Vale's handwriting to an old Court transcript, target: 1}
+  rewards: {copper: 41400, xp: 4600}
+GLA-03:
+  id: GLA-03
+  title: A City in a Mirror
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-02]
+  minLevel: 44
+  giverNpcId: gla-npc-leth
+  giverName: Magister Leth Sen
+  turnInNpcId: gla-npc-leth
+  turnInName: Magister Leth Sen
+  objectives:
+  - {key: gla3_align_three_mirror, desc: Align three mirror stations, target: 3}
+  - {key: gla3_step_into_the, desc: Step into the mirror of the vanished ward, target: 1}
+  rewards: {copper: 43200, xp: 4800}
+GLA-04:
+  id: GLA-04
+  title: The Consent That Never Was
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-03]
+  minLevel: 44
+  giverNpcId: gla-npc-ossa
+  giverName: Curator Ossa
+  turnInNpcId: gla-npc-ossa
+  turnInName: Curator Ossa
+  objectives:
+  - {key: gla4_hear_the_testimony, desc: Hear the testimony of two signatories, target: 1}
+  - {key: gla4_reveal_the_altered, desc: Reveal the altered consent clause, target: 1}
+  rewards: {copper: 45000, xp: 5000}
+GLA-05:
+  id: GLA-05
+  title: Eda Speaks
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-04]
+  minLevel: 44
+  giverNpcId: gla-npc-eda
+  giverName: Eda Sable (Echo)
+  turnInNpcId: gla-npc-eda
+  turnInName: Eda Sable (Echo)
+  objectives:
+  - {key: gla5_ask_eda_three, desc: Ask Eda three questions, target: 3}
+  - {key: gla5_leave_one_question, desc: Leave one question unanswered when she refuses, target: 1}
+  rewards: {copper: 46800, xp: 5200}
+GLA-06:
+  id: GLA-06
+  title: The Archivist's Trial
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-05]
+  minLevel: 44
+  giverNpcId: gla-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: gla-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: gla6_seal_three_archive, desc: Seal three archive doors the Court breached, target: 3}
+  - {key: gla6_publicly_confess_the, desc: Publicly confess the experiment, target: 1}
+  rewards: {copper: 48600, xp: 5400}
+GLA-07:
+  id: GLA-07
+  title: The Mirror Accords
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-06]
+  minLevel: 44
+  giverNpcId: gla-npc-leth
+  giverName: Magister Leth Sen
+  turnInNpcId: gla-npc-leth
+  turnInName: Magister Leth Sen
+  objectives:
+  - {key: gla7_reconstruct_the_nine, desc: Reconstruct the nine clauses, target: 9}
+  - {key: gla7_compare_them_to, desc: Compare them to four cultural witnesses, target: 1}
+  rewards: {copper: 50400, xp: 5600}
+GLA-08:
+  id: GLA-08
+  title: Doors Without Chains
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-07]
+  minLevel: 44
+  giverNpcId: gla-npc-arlo
+  giverName: Keeper Sen Arlo
+  turnInNpcId: gla-npc-arlo
+  turnInName: Keeper Sen Arlo
+  objectives:
+  - {key: gla8_open_two_prisoner, desc: Open two prisoner records, target: 2}
+  - {key: gla8_release_their_names, desc: Release their names without revealing their private confessions, target: 1}
+  rewards: {copper: 52200, xp: 5800}
+GLA-09:
+  id: GLA-09
+  title: The Last Page Has No Author
+  zone: Glassmere Archive
+  group: 'Glassmere Archive: The Mirror Does Not Lie (lv 45+)'
+  requires: [GLA-08]
+  minLevel: 44
+  giverNpcId: gla-npc-ossa
+  giverName: Curator Ossa
+  turnInNpcId: gla-npc-ossa
+  turnInName: Curator Ossa
+  objectives:
+  - {key: gla9_take_the_missing, desc: Take the missing last page, target: 1}
+  - {key: gla9_begin_the_ascent, desc: Begin the ascent to the Ninth Veil, target: 1}
+  rewards: {copper: 54000, xp: 6000}
+VEI-01:
+  id: VEI-01
+  title: A Threshold Without a Key
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [GLA-09]
+  minLevel: 51
+  giverNpcId: vei-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: vei-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: vei1_bring_four_consent, desc: Bring four consent tokens, target: 4}
+  - {key: vei1_open_the_gate, desc: Open the gate without sacrificing a companion, target: 1}
+  rewards: {copper: 45000, xp: 5000}
+VEI-02:
+  id: VEI-02
+  title: The Eight Who Remained
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-01]
+  minLevel: 51
+  giverNpcId: vei-npc-leth
+  giverName: Magister Leth Sen
+  turnInNpcId: vei-npc-leth
+  turnInName: Magister Leth Sen
+  objectives:
+  - {key: vei2_visit_four_witness, desc: Visit four witness echoes, target: 4}
+  - {key: vei2_complete_their_nonviolent, desc: Complete their nonviolent tests, target: 1}
+  rewards: {copper: 47250, xp: 5250}
+VEI-03:
+  id: VEI-03
+  title: The Silence We Inherited
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-02]
+  minLevel: 51
+  giverNpcId: vei-npc-arlo
+  giverName: Keeper Sen Arlo
+  turnInNpcId: vei-npc-arlo
+  turnInName: Keeper Sen Arlo
+  objectives:
+  - {key: vei3_follow_an_invisible, desc: Follow an invisible causeway, target: 1}
+  - {key: vei3_read_the_hidden, desc: Read the hidden Ninth inscription, target: 1}
+  rewards: {copper: 49500, xp: 5500}
+VEI-04:
+  id: VEI-04
+  title: Mareth's Grief
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-03]
+  minLevel: 51
+  giverNpcId: vei-npc-mareth
+  giverName: Regent Mareth Sable
+  turnInNpcId: vei-npc-mareth
+  turnInName: Regent Mareth Sable
+  objectives:
+  - {key: vei4_witness_the_day, desc: Witness the day Eda disappeared, target: 1}
+  - {key: vei4_resist_the_demand, desc: Resist the demand to rewrite the scene, target: 1}
+  rewards: {copper: 51750, xp: 5750}
+VEI-05:
+  id: VEI-05
+  title: Eda's Choice
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-04]
+  minLevel: 51
+  giverNpcId: vei-npc-eda
+  giverName: Eda Sable (Echo)
+  turnInNpcId: vei-npc-eda
+  turnInName: Eda Sable (Echo)
+  objectives:
+  - {key: vei5_bring_eda_a, desc: Bring Eda a free testimony form, target: 1}
+  - {key: vei5_listen_to_her, desc: Listen to her decision, target: 1}
+  rewards: {copper: 54000, xp: 6000}
+VEI-06:
+  id: VEI-06
+  title: The Trial of Nine Voices
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-05]
+  minLevel: 51
+  giverNpcId: vei-npc-witness
+  giverName: The Ninth Witness
+  turnInNpcId: vei-npc-witness
+  turnInName: The Ninth Witness
+  objectives:
+  - {key: vei6_complete_nine_short, desc: Complete nine short witness checks, target: 9}
+  - {key: vei6_see_every_people, desc: See every people represented at the trial, target: 1}
+  rewards: {copper: 56250, xp: 6250}
+VEI-07:
+  id: VEI-07
+  title: The Court's Last Engine
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-06]
+  minLevel: 51
+  giverNpcId: vei-npc-oren
+  giverName: Marshal Oren Flint
+  turnInNpcId: vei-npc-oren
+  turnInName: Marshal Oren Flint
+  objectives:
+  - {key: vei7_disable_three_siphons, desc: Disable three siphons, target: 3}
+  - {key: engine_manifestation, desc: Defeat the Memory Engine manifestation, target: 1}
+  rewards: {copper: 58500, xp: 6500}
+VEI-08:
+  id: VEI-08
+  title: The Ninth Was Us
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-07]
+  minLevel: 51
+  giverNpcId: vei-npc-vale
+  giverName: Sister Vale
+  turnInNpcId: vei-npc-vale
+  turnInName: Sister Vale
+  objectives:
+  - {key: vei8_declare_open_witnessing, desc: Declare open witnessing or guarded stewardship, target: 1}
+  - {key: vei8_confirm_that_no, desc: Confirm that no memory is forcibly erased, target: 1}
+  rewards: {copper: 60750, xp: 6750}
+VEI-09:
+  id: VEI-09
+  title: Lanterns for the Unnamed
+  zone: The Ninth Veil
+  group: 'The Ninth Veil: The Witnesses Assemble (lv 52+)'
+  requires: [VEI-08]
+  minLevel: 51
+  giverNpcId: vei-npc-vale
+  giverName: Gatekeeper Elric
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+  objectives:
+  - {key: vei9_return_to_lantern_s, desc: Return to Lantern's Reach, target: 1}
+  - {key: vei9_carve_the_names, desc: Carve the names of the Nine into the memorial, target: 1}
+  - {key: vei9_attend_the_bell, desc: Attend the bell ceremony, target: 1}
+  rewards: {copper: 63000, xp: 7000}

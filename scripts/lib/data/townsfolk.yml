@@ -435,3 +435,77 @@ elric-ninth-assembly:
   lines:
     - "Thirty years at a gate. Never thought I'd see the one at the end of the world."
     - "When this is done, I'm going home to ring the bell properly."
+
+# ── The level 31–60 story spine (canon VEL/BAS/GLA/VEI, quest_database_300.json): Velthraen Reach → Emberstone Bastion → Glassmere Archive → the Ninth Veil. Hub residents.
+vel-ires:
+  name: Glidewarden Ires
+  lines: [I need someone to repair the mountain lift., I need someone to tune four windharps.]
+vel-neris:
+  name: Astromer Neris Sol
+  lines: [I need someone to align three star charts., I need someone to review a prophecy board., I need someone to activate two light relays.]
+vel-leth:
+  name: Magister Leth Sen
+  lines: [I need someone to interview two order delegates., I need someone to host an open hearing.]
+vel-arlo:
+  name: Keeper Sen Arlo
+  lines: [I need someone to infiltrate an eyrie vault.]
+vel-vale:
+  name: Sister Vale
+  lines: [I need someone to visit the hidden observatory.]
+bas-oren:
+  name: Marshal Oren Flint
+  lines: [I need someone to speak to the Bastion wardens., I need someone to rescue two workers trapped in a test cell.]
+bas-yurra:
+  name: Mason Yurra Flint-Eye
+  lines: [I need someone to inspect the central forge., I need someone to place a full public list of costs in the forge.]
+bas-nala:
+  name: Regent Nala Vorn
+  lines: [I need someone to choose to share evidence with the union or council first.]
+bas-vale:
+  name: Sister Vale
+  lines: [I need someone to free three captive echoes from power conduits.]
+bas-dren:
+  name: Quartermaster Dren
+  lines: [I need someone to read Mareth's contracts.]
+bas-mira:
+  name: Mira the Forgekeeper
+  lines: [I need someone to activate three emergency vents.]
+bas-mareth:
+  name: Regent Mareth Sable
+  lines: [I need someone to confront Mareth.]
+gla-ossa:
+  name: Curator Ossa
+  lines: [I need someone to find three books with blank titles., I need someone to hear the testimony of two signatories., I need someone to take the missing last page.]
+gla-vale:
+  name: Sister Vale
+  lines: [I need someone to search two marginalia trails., I need someone to defend the archive from three Court incursions.]
+gla-leth:
+  name: Magister Leth Sen
+  lines: [I need someone to align three mirror stations., I need someone to reconstruct the nine clauses.]
+gla-eda:
+  name: Eda Sable (Echo)
+  lines: [I need someone to ask Eda three questions.]
+gla-arlo:
+  name: Keeper Sen Arlo
+  lines: [I need someone to open two prisoner records.]
+vei-vale:
+  name: Sister Vale
+  lines: [I need someone to bring four consent tokens., I need someone to choose open witnessing or guarded stewardship as your public policy.]
+vei-leth:
+  name: Magister Leth Sen
+  lines: [I need someone to visit four witness echoes.]
+vei-arlo:
+  name: Keeper Sen Arlo
+  lines: [I need someone to follow an invisible causeway.]
+vei-mareth:
+  name: Regent Mareth Sable
+  lines: [I need someone to witness the day Eda disappeared.]
+vei-eda:
+  name: Eda Sable (Echo)
+  lines: [I need someone to bring Eda a free testimony form.]
+vei-witness:
+  name: The Ninth Witness
+  lines: [I need someone to complete nine short witness checks.]
+vei-oren:
+  name: Marshal Oren Flint
+  lines: [I need someone to disable three siphons.]

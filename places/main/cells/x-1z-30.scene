@@ -64,3 +64,249 @@ frontier-frostveil-stone-7:
   primitive: {kind: scripted, params: {h: 4.8, kind: stone, seed: 7}, script: scripts/gen/frontier.js, seed: 7}
   rotation: {roll: 0, yaw: 170.0207809600711}
   tags: [frostveil]
+gla-npc-arlo:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -3.2, y: {terrain: 0}, z: -3751.4}
+  id: gla-npc-arlo
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-spymaster-male-grey-temples-charcoal-coat-hood-down-thin-scar.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 38}
+  state: {homeYaw: 38, idle: Idle, npcName: Keeper Sen Arlo, who: gla-arlo, yaw: 38}
+  tags: [npc, talker, townsfolk, quest-npc, spine, gla]
+gla-npc-ossa:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -4.1, y: {terrain: 0}, z: -3769.3}
+  id: gla-npc-ossa
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-archivist-woman-dark-bun-ink-stained-apron-reading-glasses.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 147}
+  state: {homeYaw: 147, idle: Idle, npcName: Curator Ossa, who: gla-ossa, yaw: 147}
+  tags: [npc, talker, townsfolk, quest-npc, spine, gla]
+gla-npc-vale:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -0.5, y: {terrain: 0}, z: -3765.5}
+  id: gla-npc-vale
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-priestess-female-sister-white-robes-blue-sash.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {homeYaw: 120, idle: Idle, npcName: Sister Vale, who: gla-vale, yaw: 120}
+  tags: [npc, talker, townsfolk, quest-npc, spine, gla]
+qm-bas-09-1-0:
+  feetPosition: {x: -43.8, y: {terrain: 0}, z: -3763.5}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-bas-09-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone, seed: 173}, script: scripts/gen/grove.js}
+  rotation: {yaw: 275}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Travel to Glassmere, mark: bas9_travel_to_glassmere, quest: BAS-09, say: The Court escapes with the last lens but its central falsehood is exposed., title: Travel to Glassmere, verb: Use}
+  tags: [quest-mark, spine, bas]
+qm-gla-01-0-0:
+  feetPosition: {x: -35.9, y: {terrain: 0}, z: -3735}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-01-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 180}, script: scripts/gen/grove.js}
+  rotation: {yaw: 225}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Find 1/3, mark: gla1_find_three_books, quest: GLA-01, title: Find three books with blank titles, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-01-0-1:
+  feetPosition: {x: -48.9, y: {terrain: 0}, z: -3757.7}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-01-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 181}, script: scripts/gen/grove.js}
+  rotation: {yaw: 266}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Find 2/3, mark: gla1_find_three_books, quest: GLA-01, title: Find three books with blank titles, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-01-0-2:
+  feetPosition: {x: -22.7, y: {terrain: 0}, z: -3769.7}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-01-0-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 182}, script: scripts/gen/grove.js}
+  rotation: {yaw: 307}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Find 3/3, mark: gla1_find_three_books, quest: GLA-01, title: Find three books with blank titles, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-01-1-0:
+  feetPosition: {x: -18.9, y: {terrain: 0}, z: -3772}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-01-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: candles, seed: 183}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 323}
+  state: {after: gla1_find_three_books, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Read their paper grains, mark: gla1_read_their_paper, quest: GLA-01, say: The missing years are stored as pressure in the archive walls., title: Read their paper grains, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-02-0-0:
+  feetPosition: {x: -27, y: {terrain: 0}, z: -3761.1}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-02-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 190}, script: scripts/gen/grove.js}
+  rotation: {yaw: 273}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Search 1/2, mark: gla2_search_two_marginalia, quest: GLA-02, title: Search two marginalia trails, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-02-0-1:
+  feetPosition: {x: -24.3, y: {terrain: 0}, z: -3774}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-02-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 191}, script: scripts/gen/grove.js}
+  rotation: {yaw: 314}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Search 2/2, mark: gla2_search_two_marginalia, quest: GLA-02, title: Search two marginalia trails, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-02-1-0:
+  feetPosition: {x: -5.8, y: {terrain: 0}, z: -3781.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-02-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: candles, seed: 193}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 10}
+  state: {after: gla2_search_two_marginalia, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Compare Vale's handwriting to an old Court transcript, mark: gla2_compare_vale_s_handwriting, quest: GLA-02, say: "Vale helped design the first Court receiver, then fled when used against mourners.", title: Compare Vale's handwriting to an old Court transcript, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-03-0-0:
+  feetPosition: {x: -25.1, y: {terrain: 0}, z: -3778.7}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-03-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone, seed: 200}, script: scripts/gen/grove.js}
+  rotation: {yaw: 321}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Align 1/3, mark: gla3_align_three_mirror, quest: GLA-03, title: Align three mirror stations, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-03-0-1:
+  feetPosition: {x: -9.2, y: {terrain: 0}, z: -3787}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-03-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone, seed: 201}, script: scripts/gen/grove.js}
+  rotation: {yaw: 1}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Align 2/3, mark: gla3_align_three_mirror, quest: GLA-03, title: Align three mirror stations, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-04-0-0:
+  feetPosition: {x: -5.3, y: {terrain: 0}, z: -3790.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-04-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 210}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 8}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Hear the testimony of two signatories, mark: gla4_hear_the_testimony, quest: GLA-04, title: Hear the testimony of two signatories, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-05-1-0:
+  feetPosition: {x: -2.4, y: {terrain: 0}, z: -3744.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-05-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 223}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 153}
+  state: {after: gla5_ask_eda_three, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Leave one question unanswered when she refuses, mark: gla5_leave_one_question, quest: GLA-05, say: Eda is not Mareth's possession; she wants the missing people to choose for themselves., title: Leave one question unanswered when she refuses, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-06-0-2:
+  feetPosition: {x: -12.2, y: {terrain: 0}, z: -3735.1}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-06-0-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone, seed: 232}, script: scripts/gen/grove.js}
+  rotation: {yaw: 185}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Seal 3/3, mark: gla6_seal_three_archive, quest: GLA-06, title: Seal three archive doors the Court breached, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-06-1-0:
+  feetPosition: {x: -18.7, y: {terrain: 0}, z: -3737.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-06-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: candles, seed: 233}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 201}
+  state: {after: gla6_seal_three_archive, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Publicly confess the experiment, mark: gla6_publicly_confess_the, quest: GLA-06, say: Vale offers evidence rather than requesting automatic forgiveness., title: Publicly confess the experiment, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-07-0-1:
+  feetPosition: {x: -16, y: {terrain: 0}, z: -3731.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-07-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 241}, script: scripts/gen/grove.js}
+  rotation: {yaw: 192}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Reconstruct 2/9, mark: gla7_reconstruct_the_nine, quest: GLA-07, title: Reconstruct the nine clauses, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-07-0-2:
+  feetPosition: {x: -35.5, y: {terrain: 0}, z: -3740.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-07-0-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 242}, script: scripts/gen/grove.js}
+  rotation: {yaw: 232}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Reconstruct 3/9, mark: gla7_reconstruct_the_nine, quest: GLA-07, title: Reconstruct the nine clauses, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-07-0-3:
+  feetPosition: {x: -44.9, y: {terrain: 0}, z: -3762.1}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-07-0-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 243}, script: scripts/gen/grove.js}
+  rotation: {yaw: 273}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Reconstruct 4/9, mark: gla7_reconstruct_the_nine, quest: GLA-07, title: Reconstruct the nine clauses, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-07-0-4:
+  feetPosition: {x: -37.3, y: {terrain: 0}, z: -3786.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-07-0-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 244}, script: scripts/gen/grove.js}
+  rotation: {yaw: 314}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Reconstruct 5/9, mark: gla7_reconstruct_the_nine, quest: GLA-07, title: Reconstruct the nine clauses, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-07-0-5:
+  feetPosition: {x: -11.4, y: {terrain: 0}, z: -3774.9}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-07-0-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 245}, script: scripts/gen/grove.js}
+  rotation: {yaw: 354}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Reconstruct 6/9, mark: gla7_reconstruct_the_nine, quest: GLA-07, title: Reconstruct the nine clauses, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-07-1-0:
+  feetPosition: {x: -38.9, y: {terrain: 0}, z: -3748.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-07-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 243}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 248}
+  state: {after: gla7_reconstruct_the_nine, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Compare them to four cultural witnesses, mark: gla7_compare_them_to, quest: GLA-07, say: Only a council of living and surviving echoes can legitimately rewrite the breach rules., title: Compare them to four cultural witnesses, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-08-0-0:
+  feetPosition: {x: -20.7, y: {terrain: 0}, z: -3728.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-08-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 250}, script: scripts/gen/grove.js}
+  rotation: {yaw: 198}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Open 1/2, mark: gla8_open_two_prisoner, quest: GLA-08, title: Open two prisoner records, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-08-0-1:
+  feetPosition: {x: -41, y: {terrain: 0}, z: -3741.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-08-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 251}, script: scripts/gen/grove.js}
+  rotation: {yaw: 239}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Open 2/2, mark: gla8_open_two_prisoner, quest: GLA-08, title: Open two prisoner records, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-08-1-0:
+  feetPosition: {x: -44.1, y: {terrain: 0}, z: -3776.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-08-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: memorial, seed: 253}, script: scripts/gen/grove.js}
+  rotation: {yaw: 296}
+  state: {after: gla8_open_two_prisoner, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Release their names without revealing their private confessions, mark: gla8_release_their_names, quest: GLA-08, say: Public accountability and personal privacy must coexist., title: Release their names without revealing their private confessions, verb: Use}
+  tags: [quest-mark, spine, gla]
+qm-gla-09-0-0:
+  feetPosition: {x: -22.8, y: {terrain: 0}, z: -3754.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(1.6,2.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-gla-09-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 260}, script: scripts/gen/grove.js}
+  rotation: {yaw: 246}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(1.6,2.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Take the missing last page, mark: gla9_take_the_missing, quest: GLA-09, title: Take the missing last page, verb: Use}
+  tags: [quest-mark, spine, gla]

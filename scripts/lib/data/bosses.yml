@@ -307,3 +307,44 @@ memory_engine:
   height: 4.4
   sounds: {wake: /cdn/moodboard-scifi-neon/sfx-cosmic-throne-awakens-choir.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-reality-tear-explosion.mp3,
     die: /cdn/moodboard-scifi-neon/sfx-throne-shatters-silence.mp3}
+
+# ── open-world story elites (the level 31–60 spine): solo-able with the telegraphs read, every hero in the arena credited
+bellforged_sentinel:
+  name: The Bellforged Sentinel
+  hp: 6400
+  melee: {damage: 260, reach: 2.8, every: 2.2, windup: 0.6}
+  walk: 1.9
+  abilities:
+  - {kind: cleave, every: 9, first: 6, telegraph: 1.5, radius: 7, cone: 100, damage: 950, color: fire, call: The bell-head swings, step behind!}
+  - {kind: pools, every: 12, first: 10, telegraph: 1.6, radius: 3, damage: 800, color: fire, call: Molten slag spills}
+  enrage: {below: 20, speed: 1.3, line: The furnace in its chest roars}
+  tally: bellforged_sentinel
+  killText: The Sentinel's bell cracks. The testimony coil falls loose.
+  reward: {xp: 900, copper: 6000}
+  respawn: 180
+  milestone: 40
+  wakeLine: NO HAND TOUCHES THE COIL.
+  model: /cdn/model-humanoid-fantasy-bellforged-sentinel-bronze-bell-headed-golem-riveted-plates-furnace-glow-chest.glb
+  scale: 1.6
+  height: 3.2
+  sounds: {wake: /cdn/moodboard-painterly-fantasy/sfx-great-bronze-bell-toll.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-forge-bellows-rising.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-anvil-slam-impact.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-cracked-bell-falling.mp3}
+engine_manifestation:
+  name: Manifestation of the Memory Engine
+  hp: 9800
+  melee: {damage: 330, reach: 3.0, every: 2.2, windup: 0.6}
+  walk: 1.8
+  abilities:
+  - {kind: pools, every: 9, first: 5, telegraph: 1.5, radius: 3.2, damage: 1200, color: void, call: Forgotten names pool beneath you}
+  - {kind: sweep, every: 13, first: 11, telegraph: 1.7, radius: 6.5, damage: 1400, color: void, call: The engine exhales, get out!}
+  - {kind: nova, every: 20, first: 24, telegraph: 2.2, safe: 4.5, damage: 1600, color: void, from: 50, call: Stand close, inside its silence}
+  enrage: {below: 15, speed: 1.35, line: The siphons scream for fuel}
+  tally: engine_manifestation
+  killText: The manifestation unravels into a thousand freed names.
+  reward: {xp: 1400, copper: 9000}
+  respawn: 240
+  milestone: 52
+  wakeLine: YOU CARRY SO MANY MEMORIES. GIVE THEM.
+  model: /cdn/model-humanoid-fantasy-memory-engine-manifestation-clockwork-wraith-brass-gears-violet-glass-heart.glb
+  scale: 1.7
+  height: 3.4
+  sounds: {wake: /cdn/moodboard-scifi-neon/sfx-cosmic-hum-awakening.mp3, telegraph: /cdn/moodboard-scifi-neon/sfx-void-energy-rising.mp3, burst: /cdn/moodboard-scifi-neon/sfx-void-implosion-burst.mp3, die: /cdn/moodboard-scifi-neon/sfx-crystal-shatter-echo.mp3}

@@ -11,6 +11,132 @@ assembly-gate:
   state: {enterQuest: END-01, enterTally: assembly_entered, link: "+ninth-assembly#assembly-gate-in", minLevel: 60, name: Assembly of the Ninth}
   tags: [portal, instance-gate]
   ui: "<div face=\"top\" facing=\"player\" offset=\"0.5m\" width=\"1.6m\" class=\"flex flex-col items-center\"><div class=\"text-[56px] font-bold text-amber-100\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Assembly of the Ninth</div><div class=\"text-[34px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Raid · level 60+</div></div>"
+qm-vei-01-0-2:
+  feetPosition: {x: 55.7, y: {terrain: 0}, z: -7551.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-01-0-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest, seed: 272}, script: scripts/gen/props.js}
+  rotation: {yaw: 108}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Bring 3/4, mark: vei1_bring_four_consent, quest: VEI-01, title: Bring four consent tokens, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-01-0-3:
+  feetPosition: {x: 53.5, y: {terrain: 0}, z: -7541.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-01-0-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest, seed: 273}, script: scripts/gen/props.js}
+  rotation: {yaw: 128}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Bring 4/4, mark: vei1_bring_four_consent, quest: VEI-01, title: Bring four consent tokens, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-01-1-0:
+  feetPosition: {x: 53.4, y: {terrain: 0}, z: -7548.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-01-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone, seed: 273}, script: scripts/gen/grove.js}
+  rotation: {yaw: 116}
+  state: {after: vei1_bring_four_consent, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Open the gate without sacrificing a companion, mark: vei1_open_the_gate, quest: VEI-01, say: "The station was built for agreement, not brute force.", title: Open the gate without sacrificing a companion, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-02-0-1:
+  feetPosition: {x: 58.8, y: {terrain: 0}, z: -7548.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-02-0-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 281}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 111}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Visit 2/4, mark: vei2_visit_four_witness, quest: VEI-02, title: Visit four witness echoes, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-02-0-2:
+  feetPosition: {x: 55.3, y: {terrain: 0}, z: -7537.3}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-02-0-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 282}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 131}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Visit 3/4, mark: vei2_visit_four_witness, quest: VEI-02, title: Visit four witness echoes, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-02-0-3:
+  feetPosition: {x: 47.3, y: {terrain: 0}, z: -7527.3}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-02-0-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 283}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 152}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Visit 4/4, mark: vei2_visit_four_witness, quest: VEI-02, title: Visit four witness echoes, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-02-1-0:
+  feetPosition: {x: 51.3, y: {terrain: 0}, z: -7534.8}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-02-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: candles, seed: 283}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 139}
+  state: {after: vei2_visit_four_witness, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Complete their nonviolent tests, mark: vei2_complete_their_nonviolent, quest: VEI-02, say: Each clause addresses a failure of the original keepers., title: Complete their nonviolent tests, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-03-0-0:
+  feetPosition: {x: 61.7, y: {terrain: 0}, z: -7545.3}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-03-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: waystone, seed: 290}, script: scripts/gen/grove.js}
+  rotation: {yaw: 114}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Follow an invisible causeway, mark: vei3_follow_an_invisible, quest: VEI-03, title: Follow an invisible causeway, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-03-1-0:
+  feetPosition: {x: 33.9, y: {terrain: 0}, z: -7546.6}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-03-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lectern, seed: 293}, script: scripts/gen/grove.js}
+  rotation: {yaw: 163}
+  state: {after: vei3_follow_an_invisible, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Read the hidden Ninth inscription, mark: vei3_read_the_hidden, quest: VEI-03, say: Silence protected the vulnerable until leaders used it to hide guilt., title: Read the hidden Ninth inscription, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-04-0-0:
+  feetPosition: {x: 40.6, y: {terrain: 0}, z: -7548}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-04-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 300}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 138}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Witness the day Eda disappeared, mark: vei4_witness_the_day, quest: VEI-04, title: Witness the day Eda disappeared, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-05-0-0:
+  feetPosition: {x: 36.9, y: {terrain: 0}, z: -7538.1}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-05-0-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 310}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 162}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Bring Eda a free testimony form, mark: vei5_bring_eda_a, quest: VEI-05, title: Bring Eda a free testimony form, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-06-0-5:
+  feetPosition: {x: 42.5, y: {terrain: 0}, z: -7545.7}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-06-0-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 325}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 138}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Complete 6/9, mark: vei6_complete_nine_short, quest: VEI-06, title: Complete nine short witness checks, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-06-0-6:
+  feetPosition: {x: 37.8, y: {terrain: 0}, z: -7539.4}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-06-0-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: statue, seed: 326}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 159}
+  state: {burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Complete 7/9, mark: vei6_complete_nine_short, quest: VEI-06, title: Complete nine short witness checks, verb: Use}
+  tags: [quest-mark, spine, vei]
+qm-vei-08-1-0:
+  feetPosition: {x: 46.7, y: {terrain: 0}, z: -7544.2}
+  fx: {script: "fx\npop mote n=6 on=sphere(.5).c(1.3) life=1.5..2.5 v=up(.2..0.5)+sdir()*.15 size=.05..0.09 acc=curl(.4)+drag(.8) col=hdr(2.0,1.2,2.8) a=0>.2:.8>.7:.6>0 r=sprite(soft-disc,add)"}
+  id: qm-vei-08-1-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: candles, seed: 343}, script: scripts/gen/ashen.js}
+  rotation: {yaw: 133}
+  state: {after: vei8_declare_open_witnessing, burstAt: 1.2, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.0,1.2,2.8)>hdr(.4,.3,.3) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.85,.6>,10*(1>0),10)", gain: Confirm that no memory is forcibly erased, mark: vei8_confirm_that_no, quest: VEI-08, say: The ending preserves one canonical world state with two accountable community approaches., title: Confirm that no memory is forcibly erased, verb: Use}
+  tags: [quest-mark, spine, vei]
 roost-ninthveil:
   children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:52px;color:#f2b04a;text-shadow:0 0 12px #000\">VEILGATE AERIE</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
   feetPosition: {x: 30, y: 130, z: -7560}
@@ -19,6 +145,26 @@ roost-ninthveil:
   primitive: {kind: scripted, script: scripts/gen/roost.js}
   state: {roost: ninthveil}
   tags: [roost]
+vei-npc-oren:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 29.7, y: {terrain: 0}, z: -7549}
+  id: vei-npc-oren
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-grizzled-marshal-male-grey-beard-plate-pauldrons-red-tabard-round-shield.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 358}
+  state: {homeYaw: 358, idle: Idle, npcName: Marshal Oren Flint, who: vei-oren, yaw: 358}
+  tags: [npc, talker, townsfolk, quest-npc, spine, vei]
+vei-npc-witness:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 34.5, y: {terrain: 0}, z: -7550}
+  id: vei-npc-witness
+  layout: {maxExtents: {x: 0.4, y: 1.82, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-ninth-witness-tall-robed-figure-nine-small-lanterns-halo-veiled-face.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 24}
+  state: {homeYaw: 24, idle: Idle, npcName: The Ninth Witness, who: vei-witness, yaw: 24}
+  tags: [npc, talker, townsfolk, quest-npc, spine, vei]
 veilgate-blueprint:
   feetPosition: {x: 30, y: {terrain: 0}, z: -7605}
   fx: {script: "fx\npop motes rate=?mobile:10|22 on=box(4.2,5.5,.3).c(6) life=2.5..4.5 v=up(.25..0.6)+sdir()*.2 size=.04..0.09 acc=curl(.6)*.8+drag(.4) col=hdr(1.6,.6,3) a=0>.15:1>.7:.8>0 sz=$size*flick(3,.4) r=sprite(mote,add)\npop wisps rate=?mobile:3|6 on=box(3.5,5,.1).c(6) life=1.5..2.5 v=sdir()*.4 size=.8..1.6 acc=curl(.3)+drag(1) col=<.5,.2,1> a=0>.2:.25>.8:.15>0 sz=$size*(.6>1.4) rot=spin(.1) r=sprite(smoke-puff,add)\npop glow n=1 at=point().c(6) glo=.8+.2*flick(.6,.6) r=light(<.7,.35,1>,$glo*18,26)"}
