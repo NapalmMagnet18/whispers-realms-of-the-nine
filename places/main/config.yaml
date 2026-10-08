@@ -326,3 +326,25 @@ terrain:
       width: 11
       depth: 2.2
       bedMaterial: gravel
+    bridge-west:
+      kind: flatten
+      center:
+        x: -64
+        z: -9
+      height: 4.4
+      shape:
+        kind: circle
+        radius: 4
+      falloff: 6
+      material: dirt
+    bridge-east:
+      kind: flatten
+      center:
+        x: -37
+        z: -9
+      height: 4.4
+      shape:
+        kind: circle
+        radius: 4
+      falloff: 6
+      material: dirt
