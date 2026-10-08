@@ -1,0 +1,28 @@
+# Briar Wolves (SP-008, Q002's enemy), run by scripts/wolves.js on the briar-wolf-den.
+# Seconds, metres, hit points. A bite lands on the mod's player.state.health (HUD max 1000).
+hp: 60
+aggro: 14          # a living player this near is hunted (a snarl when it starts)
+dropAggro: 24      # a chased player farther than this is let go
+leash: 30          # farther than this from home: run home, heal to full, ignore players until there
+walk: 1.4
+run: 6.6           # the player walks 6 m/s: a wolf just outpaces a fleeing body, the leash ends it
+turn: 420          # degrees a second
+roamRadius: 7
+roamPause: [3, 8]  # seconds between wanders
+bite: { damage: 45, windup: 0.6, start: 1.8, reach: 2.0, cooldown: 1.5, stopAt: 1.35 }
+corpse: 3          # seconds a felled wolf lies before it is gone
+fadeAt: 1.6        # seconds after death the body starts to dissolve
+respawn: 20        # seconds from death to a fresh wolf at home
+reward: { xp: 25, gold: 3 }
+sounds:
+  growl: /cdn/moodboard-painterly-fantasy/sfx-wolf-growl.mp3
+  bite: /cdn/moodboard-painterly-fantasy/sfx-wolf-bite.mp3
+  yelp: /cdn/moodboard-painterly-fantasy/sfx-wolf-yelp.mp3
+# the pack: one row per wolf, all off the Briarwild road (-56,-10)->(-80,-18)->(-104,-26)
+pack:
+  - { id: briar-wolf-1, x: -72,  z: -34, yaw: 30,  scale: 1.0 }
+  - { id: briar-wolf-2, x: -86,  z: -5,  yaw: 160, scale: 0.94 }
+  - { id: briar-wolf-3, x: -96,  z: -45, yaw: -40, scale: 1.06 }
+  - { id: briar-wolf-4, x: -112, z: -11, yaw: 90,  scale: 0.97 }
+  - { id: briar-wolf-5, x: -118, z: -47, yaw: 200, scale: 1.03 }
+  - { id: briar-wolf-6, x: -124, z: -20, yaw: -110, scale: 0.92 }
