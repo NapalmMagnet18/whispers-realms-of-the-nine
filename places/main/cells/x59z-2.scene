@@ -1,0 +1,44 @@
+# spawn-scene v2 yaml x59z-2
+bastion-blueprint/gate:
+  feetPosition: {x: -46, y: 0, z: -30}
+  id: bastion-blueprint/gate
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: gatehouse}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 90}
+  tags: [bastion]
+bastion-blueprint/guardian-n:
+  feetPosition: {x: -55, y: 0, z: -41}
+  id: bastion-blueprint/guardian-n
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: guardian}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 90}
+  tags: [bastion]
+bastion-blueprint/keep:
+  children: [{feetPosition: {x: 0, y: 2, z: 3.2}, light: {color: oklch(0.75 0.18 50), distance: 14, intensity: 4, kind: point}, tags: [bastion]}, {feetPosition: {x: 0, y: 6, z: -1.5}, light: {color: oklch(0.8 0.12 60), distance: 16, intensity: 3, kind: point}, tags: [bastion]}]
+  feetPosition: {x: 26, y: 0, z: -28}
+  id: bastion-blueprint/keep
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {kind: keep}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 90}
+  tags: [bastion]
+bastion-blueprint/lavafall-e:
+  children: [{feetPosition: {x: 0, y: 2, z: -3}, light: {color: oklch(0.72 0.19 45), distance: 18, intensity: 4, kind: point}, tags: [bastion]}]
+  feetPosition: {x: 36, y: 0, z: -61}
+  id: bastion-blueprint/lavafall-e
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {h: 17, kind: lavafall, seed: 8, w: 12}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 180}
+  tags: [bastion]
+bastion-blueprint/lavafall-w:
+  children: [{feetPosition: {x: 0, y: 2, z: -3}, light: {color: oklch(0.72 0.19 45), distance: 18, intensity: 4, kind: point}, tags: [bastion]}]
+  feetPosition: {x: 8, y: 0, z: -62}
+  id: bastion-blueprint/lavafall-w
+  parent: bastion-blueprint
+  physics: static
+  primitive: {kind: scripted, params: {h: 20, kind: lavafall, seed: 3, w: 14}, script: scripts/gen/ashfall.js, seed: 1}
+  rotation: {yaw: 180}
+  tags: [bastion]

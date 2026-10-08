@@ -391,3 +391,5 @@ terrain:
     veilgate-arch: {center: {x: 30, z: -7605}, falloff: 10, height: 144, kind: flatten, shape: {kind: circle, radius: 9}}
     veilgate-tower: {center: {x: 52, z: -7562}, falloff: 6, height: 127, kind: flatten, shape: {kind: circle, radius: 4.5}}
     veilgate-path: {grade: true, kind: path, material: gravel, maxGrade: 0.28, noise: 0.3, points: [[0, -7560], [8, -7572], [18, -7588], [30, -7597], [30, -7618]], width: 3.4}
+    bastion-court: {center: {x: 7560, z: -170}, falloff: 16, height: 25, kind: flatten, material: dirt, shape: {kind: circle, radius: 58}}
+    bastion-clear: {center: {x: 7560, z: -170}, kind: clear-scatter, shape: {kind: circle, radius: 66}}
