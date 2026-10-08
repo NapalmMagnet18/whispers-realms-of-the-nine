@@ -51,3 +51,4 @@ Regions are ground, roads and landmarks only: no NPCs, quests or enemies there y
 - MAR-08's choice (display vs archive the plaque) is a personal questFlag, never shared world state.
 
 - 2026-10-08: Thren origin THR-01..08 built in Rootwake Glade around Thornhollow (-720,70) for Briarkin (raceIndex 1), from the campaign bible. Origin chains are now race-locked (quest `race:` field): MAR-* Marchborn only, THR-* Briarkin only. Q001 waits on MAR-08 for Marchborn and THR-08 for Briarkin; other peoples start at Q001. Wolf dens may carry their own pack and tally key (THR-03 bramble_beast).
+- 2026-10-08: Kharic origin KHA-01..08 (campaign bible) stands at Cinderhold as the Emberstone Cradle, race 2 (Emberforged) only; Q001's origin gate now waits on KHA-08 for Emberforged. Givers: Yurra Flint-Eye, Foreman Kiv, Dren, Mira (cradle-npc-*). KHA-06 uses a second scavenger camp (kha-scav-camp, tallyKey tunnel_scavenger). Synthetic chain harness passes; not yet played live.
