@@ -1,4 +1,18 @@
 # spawn-scene v2 yaml x1z-2
+ashen-bones-2:
+  feetPosition: {x: 113.5, y: 5, z: -211}
+  id: ashen-bones-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: bones}, script: scripts/gen/ashen.js, seed: 71}
+  rotation: {yaw: 110}
+  tags: [ashen]
+ashen-candles-2:
+  feetPosition: {x: 129, y: 5, z: -205.6}
+  id: ashen-candles-2
+  physics: none
+  primitive: {kind: scripted, params: {kind: candles}, script: scripts/gen/ashen.js, seed: 81}
+  rotation: {yaw: 180}
+  tags: [ashen]
 ashen-fence-02:
   feetPosition: {x: 91.06609043731801, y: 4.600254438467007, z: -195.86905351977015}
   id: ashen-fence-02
@@ -188,3 +202,108 @@ ashen-rack:
   model: {id: /cdn/value.2d96b58403d6647bebd2140268afc438fb02fe3c180aa57e1631a361dd5bd160.glb, materials: {wood: {color: "#a07a58", roughness: 0.8, texture: cdn/texture-dark-oak-wood-grain.png}}, parts: {wood: {color: "#5a4030", roughness: 0.8, texture: cdn/texture-dark-oak-wood-grain.png}}}
   physics: static
   tags: [ashen-close, display]
+ashen-tomb-12:
+  feetPosition: {x: 107.91416397025537, y: 5, z: -207.12307595900404}
+  id: ashen-tomb-12
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: obelisk}, script: scripts/gen/ashen.js, seed: 212}
+  rotation: {yaw: 185.24714038485993}
+  tags: [ashen]
+ashen-tomb-13:
+  feetPosition: {x: 115.06884483409526, y: 5, z: -206.86243668047825}
+  id: ashen-tomb-13
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: chest}, script: scripts/gen/ashen.js, seed: 213}
+  rotation: {yaw: 184.5342240419864}
+  tags: [ashen]
+ashen-tomb-14:
+  feetPosition: {x: 121.47034736651477, y: 5, z: -207.13590549306753}
+  id: ashen-tomb-14
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: rounded}, script: scripts/gen/ashen.js, seed: 214}
+  rotation: {yaw: 180.72756027929836}
+  tags: [ashen]
+ashen-tomb-15:
+  feetPosition: {x: 129.01056141676872, y: 5, z: -207.04713418397452}
+  id: ashen-tomb-15
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: rounded}, script: scripts/gen/ashen.js, seed: 215}
+  rotation: {yaw: 176.3153988003337}
+  tags: [ashen]
+ashen-tomb-16:
+  feetPosition: {x: 136.49076372081916, y: 5, z: -207.26707209626542}
+  id: ashen-tomb-16
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: sunk}, script: scripts/gen/ashen.js, seed: 216}
+  rotation: {yaw: 178.38556134159936}
+  tags: [ashen]
+ashen-tomb-17:
+  feetPosition: {x: 142.81294682603934, y: 5, z: -206.90134737854885}
+  id: ashen-tomb-17
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: cracked}, script: scripts/gen/ashen.js, seed: 217}
+  rotation: {yaw: 185.0921745854859}
+  tags: [ashen]
+ashen-tomb-18:
+  feetPosition: {x: 111.01782582617264, y: 5, z: -213.20066975825497}
+  id: ashen-tomb-18
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: obelisk}, script: scripts/gen/ashen.js, seed: 218}
+  rotation: {yaw: 178.86746017302733}
+  tags: [ashen]
+ashen-tomb-19:
+  feetPosition: {x: 117.74031280704789, y: 5, z: -213.081325973096}
+  id: ashen-tomb-19
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: obelisk}, script: scripts/gen/ashen.js, seed: 219}
+  rotation: {yaw: 179.08740351399751}
+  tags: [ashen]
+ashen-tomb-20:
+  feetPosition: {x: 124.7990859756242, y: 5, z: -212.9810038420749}
+  id: ashen-tomb-20
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: chest}, script: scripts/gen/ashen.js, seed: 220}
+  rotation: {yaw: 181.36852494597832}
+  tags: [ashen]
+ashen-tomb-21:
+  feetPosition: {x: 131.67987670576196, y: 5, z: -212.75610312952477}
+  id: ashen-tomb-21
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: rounded}, script: scripts/gen/ashen.js, seed: 221}
+  rotation: {yaw: 179.4940415385617}
+  tags: [ashen]
+ashen-tomb-22:
+  feetPosition: {x: 139.43561386067216, y: 5, z: -212.91892184150356}
+  id: ashen-tomb-22
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: rounded}, script: scripts/gen/ashen.js, seed: 222}
+  rotation: {yaw: 181.61219699662746}
+  tags: [ashen]
+ashen-tomb-23:
+  feetPosition: {x: 146.01949223178414, y: 5, z: -212.99703020187889}
+  id: ashen-tomb-23
+  physics: static
+  primitive: {kind: scripted, params: {kind: tomb, style: sunk}, script: scripts/gen/ashen.js, seed: 223}
+  rotation: {yaw: 182.26794043382068}
+  tags: [ashen]
+ashen-tree-1:
+  feetPosition: {x: 100, y: 5, z: -205}
+  id: ashen-tree-1
+  physics: static
+  primitive: {kind: scripted, params: {h: 6.5, kind: deadtree}, script: scripts/gen/ashen.js, seed: 31}
+  rotation: {yaw: 0}
+  tags: [ashen]
+ashen-tree-2:
+  feetPosition: {x: 122, y: 5, z: -219}
+  id: ashen-tree-2
+  physics: static
+  primitive: {kind: scripted, params: {h: 7.5, kind: deadtree}, script: scripts/gen/ashen.js, seed: 44}
+  rotation: {yaw: 67}
+  tags: [ashen]
+ashen-tree-3:
+  feetPosition: {x: 156, y: 5, z: -205}
+  id: ashen-tree-3
+  physics: static
+  primitive: {kind: scripted, params: {h: 6, kind: deadtree}, script: scripts/gen/ashen.js, seed: 57}
+  rotation: {yaw: 134}
+  tags: [ashen]
