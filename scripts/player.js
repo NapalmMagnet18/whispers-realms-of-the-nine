@@ -1,3 +1,4 @@
+import { raycast } from 'builtin/physics'
 // The player's own movement: WASD relative to the camera's aim, jump, gravity: on the
 // character controller. A body is three writes: feetPosition puts it there, velocity asks the
 // controller to take it there (held until the next write: it slides, steps and grounds), forces
@@ -14,8 +15,18 @@ const STEPS = {
   hard: ['/cdn/sfx-footstep-hard-surface-fvkz5mig.mp3', '/cdn/sfx-footstep-hard-surface-step-fodr77wl.mp3', '/cdn/footstep-04-hard-surface-step-5xkxucmi.mp3', '/cdn/footstep-hard-surface-walk-unyuz2k7.mp3'],
   gravel: ['/cdn/footstep-07-gravel-walk-3xm4nwid.mp3'],
   soft: ['/cdn/sfx-footstep-dirt-walk-9iixa3ms.mp3', '/cdn/sfx-footstep-walking-movement-po5miq4i.mp3', '/cdn/sfx-footstep-walking-movement-shoe-plqtyode.mp3'],
+  grass: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-thick-grass-soft-swish.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-thick-grass-soft-swish-2.mp3'],
+  forest: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-forest-floor-pine-needles-twig-crackle.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-forest-floor-dry-leaves-crunch.mp3'],
+  snow: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-crunching-into-fresh-packed-snow.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-crunching-into-fresh-packed-snow-2.mp3'],
+  mud: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-squelching-in-wet-marsh-mud-suck.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-squelching-in-wet-marsh-mud-splash.mp3'],
+  sand: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-dry-sand-soft-hiss-crunch.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-dry-sand-soft-hiss-crunch-2.mp3'],
+  ash: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-brittle-volcanic-ash-cinders-crackle.mp3'],
+  crystal: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-crystal-rock-glassy-clink-crunch.mp3'],
+  wood: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-hollow-wooden-plank-bridge-creak-thump.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-hollow-wooden-dock-boards-knock.mp3'],
 }
-const HARD = { cobble: 1, rock: 1, redrock: 1 }
+const HARD = { cobble: 1, rock: 1, redrock: 1, pathrock: 1, desertrock: 1 }
+const BY_MAT = { grass: 'grass', forest: 'forest', snow: 'snow', mud: 'mud', sand: 'sand', blight: 'ash', ashrock: 'ash', veil: 'crystal', gravel: 'gravel', dirt: 'soft' }
+const WOOD = /bridge|dock|boardwalk|pier|plank|deck|stilt|jetty|walkway|floor-wood|wharf/i
 function footstep(ctx, w, speed, dt) {
   w.stepT = (w.stepT ?? 0) - dt
   if (w.stepT > 0) return
@@ -25,7 +36,11 @@ function footstep(ctx, w, speed, dt) {
   const h = t?.heightAt?.(p.x, p.z)
   let mat = t?.materialAt?.(p.x, p.z)
   if (mat && typeof mat === 'object') mat = mat.id
-  const set = h == null || p.y > h + 0.35 ? STEPS.hard : HARD[mat] ? STEPS.hard : mat === 'gravel' ? STEPS.gravel : STEPS.soft
+  let set
+  if (h == null || p.y > h + 0.35) { // on something built: wood if the thing underfoot is a deck, else stone
+    const r = raycast(ctx, { x: p.x, y: p.y + 0.3, z: p.z }, { x: 0, y: -1, z: 0 }, { distance: 1, physicsOnly: true })
+    set = r?.id && WOOD.test(String(r.id)) ? STEPS.wood : STEPS.hard
+  } else set = HARD[mat] ? STEPS.hard : STEPS[BY_MAT[mat]] || STEPS.soft
   w.stepI = ((w.stepI ?? 0) + 1) % set.length
   ctx.emit('playSound', { clip: set[w.stepI], position: p, volume: 0.16, pitch: 0.92 + ctx.random() * 0.16, maxDistance: 18 }, { audience: { nearby: p, radius: 18 } })
 }

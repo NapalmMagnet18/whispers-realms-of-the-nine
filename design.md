@@ -132,3 +132,4 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Sourced loops on 120 placed objects (braziers/fires crackle 0.2/14m, forges bellows+anvil 0.24/24m, wells/fountains 0.16/12m, shrines/waystones hum 0.12/10m), one per cluster. Gear drop sound per tier (gear.yml tiers.*.sound).
 - 2026-10-08: Boss wake lines voiced (boss-voices.yml, one throat per boss, Voice bus, boss.js on wake). Homecoming bosses lampless_reeve/hollowsong/gharn/merrow/star got sound sets.
 - 2026-10-08: Equip sound per gear slot (EQUIP_SND in mmorpg player.js uiSound); quest turn-in brass fanfare.
+- 2026-10-08: Footsteps per terrain material (snow, mud, sand, ash, crystal, grass, forest) and wood on decks/bridges/docks via a short down-raycast id match (scripts/player.js).
