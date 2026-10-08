@@ -1,0 +1,347 @@
+# spawn-scene v2 yaml x0z-1
+assembly-amb-2:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-ethereal-void-hum-distant-whispers-soft-chimes-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -81}
+  id: assembly-amb-2
+  tags: [ambience]
+assembly-amb-3:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-ethereal-void-hum-distant-whispers-soft-chimes-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -125}
+  id: assembly-amb-3
+  tags: [ambience]
+assembly-brazier-2-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 13.6, y: 0, z: -73}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-2-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-2-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -13.6, y: 0, z: -73}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-2-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-2-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 13.6, y: 0, z: -85}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-2-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-2-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -13.6, y: 0, z: -85}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-2-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-2-4-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 13.6, y: 0, z: -97}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-2-4-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-2-4-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -13.6, y: 0, z: -97}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-2-4-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-3-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 17.6, y: 0, z: -113}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-3-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-3-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -17.6, y: 0, z: -113}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-3-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-3-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 17.6, y: 0, z: -125}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-3-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-3-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -17.6, y: 0, z: -125}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-3-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-3-4-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 17.6, y: 0, z: -137}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-3-4-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-3-4-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -17.6, y: 0, z: -137}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-3-4-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-dais-3:
+  feetPosition: {x: 0, y: 0, z: -129}
+  fx: {script: "fx\npop names rate=14 on=disc(8) life=2..4 v=up(.4..1) size=.05..0.1 acc=curl(.3)+vortex(.4) col=hdr(2.2,1.6,3) a=0>.2:1>.7:.8>0 r=sprite(soft-disc,add)"}
+  id: assembly-dais-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: dais, layout: ninth-assembly, r: 8}, script: scripts/gen/instance.js}
+assembly-light-2:
+  feetPosition: {x: 0, y: 14.5, z: -81}
+  id: assembly-light-2
+  light: {color: oklch(0.78 0.14 300), distance: 40, intensity: 42, kind: point}
+assembly-light-3:
+  feetPosition: {x: 0, y: 20.5, z: -125}
+  id: assembly-light-3
+  light: {color: oklch(0.78 0.14 300), distance: 48, intensity: 50, kind: point}
+assembly-pillar-2-0-e:
+  feetPosition: {x: 11.8, y: 0, z: -70}
+  id: assembly-pillar-2-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-0-w:
+  feetPosition: {x: -11.8, y: 0, z: -70}
+  id: assembly-pillar-2-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-1-e:
+  feetPosition: {x: 11.8, y: 0, z: -76}
+  id: assembly-pillar-2-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-1-w:
+  feetPosition: {x: -11.8, y: 0, z: -76}
+  id: assembly-pillar-2-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-2-e:
+  feetPosition: {x: 11.8, y: 0, z: -82}
+  id: assembly-pillar-2-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-2-w:
+  feetPosition: {x: -11.8, y: 0, z: -82}
+  id: assembly-pillar-2-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-3-e:
+  feetPosition: {x: 11.8, y: 0, z: -88}
+  id: assembly-pillar-2-3-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-3-w:
+  feetPosition: {x: -11.8, y: 0, z: -88}
+  id: assembly-pillar-2-3-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-4-e:
+  feetPosition: {x: 11.8, y: 0, z: -94}
+  id: assembly-pillar-2-4-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-2-4-w:
+  feetPosition: {x: -11.8, y: 0, z: -94}
+  id: assembly-pillar-2-4-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 16, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-0-e:
+  feetPosition: {x: 15.8, y: 0, z: -110}
+  id: assembly-pillar-3-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-0-w:
+  feetPosition: {x: -15.8, y: 0, z: -110}
+  id: assembly-pillar-3-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-1-e:
+  feetPosition: {x: 15.8, y: 0, z: -116}
+  id: assembly-pillar-3-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-1-w:
+  feetPosition: {x: -15.8, y: 0, z: -116}
+  id: assembly-pillar-3-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-2-e:
+  feetPosition: {x: 15.8, y: 0, z: -122}
+  id: assembly-pillar-3-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-2-w:
+  feetPosition: {x: -15.8, y: 0, z: -122}
+  id: assembly-pillar-3-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-3-e:
+  feetPosition: {x: 15.8, y: 0, z: -128}
+  id: assembly-pillar-3-3-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-3-w:
+  feetPosition: {x: -15.8, y: 0, z: -128}
+  id: assembly-pillar-3-3-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-4-e:
+  feetPosition: {x: 15.8, y: 0, z: -134}
+  id: assembly-pillar-3-4-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-4-w:
+  feetPosition: {x: -15.8, y: 0, z: -134}
+  id: assembly-pillar-3-4-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-5-e:
+  feetPosition: {x: 15.8, y: 0, z: -140}
+  id: assembly-pillar-3-5-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-3-5-w:
+  feetPosition: {x: -15.8, y: 0, z: -140}
+  id: assembly-pillar-3-5-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 22, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+memory-engine:
+  behavior: scripts/boss.js
+  feetPosition: {x: 0, y: 0.05, z: -130}
+  id: memory-engine
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-memory-engine-hovering-colossus-of-brass-rings-violet-glass-and-thousands-of-tiny-floating-names-a-face-in-the-core.glb
+  physics: character
+  rotation: 180
+  scale: 2.2
+  state: {arena: {r: 16, x: 0, z: -125}, boss: memory_engine, home: {x: 0, z: -130}, hp: 13000, hpPct: 100, maxHp: 13000, mode: asleep, radius: 0.7, title: The Memory Engine, unhurt: true, yaw: 180}
+  tags: [enemy, boss, ninth-assembly]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[60px] font-bold text-amber-100 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Memory Engine</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+qm-rac-ledger:
+  feetPosition: {x: 0, y: 0.05, z: -112}
+  fx: {params: {b: 1, g: 2.2, r: 2.6}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-rac-ledger
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {after: victim_heard, burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Restitution recorded, mark: restitution, quest: RAC-04, say: "You write the promises in plain ink, where anyone can read them.", title: The open ledger of restitution, verb: Record}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-0:
+  feetPosition: {x: 11, y: 0.05, z: -81}
+  id: qm-rac-seat-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 270
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-1:
+  feetPosition: {x: 8.43, y: 0.05, z: -73.93}
+  id: qm-rac-seat-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 310
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-2:
+  feetPosition: {x: 1.91, y: 0.05, z: -70.17}
+  id: qm-rac-seat-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 350
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-3:
+  feetPosition: {x: -5.5, y: 0.05, z: -71.47}
+  id: qm-rac-seat-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 30
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-4:
+  feetPosition: {x: -10.34, y: 0.05, z: -77.24}
+  id: qm-rac-seat-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 70
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-5:
+  feetPosition: {x: -10.34, y: 0.05, z: -84.76}
+  id: qm-rac-seat-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 110
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-6:
+  feetPosition: {x: -5.5, y: 0.05, z: -90.53}
+  id: qm-rac-seat-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 150
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-7:
+  feetPosition: {x: 1.91, y: 0.05, z: -91.83}
+  id: qm-rac-seat-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 190
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-seat-8:
+  feetPosition: {x: 8.43, y: 0.05, z: -88.07}
+  id: qm-rac-seat-8
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 230
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seat taken, mark: seat_station, quest: RAC-02, say: "You sit. For a breath the seat remembers everyone who sat here before, and none of them were kings.", title: One of the nine seats, verb: Sit}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-victim-0:
+  feetPosition: {x: -10, y: 0.9, z: -116}
+  fx: {params: {b: 2.6, g: 1.8, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-victim-0
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Witness heard, mark: victim_heard, quest: RAC-04, say: "\"It took my mother's face from me for eleven years. I have it back. I wanted someone to know.\"", title: A freed witness, verb: Listen}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-victim-1:
+  feetPosition: {x: 10, y: 0.9, z: -116}
+  fx: {params: {b: 2.6, g: 1.8, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-victim-1
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Witness heard, mark: victim_heard, quest: RAC-04, say: "\"It took my mother's face from me for eleven years. I have it back. I wanted someone to know.\"", title: A freed witness, verb: Listen}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-victim-2:
+  feetPosition: {x: 0, y: 0.9, z: -138}
+  fx: {params: {b: 2.6, g: 1.8, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-victim-2
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Witness heard, mark: victim_heard, quest: RAC-04, say: "\"It took my mother's face from me for eleven years. I have it back. I wanted someone to know.\"", title: A freed witness, verb: Listen}
+  tags: [quest-mark, ninth-assembly]
+seal-keeper:
+  behavior: scripts/boss.js
+  feetPosition: {x: 0, y: 0.05, z: -84}
+  id: seal-keeper
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-seal-keeper-armored-warden-eight-glowing-violet-seals-on-chains-around-body-faceless-helm.glb
+  physics: character
+  rotation: 180
+  scale: 1.9
+  state: {arena: {r: 10, x: 0, z: -81}, boss: seal_keeper, home: {x: 0, z: -84}, hp: 8000, hpPct: 100, maxHp: 8000, mode: asleep, radius: 0.7, title: The First Seal-Keeper, unhurt: true, yaw: 180}
+  tags: [enemy, boss, ninth-assembly]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[60px] font-bold text-amber-100 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The First Seal-Keeper</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"

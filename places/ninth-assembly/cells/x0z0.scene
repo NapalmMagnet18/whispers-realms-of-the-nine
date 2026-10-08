@@ -1,0 +1,270 @@
+# spawn-scene v2 yaml x0z0
+assembly-amb-0:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-ethereal-void-hum-distant-whispers-soft-chimes-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -8}
+  id: assembly-amb-0
+  tags: [ambience]
+assembly-amb-1:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-ethereal-void-hum-distant-whispers-soft-chimes-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -41}
+  id: assembly-amb-1
+  tags: [ambience]
+assembly-brazier-0-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 6.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-0-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-0-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -6.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-0-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-1-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 10.6, y: 0, z: -33}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-1-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -10.6, y: 0, z: -33}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-1-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 10.6, y: 0, z: -45}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-1-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -10.6, y: 0, z: -45}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-1-4-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 10.6, y: 0, z: -57}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-1-4-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-brazier-1-4-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.86 0.12 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -10.6, y: 0, z: -57}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: assembly-brazier-1-4-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-gate-in:
+  behavior: scripts/instance-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.7 0.02 70), roughness: 0.95}, physics: static, primitive: {depth: 0.5, height: 3.7, kind: archway, thickness: 0.4, width: 3.3}}]
+  feetPosition: {x: 0, y: 0.05, z: -0.75}
+  id: assembly-gate-in
+  material: {kind: scripted, script: engine/portal-glass, view: {link: "+main#assembly-gate", sound: 1, spill: 2}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 0
+  state: {link: "+main#assembly-gate", name: The way out}
+  tags: [portal]
+assembly-halls:
+  feetPosition: {x: 0, y: 0, z: 0}
+  id: assembly-halls
+  physics: static
+  primitive: {kind: scripted, params: {kind: halls, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-light-0:
+  feetPosition: {x: 0, y: 8.5, z: -8}
+  id: assembly-light-0
+  light: {color: oklch(0.78 0.14 300), distance: 26, intensity: 28, kind: point}
+assembly-light-1:
+  feetPosition: {x: 0, y: 12.5, z: -41}
+  id: assembly-light-1
+  light: {color: oklch(0.78 0.14 300), distance: 34, intensity: 36, kind: point}
+assembly-npc-elric:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 0, y: 0.05, z: -13.5}
+  id: assembly-npc-elric
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-gatekeeper-male-old-guard-captain-steel-armor-cloak.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 180}
+  state: {homeYaw: 180, idle: Idle, npcName: Gatekeeper Elric, who: elric-ninth-assembly, yaw: 180}
+  tags: [npc, talker, townsfolk, quest-npc, ninth-assembly]
+assembly-npc-leth:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 5, y: 0.05, z: -5}
+  id: assembly-npc-leth
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-elderly-astronomer-mage-male-long-white-hair-indigo-robe-brass-spectacles.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 210}
+  state: {homeYaw: 210, idle: Idle, npcName: Magister Leth Sen, who: leth-ninth-assembly, yaw: 210}
+  tags: [npc, talker, townsfolk, quest-npc, ninth-assembly]
+assembly-npc-mareth:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 5.5, y: 0.05, z: -11}
+  id: assembly-npc-mareth
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-regent-female-stern-noblewoman-black-velvet-gown-silver-chain-of-office.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 240}
+  state: {homeYaw: 240, idle: Idle, npcName: Regent Mareth Sable, who: mareth-ninth-assembly, yaw: 240}
+  tags: [npc, talker, townsfolk, quest-npc, ninth-assembly]
+assembly-npc-vale:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -5.5, y: 0.05, z: -11}
+  id: assembly-npc-vale
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-priestess-female-sister-white-robes-blue-sash.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {homeYaw: 120, idle: Idle, npcName: Sister Vale, who: vale-ninth-assembly, yaw: 120}
+  tags: [npc, talker, townsfolk, quest-npc, ninth-assembly]
+assembly-npc-witness:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -5, y: 0.05, z: -5}
+  id: assembly-npc-witness
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-ninth-witness-ageless-robed-figure-pale-grey-hood-silver-mask-calm.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 150}
+  state: {homeYaw: 150, idle: Idle, npcName: The Ninth Witness, who: witness-ninth-assembly, yaw: 150}
+  tags: [npc, talker, townsfolk, quest-npc, ninth-assembly]
+assembly-pillar-1-0-e:
+  feetPosition: {x: 8.8, y: 0, z: -30}
+  id: assembly-pillar-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-0-w:
+  feetPosition: {x: -8.8, y: 0, z: -30}
+  id: assembly-pillar-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-1-e:
+  feetPosition: {x: 8.8, y: 0, z: -36}
+  id: assembly-pillar-1-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-1-w:
+  feetPosition: {x: -8.8, y: 0, z: -36}
+  id: assembly-pillar-1-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-2-e:
+  feetPosition: {x: 8.8, y: 0, z: -42}
+  id: assembly-pillar-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-2-w:
+  feetPosition: {x: -8.8, y: 0, z: -42}
+  id: assembly-pillar-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-3-e:
+  feetPosition: {x: 8.8, y: 0, z: -48}
+  id: assembly-pillar-1-3-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-3-w:
+  feetPosition: {x: -8.8, y: 0, z: -48}
+  id: assembly-pillar-1-3-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-4-e:
+  feetPosition: {x: 8.8, y: 0, z: -54}
+  id: assembly-pillar-1-4-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+assembly-pillar-1-4-w:
+  feetPosition: {x: -8.8, y: 0, z: -54}
+  id: assembly-pillar-1-4-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: ninth-assembly}, script: scripts/gen/instance.js}
+qm-rac-ceremony:
+  feetPosition: {x: 0, y: 0.05, z: -10}
+  fx: {params: {b: 1, g: 2.2, r: 2.6}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-rac-ceremony
+  physics: static
+  primitive: {kind: scripted, params: {kind: dais, layout: ninth-assembly}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Ceremony attended, mark: ceremony, quest: RAC-05, say: "Nine bells ring once each, softly. Nobody on the steps is asked for their name.", title: The remembrance ceremony, verb: Attend}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-crest:
+  feetPosition: {x: 2, y: 0.05, z: -12}
+  fx: {params: {b: 1, g: 2.2, r: 2.6}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-rac-crest
+  rotation: 0
+  state: {after: ceremony, burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Crest chosen, mark: crest_chosen, quest: RAC-05, say: "You choose the plain lantern crest. It is yours, and it costs no one anything.", title: The commemorative crests, verb: Choose}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-0:
+  feetPosition: {x: -8, y: 0.9, z: -31}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-0
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-1:
+  feetPosition: {x: 0, y: 0.9, z: -31}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-1
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-2:
+  feetPosition: {x: 8, y: 0.9, z: -31}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-2
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-3:
+  feetPosition: {x: -8, y: 0.9, z: -39}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-3
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-4:
+  feetPosition: {x: 0, y: 0.9, z: -39}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-4
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-5:
+  feetPosition: {x: 8, y: 0.9, z: -39}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-5
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-6:
+  feetPosition: {x: -8, y: 0.9, z: -47}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-6
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-7:
+  feetPosition: {x: 0, y: 0.9, z: -47}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-7
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]
+qm-rac-delegate-8:
+  feetPosition: {x: 8, y: 0.9, z: -47}
+  fx: {params: {b: 2.6, g: 1.6, r: 2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-rac-delegate-8
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Delegate invited, mark: delegate_invited, quest: RAC-01, say: The delegate bows and walks toward the seats. One more voice in the room., title: A waiting delegate, verb: Invite}
+  tags: [quest-mark, ninth-assembly]

@@ -1,0 +1,75 @@
+# spawn-scene v2 yaml x0z-1
+qm-drt-kernel:
+  feetPosition: {x: 0, y: 0.05, z: -79}
+  fx: {params: {b: 0.8, g: 2.6, r: 1.6}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-kernel
+  physics: static
+  primitive: {kind: scripted, params: {kind: dais, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Kernel planted, mark: archive_kernel, quest: DRT-04, say: "You set the kernel in the open soil of the glade. It roots at once, and remembers nothing it wasn't given freely.", title: The archive kernel, verb: Plant}
+  tags: [quest-mark, root-archive]
+qm-drt-thorn-2:
+  feetPosition: {x: -0.12, y: 0.05, z: -78}
+  fx: {params: {b: 1, g: 2.4, r: 2.4}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-thorn-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Thorn disabled, mark: bellglass_thorn, quest: DRT-03, say: The thorn rings and cracks. The Custodian flinches as if the glass were its own., title: A bellglass thorn, verb: Shatter}
+  tags: [quest-mark, root-archive]
+root-amb-2:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-underground-roots-creaking-soft-dripping-distant-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -68}
+  id: root-amb-2
+  tags: [ambience]
+root-brazier-2-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 12.6, y: 0, z: -73}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-2-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-2-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -12.6, y: 0, z: -73}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-2-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-light-2:
+  feetPosition: {x: 0, y: 11.5, z: -68}
+  id: root-light-2
+  light: {color: oklch(0.82 0.13 110), distance: 38, intensity: 40, kind: point}
+root-pillar-2-2-e:
+  feetPosition: {x: 10.8, y: 0, z: -70}
+  id: root-pillar-2-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-2-2-w:
+  feetPosition: {x: -10.8, y: 0, z: -70}
+  id: root-pillar-2-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-2-3-e:
+  feetPosition: {x: 10.8, y: 0, z: -76}
+  id: root-pillar-2-3-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-2-3-w:
+  feetPosition: {x: -10.8, y: 0, z: -76}
+  id: root-pillar-2-3-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+thorn-custodian:
+  behavior: scripts/boss.js
+  feetPosition: {x: 0, y: 0.05, z: -72}
+  id: thorn-custodian
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-thorn-custodian-giant-guardian-of-living-briar-and-bellglass-thorns-amber-heart-glowing-through-bark.glb
+  physics: character
+  rotation: 180
+  scale: 1.9
+  state: {arena: {r: 12, x: 0, z: -68}, boss: thorn_custodian, home: {x: 0, z: -72}, hp: 2600, hpPct: 100, maxHp: 2600, mode: asleep, radius: 0.7, title: The Thorn Custodian, unhurt: true, yaw: 180}
+  tags: [enemy, boss, root-archive]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[60px] font-bold text-amber-100 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Thorn Custodian</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"

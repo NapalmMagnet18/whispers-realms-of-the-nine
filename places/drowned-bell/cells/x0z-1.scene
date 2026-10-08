@@ -1,0 +1,95 @@
+# spawn-scene v2 yaml x0z-1
+bell-amb-2:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-crypt-water-drips-echo-faint-stone-grind-distant-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -66}
+  id: bell-amb-2
+  tags: [ambience]
+bell-brazier-2-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 11.6, y: 0, z: -71}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-2-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-2-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -11.6, y: 0, z: -71}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-2-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-drowned-bell:
+  children: [{feetPosition: {x: 0, y: 1.5, z: 0}, id: glow, light: {color: oklch(0.75 0.13 190), distance: 16, intensity: 10, kind: point}}]
+  feetPosition: {x: 0, y: 3.6, z: -77}
+  id: bell-drowned-bell
+  physics: static
+  primitive: {kind: scripted, params: {kind: bell, layout: drowned-bell}, script: scripts/gen/instance.js}
+  rotation: 15
+bell-flood-2:
+  feetPosition: {x: 0, y: 0.14, z: -66}
+  id: bell-flood-2
+  material: {color: oklch(0.45 0.07 195), kind: water, opacity: 0.55, waveIntensity: 0.25}
+  primitive: {height: 27.6, kind: plane, width: 25.6}
+  rotation: {pitch: -90}
+bell-light-2:
+  feetPosition: {x: 0, y: 10.5, z: -66}
+  id: bell-light-2
+  light: {color: oklch(0.78 0.11 190), distance: 36, intensity: 38, kind: point}
+bell-pillar-2-2-e:
+  feetPosition: {x: 9.8, y: 0, z: -68}
+  id: bell-pillar-2-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-2-2-w:
+  feetPosition: {x: -9.8, y: 0, z: -68}
+  id: bell-pillar-2-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-2-3-e:
+  feetPosition: {x: 9.8, y: 0, z: -74}
+  id: bell-pillar-2-3-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-2-3-w:
+  feetPosition: {x: -9.8, y: 0, z: -74}
+  id: bell-pillar-2-3-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+choir-mother:
+  behavior: scripts/boss.js
+  feetPosition: {x: 0, y: 0.05, z: -70}
+  id: choir-mother
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-drowned-choir-mother-tall-pale-woman-flooded-robes-lantern-coral-crown.glb
+  physics: character
+  rotation: 180
+  scale: 1.45
+  state: {arena: {r: 12, x: 0, z: -66}, boss: choir_mother, home: {x: 0, z: -70}, hp: 2200, hpPct: 100, maxHp: 2200, mode: asleep, radius: 0.7, title: The Choirmother Projection, unhurt: true, yaw: 180}
+  tags: [enemy, boss, drowned-bell]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[60px] font-bold text-amber-100 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Choirmother Projection</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+qm-dsb-chord-0:
+  feetPosition: {x: 9, y: 0.05, z: -66}
+  fx: {params: {b: 2.6, g: 2.6, r: 1.2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-chord-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: drowned-bell}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Chord severed, mark: tether_chord, quest: DSB-03, say: The chord snaps with a sound like a bell struck underwater. Her song wavers., title: A tethering chord, verb: Sever}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-chord-2:
+  feetPosition: {x: -4.57, y: 0.05, z: -73.75}
+  fx: {params: {b: 2.6, g: 2.6, r: 1.2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-chord-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: drowned-bell}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Chord severed, mark: tether_chord, quest: DSB-03, say: The chord snaps with a sound like a bell struck underwater. Her song wavers., title: A tethering chord, verb: Sever}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-melody:
+  feetPosition: {x: 0, y: 0.05, z: -74.5}
+  fx: {params: {b: 2.6, g: 2.4, r: 1.4}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-dsb-melody
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Melody returned, mark: stolen_melody, quest: DSB-04, say: "You hum the four notes back into the bronze. The drowned bell answers, once, and the water goes still.", title: The bell's stolen melody, verb: Return}
+  tags: [quest-mark, drowned-bell]

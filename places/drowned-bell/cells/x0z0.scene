@@ -1,0 +1,270 @@
+# spawn-scene v2 yaml x0z0
+bell-amb-0:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-crypt-water-drips-echo-faint-stone-grind-distant-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -7}
+  id: bell-amb-0
+  tags: [ambience]
+bell-amb-1:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-crypt-water-drips-echo-faint-stone-grind-distant-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -33}
+  id: bell-amb-1
+  tags: [ambience]
+bell-brazier-0-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 5.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-0-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-0-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -5.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-0-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-1-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 7.6, y: 0, z: -29}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-1-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -7.6, y: 0, z: -29}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-1-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 7.6, y: 0, z: -41}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-1-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -7.6, y: 0, z: -41}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-2-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 11.6, y: 0, z: -59}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-2-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-brazier-2-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.82 0.12 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -11.6, y: 0, z: -59}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: bell-brazier-2-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-flood-1:
+  feetPosition: {x: 0, y: 0.14, z: -33}
+  id: bell-flood-1
+  material: {color: oklch(0.45 0.07 195), kind: water, opacity: 0.55, waveIntensity: 0.25}
+  primitive: {height: 21.6, kind: plane, width: 17.6}
+  rotation: {pitch: -90}
+bell-gate-in:
+  behavior: scripts/instance-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.7 0.02 70), roughness: 0.95}, physics: static, primitive: {depth: 0.5, height: 3.7, kind: archway, thickness: 0.4, width: 3.3}}]
+  feetPosition: {x: 0, y: 0.05, z: -0.75}
+  id: bell-gate-in
+  material: {kind: scripted, script: engine/portal-glass, view: {link: "+main#bell-gate", sound: 1, spill: 2}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 0
+  state: {link: "+main#bell-gate", name: The way out}
+  tags: [portal]
+bell-halls:
+  feetPosition: {x: 0, y: 0, z: 0}
+  id: bell-halls
+  physics: static
+  primitive: {kind: scripted, params: {kind: halls, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-light-0:
+  feetPosition: {x: 0, y: 4.5, z: -7}
+  id: bell-light-0
+  light: {color: oklch(0.78 0.11 190), distance: 24, intensity: 26, kind: point}
+bell-light-1:
+  feetPosition: {x: 0, y: 6.5, z: -33}
+  id: bell-light-1
+  light: {color: oklch(0.78 0.11 190), distance: 28, intensity: 30, kind: point}
+bell-npc-iona:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -6, y: 0.05, z: -40}
+  id: bell-npc-iona
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-reedkeeper-female-elder-grey-braids-green-cloak-reed-staff.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 120}
+  state: {homeYaw: 120, idle: Idle, npcName: Reedkeeper Iona Sedge, who: iona-drowned-bell, yaw: 120}
+  tags: [npc, talker, townsfolk, quest-npc, drowned-bell]
+bell-npc-kele:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 6, y: 0.05, z: -41}
+  id: bell-npc-kele
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-wisp-tender-female-young-reed-woven-shawl-glass-jar-lantern.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 240}
+  state: {homeYaw: 240, idle: Idle, npcName: Wisp Tender Kele, who: kele-drowned-bell, yaw: 240}
+  tags: [npc, talker, townsfolk, quest-npc, drowned-bell]
+bell-npc-pell:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 3.4, y: 0.05, z: -5}
+  id: bell-npc-pell
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-marsh-guide-male-weathered-oilskin-coat-wide-brim-hat-punt-pole.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Marsh Guide Pell, who: pell-drowned-bell, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, drowned-bell]
+bell-pillar-1-0-e:
+  feetPosition: {x: 5.8, y: 0, z: -26}
+  id: bell-pillar-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 8, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-1-0-w:
+  feetPosition: {x: -5.8, y: 0, z: -26}
+  id: bell-pillar-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 8, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-1-1-e:
+  feetPosition: {x: 5.8, y: 0, z: -32}
+  id: bell-pillar-1-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 8, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-1-1-w:
+  feetPosition: {x: -5.8, y: 0, z: -32}
+  id: bell-pillar-1-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 8, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-1-2-e:
+  feetPosition: {x: 5.8, y: 0, z: -38}
+  id: bell-pillar-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 8, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-1-2-w:
+  feetPosition: {x: -5.8, y: 0, z: -38}
+  id: bell-pillar-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 8, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-2-0-e:
+  feetPosition: {x: 9.8, y: 0, z: -56}
+  id: bell-pillar-2-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-2-0-w:
+  feetPosition: {x: -9.8, y: 0, z: -56}
+  id: bell-pillar-2-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-2-1-e:
+  feetPosition: {x: 9.8, y: 0, z: -62}
+  id: bell-pillar-2-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-pillar-2-1-w:
+  feetPosition: {x: -9.8, y: 0, z: -62}
+  id: bell-pillar-2-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 12, kind: pillar, layout: drowned-bell}, script: scripts/gen/instance.js}
+bell-sentry-a:
+  behavior: scripts/boss.js
+  feetPosition: {x: -4, y: 0.05, z: -31}
+  id: bell-sentry-a
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-reed-sentry-tall-guardian-woven-from-black-reeds-and-chapel-iron-glowing-teal-lantern-head.glb
+  physics: character
+  rotation: 0
+  scale: 1.5
+  state: {arena: {r: 8, x: 0, z: -33}, boss: reed_sentry, home: {x: -4, z: -31}, hp: 1100, hpPct: 100, maxHp: 1100, mode: asleep, radius: 0.55, title: Corrupted Reed Sentry, unhurt: true, yaw: 0}
+  tags: [enemy, elite, drowned-bell]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Corrupted Reed Sentry</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+bell-sentry-b:
+  behavior: scripts/boss.js
+  feetPosition: {x: 4, y: 0.05, z: -36}
+  id: bell-sentry-b
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-reed-sentry-tall-guardian-woven-from-black-reeds-and-chapel-iron-glowing-teal-lantern-head.glb
+  physics: character
+  rotation: 0
+  scale: 1.5
+  state: {arena: {r: 8, x: 0, z: -33}, boss: reed_sentry, home: {x: 4, z: -36}, hp: 1100, hpPct: 100, maxHp: 1100, mode: asleep, radius: 0.55, title: Corrupted Reed Sentry, unhurt: true, yaw: 0}
+  tags: [enemy, elite, drowned-bell]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Corrupted Reed Sentry</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+qm-dsb-air-0:
+  feetPosition: {x: -5, y: 0.05, z: -29}
+  fx: {params: {b: 2.2, g: 2.4, r: 1.6}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-air-0
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Air pocket opened, mark: air_pocket, quest: DSB-02, say: Stale air rushes up through the floodwater. The chamber breathes again., title: A sealed air bell, verb: Open}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-air-1:
+  feetPosition: {x: 5, y: 0.05, z: -36}
+  fx: {params: {b: 2.2, g: 2.4, r: 1.6}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-air-1
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Air pocket opened, mark: air_pocket, quest: DSB-02, say: Stale air rushes up through the floodwater. The chamber breathes again., title: A sealed air bell, verb: Open}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-air-2:
+  feetPosition: {x: -2, y: 0.05, z: -42}
+  fx: {params: {b: 2.2, g: 2.4, r: 1.6}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-air-2
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Air pocket opened, mark: air_pocket, quest: DSB-02, say: Stale air rushes up through the floodwater. The chamber breathes again., title: A sealed air bell, verb: Open}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-chord-1:
+  feetPosition: {x: -4.47, y: 0.05, z: -58.19}
+  fx: {params: {b: 2.6, g: 2.6, r: 1.2}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-chord-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: drowned-bell}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Chord severed, mark: tether_chord, quest: DSB-03, say: The chord snaps with a sound like a bell struck underwater. Her song wavers., title: A tethering chord, verb: Sever}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-drypath:
+  feetPosition: {x: 0, y: 0.05, z: -50}
+  id: qm-dsb-drypath
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {after: stolen_melody, burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Dry path opened, mark: dry_path, quest: DSB-04, say: "The sluice lifts. A dry stair rises out of the dark, all the way back to the chapel.", title: The dry path sluice, verb: Open}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-pump:
+  feetPosition: {x: -4.5, y: 0.05, z: -11}
+  id: qm-dsb-pump
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: drowned-bell}, script: scripts/gen/instance.js}
+  rotation: 90
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Pump gate opened, mark: pump_gate, quest: DSB-01, say: "The wheel groans a full turn. Somewhere below, water drains with a long sigh.", title: The pump gate wheel, verb: Turn}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-wisp-0:
+  feetPosition: {x: 0, y: 1.2, z: -16}
+  fx: {script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-wisp-0
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Wisp guided, mark: wisp_guided, quest: DSB-01, say: "The wisp brightens and drifts ahead of you, lighting the next step down.", title: A lost wisp, verb: Guide}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-wisp-1:
+  feetPosition: {x: 2, y: 1.2, z: -20}
+  fx: {script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-wisp-1
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Wisp guided, mark: wisp_guided, quest: DSB-01, say: "The wisp brightens and drifts ahead of you, lighting the next step down.", title: A lost wisp, verb: Guide}
+  tags: [quest-mark, drowned-bell]
+qm-dsb-wisp-2:
+  feetPosition: {x: -3, y: 1.2, z: -27}
+  fx: {script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-dsb-wisp-2
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Wisp guided, mark: wisp_guided, quest: DSB-01, say: "The wisp brightens and drifts ahead of you, lighting the next step down.", title: A lost wisp, verb: Guide}
+  tags: [quest-mark, drowned-bell]

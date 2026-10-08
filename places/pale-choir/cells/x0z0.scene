@@ -1,0 +1,293 @@
+# spawn-scene v2 yaml x0z0
+choir-amb-0:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-empty-cathedral-low-wind-distant-choir-hum-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -8}
+  id: choir-amb-0
+  tags: [ambience]
+choir-amb-1:
+  audio: {clip: /cdn/moodboard-gothic-horror/sfx-empty-cathedral-low-wind-distant-choir-hum-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -44}
+  id: choir-amb-1
+  tags: [ambience]
+choir-brazier-0-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 6.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-0-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-brazier-0-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -6.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-0-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-brazier-1-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 9.6, y: 0, z: -33}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-brazier-1-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -9.6, y: 0, z: -33}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-brazier-1-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 9.6, y: 0, z: -45}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-brazier-1-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -9.6, y: 0, z: -45}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-brazier-1-4-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 9.6, y: 0, z: -57}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-1-4-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-brazier-1-4-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.85 0.13 75), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -9.6, y: 0, z: -57}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: choir-brazier-1-4-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-dais-1:
+  feetPosition: {x: 0, y: 0, z: -54}
+  id: choir-dais-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: dais, layout: pale-choir, r: 5}, script: scripts/gen/instance.js}
+choir-gate-in:
+  behavior: scripts/instance-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.7 0.02 70), roughness: 0.95}, physics: static, primitive: {depth: 0.5, height: 3.7, kind: archway, thickness: 0.4, width: 3.3}}]
+  feetPosition: {x: 0, y: 0.05, z: -0.75}
+  id: choir-gate-in
+  material: {kind: scripted, script: engine/portal-glass, view: {link: "+main#choir-gate", sound: 1, spill: 2}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 0
+  state: {link: "+main#choir-gate", name: The way out}
+  tags: [portal]
+choir-halls:
+  feetPosition: {x: 0, y: 0, z: 0}
+  id: choir-halls
+  physics: static
+  primitive: {kind: scripted, params: {kind: halls, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-light-0:
+  feetPosition: {x: 0, y: 7.5, z: -8}
+  id: choir-light-0
+  light: {color: oklch(0.86 0.1 80), distance: 26, intensity: 28, kind: point}
+choir-light-1:
+  feetPosition: {x: 0, y: 12.5, z: -44}
+  id: choir-light-1
+  light: {color: oklch(0.86 0.1 80), distance: 32, intensity: 34, kind: point}
+choir-npc-vale:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 3.6, y: 0.05, z: -6}
+  id: choir-npc-vale
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-priestess-female-sister-white-robes-blue-sash.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Sister Vale, who: vale-pale-choir, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, pale-choir]
+choir-npc-wenna:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -3.6, y: 0.05, z: -6}
+  id: choir-npc-wenna
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-chandler-woman-thin-grey-shawl-wax-stained-apron-candle-bundle.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 160}
+  state: {homeYaw: 160, idle: Idle, npcName: Wenna Ashgrave, who: wenna-pale-choir, yaw: 160}
+  tags: [npc, talker, townsfolk, quest-npc, pale-choir]
+choir-pillar-1-0-e:
+  feetPosition: {x: 7.8, y: 0, z: -30}
+  id: choir-pillar-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-0-w:
+  feetPosition: {x: -7.8, y: 0, z: -30}
+  id: choir-pillar-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-1-e:
+  feetPosition: {x: 7.8, y: 0, z: -36}
+  id: choir-pillar-1-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-1-w:
+  feetPosition: {x: -7.8, y: 0, z: -36}
+  id: choir-pillar-1-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-2-e:
+  feetPosition: {x: 7.8, y: 0, z: -42}
+  id: choir-pillar-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-2-w:
+  feetPosition: {x: -7.8, y: 0, z: -42}
+  id: choir-pillar-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-3-e:
+  feetPosition: {x: 7.8, y: 0, z: -48}
+  id: choir-pillar-1-3-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-3-w:
+  feetPosition: {x: -7.8, y: 0, z: -48}
+  id: choir-pillar-1-3-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-4-e:
+  feetPosition: {x: 7.8, y: 0, z: -54}
+  id: choir-pillar-1-4-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-4-w:
+  feetPosition: {x: -7.8, y: 0, z: -54}
+  id: choir-pillar-1-4-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-5-e:
+  feetPosition: {x: 7.8, y: 0, z: -60}
+  id: choir-pillar-1-5-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+choir-pillar-1-5-w:
+  feetPosition: {x: -7.8, y: 0, z: -60}
+  id: choir-pillar-1-5-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 14, kind: pillar, layout: pale-choir}, script: scripts/gen/instance.js}
+deacon-morrow:
+  behavior: scripts/boss.js
+  feetPosition: {x: 0, y: 0.05, z: -54}
+  id: deacon-morrow
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-deacon-morrow-towering-priest-iron-mask-black-vestments-chained-censer.glb
+  physics: character
+  rotation: 180
+  scale: 1.8
+  state: {arena: {r: 10, x: 0, z: -52}, boss: deacon_morrow, home: {x: 0, z: -54}, hp: 7000, hpPct: 100, maxHp: 7000, mode: asleep, radius: 0.7, title: "Deacon Morrow, the Unlit", unhurt: true, yaw: 180}
+  tags: [enemy, boss, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[60px] font-bold text-amber-100 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Deacon Morrow, the Unlit</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-0:
+  behavior: scripts/boss.js
+  feetPosition: {x: -6, y: 0.05, z: -31}
+  id: pale-acolyte-0
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -31}, boss: pale_acolyte, home: {x: -6, z: -31}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-1:
+  behavior: scripts/boss.js
+  feetPosition: {x: 6, y: 0.05, z: -31}
+  id: pale-acolyte-1
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -31}, boss: pale_acolyte, home: {x: 6, z: -31}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-2:
+  behavior: scripts/boss.js
+  feetPosition: {x: -3, y: 0.05, z: -35}
+  id: pale-acolyte-2
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -35}, boss: pale_acolyte, home: {x: -3, z: -35}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-3:
+  behavior: scripts/boss.js
+  feetPosition: {x: 3, y: 0.05, z: -35}
+  id: pale-acolyte-3
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -35}, boss: pale_acolyte, home: {x: 3, z: -35}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-4:
+  behavior: scripts/boss.js
+  feetPosition: {x: -7, y: 0.05, z: -39}
+  id: pale-acolyte-4
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -39}, boss: pale_acolyte, home: {x: -7, z: -39}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-5:
+  behavior: scripts/boss.js
+  feetPosition: {x: 7, y: 0.05, z: -39}
+  id: pale-acolyte-5
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -39}, boss: pale_acolyte, home: {x: 7, z: -39}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-6:
+  behavior: scripts/boss.js
+  feetPosition: {x: -2, y: 0.05, z: -42}
+  id: pale-acolyte-6
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -42}, boss: pale_acolyte, home: {x: -2, z: -42}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+pale-acolyte-7:
+  behavior: scripts/boss.js
+  feetPosition: {x: 2, y: 0.05, z: -42}
+  id: pale-acolyte-7
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  physics: character
+  rotation: 0
+  scale: 1
+  state: {arena: {r: 6, x: 0, z: -42}, boss: pale_acolyte, home: {x: 2, z: -42}, hp: 1400, hpPct: 100, maxHp: 1400, mode: asleep, radius: 0.55, title: Pale Acolyte, unhurt: true, yaw: 0}
+  tags: [enemy, elite, pale-choir]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Pale Acolyte</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"

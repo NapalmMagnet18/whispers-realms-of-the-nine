@@ -1,0 +1,23 @@
+# The Drowned Bell: an instanced dungeon (scripts/gen/instance.js layout drowned-bell). Entry gate at z = 0, chambers run toward -Z.
+# The way in and out is the gate pair bell-gate (place main) <-> bell-gate-in (here). Bosses: scripts/boss.js + scripts/lib/data/bosses.yml.
+mode: 3d
+terrain:
+  kind: "off"
+gravity: { x: 0, y: -24, z: 0 }
+defaultSpawnPoint: { x: 0, y: 0.2, z: -4 }
+worldBounds: { bottom: -30 }
+atmosphere:
+  sky: { kind: solid, color: "oklch(0.07 0.02 210)" }
+  timeOfDay: 0
+  sun: { intensity: 0 }
+  moon: { enabled: false }
+  stars: { enabled: false }
+  clouds: { enabled: false }
+  ambient: { light: { color: "oklch(0.6 0.06 200)", intensity: 1.5 } }
+  hemisphere: { sky: "oklch(0.6 0.06 200)", ground: "oklch(0.3 0.03 60)", intensity: 1.0 }
+  fog: { kind: linear, color: "oklch(0.16 0.04 205)", near: 18, far: 110 }
+  look:
+    script: mods/aaa-quality-kit/look-cinema.js
+    params: { dayWarmth: 0.04, grain: 0.03 }
+acoustics:
+  reverb: 0.5

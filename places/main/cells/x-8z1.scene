@@ -4,3 +4,15 @@ amb-deepgrove:
   feetPosition: {x: -1085, y: {terrain: 3}, z: 64}
   id: amb-deepgrove
   tags: [ambience]
+root-gate:
+  behavior: scripts/instance-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.6 0.02 70), roughness: 0.95, texture: cdn/texture-dark-crypt-stone-blocks.png}, physics: static, primitive: {depth: 0.7, height: 3.9, kind: archway, thickness: 0.5, width: 3.4}}, {feetPosition: {x: 0, y: 4.2, z: 0}, id: glow, light: {color: oklch(0.82 0.13 110), distance: 12, intensity: 6, kind: point}}]
+  feetPosition: {x: -1072, y: 25, z: 68}
+  id: root-gate
+  material: {kind: scripted, script: engine/portal-ink, view: {link: "+root-archive#root-gate-in", sound: 1, spill: 1.5}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 0
+  state: {enterQuest: DRT-01, enterTally: root_entered, link: "+root-archive#root-gate-in", minLevel: 28, name: The Root Archive}
+  tags: [portal, instance-gate]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.5m\" width=\"1.6m\" class=\"flex flex-col items-center\"><div class=\"text-[56px] font-bold text-amber-100\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">The Root Archive</div><div class=\"text-[34px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Dungeon · level 28+</div></div>"

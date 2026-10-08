@@ -238,6 +238,18 @@ bastion-blueprint/smithy-w:
   physics: static
   primitive: {kind: scripted, params: {kind: workshop}, script: scripts/gen/ashfall.js, seed: 2}
   tags: [bastion]
+caldera-gate:
+  behavior: scripts/instance-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.6 0.02 70), roughness: 0.95, texture: cdn/texture-dark-crypt-stone-blocks.png}, physics: static, primitive: {depth: 0.7, height: 3.9, kind: archway, thickness: 0.5, width: 3.4}}, {feetPosition: {x: 0, y: 4.2, z: 0}, id: glow, light: {color: oklch(0.78 0.17 45), distance: 12, intensity: 6, kind: point}}]
+  feetPosition: {x: 7540, y: 25, z: -150}
+  id: caldera-gate
+  material: {kind: scripted, script: engine/portal-ink, view: {link: "+emberheart#caldera-gate-in", sound: 1, spill: 1.5}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 0
+  state: {enterQuest: END-01, enterTally: emberheart_entered, link: "+emberheart#caldera-gate-in", minLevel: 60, name: Emberheart Caldera}
+  tags: [portal, instance-gate]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.5m\" width=\"1.6m\" class=\"flex flex-col items-center\"><div class=\"text-[56px] font-bold text-amber-100\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Emberheart Caldera</div><div class=\"text-[34px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Raid · level 60+</div></div>"
 roost-bastion:
   children: [{feetPosition: {x: 2.6, y: 3.1, z: -2}, id: lamp, light: {color: oklch(0.85 0.15 70), distance: 14, intensity: 2.2, kind: point}}, {feetPosition: {x: -2.62, y: 3.4, z: -2.25}, id: sign, primitive: {height: 0.01, kind: plane, width: 0.01}, ui: "<div face=\"front\" emissive style=\"width:640px;text-align:center;font-family:serif;font-size:52px;color:#f2b04a;text-shadow:0 0 12px #000\">EMBERSTONE BASTION</div>", visible: true}, {feetPosition: {x: 0.4, y: 0.7, z: -0.6}, id: gryphon, layout: {maxExtents: {x: 1.2, y: 2.4, z: 1.8}, minExtents: {x: -1.2, y: 0, z: -1.8}}, model: /cdn/model-gryphon-perched-resting-wings-folded-eagle-head-lion-body-leather-saddle.glb, rotation: {yaw: 160}}, {feetPosition: {x: -1.6, y: 0.7, z: -2.4}, id: master, layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}, model: /cdn/model-humanoid-fantasy-roostmaster-female-leather-flight-cap-goggles-feather-cloak.glb, rotation: {yaw: 180}, state: {npcName: Roostmaster}, tags: [roostmaster]}]
   feetPosition: {x: 7560, y: 25, z: -170}

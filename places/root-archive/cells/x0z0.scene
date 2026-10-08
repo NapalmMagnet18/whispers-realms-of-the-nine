@@ -1,0 +1,341 @@
+# spawn-scene v2 yaml x0z0
+qm-drt-daylight:
+  feetPosition: {x: -4.5, y: 0.05, z: -6}
+  fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-daylight
+  rotation: 0
+  state: {after: archive_kernel, burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Kernel in daylight, mark: kernel_daylight, quest: DRT-04, say: You raise the cutting toward the shaft. Daylight finds it for the first time in an age., title: The light shaft, verb: Lift}
+  tags: [quest-mark, root-archive]
+qm-drt-glyph-0:
+  feetPosition: {x: -5, y: 0.05, z: -28}
+  fx: {params: {b: 0.6, g: 2.6, r: 1.4}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-glyph-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Glyph solved, mark: living_glyph, quest: DRT-02, say: You trace the glyph the way the orchard grew it. The ring of bark opens like an eye., title: A living glyph, verb: Trace}
+  tags: [quest-mark, root-archive]
+qm-drt-glyph-1:
+  feetPosition: {x: 5, y: 0.05, z: -33}
+  fx: {params: {b: 0.6, g: 2.6, r: 1.4}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-glyph-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Glyph solved, mark: living_glyph, quest: DRT-02, say: You trace the glyph the way the orchard grew it. The ring of bark opens like an eye., title: A living glyph, verb: Trace}
+  tags: [quest-mark, root-archive]
+qm-drt-glyph-2:
+  feetPosition: {x: 0, y: 0.05, z: -40}
+  fx: {params: {b: 0.6, g: 2.6, r: 1.4}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-glyph-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Glyph solved, mark: living_glyph, quest: DRT-02, say: You trace the glyph the way the orchard grew it. The ring of bark opens like an eye., title: A living glyph, verb: Trace}
+  tags: [quest-mark, root-archive]
+qm-drt-lift:
+  feetPosition: {x: -4.5, y: 0.05, z: -11}
+  fx: {params: {b: 0.8, g: 2.6, r: 1.6}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-lift
+  physics: static
+  primitive: {kind: scripted, params: {kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Root elevator woken, mark: root_elevator, quest: DRT-01, say: "You press your palm to the bark. The great root shudders, then lowers like a held breath.", title: The root elevator, verb: Wake}
+  tags: [quest-mark, root-archive]
+qm-drt-seed-0:
+  feetPosition: {x: 0, y: 1.1, z: -16}
+  fx: {params: {b: 0.6, g: 2.6, r: 1.6}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-drt-seed-0
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seed carried, mark: seed_guided, quest: DRT-01, say: You cradle the seed past the thorns. It pulses warm against your hands., title: The living seed, verb: Carry}
+  tags: [quest-mark, root-archive]
+qm-drt-seed-1:
+  feetPosition: {x: -2, y: 1.1, z: -20}
+  fx: {params: {b: 0.6, g: 2.6, r: 1.6}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-drt-seed-1
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seed carried, mark: seed_guided, quest: DRT-01, say: You cradle the seed past the thorns. It pulses warm against your hands., title: The living seed, verb: Carry}
+  tags: [quest-mark, root-archive]
+qm-drt-seed-2:
+  feetPosition: {x: 2, y: 1.1, z: -25}
+  fx: {params: {b: 0.6, g: 2.6, r: 1.6}, script: "fx\npop body rate=24 on=sphere(.25) life=.6..1.1 v=sdir()*.2 size=.08..0.16 acc=curl(.6)+drag(1) col=hdr(1.2,2.4,2.6) a=0>.3:.6>.7:.4>0 r=sprite(soft-disc,add)\npop glow n=1 at=<0,.2,0> r=light(<.5,.9,1>,1.4,6)"}
+  id: qm-drt-seed-2
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Seed carried, mark: seed_guided, quest: DRT-01, say: You cradle the seed past the thorns. It pulses warm against your hands., title: The living seed, verb: Carry}
+  tags: [quest-mark, root-archive]
+qm-drt-thorn-0:
+  feetPosition: {x: 8.78, y: 0.05, z: -63.21}
+  fx: {params: {b: 1, g: 2.4, r: 2.4}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-thorn-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Thorn disabled, mark: bellglass_thorn, quest: DRT-03, say: The thorn rings and cracks. The Custodian flinches as if the glass were its own., title: A bellglass thorn, verb: Shatter}
+  tags: [quest-mark, root-archive]
+qm-drt-thorn-1:
+  feetPosition: {x: -8.57, y: 0.05, z: -62.84}
+  fx: {params: {b: 1, g: 2.4, r: 2.4}, script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.4 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(%r|2.6,%g|1.9,%b|0.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
+  id: qm-drt-thorn-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: seat, layout: root-archive}, script: scripts/gen/instance.js}
+  rotation: 0
+  state: {burstAt: 1, burstFx: "fx\npop flare burst=36 on=sphere(.3) life=.5..1.1 v=up(1..2.4)+sdir()*.6 size=.06..0.12 acc=buoy(.4)+drag(1.2) col=hdr(2.6,2.2,1.2)>hdr(1,.5,.2) a=1>0 r=sprite(soft-disc,add)\npop glow n=1 life=1 r=light(<1,.8,.5>,10,10)", gain: Thorn disabled, mark: bellglass_thorn, quest: DRT-03, say: The thorn rings and cracks. The Custodian flinches as if the glass were its own., title: A bellglass thorn, verb: Shatter}
+  tags: [quest-mark, root-archive]
+root-amb-0:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-underground-roots-creaking-soft-dripping-distant-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -7}
+  id: root-amb-0
+  tags: [ambience]
+root-amb-1:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-underground-roots-creaking-soft-dripping-distant-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 0, y: 2, z: -34}
+  id: root-amb-1
+  tags: [ambience]
+root-brazier-0-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 5.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-0-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-0-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -5.6, y: 0, z: -7}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-0-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-1-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 8.6, y: 0, z: -29}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-1-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -8.6, y: 0, z: -29}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-1-2-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 8.6, y: 0, z: -41}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-1-2-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -8.6, y: 0, z: -41}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-2-0-e:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: 12.6, y: 0, z: -61}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-2-0-e
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-brazier-2-0-w:
+  children: [{feetPosition: {x: 0, y: 2.1, z: 0}, id: light, light: {color: oklch(0.84 0.13 85), distance: 15, intensity: 14, kind: point}}]
+  feetPosition: {x: -12.6, y: 0, z: -61}
+  fx: {script: "fx\npop flame rate=26 on=disc(.28) life=.4..0.8 v=up(1.1..1.8)+cone(18)*.3 size=.18..0.32 acc=curl(.5)+buoy(1.6)+drag(1.4) sz=$size*(.5>1:.6>.2) col=hdr(4,2.6,1)>hdr(2.2,.8,.2)>hdr(.5,.1,.02) a=0>.15:1>.7:.8>0 r=sprite(flame-wisp,add)"}
+  id: root-brazier-2-0-w
+  physics: static
+  primitive: {kind: scripted, params: {kind: brazier, layout: root-archive}, script: scripts/gen/instance.js}
+root-gate-in:
+  behavior: scripts/instance-gate.js
+  children: [{feetPosition: {x: 0, y: 0, z: 0.1}, id: frame, material: {color: oklch(0.7 0.02 70), roughness: 0.95}, physics: static, primitive: {depth: 0.5, height: 3.7, kind: archway, thickness: 0.4, width: 3.3}}]
+  feetPosition: {x: 0, y: 0.05, z: -0.75}
+  id: root-gate-in
+  material: {kind: scripted, script: engine/portal-glass, view: {link: "+main#root-gate", sound: 1, spill: 2}}
+  physics: {body: static, trigger: true}
+  primitive: {depth: 0.2, height: 3.3, kind: arch, width: 2.5}
+  rotation: 0
+  state: {link: "+main#root-gate", name: The way out}
+  tags: [portal]
+root-halls:
+  feetPosition: {x: 0, y: 0, z: 0}
+  id: root-halls
+  physics: static
+  primitive: {kind: scripted, params: {kind: halls, layout: root-archive}, script: scripts/gen/instance.js}
+root-lasher-0:
+  behavior: scripts/boss.js
+  feetPosition: {x: -5, y: 0.05, z: -30}
+  id: root-lasher-0
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  physics: character
+  rotation: 0
+  scale: 1.1
+  state: {arena: {r: 6, x: 0, z: -30}, boss: root_lasher, home: {x: -5, z: -30}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
+  tags: [enemy, elite, root-archive]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Root Lasher</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+root-lasher-1:
+  behavior: scripts/boss.js
+  feetPosition: {x: 4, y: 0.05, z: -30}
+  id: root-lasher-1
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  physics: character
+  rotation: 0
+  scale: 1.1
+  state: {arena: {r: 6, x: 0, z: -30}, boss: root_lasher, home: {x: 4, z: -30}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
+  tags: [enemy, elite, root-archive]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Root Lasher</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+root-lasher-2:
+  behavior: scripts/boss.js
+  feetPosition: {x: -4, y: 0.05, z: -37}
+  id: root-lasher-2
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  physics: character
+  rotation: 0
+  scale: 1.1
+  state: {arena: {r: 6, x: 0, z: -37}, boss: root_lasher, home: {x: -4, z: -37}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
+  tags: [enemy, elite, root-archive]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Root Lasher</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+root-lasher-3:
+  behavior: scripts/boss.js
+  feetPosition: {x: 5, y: 0.05, z: -38}
+  id: root-lasher-3
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  physics: character
+  rotation: 0
+  scale: 1.1
+  state: {arena: {r: 6, x: 0, z: -38}, boss: root_lasher, home: {x: 5, z: -38}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
+  tags: [enemy, elite, root-archive]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Root Lasher</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+root-lasher-4:
+  behavior: scripts/boss.js
+  feetPosition: {x: -1, y: 0.05, z: -34}
+  id: root-lasher-4
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  physics: character
+  rotation: 0
+  scale: 1.1
+  state: {arena: {r: 6, x: 0, z: -34}, boss: root_lasher, home: {x: -1, z: -34}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
+  tags: [enemy, elite, root-archive]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Root Lasher</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+root-lasher-5:
+  behavior: scripts/boss.js
+  feetPosition: {x: 1, y: 0.05, z: -42}
+  id: root-lasher-5
+  layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
+  material: {dissolve: 0}
+  model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
+  physics: character
+  rotation: 0
+  scale: 1.1
+  state: {arena: {r: 6, x: 0, z: -42}, boss: root_lasher, home: {x: 1, z: -42}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
+  tags: [enemy, elite, root-archive]
+  ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"0.9m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[46px] font-bold text-red-200 tracking-wide\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Root Lasher</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[30px] rounded-md bg-black/75 border-[3px] border-red-900 p-[4px]\"><div class=\"h-full rounded bg-red-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
+root-light-0:
+  feetPosition: {x: 0, y: 5.5, z: -7}
+  id: root-light-0
+  light: {color: oklch(0.82 0.13 110), distance: 24, intensity: 26, kind: point}
+root-light-1:
+  feetPosition: {x: 0, y: 7.5, z: -34}
+  id: root-light-1
+  light: {color: oklch(0.82 0.13 110), distance: 30, intensity: 32, kind: point}
+root-npc-ell:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: -7, y: 0.05, z: -43}
+  id: root-npc-ell
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-singer-female-thren-woven-leaf-dress-flower-crown.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 110}
+  state: {homeYaw: 110, idle: Idle, npcName: Grove Singer Ell, who: ell-root-archive, yaw: 110}
+  tags: [npc, talker, townsfolk, quest-npc, root-archive]
+root-npc-fenna:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 3.4, y: 0.05, z: -5}
+  id: root-npc-fenna
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-elder-female-thren-bark-skin-leaf-hair-moss-robe-wooden-staff.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 200}
+  state: {homeYaw: 200, idle: Idle, npcName: Elder Fenna Rootwake, who: fenna-root-archive, yaw: 200}
+  tags: [npc, talker, townsfolk, quest-npc, root-archive]
+root-npc-tamsin:
+  behavior: [scripts/townsfolk.js]
+  feetPosition: {x: 7, y: 0.05, z: -44}
+  id: root-npc-tamsin
+  layout: {maxExtents: {x: 0.4, y: 1.8, z: 0.3}, minExtents: {x: -0.4, y: 0, z: -0.3}}
+  model: /cdn/model-humanoid-fantasy-ranger-female-green-hooded-leather-bow.glb
+  physics: {body: kinematic, collider: capsule}
+  rotation: {yaw: 250}
+  state: {homeYaw: 250, idle: Idle, npcName: Tamsin the Ranger, who: tamsin-root-archive, yaw: 250}
+  tags: [npc, talker, townsfolk, quest-npc, root-archive]
+root-pillar-1-0-e:
+  feetPosition: {x: 6.8, y: 0, z: -26}
+  id: root-pillar-1-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-1-0-w:
+  feetPosition: {x: -6.8, y: 0, z: -26}
+  id: root-pillar-1-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-1-1-e:
+  feetPosition: {x: 6.8, y: 0, z: -32}
+  id: root-pillar-1-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-1-1-w:
+  feetPosition: {x: -6.8, y: 0, z: -32}
+  id: root-pillar-1-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-1-2-e:
+  feetPosition: {x: 6.8, y: 0, z: -38}
+  id: root-pillar-1-2-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-1-2-w:
+  feetPosition: {x: -6.8, y: 0, z: -38}
+  id: root-pillar-1-2-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-1-3-e:
+  feetPosition: {x: 6.8, y: 0, z: -44}
+  id: root-pillar-1-3-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-1-3-w:
+  feetPosition: {x: -6.8, y: 0, z: -44}
+  id: root-pillar-1-3-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 9, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-2-0-e:
+  feetPosition: {x: 10.8, y: 0, z: -58}
+  id: root-pillar-2-0-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-2-0-w:
+  feetPosition: {x: -10.8, y: 0, z: -58}
+  id: root-pillar-2-0-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-2-1-e:
+  feetPosition: {x: 10.8, y: 0, z: -64}
+  id: root-pillar-2-1-e
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
+root-pillar-2-1-w:
+  feetPosition: {x: -10.8, y: 0, z: -64}
+  id: root-pillar-2-1-w
+  physics: static
+  primitive: {kind: scripted, params: {h: 13, kind: rootcol, layout: root-archive}, script: scripts/gen/instance.js}
