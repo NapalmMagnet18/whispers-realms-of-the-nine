@@ -87,7 +87,9 @@ export function geometry(ctx) {
     cyl(W, 0, -0.3, 0, 0.42, 0.08, H, lod > 2 ? 6 : 9);
     ctx.albedo(null);
     if (lod <= 3) tiers(2.0, H - 1.2, 3.1, lod === 1 ? 7 : lod === 2 ? 5 : 3, lod === 1 ? 6 : lod === 2 ? 5 : 4, 0.3, 0.42);
-    cross(1.4, H + 0.6, 2.6, lod >= 5 ? 2 : 3, "oklch(0.86 0 0)");
+    // the silhouette: stacked square crossed cards tapering up (a painted cluster stays square, never stretched tall)
+    const lv = lod >= 4 ? 2 : 3, span = (H + 0.6 - 1.4) / lv;
+    for (let i = 0; i < lv; i++) { const hw = 2.6 * (1 - i * 0.28), y0 = 1.4 + i * span * 0.92; cross(y0, y0 + hw * 2, hw, 2, "oklch(0.86 0 0)"); }
     return { uvs };
   }
   if (kind === "giantpine") {
