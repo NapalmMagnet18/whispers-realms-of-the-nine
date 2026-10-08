@@ -78,7 +78,7 @@ giant-wind:
   feetPosition: {x: -80, y: 39.79917449145569, z: -680}
   id: giant-wind
 qm-giant-heart:
-  feetPosition: {x: -80, y: 35.8, z: -680}
+  feetPosition: {x: -80, y: 37.9, z: -680}
   fx: {script: "fx\npop core n=1 at=point() size=.55 sz=$size*(1+.35*fire()) col=hdr(3.2,.5,.2) a=.9 r=sprite(soft-disc,add)\npop veins rate=10 on=sphere(.35) life=.8..1.4 v=sdir()*(.2..0.5) size=.03..0.06 acc=curl(.5)+drag(1) col=hdr(3,1.6,.4) a=0>.2:1>.8:.8>0 r=sprite(ember,add)\npop glow n=1 at=point() r=light(<1,.3,.15>,6,9)"}
   id: qm-giant-heart
   state: {after: giant_skull_echo, afterText: "First: listen at the giant's skull", mark: giant_heart, quest: GNT-01, say: "Your fingers close on hot crystal. The ribs groan. It comes loose with a sound like a struck bell, and for one breath the whole road goes quiet.", title: The Giant's Heart, verb: Pry free}
