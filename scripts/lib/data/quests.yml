@@ -1000,8 +1000,8 @@ ARC-03:
   title: A Lesson in Consent
   giverNpcId: reach-npc-vale
   giverName: Sister Vale
-  text: "Reading a trace off a person is easy. Asking first is the craft. Three folk in the Reach have agreed to let a student read them: Mira at the smithy, Bryn at the well, and old Hesk. Ask each of them properly. Then go up to the Observatory. There's a device on the bench that reads without asking. Refuse it."
-  progressText: "Ask Mira, Bryn and Hesk for permission to read a trace, then refuse the forced-reading device at the Observatory."
+  text: "Reading a trace off a person is easy. Asking first is the craft. Three folk in the Reach have agreed to let a student read them: Mira at the smithy, Bram up the north lane, and Rowan at the river landing. Ask each of them properly. Then go up to the Observatory. There's a device on the bench that reads without asking. Refuse it."
+  progressText: "Ask Mira, Bram and Rowan for permission to read a trace, then refuse the forced-reading device at the Observatory."
   turnInText: "You turned it away. Good. A device that doesn't ask will be built again and again. Arcanists are the ones who say no to it."
   doneText: "Curator Ossa's ink won't sit still. Go and help her."
   refusedText: "You know the lesson. Keep it."

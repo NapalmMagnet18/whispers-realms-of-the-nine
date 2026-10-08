@@ -160,3 +160,13 @@ refugee:
   lines:
     - "Is it true the Reach still keeps its gate open? Even for folk like us?"
     - "We walked by night. The lanterns along the road kept us honest."
+leth:
+  name: Magister Leth Sen
+  lines:
+    - "Every lamp in this tower is listening to something. Most of them are listening to the truth."
+    - "Quickly, before it learns your face. I say that about lamps and about students."
+ossa:
+  name: Curator Ossa
+  lines:
+    - "Don't breathe on the page. It remembers breath."
+    - "Ink outlives the hand. That's the whole trouble with ink."
