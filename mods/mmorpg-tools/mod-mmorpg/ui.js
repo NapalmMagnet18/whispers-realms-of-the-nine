@@ -9,6 +9,7 @@ const { renderQuestDialog, renderTurnInDialog, renderQuestTracker } = require('.
 const { renderDoorPanel } = require('./lib/ui-door-panel.js');
 const { renderVendor } = require('./lib/ui-vendor.js');
 const WHF = require('./lib/ui-frames.js');
+const { versionTag } = require('./lib/version.js');
 const { renderGnomeTipJar } = require('./lib/ui-gnome-tip.js');
 const { renderTipReminder } = require('./lib/ui-tip-reminder.js');
 const { renderBuffIcons } = require('./lib/ui-buff-icons.js');
