@@ -229,6 +229,17 @@ thr-root-hollow:
   rotation: -307
   state: {mark: root_tunnel, quest: THR-05, say: "The roots make a stair. Below, something hums when the Reach bell rings, far away.", title: Root Hollow, verb: Descend}
   tags: [quest-mark, rootwake-glade]
+thr-roothome-1:
+  feetPosition: {x: -714, y: 17.61, z: 93}
+  id: thr-roothome-1
+  physics: static
+  primitive: {kind: scripted, params: {h: 4.2, r: 3, seed: 4}, script: scripts/gen/roothome.js}
+  rotation: {yaw: 14.6}
+  tags: [glade-dressing]
+thr-roothome-1-light:
+  feetPosition: {x: -714, y: 19.264875733575014, z: 93}
+  id: thr-roothome-1-light
+  light: {color: oklch(0.85 0.11 65), distance: 8, intensity: 7, kind: point}
 thr-seed-1:
   feetPosition: {x: -732, y: {terrain: 0}, z: 67}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<1,.92,.6>,1.5,4)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1,.92,.6>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
