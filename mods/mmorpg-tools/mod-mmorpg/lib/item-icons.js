@@ -3,6 +3,19 @@
 // UI_ICONS: the same set for windows, buttons and portraits.
 var UI_ICONS = { bag: '/cdn/icon-bag-u4xuwt85v.webp', journal: '/cdn/icon-book-u7a5b5oly.webp', spellbook: '/cdn/icon-bookholy-u1eqmu24i.webp', character: '/cdn/icon-helmet-u9bjftt8q.webp', gold: '/cdn/icon-goldcoins-u5s6b5n1n.webp', yes: '/cdn/icon-yes-u7wpo9kik.webp', no: '/cdn/icon-no-u8c9x5k6e.webp', go: '/cdn/icon-go-u3btdaqbv.webp', wolf: '/cdn/icon-bigcatwhite-u36ftl15e.webp', dragon: '/cdn/icon-dragon-u7aezrayn.webp', orc: '/cdn/icon-orc-u3xe7yu0d.webp', bird: '/cdn/icon-birdblue-u3gqn02ts.webp', elite: '/cdn/icon-aurared-u1ui80s8e.webp', fireball: '/cdn/icon-fireball-u1ns0jvs9.webp', frostball: '/cdn/icon-frostball-u6cleszd4.webp' };
 var ITEM_ICONS = {
+  // homecoming + epilogue rewards (2026-10-08)
+  'ward_reeve_mantle': '/cdn/value.9378d4f31ab4402a63ebb55315f9006bbe10812b76c15fd5bdbdc433ddda5935.png',
+  'hollowsong_bracers': '/cdn/value.38cd1b56bf4a5d4d78357c29de397a16b045666f36391cae9170a6c368196bf7.png',
+  'gharn_heartplate': '/cdn/value.3ae4a71114221a764acab948e39677461bc2ff59d2c2579d1737e69061975418.png',
+  'merrow_spyglass': '/cdn/value.e70792cf62daaaa37e1d2c6ee3aafe14db74378b1e5cee7b38a2a107b8d6f659.png',
+  'unbraided_wraps': '/cdn/value.4b5ddbcad90695cf2ba4fe47bf123a46a28e559d63ee3712db83a9d79f7051fa.png',
+  'starfall_circlet': '/cdn/value.be6eadb1c4b231d74c3be0286be2d7650579a2c10081426465d8a0c2c3b1c444.png',
+  'lantern_of_the_ward': '/cdn/value.6b899d224c0d531deaf588e109dd6e712a15fc46acc6dec1e0602f71efe5dd31.png',
+  'rootwake_seed': '/cdn/value.e616bb395a549bea4d6ed2e0d0f9c2af9977eb5bcb073c9a05d1dacd035a59ef.png',
+  'ninth_anvil_brand': '/cdn/value.69ec1daf61716ad19bf5de0892e782b36aa423b01195177a7587f7678d23ae3b.png',
+  'ninth_tide_pearl': '/cdn/value.f6453b14eaa18d36662d28ab0f09dca586df7a105a4189d97c3826b0f409f3ae.png',
+  'ninth_reed_knot': '/cdn/value.45d4167a434e4719ebdd650bd5fb733f5e1cf32353ec768ff4556d0539b46fdf.png',
+  'ninth_lamp_star': '/cdn/value.d4750fb211f23c742f0a0f3e86a0efb2ae8a243626d5bb8c143de654267ab820.png',
   'log': '/cdn/value.faa1caa9a0cf6fd75763ae18532eca3400495074fe6c2b5fcfaf7c4bdb246e88.png',
   'coins': '/cdn/icon-goldcoins-u5s6b5n1n.webp',
   'health-potion': '/cdn/icon-potionred-u3kz16gx0.webp',
