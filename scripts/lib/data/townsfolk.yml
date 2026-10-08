@@ -255,3 +255,12 @@ hale-tide:
   name: The Hale Crew
   lines:
     - "Nets don't mend themselves. Neither do crews."
+iona-tide:
+  name: Reedkeeper Iona Sedge
+  lines:
+    - "Salt and reed, both remember. The Court wants neither to."
+orin-tide:
+  name: Captain Orin
+  lines:
+    - "I said I'd hold the door. I'm still holding it."
+    - "You can see me. That means you agreed to listen."

@@ -1714,8 +1714,95 @@ TID-04:
   text: "Two dry docks west of the quay, both empty eleven years, and both wet this morning. Wet slipways, in a drought. Search them. And while you're there, my ferry rope's snapped clean through at the landing post. Splice it so I can get people across."
   progressText: "Search the two empty dry docks west of Tideglass Quay, and repair the ferry rope at the landing east of the headland."
   turnInText: "Salt water in the cradles and fresh rope-burn on the bollards, like ships had berthed overnight and left again. The fleet's still out there. But it only comes in when someone agrees to hear it."
-  doneText: "The fleet answers listeners. Pilot Sena will want to know."
+  doneText: "The fleet answers listeners. Pilot Sena is at the quay head with a broken compass in her hands."
   objectives:
     - { key: drydock_searched, desc: "Search the empty dry docks", target: 2 }
     - { key: ferry_rope, desc: "Repair the ferry rope", target: 1 }
   rewards: { copper: 11000, xp: 1320 }
+
+TID-05:
+  id: TID-05
+  title: The Broken Compass
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-04]
+  giverNpcId: tide-npc-sena
+  giverName: Pilot Sena Wavebound
+  text: "This compass came off the fleet's flagship. Its needle's gone, pried out. Ordinary glass won't show a fleet that only comes to listeners. Tideglass might. Gather three good pieces from the wrack line, grind them into a lens at the bench by the harbourmaster's, then take it up the headland and chart where the phantom fleet crosses."
+  progressText: "Gather three pieces of tideglass on the shore, grind a lens at the bench in the quay plaza, then chart the phantom fleet's crossing from the headland."
+  turnInText: "That pried-out needle. Someone took it on purpose, and the crossing you charted bends exactly the way a song's melody does. Eda's song. Mareth has the needle, and it's keyed to the last thing her daughter sang."
+  doneText: "Reedkeeper Iona has come down from the fen. She's on the west strand, and she's angry."
+  objectives:
+    - { key: tide_shard, desc: "Gather tideglass", target: 3 }
+    - { key: lens_ground, desc: "Grind the tideglass lens", target: 1 }
+    - { key: fleet_charted, desc: "Chart the phantom fleet's crossing", target: 1 }
+  rewards: { copper: 11400, xp: 1360 }
+
+TID-06:
+  id: TID-06
+  title: The Nets of Mercy
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-05]
+  giverNpcId: tide-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  text: "The Court's brine-takers have staked nets along the west strand. Not for fish. For memories. The fleet's echoes wash in and get caught, and the collector boils them down. Cut the four nets open. Then shut the collector down. Its crew won't let you near it without a fight."
+  progressText: "Cut open the four Court nets on the west strand to free the memory-forms, then shut down the brine collector past them."
+  turnInText: "Look at the sand round that machine. Black glass, dead weed, not a crab for fifty paces. Whatever the Court thinks it's saving, it's killing the coast to do it."
+  doneText: "Shellkeeper Ruun says a woman in a captain's coat is standing at the end of the quay. Nobody saw her walk there."
+  objectives:
+    - { key: memory_freed, desc: "Free the trapped memory-forms", target: 4 }
+    - { key: brine_collector, desc: "Shut down the brine collector", target: 1 }
+  rewards: { copper: 11800, xp: 1400 }
+
+TID-07:
+  id: TID-07
+  title: The Captain Who Stayed
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-06]
+  giverNpcId: tide-npc-ruun
+  giverName: Shellkeeper Ruun
+  text: "She's at the end of the quay, where the forty ships cast off. A fleet echo, plain as you or me in the right light. Talk to her. And mind this. An echo can be made to swear things. Folk have done it here before. Don't you bind her. Whatever she offers, let her keep it."
+  progressText: "Speak with the fleet echo at the end of the quay, and refuse to bind her with an oath."
+  turnInText: "Captain Orin. She volunteered to hold the door open so the fleet could come home, and the Court had her forgotten for it. Every record, every portrait. And you let her keep her word as her own. Good."
+  doneText: "Pilot Sena has the song and the beacons. She needs a player."
+  objectives:
+    - { key: fleet_echo_met, desc: "Meet the fleet echo", target: 1 }
+    - { key: oath_refused, desc: "Refuse to compel her oath", target: 1 }
+  rewards: { copper: 12200, xp: 1440 }
+
+TID-08:
+  id: TID-08
+  title: The Harbor Song
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-07]
+  giverNpcId: tide-npc-sena
+  giverName: Pilot Sena Wavebound
+  text: "The refrain you taught the Hale crew, Orin's verse with it. Play it at the three song beacons, the west point, the cove under the headland, and the ferry reach. Then go to the estuary stone in the bay and steady it before the tide tears it apart."
+  progressText: "Play the harbour song at the three song beacons, then stabilize the estuary stone on the bay shore."
+  turnInText: "From the quay you can see it now. A road on the water, faint gold, running out past the white headland. Anyone who wants to sail it can."
+  doneText: "Rowan's relay skiff is rigged at the ferry landing. He's waiting on you."
+  objectives:
+    - { key: song_beacon, desc: "Play the song at the beacons", target: 3 }
+    - { key: estuary_stilled, desc: "Stabilize the estuary", target: 1 }
+  rewards: { copper: 12600, xp: 1480 }
+
+TID-09:
+  id: TID-09
+  title: Beyond the White Headland
+  zone: Tideglass Coast
+  group: "Tideglass Coast: The Harbor That Never Was"
+  requires: [TID-08]
+  giverNpcId: tide-npc-rowan
+  giverName: Rowan the Ferryman
+  turnInNpcId: obs-npc-leth
+  turnInName: Magister Leth Sen
+  text: "Orin's record can't sit on a beach. The relay skiff runs the new sea road round the headland and up to the Reach. Climb in, and take the captain's account to Magister Leth Sen at the Observatory. She'll know what archive it belongs to."
+  progressText: "Board the relay skiff at the ferry landing, then deliver the captain's record to Magister Leth Sen at the Observatory in Lantern's Reach."
+  turnInText: "Orin's record cites a register at Glassmere, and that register cites another, and another. A chain of archives, each one holding the key to the next. Someone built this to be followed. Glassmere, then."
+  doneText: "Tideglass remembers its fleet. The archive chain points to Glassmere."
+  objectives:
+    - { key: skiff_boarded, desc: "Board the relay skiff", target: 1 }
+  rewards: { copper: 13000, xp: 1520 }

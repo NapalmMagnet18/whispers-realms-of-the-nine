@@ -195,6 +195,7 @@ function useMark(ctx, r) {
   if (ms.burstFx) ctx.emit('fx', { position: { x: r.feetPosition.x, y: r.feetPosition.y + (ms.burstAt || 1), z: r.feetPosition.z }, script: ms.burstFx }, { audience: { nearby: r.feetPosition, radius: 60 } }); // a mark that answers with a flare (a lamp catching, a buoy ringing)
   if (ms.say) { ctx.self.state.npcSay = { text: (ms.title ? '<b>' + ms.title + '</b><br>' : '') + ms.say, id: ctx.now(), anchor: r.id, offset: '0 1.6 0' }; ctx.session.sayUntil = ctx.now() + R.length * 1000; }
   ctx.emit('playSound', { clip: ms.sound || '/cdn/moodboard-painterly-fantasy/sfx-quest-objective-chime.mp3', position: r.feetPosition, volume: 0.55 }, { audience: { player: ctx.self.id } });
+  if (ms.travel) { ctx.emit('screenFlash', { color: '#cfe6ff', duration: 0.6, intensity: 0.6 }, { audience: { player: ctx.self.id } }); ctx.self.velocity = { x: 0, y: 0, z: 0 }; ctx.self.feetPosition = { ...ms.travel }; ctx.session.sayUntil = 0; } // a ride (TID-09's relay skiff): the hero steps off at the far shore
 }
 
 function startChop(ctx, tree) {
