@@ -1677,6 +1677,25 @@ reach-petals:
   id: reach-petals
   scatter: {bounds: {innerRadius: 62, outerRadius: 95, shape: ring}, count: 220, templates: [{model: /cdn/model-petal-purple-flower-88a9bydy.glb, weight: 1}, {model: /cdn/model-petal-flower-cream-yellow-1bs0rt47.glb, weight: 1}], variation: {scale: [1.5, 2.5], yaw: [0, 360]}}
   tags: [meadow]
+reach-smith-forgefx:
+  feetPosition: {x: -29.914963475139565, y: 1.4555072230881616, z: -63.38015282302518}
+  fx: {script: "fx\npop embers rate=5 on=disc(.4) life=.6..1.2 v=up(1.5..2.5)+sdir()*.3 size=.02..0.04 acc=curl(.6)+drag(.6) col=hdr(5,2.4,.6)>hdr(1.5,.4,.08) a=(1>.7:.9>0)*flick(9,.3) sz=$size r=sprite(ember,add,velocity,.02)\npop smoke rate=2 on=disc(.2).c(1.6) life=2..3 v=up(.8) size=.3..0.5 acc=buoy(.5)+curl(.3) sz=$size*(.6>2.4) col=<.25,.24,.23> a=0>.25:.25>0 r=sprite(smoke-puff,alpha)"}
+  id: reach-smith-forgefx
+reach-smith-forgelight:
+  feetPosition: {x: -29.914963475139565, y: 1.8555072230881615, z: -63.38015282302518}
+  id: reach-smith-forgelight
+  light: {color: "#ff8a40", distance: 9, intensity: 8, kind: point}
+reach-smith-rack-0:
+  feetPosition: {x: -24.81, y: 0.45, z: -63.69}
+  id: reach-smith-rack-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: weaponrack}, script: scripts/gen/armory.js}
+  rotation: {yaw: -146}
+  tags: [smith-yard]
+reach-smith-ring:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-blacksmith-hammer-on-anvil-slow-rhythm-loop.mp3, gain: 0.18, loop: true, maxDistance: 28, spatial: true}
+  feetPosition: {x: -29.914963475139565, y: 1.4555072230881616, z: -63.38015282302518}
+  id: reach-smith-ring
 reach-stable:
   children: [{feetPosition: {x: 0, y: 2.2, z: -1.2}, light: {color: oklch(0.82 0.15 65), distance: 9, intensity: 2.5, kind: point}}, {feetPosition: {x: 2.6, y: 0.05, z: -4.3}, physics: static, primitive: {kind: scripted, params: {kind: trough}, script: scripts/gen/props.js}, rotation: 0}, {feetPosition: {x: -6.4, y: 0, z: -1.2}, physics: static, primitive: {kind: scripted, params: {kind: hay}, script: scripts/gen/farm.js}, rotation: 20}, {feetPosition: {x: -6.2, y: 0, z: 1.4}, physics: static, primitive: {kind: scripted, params: {kind: hay}, script: scripts/gen/farm.js}, rotation: -35}]
   feetPosition: {x: 38, y: 4, z: 11}
