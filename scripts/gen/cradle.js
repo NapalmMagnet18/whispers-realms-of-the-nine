@@ -57,5 +57,5 @@ const K = {
     glowCut(ctx, "oklch(0.85 0.12 70)", [3.5, 2, 0.7]); blob(ctx, 0, 1.55, -0.32, 0.07, 0.09, 0.07, 1, 0.1, 3, 5);
   },
 };
-export function geometry(ctx) { const p = ctx.params || {}; ctx.flat(); (K[p.kind] || K.token)(ctx, rng((ctx.seed ?? 1) + 5)); ctx.emissive(null); }
+export function geometry(ctx) { const p = ctx.params || {}; ctx.flat(); if ((ctx.lod || 1) >= 4) { if (["token", "shard", "hammer", "chisel"].includes(p.kind)) return; P(ctx, null, p.kind === "lintel" || p.kind === "board" ? "oklch(0.6 0.05 50)" : "oklch(0.5 0.03 40)"); const hh = { pillar: 3.4, lintel: 3.2, board: 2.3, shrine: 2, seal: 0.9, tuning: 1.2 }[p.kind] || 1; box(ctx, -0.6, 0, -0.5, 0.6, hh, 0.5); return; } (K[p.kind] || K.token)(ctx, rng((ctx.seed ?? 1) + 5)); ctx.emissive(null); }
 export function collider(ctx) { const k = (ctx.params || {}).kind; if (k === "pillar") cyl(ctx, 0, 0, 0, 0.6, 0.6, 3.4, 8); else if (k === "lintel" || k === "board" || k === "seal" || k === "shrine") return undefined; else return null; }
