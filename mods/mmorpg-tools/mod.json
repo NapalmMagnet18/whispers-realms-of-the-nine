@@ -122,6 +122,10 @@
       "setMenuTab": {},
       "toggleShop": {},
       "acceptQuest": {},
+      "vendorBuy": {},
+      "vendorSell": {},
+      "vendorTab": {},
+      "vendorClose": {},
       "buyShopItem": {},
       "clearTarget": {
         "keys": [
