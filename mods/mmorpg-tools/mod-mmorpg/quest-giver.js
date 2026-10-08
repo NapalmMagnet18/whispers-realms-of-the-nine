@@ -160,6 +160,10 @@ export function onInteract(objectApi, other) {
       position: objectApi.getProperty('feetPosition'),
       volume: 0.3
     });
+    objectApi.playSound('/cdn/question-prompt-chime-notification-jtcgt1r9.mp3', {
+      position: objectApi.getProperty('feetPosition'),
+      volume: 0.25
+    });
     return;
   }
 
