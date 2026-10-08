@@ -1,0 +1,46 @@
+# spawn-scene v2 yaml x1z0
+cc-backwall:
+  feetPosition: {x: 87.5, y: 0, z: 10.8}
+  id: cc-backwall
+  material: {color: oklch(0.5 0.01 80), repeat: [2, 2], roughness: 0.95, texture: cdn/texture-weathered-grey-ashlar-stone.png}
+  physics: static
+  primitive: {depth: 0.6, height: 6, kind: box, width: 9}
+  rotation: 90
+cc-banner:
+  feetPosition: {x: 87.1, y: 1.5, z: 10.8}
+  id: cc-banner
+  material: {color: "#a4161a", roughness: 0.9}
+  primitive: {depth: 0.05, height: 3.6, kind: box, width: 1.4}
+  rotation: 90
+cc-brazier-0:
+  feetPosition: {x: 85.5, y: 0, z: 7.5}
+  fx: {script: "fx\npop flame rate=30 on=disc(.18).c(1.2) life=.4..0.7 v=up(1.2)+cone(20)*(.3..0.6) size=.18..0.3 acc=buoy(2)+drag(1.5) sz=$size*(.5>1:1>.14) col=hdr(4.6,3.4,1.4)>hdr(1.8,.5,.1) a=0>.12:1>.75:.85>0 r=sprite(flame-wisp,add)\npop glow n=1 at=disc(.05).c(1.6) r=light(<1,.55,.24>,8*flick(.6,.2),8)"}
+  id: cc-brazier-0
+  material: {color: oklch(0.3 0.03 40), metalness: 0.6, roughness: 0.7}
+  primitive: {height: 1.2, kind: cylinder, radiusBottom: 0.2, radiusTop: 0.35}
+cc-brazier-1:
+  feetPosition: {x: 85.5, y: 0, z: 14.1}
+  fx: {script: "fx\npop flame rate=30 on=disc(.18).c(1.2) life=.4..0.7 v=up(1.2)+cone(20)*(.3..0.6) size=.18..0.3 acc=buoy(2)+drag(1.5) sz=$size*(.5>1:1>.14) col=hdr(4.6,3.4,1.4)>hdr(1.8,.5,.1) a=0>.12:1>.75:.85>0 r=sprite(flame-wisp,add)\npop glow n=1 at=disc(.05).c(1.6) r=light(<1,.55,.24>,8*flick(.6,.2),8)"}
+  id: cc-brazier-1
+  material: {color: oklch(0.3 0.03 40), metalness: 0.6, roughness: 0.7}
+  primitive: {height: 1.2, kind: cylinder, radiusBottom: 0.2, radiusTop: 0.35}
+cc-dais:
+  feetPosition: {x: 84.2, y: 0, z: 10.812}
+  id: cc-dais
+  material: {color: oklch(0.5 0.01 80), repeat: [2, 2], roughness: 0.95, texture: cdn/texture-weathered-grey-ashlar-stone.png}
+  physics: static
+  primitive: {height: 1.14, kind: cylinder, radialSegments: 24, radiusBottom: 2.4, radiusTop: 2.2}
+cc-floor:
+  feetPosition: {x: 84, y: -0.5, z: 10.8}
+  id: cc-floor
+  material: {color: oklch(0.22 0.01 140), roughness: 1}
+  physics: static
+  primitive: {depth: 60, height: 0.5, kind: box, width: 60}
+cc-key:
+  feetPosition: {x: 81.5, y: 4.5, z: 8}
+  id: cc-key
+  light: {aim: {x: 84.5, y: 1.8, z: 10.8}, angle: 35, color: oklch(0.92 0.04 80), distance: 14, intensity: 40, kind: spot, penumbra: 0.6}
+cc-rim:
+  feetPosition: {x: 86.5, y: 3.5, z: 13.5}
+  id: cc-rim
+  light: {color: "#ff5040", distance: 8, intensity: 6, kind: point}
