@@ -1,0 +1,39 @@
+# The townsfolk of Lantern's Reach: E talks (scripts/quest-player.js), each press the next line. A new resident is a
+# row here plus a placement tagged npc + talker with state.who = the row's key (scripts/townsfolk.js turns and greets).
+sayLength: 7          # seconds a line stands over their head
+mira:
+  name: Mira the Forgekeeper
+  lines:
+    - "Mind the sparks, friend. Bring me copper from Emberstone Quarry, out past the east gate, and I'll show you what this anvil can sing."
+    - "My father forged the lantern hooks on every lane of the Reach. Forty winters, and not one has rusted through."
+    - "Elric at the west gate needs timber more than he'll admit. Help him, come back with calluses, and I'll respect them."
+dren:
+  name: Quartermaster Dren
+  lines:
+    - "Quartermaster Dren, at your service, and at your purse's. Wolf pelts, copper, good oak: I buy all three."
+    - "The bank's just south-west of my stall. Keep your coin there; Briarwild wolves don't take coin, but they take everything else."
+    - "Rope, bandages, a decent torch. Never cross the river with less. Trust an old soldier."
+bram:
+  name: Bram Alder
+  lines:
+    - "Bram Alder, carpenter. Every beam in this townhouse came out of the Briarwild, and I'd know each one by its grain."
+    - "The stable by the east gate? My work too. Lean on the stall rails; they'll hold a horse in a temper."
+    - "Bring me straight oak someday. Elric's errand will teach your arms the axe first: west gate, can't miss him."
+tamsin:
+  name: Tamsin the Ranger
+  lines:
+    - "That treeline is the Briarwild. Pretty from here. Less pretty after dark, when the wolves start counting."
+    - "Follow the road west to Rowan's bridge and keep the river at your back. The den lies past the twisted oaks."
+    - "One howl, fine. Three answering? Walk back. Slowly. Don't give them a reason to run."
+vale:
+  name: Sister Vale
+  lines:
+    - "Light keep you, traveller. The inn's hearth has burned since the Reach was founded; sit by it a while."
+    - "They say the old cathedral spire, far to the north, still rings on still nights. I've heard it. Once."
+    - "Rest is no weakness. The cider inside is honest, and the beds forgive a long day on the road."
+rowan:
+  name: Rowan the Ferryman
+  lines:
+    - "Ferryman by title, bridge-keeper by trade. The river ate my boat years back, so the town built me this bridge instead."
+    - "West bank's the Briarwild. Keep to the path; the moss hides roots that'll snap an ankle clean."
+    - "Copper glints east, timber groans west, and the water just keeps on south to the sea. Me, I watch it go."

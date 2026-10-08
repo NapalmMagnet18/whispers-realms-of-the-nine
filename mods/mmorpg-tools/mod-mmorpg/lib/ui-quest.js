@@ -416,7 +416,10 @@ module.exports = { renderQuestDialog, renderTurnInDialog };
 
 // ── Quest tracker (SP-009) + quest-giver markers + NPC speech: drawn every frame from player state ──
 var _qd = require('./quest-data.js');
-var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' }];
+var QUEST_NPCS = [{ id: 'gatekeeper-elric', name: 'Gatekeeper Elric' },
+  // the Reach's townsfolk (scripts/lib/data/townsfolk.yml): a nameplate each, no quest marker
+  { id: 'reach-npc-mira', name: 'Mira the Forgekeeper' }, { id: 'reach-npc-dren', name: 'Quartermaster Dren' }, { id: 'reach-npc-bram', name: 'Bram Alder' },
+  { id: 'reach-npc-tamsin', name: 'Tamsin the Ranger' }, { id: 'reach-npc-vale', name: 'Sister Vale' }, { id: 'reach-npc-rowan', name: 'Rowan the Ferryman' }];
 export function renderQuestTracker(localPlayer, world) {
   var s = localPlayer.state || {};
   var out = '<style>@keyframes qbob{50%{transform:translateY(-6px)}}@keyframes qpop{0%{transform:scale(1.5)}100%{transform:scale(1)}}'

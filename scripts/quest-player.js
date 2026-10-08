@@ -3,6 +3,7 @@
 // Writes only this body's own state (and a felled oak's logsLeft / depletedUntil); the mod's player.js saves the
 // character when state._questSave is raised (buildCharData carries activeQuests, completedQuests, tally, copper, xp, inventory).
 import Q from './lib/data/quests.yml';
+import TF from './lib/data/townsfolk.yml';
 import { move, formatText } from './lib/economy.js';
 import V from './lib/data/vanguard.yml';
 import { getAvailableQuests, questToActiveFormat, questProgress, getQuest } from '../mods/mmorpg-tools/mod-mmorpg/lib/quest-data.js';
@@ -33,6 +34,14 @@ function read(ctx, r) {
   const s = r.state || {};
   ctx.self.state.npcSay = { text: (s.title ? '<b>' + s.title + '</b><br>' : '') + (s.text || ''), id: ctx.now(), anchor: r.id, offset: s.offset || '0 1.4 0' };
   ctx.session.sayUntil = ctx.now() + R.length * 1000;
+}
+// a townsfolk resident (tag talker, state.who = a townsfolk.yml row): each press the next of their lines, over their head
+function chat(ctx, r) {
+  const row = TF[r.state && r.state.who]; if (!row) return;
+  const seen = ctx.session.talkSeen || (ctx.session.talkSeen = {});
+  const i = seen[r.id] ?? 0; seen[r.id] = (i + 1) % row.lines.length;
+  ctx.self.state.npcSay = { text: '<b>' + row.name + '</b><br>' + row.lines[i], id: ctx.now(), anchor: r.id, offset: '0 2.35 0' };
+  ctx.session.sayUntil = ctx.now() + (TF.sayLength || 7) * 1000;
 }
 const felled = (ctx, tree) => (tree.state.depletedUntil || 0) > ctx.now();
 
@@ -160,6 +169,8 @@ export function onInput(ctx, input) {
   if (!on(input, 'interact') || st.showQuestDialog || st.showDoorPanel) return;
   if (ctx.session.chop) return stopChop(ctx);
   if (near(ctx, 'quest-npc', N.talkReach)) return talk(ctx);
+  const folk = near(ctx, 'talker', N.talkReach);
+  if (folk) return chat(ctx, folk);
   const page = near(ctx, 'readable', R.reach);
   if (page) return read(ctx, page);
   const tree = near(ctx, 'timber', W.reach);
@@ -187,6 +198,7 @@ export function update(ctx) {
   let hint = null;
   if (ctx.session.chop) hint = 'Chopping…';
   else if (!st.showQuestDialog && near(ctx, 'quest-npc', N.talkReach)) hint = 'E  Talk to Elric';
+  else if (!st.showQuestDialog && near(ctx, 'talker', N.talkReach)) { const f = near(ctx, 'talker', N.talkReach); hint = 'E  Talk to ' + ((TF[f.state && f.state.who] || {}).name || 'them'); }
   else if (near(ctx, 'readable', R.reach)) { const r = near(ctx, 'readable', R.reach); hint = 'E  Read ' + ((r.state && r.state.title) || 'note'); }
   else { const t = near(ctx, 'timber', W.reach); if (t) hint = felled(ctx, t) ? 'Felled · regrowing' : 'E  Chop Oak'; }
   if (hint !== ctx.session.hint) {
