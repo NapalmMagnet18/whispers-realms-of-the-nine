@@ -593,7 +593,8 @@ export function onInput(objectApi, input) {
           objectApi.cancelTimer(_nameCheckTimeoutId);
 
           if (!getResult.ok) {
-            objectApi.patchState({ nameError: 'Something went wrong. Try again.', _nameCheckPending: false });
+            // registry unreachable: let the wayfarer in rather than trap them on this screen
+            objectApi.patchState({ _nameCheckPending: false, activeCharId: objectApi.uniqueId('char'), charCreatedAt: objectApi.getWallClockTimestamp(), loadingScreen: true, loadingProgress: 0 });
             return;
           }
 
@@ -630,7 +631,7 @@ export function onInput(objectApi, input) {
                 objectApi.cancelTimer(_setTimeoutId);
 
                 if (!setResult.ok) {
-                  objectApi.patchState({ nameError: 'Failed to claim name. Try again.', _nameCheckPending: false });
+                  objectApi.patchState({ _nameCheckPending: false, activeCharId: objectApi.uniqueId('char'), charCreatedAt: objectApi.getWallClockTimestamp(), loadingScreen: true, loadingProgress: 0 });
                   return;
                 }
 
