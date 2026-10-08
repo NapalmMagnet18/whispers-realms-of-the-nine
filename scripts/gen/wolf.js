@@ -85,7 +85,7 @@ function eye(ctx, s) {
 }
 
 export function geometry(ctx) {
-  const lod = ctx.lod ?? 1, n = lod <= 1 ? 14 : lod <= 2 ? 10 : lod <= 3 ? 8 : lod <= 4 ? 6 : 4, ln = lod >= 5 ? 4 : ln;
+  const lod = ctx.lod ?? 1, n = lod <= 1 ? 14 : lod <= 2 ? 10 : lod <= 3 ? 8 : lod <= 4 ? 6 : 4, ln = lod >= 5 ? 4 : Math.max(6, n - 4);
   ctx.smooth();
   ctx.roughness(0.92);
   ctx.bone("body");
