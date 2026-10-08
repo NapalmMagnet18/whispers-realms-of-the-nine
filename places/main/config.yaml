@@ -354,3 +354,7 @@ terrain:
     road-sunscar: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[1220, -580], [1500, -560], [1850, -480], [2200, -380], [2600, -300], [3000, -240], [3400, -200], [3800, -180]], width: 3.6}
     road-elderveil: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[-900, 200], [-1200, 180], [-1600, 120], [-2000, 60], [-2400, 20], [-2800, -20], [-3200, -40], [-3600, -60]], width: 3.6}
     road-saltmere: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[6, 29], [10, 120], [30, 260], [60, 420], [110, 620], [150, 860], [200, 1100], [250, 1340], [290, 1560]], width: 3.6}
+    start-thornhollow: {center: {x: -720, z: 70}, falloff: 14, height: 17.6, kind: flatten, shape: {kind: circle, radius: 19}}
+    start-cinderhold: {center: {x: 900, z: -170}, falloff: 12, height: 40.4, kind: flatten, shape: {kind: circle, radius: 21}}
+    start-gullrest: {center: {x: 248, z: 1428}, falloff: 12, height: 3, kind: flatten, shape: {kind: circle, radius: 18}}
+    start-gullrest-cove: {at: {x: 222, z: 1402}, bedMaterial: sand, depth: 2.6, kind: lake, level: 0.4, radius: 16}
