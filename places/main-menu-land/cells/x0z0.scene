@@ -59,32 +59,32 @@ rg-gatelight:
 rg-lamp-l1:
   feetPosition: {x: -2.9, y: 2.5, z: 1}
   id: rg-lamp-l1
-  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  light: {color: "#f2b04a", distance: 16, intensity: 20, kind: point}
   tags: [realm-gate]
 rg-lamp-l2:
   feetPosition: {x: -2.9, y: 2.5, z: -7}
   id: rg-lamp-l2
-  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  light: {color: "#f2b04a", distance: 16, intensity: 20, kind: point}
   tags: [realm-gate]
 rg-lamp-l3:
   feetPosition: {x: -2.9, y: 2.5, z: -14}
   id: rg-lamp-l3
-  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  light: {color: "#f2b04a", distance: 16, intensity: 20, kind: point}
   tags: [realm-gate]
 rg-lamp-r1:
   feetPosition: {x: 2.9, y: 2.5, z: 1}
   id: rg-lamp-r1
-  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  light: {color: "#f2b04a", distance: 16, intensity: 20, kind: point}
   tags: [realm-gate]
 rg-lamp-r2:
   feetPosition: {x: 2.9, y: 2.5, z: -7}
   id: rg-lamp-r2
-  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  light: {color: "#f2b04a", distance: 16, intensity: 20, kind: point}
   tags: [realm-gate]
 rg-lamp-r3:
   feetPosition: {x: 2.9, y: 2.5, z: -14}
   id: rg-lamp-r3
-  light: {color: "#f2b04a", distance: 14, intensity: 10, kind: point}
+  light: {color: "#f2b04a", distance: 16, intensity: 20, kind: point}
   tags: [realm-gate]
 rg-lantern-l1:
   castShadow: true
@@ -142,7 +142,7 @@ rg-lantern-r3:
   tags: [realm-gate]
 rg-mist:
   feetPosition: {x: 0, y: 0.3, z: -9}
-  fx: {script: "fx\npop mist n=?mobile:14|28 on=box(16,.3,9) life=9..14 v=<.25,0,0>+sdir()*.08 size=3.5..6 acc=curl(.1)*.2 col=<.62,.56,.66> a=0>.2:.16>.75:.13>0 sz=$size*(.8>1.3) rot=spin(.02) r=sprite(smoke-puff,alpha)"}
+  fx: {script: "fx\npop mist n=?mobile:10|18 on=box(16,.2,8) life=9..14 v=<.25,0,0>+sdir()*.08 size=2.4..4 acc=curl(.1)*.2 col=<.62,.56,.66> a=0>.2:.15>.75:.12>0 sz=$size*(.8>1.25) rot=spin(.02) r=sprite(smoke-puff,alpha)"}
   id: rg-mist
   tags: [realm-gate]
 rg-pillar-1:

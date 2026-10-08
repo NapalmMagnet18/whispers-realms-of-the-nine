@@ -2,5 +2,5 @@
 rg-moonfill:
   feetPosition: {x: 0, y: 20, z: 0}
   id: rg-moonfill
-  light: {color: "#8a86d6", groundColor: "#4a3626", intensity: 1.8, kind: hemisphere}
+  light: {color: "#9a92e0", groundColor: "#5a4430", intensity: 2.6, kind: hemisphere}
   tags: [realm-gate]
