@@ -460,7 +460,7 @@ NAM-08:
 
 Q001:
   id: Q001
-  origin: [{ race: 0, quest: MAR-08 }, { race: 1, quest: THR-08 }, { race: 2, quest: KHA-08 }, { race: 3, quest: NAM-08 }]   # Marchborn walk the Ward, Briarkin the Thren glade first; other peoples pass
+  origin: [{ race: 0, quest: MAR-08 }, { race: 1, quest: THR-08 }, { race: 2, quest: KHA-08 }, { race: 3, quest: NAM-08 }, { race: 4, quest: REH-08 }, { race: 5, quest: VEY-08 }]   # Marchborn walk the Ward, Briarkin the Thren glade first; other peoples pass
   title: Welcome to Lantern's Reach
   giverNpcId: gatekeeper-elric
   giverName: Gatekeeper Elric
@@ -1001,6 +1001,18 @@ SHA-07:
 
 
 items:
+  marsh_reed_bundle: { id: marsh_reed_bundle, name: "Marsh Reed Bundle", slot: bag, description: "Three supple reeds, the first knot still in them." }
+  lantern_net: { id: lantern_net, name: "Lantern Net", slot: bag, description: "A soft net that never closes. For wisps who want to come along." }
+  wading_staff: { id: wading_staff, name: "Wading Staff", slot: bag, description: "White-tipped. It finds firm ground before your feet do." }
+  woven_name_cord: { id: woven_name_cord, name: "Woven Name Cord", slot: bag, description: "A short braid of reed and thread, tied with one name you were told." }
+  unbound_lantern: { id: unbound_lantern, name: "Unbound Lantern", slot: bag, description: "A plain lantern, door always open. A small wisp lives in it by choice." }
+  river_map: { id: river_map, name: "River Road Map", slot: bag, description: "A road east to the Reach, and a street the Reach no longer has." }
+  brass_lens: { id: brass_lens, name: "Brass Novice Lens", slot: bag, description: "Your first lens. It shows nine places where the charts show eight." }
+  glider_ribbon: { id: glider_ribbon, name: "Glider Ribbon", slot: bag, description: "Ires ties one on every novice who crosses the span." }
+  star_iron_chip: { id: star_iron_chip, name: "Star-Iron Chip", slot: bag, description: "Pitted, faintly warm, honest." }
+  rune_chalk: { id: rune_chalk, name: "Rune Chalk", slot: bag, description: "Blue chalk that glows when a sky-rune passes overhead." }
+  eyrie_charm: { id: eyrie_charm, name: "Eyrie Charm", slot: bag, description: "A tiny brass telescope on a cord." }
+  ninth_star_chart: { id: ninth_star_chart, name: "Ninth-Star Chart", slot: bag, description: "Otho's true chart: nine lamps, the ninth drawn plain." }
   rootway_key: { id: rootway_key, name: Rootway Key, slot: bag, description: "A knot of living root that loosens when the right hand holds it." }
   nature_ward: { id: nature_ward, name: Nature Ward, slot: neck, description: "Thorn and willow braided by Ell. The brambles let its wearer pass." }
   living_inscription: { id: living_inscription, name: Living Inscription, slot: bag, description: "A rubbing of bark letters. The name in it is still growing." }
@@ -2460,3 +2472,251 @@ VEI-09:
   - {key: vei9_carve_the_names, desc: Carve the names of the Nine into the memorial, target: 1}
   - {key: vei9_attend_the_bell, desc: Attend the bell ceremony, target: 1}
   rewards: {copper: 63000, xp: 7000}
+
+# ── Reedbound (race 4, Reedhaven Refuge) and Veylori (race 5, Starfall Eyrie) origins, ids from quest_database_300.json; each ends at Elric.
+REH-01:
+  id: REH-01
+  title: The First Knot
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: marsh_reed, desc: Gather three marsh reeds, target: 3}
+  - {key: witness_knot, desc: Braid the first witness knot, target: 1}
+  rewards:
+    xp: 10
+    items: [marsh_reed_bundle]
+REH-02:
+  id: REH-02
+  title: Small Lights
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-kele
+  giverName: Wisp Tender Kele
+  objectives:
+  - {key: stray_wisp, desc: Coax two stray wisps, target: 2}
+  - {key: memorial_pool, desc: Return them to the Memorial Pool, target: 1}
+  rewards:
+    xp: 40
+    copper: 30
+    items: [lantern_net]
+  requires: [REH-01]
+REH-03:
+  id: REH-03
+  title: White to White
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-pell
+  giverName: Marsh Guide Pell
+  objectives:
+  - {key: safe_marker, desc: Set four safe-path markers, target: 4}
+  - {key: mire_cross, desc: Cross the deep mire by the markers, target: 1}
+  rewards:
+    xp: 60
+    copper: 50
+    items: [wading_staff]
+  requires: [REH-02]
+REH-04:
+  id: REH-04
+  title: What the Mourners Carry
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: mourner_spoken, desc: Listen to three mourners, target: 3}
+  - {key: woven_roll, desc: Read the Woven Roll of Names, target: 1}
+  rewards:
+    xp: 60
+    items: [woven_name_cord]
+  requires: [REH-03]
+REH-05:
+  id: REH-05
+  title: The Dry Cellar
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-pell
+  giverName: Marsh Guide Pell
+  objectives:
+  - {key: dry_cellar, desc: Explore the dry cellar, target: 1}
+  - {key: bellglass_knot, desc: Cleanse two tainted bellglass knots, target: 2}
+  rewards:
+    xp: 70
+    copper: 60
+    items: [bellglass_shard]
+  requires: [REH-04]
+REH-06:
+  id: REH-06
+  title: The Unbound Lantern
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-kele
+  giverName: Wisp Tender Kele
+  objectives:
+  - {key: wisp_offer, desc: Offer a wisp the unmarked lantern, target: 1}
+  - {key: wisp_protect, desc: Shield it without closing the lantern, target: 1}
+  rewards:
+    xp: 80
+    items: [unbound_lantern]
+  requires: [REH-05]
+REH-07:
+  id: REH-07
+  title: Release
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: name_release, desc: Release three braided names into the marsh, target: 3}
+  - {key: hidden_map, desc: Open the two-witness chest, target: 1}
+  rewards:
+    xp: 90
+    copper: 120
+    items: [river_map]
+  requires: [REH-06]
+REH-08:
+  id: REH-08
+  title: The River Road
+  zone: Reedhaven Refuge
+  group: 'Reedbound Origin: Names the Water Kept'
+  race: 4
+  giverNpcId: reh-npc-iona
+  giverName: Reedkeeper Iona Sedge
+  objectives:
+  - {key: danger_boundary, desc: Mark the fen's danger boundary, target: 1}
+  - {key: reach_visits, desc: Take the river road to Lantern's Reach, target: 1}
+  rewards: {xp: 80, copper: 200}
+  requires: [REH-07]
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric
+VEY-01:
+  id: VEY-01
+  title: The Absent Star
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-neris
+  giverName: Astromer Neris Sol
+  objectives:
+  - {key: sky_lens, desc: Align three novice sky lenses, target: 3}
+  - {key: absent_star, desc: Identify the absent constellation, target: 1}
+  rewards:
+    xp: 10
+    items: [brass_lens]
+VEY-02:
+  id: VEY-02
+  title: Wind on the Span
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-ires
+  giverName: Glidewarden Ires
+  objectives:
+  - {key: span_cross, desc: Cross the protected stone span, target: 1}
+  - {key: wind_chime, desc: Strike two wind chimes, target: 2}
+  rewards:
+    xp: 40
+    copper: 30
+    items: [glider_ribbon]
+  requires: [VEY-01]
+VEY-03:
+  id: VEY-03
+  title: Starlight and Bellglass
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-neris
+  giverName: Astromer Neris Sol
+  objectives:
+  - {key: meteor_fragment, desc: Examine two meteor fragments, target: 2}
+  - {key: glass_verdict, desc: Test them at the assay plinth, target: 1}
+  rewards:
+    xp: 60
+    copper: 50
+    items: [star_iron_chip]
+  requires: [VEY-02]
+VEY-04:
+  id: VEY-04
+  title: The Moving Rune
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-otho
+  giverName: Star Reader Otho
+  objectives:
+  - {key: sky_rune, desc: Track the drifting sky-rune, target: 3}
+  - {key: rune_record, desc: Record its path in the ledger, target: 1}
+  rewards:
+    xp: 60
+    items: [rune_chalk]
+  requires: [VEY-03]
+VEY-05:
+  id: VEY-05
+  title: Cold Wings
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-ires
+  giverName: Glidewarden Ires
+  objectives:
+  - {key: aerial_shade, desc: Steady two aerial shades, target: 2}
+  - {key: counterweight, desc: Reset the lens counterweights, target: 1}
+  rewards:
+    xp: 70
+    copper: 60
+    items: [bellglass_shard]
+  requires: [VEY-04]
+VEY-06:
+  id: VEY-06
+  title: Cut Deep, Scratched Over
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-neris
+  giverName: Astromer Neris Sol
+  objectives:
+  - {key: inscription, desc: Read the telescope inscription aloud, target: 1}
+  - {key: inscription_choice, desc: Publish it or seal it away, target: 1}
+  rewards:
+    xp: 80
+    items: [eyrie_charm]
+  requires: [VEY-05]
+VEY-07:
+  id: VEY-07
+  title: The Uncensored Chart
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-otho
+  giverName: Star Reader Otho
+  objectives:
+  - {key: uncensored_chart, desc: Take Otho's uncensored chart, target: 1}
+  - {key: watch_assembly, desc: Present it to the watch assembly, target: 1}
+  rewards:
+    xp: 90
+    copper: 120
+    items: [ninth_star_chart]
+  requires: [VEY-06]
+VEY-08:
+  id: VEY-08
+  title: Down to the March
+  zone: Starfall Eyrie
+  group: 'Veylori Origin: The Lamp Left Dark'
+  race: 5
+  giverNpcId: vey-npc-neris
+  giverName: Astromer Neris Sol
+  objectives:
+  - {key: mountain_lift, desc: Ride the valley lift, target: 1}
+  - {key: reach_visits, desc: Travel to Lantern's Reach, target: 1}
+  rewards: {xp: 80, copper: 200}
+  requires: [VEY-07]
+  turnInNpcId: gatekeeper-elric
+  turnInName: Gatekeeper Elric

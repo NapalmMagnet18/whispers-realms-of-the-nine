@@ -509,3 +509,23 @@ vei-witness:
 vei-oren:
   name: Marshal Oren Flint
   lines: [I need someone to disable three siphons.]
+
+# ── Reedhaven Refuge and Starfall Eyrie
+iona:
+  name: Reedkeeper Iona Sedge
+  lines: [A name in the hand is easier than a name in the throat., The fen forgives slowly. So do I. But we both do., Every knot on the roll was tied by someone who loved them.]
+kele:
+  name: Wisp Tender Kele
+  lines: [They're not spirits. Not exactly. They're what's left when someone was very loved., Never shut the lantern on one. Never., The big one by the pool is called Nettle. She bites. Not really.]
+pell:
+  name: Marsh Guide Pell
+  lines: [Step where the poles say. Not where it looks firm. It always looks firm., I've pulled eleven people out of that mire. Twelve if you count the goat., Fen's moving again. It does that when the bell rings in the Reach.]
+neris:
+  name: Astromer Neris Sol
+  lines: [The sky does not lie. Charts do., Eight lamps. Nine places. Count them yourself., Patience is the instrument. The telescope is just brass.]
+ires:
+  name: Glidewarden Ires
+  lines: ['Feel that? Updraft. The mountain breathing.', 'First you walk. Then you fly. Then you learn to land, which is the hard part.', Mind the span in a crosswind.]
+otho:
+  name: Star Reader Otho
+  lines: [I don't need my eyes to know the ninth place is dark. I remember when it wasn't., Write it down. Memory is a liar with good intentions., 'The rune moves east. Everything moves east, toward the bell.']
