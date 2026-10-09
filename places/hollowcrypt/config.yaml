@@ -17,8 +17,8 @@ atmosphere:
   hemisphere: { sky: "oklch(0.45 0.05 290)", ground: "oklch(0.3 0.03 60)", intensity: 1.0 }
   fog: { kind: linear, color: "oklch(0.14 0.03 290)", near: 14, far: 90 }
   look:
-    script: mods/aaa-quality-kit/look-cinema.js
-    params: { dayWarmth: 0.04, grain: 0.03 }
+    script: mods/fbsrenderer/look.js
+    params: { exposure: 1.15, sat: 0.8, vignette: 0.5, grain: 0.07, dread: 0.35 }
 acoustics:
   reverb: 0.45
 
