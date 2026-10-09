@@ -5,16 +5,37 @@ const WOOD = "dark-oak-timber-beam-hand-painted", PLANK = "worn-oak-floor-boards
 function build(ctx, p, s) {
   const k = p.kind;
   if (k === "well") {
+    // fieldstone drum with a worn coping, a mossy step, oak posts, a red clay gable roof, crank, rope and an iron-banded bucket
     P(ctx, s, STONE, "oklch(0.95 0.01 90)");
-    cyl(ctx, 0, 0, 0, 1.25, 1.2, 0.9, 14, false); cyl(ctx, 0, 0, 0, 0.95, 0.95, 0.9, 14, false);
-    if (!s) { cyl(ctx, 0, 0.88, 0, 1.3, 1.3, 0.12, 14, true); P(ctx, s, null, "oklch(0.25 0.04 230)", 0.05); cyl(ctx, 0, 0.3, 0, 0.94, 0.94, 0.02, 14, true); }
-    P(ctx, s, WOOD, "oklch(0.92 0.02 60)");
-    for (const x of [-1.05, 1.05]) box(ctx, x - 0.1, 0.9, -0.1, x + 0.1, 2.6, 0.1);
-    if (!s) {
-      boxR(ctx, [0, 2.2, 0], [2.3, 0.12, 0.12]);
-      for (const sd of [-1, 1]) boxR(ctx, [0, 2.75, sd * 0.55], [2.6, 0.06, 1.25], { pitch: sd * -28 });
-      P(ctx, s, null, "oklch(0.5 0.06 60)"); cyl(ctx, 0, 1.3, 0, 0.18, 0.2, 0.32, 8); P(ctx, s, null, "oklch(0.7 0.03 80)"); cyl(ctx, 0, 1.62, 0, 0.012, 0.012, 0.58, 4, false);
+    cyl(ctx, 0, 0, 0, 1.3, 1.22, 0.86, 16, false); cyl(ctx, 0, 0, 0, 0.95, 0.95, 0.86, 16, false);
+    if (s) { for (const x of [-1.05, 1.05]) box(ctx, x - 0.1, 0.86, -0.1, x + 0.1, 2.5, 0.1); return; }
+    P(ctx, s, STONE, "oklch(0.86 0.015 80)", 0.9);
+    cyl(ctx, 0, 0.84, 0, 1.36, 1.34, 0.14, 16, true); cyl(ctx, 0, 0.84, 0, 0.92, 0.92, 0.14, 16, false); // coping ring
+    P(ctx, s, STONE, "oklch(0.78 0.05 125)", 0.95); boxR(ctx, [0, 0.07, 1.45], [1.3, 0.14, 0.45], { yaw: 0 }); // mossy step
+    P(ctx, s, null, "oklch(0.18 0.04 230)", 0.04); cyl(ctx, 0, 0.32, 0, 0.93, 0.93, 0.02, 16, true); // dark water deep down
+    P(ctx, s, WOOD, "oklch(0.85 0.03 60)");
+    for (const x of [-1.05, 1.05]) { box(ctx, x - 0.1, 0.86, -0.1, x + 0.1, 2.5, 0.1); boxR(ctx, [x * 0.9, 2.2, 0.32], [0.08, 0.6, 0.08], { pitch: 40 }); boxR(ctx, [x * 0.9, 2.2, -0.32], [0.08, 0.6, 0.08], { pitch: -40 }); }
+    boxR(ctx, [0, 2.5, 0], [2.5, 0.14, 0.14]); // tie beam
+    boxR(ctx, [0, 3.18, 0], [2.9, 0.12, 0.12]); // ridge beam
+    for (const x of [-1.1, 1.1]) { // gable trusses: two rafters and a king post per end
+      for (const sd of [-1, 1]) boxR(ctx, [x, 2.86, sd * 0.62], [0.1, 0.1, 1.5], { pitch: sd * -32 });
+      box(ctx, x - 0.05, 2.5, -0.05, x + 0.05, 3.15, 0.05);
     }
+    P(ctx, s, "weathered-red-clay-roof-shingles", "oklch(0.9 0.04 40)", 0.8);
+    for (const sd of [-1, 1]) { // two shingle slopes, each three overlapping courses so the eave reads thick
+      for (let c = 0; c < 3; c++) { const t = c / 3, y = 3.2 - 0.62 * t - 0.12, z = sd * (0.12 + 0.98 * t);
+        boxR(ctx, [0, y, z], [3.05 + c * 0.04, 0.07, 0.62], { pitch: sd * -32 }); }
+    }
+    P(ctx, s, "weathered-red-clay-roof-shingles", "oklch(0.75 0.06 35)", 0.85); boxR(ctx, [0, 3.27, 0], [3.1, 0.12, 0.2]); // ridge caps
+    P(ctx, s, WOOD, "oklch(0.8 0.03 60)"); // windlass drum and crank
+    cyl(ctx, 0, 2.05, 0, 0.11, 0.11, 0.01, 8); boxR(ctx, [0, 2.05, 0], [2.2, 0.2, 0.2]);
+    P(ctx, s, IRON, "oklch(0.6 0.01 60)", 0.5, 0.7); boxR(ctx, [1.22, 2.05, 0], [0.22, 0.05, 0.05]); boxR(ctx, [1.33, 1.88, 0], [0.04, 0.38, 0.04]); boxR(ctx, [1.42, 1.72, 0], [0.18, 0.04, 0.04]);
+    P(ctx, s, null, "oklch(0.72 0.04 80)", 0.95); cyl(ctx, 0, 2.05, 0, 0.13, 0.13, 0.0, 10, false); boxR(ctx, [0, 2.05, 0], [0.5, 0.26, 0.26]); // rope coil on the drum
+    boxR(ctx, [0, 1.5, 0], [0.025, 1.1, 0.025]); // rope down into the shaft
+    P(ctx, s, "oak-barrel-staves", "oklch(0.85 0.04 60)"); cyl(ctx, 0.95, 0.98, 0.55, 0.15, 0.19, 0.3, 10, true); // a bucket on the lip
+    P(ctx, s, IRON, "oklch(0.55 0.01 60)", 0.5, 0.7); cyl(ctx, 0.95, 1.02, 0.55, 0.16, 0.165, 0.035, 10, false); cyl(ctx, 0.95, 1.22, 0.55, 0.185, 0.19, 0.035, 10, false);
+    boxR(ctx, [0.95, 1.4, 0.55], [0.36, 0.02, 0.02]);
+    P(ctx, s, null, "oklch(0.3 0.05 230)", 0.05); cyl(ctx, 0.95, 1.22, 0.55, 0.175, 0.175, 0.005, 10, true);
     return;
   }
   if (k === "lamppost") {
