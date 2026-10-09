@@ -1,6 +1,9 @@
 # Vanguard, the first discipline: hotbar 1 strike, 2 heavy strike, 3 guard. Seconds, metres, hit points.
 strike: { damage: 8, cooldown: 0.6, hitAt: 0.22, reach: 2.6, clip: cdn/clip-vanguard-strike-8a43460b.glb, speed: 1.0, length: 0.5 }
 heavy:  { damage: 22, cooldown: 3.0, hitAt: 0.75, reach: 3.0, clip: cdn/clip-vanguard-heavy-3948fdf9.glb, speed: 2.2, length: 2.0 }
+# 4 Earthsplitter: the blade slams down and a fissure runs length m ahead, width m wide; foes along it take damage, are thrown back and slowed.
+split:  { damage: 18, cooldown: 10, hitAt: 0.75, length: 1.6, reach: 9, width: 2.4, slow: 0.6, slowFor: 1.5, clip: cdn/clip-vanguard-heavy-3948fdf9.glb, speed: 2.0, icon: /cdn/value.c2d6c614494d4002d9f6a1e6cecde8c5a46497687f14998aa3c7ce589854d150.png, crack: /cdn/moodboard-painterly-fantasy/sfx-ground-slam-earth-cracking-rumble.mp3 }
+cleave: 4        # Heavy Strike hits up to this many foes in its arc
 guard:  { cooldown: 4.0, length: 1.5, reduce: 0.7, clip: cdn/clip-vanguard-guard-bf584840.glb, speed: 1.0 }
 arc: 75          # degrees either side of facing that a swing reaches
 dummyHp: 120

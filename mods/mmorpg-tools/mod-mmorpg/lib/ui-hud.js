@@ -183,8 +183,9 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
   // the class kit rides slots 1-3 (keys 1, 2, 3) unless the hero dragged something there: icon, name, a cooldown sweep keyed off state.cd
   const KIT = {
     vanguard: [{ id: 'kit-strike', cd: 'strike', name: 'Strike', icon: '/cdn/icon-sword-u16jp5yx9.webp', shortDesc: 'A quick blade cut. 8 damage.', cooldown: 0.6 },
-      { id: 'kit-heavy', cd: 'heavy', name: 'Heavy Strike', icon: '/cdn/icon-hammerheavy-u5ndnaxuu.webp', shortDesc: 'A slow two-handed blow. 22 damage.', cooldown: 3 },
-      { id: 'kit-guard', cd: 'guard', name: 'Guard', icon: '/cdn/icon-shield-u3qgy9lfm.webp', shortDesc: 'Raise your shield: 70% less damage for 1.5 s.', cooldown: 4 }],
+      { id: 'kit-heavy', cd: 'heavy', name: 'Heavy Strike', icon: '/cdn/icon-hammerheavy-u5ndnaxuu.webp', shortDesc: 'A slow two-handed blow. 22 damage to up to 4 foes in front of you.', cooldown: 3 },
+      { id: 'kit-guard', cd: 'guard', name: 'Guard', icon: '/cdn/icon-shield-u3qgy9lfm.webp', shortDesc: 'Raise your shield: 70% less damage for 1.5 s.', cooldown: 4 },
+      { id: 'kit-split', cd: 'split', name: 'Earthsplitter', icon: '/cdn/value.c2d6c614494d4002d9f6a1e6cecde8c5a46497687f14998aa3c7ce589854d150.png', shortDesc: 'Slam your blade down: a fissure tears 9 m ahead, striking every foe on it for 18, throwing them back and slowing them 60%.', cooldown: 10 }],
     arcanist: [{ id: 'kit-firebolt', cd: 'firebolt', name: 'Firebolt', icon: '/cdn/icon-fireball-u1ns0jvs9.webp', shortDesc: 'A bolt of flame at your target.', cooldown: 1.2 },
       { id: 'kit-frost', cd: 'frost', name: 'Frost Shard', icon: '/cdn/icon-frostball-u6cleszd4.webp', shortDesc: 'A shard of ice that slows.', cooldown: 4 },
       { id: 'kit-ward', cd: 'ward', name: 'Ward', icon: '/cdn/icon-shield2-u7ym8ql7u.webp', shortDesc: 'A shimmering ward that drinks damage.', cooldown: 15 },

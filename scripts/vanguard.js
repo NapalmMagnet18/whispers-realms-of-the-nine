@@ -8,3 +8,5 @@ export function onInput(ctx, input) { const m = L.get(); if (m) return m.onInput
 export function update(ctx, dt) { const m = L.get(); if (m) { if (m.update) return m.update(ctx, dt); ctx.sleep(30); return; } warm(ctx); ctx.sleep(1); }
 export const endAction = L.fwd('endAction');
 export const land = L.fwd('land');
+export const splitLand = L.fwd('splitLand');
+export const splitStep = L.fwd('splitStep');
