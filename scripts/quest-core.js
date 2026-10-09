@@ -162,11 +162,22 @@ function talk(ctx, npc) {
   say(ctx, (mine && qt(mine.id, 'doneText')) || (npc.state && npc.state.line) || 'Walk safe out there.', id);
 }
 
+function questNpcInReach(ctx, id) {
+  const me = ctx.self.feetPosition;
+  for (const npc of ctx.query({ tags: ['quest-npc'], radius: N.talkReach + 2 })) {
+    if (npc.id !== id) continue;
+    const live = ctx.place.objects[npc.id];
+    const at = live?.worldFeetPosition || npc.feetPosition;
+    if (at && flat(at, me) <= N.talkReach && Math.abs(at.y - me.y) <= 3) return true;
+  }
+  return false;
+}
+
 function accept(ctx, questId) {
   const st = ctx.self.state;
   const q = getQuest(questId);
   st.showQuestDialog = false; st.questDialogData = null;
-  if (!q || !getAvailableQuests(q.giverNpcId, st).some((x) => x.id === questId)) return; // done or already active: nothing
+  if (!q || !questNpcInReach(ctx, q.giverNpcId) || !getAvailableQuests(q.giverNpcId, st).some((x) => x.id === questId)) return; // done, remote or already active: nothing
   st.activeQuests = [...(st.activeQuests || []), questToActiveFormat(q, st)];
   st._questSave = true;
   ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-quest-accepted-parchment-scroll-unrolling-and-wax-seal-snap.mp3', volume: 0.55 }, { audience: { player: ctx.self.id } });
@@ -177,7 +188,7 @@ function complete(ctx, questId) {
   const st = ctx.self.state;
   const q = getQuest(questId);
   st.showQuestDialog = false; st.questDialogData = null;
-  if (!q) return;
+  if (!q || !questNpcInReach(ctx, q.turnInNpcId || q.giverNpcId)) return;
   if ((st.completedQuests || []).includes(questId)) { say(ctx, qt(q.id, 'refusedText')); return; }
   const aq = (st.activeQuests || []).find((x) => x && x.questId === questId);
   if (!aq || !questProgress(aq, st).done) { if (aq) say(ctx, qt(q.id, 'progressText')); return; }

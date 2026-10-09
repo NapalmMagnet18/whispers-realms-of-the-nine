@@ -1,5 +1,9 @@
 # WHISPERS : Realm of the Nine — build page
 
+## 2026-10-08 · quest NPC proximity (spaiber)
+- Accept and Complete actions recheck that the character is within talk range of the named quest NPC in the current place; delivery rewards require the receiver, not the original giver. Moving away from an open dialog no longer allows a remote claim.
+- Existing prerequisites, objectives, once-only rewards and character saves are preserved. Local regression checks cover remote/vertical requests, distinct delivery receivers, range boundary and duplicates. In-engine data audit found 209 implemented quests, no missing dependencies and no unknown item rewards. This is not a full campaign playthrough.
+
 ## 2026-10-08 · resident animation compatibility (spaiber)
 - Generated fantasy townsfolk and Elric now use their supported `idle` clip instead of mannequin-only idle names. They acknowledge nearby heroes with a small timed bow rather than requesting a missing masked nod/salute. Other models retain their existing gestures; explicit custom idle clips stay intact.
 - The greeting preserves turn-to-face and cooldown behavior; rotation writes occur only while turning or bow pitch changes. No character models, dialogue, quests or saved progression replaced.
