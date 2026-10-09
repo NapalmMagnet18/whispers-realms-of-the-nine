@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.34 Alpha';
+var GAME_VERSION = '0.47.35 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.35', 'Lanterns on the Roads', 'Iron lantern posts now line the first stretch of road out of every race town, so the way home glows at dusk.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
   ['v0.47.34', 'Arches of the Hearths', 'Every race town now greets the road with a flowering arch and a hanging lantern: ember gold at Cinderhold, sea blue at Gullrest, fen violet at Reedhaven, star white at Starfall Eyrie.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
   ['v0.47.33', 'Thornhollow in Bloom', 'Seven flower beds now fill the bare clearings around Thornhollow, and a rose arch with a hanging lantern spans the road into town.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
   ['v0.47.27', 'Green Rise', 'The blossom hamlet now sits on a gentle green rise above the tideline, deep meadow grass and wildflowers instead of wet sand.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
