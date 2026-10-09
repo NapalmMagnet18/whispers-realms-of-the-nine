@@ -24,6 +24,61 @@ star-road-shrine/sign:
   parent: star-road-shrine
   vector: "<svg viewBox='0 0 240 40' width='2.4m' billboard='yaw'><rect x='2' y='2' width='236' height='36' rx='8' fill='#2a1e16' fill-opacity='0.82' stroke='#c9a46a' stroke-width='2'/><text x='120' y='27' text-anchor='middle' font-family='serif' font-size='18' fill='#f2d48a'>E · Wayfarer's Blessing</text></svg>"
   visibleRange: {max: 35}
+starpool-basin:
+  children: [{feetPosition: {x: 0, y: 0.32, z: 0}, material: {color: oklch(0.42 0.09 265), kind: water, opacity: 0.85, waveIntensity: 0.03}, primitive: {kind: circle, radius: 2.45, segments: 32}, rotation: {pitch: -90}}, {feetPosition: {x: 0, y: 0.4, z: 0}, fx: {script: "fx\npop stars n=?mobile:14|30 on=disc(2.2).c(.4) life=3..5 v=up(.05..0.15) size=.03..0.06 col=hdr(1.6,1.8,2.6) a=(0>.3:1>.7:1>0)*flick(3,.5) r=sprite(soft-disc,add)"}}, {feetPosition: {x: 0, y: 1.2, z: 0}, light: {color: oklch(0.82 0.08 255), distance: 14, intensity: 2.4, kind: point}}, {audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-high-mountain-still-pool-soft-glass-chimes-thin-wind-loop.mp3, gain: 0.16, loop: true, maxDistance: 26, spatial: true}, feetPosition: {x: 0, y: 0.6, z: 0}}]
+  feetPosition: {x: -120, y: 67.25, z: -1060}
+  id: starpool-basin
+  physics: static
+  primitive: {kind: scripted, params: {kind: basin}, script: scripts/gen/petalfall.js, seed: 21}
+  tags: [starpool]
+starpool-cache:
+  feetPosition: {x: -123.4, y: 67.5, z: -1057}
+  id: starpool-cache
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/briar.js, seed: 13}
+  rotation: {yaw: 135}
+  state: {cache: starpool, copper: 1100, lid: starpool-cache-lid, title: Star-watcher's chest, yaw: 135}
+  tags: [cache, starpool]
+starpool-cache-lid:
+  feetPosition: {x: -123.6050609665441, y: 67.96, z: -1056.7949390334559}
+  id: starpool-cache-lid
+  primitive: {kind: scripted, params: {kind: lid}, script: scripts/gen/briar.js, seed: 13}
+  rotation: {yaw: 135}
+starpool-stone-0:
+  feetPosition: {x: -115.210482831185, y: 67.35, z: -1057.975024619995}
+  id: starpool-stone-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 31}
+  rotation: {lookAt: {x: -120, y: 67.5, z: -1060}}
+  tags: [starpool]
+starpool-stone-1:
+  feetPosition: {x: -120.44563182030716, y: 67.35, z: -1054.8191301617653}
+  id: starpool-stone-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 32}
+  rotation: {lookAt: {x: -120, y: 67.5, z: -1060}}
+  tags: [starpool]
+starpool-stone-2:
+  feetPosition: {x: -125.06496419487728, y: 67.35, z: -1058.822656505258}
+  id: starpool-stone-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 33}
+  rotation: {lookAt: {x: -120, y: 67.5, z: -1060}}
+  tags: [starpool]
+starpool-stone-3:
+  feetPosition: {x: -122.68504525663319, y: 67.35, z: -1064.4531485456732}
+  id: starpool-stone-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 34}
+  rotation: {lookAt: {x: -120, y: 67.5, z: -1060}}
+  tags: [starpool]
+starpool-stone-4:
+  feetPosition: {x: -116.59467431628748, y: 67.35, z: -1063.929854575916}
+  id: starpool-stone-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 35}
+  rotation: {lookAt: {x: -120, y: 67.5, z: -1060}}
+  tags: [starpool]
 vey-home-0:
   feetPosition: {x: -190, y: {terrain: -0.3}, z: -1085}
   id: vey-home-0
