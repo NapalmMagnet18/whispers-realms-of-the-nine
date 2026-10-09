@@ -40,7 +40,7 @@ function renderTradeWindow(a) { var f = _hf('trades', 'renderTradeWindow'); retu
 function renderAuction(a) { var f = _hf('trades', 'renderAuction'); return f ? f(a) : ''; }
 function renderVendor(a, b) { var f = _hf('vendor', 'renderVendor'); return f ? f(a, b) : ''; }
 function renderBank(a) { var f = _hf('vendor', 'renderBank'); return f ? f(a) : ''; }
-function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : ''; }
+function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : '<div style="position:fixed;inset:0;z-index:2147483000;background:#000"></div>'; } // until the veil's module lands: black, never the half-drawn world
 function zoneSplashActive() { var f = _hf('splash', 'zoneSplashActive'); return f ? f() : false; }
 function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
 function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); _hm('roster'); _hm('settings'); _hm('chat'); _hm('frames'); _hm('tips'); _hm('buffs'); }
