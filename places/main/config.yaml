@@ -17,8 +17,9 @@ atmosphere:
       mistDensity: 0.008
       mistReach: 180
       cloudCover: 0.42
-      grain: 0.018
-      bloomStrength: 0.34
+      grain: 0.006
+      bloomStrength: 0.3
+      sharpen: 0.6
   moon:
     intensity: 3
   sky:

@@ -16,7 +16,9 @@ atmosphere:
       reflection: 1.0
       denoise: 0.45
       aoStrength: 0.45
-      bloom: 1.1
+      bloom: 0.95
+      blurRadius: 0.7
+      bloomSpread: 1.0
   moon:
     intensity: 4
     enabled: true
