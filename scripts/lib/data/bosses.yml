@@ -382,6 +382,12 @@ lampless_reeve:
   wakeLine: You came home. Too late.
   sounds: {wake: /cdn/moodboard-gothic-horror/sfx-lantern-glass-shattering-cold-wind-gust.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-darkness-whoosh-rising.mp3, burst: /cdn/moodboard-gothic-horror/sfx-ghostly-flame-snuffed-out-burst.mp3, die: /cdn/moodboard-gothic-horror/sfx-last-ember-hiss-and-dying-sigh.mp3}
 hollowsong:
+  aura: |-
+    fx
+    pop spores rate=?mobile:5|12 on=disc(1.2).c(.5) life=2.5..4 v=up(.2..0.5)+sdir()*.2 size=.03..0.06 acc=curl(.5)*.6+buoy(.1) col=hdr(.9,1.6,.3) a=(0>.2:1>.8:.7>0)*flick(2,.4) r=sprite(soft-disc,add)
+    pop rot rate=?mobile:3|7 on=disc(.5).c(1.8) life=1.8..3 v=up(.2..0.4) size=.3..0.5 acc=buoy(.25)+curl(.3)*.5+drag(1) sz=$size*(.6>2) col=<.18,.22,.1>><.12,.13,.1> a=0>.15:.3>.6:.2>0 rot=spin(.1) r=sprite(smoke-puff,alpha)
+    pop leaves rate=?mobile:2|4 on=disc(.6).c(2.6) life=2.5..4 v=sdir()*.4 size=.05..0.09 acc=grav()*.15+curl(.6)+drag(.8) col=<.35,.28,.12> a=1>.85:1>0 rot=$age*4 floor=stick r=sprite(soft-disc,alpha)
+    pop glow n=1 at=point().c(1.3) gl=flick(.5,.3) r=light(<.6,1,.3>,$gl*1.8,6)
   name: Hollowsong, the Rotted Warden
   hp: 5200
   model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
@@ -403,6 +409,12 @@ hollowsong:
   wakeLine: You came home. Too late.
   sounds: {wake: /cdn/moodboard-painterly-fantasy/sfx-ancient-tree-groan.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-roots-rumble-gathering.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-rotten-wood-splinter-burst-spore-puff.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-great-tree-cracking-falling-crash.mp3}
 gharn_unbanked:
+  aura: |-
+    fx
+    pop heat rate=?mobile:6|14 on=disc(.5).c(1.6) life=1..1.8 v=up(.8..1.4)+sdir()*.2 size=.3..0.5 acc=buoy(.8)+curl(.5)*.6+drag(1) sz=$size*(.6>2) col=<.12,.08,.06>><.2,.18,.17> a=0>.12:.45>.6:.3>0 rot=spin(.15) r=sprite(smoke-puff,alpha)
+    pop embers rate=?mobile:6|14 on=disc(.55).c(1.4) life=.9..1.8 v=up(1.2..2.2)+sdir()*.5 size=.02..0.05 acc=curl(1)+grav()*.3+drag(.5) col=hdr(5,2.4,.6)>hdr(2,.6,.1) a=(0>.08:1>.7:.8>0)*flick(11,.4) r=sprite(ember,add,velocity,.02)
+    pop drips rate=?mobile:2|5 on=disc(.45).c(1.2) life=.6..1 v=sdir()*.3 size=.04..0.07 acc=grav() col=hdr(4,1.6,.3)>hdr(1.4,.3,.05) a=1>.8:1>0 floor=die r=sprite(soft-disc,add)
+    pop glow n=1 at=point().c(1.1) gl=flick(2,.3) r=light(<1,.45,.12>,$gl*3.5,7)
   name: Gharn the Unbanked
   hp: 5200
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
@@ -424,6 +436,12 @@ gharn_unbanked:
   wakeLine: You came home. Too late.
   sounds: {wake: /cdn/moodboard-painterly-fantasy/sfx-rock-brute-roar-grinding-stone.mp3, telegraph: /cdn/moodboard-painterly-fantasy/sfx-boulder-grinding-rumble-rising.mp3, burst: /cdn/moodboard-painterly-fantasy/sfx-ground-slam-rock-shatter-heavy.mp3, die: /cdn/moodboard-painterly-fantasy/sfx-stone-body-crumbling-collapse.mp3}
 captain_merrow:
+  aura: |-
+    fx
+    pop mist rate=?mobile:4|9 on=disc(1.2).c(.2) life=2.5..4 v=sdir()*.3 size=.8..1.3 acc=drag(1.2) sz=$size*(.7>1.6) col=<.3,.4,.42> a=0>.2:.12>.7:.08>0 rot=spin(.08) r=sprite(smoke-puff,alpha)
+    pop drips rate=?mobile:6|14 on=disc(.4).c(1.6) life=.5..0.9 v=sdir()*.1 size=.015..0.03 acc=grav() col=<.6,.75,.8> a=.8>.8:.8>0 floor=die r=sprite(soft-disc,alpha,velocity,.03)
+    pop motes rate=?mobile:2|5 on=disc(1).c(.8) life=2..3.5 v=up(.2..0.4) size=.03..0.06 acc=curl(.4) col=hdr(.3,1.4,1.3) a=(0>.2:1>.8:.8>0)*flick(3,.5) r=sprite(soft-disc,add)
+    pop glow n=1 at=point().c(1.2) gl=flick(.7,.2) r=light(<.35,.85,.8>,$gl*2,6)
   name: Captain Merrow of the Gull's Wake
   hp: 5200
   model: /cdn/model-humanoid-fantasy-drowned-sailor-ghoul-barnacled-rags-seaweed-hair-pale-bloated.glb
@@ -445,6 +463,11 @@ captain_merrow:
   wakeLine: You came home. Too late.
   sounds: {wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-heavy-splash.mp3, die: /cdn/moodboard-gothic-horror/sfx-drowned-ghoul-gurgling-death-sink.mp3}
 the_unbraided:
+  aura: |-
+    fx
+    pop flies rate=?mobile:3|8 on=sphere(1.1).c(1.6) life=1.5..2.5 v=sdir()*.6 size=.012..0.02 acc=curl(2.5)*1.5+attract(.6) col=<.05,.05,.04> a=1>.85:1>0 r=sprite(soft-disc,alpha)
+    pop murk rate=?mobile:3|6 on=disc(1.3).c(.15) life=2.5..4 v=sdir()*.2 size=.8..1.2 acc=drag(1.2) sz=$size*(.7>1.5) col=<.16,.2,.12> a=0>.2:.14>.7:.1>0 rot=spin(.08) r=sprite(smoke-puff,alpha)
+    pop wisps rate=?mobile:1|3 on=disc(1.4).c(1) life=2..3.5 v=up(.15..0.3) size=.04..0.07 acc=curl(.5) col=hdr(1.2,1.6,.4) a=(0>.2:1>.8:.8>0)*flick(4,.5) r=sprite(soft-disc,add)
   name: The Unbraided
   hp: 5200
   model: /cdn/model-humanoid-fantasy-reed-sentry-tall-guardian-woven-from-black-reeds-and-chapel-iron-glowing-teal-lantern-head.glb
@@ -466,6 +489,12 @@ the_unbraided:
   wakeLine: You came home. Too late.
   sounds: {wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-burst.mp3, die: /cdn/moodboard-gothic-horror/sfx-choir-fades-sigh.mp3}
 star_that_answered:
+  aura: |-
+    fx
+    pop motes rate=?mobile:6|14 on=sphere(.9).c(1.6) life=1.8..3 v=sdir()*.2 size=.03..0.06 acc=vortex(1.2)+attract(.3)+curl(.3) col=hdr(1.6,.7,2.6)>hdr(.5,.2,1) a=(0>.15:1>.8:.8>0)*flick(5,.4) r=sprite(soft-disc,add)
+    pop shards rate=?mobile:2|4 on=disc(1).c(.6) life=1.5..2.5 v=up(.4..0.8) size=.05..0.09 acc=curl(.4)+drag(.6) col=hdr(1.2,.6,2) a=1>.7:1>0 rot=spin(1) r=sprite(ember,add)
+    pop veil rate=?mobile:2|5 on=disc(.4).c(1.6) life=2..3 v=up(.2..0.4) size=.4..0.7 acc=buoy(.2)+curl(.3)*.4+drag(1) sz=$size*(.6>1.8) col=<.2,.12,.3> a=0>.15:.25>.6:.15>0 rot=spin(.1) r=sprite(smoke-puff,alpha)
+    pop glow n=1 at=point().c(1.6) gl=flick(1.1,.3) r=light(<.75,.45,1>,$gl*2.6,7)
   name: The Star That Answered
   hp: 5200
   model: /cdn/model-humanoid-fantasy-veil-witness-faceless-robed-figure-violet-crystal-shards-floating-around-head.glb
