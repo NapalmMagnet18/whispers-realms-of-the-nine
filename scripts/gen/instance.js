@@ -65,10 +65,11 @@ function halls(ctx, L, lod) {
     ctx.color(L.trim);
   }
   // floors
-  ctx.albedo(L.floor); ctx.color(L.stone);
+  const SHEEN = { "drowned-bell": 0.16, "ninth-assembly": 0.14, "pale-choir": 0.38, emberheart: 0.42, "root-archive": 0.78 }; // floor roughness: low enough that the traced reflections (mods/raytraced-lighting) show lamps and glow in it
+  ctx.albedo(L.floor); ctx.color(L.stone); ctx.roughness(SHEEN[ctx.params.layout] ?? 0.6);
   for (const r of R) ctx.quad(r.x0, 0.01, r.z1, r.x1, 0.01, r.z1, r.x1, 0.01, r.z0, r.x0, 0.01, r.z0);
   // a glowing sigil ring in every chamber after the first: the arena
-  ctx.albedo(null);
+  ctx.albedo(null); ctx.roughness(0.6);
   for (const r of R) { if (r.corr || r.z1 === 0) continue; const rr = Math.min(r.x1, (r.z1 - r.z0) / 2) - 2.5;
     ctx.color(L.trim); ring(ctx, 0, 0.02, r.cz, rr, rr + 0.6, lod <= 2 ? 48 : 20);
     ctx.color(L.glow); ctx.emissive(lod <= 3 ? L.glow : null); ring(ctx, 0, 0.03, r.cz, rr - 0.25, rr - 0.1, lod <= 2 ? 48 : 20); ctx.emissive(null); }
