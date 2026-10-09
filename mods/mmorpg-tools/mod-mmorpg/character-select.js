@@ -457,7 +457,9 @@ export function update(objectApi, dt) {
         at: { x: raceStart.x, y: raceStart.y, z: raceStart.z },
       });
     } else {
-      objectApi.patchState({ loadingProgress: progress });
+      // a state write re-renders every screen: step the bar in tenths, never every frame
+      if (Math.floor(progress / 10) !== Math.floor((s.loadingProgress ?? 0) / 10)) objectApi.patchState({ loadingProgress: progress });
+      else objectApi.patchState({ loadingProgress: progress }, { local: true });
     }
   }
 
