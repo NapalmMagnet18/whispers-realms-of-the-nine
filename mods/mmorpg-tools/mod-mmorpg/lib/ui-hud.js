@@ -187,7 +187,8 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
       { id: 'kit-guard', cd: 'guard', name: 'Guard', icon: '/cdn/icon-shield-u3qgy9lfm.webp', shortDesc: 'Raise your shield: 70% less damage for 1.5 s.', cooldown: 4 }],
     arcanist: [{ id: 'kit-firebolt', cd: 'firebolt', name: 'Firebolt', icon: '/cdn/icon-fireball-u1ns0jvs9.webp', shortDesc: 'A bolt of flame at your target.', cooldown: 1.2 },
       { id: 'kit-frost', cd: 'frost', name: 'Frost Shard', icon: '/cdn/icon-frostball-u6cleszd4.webp', shortDesc: 'A shard of ice that slows.', cooldown: 4 },
-      { id: 'kit-ward', cd: 'ward', name: 'Ward', icon: '/cdn/icon-shield2-u7ym8ql7u.webp', shortDesc: 'A shimmering ward that drinks damage.', cooldown: 15 }],
+      { id: 'kit-ward', cd: 'ward', name: 'Ward', icon: '/cdn/icon-shield2-u7ym8ql7u.webp', shortDesc: 'A shimmering ward that drinks damage.', cooldown: 15 },
+      { id: 'kit-cinderfall', cd: 'cinderfall', name: 'Cinderfall', icon: '/cdn/value.7cc8b274388f41fb68e6405b92820859f18e71ebd7c081d9f2d492fdfc7b5943.png', shortDesc: 'Call a falling star onto your target: 26 fire damage to everything within 4 m, scorching the ground.', cooldown: 12 }],
     pathfinder: [{ id: 'kit-arrow', cd: 'arrow', name: 'Arrow', icon: '/cdn/icon-crossbow-u18wj7tj2.webp', shortDesc: 'Loose an arrow at your target.', cooldown: 0.8 },
       { id: 'kit-volley', cd: 'volley', name: 'Volley', icon: '/cdn/icon-crossbow-u18wj7tj2.webp', shortDesc: 'A fan of arrows.', cooldown: 4 },
       { id: 'kit-roll', cd: 'roll', name: 'Dodge Roll', icon: '/cdn/icon-go-u3btdaqbv.webp', shortDesc: 'Roll 6 m clear, untouchable while you roll.', cooldown: 5 }],
@@ -197,7 +198,7 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
   };
   const _kit = KIT[String(s.className || 'vanguard').toLowerCase()] || null;
   const spellBar = (s.spellBar && s.spellBar.length ? s.spellBar : [null, null, null, null, null, null, null, null]).slice();
-  if (_kit) for (let k = 0; k < 3; k++) if (!spellBar[k] || !spellBar[k].id || spellBar[k].id === 'attack') spellBar[k] = _kit[k];
+  if (_kit) for (let k = 0; k < _kit.length; k++) if (!spellBar[k] || !spellBar[k].id || spellBar[k].id === 'attack') spellBar[k] = _kit[k];
   const _kitCd = s.cd || {};
   const racialCdStr = s.racialCooldownRemaining || '';
   const classCdRemaining = s.classCooldownRemaining || {};

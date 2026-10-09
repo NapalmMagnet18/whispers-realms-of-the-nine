@@ -9,3 +9,5 @@ export function update(ctx, dt) { const m = L.get(); if (m) { if (m.update) retu
 export const release = L.fwd('release');
 export const wardEnd = L.fwd('wardEnd');
 export const endAction = L.fwd('endAction');
+export const callStar = L.fwd('callStar');
+export const starLands = L.fwd('starLands');
