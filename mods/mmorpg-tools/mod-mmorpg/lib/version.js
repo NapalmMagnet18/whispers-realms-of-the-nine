@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.48 Alpha';
+var GAME_VERSION = '0.47.49 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.49', 'Every step heard', 'A jump now rustles leather and catches a breath, a long fall lands with a thump of boots and gear, and gravel roads crunch underfoot.'],
   ['v0.47.48', 'The Realm Sings', 'Every land now has its own playlist of two or three songs in one warm score, the title screen too, and the Music tab holds the whole soundtrack. Emberwell and the Star Pool sing their own lands now.'],
   ['v0.47.47', 'Hidden Places', 'Your quest log (L) now keeps a tally of the March\'s hidden places, with a riddle for each one you have not found.'],
   ['v0.47.46', 'The Star Pool', 'East of Starfall Eyrie, on a shelf of the mountain, a still pool holds the stars even by day. Five pale stones keep watch. So did someone else, once.'],

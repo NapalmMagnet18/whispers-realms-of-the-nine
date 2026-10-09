@@ -13,7 +13,7 @@ import { wowMove, modalOpen } from './lib/wow-move.js'
 // Footsteps from the creator's foley pack: the ground under the foot picks the set, a floor above the terrain is hard.
 const STEPS = {
   hard: ['/cdn/sfx-footstep-hard-surface-fvkz5mig.mp3', '/cdn/sfx-footstep-hard-surface-step-fodr77wl.mp3', '/cdn/footstep-04-hard-surface-step-5xkxucmi.mp3', '/cdn/footstep-hard-surface-walk-unyuz2k7.mp3'],
-  gravel: ['/cdn/footstep-07-gravel-walk-3xm4nwid.mp3'],
+  gravel: ['/cdn/footstep-07-gravel-walk-3xm4nwid.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-leather-boot-on-loose-gravel-path-crunch.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-leather-boot-on-loose-gravel-path-crunch-2.mp3'],
   soft: ['/cdn/sfx-footstep-dirt-walk-9iixa3ms.mp3', '/cdn/sfx-footstep-walking-movement-po5miq4i.mp3', '/cdn/sfx-footstep-walking-movement-shoe-plqtyode.mp3'],
   grass: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-thick-grass-soft-swish.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-thick-grass-soft-swish-2.mp3'],
   forest: ['/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-forest-floor-pine-needles-twig-crackle.mp3', '/cdn/moodboard-painterly-fantasy/sfx-footstep-boot-on-forest-floor-dry-leaves-crunch.mp3'],
@@ -27,6 +27,8 @@ const STEPS = {
 const HARD = { cobble: 1, rock: 1, redrock: 1, pathrock: 1, desertrock: 1 }
 const BY_MAT = { grass: 'grass', forest: 'forest', snow: 'snow', mud: 'mud', sand: 'sand', blight: 'ash', ashrock: 'ash', veil: 'crystal', gravel: 'gravel', dirt: 'soft' }
 const WOOD = /bridge|dock|boardwalk|pier|plank|deck|stilt|jetty|walkway|floor-wood|wharf/i
+const JUMP_SND = '/cdn/moodboard-painterly-fantasy/sfx-jump-quick-cloth-rustle-leather-creak-short-breath-exhale.mp3'
+const LAND_SND = '/cdn/moodboard-painterly-fantasy/sfx-landing-boots-thump-on-ground-knees-bend-gear-rattle.mp3'
 function footstep(ctx, w, speed, dt) {
   w.stepT = (w.stepT ?? 0) - dt
   if (w.stepT > 0) return
@@ -67,6 +69,7 @@ export function onInput(ctx, input) {
   if (input.pressed.jump && ctx.self.grounded && !m.blocked) {
     const v = ctx.self.velocity
     ctx.self.velocity = { x: v.x, y: PLAYER.jumpSpeed, z: v.z }
+    ctx.emit('playSound', { clip: JUMP_SND, position: ctx.self.feetPosition, volume: 0.35, pitch: 0.94 + ctx.random() * 0.12, follow: ctx.self.id, mode: 'restart' })
   }
 }
 
@@ -108,6 +111,14 @@ export function update(ctx, dt) {
   // Gravity is yours: the held velocity walks the body; bend its y every tick.
   ctx.self.velocity = { x: vx, y: v.y + ctx.place.gravity.y * dt, z: vz }
   const spd = Math.hypot(vx, vz)
+  // a landing: airborne a beat, then the ground again; the thump is sized by the fall
+  const w0 = walkOf(ctx)
+  if (!ctx.self.grounded) { w0.air = (w0.air ?? 0) + dt; w0.fallV = Math.min(w0.fallV ?? 0, v.y) }
+  else if ((w0.air ?? 0) > 0.35) {
+    const hard = Math.min(1, -(w0.fallV ?? 0) / 14)
+    ctx.emit('playSound', { clip: LAND_SND, position: ctx.self.feetPosition, volume: 0.3 + hard * 0.45, pitch: 1.05 - hard * 0.15 })
+    w0.air = 0; w0.fallV = 0
+  } else { w0.air = 0; w0.fallV = 0 }
   if (ctx.self.grounded && spd > 1) footstep(ctx, walkOf(ctx), spd, dt)
   // Standing on the ground with no word to walk: nothing changes until something moves the body or a key
   // is pressed: both wake this update (a row of the body written, or onInput running).
