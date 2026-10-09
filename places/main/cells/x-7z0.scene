@@ -3,7 +3,7 @@ deep-bandit-crew:
   behavior: scripts/scavengers.js
   feetPosition: {x: -943, y: {terrain: 0}, z: 45}
   id: deep-bandit-crew
-  state: {crew: [{id: deep-bandit-1, x: -935, yaw: 90, z: 40}, {id: deep-bandit-2, x: -951, yaw: 250, z: 39}, {id: deep-bandit-3, x: -940, yaw: 0, z: 55}], damage: 60, hp: 260, model: /cdn/model-humanoid-fantasy-bandit-raider-male-leather-hood-patched-gambeson-short-axe.glb, name: Deepgrove Raider, reward: {copper: 25, xp: 70}, tallyKey: deepgrove_bandit}
+  state: {crew: [{id: deep-bandit-1, x: -935, yaw: 90, z: 40}, {id: deep-bandit-2, x: -951, yaw: 250, z: 39}, {id: deep-bandit-3, x: -940, yaw: 0, z: 55}], damage: 60, hp: 260, model: /cdn/model-humanoid-fantasy-deepgrove-raider-gaunt-forest-cutthroat-moss-rotted-hood-bone-mask-thorn-wrapped-leather-armor-rusted-hooked-axe-dark-gothic.glb, name: Deepgrove Raider, reward: {copper: 25, xp: 70}, tallyKey: deepgrove_bandit}
   tags: [bandit-camp]
 deep-bandit-fire:
   feetPosition: {x: -943, y: 31, z: 45.5}
