@@ -125,7 +125,7 @@ function rain(ctx, on) {
 const FOREST = new Set(["briarwild", "deepwood", "deepgrove", "thornhollow", "petalfall", "sorrowfen", "elderveil"]);
 function isNight(ctx) { const N = MUSIC.night, h = ctx.place.atmosphere?.timeOfDay; return !!N && typeof h === "number" && (h >= N.from || h < N.until); }
 const WOODS_NIGHT = `fx follow=camera
-pop flies n=?mobile:22|50 on=disc(18).c(1.4) life=5..9 v=sdir()*(.1..0.3) size=.03..0.06 ph=0..6.28 acc=curl(.35)*.5+drag(.6) col=hdr(2.4,3.4,.8) a=(0>.15:1>.85:1>0)*(sin($age*2.1+$ph)*.5+.5)^3 r=sprite(mote,add)
+pop flies n=?mobile:22|50 on=disc(18).c(1.4) life=5..9 v=sdir()*(.1..0.3) size=.03..0.06 acc=curl(.35)*.5+drag(.6) col=hdr(2.4,3.4,.8) a=(0>.15:1>.85:1>0)*flick(.7,.95) r=sprite(mote,add)
 pop wisp n=?low:1|3 on=disc(14).c(1.6) life=10..16 v=sdir()*(.2..0.4) size=.28..0.4 acc=curl(.15)*.4+drag(.4) col=hdr(.8,2.2,2.6) a=(0>.2:.85>.8:.85>0)*flick(1.3,.25) sz=$size*flick(2,.12) r=sprite(soft-disc,add)
 pop trail on=@wisp?.6 inh=p life=.8..1.4 v=sdir()*.05 size=.05..0.09 col=hdr(.7,1.8,2.2) a=.7>0 sz=$size*(1>.3) r=sprite(mote,add)
 pop glow n=?low:0|2 on=disc(12).c(1.6) life=10..16 v=sdir()*(.2..0.35) acc=curl(.15)*.4+drag(.4) gl=(0>.2:1>.8:1>0) r=light(<.45,.95,1>,$gl*1.2,6,perParticle)`;
