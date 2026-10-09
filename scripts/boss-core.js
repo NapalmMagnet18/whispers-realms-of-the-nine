@@ -30,8 +30,8 @@ pop smoke burst=20 on=disc(${r * 0.6}) life=1.4..2.2 v=up(.5..1.1) size=.4..0.7 
 pop flash n=1 life=.35 r=light(<${(a / 3.4).toFixed(2)},${(b / 3.4).toFixed(2)},${(c / 3.4).toFixed(2)}>,26,${r + 8})`; };
 
 function def(ctx) { return BOSSES[ctx.self.state.boss] || null; }
-function once(w, clip, speed = 1) { if (clip) w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override" }; }
-function gait(w, m, D, name) { if (m.gait === name) return; m.gait = name; const c = D.clips?.[name] ?? (name === "idle" ? "Idle" : "Walk"); w.anim.base = { clip: c, weight: 1, loop: "loop" }; }
+function once(w, clip, speed = 1) { if (clip) w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override", blendIn: 0.14, blendOut: 0.25 }; }
+function gait(w, m, D, name) { if (m.gait === name) return; m.gait = name; const c = D.clips?.[name] ?? (name === "idle" ? "Idle" : "Walk"); w.anim.base = { clip: c, weight: 1, loop: "loop", blendIn: 0.3 }; }
 function face(w, m, D, to, dt) {
   const p = w.feetPosition, want = (Math.atan2(-(to.x - p.x), -(to.z - p.z)) * 180) / Math.PI;
   m.yaw ??= typeof w.state.yaw === "number" ? w.state.yaw : 0;
