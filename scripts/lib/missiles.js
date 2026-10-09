@@ -60,7 +60,7 @@ pop rime n=1 at=point().c(.03) size=1.6 col=hdr(.55,.85,1.4) a=.35*flick(.8,.2) 
 pop mist rate=?mobile:4|8 on=disc(.8) life=1.6..2.6 v=sdir()*(.1..0.25) size=.35..0.6 acc=grav()*.04+curl(.2)*.3+drag(1.2) sz=$size*(.6>2) col=<.82,.92,1> a=0>.3:.28>0 rot=spin(.08) r=sprite(smoke-puff,alpha)
 pop glints rate=?mobile:6|12 on=disc(.7) life=.3..0.7 size=.025..0.05 col=hdr(2.4,3.2,4.8) a=(0>.5:1>0)*flick(13,.6) r=sprite(mote,add)
 pop glow n=1 at=point().c(.3) r=light(<.55,.78,1>,1.4,4)`
-const BOW = /cdn/moodboard-painterly-fantasy/'
+const BOW = '/cdn/moodboard-painterly-fantasy/'
 export { FIRE_LINGER }
 export const MISSILES = {
   fire: { trail: FIRE_TRAIL, cast: FIRE_CAST, impact: { any: FIRE_HIT }, mark: { texture: '/cdn/value.ef4ee5e30d4a5eeb5e69ded461e8ca612b535ef6192f1e6b201f150316e8bce7.png', size: 1.8, life: 12 }, linger: { script: FIRE_LINGER, life: 3.5 }, sound: { any: BOW + 'sfx-firebolt-impact-burst.mp3' } },
