@@ -463,7 +463,12 @@ captain_merrow:
   milestone: 30
   killText: Captain Merrow of the Gull's Wake is laid to rest
   wakeLine: You came home. Too late.
-  sounds: {wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-heavy-splash.mp3, die: /cdn/moodboard-gothic-horror/sfx-drowned-ghoul-gurgling-death-sink.mp3}
+  hitFx: |-
+    fx
+    pop brine burst=26..34 life=.4..0.8 v=sdir()*(2..4)+up(1.5) size=.04..0.09 acc=grav()+drag(1.2) col=<.55,.78,.8> a=.9>.6:.9>0 floor=die r=sprite(soft-disc,alpha,velocity,.03)
+    pop spray burst=6..9 life=.5..0.9 v=sdir()*.8+up(.6) size=.3..0.5 acc=drag(2)+buoy(.4) sz=$size*(.6>1.8) col=<.4,.55,.57> a=0>.1:.45>.6:.2>0 rot=spin(.3) r=sprite(smoke-puff,alpha)
+    pop flare burst=1 life=.18 size=1.1 sz=$size*(.6>1.4) col=hdr(.6,2.2,2) a=1>0 r=sprite(soft-disc,add)
+  sounds: {swing: /cdn/moodboard-gothic-horror/sfx-heavy-chain-whoosh-swing.mp3, hit: /cdn/moodboard-gothic-horror/sfx-heavy-chain-impact-wet-crunch.mp3, wake: /cdn/moodboard-gothic-horror/sfx-ghostly-choir-swell.mp3, telegraph: /cdn/moodboard-gothic-horror/sfx-water-surge-gathering.mp3, burst: /cdn/moodboard-gothic-horror/sfx-wave-crash-heavy-splash.mp3, die: /cdn/moodboard-gothic-horror/sfx-drowned-ghoul-gurgling-death-sink.mp3}
 the_unbraided:
   aura: |-
     fx

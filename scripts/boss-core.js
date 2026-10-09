@@ -143,7 +143,7 @@ export function update(ctx, dt) {
   const M = D.melee || { damage: 60, reach: 2.6, every: 2.4, windup: 0.6 };
   if (m.windup) {
     w.velocity = { x: 0, y: -2, z: 0 }; face(w, m, D, prey.feetPosition, dt);
-    if (now >= m.windup) { m.windup = 0; if (D.sounds?.swing) ctx.emit("playSound", { clip: D.sounds.swing, position: w.feetPosition, volume: 0.8, maxDistance: 30 }, { audience: near(w.feetPosition, 35) }); if (best <= M.reach) { hurt(ctx, prey, M.damage * (s.enraged ? 1.2 : 1), "#ff5a4a"); if (D.sounds?.hit) ctx.emit("playSound", { clip: D.sounds.hit, position: prey.feetPosition, volume: 0.8, maxDistance: 30 }, { audience: near(prey.feetPosition, 35) }); } }
+    if (now >= m.windup) { m.windup = 0; if (D.sounds?.swing) ctx.emit("playSound", { clip: D.sounds.swing, position: w.feetPosition, volume: 0.8, maxDistance: 30 }, { audience: near(w.feetPosition, 35) }); if (best <= M.reach) { hurt(ctx, prey, M.damage * (s.enraged ? 1.2 : 1), "#ff5a4a"); if (D.sounds?.hit) ctx.emit("playSound", { clip: D.sounds.hit, position: prey.feetPosition, volume: 0.8, maxDistance: 30 }, { audience: near(prey.feetPosition, 35) }); if (D.hitFx) { const hp = { x: prey.feetPosition.x, y: prey.feetPosition.y + 1.1, z: prey.feetPosition.z }; ctx.emit("fx", { position: hp, script: D.hitFx }, { audience: near(hp, 40) }); ctx.emit("cameraPunch", { direction: { x: prey.feetPosition.x - w.feetPosition.x, y: 0, z: prey.feetPosition.z - w.feetPosition.z }, intensity: 0.6 }, { audience: { player: prey.id } }); ctx.emit("hitstop", { duration: 0.05 }, { audience: { player: prey.id } }); } } }
     return;
   }
   if (best <= M.reach * 0.85) {

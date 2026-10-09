@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.94 Alpha';
+var GAME_VERSION = '0.47.95 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.95', 'Weight of the Chain', 'Captain Merrow\'s anchor chain whooshes through the air and lands with a wet crunch, a burst of brine and a jolt you feel.'],
   ['v0.47.94', 'The Captain Stirs', 'Captain Merrow breathes and sways on his strand, walks with a heavy gait, and casts his tide attacks with a real spell motion.'],
   ['v0.47.93', 'Lamplight on the Captain', 'Captain Merrow glows cold off the tide now, so his coat, chain and face read even under a black sky.'],
   ['v0.47.92', 'The Choir Stands Tall', 'Drowned Echoes rise at a full grown height now, eye to eye with the heroes they drag under.'],
