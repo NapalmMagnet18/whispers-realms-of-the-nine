@@ -45,7 +45,12 @@ const _SPLASH = require('./lib/ui-zone-splash.js');
 function renderZoneSplash(a) { return _SPLASH.renderZoneSplash(a); }
 function zoneSplashActive() { return _SPLASH.zoneSplashActive(); }
 function resetZoneSplash() { _SPLASH.resetZoneSplash(); }
-function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); _hm('roster'); _hm('settings'); _hm('chat'); _hm('frames'); _hm('tips'); _hm('buffs'); }
+// the menu needs only its roster and settings to stand; the in-world set (~220 KB) waits 2.5 s after the first paint so it never races the menu's first picture
+var _warmAt = 0;
+function _warmHud(inMenu) {
+  _hm('roster'); _hm('settings');
+  if (inMenu) { var t = Date.now(); if (!_warmAt) _warmAt = t + 2500; if (t < _warmAt) return; }
+  _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); _hm('roster'); _hm('settings'); _hm('chat'); _hm('frames'); _hm('tips'); _hm('buffs'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
 function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
 function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
