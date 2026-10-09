@@ -10,11 +10,14 @@ pop streak burst=1 at=point() life=.5 size=.06 v=<0,1,0>*30 col=hdr(1.6,2.6,1) a
 pop trail burst=14 on=point() life=.3..0.5 v=up(10..28) size=.04 col=hdr(1,2,.8) a=.8>0 r=sprite(ember,add,velocity,.06)`
 const MARK = `fx
 pop ring n=1 at=point().c(.05) size=%r|4.5 col=hdr(.9,2.2,.6) a=(.2>.8)*flick(7,.2) sz=$size*2*(1.12>1) r=sprite(soft-disc,add,axis,0,.55,axis=<0,1,0>)
-pop leaves rate=24 on=disc(%r|4.5).c(4) life=.8..1.2 v=<0,-1,0>*(2..3)+sdir()*.4 size=.05..0.09 col=<.3,.5,.18> a=1>0 rot=spin(2) r=sprite(soft-disc,alpha)`
+pop leaves rate=24 on=disc(%r|4.5).c(4) life=.8..1.2 v=<0,-1,0>*(2..3)+sdir()*.4 size=.05..0.09 col=<.3,.5,.18> a=1>0 rot=spin(2) r=sprite(soft-disc,alpha)
+pop glow n=1 at=point().c(.5) r=light(<.5,1,.35>,2.5,%r|4.5*2)`
 const WAVE = `fx
 pop arrows burst=?mobile:16|28 on=disc(%r|4.5).c(9) life=.32..0.4 v=<0,-1,0>*(26..32)+sdir()*1.2 size=.035 col=hdr(.9,1.6,.7) a=1 floor=die r=sprite(ember,add,velocity,.55)
 pop chips on=@arrows life=.4..0.7 v=up(1.5..3)+sdir()*(1..2) size=.03..0.06 acc=grav()*1.2+drag(.8) col=<.42,.33,.22> a=1>0 floor=bounce(.2) r=mesh(box,1,.5,1)
-pop dust on=@arrows?.5 life=.6..1 v=up(.4..0.8)+sdir()*.4 size=.25..0.4 acc=buoy(.2)+drag(1.6) sz=$size*(.6>1.7) col=<.6,.53,.42> a=0>.3:.3>0 rot=spin(.2) r=sprite(smoke-puff,alpha)`
+pop dust on=@arrows?.5 life=.6..1 v=up(.4..0.8)+sdir()*.4 size=.25..0.4 acc=buoy(.2)+drag(1.6) sz=$size*(.6>1.7) col=<.6,.53,.42> a=0>.3:.3>0 rot=spin(.2) r=sprite(smoke-puff,alpha)
+pop sparks on=@arrows?.4 life=.15..0.3 v=up(1..2.5)+sdir()*(1..2) size=.015..0.03 col=hdr(1.4,2.6,.9) a=1>0 r=sprite(ember,add,velocity,.02)
+pop light burst=1 life=.5 gl=1>0 r=light(<.6,1,.4>,$gl*5,%r|4.5*2.2)`
 const THORNS = `fx
 pop vines n=?mobile:22|40 on=disc(%r|4.5) size=.04..0.06 tilt=-.5..0.5 col=<.12,.16,.07> a=1 rot=$tilt r=mesh(cylinder,1,14,1)
 pop barbs n=?mobile:30|60 on=disc(%r|4.5).c(.6) size=.08..0.14 col=<.22,.2,.1> a=1 rot=spin(1) r=mesh(box,.2,1,.2)
