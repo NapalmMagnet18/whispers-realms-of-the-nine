@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 2257,
-  "updatedAt": "2026-10-09T14:49:47.852Z",
+  "basedOnSpecVersion": 2267,
+  "updatedAt": "2026-10-09T14:54:56.186Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer dark-fantasy MMO across Lantern's March, race homelands, a battleground, and gate-linked dungeon/raid places. MMORPG Tools owns character, realm, persistence and UI lifecycle; ordered player behaviors, shared registries and data-driven combat cores run world systems, while procedural generators and place-selected looks supply presentation.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -301,7 +301,7 @@
     "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; guild registrar, well, merchant/farm landmarks and central routes.",
     "places/main/cells/x-1z0.scene and neighboring woodland cells - Petalfall Hollow/March woods, glade wisps, quarry camp and quest/enemy sites.",
     "places/main/cells/x-7z0.scene, x-9z15.scene, x2z11.scene - Deepgrove Raider, Court Brine-Taker and Phantom Current camps; placements carry crew positions, combat stats and tally keys.",
-    "places/main/cells/x2z12.scene - Gull's Wake/Captain Merrow boss placement; arena/home/state are placement-owned and the boss definition supplies its dedicated model and scale.",
+    "places/main/cells/x2z12.scene - Gull's Wake/Captain Merrow boss placement; arena/home/state are placement-owned and the boss definition supplies its dedicated model and scale; config clears wet sand around the wreck and lays a sand path to the tideline.",
     "places/banner-vale/ - 5v5 capture-the-banner battleground; place sim/referee handles teams, flags, scores and returns.",
     "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - gate-linked dungeon/raid instances; Hollowcrypt selects FBsRenderer look, other five use ray-traced lighting and place-specific reflection settings.",
     "places/{character-creation-land,main-menu-land}/ - character-creation and menu environments; both use ray-traced look, with creation-land's distinct fill and reflection/bloom tuning."
@@ -309,7 +309,7 @@
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing, realm pulse and Awakening lighting.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.89 Alpha and newest-first Herald patch notes; version tag shown on menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.90 Alpha and newest-first Herald patch notes; version tag shown on menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain, atmosphere/day-night cycle, Awakening frame look, room weather and Party Finder.",
@@ -362,7 +362,7 @@
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; floor roughness is layout-specific for traced reflections.",
-    "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by definition: hp, arena, abilities/telegraphs, phases, enrage, rewards, model and scale; Drowned Echo summons use their own drowned choirboy model.",
+    "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by definition: hp, arena, abilities/telegraphs, phases, enrage, rewards, model and scale; Drowned Echo summons use their own definitions.",
     "scripts/gen/flora.js - seeded flora across March roads, race-town beds, Reedhaven cottage gardens and Thornhollow bloom clearings; kind, palette, seed, scale and density vary.",
     "scripts/gen/house.js - generated cottages/halls share house geometry with width/depth, roof, chimney and window parameters; cottage weathering/detail differs from stone halls.",
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed.",
@@ -379,6 +379,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, then counts enterTally.",
     "Creation and first-arrival veils use ui-zone-splash.js zoneArtFor/arrivalVeil; scripts/player.js stamps _areaReady after stable grounded terrain contact and splash retains its wait/hold/fade contract.",
     "Talent picks are state.unlockedTalents entries keyed spec:tier, not flat tier numbers; points derive from floor(level/5), max 12, with one pick per tier in a spec; kit.js and quest-player.js consume derived effects.",
-    "Lantern March audio reads live atmosphere.timeOfDay; keep the one-hour cycle and music.yml night thresholds aligned. Woodlight is session-local and camera-following; bosses.yml defines boss model/scale and mechanics, while scene placements own arena/home/state."
+    "Lantern March audio reads live atmosphere.timeOfDay; keep the one-hour cycle and music.yml night thresholds aligned. Captain Merrow's arena clearance/approach are terrain config paths centered near (217,1503); boss model/mechanics remain defined by bosses.yml and scene placement."
   ]
 }
