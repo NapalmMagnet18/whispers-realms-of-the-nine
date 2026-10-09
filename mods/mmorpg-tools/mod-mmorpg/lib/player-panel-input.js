@@ -3,6 +3,7 @@
 // world and forwards every in-world press here. Returns FALL when the press is not a panel's, so movement runs.
 import * as SHOP_DATA from './shop-data.js';
 import * as PROF_DATA from './profession-data.js';
+import * as TAL from '../../../../scripts/lib/talents.js';
 export var FALL = 'fall';
 export function panelInput(objectApi, input, s, H) {
   var saveCharacter = H.saveCharacter, TRACKS = H.TRACKS, setWorldSpatialAudio = H.setWorldSpatialAudio,
@@ -348,148 +349,20 @@ export function panelInput(objectApi, input, s, H) {
     objectApi.patchState({ talentSpecTab: input.actionData.setTalentTab.tab });
   }
 
-  // ── Talent spending ──
+  // ── Talent spending: scripts/lib/talents.js judges the pick; health/damage/haste read the picks live ──
   if (input.actions.spendTalent && input.actionData && input.actionData.spendTalent) {
-    var tierNum = input.actionData.spendTalent.tier;
-    var slotIdx = input.actionData.spendTalent.index;
-    var tp = s.talentPoints ?? 0;
-    var ut = Object.assign({}, s.unlockedTalents || {});
-
-    // Tier layout: Tier 0 → [0,1,2], Tier 1 → [3,4], Tier 2 → [5,6,7], Tier 3 → [8,9]
-    var TIER_LAYOUT = [[0,1,2],[3,4],[5,6,7],[8,9]];
-
-    // Class-indexed talent stat data (must match UI CLASS_TALENTS exactly)
-    var { RACES: SAVE_RACES, CLASSES: SAVE_CLASSES } = H.req('./lib/races.js');
-    var pRace = SAVE_RACES[s.raceIndex ?? 0];
-    var pRaceClasses = pRace ? pRace.classes : SAVE_CLASSES;
-    var pClassName = pRaceClasses[s.classIndex ?? 0] || SAVE_CLASSES[s.classIndex ?? 0] || 'Blood Knight';
-
-    // Inline talent stat table keyed by class → array of 10 { stat, amount, stat2?, amount2? }
-    var CLASS_TALENT_STATS = {
-      'Blood Knight': [
-        { stat: 'strength', amount: 2 }, { stat: 'vitality', amount: 3 }, { stat: 'endurance', amount: 2 },
-        { stat: 'strength', amount: 2, stat2: 'dexterity', amount2: 1 }, { stat: 'vitality', amount: 2, stat2: 'spirit', amount2: 1 },
-        { stat: 'dexterity', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'wisdom', amount: 2 },
-        { stat: 'strength', amount: 3, stat2: 'vitality', amount2: 2 }, { stat: 'spirit', amount: 2, stat2: 'luck', amount2: 2 },
-      ],
-      'Necromancer': [
-        { stat: 'intelligence', amount: 2 }, { stat: 'vitality', amount: 3 }, { stat: 'spirit', amount: 2 },
-        { stat: 'intelligence', amount: 2, stat2: 'wisdom', amount2: 1 }, { stat: 'endurance', amount: 2, stat2: 'vitality', amount2: 1 },
-        { stat: 'wisdom', amount: 2 }, { stat: 'spirit', amount: 3 }, { stat: 'luck', amount: 2 },
-        { stat: 'intelligence', amount: 3, stat2: 'spirit', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'endurance', amount2: 2 },
-      ],
-      'Warlock': [
-        { stat: 'intelligence', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'spirit', amount: 2 },
-        { stat: 'intelligence', amount: 2, stat2: 'luck', amount2: 1 }, { stat: 'vitality', amount: 2, stat2: 'endurance', amount2: 1 },
-        { stat: 'wisdom', amount: 2 }, { stat: 'intelligence', amount: 3 }, { stat: 'dexterity', amount: 2 },
-        { stat: 'intelligence', amount: 3, stat2: 'spirit', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'vitality', amount2: 2 },
-      ],
-      'Cultist': [
-        { stat: 'wisdom', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'intelligence', amount: 2 },
-        { stat: 'wisdom', amount: 2, stat2: 'spirit', amount2: 1 }, { stat: 'vitality', amount: 2, stat2: 'luck', amount2: 1 },
-        { stat: 'spirit', amount: 2 }, { stat: 'wisdom', amount: 3 }, { stat: 'dexterity', amount: 2 },
-        { stat: 'wisdom', amount: 3, stat2: 'intelligence', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'endurance', amount2: 2 },
-      ],
-      'Ravager': [
-        { stat: 'strength', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'vitality', amount: 2 },
-        { stat: 'strength', amount: 2, stat2: 'dexterity', amount2: 1 }, { stat: 'endurance', amount: 2, stat2: 'vitality', amount2: 1 },
-        { stat: 'dexterity', amount: 2 }, { stat: 'strength', amount: 3 }, { stat: 'luck', amount: 2 },
-        { stat: 'strength', amount: 3, stat2: 'endurance', amount2: 2 }, { stat: 'vitality', amount: 2, stat2: 'wisdom', amount2: 2 },
-      ],
-      'Assassin': [
-        { stat: 'dexterity', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'wisdom', amount: 2 },
-        { stat: 'dexterity', amount: 2, stat2: 'luck', amount2: 1 }, { stat: 'endurance', amount: 2, stat2: 'wisdom', amount2: 1 },
-        { stat: 'intelligence', amount: 2 }, { stat: 'dexterity', amount: 3 }, { stat: 'strength', amount: 2 },
-        { stat: 'dexterity', amount: 3, stat2: 'luck', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'wisdom', amount2: 2 },
-      ],
-      'Cleric': [
-        { stat: 'spirit', amount: 2 }, { stat: 'vitality', amount: 3 }, { stat: 'wisdom', amount: 2 },
-        { stat: 'spirit', amount: 2, stat2: 'strength', amount2: 1 }, { stat: 'vitality', amount: 2, stat2: 'endurance', amount2: 1 },
-        { stat: 'intelligence', amount: 2 }, { stat: 'wisdom', amount: 3 }, { stat: 'endurance', amount: 2 },
-        { stat: 'spirit', amount: 3, stat2: 'wisdom', amount2: 2 }, { stat: 'vitality', amount: 2, stat2: 'luck', amount2: 2 },
-      ],
-      'Witch': [
-        { stat: 'intelligence', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'wisdom', amount: 2 },
-        { stat: 'intelligence', amount: 2, stat2: 'dexterity', amount2: 1 }, { stat: 'spirit', amount: 2, stat2: 'vitality', amount2: 1 },
-        { stat: 'spirit', amount: 2 }, { stat: 'intelligence', amount: 3 }, { stat: 'luck', amount: 2 },
-        { stat: 'intelligence', amount: 3, stat2: 'wisdom', amount2: 2 }, { stat: 'endurance', amount: 2, stat2: 'spirit', amount2: 2 },
-      ],
-      'Inquisitor': [
-        { stat: 'strength', amount: 2 }, { stat: 'vitality', amount: 3 }, { stat: 'wisdom', amount: 2 },
-        { stat: 'strength', amount: 2, stat2: 'spirit', amount2: 1 }, { stat: 'endurance', amount: 2, stat2: 'wisdom', amount2: 1 },
-        { stat: 'spirit', amount: 2 }, { stat: 'strength', amount: 3 }, { stat: 'intelligence', amount: 2 },
-        { stat: 'strength', amount: 3, stat2: 'wisdom', amount2: 2 }, { stat: 'vitality', amount: 2, stat2: 'spirit', amount2: 2 },
-      ],
-      'Runemaster': [
-        { stat: 'intelligence', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'wisdom', amount: 2 },
-        { stat: 'intelligence', amount: 2, stat2: 'spirit', amount2: 1 }, { stat: 'vitality', amount: 2, stat2: 'endurance', amount2: 1 },
-        { stat: 'dexterity', amount: 2 }, { stat: 'intelligence', amount: 3 }, { stat: 'spirit', amount: 2 },
-        { stat: 'intelligence', amount: 3, stat2: 'wisdom', amount2: 2 }, { stat: 'spirit', amount: 2, stat2: 'luck', amount2: 2 },
-      ],
-      'Druid': [
-        { stat: 'wisdom', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'spirit', amount: 2 },
-        { stat: 'dexterity', amount: 2, stat2: 'strength', amount2: 1 }, { stat: 'spirit', amount: 2, stat2: 'vitality', amount2: 1 },
-        { stat: 'intelligence', amount: 2 }, { stat: 'wisdom', amount: 3 }, { stat: 'vitality', amount: 2 },
-        { stat: 'wisdom', amount: 3, stat2: 'spirit', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'endurance', amount2: 2 },
-      ],
-      'Engineer': [
-        { stat: 'intelligence', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'dexterity', amount: 2 },
-        { stat: 'intelligence', amount: 2, stat2: 'wisdom', amount2: 1 }, { stat: 'vitality', amount: 2, stat2: 'endurance', amount2: 1 },
-        { stat: 'spirit', amount: 2 }, { stat: 'strength', amount: 3 }, { stat: 'luck', amount: 2 },
-        { stat: 'intelligence', amount: 3, stat2: 'dexterity', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'wisdom', amount2: 2 },
-      ],
-      'Wizard': [
-        { stat: 'intelligence', amount: 2 }, { stat: 'spirit', amount: 3 }, { stat: 'wisdom', amount: 2 },
-        { stat: 'intelligence', amount: 2, stat2: 'luck', amount2: 1 }, { stat: 'vitality', amount: 2, stat2: 'spirit', amount2: 1 },
-        { stat: 'strength', amount: 2 }, { stat: 'wisdom', amount: 3 }, { stat: 'dexterity', amount: 2 },
-        { stat: 'intelligence', amount: 3, stat2: 'spirit', amount2: 2 }, { stat: 'wisdom', amount: 2, stat2: 'luck', amount2: 2 },
-      ],
-      'Thief': [
-        { stat: 'dexterity', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'luck', amount: 2 },
-        { stat: 'dexterity', amount: 2, stat2: 'wisdom', amount2: 1 }, { stat: 'luck', amount: 2, stat2: 'intelligence', amount2: 1 },
-        { stat: 'strength', amount: 2 }, { stat: 'dexterity', amount: 3 }, { stat: 'intelligence', amount: 2 },
-        { stat: 'dexterity', amount: 3, stat2: 'luck', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'wisdom', amount2: 2 },
-      ],
-      'Swashbuckler': [
-        { stat: 'dexterity', amount: 2 }, { stat: 'endurance', amount: 3 }, { stat: 'strength', amount: 2 },
-        { stat: 'dexterity', amount: 2, stat2: 'luck', amount2: 1 }, { stat: 'strength', amount: 2, stat2: 'endurance', amount2: 1 },
-        { stat: 'wisdom', amount: 2 }, { stat: 'dexterity', amount: 3 }, { stat: 'luck', amount: 2 },
-        { stat: 'dexterity', amount: 3, stat2: 'strength', amount2: 2 }, { stat: 'endurance', amount: 2, stat2: 'luck', amount2: 2 },
-      ],
-      'Shaman': [
-        { stat: 'intelligence', amount: 2 }, { stat: 'vitality', amount: 3 }, { stat: 'spirit', amount: 2 },
-        { stat: 'intelligence', amount: 2, stat2: 'wisdom', amount2: 1 }, { stat: 'spirit', amount: 2, stat2: 'endurance', amount2: 1 },
-        { stat: 'strength', amount: 2 }, { stat: 'spirit', amount: 3 }, { stat: 'dexterity', amount: 2 },
-        { stat: 'spirit', amount: 3, stat2: 'wisdom', amount2: 2 }, { stat: 'strength', amount: 2, stat2: 'vitality', amount2: 2 },
-      ],
-    };
-
-    var talentList = CLASS_TALENT_STATS[pClassName] || CLASS_TALENT_STATS['Blood Knight'];
-
-    // Validate tier and slot
-    var validTier = typeof tierNum === 'number' && tierNum >= 0 && tierNum < TIER_LAYOUT.length;
-    var tierSlots = validTier ? TIER_LAYOUT[tierNum] : [];
-    var validSlot = typeof slotIdx === 'number' && slotIdx >= 0 && slotIdx < tierSlots.length;
-
-    // Tier must be the next unlockable: previous tier must have a choice (or tier 0)
-    var prevOk = (tierNum === 0) || (ut[tierNum - 1] !== undefined);
-    // Must not already have a choice in this tier
-    var notYetChosen = (ut[tierNum] === undefined);
-
-    if (validTier && validSlot && tp > 0 && prevOk && notYetChosen) {
-      ut[tierNum] = slotIdx;
-      var talentIdx = tierSlots[slotIdx]; // index into the flat 10-talent array
-      var td = talentList[talentIdx];
-      if (td) {
-        var st = Object.assign({}, s.stats || {});
-        st[td.stat] = (st[td.stat] ?? 10) + td.amount;
-        if (td.stat2) {
-          st[td.stat2] = (st[td.stat2] ?? 10) + td.amount2;
-        }
-        objectApi.patchState({ unlockedTalents: ut, talentPoints: tp - 1, stats: st });
-        objectApi.playSound('/cdn/sfx-dark-rune-unlock.mp3', { volume: 0.24 });
-      }
+    var d = input.actionData.spendTalent;
+    if (TAL.canPick(s, d.spec, d.tier, d.index)) {
+      var ut = Object.assign({}, s.unlockedTalents || {});
+      ut[d.spec + ':' + d.tier] = d.index;
+      objectApi.patchState({ unlockedTalents: ut });
+      objectApi.playSound('/cdn/sfx-dark-rune-unlock.mp3', { volume: 0.3 });
     }
+    return;
+  }
+  if (input.actions.resetTalents) {
+    objectApi.patchState({ unlockedTalents: {} });
+    objectApi.playSound('/cdn/sfx-dark-rune-unlock.mp3', { volume: 0.18 });
     return;
   }
 

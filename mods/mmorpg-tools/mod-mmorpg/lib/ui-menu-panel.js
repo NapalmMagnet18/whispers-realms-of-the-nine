@@ -12,6 +12,7 @@ const { renderReputationTab } = require('./ui-reputation.js');
 const { ITEM_LOOKUP } = require('./class-items.js');
 const { QUEST_DATABASE } = require('./quest-data.js');
 const { frame: _frame, rule: _rule } = require('./ui-art.js');
+import { TREES, classKey, pointsFree, pointsEarned, fxText, talentFx, canPick, LEVEL_PER_POINT } from '../../../../scripts/lib/talents.js';
 // brass kit pieces shared by every window in this panel
 var _PLATE = 'position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:3px 18px;background:linear-gradient(#3a2a1c,#1a120c);border:1px solid #c9a46a;box-shadow:inset 0 0 0 1px #6b4a2f,0 2px 6px #000;color:#f2b04a;font:600 14px Cinzel,serif;letter-spacing:1px;white-space:nowrap;text-shadow:0 1px 2px #000;z-index:30;pointer-events:none;';
 var _EMPTY_SLOT = 'border:1px solid rgba(201,164,106,.28);background:radial-gradient(rgba(42,30,22,.92),rgba(10,8,6,.95));';
@@ -1634,199 +1635,49 @@ var VOID_TALENTS = [
 ];
 
 export function renderTalentsTab(s) {
-  var activeSpecTab = s.talentSpecTab || 'void';
-
-  // ── Specialization sub-tab bar — STATIC, no animations ──
-  var specTabs = [
-    { id: 'void',  label: 'Void',  accent: 'rgba(140,80,200,0.85)', dim: 'rgba(100,60,160,0.35)', text: 'rgba(190,160,240,1)',   dimText: 'rgba(120,90,170,0.6)' },
-    { id: 'blood', label: 'Blood', accent: 'rgba(180,40,40,0.85)',   dim: 'rgba(140,30,30,0.35)',  text: 'rgba(240,160,160,1)',   dimText: 'rgba(160,80,80,0.6)' },
-    { id: 'bone',  label: 'Bone',  accent: 'rgba(210,200,175,0.85)', dim: 'rgba(160,150,130,0.35)', text: 'rgba(235,225,200,1)',  dimText: 'rgba(150,140,120,0.6)' },
-  ];
-
-  var tabBarHtml = '<div style="display:flex;gap:4px;padding:0 6px 8px 6px;margin-bottom:8px;border-bottom:1px solid rgba(80,60,30,0.25);">';
-  for (var sti = 0; sti < specTabs.length; sti++) {
-    var st = specTabs[sti];
-    var isActiveSpec = (st.id === activeSpecTab);
-    tabBarHtml += '<div data-interactive onclick="sendAction(\'setTalentTab\',{tab:\'' + st.id + '\'})" style="'
-      + 'flex:1;text-align:center;padding:6px 0;cursor:pointer;'
-      + 'font-family:Cinzel,serif;font-size:13px;letter-spacing:1.2px;'
-      + _frame(isActiveSpec ? 'buttonHot' : 'button', 8, isActiveSpec ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
-      + 'color:' + (isActiveSpec ? st.text : st.dimText) + ';'
-      + (isActiveSpec ? 'box-shadow:0 0 8px ' + st.accent.replace(/[\d.]+\)$/, '0.25)') + ';' : '')
-      + '">'
-      + st.label
-      + '</div>';
+  // the discipline's three specializations (scripts/lib/talents.js); a point every LEVEL_PER_POINT levels
+  var cls = classKey(s.className), specs = TREES[cls];
+  var spec = specs.find(function (x) { return x.id === s.talentSpecTab; }) || specs[0];
+  var ut = s.unlockedTalents || {}, free = pointsFree(s), earned = pointsEarned(s.level), lv = s.level || 1;
+  var nextAt = earned >= 12 ? 0 : (earned + 1) * LEVEL_PER_POINT;
+  var tot = talentFx(s);
+  var html = '<div style="display:flex;gap:4px;padding:0 6px 8px;border-bottom:1px solid rgba(80,60,30,.25);margin-bottom:8px;">';
+  for (var i = 0; i < specs.length; i++) {
+    var sp = specs[i], on = sp.id === spec.id, n = 0;
+    for (var t = 0; t < 4; t++) if (ut[sp.id + ':' + t] !== undefined) n++;
+    html += '<div data-interactive onclick="sendAction(\'setTalentTab\',{tab:\'' + sp.id + '\'})" style="flex:1;display:flex;align-items:center;gap:6px;padding:4px 6px;cursor:pointer;'
+      + _frame(on ? 'buttonHot' : 'button', 8, on ? 'linear-gradient(#3a2a1c,#1a120c)' : 'rgba(14,11,8,.9)')
+      + (on ? 'box-shadow:0 0 10px ' + sp.color + '55;' : '') + '">'
+      + '<img src="' + sp.icon + '" style="width:28px;height:28px;border-radius:3px;border:1px solid ' + sp.color + (on ? '' : '66') + ';' + (on ? '' : 'filter:brightness(.6);') + 'pointer-events:none;"/>'
+      + '<div style="font-family:Cinzel,serif;font-size:13px;letter-spacing:1px;color:' + (on ? sp.color : 'rgba(190,170,130,.6)') + ';">' + sp.name + '<div style="font-size:11px;opacity:.7;">' + n + ' / 4</div></div></div>';
   }
-  tabBarHtml += '</div>';
-
-  // ── Blood / Bone placeholder ──
-  if (activeSpecTab === 'blood' || activeSpecTab === 'bone') {
-    var phColor = activeSpecTab === 'blood' ? 'rgba(180,40,40,0.5)' : 'rgba(210,200,175,0.5)';
-    var phGlow  = activeSpecTab === 'blood' ? 'rgba(180,40,40,0.15)' : 'rgba(210,200,175,0.12)';
-    var phName  = activeSpecTab === 'blood' ? 'Blood' : 'Bone';
-    var phIcon  = activeSpecTab === 'blood' ? '🩸' : '🦴';
-    return tabBarHtml
-      + '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;gap:14px;">'
-      + '<div style="font-size:36px;filter:grayscale(0.3);opacity:0.5;">' + phIcon + '</div>'
-      + '<div style="font-family:Cinzel,serif;font-size:16px;color:' + phColor + ';letter-spacing:1.5px;text-shadow:0 0 12px ' + phGlow + ';">' + phName + ' Specialization</div>'
-      + '<div style="font-family:Cinzel,serif;font-size:12px;color:rgba(120,100,70,0.5);letter-spacing:0.8px;">Coming Soon</div>'
-      + '<div style="width:80px;height:1px;background:linear-gradient(to right,transparent,' + phColor + ',transparent);margin-top:4px;"></div>'
-      + '</div>';
-  }
-
-  // ── Void tab: offensive void talent tree ──
-  var talentPoints = s.talentPoints ?? 0;
-  var unlocked = s.unlockedTalents || {}; // { tierNum: choiceIndex }
-
-  var talents = VOID_TALENTS;
-
-  // Tier availability: tier 0 always available, tier N available if tier N-1 has a choice
-  function isTierAvailable(tier) {
-    if (tier === 0) return true;
-    return unlocked[tier - 1] !== undefined;
-  }
-  function isTierLocked(tier) {
-    return unlocked[tier] !== undefined; // already made a choice
-  }
-  var NODE_SIZE = 42;
-  var IMG_SIZE = NODE_SIZE - 6;
-
-  // Header — void-themed points counter
-  var html = '<div style="text-align:center;margin-bottom:16px;">'
-    + '<div style="font-size:14px;color:rgba(150,110,200,0.55);font-family:Cinzel,serif;margin-top:3px;letter-spacing:0.8px;">Available Points: <span style="color:' + (talentPoints === 0 ? 'rgba(140,80,220,0.9)' : 'rgba(190,140,255,0.85)') + ';">' + talentPoints + '</span></div>'
-    + '</div>';
-
-  // Tiers container — void radial bg with extra top padding
-  html += '<div style="position:relative;width:100%;'
-    + 'background:radial-gradient(ellipse at 50% 40%,rgba(40,10,60,0.25),rgba(10,6,14,0) 70%);'
-    + 'padding:18px 0 2px 0;">';
-
-  // Render each tier as a horizontal row
-  for (var tierIdx = 0; tierIdx < TIER_LAYOUT.length; tierIdx++) {
-    var tierSlots = TIER_LAYOUT[tierIdx];
-    var tierAvail = isTierAvailable(tierIdx);
-    var tierDone = isTierLocked(tierIdx);
-    var chosenIdx = unlocked[tierIdx]; // which slot was chosen in this tier (if any)
-
-    // Vertical spacing between tiers
-    if (tierIdx > 0) {
-      html += '<div style="height:14px;"></div>';
+  html += '</div>';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:0 8px 8px;font-family:Cinzel,serif;font-size:13px;color:rgba(232,217,181,.85);">'
+    + '<span>Points: <b style="color:' + (free > 0 ? '#f2b04a' : 'rgba(190,170,130,.6)') + ';">' + free + '</b>' + (nextAt ? ' <span style="opacity:.55;font-size:11px;">· next at level ' + nextAt + '</span>' : '') + '</span>'
+    + '<span data-interactive onclick="sendAction(\'resetTalents\',{})" style="cursor:pointer;font-size:11px;padding:2px 8px;' + _frame('button', 4, 'rgba(14,11,8,.9)') + 'color:rgba(201,164,106,.8);">Reset</span></div>';
+  html += '<div style="padding:12px 4px 6px;background:radial-gradient(ellipse at 50% 30%,' + spec.color + '22,transparent 70%);">';
+  for (var tier = 0; tier < spec.tiers.length; tier++) {
+    var row = spec.tiers[tier], chosen = ut[spec.id + ':' + tier], open = tier === 0 || ut[spec.id + ':' + (tier - 1)] !== undefined;
+    if (tier > 0) html += '<div style="width:2px;height:12px;margin:0 auto;background:' + (open ? spec.color : 'rgba(80,60,30,.4)') + ';"></div>';
+    html += '<div style="display:flex;justify-content:center;gap:8px;padding:6px 4px;' + _frame('skillRow', 10, 'rgba(20,14,10,.85)') + '">';
+    for (var k = 0; k < row.length; k++) {
+      var tl = row[k], isOn = chosen === k, other = chosen !== undefined && !isOn, can = canPick(s, spec.id, tier, k);
+      var bd = isOn ? spec.color : can ? spec.color + 'aa' : 'rgba(60,45,25,.5)';
+      html += '<div' + (can ? ' data-interactive onclick="sendAction(\'spendTalent\',{spec:\'' + spec.id + '\',tier:' + tier + ',index:' + k + '})"' : '') + ' title="' + esc(tl.flavor) + '" style="width:' + (row.length === 2 ? 128 : 100) + 'px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 3px;border-radius:4px;'
+        + 'border:2px solid ' + bd + ';background:' + (isOn ? 'linear-gradient(' + spec.color + '33,rgba(14,10,8,.95))' : 'rgba(14,10,8,.9)') + ';'
+        + (isOn ? 'box-shadow:0 0 12px ' + spec.color + '88;' : can ? 'cursor:pointer;animation:talentPulse 2s ease-in-out infinite;--tc:' + spec.color + ';' : '')
+        + (other || !open ? 'opacity:.45;filter:grayscale(.8);' : '') + '">'
+        + '<img src="' + spec.icon + '" style="width:34px;height:34px;border-radius:3px;pointer-events:none;filter:hue-rotate(' + (k * 25 - 25) + 'deg)' + (tier === 3 ? ' saturate(1.4)' : '') + ';"/>'
+        + '<div style="font-family:Cinzel,serif;font-size:12px;text-align:center;line-height:1.15;color:' + (isOn ? spec.color : '#e8d9b5') + ';">' + esc(tl.name) + '</div>'
+        + '<div style="font-size:11px;text-align:center;line-height:1.2;color:rgba(190,200,160,.85);">' + fxText(tl.fx) + '</div></div>';
     }
-
-    // Nodes row — centered flex
-    html += '<div style="display:flex;justify-content:center;align-items:flex-start;gap:8px;padding:2px 2px;' + _frame('skillRow', 10, 'rgba(20,14,10,.85)') + '">';
-
-    for (var si = 0; si < tierSlots.length; si++) {
-      var tIdx = tierSlots[si];
-      var t = talents[tIdx];
-      if (!t) continue;
-
-      // Determine visual state
-      var isChosen = (chosenIdx === si);
-      var isOtherChosen = tierDone && !isChosen;
-      var canPick = tierAvail && !tierDone && talentPoints > 0;
-      var isLocked = !tierAvail;
-
-      // Build styles — void/purple themed
-      var borderStyle, bgStyle, filterStyle, glowStyle, cursorStyle;
-      if (isChosen) {
-        borderStyle = 'border:2px solid rgba(180,100,255,0.9);';
-        bgStyle = 'background:linear-gradient(135deg,rgba(40,15,60,0.95),rgba(25,8,45,0.98));';
-        filterStyle = '';
-        glowStyle = 'box-shadow:0 0 14px rgba(160,80,240,0.55),0 0 6px rgba(140,60,220,0.3),inset 0 0 10px rgba(160,80,240,0.15);';
-        cursorStyle = 'cursor:default;';
-      } else if (isOtherChosen) {
-        borderStyle = 'border:2px solid rgba(40,25,55,0.3);';
-        bgStyle = 'background:linear-gradient(135deg,rgba(14,10,18,0.85),rgba(10,6,14,0.92));';
-        filterStyle = 'filter:grayscale(100%) brightness(0.35);';
-        glowStyle = '';
-        cursorStyle = 'cursor:not-allowed;';
-      } else if (canPick) {
-        borderStyle = 'border:2px solid rgba(140,80,200,0.6);';
-        bgStyle = 'background:linear-gradient(135deg,rgba(35,18,50,0.88),rgba(22,10,35,0.92));';
-        filterStyle = '';
-        glowStyle = 'box-shadow:0 0 12px rgba(140,80,200,0.35),0 0 22px rgba(120,60,180,0.15);';
-        cursorStyle = 'cursor:pointer;';
-      } else {
-        borderStyle = 'border:2px solid rgba(40,25,55,0.4);';
-        bgStyle = 'background:linear-gradient(135deg,rgba(14,10,18,0.85),rgba(10,6,14,0.92));';
-        filterStyle = 'filter:grayscale(70%) brightness(0.75);';
-        glowStyle = '';
-        cursorStyle = 'cursor:not-allowed;';
-      }
-
-      var clickHandler = canPick ? ' data-interactive onclick="sendAction(\'spendTalent\',{tier:' + tierIdx + ',index:' + si + '})"' : '';
-      var pulseAnim = canPick ? 'animation:voidTalentPulse 2s ease-in-out infinite;' : '';
-
-      // Tooltip id
-      var tooltipId = 'ttip-t' + tierIdx + '-s' + si;
-
-      // Name color — void purple themed
-      var nameColor = isChosen ? 'color:rgba(180,120,255,0.95);text-shadow:0 0 5px rgba(140,60,220,0.4);' : (canPick ? 'color:rgba(200,175,235,0.95);' : 'color:rgba(190,175,150,0.78);text-shadow:0 1px 2px #000;');
-
-      // Node wrapper — relative for tooltip
-      html += '<div style="position:relative;display:flex;flex-direction:column;align-items:center;width:' + (tierSlots.length === 2 ? '110' : '90') + 'px;"'
-        + ' onmouseenter="var t=document.getElementById(\'' + tooltipId + '\');if(t){var r=this.getBoundingClientRect();var vw=window.innerWidth;var vh=window.innerHeight;var tipW=210;var tipH=t.offsetHeight||120;t.style.display=\'block\';var lx=r.left+r.width/2-tipW/2;if(lx<4)lx=4;if(lx+tipW>vw-4)lx=vw-4-tipW;var ty=r.top-tipH-8;if(ty<4){ty=r.bottom+8;}t.style.left=lx+\'px\';t.style.top=ty+\'px\';}"'
-        + ' onmouseleave="var t=document.getElementById(\'' + tooltipId + '\');if(t){t.style.display=\'none\';}"'
-        + '>';
-
-      // Icon frame with purple corner accents
-      html += '<div style="position:relative;width:' + NODE_SIZE + 'px;height:' + NODE_SIZE + 'px;">';
-
-      // Purple corner accents
-      if (isChosen || canPick) {
-        var accentColor = isChosen ? 'rgba(180,120,255,0.65)' : 'rgba(120,70,180,0.35)';
-        html += '<div style="position:absolute;top:-2px;left:-2px;width:7px;height:7px;border-top:2px solid ' + accentColor + ';border-left:2px solid ' + accentColor + ';"></div>'
-          + '<div style="position:absolute;top:-2px;right:-2px;width:7px;height:7px;border-top:2px solid ' + accentColor + ';border-right:2px solid ' + accentColor + ';"></div>'
-          + '<div style="position:absolute;bottom:-2px;left:-2px;width:7px;height:7px;border-bottom:2px solid ' + accentColor + ';border-left:2px solid ' + accentColor + ';"></div>'
-          + '<div style="position:absolute;bottom:-2px;right:-2px;width:7px;height:7px;border-bottom:2px solid ' + accentColor + ';border-right:2px solid ' + accentColor + ';"></div>';
-      }
-
-      // Icon square
-      html += '<div' + clickHandler + ' style="width:' + NODE_SIZE + 'px;height:' + NODE_SIZE + 'px;display:flex;align-items:center;justify-content:center;'
-        + borderStyle + bgStyle + glowStyle + cursorStyle + pulseAnim
-        + 'position:relative;overflow:hidden;">';
-      html += '<img src="' + t.icon + '" style="width:' + IMG_SIZE + 'px;height:' + IMG_SIZE + 'px;object-fit:contain;' + filterStyle
-        + '-webkit-user-drag:none;user-select:none;pointer-events:none;" />';
-      html += '</div>'; // icon square
-      html += '</div>'; // frame
-
-      // Name pill — Times New Roman, 11-12px, dark void bg
-      html += '<div style="margin-top:2px;padding:1px 5px;border-radius:3px;background:rgba(10,4,18,0.75);display:inline-block;max-width:' + (tierSlots.length === 2 ? '140' : '120') + 'px;">'
-        + '<div style="font-family:\'Times New Roman\',serif;font-size:12px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0.3px;line-height:1.2;'
-        + nameColor + '">' + esc(t.name) + '</div></div>';
-
-      // Tooltip — void-purple themed, position:fixed
-      var tipStyle = 'display:none;position:fixed;z-index:9999;'
-        + 'background:rgba(12,6,18,0.97);border:1px solid rgba(140,80,200,0.5);padding:8px 12px;min-width:170px;max-width:210px;'
-        + 'box-shadow:0 4px 20px rgba(0,0,0,0.9),0 0 8px rgba(140,80,200,0.2);pointer-events:none;';
-      tipStyle += 'left:0;top:0;';
-
-      var statusLabel = isChosen ? '<span style="color:rgba(180,120,255,0.85);font-size:12px;">Unlocked</span>'
-        : (canPick ? '<span style="color:rgba(190,150,240,0.9);font-size:12px;">Click to unlock</span>'
-        : isOtherChosen ? '<span style="color:rgba(80,55,110,0.5);font-size:12px;">Another talent chosen</span>'
-        : '<span style="color:rgba(80,55,110,0.5);font-size:12px;">Locked — complete previous tier</span>');
-
-      html += '<div id="' + tooltipId + '" style="' + tipStyle + '">'
-        + '<div style="font-family:Cinzel,Palatino,Georgia,serif;font-size:13px;color:rgba(190,150,240,0.95);letter-spacing:0.5px;margin-bottom:3px;">' + esc(t.name) + '</div>'
-        + '<div style="font-family:Cinzel,serif;font-size:12px;color:rgba(170,150,200,0.7);line-height:1.3;">' + t.desc + '</div>'
-        + '<div style="margin-top:5px;font-family:Cinzel,serif;font-size:12px;">' + statusLabel + '</div>'
-        + '</div>';
-
-      html += '</div>'; // node wrapper
-    }
-
-    html += '</div>'; // nodes row
+    html += '</div>';
   }
-
-  html += '</div>'; // tiers container
-
-  // Void pulse animation for pickable talents
-  html += '<style>@keyframes voidTalentPulse{0%,100%{box-shadow:0 0 10px rgba(140,80,200,0.25),0 0 18px rgba(120,60,180,0.1);}50%{box-shadow:0 0 16px rgba(160,100,220,0.5),0 0 28px rgba(140,80,200,0.2);}}</style>';
-
-  return tabBarHtml + html;
+  html += '</div>';
+  html += '<div style="margin-top:8px;text-align:center;font-family:Cinzel,serif;font-size:12px;color:rgba(232,217,181,.75);">All talents: +' + tot.power + '% damage · +' + tot.haste + '% faster cooldowns · +' + tot.health + '% max health</div>';
+  html += '<style>@keyframes talentPulse{0%,100%{box-shadow:0 0 6px var(--tc)}50%{box-shadow:0 0 16px var(--tc)}}</style>';
+  return html;
 }
-
 
 // ─── MAIN RENDER ───
 export function renderMenuPanel(localPlayer, world, rightHudLayout) {

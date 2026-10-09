@@ -164,6 +164,7 @@
       "selectSpell": {},
       "setCharName": {},
       "spendTalent": {},
+      "resetTalents": {},
       "toggleGuild": {},
       "toggleMusic": {},
       "toggleUiArt": {},
