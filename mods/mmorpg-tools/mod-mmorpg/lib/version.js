@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.39 Alpha';
+var GAME_VERSION = '0.47.40 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.40', 'A lighter gate', 'The main menu now stands before the in-world interface downloads; the rest arrives quietly a moment later.'],
   ['v0.47.39', 'Petalfall Hollow', 'Somewhere in the thornwood west of Lantern\'s Reach, a ring of blossom trees hides a spring, six old standing stones and a fairy ring. Someone left an offering box there. Find it.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
   ['v0.47.38', "The Wayfarer's Blessing", "Kneel at any wayside shrine on the town roads (E) for the Wayfarer's Blessing: 20% faster travel for five minutes, golden motes at your heels.", '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
   ['v0.47.36', 'Wayside Shrines', 'A small candlelit shrine under a red shingle roof, a bench beside it, now waits along the road out of every race town. Walk close and you hear its candles crackle and its chimes stir.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],

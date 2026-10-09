@@ -169,7 +169,7 @@ var RACE_ART = { marchborn: '/cdn/chatgpt-image-oct-7-2026-09-54-03-pm-1-u5u429b
   emberforged: '/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp', saltborn: '/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u6hx0nqke.webp' };
 var __faEverPlayed = false;
 export default function(world, localPlayer) {
-  _warmHud();
+  _warmHud(localPlayer.state.inMainMenu === true && localPlayer.state.phase !== 'creating');
   var characterCreated = localPlayer.state.characterCreated === true;
   var phase = localPlayer.state.phase;
   var isCreating = phase === 'creating';
