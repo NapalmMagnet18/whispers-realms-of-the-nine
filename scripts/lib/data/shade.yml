@@ -3,5 +3,7 @@
 strike: { slot: 1, name: Strike, damage: 7, ambush: 3, cooldown: 0.55, hitAt: 0.16, reach: 2.5, clip: cdn/clip-vanguard-strike-8a43460b.glb, speed: 1.5, length: 0.45, sound: /cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3 }
 step:   { slot: 2, name: Shadowstep, cooldown: 7, range: 12, blink: 8, behind: 1.3, ambushWindow: 1.5, clip: cdn/clip-roll.glb, speed: 1.8, length: 0.45, sound: /cdn/moodboard-painterly-fantasy/sfx-shadow-step-whoosh-dark.mp3 }
 veil:   { slot: 3, name: Veil, cooldown: 12, length: 6, sound: /cdn/moodboard-painterly-fantasy/sfx-cloak-shadow-veil-hush.mp3 }
+# 4 Shadow Rend: blink distance m ahead (stopping at walls), cutting every foe within width m of the path; from the Veil it cuts as an Ambush.
+rend:   { slot: 4, name: Shadow Rend, icon: /cdn/value.59fb26949bc23f2111da6ea3445f95e830ac6c0fcf5478e7ad30b148a1991be1.png, damage: 12, cooldown: 11, distance: 8, width: 1.6, clip: cdn/clip-roll.glb, speed: 2.2, length: 0.4, sound: /cdn/moodboard-painterly-fantasy/sfx-shadow-step-whoosh-dark.mp3, slash: /cdn/moodboard-painterly-fantasy/sfx-twin-dagger-rapid-slashes-dark.mp3 }
 arc: 70
 drillReach: 3.2   # how near a sentry or trial post you must slip while veiled / land a step

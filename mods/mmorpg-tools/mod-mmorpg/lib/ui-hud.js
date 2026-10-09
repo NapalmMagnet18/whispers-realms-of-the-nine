@@ -196,7 +196,8 @@ export function renderHUD(localPlayer, world, rightHudLayout) {
       { id: 'kit-rain', cd: 'rain', name: 'Rain of Thorns', icon: '/cdn/value.72e83235622496ec2d6e97b79f0e9a74022e16e1aa0377cb484103a861c84dad.png', shortDesc: 'Arrows rain down over 4.5 m around your target in three waves, then brambles grow there and slow everything inside by 50% for 4 s.', cooldown: 14 }],
     shade: [{ id: 'kit-sstrike', cd: 'strike', name: 'Strike', icon: '/cdn/value.9c52728aae3cf14f8d2c1f2d59949f329d47d274d7d5b8cb76ea1d91ce2fe472.png', shortDesc: 'A dagger cut. 7 damage, triple as an Ambush: from the Veil, from behind, or just after a Shadowstep.', cooldown: 0.55 },
       { id: 'kit-step', cd: 'step', name: 'Shadowstep', icon: '/cdn/value.ff172f4b040b18df67e514e44cfad7f237bfb90c014d873026c38e62e06c530e.png', shortDesc: 'Step through shadow behind the foe in front of you, or 8 m ahead.', cooldown: 7 },
-      { id: 'kit-veil', cd: 'veil', name: 'Veil', icon: '/cdn/value.dc44ac58361f8269804138d77434825528ebd3caeb9edfe85daa813f388dab5c.png', shortDesc: 'Vanish for 6 s. Beasts and wardens lose you. Striking breaks it.', cooldown: 12 }],
+      { id: 'kit-veil', cd: 'veil', name: 'Veil', icon: '/cdn/value.dc44ac58361f8269804138d77434825528ebd3caeb9edfe85daa813f388dab5c.png', shortDesc: 'Vanish for 6 s. Beasts and wardens lose you. Striking breaks it.', cooldown: 12 },
+      { id: 'kit-rend', cd: 'rend', name: 'Shadow Rend', icon: '/cdn/value.59fb26949bc23f2111da6ea3445f95e830ac6c0fcf5478e7ad30b148a1991be1.png', shortDesc: 'Blink 8 m ahead through shadow, cutting every foe on the path for 12. From the Veil it strikes as an Ambush, and it opens an Ambush window for your next Strike.', cooldown: 11 }],
   };
   const _kit = KIT[String(s.className || 'vanguard').toLowerCase()] || null;
   const spellBar = (s.spellBar && s.spellBar.length ? s.spellBar : [null, null, null, null, null, null, null, null]).slice();

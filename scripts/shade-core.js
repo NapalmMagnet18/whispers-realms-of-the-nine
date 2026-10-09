@@ -18,6 +18,45 @@ pop spark burst=6..10 life=.12..0.25 v=<%normal|0,1,0>*(2..4)+sdir()*(1..2) size
 pop shade burst=4 life=.3..0.5 v=sdir()*.6 size=.2..0.3 acc=drag(2) col=<.2,.12,.28> a=.6>0 sz=$size*(.6>1.6) r=sprite(smoke-puff,alpha)`
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
 
+const REND = `fx
+pop smoke burst=6..9 on=sphere(.4) life=.5..0.9 v=sdir()*(.3..0.8) size=.35..0.6 acc=drag(2)+buoy(.2) sz=$size*(.7>1.6) col=<.15,.1,.22> a=0>.1:.7>.5:.4>0 rot=spin(.3) r=sprite(smoke-puff,alpha)
+pop arc burst=2 on=sphere(.3) life=.18..0.26 size=1.2..1.6 col=hdr(1.8,.8,3.2) a=1>0 sz=$size*(.6>1.2) rot=0..6.28 r=sprite(soft-disc,add)
+pop motes burst=8 on=sphere(.5) life=.4..0.8 v=sdir()*(1..2) size=.03..0.05 col=hdr(1.4,.7,2.6) a=1>0 r=sprite(mote,add)`
+function rend(ctx, a, m, now, near) {
+  const self = ctx.self, from = { ...self.feetPosition }, f = forward(self)
+  const eye = { x: from.x, y: from.y + 1.1, z: from.z }
+  const wall = raycast(ctx, eye, f, { distance: a.distance, physicsOnly: true, excludeTags: ['player', 'projectile', 'enemy'] })
+  const dist = wall ? Math.max(0, wall.distance - 0.7) : a.distance
+  const dest = { x: from.x + f.x * dist, y: from.y, z: from.z + f.z * dist }
+  const h = ctx.place.terrain?.heightAt?.(dest.x, dest.z)
+  if (typeof h === 'number' && h > dest.y - 0.5) dest.y = Math.max(dest.y, h)
+  const ambush = veiled(ctx)
+  if (ambush) { self.state.veiledUntil = 0 }
+  // the path, drawn as violet cuts every 1.6 m, then the blink
+  for (let d = 0; d <= dist; d += 1.6) ctx.emit('fx', { position: { x: from.x + f.x * d, y: from.y + 1, z: from.z + f.z * d }, script: REND }, near)
+  ctx.emit('fx', { position: { ...from, y: from.y + 1 }, script: PUFF }, near)
+  self.velocity = { x: 0, y: 0, z: 0 }
+  self.feetPosition = { x: dest.x, y: dest.y + 0.05, z: dest.z }
+  m.ambushUntil = now + S.step.ambushWindow * 1000
+  ctx.emit('playSound', { clip: a.slash, position: dest, volume: 0.55, maxDistance: 30 }, near)
+  const dmg = Math.round(a.damage * power(ctx) * (ambush ? S.strike.ambush : 1))
+  let n = 0
+  for (const r of ctx.query({ tags: ['enemy'], center: { x: (from.x + dest.x) / 2, y: from.y, z: (from.z + dest.z) / 2 }, radius: dist / 2 + a.width + 0.5 })) {
+    if (!r.state || (r.state.hp ?? 0) <= 0 || r.state.dead) continue
+    const px = r.feetPosition.x - from.x, pz = r.feetPosition.z - from.z, along = px * f.x + pz * f.z
+    if (along < -0.5 || along > dist + 0.8) continue
+    if (Math.abs(px * f.z - pz * f.x) > a.width) continue
+    const t = ctx.getObject(r.id); if (!t) continue
+    t.state.hp -= dmg; t.state.lastHitBy = self.id; t.state.lastHitAt = now; t.state.lastHitKind = 'strike'
+    const pos = { x: r.feetPosition.x, y: r.feetPosition.y + 1.1, z: r.feetPosition.z }, au = { audience: { nearby: pos, radius: 40 } }
+    ctx.emit('damageNumber', { position: pos, value: dmg, crit: ambush, color: ambush ? '#c38cff' : undefined }, au)
+    ctx.emit('fx', { position: pos, script: CUT, params: { normal: { x: f.x, y: 0.3, z: f.z } } }, au)
+    ctx.emit('squash', { target: r.id, axis: 'y', intensity: 0.15, duration: 0.15 }, au)
+    if (n++ === 0) meleeFoley(ctx, t, pos, ambush, au.audience)
+  }
+  if (n) { ctx.emit('hitstop', { duration: 0.05 }, { audience: { player: self.id } }); ctx.emit('cameraPunch', { direction: { x: f.x, y: 0, z: f.z }, intensity: 0.25 }, { audience: { player: self.id } }) }
+  ctx.emit('fx', { position: { ...dest, y: dest.y + 1 }, script: PUFF }, { audience: { nearby: dest, radius: 30 } })
+}
 function me(ctx) { return (ctx.session.shade ??= {})[ctx.self.id] ??= { ready: {} } }
 export function veiled(ctx) { return (ctx.self.state.veiledUntil || 0) > ctx.now() }
 
@@ -27,6 +66,7 @@ export function onInput(ctx, input) {
   if (p.attack) use(ctx, 'strike')
   else if (p.castSlot2) use(ctx, 'step')
   else if (p.castSlot3) use(ctx, 'veil')
+  else if (p.castSlot4) use(ctx, 'rend')
 }
 
 function use(ctx, kind) {
@@ -43,6 +83,7 @@ function use(ctx, kind) {
   }
   if (a.sound) ctx.emit('playSound', { clip: a.sound, position: self.feetPosition, volume: kind === 'veil' ? 0.5 : 0.4, pitch: 0.95 + ctx.random() * 0.1 }, near)
   if (kind === 'strike') { ctx.after(a.hitAt, 'land'); return }
+  if (kind === 'rend') { rend(ctx, a, m, now, near); return }
   if (kind === 'veil') {
     self.state.veiledUntil = now + a.length * 1000
     ctx.emit('fx', { position: self.feetPosition, attachTo: self.id, script: VEIL, lifetime: a.length }, { audience: { nearby: self.feetPosition, radius: 60 } })
