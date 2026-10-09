@@ -418,6 +418,8 @@ terrain:
     start-gullrest-cove: {at: {x: 222, z: 1402}, bedMaterial: sand, depth: 2.6, kind: lake, level: 0.4, radius: 16}
     start-thornhollow-clear: {center: {x: -720, z: 70}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
     start-cinderhold-clear: {center: {x: 900, z: -170}, kind: clear-scatter, shape: {kind: circle, radius: 22}}
+    merrow-strand-clear: {center: {x: 217, z: 1503}, kind: clear-scatter, shape: {kind: circle, radius: 19}}
+    merrow-strand-sand: {edgeMaterial: mud, grade: false, kind: path, material: sand, noise: 0.5, points: [[217, 1486], [217, 1500], [219, 1516]], width: 24}
     start-gullrest-clear: {center: {x: 250, z: 1430}, kind: clear-scatter, shape: {kind: circle, radius: 10}}
     roost-hollowcrypt: {center: {x: 1180, z: -600}, falloff: 12, height: 24, kind: flatten, material: dirt, shape: {kind: circle, radius: 9}}
     roost-hollowcrypt-clear: {center: {x: 1180, z: -600}, kind: clear-scatter, shape: {kind: circle, radius: 11}}
