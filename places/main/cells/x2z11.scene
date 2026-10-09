@@ -71,6 +71,14 @@ gull-road-lamp-2:
   primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
   rotation: {yaw: -169.74900152900966}
   tags: [lamp, road-lamp]
+gull-road-shrine:
+  children: [{feetPosition: {x: 0, y: 0.95, z: -0.6}, light: {color: oklch(0.85 0.12 70), distance: 6, intensity: 1.6, kind: point}}, {feetPosition: {x: 2.1, y: 0, z: -0.6}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: {yaw: 90}}]
+  feetPosition: {x: 265.5802905648357, y: 10.464074381330914, z: 1392.674910295066}
+  id: gull-road-shrine
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/roadshrine.js, seed: 13}
+  rotation: {lookAt: {x: 261.05788720607114, y: 10.544074381330914, z: 1398.573882058063}}
+  tags: [shrine, landmark, roadside]
 hc-nam-flame:
   feetPosition: {x: 233.7, z: 1419.7}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

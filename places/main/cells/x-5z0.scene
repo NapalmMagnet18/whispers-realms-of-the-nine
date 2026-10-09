@@ -101,6 +101,14 @@ thorn-road-lamp-2:
   primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
   rotation: {yaw: 105.31822163015427}
   tags: [lamp, road-lamp]
+thorn-road-shrine:
+  children: [{feetPosition: {x: 0, y: 0.95, z: -0.6}, light: {color: oklch(0.85 0.12 70), distance: 6, intensity: 1.6, kind: point}}, {feetPosition: {x: 2.1, y: 0, z: -0.6}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: {yaw: 90}}]
+  feetPosition: {x: -581.869289464457, y: 13.522105520358462, z: 37.76356622104518}
+  id: thorn-road-shrine
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/roadshrine.js, seed: 13}
+  rotation: {lookAt: {x: -592.0025391524167, y: 13.602105520358462, z: 34.83657958604583}}
+  tags: [shrine, landmark, roadside]
 thr-border-stone:
   feetPosition: {x: -685, y: {terrain: 0}, z: 58}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.6,.8,1>,2,5)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.6,.8,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
