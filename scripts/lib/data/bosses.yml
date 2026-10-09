@@ -15,7 +15,7 @@ drowned_echo:
   aggro: 40
   tally: drowned_echo
   reward: {xp: 15}
-  model: /cdn/model-humanoid-fantasy-drowned-sailor-ghoul-barnacled-rags-seaweed-hair-pale-bloated.glb
+  model: /cdn/model-humanoid-fantasy-drowned-echo-gaunt-drowned-choirboy-waterlogged-tattered-surplice-wet-hair-veiling-face-hollow-glowing-teal-eyes-rusted-hymnal-dark-gothic.glb
   scale: 1.0
 reed_sentry:
   name: Corrupted Reed Sentry
