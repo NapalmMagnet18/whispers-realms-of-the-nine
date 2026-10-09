@@ -1,4 +1,75 @@
 # spawn-scene v2 yaml x6z0
+emberwell-cache:
+  feetPosition: {x: 823.2, y: 29.326269348047134, z: -63.2}
+  id: emberwell-cache
+  physics: static
+  primitive: {kind: scripted, params: {kind: chest}, script: scripts/gen/briar.js, seed: 9}
+  rotation: {yaw: 225}
+  state: {cache: emberwell-spring, copper: 900, lid: emberwell-cache-lid, title: Steam-warmed miner's strongbox, yaw: 225}
+  tags: [cache, emberwell]
+emberwell-rock-0:
+  feetPosition: {x: 824.5, y: 28.99799069719793, z: -60}
+  id: emberwell-rock-0
+  physics: static
+  primitive: {kind: scripted, params: {ore: null, r: 2.4}, script: scripts/gen/rock.js}
+  rotation: {yaw: 0}
+  tags: [emberwell]
+emberwell-rock-1:
+  feetPosition: {x: 823.6, y: 28.95458676089414, z: -57.8}
+  id: emberwell-rock-1
+  physics: static
+  primitive: {kind: scripted, params: {ore: null, r: 1.6}, script: scripts/gen/rock.js}
+  rotation: {yaw: 53}
+  tags: [emberwell]
+emberwell-rock-2:
+  feetPosition: {x: 815.8, y: 29.806189742932485, z: -58.5}
+  id: emberwell-rock-2
+  physics: static
+  primitive: {kind: scripted, params: {ore: null, r: 2.1}, script: scripts/gen/rock.js}
+  rotation: {yaw: 106}
+  tags: [emberwell]
+emberwell-rock-4:
+  feetPosition: {x: 822, y: 29.01792718122002, z: -64}
+  id: emberwell-rock-4
+  physics: static
+  primitive: {kind: scripted, params: {ore: null, r: 1.3}, script: scripts/gen/rock.js}
+  rotation: {yaw: 212}
+  tags: [emberwell]
+emberwell-rock-5:
+  feetPosition: {x: 816.4, y: 29.177778798761405, z: -62.6}
+  id: emberwell-rock-5
+  physics: static
+  primitive: {kind: scripted, params: {ore: null, r: 1.5}, script: scripts/gen/rock.js}
+  rotation: {yaw: 265}
+  tags: [emberwell]
+emberwell-rock-6:
+  feetPosition: {x: 820.5, y: 28.156753755098162, z: -55.4}
+  id: emberwell-rock-6
+  physics: static
+  primitive: {kind: scripted, params: {ore: null, r: 1.2}, script: scripts/gen/rock.js}
+  rotation: {yaw: 318}
+  tags: [emberwell]
+emberwell-spring:
+  children: [{feetPosition: {x: 0, y: 0.32, z: 0}, material: {color: oklch(0.7 0.11 185), kind: water, opacity: 0.7, waveIntensity: 0.08}, primitive: {kind: circle, radius: 2.45, segments: 32}, rotation: {pitch: -90}}, {feetPosition: {x: 0, y: 0.35, z: 0}, fx: {script: "fx\npop steam rate=?mobile:6|14 on=disc(2.1) life=2.5..4 v=up(.5..0.9)+sdir()*.15 size=.5..0.9 acc=buoy(.25)+curl(.3)*.4+drag(.6) sz=$size*(.6>2.6) col=<.92,.9,.88> a=0>.18:.22>.7:.1>0 rot=spin(.12) r=sprite(smoke-puff,alpha)\npop bubbles rate=5 on=disc(1.6) life=.4..0.8 v=up(.2..0.4) size=.05..0.1 col=<.9,.95,.95> a=.6>0 r=sprite(soft-disc,alpha)"}}, {feetPosition: {x: 0, y: 1, z: 0}, light: {color: oklch(0.85 0.12 60), distance: 12, intensity: 2.2, kind: point}}, {audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-hot-spring-soft-bubbling-steam-hiss-loop.mp3, gain: 0.18, loop: true, maxDistance: 26, spatial: true}, feetPosition: {x: 0, y: 0.5, z: 0}}]
+  feetPosition: {x: 820, y: 29.701848501565237, z: -60}
+  id: emberwell-spring
+  physics: static
+  primitive: {kind: scripted, params: {kind: basin}, script: scripts/gen/petalfall.js, seed: 7}
+  tags: [emberwell]
+emberwell-stone-0:
+  feetPosition: {x: 820, y: 27.367566619986697, z: -54.56}
+  id: emberwell-stone-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 11}
+  rotation: {lookAt: {x: 820, y: 29.701848501565237, z: -60}}
+  tags: [emberwell]
+emberwell-stone-1:
+  feetPosition: {x: 815.04, y: 29.735438197002544, z: -60.64}
+  id: emberwell-stone-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 12}
+  rotation: {lookAt: {x: 820, y: 29.701848501565237, z: -60}}
+  tags: [emberwell]
 node-iron-9:
   behavior: scripts/gather-node.js
   children: [{feetPosition: {x: -0.4096130967278195, y: 0.6932380270181401, z: 0.222217360394397}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 33.09571298449101, roll: 39.648130340337815, yaw: 161.21607510429624}}, {feetPosition: {x: 0.3147667431439747, y: 0.33297001537073867, z: 0.23497170864234682}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 20.184432203036003, roll: 59.752036426100894, yaw: 301.6386688042612}}, {feetPosition: {x: -0.3695579714779558, y: 0.46533459558400075, z: -0.09735509771920589}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 0.78732118978506, roll: 32.50723671750503, yaw: 182.8383842403248}}, {feetPosition: {x: 0.19104647332317398, y: 0.3451585699315921, z: -0.41698105635788746}, material: {color: oklch(0.55 0.06 30), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 38.12138651410182, roll: 26.14314250934084, yaw: 24.067872215093985}}, {feetPosition: {x: 0.3824478826304951, y: 0.259234886713901, z: 0.4065997581323608}, material: {color: oklch(0.4 0.02 40), metalness: 0.85, roughness: 0.35}, primitive: {depth: 0.22, height: 0.12, kind: box, width: 0.16}, rotation: {pitch: 43.19946417734002, roll: 53.39442855370903, yaw: 328.59280042750424}}]
