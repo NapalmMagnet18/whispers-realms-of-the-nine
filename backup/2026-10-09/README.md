@@ -1,3 +1,5 @@
+> Historical snapshot documentation. For the version-aligned current recovery set and latest encrypted data, use [backup/current](../current/README.md).
+
 # Updated snapshot and recovery — October 9, 2026
 
 The current captured Spawn source is `0174febd8283af5d593db301a53db850448db960`: **636 source files and 2,283 main commits**, including 94 commits newer than the initial backup. GitHub also retains the initial snapshot `db35b6a37c86d7df7783bb4f0d1fcd2cc7a64ece` and its original bundle. The release tag remains attached to the original backup documentation commit; clone current GitHub `main` or the new `whispers-source-main-0174febd.bundle` for the refreshed source.

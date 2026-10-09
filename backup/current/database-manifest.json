@@ -1,0 +1,40 @@
+[
+  {
+    "database": "dev",
+    "file": "database-dev-2026-10-09.json.dpapi",
+    "bytes": 326246,
+    "sha256": "43682d89aa1e710301c7a3e68f71a3d3db294cc1332e807b47ca3f7497e68d4a",
+    "tables": 22,
+    "rows": 2337,
+    "countsStable": true,
+    "startedAt": "2026-10-09T21:49:10.929748+00:00",
+    "finishedAt": "2026-10-09T21:49:44.251432+00:00",
+    "roundtripVerified": true,
+    "consistency": "paginated reads; not an atomic database transaction",
+    "protection": "Windows CurrentUser DPAPI; requires original Windows user DPAPI keys",
+    "portableFile": "database-dev-2026-10-09.json.aesgcm",
+    "portableBytes": 326064,
+    "portableSha256": "34199f2ea33903ffbd912a1fe620e12a10633fe11da29ef3d4c5af9fbb6aa516",
+    "sqliteReconstructionVerified": true,
+    "portableProtection": "AES-256-GCM; recovery key stored locally outside repository"
+  },
+  {
+    "database": "live",
+    "file": "database-live-2026-10-09.json.dpapi",
+    "bytes": 6150,
+    "sha256": "a6bb1e7f91758445184d5e1efc77fa905da881cd94487f064779c68d580df0ca",
+    "tables": 8,
+    "rows": 6,
+    "countsStable": true,
+    "startedAt": "2026-10-09T21:49:44.266842+00:00",
+    "finishedAt": "2026-10-09T21:49:54.709266+00:00",
+    "roundtripVerified": true,
+    "consistency": "paginated reads; not an atomic database transaction",
+    "protection": "Windows CurrentUser DPAPI; requires original Windows user DPAPI keys",
+    "portableFile": "database-live-2026-10-09.json.aesgcm",
+    "portableBytes": 5959,
+    "portableSha256": "54e4b4dc5713f55f572a70e42316396d228045479d116eb73d12a826ff785eb8",
+    "sqliteReconstructionVerified": true,
+    "portableProtection": "AES-256-GCM; recovery key stored locally outside repository"
+  }
+]

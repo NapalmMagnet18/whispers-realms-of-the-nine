@@ -1,0 +1,352 @@
+{
+  "run": "20261009T214751Z",
+  "capturedAt": "2026-10-09T21:52:55.193157+00:00",
+  "sourceSnapshot": "0174febd8283af5d593db301a53db850448db960",
+  "gameVersion": "0.47.96 Alpha",
+  "sourceFiles": 636,
+  "sourceHistoryCommits": 2283,
+  "privateNotesRef": "ae4444eb5d348c30a8470d7b01ac8228d1343b77",
+  "sourceBundle": "whispers-source-main-0174febd.bundle",
+  "recoveryArchive": "WHISPERS_Private_Backup_Current_20261009T214751Z.zip",
+  "currentArchives": [
+    {
+      "file": "whispers-local-libraries-part-01.zip",
+      "bytes": 490661566,
+      "sha256": "99cbe1e44b61fca6d22a61d18c78630051d251abceac6ea1b5c82fb29e563a1b",
+      "files": 1608,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-01.zip"
+    },
+    {
+      "file": "whispers-local-libraries-part-02.zip",
+      "bytes": 526384200,
+      "sha256": "a2c7b13ded0397dd2da0641770dda6eb86c099251d2f7c02f29f96c6bdb42c72",
+      "files": 349,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-02.zip"
+    },
+    {
+      "file": "whispers-local-libraries-part-03.zip",
+      "bytes": 427572776,
+      "sha256": "0698d1f091b26d271f39de6dcd5e5baad994d81b0ed44d7bf9fbadb0cac1e7d1",
+      "files": 812,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-03.zip"
+    },
+    {
+      "file": "whispers-local-libraries-part-04.zip",
+      "bytes": 35547517,
+      "sha256": "1691a5253c32c2f765a61311f3f2dafbe89f13dea33ce7e9ee9cf4e2a9c6d8fc",
+      "files": 65,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-04.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-part-01.zip",
+      "bytes": 514496219,
+      "sha256": "f3ead33c23e70769387676929a7b8c4cf24d7f9075b9425ec06010ce1564b6cc",
+      "files": 653,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-part-01.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-part-02.zip",
+      "bytes": 519253290,
+      "sha256": "d68ff9e0e771a9da3b387a050a97060886cea748e847b87de28b2fee098b406e",
+      "files": 749,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-part-02.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-part-03.zip",
+      "bytes": 99133982,
+      "sha256": "6ea9632ca47d99d826bd45ced96e891b16310b0cf2f7d53a8714cd8f30fbaa50",
+      "files": 150,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-part-03.zip"
+    },
+    {
+      "file": "whispers-engine-reference-and-schema.zip",
+      "bytes": 105679,
+      "sha256": "50b7b1a1d703318a72e1cc98725f2f3804c86a95ff46c6beb46a5512a5ae8a36",
+      "verification": "ZIP CRC readback passed",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-engine-reference-and-schema.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-additions-0174febd.zip",
+      "bytes": 8954063,
+      "sha256": "f29fa93dba479a205faf86a744422599e1b8b580d539919a78f4f37004305441",
+      "files": 3,
+      "verification": "all asset SHA-256 hashes matched ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-additions-0174febd.zip"
+    },
+    {
+      "file": "whispers-source-main-0174febd.bundle",
+      "bytes": 14878372,
+      "sha256": "3931c07a5e5f90f38bebaa227b480abf528cb3ad127fdf5f74950125d3e7f601",
+      "verification": "git bundle verify passed; all main ancestry",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-source-main-0174febd.bundle"
+    },
+    {
+      "file": "WHISPERS_Private_Backup_Current_20261009T214751Z.zip",
+      "bytes": 30259639,
+      "sha256": "f7d4578c3e69f896ec966024f748dd02f4009aa69caf84b2eb23ed968130993f",
+      "encrypted": true,
+      "keyUploaded": false,
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261009T214751Z.zip"
+    }
+  ],
+  "allReleaseArchives": [
+    {
+      "file": "whispers-local-libraries-part-01.zip",
+      "bytes": 490661566,
+      "sha256": "99cbe1e44b61fca6d22a61d18c78630051d251abceac6ea1b5c82fb29e563a1b",
+      "files": 1608,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-01.zip"
+    },
+    {
+      "file": "whispers-local-libraries-part-02.zip",
+      "bytes": 526384200,
+      "sha256": "a2c7b13ded0397dd2da0641770dda6eb86c099251d2f7c02f29f96c6bdb42c72",
+      "files": 349,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-02.zip"
+    },
+    {
+      "file": "whispers-local-libraries-part-03.zip",
+      "bytes": 427572776,
+      "sha256": "0698d1f091b26d271f39de6dcd5e5baad994d81b0ed44d7bf9fbadb0cac1e7d1",
+      "files": 812,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-03.zip"
+    },
+    {
+      "file": "whispers-local-libraries-part-04.zip",
+      "bytes": 35547517,
+      "sha256": "1691a5253c32c2f765a61311f3f2dafbe89f13dea33ce7e9ee9cf4e2a9c6d8fc",
+      "files": 65,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-local-libraries-part-04.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-part-01.zip",
+      "bytes": 514496219,
+      "sha256": "f3ead33c23e70769387676929a7b8c4cf24d7f9075b9425ec06010ce1564b6cc",
+      "files": 653,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-part-01.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-part-02.zip",
+      "bytes": 519253290,
+      "sha256": "d68ff9e0e771a9da3b387a050a97060886cea748e847b87de28b2fee098b406e",
+      "files": 749,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-part-02.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-part-03.zip",
+      "bytes": 99133982,
+      "sha256": "6ea9632ca47d99d826bd45ced96e891b16310b0cf2f7d53a8714cd8f30fbaa50",
+      "files": 150,
+      "verification": "every file SHA-256 matched after ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-part-03.zip"
+    },
+    {
+      "file": "whispers-source-main-2026-10-09.bundle",
+      "bytes": 15383973,
+      "sha256": "dd2326101130c48cd9dba48d416b5efca632370ee9a956aed24f5474ca78ebe0",
+      "verification": "git bundle verify passed",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-source-main-2026-10-09.bundle"
+    },
+    {
+      "file": "whispers-engine-reference-and-schema.zip",
+      "bytes": 105679,
+      "sha256": "50b7b1a1d703318a72e1cc98725f2f3804c86a95ff46c6beb46a5512a5ae8a36",
+      "verification": "ZIP CRC readback passed",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-engine-reference-and-schema.zip"
+    },
+    {
+      "file": "whispers-hosted-assets-additions-0174febd.zip",
+      "bytes": 8954063,
+      "sha256": "f29fa93dba479a205faf86a744422599e1b8b580d539919a78f4f37004305441",
+      "files": 3,
+      "verification": "all asset SHA-256 hashes matched ZIP readback",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-hosted-assets-additions-0174febd.zip"
+    },
+    {
+      "file": "whispers-source-main-0174febd.bundle",
+      "bytes": 14878372,
+      "sha256": "3931c07a5e5f90f38bebaa227b480abf528cb3ad127fdf5f74950125d3e7f601",
+      "verification": "git bundle verify passed; all main ancestry",
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-source-main-0174febd.bundle"
+    },
+    {
+      "file": "WHISPERS_Private_Backup_2026-10-09.zip",
+      "bytes": 29794774,
+      "sha256": "9843190322a2781dbbf3e8ae29823139f453c52c038b069eb2c266c7c12dfccb",
+      "encrypted": true,
+      "keyUploaded": false,
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_2026-10-09.zip"
+    },
+    {
+      "file": "WHISPERS_Private_Backup_Latest_0174febd.zip",
+      "bytes": 28457104,
+      "sha256": "5151877487c5d0ff61aa07e9d0b6617b7d9373fc4300a7dd47da89a438209aed",
+      "encrypted": true,
+      "keyUploaded": false,
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Latest_0174febd.zip"
+    },
+    {
+      "file": "WHISPERS_Private_Backup_Current_20261009T214751Z.zip",
+      "bytes": 30259639,
+      "sha256": "f7d4578c3e69f896ec966024f748dd02f4009aa69caf84b2eb23ed968130993f",
+      "encrypted": true,
+      "keyUploaded": false,
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261009T214751Z.zip"
+    }
+  ],
+  "newUploadArchives": [
+    {
+      "file": "WHISPERS_Private_Backup_Current_20261009T214751Z.zip",
+      "bytes": 30259639,
+      "sha256": "f7d4578c3e69f896ec966024f748dd02f4009aa69caf84b2eb23ed968130993f",
+      "encrypted": true,
+      "keyUploaded": false,
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261009T214751Z.zip"
+    }
+  ],
+  "hostedAssetAudit": {
+    "references": 1642,
+    "downloaded": 1567,
+    "uniqueFiles": 1555,
+    "uniqueBytes": 1186374471,
+    "unavailableRuntimeReferences": [
+      "/cdn/font-cinzel-bold.woff2",
+      "/cdn/font-cinzel-regular.woff2",
+      "/cdn/moodboard-gothic-horror/sfx-armor-collapse-candles-snuffed.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-candle-warden-wakes-deep-bell-toll.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-flame-gathering-whoosh-rising.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-heavy-chain-impact-wet-crunch.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-heavy-chain-whoosh-swing.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-arcanist-summon-star-chant.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-arrow-rain-hiss-volley.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-arrows-thudding-into-earth.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-chisel-on-stone-taps.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-elven-forest-village-ambience-soft-wind-chimes-leaves-rustle-distant-gentle-voices-loop.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-grass-rustle-cut.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-ground-slam-earth-cracking-rumble.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-hanging-glass-bells-tinkling-softly-in-breeze-loop.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-high-mountain-eyrie-ambience-wind-over-cliffs-banners-flapping-distant-gryphon-call-loop.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-high-wind-moaning-through-ruined-stone-tower-faint-hum-loop.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-iron-scrape-heavy.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-marsh-village-ambience-creaking-boardwalk-planks-lapping-water-frogs-distant-voices-loop.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-mountain-hold-town-ambience-distant-hammers-steam-hiss-low-dwarven-voices-loop.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-stone-pillar-low-hum-double-ring.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-thorn-brambles-creaking-growth.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-three-arrows-loosed-at-once-bowstring-twang-volley-whistle.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-tuning-fork-stone-ring.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-tuning-stone-resonant-chime.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-twin-dagger-rapid-slashes-dark.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-wooden-stake-hammer.mp3",
+      "/cdn/voice-booming-bronze-bell-resonant-golem-saying-the-bell-has-heard-your-footsteps.mp3",
+      "/cdn/voice-cold-ethereal-whispering-drowned-woman-reverb-saying-come-closer-little-voice-the-choir-has-a-place-for-you.mp3",
+      "/cdn/voice-colossal-rumbling-volcanic-titan-booming-saying-i-smell-your-little-fire-it-is-nothing-to-mine.mp3",
+      "/cdn/voice-creaking-rotten-wood-voice-mournful-saying-rot-takes-everything-in-time-i-am-only-quicker.mp3",
+      "/cdn/voice-creaking-rotten-wood-voice-mournful-saying-the-rot-hears-you-coming-child-of-the-march.mp3",
+      "/cdn/voice-deep-creaking-ancient-tree-giant-saying-you-tread-on-roots-older-than-your-kingdom.mp3",
+      "/cdn/voice-deep-sinister-priest-muffled-iron-mask-saying-another-lamp-walks-into-my-dark.mp3",
+      "/cdn/voice-distant-shimmering-celestial-woman-echo-saying-you-called-and-i-answered-now-burn.mp3",
+      "/cdn/voice-distant-shimmering-celestial-woman-echo-saying-you-looked-up-and-i-looked-back.mp3",
+      "/cdn/voice-dry-rustling-reed-whisper-unsettling-saying-let-the-reeds-unbraid-you.mp3",
+      "/cdn/voice-dry-rustling-reed-whisper-unsettling-saying-the-reeds-whisper-your-name-they-are-never-wrong.mp3",
+      "/cdn/voice-gravel-voiced-brutish-dwarf-overseer-bellowing-saying-more-meat-for-the-furnace-step-right-in.mp3",
+      "/cdn/voice-grinding-stone-gravel-brute-growl-saying-pay-up-or-get-buried.mp3",
+      "/cdn/voice-grinding-stone-gravel-brute-growl-saying-you-owe-me-everyone-who-walks-this-road-owes-me.mp3",
+      "/cdn/voice-hissing-clockwork-wraith-whisper-saying-so-many-memories-walking-toward-me.mp3",
+      "/cdn/voice-hollow-metallic-echoing-construct-guardian-saying-more-flesh-for-the-stair-the-water-remembers-every-step.mp3",
+      "/cdn/voice-layered-distorted-chorus-of-many-voices-mechanical-saying-i-already-know-your-name-i-am-only-waiting-for-the-rest-of-you.mp3",
+      "/cdn/voice-rasping-skeletal-gleeful-ghoul-saying-fresh-bones-oh-how-they-will-sing.mp3",
+      "/cdn/voice-regal-sorrowful-fallen-saint-woman-echoing-saying-they-still-pray-to-me-in-the-dark-did-you-know.mp3",
+      "/cdn/voice-stern-hollow-armored-warden-reverb-saying-you-stand-before-the-first-seal-turn-back-while-you-still-owe-nothing.mp3",
+      "/cdn/voice-waterlogged-gurgling-old-sea-captain-saying-all-hands-we-have-boarders.mp3",
+      "/cdn/voice-waterlogged-gurgling-old-sea-captain-saying-come-aboard-the-crew-is-short-a-hand.mp3",
+      "/cdn/voice-weary-hoarse-old-lamplighter-bitter-saying-another-lantern-bearer-they-all-go-out-in-the-end.mp3",
+      "/cdn/voice-weary-hoarse-old-lamplighter-bitter-saying-the-ward-went-dark-and-so-will-you.mp3"
+    ],
+    "illustrativeOrHistoricalUnavailable": [
+      "/cdn/....glb",
+      "/cdn/...png",
+      "/cdn/model-humanoid-fantasy-archivist-thorne-gaunt-scholar-bark-skin-antler-crown-frost-tome.glb",
+      "/cdn/model-humanoid-fantasy-drowned-bellwright-giant-smith-carrying-cracked-bronze-bell-kelp-beard-rusted-plate.glb",
+      "/cdn/model-humanoid-fantasy-drowned-bosun-captain-hulking-barnacle-armor-anchor-chain-glowing-teal-eyes.glb",
+      "/cdn/model-humanoid-fantasy-engine-voice-hovering-construct-of-brass-rings-and-violet-light-human-face-in-the-core.glb",
+      "/cdn/model-humanoid-fantasy-frost-bound-memory-ghostly-ice-knight-translucent-blue-cracked-crown.glb",
+      "/cdn/model-humanoid-fantasy-ninth-chair-tyrant-crowned-figure-fused-to-a-floating-throne-of-violet-crystal-eight-shattered-seals-orbiting.glb",
+      "/cdn/model-humanoid-fantasy-old-ysolde-giant-dryad-matriarch-ancient-bark-body-frosted-leaves-root-staff.glb",
+      "/cdn/model-humanoid-fantasy-root-lasher-twisted-wooden-creature-thorn-whips-glowing-sap-eyes.glb",
+      "/cdn/model-humanoid-fantasy-witness-judge-tall-robed-arbiter-gilded-mask-scales-of-violet-glass-ledger-floating.glb",
+      "/cdn/moodboard-gothic-horror/sfx-bell-crack-collapse.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-bell-hum-rising.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-chain-collapse-splash.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-drowned-bell-toll-underwater.mp3",
+      "/cdn/moodboard-gothic-horror/sfx-great-bell-strike-shockwave.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-frost-crackle-gathering.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-ice-wind-howl.mp3",
+      "/cdn/moodboard-painterly-fantasy/sfx-wood-split-collapse.mp3",
+      "/cdn/moodboard-pixel/sprite-fox.png",
+      "/cdn/moodboard-scifi-neon/sfx-cosmic-gavel-boom.mp3",
+      "/cdn/moodboard-scifi-neon/sfx-engine-voice-booming-whisper.mp3",
+      "/cdn/moodboard-scifi-neon/sfx-machine-charge-whine.mp3",
+      "/cdn/moodboard-scifi-neon/sfx-machine-power-down-collapse.mp3"
+    ],
+    "externalGltfDependencies": [],
+    "allDownloadedFileHashesVerified": true
+  },
+  "localLibraryFiles": 2834,
+  "localLibraryChangedFiles": 0,
+  "databaseSnapshots": [
+    {
+      "database": "dev",
+      "file": "database-dev-2026-10-09.json.dpapi",
+      "bytes": 326246,
+      "sha256": "43682d89aa1e710301c7a3e68f71a3d3db294cc1332e807b47ca3f7497e68d4a",
+      "tables": 22,
+      "rows": 2337,
+      "countsStable": true,
+      "startedAt": "2026-10-09T21:49:10.929748+00:00",
+      "finishedAt": "2026-10-09T21:49:44.251432+00:00",
+      "roundtripVerified": true,
+      "consistency": "paginated reads; not an atomic database transaction",
+      "protection": "Windows CurrentUser DPAPI; requires original Windows user DPAPI keys",
+      "portableFile": "database-dev-2026-10-09.json.aesgcm",
+      "portableBytes": 326064,
+      "portableSha256": "34199f2ea33903ffbd912a1fe620e12a10633fe11da29ef3d4c5af9fbb6aa516",
+      "sqliteReconstructionVerified": true,
+      "portableProtection": "AES-256-GCM; recovery key stored locally outside repository"
+    },
+    {
+      "database": "live",
+      "file": "database-live-2026-10-09.json.dpapi",
+      "bytes": 6150,
+      "sha256": "a6bb1e7f91758445184d5e1efc77fa905da881cd94487f064779c68d580df0ca",
+      "tables": 8,
+      "rows": 6,
+      "countsStable": true,
+      "startedAt": "2026-10-09T21:49:44.266842+00:00",
+      "finishedAt": "2026-10-09T21:49:54.709266+00:00",
+      "roundtripVerified": true,
+      "consistency": "paginated reads; not an atomic database transaction",
+      "protection": "Windows CurrentUser DPAPI; requires original Windows user DPAPI keys",
+      "portableFile": "database-live-2026-10-09.json.aesgcm",
+      "portableBytes": 5959,
+      "portableSha256": "54e4b4dc5713f55f572a70e42316396d228045479d116eb73d12a826ff785eb8",
+      "sqliteReconstructionVerified": true,
+      "portableProtection": "AES-256-GCM; recovery key stored locally outside repository"
+    }
+  ],
+  "privateUploadApproved": true,
+  "keyUploaded": false,
+  "consistency": "source/asset/library version aligned to captured commit; dev/live reads are sequential, not atomic"
+}
