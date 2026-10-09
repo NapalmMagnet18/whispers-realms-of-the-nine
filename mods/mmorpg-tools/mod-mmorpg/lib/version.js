@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.51 Alpha';
+var GAME_VERSION = '0.47.52 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.52', 'The woods remember', 'Firebolt burns with a living flame and a heat shimmer and scorches the ground where it lands; Frost Shard leaves rime behind. Wisps, fireflies and pollen now drift through the Briarwild, Deepgrove, Deepwood, Petalfall, Thornhollow, Sorrowfen and Velthraen, each wood in its own colour.'],
   ['v0.47.51', 'Towns that breathe', 'Every hearth town has its own sound now: glass chimes in Thornhollow, creaking boardwalks and frogs in Reedhaven, cliff wind and banners at Starfall Eyrie, gulls and rigging at Gullrest, distant hammers in Cinderhold.'],
   ['v0.47.50', 'Steel and string', 'The Vanguard\'s sword sings through the air, its heavy blow comes with a grunt and a deep rush, raising the guard thumps a shield into place, and the Pathfinder\'s volley looses three strings at once.'],
   ['v0.47.49', 'Every step heard', 'A jump now rustles leather and catches a breath, a long fall lands with a thump of boots and gear, and gravel roads crunch underfoot.'],
