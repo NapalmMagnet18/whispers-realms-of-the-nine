@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.91 Alpha';
+var GAME_VERSION = '0.47.92 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.92', 'The Choir Stands Tall', 'Drowned Echoes rise at a full grown height now, eye to eye with the heroes they drag under.'],
   ['v0.47.91', 'Lamps on the Strand', 'Four drowned lanterns burn teal around Captain Merrow\'s wreck, so the Gull\'s Wake fight reads even at midnight.'],
   ['v0.47.90', 'The Strand Laid Bare', 'The meadow no longer swallows Captain Merrow: his ground on the Gull\'s Wake is bare wet sand now, wreck to tideline.'],
   ['v0.47.89', 'Echoes of the Choir', 'The Drowned Echoes the Choir Mother calls from the deep are their own dead now: gaunt choirboys in waterlogged surplices, wet hair veiling hollow teal eyes, rusted hymnals in hand.'],
