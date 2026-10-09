@@ -35,7 +35,7 @@ atmosphere:
     speed: 3
   cycle:
     bands: [[0, 2], [5, 1], [16, 0.5], [19, 2]]
-    epoch: 119198430.30303031
+    epoch: 119198430.3
     periodMs: 3600000
 defaultSpawnPoint:
   x: 0
