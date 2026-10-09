@@ -38,5 +38,6 @@ assets:
     "/cdn/value.caa1a85a6fd2c15469e2b604422b151c7db92910f0e9fd53bc347d7fdcb7cf5f.glb": {bytes: 54564, kind: model, name: ashen-table, uploadedAt: "2026-10-08T17:59:01.297Z"}
     "/cdn/value.d43afce7cad4157445a482cae27454cbcb00a21c436198efe1f1c50f696c6b5d.glb": {bytes: 158404, kind: model, name: vey-flagpole, uploadedAt: "2026-10-08T19:35:47.331Z"}
     "/cdn/value.e9247ef86f15b83841bda52056d92c36d77b43aa57bca9526311bf2ace958af2.glb": {bytes: 35140, kind: model, name: wreck-rope, uploadedAt: "2026-10-08T19:25:03.989Z"}
+    "/cdn/value.ef4ee5e30d4a5eeb5e69ded461e8ca612b535ef6192f1e6b201f150316e8bce7.png": {bytes: 660639, kind: image, name: scorch-decal-2, uploadedAt: "2026-10-09T09:56:34.592Z"}
     "/cdn/value.f0cfe2686cc5dc0c4d3a4fc68af5c29a644ff8eea7720cb21861d6657a8f87d8.glb": {bytes: 1561484, kind: model, name: gulls-wake, uploadedAt: "2026-10-08T19:24:58.637Z"}
     "/cdn/value.f5df359a5ea5a6d7604f23b82af77cf56876d7a0ab0d97c4fde8be319a17a12b.glb": {bytes: 958504, kind: model, name: wreck-rowboat, uploadedAt: "2026-10-08T19:25:11.283Z"}
