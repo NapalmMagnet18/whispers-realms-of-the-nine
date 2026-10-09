@@ -17,7 +17,7 @@ pop chips on=@arrows life=.4..0.7 v=up(1.5..3)+sdir()*(1..2) size=.03..0.06 acc=
 pop dust on=@arrows?.5 life=.6..1 v=up(.4..0.8)+sdir()*.4 size=.25..0.4 acc=buoy(.2)+drag(1.6) sz=$size*(.6>1.7) col=<.6,.53,.42> a=0>.3:.3>0 rot=spin(.2) r=sprite(smoke-puff,alpha)`
 const THORNS = `fx
 pop vines n=?mobile:22|40 on=disc(%r|4.5) size=.04..0.06 tilt=-.5..0.5 col=<.12,.16,.07> a=1 rot=$tilt r=mesh(cylinder,1,14,1)
-pop barbs n=?mobile:30|60 on=disc(%r|4.5).c(.4..0.9) size=.08..0.14 col=<.22,.2,.1> a=1 rot=spin(1) r=mesh(box,.2,1,.2)
+pop barbs n=?mobile:30|60 on=disc(%r|4.5).c(.6) size=.08..0.14 col=<.22,.2,.1> a=1 rot=spin(1) r=mesh(box,.2,1,.2)
 pop glow rate=10 on=disc(%r|4.5).c(.3) life=1..1.6 v=up(.2..0.5) size=.03..0.06 col=hdr(.8,2,.5) a=0>.2:.8>0 acc=curl(.4) r=sprite(mote,add)
 pop shade n=1 at=point().c(.03) size=%r|4.5 col=<.05,.08,.02> a=.55 sz=$size*2 r=sprite(soft-disc,alpha,axis,0,0,axis=<0,1,0>)`
 export function loftRain(ctx, { targetId }) {
