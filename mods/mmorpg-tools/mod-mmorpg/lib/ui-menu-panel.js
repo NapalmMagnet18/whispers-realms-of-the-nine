@@ -700,6 +700,22 @@ export function renderQuestsTab(s) {
         + '<div style="' + summaryStyle + '">' + esc(summaryText) + '</div></div>';
     }
   }
+  // Hidden Places: the secret caches out in the March; a found one is named, the rest are a riddle
+  var SECRETS = [
+    { key: 'petalfall-hollow', name: 'Petalfall Hollow', hint: 'Blossoms fall in the pines west of the Reach' },
+    { key: 'emberwell-spring', name: 'Emberwell Spring', hint: 'Steam rises off the road west of Cinderhold' },
+    { key: 'starpool', name: 'The Star Pool', hint: 'Stars sleep on a mountain shelf east of Starfall' }
+  ];
+  var found = s.caches || {}, nf = 0;
+  for (var hs = 0; hs < SECRETS.length; hs++) if (found[SECRETS[hs].key]) nf++;
+  html += '<div style="margin-top:10px;padding:6px 8px;border-top:1px solid rgba(201,164,106,0.35)">'
+    + '<div style="font-family:Cinzel,serif;font-size:13px;color:rgba(242,176,74,0.95);font-weight:bold;letter-spacing:1px">Hidden Places <span style="float:right;color:rgba(232,217,181,0.9)">' + nf + ' / ' + SECRETS.length + '</span></div>';
+  for (var hs2 = 0; hs2 < SECRETS.length; hs2++) {
+    var sc = SECRETS[hs2], got = !!found[sc.key];
+    html += '<div style="font-family:Cinzel,serif;font-size:12px;line-height:1.4;margin-top:3px;color:' + (got ? 'rgba(140,215,150,0.95)' : 'rgba(180,165,130,0.6)') + '">'
+      + (got ? '\u2713 ' + esc(sc.name) : '\u25C7 <i>' + esc(sc.hint) + '</i>') + '</div>';
+  }
+  html += '</div>';
   return html;
 }
 
