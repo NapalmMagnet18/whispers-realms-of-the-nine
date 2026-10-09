@@ -166,7 +166,7 @@ var __faEverPlayed = false;
 var __faVeil = null; // { art, arrivedAt }
 function _veilNow() { return (typeof performance !== 'undefined' && performance.now) ? performance.now() : 0; }
 function _veilMarkup(art, fading) {
-  return '<div id="fa-enter-veil" style="position:fixed;inset:0;z-index:2147483000;background:#000;pointer-events:' + (fading ? 'none' : 'auto') + ';' + (fading ? 'animation:faVeilOut .8s ease 1.4s forwards;' : '') + '">'
+  return '<div id="fa-enter-veil" style="position:fixed;inset:0;z-index:2147483000;background:#000;pointer-events:' + (fading ? 'none' : 'auto') + ';' + (fading ? 'animation:faVeilOut .9s ease 2.2s forwards;' : '') + '">'
     + '<img id="fa-enter-veil-art" src="' + art + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />'
     + '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.25) 45%,rgba(0,0,0,.3));pointer-events:none;"></div>'
     + '<div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:360px;">'
@@ -182,7 +182,7 @@ function enterVeil(localPlayer) {
   if (!__faVeil) return '';
   var inZone = localPlayer.state.characterCreated === true && localPlayer.place && localPlayer.place !== 'character-creation-land' && localPlayer.place !== 'main-menu-land';
   if ((inZone || _veilNow() - (__faVeil.at || 0) > 20000) && !__faVeil.arrivedAt) __faVeil.arrivedAt = _veilNow(); // never trap: 20 s at most
-  if (__faVeil.arrivedAt && _veilNow() - __faVeil.arrivedAt > 5000) { __faVeil = null; return ''; }
+  if (__faVeil.arrivedAt && _veilNow() - __faVeil.arrivedAt > 6000) { __faVeil = null; return ''; }
   return _veilMarkup(__faVeil.art, !!__faVeil.arrivedAt);
 }
 

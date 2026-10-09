@@ -1,5 +1,5 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.28 Alpha';
+var GAME_VERSION = '0.47.29 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
   ['v0.47.27', 'Green Rise', 'The blossom hamlet now sits on a gentle green rise above the tideline, deep meadow grass and wildflowers instead of wet sand.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
