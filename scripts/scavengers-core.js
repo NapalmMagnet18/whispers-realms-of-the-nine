@@ -27,7 +27,24 @@ function gait(w, m, name, speed = 1) {
   m.gait = name;
   w.anim.base = { clip: S.clips[name], weight: 1, loop: "loop", speed };
 }
-function once(w, clip, speed = 1) { w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override" }; }
+// a one-shot gesture rides the action channel over the gait, then hands the body back: without the clear the override
+// held the clip's last frame forever and the crew slid around frozen mid-swing.
+const ONCE_SECS = { attack: 1.1, hit: 0.7, die: 99 };
+function once(w, clip, speed = 1, m) {
+  w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override" };
+  if (m) { const k = Object.keys(S.clips).find((n) => S.clips[n] === clip) || "attack"; m.actionEnd = (ONCE_SECS[k] ?? 1) / speed; m.actionT = 0; }
+}
+function settle(w, m, dt) {
+  if (m.actionEnd == null) return;
+  m.actionT += dt;
+  if (m.actionT >= m.actionEnd) { m.actionEnd = null; if (w.state?.mode !== "dead") { w.anim.action = null; const g = m.gait; m.gait = null; gait(w, m, g || "idle"); } }
+}
+const DUST = `fx
+pop dust burst=8..12 life=.5..0.9 v=norm(<%normal|0,1,0>)*(.8..1.6)+sdir()*(.4..0.9) size=.15..0.28 acc=buoy(.2)+drag(1.8) col=<.55,.5,.42> a=0>.35:.3>0 sz=$size*(.6>1.8) rot=spin(.15) r=sprite(smoke-puff,alpha)
+pop chips burst=6..10 life=.35..0.6 v=norm(<%normal|0,1,0>)*(2..3.5)+sdir()*(.8..1.6) size=.02..0.045 acc=grav()+drag(.5) col=<.42,.34,.26> a=1>0 floor=stick r=sprite(stalk,alpha,velocity,.02)`;
+const CLANG = `fx
+pop sparks burst=16..24 life=.15..0.4 v=norm(<%normal|0,1,0>)*(3..6)+sdir()*(1.5..3) size=.015..0.03 acc=grav()*.8+drag(.5) col=hdr(5,3.4,1.4)>hdr(2,.7,.15) a=1>0 r=sprite(ember,add,velocity,.02)
+pop flash burst=1 life=.12 size=.8 col=hdr(3,2.6,1.8) a=1>0 r=sprite(soft-disc,add)`;
 function face(w, m, to, dt) {
   const p = w.feetPosition, want = (Math.atan2(-(to.x - p.x), -(to.z - p.z)) * 180) / Math.PI;
   m.yaw ??= want;
@@ -55,7 +72,7 @@ function die(ctx, w, s, m) {
   const now = ctx.now(), pos = { x: w.feetPosition.x, y: w.feetPosition.y + 1.2, z: w.feetPosition.z };
   s.mode = "dead"; s.diedAt = now; s.target = null; s.hpPct = 0; s.unhurt = true;
   w.velocity = { x: 0, y: -2, z: 0 };
-  w.anim.base = null; once(w, S.clips.die); m.gait = null;
+  w.anim.base = null; once(w, S.clips.die, 1, m); m.gait = null;
   try { animate(ctx, w.id, { "material.dissolve": 1 }, { duration: S.corpse - S.fadeAt, delay: S.fadeAt }); } catch (e) {}
   ctx.emit("playSound", { clip: S.sounds.die, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
@@ -79,6 +96,7 @@ function strike(ctx, w, s, m, p, dist) {
   const hit = { x: p.feetPosition.x, y: p.feetPosition.y + 1.1, z: p.feetPosition.z };
   ctx.emit("playSound", { clip: S.sounds.hit, position: hit, volume: 0.75, maxDistance: 30 }, { audience: near(hit) });
   ctx.emit("damageNumber", { position: hit, value: dmg, color: guarded ? "#9fb6c8" : "#ff5a4a" }, { audience: near(hit) });
+  ctx.emit("fx", { position: hit, script: guarded ? CLANG : DUST, params: { normal: { x: p.feetPosition.x - w.feetPosition.x, y: 0.4, z: p.feetPosition.z - w.feetPosition.z } } }, { audience: near(hit) });
   ctx.emit("screenShake", { intensity: guarded ? 0.15 : 0.35, duration: 0.2 }, { audience: { player: p.id } });
   ctx.emit("flash", { target: p.id, color: "#ff3a2a", duration: 0.12 }, { audience: near(hit) });
 }
@@ -88,7 +106,7 @@ function strike(ctx, w, s, m, p, dist) {
 function tollBegin(ctx, w, s, m, T) {
   const now = ctx.now(), p = w.feetPosition, r = T.radius, life = T.windup + 0.2;
   m.tollAt = now + T.windup * 1000; s.mode = "toll";
-  halt(w, m); gait(w, m, "idle"); once(w, S.clips.attack, 0.55);
+  halt(w, m); gait(w, m, "idle"); once(w, S.clips.attack, 0.55, m);
   const base = { feetPosition: { x: p.x, y: p.y + 0.06, z: p.z }, physics: "none", castShadow: false, receiveShadow: false, lifetime: life };
   ctx.spawn({ ...base, primitive: { kind: "cylinder", radiusTop: r, radiusBottom: r, height: 0.04, radialSegments: 48 }, material: { color: "oklch(0.7 0.14 235 / 0.22)", emissive: "#4aa8ff", emissiveIntensity: 0.6, transparent: true, opacity: 0.22 } });
   const fill = ctx.spawn({ ...base, feetPosition: { x: p.x, y: p.y + 0.08, z: p.z }, scale: { x: 0.05, y: 1, z: 0.05 }, primitive: { kind: "cylinder", radiusTop: r, radiusBottom: r, height: 0.04, radialSegments: 48 }, material: { color: "oklch(0.75 0.16 230 / 0.45)", emissive: "#7fd0ff", emissiveIntensity: 1.4, transparent: true, opacity: 0.45 } });
@@ -149,7 +167,7 @@ export function update(ctx, dt) {
     if (m.hp !== s.hp) { m.hp = s.hp; s.hpPct = Math.max(0, Math.round((100 * s.hp) / (s.maxHp || cs.hp || S.hp))); s.unhurt = s.hp >= (s.maxHp || S.hp); }
     if ((s.lastHitAt ?? 0) !== m.seen) {
       m.seen = s.lastHitAt ?? 0;
-      once(w, S.clips.hit, 1.3);
+      once(w, S.clips.hit, 1.3, m);
       ctx.emit("flash", { target: w.id, color: "#ffffff", duration: 0.08 }, { audience: near(pos) });
       if (s.mode !== "leash" && s.lastHitBy && players.some((p) => p.id === s.lastHitBy)) aggro(ctx, w, s, s.lastHitBy);
     }
@@ -195,7 +213,7 @@ export function update(ctx, dt) {
     }
     if (dist <= S.strike.start && now >= (m.nextStrike ?? 0)) {
       s.mode = "windup"; m.strikeAt = now + S.strike.windup * 1000;
-      gait(w, m, "idle"); halt(w, m); once(w, S.clips.attack, 0.9);
+      gait(w, m, "idle"); halt(w, m); once(w, S.clips.attack, 0.9, m);
       ctx.emit("highlightSet", { target: w.id, color: "#ff2a1a", style: "glow", duration: S.strike.windup }, { audience: near(pos) });
       continue;
     }
