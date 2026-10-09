@@ -83,6 +83,7 @@ export function update(ctx, dt) {
     if (now >= (s.diedAt ?? now) + (D.respawn ?? 120) * 1000) { reset(ctx, D, m); w.material = { dissolve: 0 }; m.gait = null; gait(w, m, D, "idle"); }
     else { ctx.sleep(2); return; }
   }
+  if (D.aura && !w.fx) w.fx = { script: D.aura };
   if ((s.hp ?? 0) <= 0) return die(ctx, D, m, fighters);
   if (m.hp !== s.hp) {
     if (m.hp != null && s.hp < m.hp && s.lastHitBy) m.dmg[s.lastHitBy] = (m.dmg[s.lastHitBy] ?? 0) + (m.hp - s.hp);
