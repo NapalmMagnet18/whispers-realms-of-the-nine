@@ -25,4 +25,5 @@ pack:
   - { id: briar-wolf-3, x: -96,  z: -45, yaw: -40, scale: 1.06 }
   - { id: briar-wolf-4, x: -112, z: -11, yaw: 90,  scale: 0.97 }
   - { id: briar-wolf-5, x: -118, z: -47, yaw: 200, scale: 1.03 }
+  - { id: briar-wolf-alpha, x: -108, z: -36, yaw: 140, scale: 1.55, hp: 420, damage: 95, name: "Grimfang, the Thorn Alpha", reward: { xp: 160, copper: 60 } }   # the pack's mini boss, deep in the den
   - { id: briar-wolf-6, x: -124, z: -20, yaw: -110, scale: 0.92 }

@@ -40,10 +40,11 @@ const GAITS = {
     jaw: { pitch: wave(-3, 0.3, -6) },
     tail: { pitch: wave(8, 0.3, 4), yaw: wave(4, 0.1) } } },
 };
-const BAR = `<div face="top" facing="player" offset="0.5m" width="0.8m" class="flex flex-col items-center gap-[10px]">
-<div class="text-[64px] font-bold text-amber-100 tracking-wide" style="font-family:Cinzel,serif;text-shadow:0 3px 6px #000">Briar Wolf</div>
+const BARF = (name, elite) => `<div face="top" facing="player" offset="0.5m" width="0.8m" class="flex flex-col items-center gap-[10px]">
+<div class="text-[64px] font-bold text-amber-100 tracking-wide" style="font-family:Cinzel,serif;text-shadow:0 3px 6px #000;${elite ? "color:#ff9a6a" : ""}">${name}</div>
 <div hidden="{{ state.unhurt }}" class="w-full h-[52px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[5px]"><div class="h-full rounded bg-red-700" style="width: {{ state.hpPct }}%"></div></div>
 </div>`;
+const BAR = BARF("Briar Wolf");
 
 const pos0 = (w) => w.feetPosition;
 const THUMP = `fx
@@ -64,8 +65,8 @@ function spawnWolf(ctx, def) {
   ctx.spawn(def.id, {
     tags: ["enemy", "wolf", "briar-wolf"], physics: "character", scale: def.scale ?? 1,
     primitive: { kind: "scripted", script: "scripts/gen/wolf.js" }, material: { roughness: 0.92, dissolve: 0 },
-    feetPosition: { x: def.x, z: def.z, y: { terrain: 0 } }, rotation: def.yaw ?? 0, ui: BAR,
-    state: { hp: W.hp, maxHp: W.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: 0.5, hpPct: 100, unhurt: true },
+    feetPosition: { x: def.x, z: def.z, y: { terrain: 0 } }, rotation: def.yaw ?? 0, ui: def.name ? BARF(def.name, true) : BAR,
+    state: { hp: def.hp ?? W.hp, maxHp: def.hp ?? W.hp, ...(def.damage ? { damage: def.damage } : {}), ...(def.reward ? { reward: def.reward } : {}), home: { x: def.x, z: def.z }, mode: "idle", radius: 0.5, hpPct: 100, unhurt: true },
   });
 }
 
@@ -119,10 +120,10 @@ function die(ctx, w, s, m) {
   ctx.emit("playSound", { clip: W.sounds.yelp, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
   if (p && (p.tags || []).includes("player")) {
-    const tk = ctx.self.state.tallyKey || "briar_wolf"; // a den names its own kill (THR-03's bramble_beast)
-    ctx.emit("kill", { tally: tk, xp: W.reward.xp }, { to: p.id }); // the hero's own machine counts it (scripts/quest-player.js ear)
-    if (W.reward.copper) ctx.emit("coins", { delta: W.reward.copper, reason: "kill:briar_wolf" }, { to: p.id }); // scripts/vendor.js ear: ledger, clink, purse
-    ctx.emit("damageNumber", { position: pos, text: `+${W.reward.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
+    const RWd = s.reward || W.reward; const tk = ctx.self.state.tallyKey || "briar_wolf"; // a den names its own kill (THR-03's bramble_beast)
+    ctx.emit("kill", { tally: tk, xp: RWd.xp }, { to: p.id }); // the hero's own machine counts it (scripts/quest-player.js ear)
+    if (RWd.copper) ctx.emit("coins", { delta: RWd.copper, reason: "kill:briar_wolf" }, { to: p.id }); // scripts/vendor.js ear: ledger, clink, purse
+    ctx.emit("damageNumber", { position: pos, text: `+${RWd.xp} XP`, color: "#f2b04a", size: 1.2, lifetime: 1.8 }, { audience: { player: p.id } });
   }
 }
 
@@ -134,7 +135,7 @@ function bite(ctx, w, s, m, p, dist) {
   if (dist > W.bite.reach || !p) return;
   const ps = p.state, guarded = (ps.guardUntil ?? 0) > now;
   const health = ps.health ?? 1000;
-  const dmg = Math.min(health, Math.round(W.bite.damage * (guarded ? 1 - (ps.guardReduce ?? 0) : 1)));
+  const dmg = Math.min(health, Math.round((w.state.damage || W.bite.damage) * (guarded ? 1 - (ps.guardReduce ?? 0) : 1)));
   if (dmg > 0) ps.health = health - dmg;
   const hit = { x: p.feetPosition.x, y: p.feetPosition.y + 1.1, z: p.feetPosition.z };
   ctx.emit("playSound", { clip: W.sounds.bite, position: hit, volume: 0.75, maxDistance: 30 }, { audience: near(hit) });
