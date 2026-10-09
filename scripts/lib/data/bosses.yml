@@ -444,8 +444,8 @@ captain_merrow:
     pop glow n=1 at=point().c(2) gl=flick(.7,.2) r=light(<.35,.85,.8>,$gl*.8,4)
   name: Captain Merrow of the Gull's Wake
   hp: 5200
-  model: /cdn/model-humanoid-fantasy-drowned-sailor-ghoul-barnacled-rags-seaweed-hair-pale-bloated.glb
-  scale: 1.8
+  model: /cdn/model-humanoid-fantasy-captain-merrow-towering-drowned-pirate-captain-rotted-black-greatcoat-barnacle-crusted-tricorn-coral-growths-anchor-chain-flail-glowing-teal-eyes-dark-gothic.glb
+  scale: 1.5
   height: 3.4
   walk: 1.6
   turn: 140

@@ -32,10 +32,10 @@ hc-nam-boss:
   id: hc-nam-boss
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
-  model: /cdn/model-humanoid-fantasy-drowned-sailor-ghoul-barnacled-rags-seaweed-hair-pale-bloated.glb
+  model: /cdn/model-humanoid-fantasy-captain-merrow-towering-drowned-pirate-captain-rotted-black-greatcoat-barnacle-crusted-tricorn-coral-growths-anchor-chain-flail-glowing-teal-eyes-dark-gothic.glb
   physics: character
   rotation: 180
-  scale: 1.8
+  scale: 1.5
   state: {arena: {r: 13, x: 217, z: 1497}, boss: captain_merrow, home: {x: 217, z: 1497}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: Captain Merrow of the Gull's Wake, unhurt: true, yaw: 180}
   tags: [enemy, boss, homecoming]
   ui: "<div face=\"top\" facing=\"player\" offset=\"0.6m\" width=\"1.4m\" class=\"flex flex-col items-center gap-[8px]\"><div class=\"text-[56px] font-bold text-amber-100 tracking-wide text-center\" style=\"font-family:Cinzel,serif;text-shadow:0 3px 6px #000\">Captain Merrow of the Gull's Wake</div><div class=\"text-[30px] text-amber-200/80\" style=\"font-family:Cinzel,serif\">Level 30 · Homecoming</div><div hidden=\"{{ state.unhurt }}\" class=\"w-full h-[48px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[4px]\"><div class=\"h-full rounded bg-orange-600\" style=\"width: {{ state.hpPct }}%\"></div></div></div>"
