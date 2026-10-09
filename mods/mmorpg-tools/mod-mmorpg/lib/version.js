@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.70 Alpha';
+var GAME_VERSION = '0.47.71 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.71', 'Grimfang Roars', 'Grimfang, the Thorn Alpha, now smoulders: red thorn dust and embers rise off him and a low ember glow follows him through the den. When he spots you he lets out a deep roar that shakes the ground and calls every idle wolf in the den down on you.'],
   ['v0.47.70', 'The Pack Calls', 'The first Briar Wolf to catch your scent now throws its head back and howls, and every idle wolf within earshot breaks off and runs at you with it. Walk the Briarwild road carefully.'],
   ['v0.47.69', 'Every Homecoming Has Its Weather', 'All six homecoming bosses now carry their own aura. Gharn the Unbanked drips molten embers in a heat haze, Captain Merrow trails sea mist and seawater, Hollowsong sheds glowing spores and dead leaves, the Unbraided hums with marsh flies over murk, and the Star That Answered spins violet motes and shards around her. Far bosses put theirs on the moment they wake.'],
   ['v0.47.68', 'The Lampless Smoulders', 'Reeve Ashcombe now carries his own dark: soot pours off his shoulders, cold blue embers lift around him, ash drifts down, and his dead lantern smokes with a pale glow at his hip. It all goes out when he is laid to rest, and comes back when he rises again.'],
