@@ -1,5 +1,10 @@
 # WHISPERS : Realm of the Nine — build page
 
+## 2026-10-09 · QUEST-UI-001 reward identity (spaiber)
+- Actual QA play exposed MAR-01's offer showing only “Item” for starter_coat. Offer/turn-in dialogue copies now resolve reward IDs through the existing quest/gear catalogs, carrying names and available icon/description/slot metadata. Quest definitions, payouts, progression and saves are unchanged; unknown IDs remain visible by ID.
+- Local actual-helper checks passed canonical names, metadata, object-form rewards, missing IDs, absent rewards and source immutability; quest proximity/payout regressions still pass. Published-engine validation is recorded in the external log.
+- QA hero SpaiberLanternQA walked from the Ward to Elric, used lowercase e and accepted MAR-01. Direct return toward the census board met settlement collision near (7,4.14,-28.73); detour remains unverified. Do not label the board inaccessible from that attempt or complete MAR-01 synthetically. Continue the retained hero; reward/rejoin and multiplayer gates stay open.
+
 ## 2026-10-08 · QA-REJOIN-001 real creation and reconnect (spaiber)
 - Agent-owned spaiber_qa created SpaiberLanternQA, a Marchborn Vanguard, through the actual UI. Confirmed-save fingerprint was observed; after disconnect/rejoin the roster restored the hero and Enter World restored its name, race/class, level, purse, XP and starter gear. Real keyboard movement worked after restoration. No creator saves modified or deleted.
 - Scope and remaining gates: QA_CAMPAIGN_VALIDATION.md. Empty inventory/bank/quest/cache fields are not proof of nonempty reward persistence. Direct SQL read, reward duplicate/reconnect, full origin and two-player verification remain open. Retain this QA hero for follow-up; do not create another each run.

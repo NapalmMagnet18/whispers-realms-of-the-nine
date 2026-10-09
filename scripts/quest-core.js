@@ -130,6 +130,13 @@ function addLog(st) {
 
 // any quest-npc: a ready turn-in first, then a quest on offer, then progress talk, then their own line
 const npcName = (npc) => (npc.state && npc.state.npcName) || (npc.id === ELRIC ? 'Elric' : 'them');
+// The book stores reward IDs; the UI expects item records. Resolve only the
+// dialog copy so reward payment and the authoritative quest book stay intact.
+export function dialogRewards(rewards) {
+  if (!rewards) return rewards;
+  return { ...rewards, items: (rewards.items || []).map((item) =>
+    typeof item === 'string' ? { ...(Q.items?.[item] || GEAR.items?.[item] || {}), id: item, name: (Q.items?.[item] || GEAR.items?.[item])?.name || item } : { ...item }) };
+}
 function talk(ctx, npc) {
   bark(ctx, npc);
   const st = ctx.self.state, id = npc.id;
@@ -139,7 +146,7 @@ function talk(ctx, npc) {
     const q = getQuest(aq.questId); if (!q || (q.turnInNpcId || q.giverNpcId) !== id) continue;
     const p = questProgress(aq, st);
     if (p.done) {
-      st.questDialogData = { id: q.id, title: q.title, giverName: q.turnInName || q.giverName, giverNpcId: id, text: qt(q.id, 'turnInText'), objectives: p.objectives, rewards: q.rewards, turnIn: true };
+      st.questDialogData = { id: q.id, title: q.title, giverName: q.turnInName || q.giverName, giverNpcId: id, text: qt(q.id, 'turnInText'), objectives: p.objectives, rewards: dialogRewards(q.rewards), turnIn: true };
       st.showQuestDialog = true;
       ctx.emit('playSound', { clip: '/cdn/sfx-scroll-open-magic-parchment-yk3iu4k0.mp3', position: pos, volume: 0.3 }, { audience: { player: ctx.self.id } });
       return;
@@ -148,7 +155,7 @@ function talk(ctx, npc) {
   const avail = getAvailableQuests(id, st);
   if (avail.length) {
     const a = avail[0];
-    st.questDialogData = { id: a.id, title: a.title, giverName: a.giverName, giverNpcId: id, text: qt(a.id, 'text'), objectives: a.objectives, rewards: a.rewards };
+    st.questDialogData = { id: a.id, title: a.title, giverName: a.giverName, giverNpcId: id, text: qt(a.id, 'text'), objectives: a.objectives, rewards: dialogRewards(a.rewards) };
     st.showQuestDialog = true;
     ctx.emit('playSound', { clip: '/cdn/question-prompt-chime-notification-jtcgt1r9.mp3', position: pos, volume: 0.3 }, { audience: { player: ctx.self.id } });
     return;
