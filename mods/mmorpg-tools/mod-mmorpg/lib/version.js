@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.59 Alpha';
+var GAME_VERSION = '0.47.60 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.60', 'Paths of Mastery', 'Talent trees for every discipline: three specializations each (Bulwark, Warbringer and Lanternguard for the Vanguard; Ember, Rime and Aether for the Arcanist; Marksman, Wildrunner and Briarward for the Pathfinder; Nightblade, Duskwalker and Veilborn for the Shade). You earn a point every 5 levels, and each pick adds damage, faster cooldowns or max health. Reset any time. Press N.'],
   ['v0.47.59', 'Hearth & Eave', 'Every cottage and hall in the March gains its close-up finish: barge boards along the gables, rafter tails under the eaves, flower boxes under the windows, iron strap hinges and a ring on each door.'],
   ['v0.47.58', 'Deeper Woods', 'Up close, the March\'s oaks now grow forking, tapered limbs over flared roots with twice the leaf clusters; pines carry fuller tiers; dead trees reach out with gnarled, branching arms.'],
   ['v0.47.57', 'Clear Eyes', 'The March is drawn crisper: finer edges and detail sharpened back after smoothing, the film grain nearly gone, a softer bloom that no longer haloes lamps. The title screen\'s reflections and glow blur less.'],
