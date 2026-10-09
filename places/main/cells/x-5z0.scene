@@ -118,8 +118,8 @@ thorn-road-shrine/sign:
   feetPosition: {x: 0, y: 3.2, z: 0}
   id: thorn-road-shrine/sign
   parent: thorn-road-shrine
-  vector: "<svg viewBox='0 0 240 40' width='1.6m' billboard='yaw'><rect x='2' y='2' width='236' height='36' rx='8' fill='#2a1e16' fill-opacity='0.82' stroke='#c9a46a' stroke-width='2'/><text x='120' y='27' text-anchor='middle' font-family='serif' font-size='18' fill='#f2d48a'>E · Wayfarer's Blessing</text></svg>"
-  visibleRange: {max: 14}
+  vector: "<svg viewBox='0 0 240 40' width='2.4m' billboard='yaw'><rect x='2' y='2' width='236' height='36' rx='8' fill='#2a1e16' fill-opacity='0.82' stroke='#c9a46a' stroke-width='2'/><text x='120' y='27' text-anchor='middle' font-family='serif' font-size='18' fill='#f2d48a'>E · Wayfarer's Blessing</text></svg>"
+  visibleRange: {max: 35}
 thr-border-stone:
   feetPosition: {x: -685, y: {terrain: 0}, z: 58}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.6,.8,1>,2,5)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.6,.8,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}
