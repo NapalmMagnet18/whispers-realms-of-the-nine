@@ -81,9 +81,12 @@ function ambience(ctx, self, area) {
   const theme = MUSIC.places[self.place] || area;
   const storm = self.place === "main" && ctx.place.state?.storm?.on;
   rain(ctx, storm);
-  const bed = storm ? WEATHER.rainBed : (MUSIC.ambience?.[theme] ?? null);
+  const N = MUSIC.night, h = self.place === "main" ? ctx.place.atmosphere?.timeOfDay : null;
+  const night = !!N && typeof h === "number" && (h >= N.from || h < N.until);
+  const bed = storm ? WEATHER.rainBed : ((night && N.ambience?.[theme]) || MUSIC.ambience?.[theme] || null);
   if (ctx.session._ambBed !== bed) { ctx.session._ambBed = bed; self.ambience = bed; }
-  const S = MUSIC.stingers, set = S?.sets?.[theme];
+  const nightSet = night && !storm ? N.stingers?.sets?.[theme] : null;
+  const S = nightSet ? { ...MUSIC.stingers, every: N.stingers.every } : MUSIC.stingers, set = nightSet || S?.sets?.[theme];
   if (!set || !set.length) return;
   const now = ctx.now();
   if (!ctx.session._stingAt) { ctx.session._stingAt = now + (S.every[0] + ctx.random() * (S.every[1] - S.every[0])) * 1000; return; }

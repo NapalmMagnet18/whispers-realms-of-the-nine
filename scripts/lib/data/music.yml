@@ -141,3 +141,20 @@ stingers:
 zoneSting:
   enter: /cdn/moodboard-painterly-fantasy/music-short-zone-entry-sting-soft-harp-arpeggio-warm-strings-two-seconds.mp3
   discover: /cdn/moodboard-painterly-fantasy/music-short-new-area-discovered-fanfare-rising-strings-french-horn-chime-four-seconds.mp3
+
+# Night in the March (region-music.js): from dusk to dawn these beds replace the day's for outdoor areas,
+# and the far-off one-shots turn to owls and nightjars. Hours read from the place's live sky.
+night:
+  from: 18.6     # the sun is down, crickets start
+  until: 5.4     # first light, birds take back over
+  ambience:
+    wilds: /cdn/moodboard-painterly-fantasy/sfx-summer-night-meadow-ambience-dense-crickets-chirping-soft-breeze-distant-frogs-loop.mp3
+    forest: /cdn/moodboard-painterly-fantasy/sfx-night-pine-forest-ambience-crickets-soft-wind-in-canopy-creaking-branches-loop.mp3
+    reach: /cdn/moodboard-painterly-fantasy/sfx-quiet-village-night-ambience-crickets-crackling-hearth-distant-dog-bark-loop.mp3
+  stingers:
+    every: [12, 30]
+    sets:
+      wilds: [/cdn/moodboard-painterly-fantasy/sfx-tawny-owl-call-hoo-hoo-far-in-night-woods.mp3, /cdn/moodboard-painterly-fantasy/sfx-owl-hoot-twice-in-dark-forest.mp3, /cdn/moodboard-painterly-fantasy/sfx-nightjar-churring-distant-heath-at-night.mp3, /cdn/moodboard-painterly-fantasy/sfx-distant-wolf-howl-echoing-through-forest.mp3]
+      forest: [/cdn/moodboard-painterly-fantasy/sfx-tawny-owl-call-hoo-hoo-far-in-night-woods.mp3, /cdn/moodboard-painterly-fantasy/sfx-owl-hoot-twice-in-dark-forest.mp3, /cdn/moodboard-painterly-fantasy/sfx-barn-owl-screech-distant-night.mp3, /cdn/moodboard-painterly-fantasy/sfx-branch-snapping-deep-in-woods-far.mp3]
+      reach: [/cdn/moodboard-painterly-fantasy/sfx-tawny-owl-call-hoo-hoo-far-in-night-woods.mp3, /cdn/moodboard-painterly-fantasy/sfx-owl-hoot-twice-in-dark-forest.mp3]
+      coast: [/cdn/moodboard-painterly-fantasy/sfx-tawny-owl-call-hoo-hoo-far-in-night-woods.mp3, /cdn/moodboard-painterly-fantasy/sfx-ship-bell-ringing-far-out-at-sea.mp3]
