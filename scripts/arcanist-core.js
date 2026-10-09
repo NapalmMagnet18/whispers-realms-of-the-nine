@@ -1,6 +1,7 @@
 // Arcanist on the player's body: 1 Firebolt, 2 Frost Shard (slows 40% for 3 s), 3 Ward (4 s, halves damage taken).
 // Bolts are homing missiles (scripts/missile.js) launched at the soft target; the hit is judged on the caster's machine.
 import A from './lib/data/arcanist.yml'
+import { animate } from 'builtin/tween'
 import { classOf, canAct, softTargets, launch, drill, haste, forward, applyHit, alive, power } from './lib/kit.js'
 const WARD = `fx
 pop shell n=1 size=2.6 col=hdr(1.1,1.5,2.6) a=.22*flick(3,.25) sz=$size*(1+time().sin*.02) r=sprite(soft-disc,add)
@@ -43,7 +44,7 @@ export function callStar(ctx, { targetId }) {
   // the star streaks in from high behind the caster's shoulder, so it reads as falling toward the mark
   const f = forward(self), from = { x: at.x - f.x * 10, y: at.y + 26, z: at.z - f.z * 10 }
   const star = ctx.spawn({ feetPosition: from, lifetime: a.fallAt + 0.3, castShadow: false, fx: { script: STREAK, params: { t: a.fallAt } }, interpolation: null })
-  import('builtin/tween').then(({ animate }) => animate(ctx, star, { 'feetPosition.x': at.x, 'feetPosition.y': at.y + 0.3, 'feetPosition.z': at.z }, { duration: a.fallAt, easing: 'easeInQuad' })).catch(() => {})
+  animate(ctx, star, { 'feetPosition.x': at.x, 'feetPosition.y': at.y + 0.3, 'feetPosition.z': at.z }, { duration: a.fallAt, easing: 'easeInQuad' })
   ctx.emit('playSound', { clip: a.fall, position: at, volume: 0.55, maxDistance: 60 }, aud)
   ctx.after(a.fallAt, 'starLands', { at })
 }
