@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.76 Alpha';
+var GAME_VERSION = '0.47.77 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.77', 'Lived-In Cottages', 'Every cottage across the March has aged: roof shingles weather course by course and the eave course is darkest where rain drips, moss creeps along the footings, clay pots sit soot-black on the chimneys, logs are stacked against the chimney, and an iron lantern burns on a bracket by each door.'],
   ['v0.47.76', 'Thinner Mist', 'Captain Merrow\'s sea mist and the Unbraided\'s murk are thinner and darker, and Merrow\'s glow is softer and held higher, so neither boss stands in a bright pool on the grass.'],
   ['v0.47.75', 'Every Blow Lands', 'Briar Wolves and camp enemies now squash under each hit and throw a puff of dust and grit off the body, on top of the white hit-flash and flinch.'],
   ['v0.47.74', 'Ash to Ash', 'Camp enemies now hit the ground in a burst of dust and grit, and as the body fades it crumbles into rising dark ash and embers. Their aura goes out the moment they fall.'],
