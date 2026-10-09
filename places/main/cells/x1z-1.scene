@@ -608,7 +608,7 @@ ashen-well:
   physics: static
   primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
   rotation: {yaw: 15}
-  tags: [ashen]
+  tags: [ashen, well]
 ashen-woodpile:
   feetPosition: {x: 86.2, y: 5, z: -179.5}
   id: ashen-woodpile

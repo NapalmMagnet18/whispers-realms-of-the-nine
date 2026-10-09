@@ -1512,7 +1512,7 @@ plaza-well:
   id: plaza-well
   physics: static
   primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
-  tags: [landmark]
+  tags: [landmark, well]
 plot-cabbage:
   feetPosition: {x: -16, y: {terrain: 0}, z: 51}
   id: plot-cabbage

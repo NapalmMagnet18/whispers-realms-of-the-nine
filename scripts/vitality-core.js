@@ -38,21 +38,45 @@ export function bloodEnds(ctx) {
   const fp = ctx.self.feetPosition;
   ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.4 }, text: 'The Blood Pact fades', color: '#c8b890', size: 0.95, lifetime: 1.8 }, { audience: { player: ctx.self.id } });
 }
+// The March's wells: E beside one cranks up a Bucket of Well Water into the bag (eaten like food: useFood). One draw a minute.
+const WELL = { cooldown: 60, crank: "/cdn/moodboard-painterly-fantasy/sfx-well-windlass-crank-creak-rope-and-bucket-splash.mp3",
+  item: { id: 'well-water', name: 'Bucket of Well Water', icon: '/cdn/value.4ca00265ea1a372afbe1b3ca70220d211813853223bca49f44bac8723aa3f4e1.png', slot: 'bag', stackable: true, consumable: true, sellPrice: 0,
+    description: 'Cold, clear and drawn by your own hand. Restores 250 health over 8 sec. Drinking stops if you are struck.', stats: { healOverTime: 250, eatSeconds: 8 } },
+  splash: `fx
+pop drops burst=18..26 life=.5..0.9 v=up(1.6..2.6)+sdir()*(.5..1) size=.03..0.06 acc=grav()+drag(.6) col=<.75,.85,.95> a=.9>.7:.9>0 floor=die r=sprite(soft-disc,alpha)
+pop mist burst=4 life=.6..1 v=up(.3..0.6) size=.2..0.35 acc=buoy(.2)+drag(1.5) col=<.85,.9,.95> a=0>.2:.25>0 sz=$size*(.6>1.6) r=sprite(smoke-puff,alpha)` };
+function drawWater(ctx) {
+  const me = ctx.self, s = me.state, now = ctx.now(), fp = me.feetPosition, to = { audience: { player: me.id } };
+  const w = ctx.query({ tags: ['well'], radius: 3.5 })[0]; if (!w) return false;
+  const left = Math.ceil(((s.wellAt || 0) + WELL.cooldown * 1000 - now) / 1000);
+  if (left > 0) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'The bucket is still dripping. ' + left + 's', color: '#9cc0d8', size: 0.9, lifetime: 1.4 }, to); return true; }
+  const inv = (s.inventory || []).slice();
+  let i = inv.findIndex((it) => it && it.id === WELL.item.id && (it.count || 1) < 20); const stack = i >= 0;
+  if (!stack) i = inv.findIndex((it) => !it);
+  if (i < 0) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'Your bag is full', color: '#e2876a', size: 0.95, lifetime: 1.4 }, to); return true; }
+  inv[i] = stack ? { ...inv[i], count: (inv[i].count || 1) + 1 } : { ...WELL.item, count: 1 };
+  s.inventory = inv; s._questSave = true; s.wellAt = now;
+  const wp = w.feetPosition;
+  ctx.emit('playSound', { clip: WELL.crank, position: wp, volume: 0.8, maxDistance: 18 });
+  ctx.emit('fx', { position: { x: wp.x, y: wp.y + 0.9, z: wp.z }, script: WELL.splash });
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: '+1 Bucket of Well Water', color: '#9cc0d8', size: 1, lifetime: 1.8 }, to);
+  return true;
+}
 export function onInput(ctx, input) {
-  if (pressed(input, 'interact') && ctx.self.state.characterCreated && !ctx.self.state.dying && offerBlood(ctx)) return;
+  if (pressed(input, 'interact') && ctx.self.state.characterCreated && !ctx.self.state.dying && (offerBlood(ctx) || drawWater(ctx))) return;
   if (!pressed(input, 'useFood')) return;
   const me = ctx.self, s = me.state; if (!s.characterCreated || s.dying) return;
   const d = (input.actionData && (input.actionData.useFood || input.actionData[MNS + 'useFood'])) || {};
   const inv = (s.inventory || []).slice(), i = Number(d.index), it = inv[i];
   if (!it || !it.stats || !it.stats.healOverTime) return;
   const fp = me.feetPosition, to = { audience: { player: me.id } };
-  if ((s.health ?? 0) >= (s.maxHealth || 1000)) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'You are not hungry', color: '#c8b890', size: 0.9, lifetime: 1.4 }, to); return; }
+  if ((s.health ?? 0) >= (s.maxHealth || 1000)) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: it.id === 'well-water' ? 'You are not thirsty' : 'You are not hungry', color: '#c8b890', size: 0.9, lifetime: 1.4 }, to); return; }
   if ((it.count || 1) <= 1) inv[i] = null; else inv[i] = { ...it, count: it.count - 1 };
   s.inventory = inv; s._questSave = true;
   const secs = it.stats.eatSeconds || 10;
   ctx.session.food = { perSec: it.stats.healOverTime / secs, until: ctx.now() + secs * 1000, name: it.name, biteAt: 0 };
   ctx.session.lastHp = s.health;
-  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'Eating ' + it.name, color: '#f2d48a', size: 1, lifetime: 1.8 }, to);
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: (it.id === 'well-water' ? 'Drinking ' : 'Eating ') + it.name, color: '#f2d48a', size: 1, lifetime: 1.8 }, to);
 }
 function eat(ctx, me, s, now, dt, hurt) {
   const f = ctx.session.food; if (!f) return;

@@ -900,7 +900,7 @@ ward-well:
   id: ward-well
   physics: static
   primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
-  tags: [lantern-ward]
+  tags: [lantern-ward, well]
 waystone-marchborn:
   audio: {clip: /cdn/moodboard-gothic-horror/sfx-ancient-shrine-low-magical-hum-faint-whispering-resonance-loop.mp3, gain: 0.12, loop: true, maxDistance: 10, spatial: true}
   feetPosition: {x: 3.5, y: 0.7, z: -91.36}

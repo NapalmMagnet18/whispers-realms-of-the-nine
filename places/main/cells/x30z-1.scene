@@ -196,4 +196,4 @@ frontier-sunscar-well:
   id: frontier-sunscar-well
   physics: static
   primitive: {kind: scripted, params: {kind: well}, script: scripts/gen/props.js}
-  tags: [sunscar]
+  tags: [sunscar, well]
