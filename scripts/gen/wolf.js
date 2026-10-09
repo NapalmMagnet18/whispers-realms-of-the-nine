@@ -31,6 +31,8 @@ function paint(ctx, out, tone) {
   else if (tone === 2) { L = 0.14; }
   else if (tone === 3) { L = 0.09; C = 0.008; }
   else if (tone === 4) { L = ny < -0.2 ? 0.32 : 0.22; H = 38; }
+  else if (tone === 5) { L = 0.2 + j * 0.5; C = 0.05; H = 128; } // briar vine
+  else if (tone === 6) { L = ny > 0 ? 0.74 : 0.6; C = 0.025; H = 80; } // bare rib bone
   else L = ny > 0.62 ? 0.13 : ny > 0.25 ? 0.2 : ny > -0.35 ? 0.3 : 0.42;
   ctx.color(`oklch(${Math.max(0.05, L + j).toFixed(3)} ${C} ${H})`);
 }
@@ -123,6 +125,40 @@ function eye(ctx, s) {
   quadN(ctx, [x + 0.003 * s, 0.928, -0.68], [x + 0.005 * s, 0.918, -0.692], [x + 0.003 * s, 0.908, -0.682], [x + 0.002 * s, 0.918, -0.668], n);
 }
 
+// the torso's surface at z: [centre y, half-width, half-height], read off the body stations
+const TORSO = [[0.5, 0.66, 0.05, 0.05], [0.46, 0.66, 0.13, 0.15], [0.36, 0.65, 0.165, 0.19], [0.2, 0.65, 0.15, 0.17], [0.04, 0.67, 0.14, 0.15], [-0.14, 0.65, 0.17, 0.21], [-0.28, 0.64, 0.195, 0.235], [-0.4, 0.69, 0.18, 0.21], [-0.48, 0.77, 0.14, 0.15], [-0.54, 0.84, 0.115, 0.12]];
+function torsoAt(z) {
+  for (let i = 0; i < TORSO.length - 1; i++) { const a = TORSO[i], b = TORSO[i + 1]; if (z <= a[0] && z >= b[0]) { const t = (a[0] - z) / (a[0] - b[0]); return [a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t, a[3] + (b[3] - a[3]) * t]; } }
+  const e = z > 0 ? TORSO[0] : TORSO[TORSO.length - 1]; return [e[1], e[2], e[3]];
+}
+// one fur tuft: two crossed blades from the hide, raked back (+Z) and out, dark at the root
+function tuft(ctx, base, out, len, w, L) {
+  const dir = norm(add(out, [0, 0.25, 0.9])), side = norm(cross(dir, out)), tip = add(add(base, mul(dir, len)), mul(out, len * 0.35));
+  const n1 = out, w2 = norm(cross(dir, side));
+  ctx.color(`oklch(${(L + (ctx.random() - 0.5) * 0.05).toFixed(3)} 0.025 45)`);
+  triN(ctx, add(base, mul(side, -w)), add(base, mul(side, w)), tip, n1);
+  triN(ctx, add(base, mul(w2, -w * 0.7)), add(base, mul(w2, w * 0.7)), tip, side);
+}
+// fur over the hide: z span, angle span from straight up (radians), count, length range, tone
+function pelt(ctx, z0, z1, ang, count, l0, l1, L) {
+  for (let i = 0; i < count; i++) {
+    const z = z0 + (z1 - z0) * ctx.random(), a = (ctx.random() * 2 - 1) * ang, [cy, rx, ry] = torsoAt(z);
+    const out = norm([Math.sin(a) / rx, Math.cos(a) / ry, 0]), base = [Math.sin(a) * rx * 0.94, cy + Math.cos(a) * ry * 0.94, z];
+    tuft(ctx, base, out, l0 + (l1 - l0) * ctx.random(), 0.018 + ctx.random() * 0.012, L);
+  }
+}
+// a briar strand: a thin tube spiralling a path, little thorns along it
+function briar(ctx, center, radius, turns, steps, rs, thorns) {
+  const st = [];
+  for (let i = 0; i <= steps; i++) { const t = i / steps, a = t * turns * Math.PI * 2, [c, rx, ry] = center(t); st.push([c[0] + Math.cos(a) * rx * radius, c[1] + Math.sin(a) * ry * radius, c[2], rs, rs, 5]); if (thorns && i % 2 === 1) spikeDark(ctx, [st[i][0], st[i][1], st[i][2]], [Math.cos(a), Math.sin(a), 0.4], 0.035, 0.007); }
+  tube(ctx, st, 5, 0);
+}
+function spikeDark(ctx, b, u, len, w) {
+  const up = norm(u), side = norm(cross(up, Math.abs(up[1]) > 0.9 ? [1, 0, 0] : [0, 1, 0])), fwd = cross(side, up), tip = add(b, mul(up, len));
+  const ring = [add(b, mul(side, w)), add(b, mul(fwd, w)), add(b, mul(side, -w)), add(b, mul(fwd, -w))];
+  for (let i = 0; i < 4; i++) { const a = ring[i], c = ring[(i + 1) % 4], m = mul(add(add(a, c), tip), 1 / 3); ctx.color("oklch(0.3 0.06 60)"); triN(ctx, a, c, tip, sub(m, b)); }
+}
+
 export function geometry(ctx) {
   const lod = ctx.lod ?? 1, n = lod <= 1 ? 22 : lod <= 2 ? 14 : lod <= 3 ? 9 : lod <= 4 ? 6 : 4, ln = lod >= 5 ? 4 : Math.max(6, n - 6), k = lod <= 1 ? 2 : lod <= 2 ? 1 : 0;
   ctx.smooth();
@@ -139,6 +175,18 @@ export function geometry(ctx) {
       spike(ctx, [0, y - 0.03, z], [0, 1, 0.6], len * 1.7, len * 0.3);
       if (lod <= 2 && len > 0.09) for (const sx of [-1, 1]) spike(ctx, [sx * 0.09, y - 0.06, z + 0.02], [sx * 0.7, 1, 0.5], len * 0.95, len * 0.22);
     }
+  }
+  if (lod <= 2) { // the hide: a shaggy mane, a ragged back, a hanging belly fringe; ribs showing through a starved flank; briar choking the trunk
+    const f = lod <= 1 ? 1 : 0.45
+    pelt(ctx, -0.56, -0.26, 1.9, Math.round(150 * f), 0.08, 0.15, 0.1)
+    pelt(ctx, -0.26, 0.42, 1.0, Math.round(110 * f), 0.04, 0.075, 0.12)
+    pelt(ctx, -0.32, 0.18, 0.5, Math.round(30 * f), 0.04, 0.07, 0.24)
+    for (const sx of [-1, 1]) for (let r = 0; r < 4; r++) {
+      const z = -0.08 + r * 0.075, [cy, rx, ry] = torsoAt(z), arc = []
+      for (let q = 0; q <= 5; q++) { const a = sx * (1.35 + q * 0.22); arc.push([Math.sin(a) * rx * 1.02, cy + Math.cos(a) * ry * 1.02, z + q * 0.008, 0.011, 0.011, 6]) }
+      tube(ctx, arc, 5, 0)
+    }
+    briar(ctx, (t) => { const z = -0.34 + t * 0.7, [cy, rx, ry] = torsoAt(z); return [[0, cy, z], rx, ry] }, 1.05, 2.25, lod <= 1 ? 44 : 24, 0.013, true)
   }
   ctx.bone("tail");
   tube(ctx, [[0, 0.7, 0.45, 0.05, 0.05], [0, 0.64, 0.58, 0.075, 0.075], [0, 0.54, 0.7, 0.085, 0.085], [0, 0.42, 0.78, 0.07, 0.07, 2], [0, 0.31, 0.82, 0.03, 0.03, 2]], n, k);
