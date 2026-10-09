@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.63 Alpha';
+var GAME_VERSION = '0.47.64 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.64', 'Earthsplitter', 'Vanguards learn a fourth blow on key 4: Earthsplitter. The blade slams down and a molten fissure tears 9 m ahead, striking every foe on the line, hurling them back and slowing them. Heavy Strike now cleaves up to four foes in front of you. Key 4 now works for every calling (Cinderfall and Rain of Thorns could not be cast before this).'],
   ['v0.47.63', 'Rain of Thorns', 'Pathfinders learn a fourth shot on key 4: Rain of Thorns. One arrow goes up high, a green ring marks the ground, then three waves of arrows hammer everything within 4.5 m. Brambles grow where they land and slow anything inside by half for 4 s. 14 s cooldown.'],
   ['v0.47.62', 'Cinderfall', 'Arcanists learn a fourth spell on key 4: Cinderfall calls a falling star down on your target. A warning ring burns on the ground, the star streaks in, and the blast hits everything within 4 m for heavy fire damage, scattering burning rock and leaving the earth scorched. 12 s cooldown.'],
   ['v0.47.61', 'Know Thyself', 'The Character page (C) now shows your real power under the paper doll: XP to your next level, total damage on every ability and where it comes from (level, gear, training, talents), cooldown haste, max health, and your specialization at a glance.'],
