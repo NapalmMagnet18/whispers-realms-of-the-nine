@@ -473,3 +473,5 @@ terrain:
     bandit-camp-clear: {center: {x: -943, z: 45}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
     giant-clear: {center: {x: -80, z: -680}, kind: clear-scatter, shape: {kind: circle, radius: 16}}
     lumber-clear: {center: {x: -117, z: -108}, kind: clear-scatter, shape: {kind: circle, radius: 9}}
+    starpool-shelf: {center: {x: -120, z: -1060}, falloff: 12, height: 67.5, kind: flatten, material: gravel, shape: {kind: circle, radius: 9}}
+    starpool-clear: {center: {x: -120, z: -1060}, kind: clear-scatter, shape: {kind: circle, radius: 10}}
