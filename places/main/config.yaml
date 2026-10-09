@@ -404,6 +404,7 @@ terrain:
     road-saltmere: {grade: true, kind: path, material: dirt, maxGrade: 0.18, noise: 0.4, points: [[6, 29], [10, 120], [30, 260], [60, 420], [110, 620], [150, 860], [200, 1100], [250, 1340], [290, 1560]], width: 3.6}
     start-thornhollow: {center: {x: -720, z: 70}, falloff: 14, height: 19.6, kind: flatten, shape: {kind: circle, radius: 19}}
     start-cinderhold: {center: {x: 900, z: -170}, falloff: 12, height: 40.4, kind: flatten, shape: {kind: circle, radius: 21}}
+    hamlet-rise: {center: {x: -145, z: 117}, falloff: 28, height: 2.4, kind: flatten, shape: {kind: circle, radius: 36}}
     start-gullrest: {center: {x: 247, z: 1430}, falloff: 16, height: 3, kind: flatten, shape: {kind: circle, radius: 24}}
     start-gullrest-cove: {at: {x: 222, z: 1402}, bedMaterial: sand, depth: 2.6, kind: lake, level: 0.4, radius: 16}
     start-thornhollow-clear: {center: {x: -720, z: 70}, kind: clear-scatter, shape: {kind: circle, radius: 9}}

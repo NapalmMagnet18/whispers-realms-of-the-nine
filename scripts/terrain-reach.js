@@ -126,8 +126,6 @@ export function materialAt(ctx) {
     const bank = clamp01((y - 1.45 + n * 0.6) * 1.6);
     return { mud: 1 - bank * 0.55, grass: bank * 0.55 };
   }
-  const dh = Math.hypot(x + 135, z - 115); // the blossom hamlet's low meadow on the Reedhaven road greens over, never beach
-  if (dh < 70 + n * 12 && y > -0.5) return { grass: 1 - rock * 0.5, rock: rock * 0.5 };
   if (y < 1.6 + n * 0.8) {
     const df = dfen;
     if (df >= 650) return { sand: 1 };
