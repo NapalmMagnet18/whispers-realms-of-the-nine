@@ -20,8 +20,9 @@ atmosphere:
     enabled: true
     density: 0.5
     milkyWay: 0.3
-  look:
-    script: scripts/look-wayshrine.js
+  look: # ray-traced reflections, contact shadows and bloom, matched to the main menu (was scripts/look-wayshrine.js)
+    script: mods/raytraced-lighting/look-raytrace.js
+    params: { reflection: 0.95, baseReflect: 0.05, denoise: 0.45, blurRadius: 0.8, aoStrength: 0.45, bloom: 0.95, bloomThreshold: 0.55, bloomSpread: 1.0, fireflyClamp: 2.0 }
 defaultSpawnPoint:
   x: 83.168
   y: 1.229
