@@ -53,8 +53,14 @@ function blossom(ctx, r, far) {
     ctx.color(BLOSSOM[Math.floor(r() * BLOSSOM.length)]); ctx.roughness(0.7);
     blob(ctx, ex, ey + 0.3, ez, 1.0 + r() * 0.4, 0.75 + r() * 0.3, 1.0 + r() * 0.4, i * 7 + 1, 0.3, far ? 4 : 6, far ? 6 : 9);
   }
-  ctx.color(BLOSSOM[0]);
-  blob(ctx, crown[0], crown[1] + 1.4, crown[2], 1.5, 1.0, 1.5, 99, 0.3, far ? 4 : 6, far ? 6 : 10);
+  // a fluffy crown: many small clusters around the top, lighter on top, deeper pink beneath
+  const tufts = far ? 5 : 14;
+  for (let i = 0; i < tufts; i++) {
+    const a = i * 2.39 + r(), d = 0.4 + r() * 1.5, up = 0.9 + r() * 1.3;
+    ctx.color(up > 1.7 ? BLOSSOM[3] : BLOSSOM[Math.floor(r() * 3)]);
+    const s = 0.55 + r() * 0.4;
+    blob(ctx, crown[0] + Math.cos(a) * d, crown[1] + up, crown[2] + Math.sin(a) * d, s, s * 0.8, s, i * 11 + 5, 0.35, far ? 3 : 5, far ? 5 : 7);
+  }
   if (!far) {
     // fallen petals ringing the trunk
     ctx.color("oklch(0.88 0.07 355)"); ctx.emissive(null);
