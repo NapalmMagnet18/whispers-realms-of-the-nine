@@ -1,6 +1,7 @@
 import { isPlay } from './lib/places.js';
 import GEAR from './lib/data/gear.yml';
 import { statsFor } from './lib/leveling.js';
+import { talentFx } from './lib/talents.js';
 // On every player's body: the quest behavior, kept off the menu's boot. The logic (and quests.yml, townsfolk.yml,
 // quest-data) lives in scripts/quest-core.js and is import()ed the first tick a created hero stands in main or the
 // Hollowcrypt; until it lands (well under a second) a press is simply not handled yet. ears.kill needs no tables: here.
@@ -62,7 +63,7 @@ function gearHealth(ctx) {
   const st = ctx.self.state, now = ctx.now();
   if (now < (ctx.session.gearAt || 0)) return; ctx.session.gearAt = now + 1000;
   let sta = 0; for (const it of Object.values(st.equipment || {})) sta += Number(it?.stats?.stamina) || 0;
-  const want = statsFor(st.level || 1).maxHealth + sta;
+  const want = Math.round((statsFor(st.level || 1).maxHealth + sta) * (1 + talentFx(st).health / 100));
   if (st.maxHealth !== want) { const was = st.maxHealth || want; st.maxHealth = want; if ((st.health ?? want) > want) st.health = want; else if (want > was && st.health != null && !st.dying) st.health = Math.min(want, st.health + (want - was)); }
 }
 

@@ -3,7 +3,7 @@
 // The Unseen Door's drills: a veiled hero slipping past a `shade-drill` thing with state.need "veil", or landing a
 // Shadowstep beside one with need "step", counts its tallyKey once per thing while state.quest is active.
 import S from './lib/data/shade.yml'
-import { classOf, canAct, softTargets, forward, alive, aimPoint, meleePlayer, strikePlayer, power, meleeFoley } from './lib/kit.js'
+import { classOf, canAct, softTargets, forward, alive, aimPoint, meleePlayer, strikePlayer, power, meleeFoley, haste } from './lib/kit.js'
 import { rotate, normalize } from 'builtin/vec3'
 import { raycast } from 'builtin/physics'
 
@@ -32,7 +32,7 @@ export function onInput(ctx, input) {
 function use(ctx, kind) {
   const a = S[kind], m = me(ctx), now = ctx.now(), self = ctx.self
   if (now < (m.ready[kind] ?? 0) || now < (m.busyUntil ?? 0)) return
-  m.ready[kind] = now + a.cooldown * 1000
+  m.ready[kind] = now + a.cooldown * 1000 * haste(ctx)
   m.busyUntil = now + (kind === 'strike' ? 380 : 300)
   self.state.cd = { ...(self.state.cd || {}), [kind]: m.ready[kind] }
   const near = { audience: { nearby: self.feetPosition, radius: 30 } }

@@ -1,7 +1,7 @@
 // Pathfinder on the player's body: 1 Arrow, 2 Volley (three arrows in a fan, each to its own target when the pack allows),
 // 3 Dodge Roll (a 6 m dash, damage immunity for its length). Arrows are scripts/missile.js rows; numbers in pathfinder.yml.
 import P from './lib/data/pathfinder.yml'
-import { classOf, canAct, softTargets, launch, forward, drill } from './lib/kit.js'
+import { classOf, canAct, softTargets, launch, forward, drill, haste } from './lib/kit.js'
 const DUST = `fx
 pop dust burst=6..9 on=disc(.4) life=.5..0.9 v=up(.4..0.9)+sdir()*(.4..0.9) size=.25..0.4 acc=buoy(.2)+drag(1.6) sz=$size*(.6>1.8) col=<.66,.58,.46> a=0>.35:.3>0 rot=spin(.2) r=sprite(smoke-puff,alpha)`
 function me(ctx) { return (ctx.session.pathfinder ??= {})[ctx.self.id] ??= { ready: {} } }
@@ -15,7 +15,7 @@ export function onInput(ctx, input) {
 function use(ctx, kind, input) {
   const a = P[kind], m = me(ctx), now = ctx.now(), self = ctx.self
   if (!a || now < (m.ready[kind] ?? 0) || now < (m.busyUntil ?? 0)) return
-  m.ready[kind] = now + a.cooldown * 1000
+  m.ready[kind] = now + a.cooldown * 1000 * haste(ctx)
   m.busyUntil = now + (a.busy ?? 0.5) * 1000
   self.state.cd = { ...(self.state.cd || {}), [kind]: m.ready[kind] }
   self.anim.action = { clip: a.clip, weight: 1, loop: 'once', speed: a.speed_anim ?? 1, blendIn: 0.06 }

@@ -2,7 +2,8 @@
 // A point comes every 5 levels (12 by 60): exactly one pick in every tier of every spec at cap.
 // fx are percentages: power = more damage on every hit (scripts/lib/kit.js power), haste = shorter cooldowns
 // (each class core), health = more max health (scripts/quest-player.js). Picks live on state.unlockedTalents as { "spec:tier": index }.
-const I = (k) => `/cdn/talent-${k}.png`;
+const ICONS = {"ar-aether": "/cdn/value.e0f9751be5d7d4a1f32e22b8082363f479459704fddd72238665497859132e1f.png", "ar-ember": "/cdn/value.00facb3ba4f4841d70cb1f12c216a10c0462f6599eed10df47967783432aa6bd.png", "ar-rime": "/cdn/value.e49ad456a59f0f2466f25bf1b2a83a4596c901df53916160449325fcfe357417.png", "pf-briarward": "/cdn/value.8a856af99ba04515801a2006c4a786249236efaeb5e8fe58dd51cb686cbf14fe.png", "pf-marksman": "/cdn/value.4b1a000f9d7ebd751d672d9e49bdb7e50f428f7c6201d444eca11e3defdf4b22.png", "pf-wildrunner": "/cdn/value.54c8b26ada89bd00ddbd434adf1087b7b0de368a9216416c43ba972dcf12fb7a.png", "sh-duskwalker": "/cdn/value.af64d5e4100e524aa02f1aee0c2184cb42c4d03dba8687fdaf982f05499778a2.png", "sh-nightblade": "/cdn/value.35bfb1fd9b0ee6e4075124232ec0992ba88ffd9dca08075575ecf531fb36755e.png", "sh-veilborn": "/cdn/value.40211787d6fe1cf0f4bf1242c01b00999efbbae3741602d1cfe67a12c00659bd.png", "vg-bulwark": "/cdn/value.1753fd313a7bde2b0026540b9806b78645d36f16533b7328e2bd65c966bff47f.png", "vg-lanternguard": "/cdn/value.26613e01da8d428b5718d3334eb04b67ff5d527e95ad04bc847c09a46d8632a5.png", "vg-warbringer": "/cdn/value.7dfc90b430d03c51976dfc7a4e1d59843959376c6ef82b2705b34a0d1c7f8093.png"};
+const I = (k) => ICONS[k];
 const T = (name, flavor, fx) => ({ name, flavor, fx });
 export const TREES = {
   vanguard: [

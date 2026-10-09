@@ -3,7 +3,7 @@
 // target's state (target.state.hp -= d). Anything tagged "enemy" with state.hp is struck.
 import V from './lib/data/vanguard.yml'
 import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
-import { drill, classOf, meleePlayer, strikePlayer, power, meleeFoley } from './lib/kit.js'
+import { drill, classOf, meleePlayer, strikePlayer, power, meleeFoley, haste } from './lib/kit.js'
 import { isPlay } from './lib/places.js';
 
 const WHOOSH = '/cdn/moodboard-painterly-fantasy/sfx-longsword-swing-fast-steel-whoosh-air-cut.mp3'
@@ -29,7 +29,7 @@ export function onInput(ctx, input) {
 function act(ctx, kind) {
   const m = me(ctx), now = ctx.now(), a = V[kind]
   if (now < (m.ready[kind] ?? 0) || now < (m.busyUntil ?? 0)) return
-  m.ready[kind] = now + a.cooldown * 1000
+  m.ready[kind] = now + a.cooldown * 1000 * haste(ctx)
   m.busyUntil = now + (kind === 'guard' ? 400 : a.cooldown * 700)
   ctx.self.anim.action = { clip: a.clip, weight: 1, loop: 'once', speed: a.speed, blendIn: 0.08 }
   ctx.self.state.cd = { ...(ctx.self.state.cd || {}), [kind]: m.ready[kind] }
