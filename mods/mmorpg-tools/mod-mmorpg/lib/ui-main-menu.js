@@ -45,9 +45,10 @@ function realmBadge(s) {
 // stacked bottom-right. The centre stays clear for the realm gate behind it.
 var CREST = '/cdn/value.215dae666ef9a1a74cb16082f46a9e117966c908d5beaee16b35d07c82bcaa3e.png';
 var NEWS = [
-  ['v0.33', 'Ashen Close', 'A ruined cathedral rises north-east of the Reach. Marta keeps the Last Candle lit, Wenna sells grave-wax, and the yard has grown wild. Mind the graves.', '/cdn/value.726eedc85c8dd01ea6dbcda6f9195135886e90a3962c0c8006b0d03c510fd67a.png'],
-  ['v0.32', 'Trades & the Lantern Exchange', 'Mining, Herblore, Blacksmithing and Alchemy are open. Sell what you make at the auction house beside the roost.', '/cdn/value.b076587b8d0ebb04368c665fb66c1a3d0e1303b8695e64a49188e8c8e5ae0436.png'],
-  ['v0.31', 'Songs of the March', 'Every region has its own theme now, and the war drums come in when steel is drawn.'],
+  ['v0.47', 'Wings over the March', 'Eleven gryphon roosts now link the continent. Walk near one to learn it, press E to fly. The Ninth Veil and the Ashfall Reaches wait at the far edges.', '/cdn/value.9b81f41b857bd952a2ae562a55e5b84d5eb6137b07dee8760b7cc32d97bd68f0.png'],
+  ['v0.47', 'The Deepgrove Bounty', 'A lit board west of Rootwake Glade pays for Scab\'s raiders. Level 8 and up.', '/cdn/value.726eedc85c8dd01ea6dbcda6f9195135886e90a3962c0c8006b0d03c510fd67a.png'],
+  ['v0.46', 'Wells of the March', 'Draw a bucket at any town well and drink to heal over time.'],
+  ['v0.46', 'Party Finder & Banner Vale', 'Queue for dungeons, raids and the 5v5 banner battleground from any town board.', '/cdn/value.b076587b8d0ebb04368c665fb66c1a3d0e1303b8695e64a49188e8c8e5ae0436.png'],
 ];
 var LOGIN_CSS = '<style>'
   + '@keyframes wl-sheen{0%{background-position:-160% 0}55%,100%{background-position:260% 0}}'
