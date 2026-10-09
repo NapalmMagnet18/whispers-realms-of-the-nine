@@ -1,0 +1,30 @@
+{
+  "task": "QA-MAR01-WALK-REWARD-001",
+  "verifiedAt": "2026-10-09T22:55:44.972084+00:00",
+  "sourceSnapshot": "0174febd8283af5d593db301a53db850448db960",
+  "gameVersion": "0.47.96 Alpha",
+  "quest": "MAR-01",
+  "physicalTraversalVerified": true,
+  "realKeyboardInteract": true,
+  "objectiveBefore": 0,
+  "objectiveAfter": 1,
+  "xpAwarded": 10,
+  "rewardItem": "starter_coat",
+  "rewardCount": 1,
+  "uiClickEventsDispatched": 2,
+  "rejoinedSameBody": true,
+  "restoredRewardFieldsMatch": true,
+  "independentSqlReadBeforeAndAfterRejoin": true,
+  "completedQuestCopies": 1,
+  "reinteractingAfterRejoinAddedNoReward": true,
+  "teleports": 0,
+  "syntheticObjectiveWrites": 0,
+  "directDatabaseWrites": 0,
+  "limitations": [
+    "Two rapid UI events may coalesce into one server input; this is not proof of two independently processed claim transactions",
+    "CPU UI click handlers were dispatched; physical pointer quality and rendered character/environment quality remain unverified",
+    "No multiplayer reward ownership test or full origin/Q001-Q008 loop completed"
+  ],
+  "newIssue": "Census-board interaction also opens nearby bank; narrow banker/board collider gap needed normal jump to leave",
+  "nextTask": "Validate and repair census-board/service spacing, then continue MAR-02 at Quartermaster Dren and rendered character/environment review"
+}
