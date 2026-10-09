@@ -32,6 +32,14 @@ pop embers burst=80..120 life=.8..2 v=sdir()*(4..10)+up(3..6) size=.02..0.05 acc
 pop smoke burst=16..22 on=disc(%r|4) life=2.5..4.5 v=up(.8..2)+sdir()*.8 size=1..1.8 acc=buoy(.5)+curl(.3)*.6+drag(1) sz=$size*(.6>2.6) col=<.22,.19,.17>><.12,.12,.13> a=0>.4:.4>0 rot=spin(.1) r=sprite(smoke-puff,alpha)
 pop haze burst=?low:0|8 life=.6..1 v=up(1) size=2..3 sz=$size*(.7>1.4) col=<.008,.01,0> a=.8>0 r=sprite(soft-disc,distort)
 pop light burst=1 life=1.4 gl=1>.15:.4>0 r=light(<1,.5,.18>,$gl*40,18)`
+// the crater after the star: a ring of fire that burns down over burnFor seconds, a smoke column rising off it
+const BURN = `fx
+pop flames rate=?mobile:24|48 on=disc(%r|4).c(0) life=.6..1.3 v=up(1.2..2.6)+cone(18)*(.2..0.6) size=.22..0.45 acc=curl(.7)*1.2+buoy(1.8)+drag(2) sz=$size*(.5>1:1>.6:.7>.15) col=hdr(4.8,2.1,.5)>.45:hdr(2.4,.75,.12)>hdr(.6,.12,.02) a=(0>.1:1>.7:.85>0)*flick(9,.3) rot=spin(.3) r=sprite(flame-wisp,add)
+pop coals n=?mobile:14|28 on=disc(%r|4) size=.06..0.14 tint=<2.8,1,.25>..<1.2,.3,.07> col=$tint*flick(1.2,.45) sz=$size*flick(.6,.2) a=.9 r=sprite(soft-disc,add)
+pop embers rate=?mobile:10|22 on=disc(%r|4) life=1..2.2 v=up(1.6..3)+cone(30)*(.4..1.2) size=.015..0.04 acc=curl(1)+grav()*.2+drag(.5) col=hdr(5.5,2.6,.6)>hdr(1.4,.32,.05) a=(0>.08:1>.7:.9>0)*flick(11,.4) r=sprite(ember,add,velocity,.025)
+pop smoke rate=?mobile:5|10 on=disc(%r|4*.7) life=3..5 v=up(1..2) size=.7..1.2 acc=buoy(.7)+curl(.3)*.6+wind()*.4+drag(.8) sz=$size*(.6>3.2) col=<.2,.18,.17>><.11,.11,.12> a=0>.3:.32>0 rot=spin(.08) r=sprite(smoke-puff,alpha)
+pop haze rate=?low:0|5 on=disc(%r|4*.6) life=.6..1 v=up(1.2) size=1.2..1.8 sz=$size*(.7>1.4) col=<.005,.007,0> a=.7>0 r=sprite(soft-disc,distort)
+pop glow n=1 at=point().c(.6) gl=fire()*(#flames/50)~ r=light(<1,.5,.18>,$gl*12,12)`
 const SCORCH = '/cdn/value.ef4ee5e30d4a5eeb5e69ded461e8ca612b535ef6192f1e6b201f150316e8bce7.png'
 export function callStar(ctx, { targetId }) {
   if (classOf(ctx) !== 'arcanist') return
@@ -51,6 +59,7 @@ export function callStar(ctx, { targetId }) {
 export function starLands(ctx, { at }) {
   const a = A.cinderfall, self = ctx.self, aud = { audience: { nearby: at, radius: 90 } }
   ctx.emit('fx', { position: at, script: BOOM, params: { r: a.radius } }, aud)
+  ctx.emit('fx', { position: at, script: BURN, params: { r: a.radius * 0.75 }, lifetime: a.burnFor ?? 5 }, aud)
   ctx.emit('decal', { position: at, normal: { x: 0, y: 1, z: 0 }, texture: SCORCH, size: a.radius * 2.2, lifetime: 18, fade: 4 }, aud)
   ctx.emit('shockwave', { position: { x: at.x, y: at.y + 0.5, z: at.z }, speed: 18, thickness: 1.2, intensity: 0.5 }, aud)
   ctx.emit('playSound', { clip: a.impact, position: at, volume: 0.9, maxDistance: 80 }, aud)

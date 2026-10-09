@@ -48,10 +48,23 @@ pop dust burst=2 life=.4..0.7 v=up(.3)+sdir()*.3 size=.15..0.22 acc=drag(1.5) co
 const ARROW_EARTH = `fx
 pop grit burst=8..12 life=.4..0.8 v=<%normal|0,1,0>*(1.5..3)+sdir()*(.5..1) size=.03..0.06 acc=grav()+drag(.6) col=<.45,.38,.3> a=1>0 sz=$size floor=stick r=sprite(grain,alpha)
 pop dust burst=3..4 life=.6..1 v=up(.5)+sdir()*.4 size=.18..0.3 acc=buoy(.2)+drag(1.4) col=<.62,.55,.45> a=0>.3:.3>0 sz=$size*(.6>1.8) r=sprite(smoke-puff,alpha)`
-const BOW = '/cdn/moodboard-painterly-fantasy/'
+// what stays where a spell struck the ground: a smoulder for fire, a rime mist for frost (emitted for linger.life seconds)
+const FIRE_LINGER = `fx
+pop lick rate=?mobile:9|18 on=disc(.55) life=.5..1.1 v=up(.8..1.6) size=.14..0.28 acc=curl(.6)+buoy(1.4)+drag(2) sz=$size*(.5>1:1>.15) col=hdr(4.4,1.9,.42)>.5:hdr(2,.6,.09)>hdr(.5,.1,.02) a=(0>.12:1>.7:.8>0)*flick(9,.35) rot=spin(.35) r=sprite(flame-wisp,add)
+pop coals n=?mobile:5|10 on=disc(.6) size=.05..0.11 tint=<2.6,.9,.22>..<1.2,.32,.07> col=$tint*flick(1.4,.45) sz=$size*flick(.7,.2) a=.9 r=sprite(soft-disc,add)
+pop embers rate=?mobile:3|7 on=disc(.5) life=.8..1.6 v=up(1..2)+cone(25)*(.3..0.8) size=.012..0.03 acc=curl(.9)+drag(.6) col=hdr(5,2.4,.55)>hdr(1.3,.3,.04) a=(0>.1:1>.7:.9>0)*flick(11,.4) r=sprite(ember,add,velocity,.02)
+pop smoke rate=?mobile:3|6 on=disc(.45) life=2..3.4 v=up(.5..1) size=.3..0.5 acc=buoy(.6)+curl(.35)*.6+wind()*.3+drag(.9) sz=$size*(.6>2.8) col=<.21,.19,.18>><.13,.13,.14> a=0>.25:.3>0 rot=spin(.1) r=sprite(smoke-puff,alpha)
+pop glow n=1 at=point().c(.3) gl=fire()*(#lick/14)~ r=light(<1,.5,.18>,$gl*3.5,5)`
+const FROST_LINGER = `fx
+pop rime n=1 at=point().c(.03) size=1.6 col=hdr(.55,.85,1.4) a=.35*flick(.8,.2) r=sprite(soft-disc,add,axis,0,0,axis=<0,1,0>)
+pop mist rate=?mobile:4|8 on=disc(.8) life=1.6..2.6 v=sdir()*(.1..0.25) size=.35..0.6 acc=grav()*.04+curl(.2)*.3+drag(1.2) sz=$size*(.6>2) col=<.82,.92,1> a=0>.3:.28>0 rot=spin(.08) r=sprite(smoke-puff,alpha)
+pop glints rate=?mobile:6|12 on=disc(.7) life=.3..0.7 size=.025..0.05 col=hdr(2.4,3.2,4.8) a=(0>.5:1>0)*flick(13,.6) r=sprite(mote,add)
+pop glow n=1 at=point().c(.3) r=light(<.55,.78,1>,1.4,4)`
+const BOW = /cdn/moodboard-painterly-fantasy/'
+export { FIRE_LINGER }
 export const MISSILES = {
-  fire: { trail: FIRE_TRAIL, cast: FIRE_CAST, impact: { any: FIRE_HIT }, mark: { texture: '/cdn/value.ef4ee5e30d4a5eeb5e69ded461e8ca612b535ef6192f1e6b201f150316e8bce7.png', size: 1.8, life: 12 }, sound: { any: BOW + 'sfx-firebolt-impact-burst.mp3' } },
-  frost: { trail: FROST_TRAIL, cast: FROST_CAST, primitive: { kind: 'scripted', script: 'scripts/gen/arrow.js', params: { shape: 'shard' } }, impact: { any: FROST_HIT }, mark: { texture: '/cdn/value.1ff9e4aaaa88257d48fc6185ce88eb482840f27966be1bb2a90aa954e09cfd96.png', size: 2, life: 8 }, sound: { any: BOW + 'sfx-ice-shard-shatter.mp3' } },
+  fire: { trail: FIRE_TRAIL, cast: FIRE_CAST, impact: { any: FIRE_HIT }, mark: { texture: '/cdn/value.ef4ee5e30d4a5eeb5e69ded461e8ca612b535ef6192f1e6b201f150316e8bce7.png', size: 1.8, life: 12 }, linger: { script: FIRE_LINGER, life: 3.5 }, sound: { any: BOW + 'sfx-firebolt-impact-burst.mp3' } },
+  frost: { trail: FROST_TRAIL, cast: FROST_CAST, primitive: { kind: 'scripted', script: 'scripts/gen/arrow.js', params: { shape: 'shard' } }, impact: { any: FROST_HIT }, mark: { texture: '/cdn/value.1ff9e4aaaa88257d48fc6185ce88eb482840f27966be1bb2a90aa954e09cfd96.png', size: 2, life: 8 }, linger: { script: FROST_LINGER, life: 3 }, sound: { any: BOW + 'sfx-ice-shard-shatter.mp3' } },
   arrow: { trail: ARROW_TRAIL, primitive: { kind: 'scripted', script: 'scripts/gen/arrow.js', params: { shape: 'arrow' } }, sticks: 4, nose: 0.42,
     impact: { wood: ARROW_WOOD, fur: ARROW_FUR, earth: ARROW_EARTH }, sound: { wood: BOW + 'sfx-arrow-thunk-wood.mp3', fur: BOW + 'sfx-arrow-hit-flesh-thud.mp3', earth: BOW + 'sfx-arrow-thud-dirt.mp3' } },
 }
@@ -61,6 +74,7 @@ export function impactFx(ctx, M, mat, at, normal) {
   const prog = M.impact[mat] ?? M.impact.any ?? M.impact.earth, snd = M.sound[mat] ?? M.sound.any ?? M.sound.earth
   if (prog) ctx.emit('fx', { position: at, script: prog, params: { normal: normal || { x: 0, y: 1, z: 0 } } }, near)
   const mark = M.mark && (!normal || normal.y > 0.6) ? M.mark : null // a ground strike leaves its mark
+  if (mark && M.linger) ctx.emit('fx', { position: at, script: M.linger.script, lifetime: M.linger.life }, near)
   if (mark) ctx.emit('decal', { position: at, normal: normal || { x: 0, y: 1, z: 0 }, texture: mark.texture, size: mark.size * (0.85 + ctx.random() * 0.3), lifetime: mark.life, fade: 2 }, near)
   if (snd) ctx.emit('playSound', { clip: snd, position: at, volume: 0.55, pitch: 0.92 + ctx.random() * 0.16 }, near)
 }
