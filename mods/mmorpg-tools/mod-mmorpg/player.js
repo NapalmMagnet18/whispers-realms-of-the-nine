@@ -805,9 +805,11 @@ export function update(objectApi, dt) {
       var PLACE_NAMES = {
         'main': "Lantern's Reach",
       };
-      var displayName = PLACE_NAMES[currentPlace] || currentPlace;
-      patch._zoneBanner = displayName;
-      patch._zoneBannerTick = objectApi.getTick();
+      // on the March the HUD's regional banner (ui-hud.js) names where the hero actually stands; this one named every arrival Lantern's Reach
+      if (currentPlace !== 'main') {
+        patch._zoneBanner = PLACE_NAMES[currentPlace] || currentPlace;
+        patch._zoneBannerTick = objectApi.getTick();
+      }
       objectApi.playSound('/cdn/sfx-brief-harp-strum-ethereal.mp3', { volume: 0.12 });
     }
   }
