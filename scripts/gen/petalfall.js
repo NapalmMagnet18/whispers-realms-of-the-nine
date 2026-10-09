@@ -31,7 +31,7 @@ function basin(ctx, r, far) {
     blob(ctx, Math.cos(a) * R, 0.2, Math.sin(a) * R, 0.55, 0.32 + r() * 0.1, 0.4, i + 1, 0.3, far ? 3 : 5, far ? 5 : 7);
   }
   // the basin's floor, dark under the water
-  mat(ctx, "oklch(0.3 0.03 160)", 1); cyl(ctx, 0, -0.05, 0, R, R, 0.3, far ? 10 : 18, true);
+  mat(ctx, "oklch(0.5 0.06 185)", 1); cyl(ctx, 0, -0.05, 0, R, R, 0.3, far ? 10 : 18, true);
   if (far) return;
   mat(ctx, "oklch(0.48 0.11 135)", 1);
   for (let i = 0; i < 10; i++) { const a = r() * 6.28; blob(ctx, Math.cos(a) * (R + 0.1), 0.45, Math.sin(a) * (R + 0.1), 0.25, 0.08, 0.2, i + 40, 0.4, 3, 5); }
