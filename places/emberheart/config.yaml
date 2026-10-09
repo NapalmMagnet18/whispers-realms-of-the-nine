@@ -16,9 +16,9 @@ atmosphere:
   ambient: { light: { color: "oklch(0.6 0.08 45)", intensity: 1.5 } }
   hemisphere: { sky: "oklch(0.6 0.08 45)", ground: "oklch(0.3 0.03 60)", intensity: 1.0 }
   fog: { kind: linear, color: "oklch(0.2 0.06 35)", near: 18, far: 110 }
-  look:
-    script: mods/aaa-quality-kit/look-cinema.js
-    params: { dayWarmth: 0.04, grain: 0.03 }
+  look: # ray-traced reflections, contact shadows and bloom (mods/raytraced-lighting); was aaa-quality-kit look-cinema
+    script: mods/raytraced-lighting/look-raytrace.js
+    params: { reflection: 1.0, baseReflect: 0.05, maxDistance: 24, denoise: 0.42, blurRadius: 1.0, aoStrength: 0.5, bloom: 1.35, bloomThreshold: 0.45, bloomSpread: 1.25, fireflyClamp: 1.8 }
 acoustics:
   reverb: 0.5
 # heroes arrive here from the open world, its game code already loaded; a cold boot only on a reconnect inside
