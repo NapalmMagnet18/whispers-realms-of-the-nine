@@ -62,12 +62,14 @@ export function onSpawn(ctx) {
   s.mode = "asleep"; s.hpPct = Math.round((100 * s.hp) / s.maxHp); s.unhurt = s.hp >= s.maxHp; s.title ??= D.name;
   s.home ??= { x: ctx.self.feetPosition.x, z: ctx.self.feetPosition.z };
   ctx.self.anim.base = { clip: D.clips?.idle ?? "Idle", weight: 1, loop: "loop" };
+  if (D.aura) ctx.self.fx = { script: D.aura };
 }
 
 function reset(ctx, D, m) {
   const s = ctx.self.state;
   s.mode = "asleep"; s.maxHp = D.hp; s.hp = D.hp; s.hpPct = 100; s.unhurt = true; s.enraged = false; s.cast = null; s.lastHitBy = null;
   m.clocks = {}; m.dmg = {}; m.target = null; clearAdds(ctx);
+  if (D.aura) ctx.self.fx = { script: D.aura };
 }
 
 export function update(ctx, dt) {
@@ -221,6 +223,7 @@ function die(ctx, D, m, fighters) {
   const w = ctx.self, s = w.state, now = ctx.now();
   s.mode = "dead"; s.diedAt = now; s.hpPct = 0; s.unhurt = true; s.cast = null;
   w.velocity = { x: 0, y: -2, z: 0 }; w.anim.base = null; once(w, D.clips?.die ?? "cdn/clip-die.glb"); m.gait = null;
+  if (D.aura) w.fx = null;
   const at = { x: w.feetPosition.x, y: w.feetPosition.y + 2, z: w.feetPosition.z };
   if (D.sounds?.die) ctx.emit("playSound", { clip: D.sounds.die, position: at, volume: 0.9, maxDistance: 70 }, { audience: near(at) });
   if (s.add) { for (const p of fighters) credit(ctx, p, D.tally, null, D.reward?.xp ?? 0); return; }
