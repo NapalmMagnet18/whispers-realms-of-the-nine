@@ -69,12 +69,19 @@ function aggro(ctx, w, s, target) {
   if (s.mode === "idle") ctx.emit("playSound", { clip: S.sounds.shout, position: w.feetPosition, volume: 0.6, maxDistance: 30 }, { audience: near(w.feetPosition) });
   s.mode = "chase";
 }
+// a body hits the ground: dust thrown out low; then, as it fades, it crumbles: dark ash and embers rising off where it lay
+const FALL = `fx
+pop dust burst=?mobile:8|16 on=disc(.5).c(.1) life=.8..1.4 v=sdir()*(1..2)+up(.3..0.6) size=.3..0.5 acc=drag(2.4)+buoy(.2) sz=$size*(.6>2) col=<.36,.3,.24> a=0>.08:.4>.6:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)
+pop grit burst=?mobile:6|12 on=disc(.4).c(.2) life=.5..0.9 v=sdir()*(1.5..3)+up(1..2) size=.02..0.04 acc=grav() col=<.3,.25,.2> a=1>.8:1>0 floor=die r=sprite(soft-disc,alpha)
+pop ash delay=%fade|1.5 rate=?mobile:10|22 win=0;1.2 on=disc(.55).c(.3) life=1.4..2.4 v=up(.6..1.2)+sdir()*.2 size=.2..0.35 acc=buoy(.4)+curl(.5)*.5+drag(1) sz=$size*(.6>2.2) col=<.08,.07,.07>><.18,.17,.17> a=0>.12:.4>.6:.25>0 rot=spin(.12) r=sprite(smoke-puff,alpha)
+pop embers delay=%fade|1.5 rate=?mobile:8|18 win=0;1.2 on=disc(.5).c(.4) life=1..1.8 v=up(1..1.8)+sdir()*.3 size=.015..0.03 acc=curl(1)+drag(.5) col=hdr(3.5,1.4,.35)>hdr(1,.25,.05) a=(0>.1:1>.7:.8>0)*flick(10,.4) r=sprite(ember,add,velocity,.02)`;
 function die(ctx, w, s, m) {
   const now = ctx.now(), pos = { x: w.feetPosition.x, y: w.feetPosition.y + 1.2, z: w.feetPosition.z };
   s.mode = "dead"; s.diedAt = now; s.target = null; s.hpPct = 0; s.unhurt = true;
   w.velocity = { x: 0, y: -2, z: 0 };
   w.anim.base = null; once(w, S.clips.die, 1, m); m.gait = null;
   if (w.fx) w.fx = null;
+  ctx.emit("fx", { position: { x: pos.x, y: w.feetPosition.y, z: pos.z }, script: FALL, params: { fade: S.fadeAt ?? 1.5 } }, { audience: near(pos) });
   try { animate(ctx, w.id, { "material.dissolve": 1 }, { duration: S.corpse - S.fadeAt, delay: S.fadeAt }); } catch (e) {}
   ctx.emit("playSound", { clip: S.sounds.die, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
