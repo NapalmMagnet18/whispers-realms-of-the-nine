@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.85 Alpha';
+var GAME_VERSION = '0.47.86 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.86', 'Matched Magic', 'Shade cuts flash violet and light what they strike; Rend throws a ring of shadow-light. Rain of Thorns glows green over its mark, and its arrows spark and light the ground as they land.'],
   ['v0.47.85', 'Woodlight', 'After dusk the forests glow: fireflies blink in the undergrowth and soft wisps drift between the trunks, lighting the bark as they pass. By day, pollen motes hang in the forest air. Briarwild, Deepgrove, Thornhollow, Petalfall, Sorrowfen and the Elderveil.'],
   ['v0.47.84', 'Smoother Foes', 'Camp crews, bosses and the Candle Warden now blend between idle, walk, run, swings, flinches and falls instead of snapping. Camp runners stride at their true speed, so their feet no longer skate.'],
   ['v0.47.83', 'Scorched Earth', 'Cinderfall leaves its crater burning for five seconds: licking flames, glowing coals, embers and a smoke column. A Firebolt that strikes the ground smoulders, and Frost Shard leaves cold mist and glinting rime. Character select and creation now share the menu\'s ray-traced lighting.'],
