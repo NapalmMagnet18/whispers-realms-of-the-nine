@@ -26,13 +26,15 @@ function spawnOne(ctx, def, cs = {}) {
 function gait(w, m, name, speed = 1) {
   if (m.gait === name) return;
   m.gait = name;
-  w.anim.base = { clip: S.clips[name], weight: 1, loop: "loop", speed };
+  w.anim.base = { clip: S.clips[name], weight: 1, loop: "loop", speed: speed * (GAIT_RATE[name] ?? 1), blendIn: 0.28 };
 }
 // a one-shot gesture rides the action channel over the gait, then hands the body back: without the clear the override
 // held the clip's last frame forever and the crew slid around frozen mid-swing.
+// stride matched to ground speed: the baked Walk covers ~1.4 m/s, Run ~4.8 m/s at speed 1, so the feet stop skating
+const GAIT_RATE = { walk: Math.min(1.25, Math.max(0.8, S.walk / 1.4)), run: Math.min(1.35, Math.max(0.8, S.run / 4.8)) };
 const ONCE_SECS = { attack: 1.1, hit: 0.7, die: 99 };
 function once(w, clip, speed = 1, m) {
-  w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override" };
+  w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override", blendIn: 0.12, blendOut: 0.22 };
   if (m) { const k = Object.keys(S.clips).find((n) => S.clips[n] === clip) || "attack"; m.actionEnd = (ONCE_SECS[k] ?? 1) / speed; m.actionT = 0; }
 }
 function settle(w, m, dt) {

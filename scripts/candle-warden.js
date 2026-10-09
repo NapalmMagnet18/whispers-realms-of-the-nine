@@ -20,8 +20,8 @@ const CROWN = `fx
 pop flame rate=40 on=arc(.35,6.283,.05) life=.3..0.6 v=up(.7..1.2) size=.06..0.12 acc=curl(.5)+buoy(1) sz=$size*(1>.3) col=hdr(4,2.4,.8)>hdr(1.8,.5,.1) a=0>.1:1>.7:.8>0 r=sprite(flame-wisp,add)
 pop glow n=1 at=<0,.2,0> r=light(<1,.62,.3>,5,10)`;
 
-function once(w, clip, speed = 1) { w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override" }; }
-function gait(w, m, name) { if (m.gait === name) return; m.gait = name; w.anim.base = { clip: W.clips[name], weight: 1, loop: "loop" }; }
+function once(w, clip, speed = 1) { w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override", blendIn: 0.14, blendOut: 0.25 }; }
+function gait(w, m, name) { if (m.gait === name) return; m.gait = name; w.anim.base = { clip: W.clips[name], weight: 1, loop: "loop", blendIn: 0.3 }; }
 function face(w, m, to, dt) {
   const p = w.feetPosition, want = (Math.atan2(-(to.x - p.x), -(to.z - p.z)) * 180) / Math.PI;
   m.yaw ??= w.state.yaw ?? 0;
