@@ -2,7 +2,7 @@ atmosphere:
   clouds:
     altitude: 700
     density: 0.55
-    enabled: true
+    enabled: false
     opacity: 0.75
     thickness: 800
     speed: 1
@@ -11,10 +11,14 @@ atmosphere:
     near: 260
     far: 1700
   look:
-    script: mods/aaa-quality-kit/look-cinema.js
+    script: mods/awakening/look.js
     params:
-      dayWarmth: 0.08
-      grain: 0.02
+      mistBase: 3
+      mistDensity: 0.008
+      mistReach: 180
+      cloudCover: 0.42
+      grain: 0.018
+      bloomStrength: 0.34
   moon:
     intensity: 3
   sky:
