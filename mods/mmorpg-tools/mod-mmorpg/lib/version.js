@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.66 Alpha';
+var GAME_VERSION = '0.47.67 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.67', 'The Briar Pack Grows Wild', 'Briar Wolves are rebuilt meaner: a shaggy black mane of over a hundred fur tufts, a ragged back and a hanging belly fringe, starved bone ribs showing through the flanks, and thorned briar vines strangling their bodies and winding up their forelegs.'],
   ['v0.47.66', 'Nights in the March', 'The sun over Lantern March finally moves: long golden evenings, then a short starlit night, one full day each hour. After sunset the meadows fill with crickets, owls call from the pines, nightjars churr on the heath, and the Reach goes quiet but for its hearths.'],
   ['v0.47.65', 'Shadow Rend', 'Shades learn a fourth art on key 4: Shadow Rend. Blink 8 m ahead through violet shadow, cutting every foe along the path. Cast from the Veil, every cut lands as an Ambush, and you come out of it with an Ambush window open for your next Strike. Every calling now has four abilities.'],
   ['v0.47.64', 'Earthsplitter', 'Vanguards learn a fourth blow on key 4: Earthsplitter. The blade slams down and a molten fissure tears 9 m ahead, striking every foe on the line, hurling them back and slowing them. Heavy Strike now cleaves up to four foes in front of you. Key 4 now works for every calling (Cinderfall and Rain of Thorns could not be cast before this).'],
