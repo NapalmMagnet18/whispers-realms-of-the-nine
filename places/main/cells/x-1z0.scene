@@ -521,7 +521,7 @@ petalfall-ring:
   scatter: {bounds: {innerRadius: 10, outerRadius: 15, shape: ring}, count: 18, templates: [{physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 1}], variation: {scale: [1, 1.4], yaw: [0, 360]}}
   tags: [foliage, bloom, petalfall]
 petalfall-spring:
-  children: [{feetPosition: {x: 0, y: 0.32, z: 0}, material: {color: oklch(0.55 0.08 200), kind: water, opacity: 0.85, waveIntensity: 0.15}, primitive: {kind: circle, radius: 2.45, segments: 32}, rotation: {pitch: -90}}, {feetPosition: {x: 0, y: 1.2, z: 0}, light: {color: oklch(0.85 0.1 330), distance: 14, intensity: 3, kind: point}}, {audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-spring-trickle-windchimes-birds.mp3, gain: 0.18, loop: true, maxDistance: 30, spatial: true}, feetPosition: {x: 0, y: 0.5, z: 0}}]
+  children: [{feetPosition: {x: 0, y: 0.32, z: 0}, material: {color: oklch(0.72 0.09 195), kind: water, opacity: 0.6, waveIntensity: 0.15}, primitive: {kind: circle, radius: 2.45, segments: 32}, rotation: {pitch: -90}}, {feetPosition: {x: 0, y: 1.2, z: 0}, light: {color: oklch(0.85 0.1 330), distance: 14, intensity: 3, kind: point}}, {audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-spring-trickle-windchimes-birds.mp3, gain: 0.18, loop: true, maxDistance: 30, spatial: true}, feetPosition: {x: 0, y: 0.5, z: 0}}]
   feetPosition: {x: -100, y: 0.5307373613272107, z: 60}
   id: petalfall-spring
   physics: static
