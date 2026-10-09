@@ -156,6 +156,18 @@ function build(ctx, P, solid) {
     }
     for (const sx of [-1, 1]) { const x0 = sx < 0 ? -hw - pr : hw - 0.02, x1 = sx < 0 ? -hw + 0.02 : hw + pr; box(ctx, x0, h - 0.22, -hd, x1, h, hd); box(ctx, x0, 0.45, -hd, x1, 0.62, hd); }
   }
+  if (wall === "stone" && lod < 3) { // dressed quoins up every corner, long and short in turn, and a string course under the eave
+    paint("cdn/texture-grey-ashlar-stone-blocks-weathered.png", "oklch(0.82 0.02 75)", 0.92);
+    const qh = 0.42;
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) for (let i = 0, y = 0.45; y + qh <= h + 0.01; i++, y += qh) {
+      const lx = i % 2 ? 0.35 : 0.65, lz = i % 2 ? 0.65 : 0.35, x0 = sx * hw, z0 = sz * hd;
+      box(ctx, Math.min(x0, x0 - sx * lx) - (sx < 0 ? 0.06 : 0), y + 0.02, Math.min(z0, z0 - sz * 0.001) - (sz < 0 ? 0.06 : 0), Math.max(x0, x0 - sx * lx) + (sx > 0 ? 0.06 : 0), y + qh - 0.02, Math.max(z0, z0) + (sz > 0 ? 0.06 : 0));
+      box(ctx, Math.min(x0, x0) - (sx < 0 ? 0.06 : 0), y + 0.02, Math.min(z0, z0 - sz * lz) - (sz < 0 ? 0.06 : 0), Math.max(x0, x0) + (sx > 0 ? 0.06 : 0), y + qh - 0.02, Math.max(z0, z0 - sz * lz) + (sz > 0 ? 0.06 : 0));
+    }
+    for (const sz of [-1, 1]) box(ctx, -hw - 0.1, h - 0.28, sz < 0 ? -hd - 0.12 : hd - 0.02, hw + 0.1, h - 0.1, sz < 0 ? -hd + 0.02 : hd + 0.12);
+    for (const sx of [-1, 1]) box(ctx, sx < 0 ? -hw - 0.12 : hw - 0.02, h - 0.28, -hd - 0.1, sx < 0 ? -hw + 0.02 : hw + 0.12, h - 0.1, hd + 0.1);
+    WOOD();
+  }
   // tie beams inside
   for (let z = -hd + 1.2; z < hd - 0.6; z += 2) box(ctx, -hw + t, h - 0.3, z - 0.12, hw - t, h - 0.05, z + 0.12);
   box(ctx, -0.12, h - 0.05, -hd + t, 0.12, h + rise - 0.2, -hd + t + 0.24);
