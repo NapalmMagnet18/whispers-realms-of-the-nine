@@ -59,7 +59,7 @@ function spike(ctx, b, u, len, w) {
   const tip = add(b, mul(up, len)), ring = [add(b, mul(side, w)), add(b, mul(fwd, w)), add(b, mul(side, -w)), add(b, mul(fwd, -w))];
   for (let i = 0; i < 4; i++) {
     const a = ring[i], c = ring[(i + 1) % 4], m = mul(add(add(a, c), tip), 1 / 3);
-    ctx.color(`oklch(${(0.34 + ctx.random() * 0.06).toFixed(3)} 0.035 55)`);
+    ctx.color(`oklch(${(0.62 + ctx.random() * 0.08).toFixed(3)} 0.04 70)`);
     triN(ctx, a, c, tip, sub(m, b));
   }
 }
@@ -136,8 +136,8 @@ export function geometry(ctx) {
   if (lod <= 3) { // the thorn ridge: nape to rump, longest over the shoulders, raked back
     const ridge = [[-0.5, 0.93, 0.07], [-0.42, 0.9, 0.11], [-0.33, 0.86, 0.15], [-0.24, 0.85, 0.16], [-0.14, 0.85, 0.15], [-0.04, 0.83, 0.12], [0.06, 0.82, 0.1], [0.16, 0.82, 0.09], [0.26, 0.83, 0.08], [0.36, 0.83, 0.06], [0.44, 0.8, 0.045]];
     for (const [z, y, len] of ridge) {
-      spike(ctx, [0, y - 0.02, z], [0, 1, 0.55], len, len * 0.22);
-      if (lod <= 2 && len > 0.09) for (const sx of [-1, 1]) spike(ctx, [sx * 0.09, y - 0.06, z + 0.02], [sx * 0.7, 1, 0.5], len * 0.55, len * 0.16);
+      spike(ctx, [0, y - 0.03, z], [0, 1, 0.6], len * 1.7, len * 0.3);
+      if (lod <= 2 && len > 0.09) for (const sx of [-1, 1]) spike(ctx, [sx * 0.09, y - 0.06, z + 0.02], [sx * 0.7, 1, 0.5], len * 0.95, len * 0.22);
     }
   }
   ctx.bone("tail");
