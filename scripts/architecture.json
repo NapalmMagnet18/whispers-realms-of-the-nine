@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1792,
-  "updatedAt": "2026-10-09T06:44:18.017Z",
-  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes, now with palette-varied procedural blossoms and meadow flora in March roads and hearth towns.",
+  "basedOnSpecVersion": 1804,
+  "updatedAt": "2026-10-09T06:49:13.492Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes. The March now pairs its broad flower scatter with a four-cottage blossom hamlet on the Reedhaven road and completed kit dressing in Lantern's Reach.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -239,18 +239,18 @@
   ],
   "places": [
     "places/main/config.yaml and places/main/cells/ - Lantern March continent; streamed cells hold Lantern's Reach, race towns, quest regions, encounters, gates and landmarks.",
-    "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; tagged well, guild registrar and banner landmarks.",
+    "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; tagged well, guild registrar and banner landmarks, with farm gate and merchant stall kit props (crates and red banners).",
+    "places/main/cells/x-1z1.scene - Reedhaven-road meadow with four static, individually roofed house.js cottages, door lamps and rose/lupine/wildflower/blossom garden rings; surrounding seeded flora scatter remains in place.",
     "places/main/cells/x-1z-1.scene, x1z-1.scene and x30z-1.scene - Lantern Ward, Ashen Close and Sunscar; tagged water-interaction wells.",
-    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with Discipline Trainers and banners; town cells now have race-specific bloom scatter.",
-    "places/main/cells/x-1z-8.scene through x-2z3.scene and x-4z0.scene through x-6z1.scene - March road and hearth-town bloom scatter; scripts/gen/flora.js supplies meadow flowers, rosebushes, blossom trees and palette variants.",
+    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with Discipline Trainers and banners; town cells have race-specific bloom scatter.",
+    "places/main/cells/x-1z-8.scene through x-2z3.scene and x-4z0.scene through x-6z1.scene - March road and hearth-town flower scatter; scripts/gen/flora.js supplies meadow flowers, rosebushes, blossom trees and palette variants.",
     "places/main/cells/x-10z7.scene and board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
-    "places/main/cells/x-1z-5.scene, x-6z1.scene, x-7z0.scene and x0z-4.scene - Starfall giant quest site, Rootwake Glade bounty/raider camp and blood shrine; x2z11 and x-2z2 hold Saltmere shop and caravan.",
     "places/banner-vale/ is the 5v5 capture-the-banner battleground; places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ are gate-linked dungeon/raid instances."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.24 Alpha and PATCH_NOTES; main-menu Herald reads its news here, settings/pause use versionTag.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.26 Alpha and PATCH_NOTES; main-menu Herald reads its news here, settings/pause use versionTag.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere plus room weather and Party Finder matching.",
@@ -263,7 +263,7 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world panel actions; player.js imports it after a hero enters the world; imports shop-data.js and profession-data.js.",
     "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry used by quests, class actions, vitality, flight and regional music.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
-    "scripts/gen/flora.js - seeded geometry/collider generator for blossom, wildflowers, lupine, rosebush and willow; March scene scatters vary palette, scale and density.",
+    "scripts/gen/flora.js - seeded geometry/collider generator for blossom, wildflowers, lupine, rosebush and willow; March scatter and cottage gardens vary palette, scale and density.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose.",
     "scripts/lib/lazy.js - lazyBehavior powers class and gameplay wrappers plus boss.js, scavengers.js and wolves.js; resident-animation.js is shared by Elric and townsfolk."
   ],
@@ -304,11 +304,11 @@
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
     "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage and rewards.",
-    "scripts/gen/flora.js - procedural flora scattered along March roads and race-town beds, varied by kind, seeded shape, palette, scale and scene density; blossom trees use static colliders.",
-    "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed; scenes bind static colliders.",
+    "scripts/gen/flora.js - procedural flora scattered along March roads, race-town beds and four Reedhaven cottage gardens, varied by kind, seeded shape, palette, scale and scene density; blossom trees use static colliders.",
+    "scripts/gen/house.js - four Reedhaven-road cottages reuse generated house geometry, varied by width/depth, roof finish, chimney and window parameters; each scene placement parents a warm door lamp.",
+    "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed.",
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
-    "scripts/gen/tide.js, scripts/gen/hamlet.js, scripts/gen/roothome.js and scripts/gen/stilt.js - reused settlement/shore structures and props, varied by kind, seed, dimensions, materials and deck height.",
     "scripts/scavengers-core.js and scripts/wolves-core.js - camp/den managers reuse combat loops across data-driven crew/pack placements, varied by per-camp state, crew definitions and reward/tally keys."
   ],
   "probableOrphans": [
@@ -318,7 +318,7 @@
     "Adding a playable place requires a row in scripts/lib/places.js PLAY; dying heroes rise at SAFE_HOME for listed dungeons/raids. Quest and class logic uses isPlay rather than hard-coded place names.",
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
-    "Boss combat shares hp/lastHitBy/lastHitAt; boss-core emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and associated gear/voice data; lazy wrappers delay core loading until first need.",
+    "Boss combat shares hp/lastHitBy/lastHitAt; boss-core emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and associated gear/voice data; lazy wrappers delay core loading.",
     "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save. Guild vault moves use SQL version-conditional updates.",
     "Quest book reward IDs and payouts remain authoritative; quest-core.dialogRewards resolves item metadata from quest/gear catalogs only for offer/turn-in dialog copies, preserving unknown IDs as visible names."
   ]
