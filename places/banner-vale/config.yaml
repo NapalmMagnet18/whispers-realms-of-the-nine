@@ -10,8 +10,8 @@ terrain:
   generator: scripts/terrain-vale.js
   seed: 7
   materials:
-    - {albedo: cdn/texture-terrain-grass-realistic-albedo-summer-exploration.png, antiTiling: stochastic, id: grass, pbr: true, tint: oklch(0.78 0.07 128)}
-    - {albedo: cdn/texture-terrain-rock-realistic-albedo.png, antiTiling: stochastic, id: rock, pbr: true, tint: oklch(0.74 0.04 60)}
+    - {id: grass, albedo: /cdn/value.e21d0bbbfc5ead26603c3bd963ad5862cb6be59310651010b0f5acd5e9d1944a.jpg, normal: /cdn/value.f201839be17f72fc52c7a9cefcf671d3db63516de9e6ec2a860f9e4788737446.jpg, roughness: /cdn/value.f1c508cb224fec863645935f84117b273bafdbbbc6b8d7aac0634328eb092821.jpg, pbr: true, textureScale: 3, antiTiling: stochastic, macro: true, tint: oklch(0.78 0.07 128)}
+    - {id: rock, albedo: /cdn/value.e3c1edd69b5764ddb1ff46d4cdbbe815712cd4813adfcb650f1ad13ab836d678.jpg, normal: /cdn/value.9788d865cf32bb96a00e58045cc3cd2d35ea4bbc8f6ed517b62e28aec9db6385.jpg, roughness: /cdn/value.5231244c238d6c3fec105331523ff42ca694f93c2a6de0b4707f23044e9e819f.jpg, pbr: true, textureScale: 7, antiTiling: stochastic, macro: true, tint: oklch(0.74 0.04 60)}
     - {albedo: cdn/texture-terrain-packed-dirt-path-realistic-albedo.png, id: dirt, pbr: true, tint: oklch(0.85 0.03 70)}
     - {albedo: cdn/texture-terrain-worn-cobblestone-realistic-albedo.png, id: cobble, pbr: true, textureScale: 3, tint: oklch(0.85 0.02 70)}
     - {albedo: cdn/texture-terrain-wet-marsh-mud-moss-realistic-albedo.png, id: mud, pbr: true, tint: oklch(0.6 0.07 128)}
@@ -19,7 +19,7 @@ terrain:
     bindings:
       grass: [grass, flower, woods]
     layers:
-      grass: {density: 22, items: [{kind: scripted, randomRotation: true, scale: [0.8, 1.4], script: scripts/grass.js, seed: 3, wind: {force: 0.06}}], material: {kind: scripted, script: scripts/grass-look.js}}
+      grass: {density: 14, items: [{kind: scripted, script: mods/awakening/grass-blades.js, randomRotation: true, scale: [0.8, 1.3], seed: 3, wind: {force: 0.09}}], material: {kind: scripted, script: mods/awakening/grass-look.js}}
       flower: {density: 0.2, material: {kind: scripted, script: scripts/flower-look.js}, items: [{kind: scripted, script: scripts/flower.js, params: {frame: 0}, seed: 41, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}, {kind: scripted, script: scripts/flower.js, params: {frame: 2}, seed: 43, randomRotation: true, scale: [0.8, 1.3], maxDistance: 80, wind: {force: 0.04}}]}
       woods: {density: 0.003, material: {kind: scripted, script: scripts/tree-look.js, params: {kind: pine}}, items: [{kind: scripted, maxDistance: 420, params: {kind: pine}, randomRotation: true, scale: [0.8, 1.5], script: scripts/gen/tree.js, seed: 21}]}
   marks:
@@ -29,10 +29,10 @@ terrain:
 atmosphere:
   sky: { kind: realistic, model: hosek }
   timeOfDay: 17.6
-  clouds: { enabled: true, density: 0.5, opacity: 0.75, altitude: 700, thickness: 800, speed: 1.5 }
-  fog: { kind: linear, near: 160, far: 900 }
+  clouds: { enabled: false, density: 0.5, opacity: 0.75, altitude: 700, thickness: 800, speed: 1.5 }
+  fog: { kind: linear, near: 250, far: 1400 }
   stars: { enabled: true, density: 0.5 }
   wind: { direction: 200, speed: 4 }
-  look:
-    script: mods/aaa-quality-kit/look-cinema.js
-    params: { dayWarmth: 0.1, grain: 0.02 }
+  look: # Awakening frame look (was mods/aaa-quality-kit/look-cinema.js)
+    script: mods/awakening/look.js
+    params: { mistBase: 1.5, mistDensity: 0.009, mistReach: 160, cloudCover: 0.44, grain: 0.008, bloomStrength: 0.3, sharpen: 0.5 }
