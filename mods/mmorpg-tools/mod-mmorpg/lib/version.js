@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.88 Alpha';
+var GAME_VERSION = '0.47.89 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.89', 'Echoes of the Choir', 'The Drowned Echoes the Choir Mother calls from the deep are their own dead now: gaunt choirboys in waterlogged surplices, wet hair veiling hollow teal eyes, rusted hymnals in hand.'],
   ['v0.47.88', 'The Captain Returns', 'Captain Merrow of the Gull\'s Wake rises in his own form: a towering drowned captain in a rotted greatcoat and barnacled tricorn, coral grown through him, an anchor chain in hand.'],
   ['v0.47.87', 'Iron and Ember', 'Vanguard slams throw a shockring and embers, their ground cracks glow, smoke and light the earth, and every sword hit flashes.'],
   ['v0.47.86', 'Matched Magic', 'Shade cuts flash violet and light what they strike; Rend throws a ring of shadow-light. Rain of Thorns glows green over its mark, and its arrows spark and light the ground as they land.'],
