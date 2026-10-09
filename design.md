@@ -1,5 +1,10 @@
 # WHISPERS : Realm of the Nine — build page
 
+## 2026-10-08 · QA-REJOIN-001 real creation and reconnect (spaiber)
+- Agent-owned spaiber_qa created SpaiberLanternQA, a Marchborn Vanguard, through the actual UI. Confirmed-save fingerprint was observed; after disconnect/rejoin the roster restored the hero and Enter World restored its name, race/class, level, purse, XP and starter gear. Real keyboard movement worked after restoration. No creator saves modified or deleted.
+- Scope and remaining gates: QA_CAMPAIGN_VALIDATION.md. Empty inventory/bank/quest/cache fields are not proof of nonempty reward persistence. Direct SQL read, reward duplicate/reconnect, full origin and two-player verification remain open. Retain this QA hero for follow-up; do not create another each run.
+- Next: physically reach Elric and play MAR-01 onward, then Q001–Q008 with rewards and reconnect; keep resident visual review/arrival optimization and character/environment detail in the queue.
+
 ## 2026-10-08 · SAVE-001 authoritative save confirmation (spaiber)
 - Character saves keep their in-flight guard until SQL and the legacy roster job finish. The saved fingerprint advances only after SQL confirms success; failed SQL leaves progression queued with a two-second retry delay. Logout stays in gameplay after a failed or overlapping save rather than proceeding on an unconfirmed write. Fresh joins clear stale transient save guards.
 - Preserved: save schema, character slots, inventory/bank/cache receipts, quest progression and existing roster fallback when SQL is unavailable. No assets imported or player rows modified by tests.

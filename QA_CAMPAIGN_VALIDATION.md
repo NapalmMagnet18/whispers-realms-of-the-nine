@@ -12,7 +12,13 @@ The route simulation completes objectives synthetically and includes all availab
 
 ## Remaining gates
 
-1. Fresh-character main-menu → origin → Q001 playthrough using normal input.
+### QA-REJOIN-001 — real QA body, October 8 (spaiber)
+
+Created SpaiberLanternQA (Marchborn Vanguard) through the creation UI on the agent-owned spaiber_qa body. The actual save path acknowledged its SQL write. Disconnected, rejoined the same body, saw the hero in the roster and selected Enter World. Name, race, class, level, copper, XP and starter sword/robes matched the pre-disconnect state. Empty bag, bank, quest and cache fields also matched; this does not test nonempty contents. One second of real W input moved the restored hero 5.933 metres (rounded).
+
+This is a real creation/save/rejoin smoke test, not a full origin loop. UI click handlers were dispatched through Playwright because the CPU canvas intercepted physical pointer clicks. Direct SQL inspection was unavailable through the installed client: run_script has no player @caller and accepts only published SQL statements; its suggested game_db command is not exposed by this client. SQL acknowledgement is inferred from the game's confirmed-save fingerprint. The QA hero remains for the next run; no saves deleted. Detailed state captures and comparisons are in the Codex outputs, qa-rejoin-summary.json.
+
+1. Continue the existing QA hero through its origin → Q001; creation and basic rejoin smoke test passed as above.
 2. Claim quest/chest reward, leave, rejoin, inspect SQL-backed character state and attempt repeat claim.
 3. Traverse giver/receiver approaches and objective sites, including origins surrounded by higher-level regions.
 4. Actual two-player reward ownership/reconnect check.
