@@ -128,7 +128,7 @@ const WOODS_NIGHT = `fx follow=camera
 pop flies n=?mobile:22|50 on=disc(18).c(1.4) life=5..9 v=sdir()*(.1..0.3) size=.03..0.06 acc=curl(.35)*.5+drag(.6) col=hdr(2.4,3.4,.8) a=(0>.15:1>.85:1>0)*flick(.7,.95) r=sprite(mote,add)
 pop wisp n=?low:1|3 on=disc(14).c(1.6) life=10..16 v=sdir()*(.2..0.4) size=.28..0.4 acc=curl(.15)*.4+drag(.4) col=hdr(.8,2.2,2.6) a=(0>.2:.85>.8:.85>0)*flick(1.3,.25) sz=$size*flick(2,.12) r=sprite(soft-disc,add)
 pop trail on=@wisp?.6 inh=p life=.8..1.4 v=sdir()*.05 size=.05..0.09 col=hdr(.7,1.8,2.2) a=.7>0 sz=$size*(1>.3) r=sprite(mote,add)
-pop glow n=?low:0|2 on=disc(12).c(1.6) life=10..16 v=sdir()*(.2..0.35) acc=curl(.15)*.4+drag(.4) gl=(0>.2:1>.8:1>0) r=light(<.45,.95,1>,$gl*1.2,6,perParticle)`;
+pop glow n=?low:0|2 on=disc(12).c(1.6) life=10..16 v=sdir()*(.2..0.35) acc=curl(.15)*.4+drag(.4) gl=(0>.2:1>.8:1>0) r=light(<.45,.95,1>,$gl*1.2,6,1)`;
 const WOODS_DAY = `fx follow=camera
 pop motes n=?mobile:16|36 on=disc(14).c(2.5) life=6..10 v=sdir()*(.05..0.15) size=.015..0.035 acc=curl(.2)*.3+wind()*.1+drag(.5) col=hdr(1.6,1.45,1) a=(0>.2:.55>.8:.55>0)*flick(2,.4) r=sprite(mote,add)`;
 function woodlight(ctx, kind) {
