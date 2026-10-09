@@ -6,6 +6,9 @@ import W from "./lib/data/wolves.yml";
 import { inRefuge } from "./lib/refuge.js";
 import { play, stop } from "builtin/anim";
 import { animate } from "builtin/tween";
+import { velocidadeParaHz } from "../mods/animacao-viva/lib/mistura.js"; // Animação Viva: the ground drives the cycle
+// metres of ground one gait cycle covers: the clip plays at speed = (ground m/s ÷ stride) × cycle seconds, so paws never skate
+const STRIDE = { walk: 1.25, run: 3.4 };
 
 // Gaits sampled from smooth curves: 24 keys a cycle so the legs roll through their arc instead of snapping between poses.
 const N = 24;
@@ -69,6 +72,11 @@ function spawnWolf(ctx, def) {
 function gait(ctx, w, m, name, speed = 1) {
   if (m.gait === name) return;
   m.gait = name;
+  if (STRIDE[name]) {
+    const ground = name === "run" ? W.run * speed : W.walk * speed;
+    const hz = velocidadeParaHz(ground, STRIDE[name], 4.5);
+    if (hz > 0) speed = hz * GAITS[name].duration;
+  }
   play(ctx, w.id, GAITS[name], { channel: "gait", loop: true, speed, blendIn: 0.15 });
 }
 
