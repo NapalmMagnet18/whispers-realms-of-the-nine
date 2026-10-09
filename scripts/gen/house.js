@@ -56,6 +56,11 @@ function build(ctx, P, solid) {
     box(ctx, -hw - 0.1, -0.6, -hd - 0.1, doorX - doorW / 2, 0.45, -hd + t + 0.1);
     box(ctx, doorX + doorW / 2, -0.6, -hd - 0.1, hw + 0.1, 0.45, -hd + t + 0.1);
     box(ctx, doorX - doorW / 2 - 0.2, -0.6, -hd - 0.6, doorX + doorW / 2 + 0.2, 0.06, -hd + t); // doorstep
+    if (!solid && lod < 3) { // a moss line where the footing meets the ground, thickest on the north (back) face
+      paint("cdn/texture-rough-fieldstone-wall-mossy.png", "oklch(0.55 0.08 135)", 0.95);
+      box(ctx, -hw - 0.14, -0.05, hd + 0.02, hw + 0.14, 0.16, hd + 0.14);
+      for (const sx of [-1, 1]) box(ctx, sx < 0 ? -hw - 0.14 : hw + 0.02, -0.05, -hd - 0.1, sx < 0 ? -hw - 0.02 : hw + 0.14, 0.09, hd + 0.14);
+    }
     BOARDS();
     box(ctx, -hw + t, -0.6, -hd + t, hw - t, 0.12, hd - t);
   }
@@ -88,6 +93,7 @@ function build(ctx, P, solid) {
     for (let i = 0; i < n; i++) {
       const sd = seg * (i + 0.5), lift = solid || n === 1 ? 0.1 : 0.12 + i * 0.004;
       const c = [down[0] * sd + out[0] * lift, h + rise + down[1] * sd + out[1] * lift, down[2] * sd + out[2] * lift];
+      if (!solid && n > 1) { const k = Math.sin((i + 1) * 12.9898 + side * 78.233 + w * 3.7 + doorX) * 43758.5453, f = k - Math.floor(k); ctx.color(`oklch(${(0.84 + f * 0.14 - (i === n - 1 ? 0.08 : 0)).toFixed(3)} ${(0.02 + f * 0.025).toFixed(3)} ${Math.round(40 + f * 25)})`); } // course by course the clay weathers; the eave course darkest from the drip
       boxR(ctx, c, [w + go * 2, solid ? 0.2 : 0.07, seg + (n > 1 ? 0.12 : 0)], { pitch: side < 0 ? -(deg + (n > 1 ? 2.5 : 0)) : deg + (n > 1 ? 2.5 : 0) });
     }
   }
@@ -99,7 +105,24 @@ function build(ctx, P, solid) {
     const cx = chimney * (hw + 0.45);
     box(ctx, cx - 0.5, -0.4, 0.6, cx + 0.5, h + rise * 0.45, 1.6);
     box(ctx, cx - 0.4, h + rise * 0.45, 0.7, cx + 0.4, h + rise + 1.1, 1.5);
-    if (!solid) { box(ctx, cx - 0.48, h + rise + 1.1, 0.62, cx + 0.48, h + rise + 1.25, 1.58); }
+    if (!solid) {
+      box(ctx, cx - 0.48, h + rise + 1.1, 0.62, cx + 0.48, h + rise + 1.25, 1.58);
+      if (lod < 3) {
+        paint(null, "oklch(0.5 0.1 40)", 0.85); // two clay chimney pots, soot-dark at the lip
+        for (const pz of [0.88, 1.32]) { box(ctx, cx - 0.13, h + rise + 1.25, pz - 0.13, cx + 0.13, h + rise + 1.6, pz + 0.13); }
+        paint(null, "oklch(0.18 0.01 50)", 0.95);
+        for (const pz of [0.88, 1.32]) box(ctx, cx - 0.15, h + rise + 1.6, pz - 0.15, cx + 0.15, h + rise + 1.66, pz + 0.15);
+        // a log stack against the chimney's lee side
+        paint("cdn/texture-dark-oak-timber-beam-hand-painted.png", "oklch(0.7 0.05 60)", 0.9);
+        for (let r = 0; r < 3; r++) for (let j = 0; j < 4 - r; j++) {
+          const lz = 1.75 + j * 0.24 + r * 0.12, ly = 0.12 + r * 0.22;
+          box(ctx, cx - 0.55, ly - 0.1, lz - 0.1, cx + 0.55, ly + 0.1, lz + 0.1);
+        }
+        paint(null, "oklch(0.72 0.07 75)", 0.9); // the cut ends, pale
+        for (let r = 0; r < 3; r++) for (let j = 0; j < 4 - r; j++) { const lz = 1.75 + j * 0.24 + r * 0.12, ly = 0.12 + r * 0.22; box(ctx, cx + chimney * 0.55, ly - 0.08, lz - 0.08, cx + chimney * 0.57, ly + 0.08, lz + 0.08); }
+        STONE();
+      }
+    }
   }
   if (solid) {
     if (open) { for (const x of [-hw + 0.15, 0, hw - 0.15]) box(ctx, x - 0.15, 0, -hd, x + 0.15, h, -hd + 0.3); }
@@ -181,6 +204,19 @@ function build(ctx, P, solid) {
     };
     if (!open) for (const o of frontWins) box3(o, -hd, -1);
     for (const o of backWins) box3(o, hd, 1);
+    if (!open) { // an iron lantern on a bracket beside the door, lit: the lantern-gold the March is named for
+      const lx = doorX - doorW / 2 - 0.45, ly = doorH - 0.1, lz = -hd - 0.08;
+      paint(null, "oklch(0.22 0.01 60)", 0.5, 0.8);
+      box(ctx, lx - 0.04, ly + 0.2, lz - 0.38, lx + 0.04, ly + 0.26, lz); // arm
+      box(ctx, lx - 0.06, ly + 0.08, lz - 0.02, lx + 0.06, ly + 0.36, lz + 0.03); // wall plate
+      box(ctx, lx - 0.13, ly - 0.32, lz - 0.51, lx + 0.13, ly - 0.28, lz - 0.25); // base
+      box(ctx, lx - 0.15, ly + 0.0, lz - 0.53, lx + 0.15, ly + 0.05, lz - 0.23); // cap
+      box(ctx, lx - 0.06, ly + 0.05, lz - 0.44, lx + 0.06, ly + 0.14, lz - 0.32); // finial
+      for (const ax of [-1, 1]) for (const az of [-1, 1]) box(ctx, lx + ax * 0.12 - 0.015, ly - 0.28, lz - 0.38 + az * 0.12 - 0.015, lx + ax * 0.12 + 0.015, ly, lz - 0.38 + az * 0.12 + 0.015);
+      ctx.albedo(null); ctx.color("oklch(0.9 0.12 75)", 0.8); ctx.emissive(3.2, 1.8, 0.6); ctx.roughness(0.2);
+      box(ctx, lx - 0.1, ly - 0.28, lz - 0.48, lx + 0.1, ly - 0.01, lz - 0.28);
+      ctx.emissive(null);
+    }
     if (!open) { // iron on the open door: two strap hinges and a ring
       paint(null, "oklch(0.25 0.01 60)", 0.5, 0.8);
       for (const y of [0.45, doorH - 0.45]) box(ctx, doorX + doorW / 2 + 0.1, y - 0.04, -hd + t + 0.02, doorX + doorW / 2 + 0.13, y + 0.04, -hd + t + doorW * 0.7);
