@@ -161,6 +161,32 @@ function build(ctx, P, solid) {
   };
   if (!open) winSet(stories > 1 ? [...frontWins, ...upper] : frontWins, -hd, -hd + t / 2, -1);
   winSet(backWins, hd, hd - t / 2, 1);
+  if (lod > 2) return;
+  // close-range finish: barge boards, rafter tails, flower boxes, door iron
+  WOOD();
+  const sl = Math.hypot(hd + ov, rise + (ov * rise) / hd);
+  for (const sx of [-1, 1]) for (const side of [-1, 1]) { // barge boards on both gable ends, both slopes
+    const cz = side * (hd + ov) / 2, cy = h + rise - (rise + (ov * rise) / hd) / 2 + 0.05;
+    boxR(ctx, [sx * (hw + go + 0.04), cy, cz], [0.08, 0.3, sl + 0.1], { pitch: side < 0 ? deg : -deg });
+  }
+  for (const side of [-1, 1]) for (let x = -hw - go + 0.35; x <= hw + go - 0.3; x += 0.75) // rafter tails peeking under the eave
+    boxR(ctx, [x, h - (ov * rise) / hd * 0.55 + 0.02, side * (hd + ov * 0.55)], [0.1, 0.12, ov * 1.1], { pitch: side < 0 ? deg : -deg });
+  if (lod === 1) {
+    const box3 = (o, zf, dir) => {
+      WOOD(); box(ctx, o.u - o.w / 2 - 0.05, o.sill - 0.4, Math.min(zf + dir * 0.02, zf + dir * 0.32), o.u + o.w / 2 + 0.05, o.sill - 0.13, Math.max(zf + dir * 0.02, zf + dir * 0.32));
+      paint(null, "oklch(0.42 0.1 140)", 0.9); // greenery
+      for (let i = 0; i < 5; i++) { const x = o.u - o.w / 2 + (i + 0.5) * (o.w / 5); box(ctx, x - 0.1, o.sill - 0.15, Math.min(zf + dir * 0.06, zf + dir * 0.28), x + 0.1, o.sill + 0.02 + (i % 2) * 0.06, Math.max(zf + dir * 0.06, zf + dir * 0.28)); }
+      const cols = ["oklch(0.62 0.2 25)", "oklch(0.82 0.15 85)", "oklch(0.6 0.16 330)"];
+      for (let i = 0; i < 4; i++) { paint(null, cols[(i + Math.round(o.u * 3)) % 3], 0.8); const x = o.u - o.w / 2 + 0.15 + i * ((o.w - 0.3) / 3); box(ctx, x - 0.06, o.sill + 0.02, Math.min(zf + dir * 0.12, zf + dir * 0.22), x + 0.06, o.sill + 0.12, Math.max(zf + dir * 0.12, zf + dir * 0.22)); }
+    };
+    if (!open) for (const o of frontWins) box3(o, -hd, -1);
+    for (const o of backWins) box3(o, hd, 1);
+    if (!open) { // iron on the open door: two strap hinges and a ring
+      paint(null, "oklch(0.25 0.01 60)", 0.5, 0.8);
+      for (const y of [0.45, doorH - 0.45]) box(ctx, doorX + doorW / 2 + 0.1, y - 0.04, -hd + t + 0.02, doorX + doorW / 2 + 0.13, y + 0.04, -hd + t + doorW * 0.7);
+      box(ctx, doorX + doorW / 2 + 0.1, 1.0, -hd + t + doorW - 0.25, doorX + doorW / 2 + 0.16, 1.14, -hd + t + doorW - 0.15);
+    }
+  }
 }
 
 export function geometry(ctx) { ctx.flat(); build(ctx, ctx.params || {}, false); }
