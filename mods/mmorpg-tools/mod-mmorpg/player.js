@@ -286,18 +286,36 @@ export function buildCharData(objectApi) {
 
 export function saveCharacter(objectApi, callback) {
   var s = objectApi.getState();
-  if (s._saveInFlight) { if (callback) callback(); return; }
+  if (s._saveInFlight) { if (callback) callback(false); return; }
   // Don't save until storage roster has been loaded — prevents stale persisted
   // state from overwriting the real roster in storage
   if (!s._rosterLoaded) { if (callback) callback(); return; }
   objectApi.patchState({ _saveInFlight: true });
-  var origCallback = callback;
-  callback = function() { objectApi.patchState({ _saveInFlight: false }); if (origCallback) origCallback(); };
   var data = buildCharData(objectApi);
+  var savedSig = RS.signature(s);
+  var sqlDone = typeof objectApi.sql !== 'function', sqlOk = sqlDone;
+  var storageDone = false, finished = false;
+  var origCallback = callback;
+  function finish() {
+    if (finished || !sqlDone || !storageDone) return;
+    finished = true;
+    var now = objectApi.now ? objectApi.now() : 0;
+    var patch = { _saveInFlight: false, _saveAt: now, _saveRetryAt: sqlOk ? 0 : now + 2000 };
+    if (sqlOk) patch._saveSig = savedSig;
+    else patch._questSave = true;
+    objectApi.patchState(patch);
+    if (origCallback) origCallback(sqlOk);
+  }
+  callback = function() { storageDone = true; finish(); };
   var activeIdx = s.activeCharIdx;
   var characters = s.characters;
-  try { RS.upsert(objectApi, typeof activeIdx === 'number' && activeIdx >= 0 ? activeIdx : 0, data); } catch (e) {}
-  objectApi.patchState({ _saveSig: RS.signature(s), _saveAt: objectApi.now ? objectApi.now() : 0 });
+  if (!sqlDone) {
+    try {
+      RS.upsert(objectApi, typeof activeIdx === 'number' && activeIdx >= 0 ? activeIdx : 0, data, function(ok) {
+        sqlDone = true; sqlOk = ok; finish();
+      });
+    } catch (e) { sqlDone = true; sqlOk = false; finish(); }
+  }
 
   // Save to roster array if we have a valid roster and active index
   if (Array.isArray(characters) && typeof activeIdx === 'number' && activeIdx >= 0 && activeIdx < characters.length) {
@@ -338,6 +356,8 @@ export function onSpawn(objectApi) {
   // survive sessions correctly, so we do NOT zero them — they expire naturally.
   // We only clear the old tick-based fields and the HUD display dict.
   objectApi.patchState({
+    _saveInFlight: false,
+    _saveRetryAt: 0,
     // Legacy tick-based (safe to zero — no longer written by spell scripts)
     novaCooldownUntil: 0,
     flurryCooldownUntil: 0,
@@ -581,7 +601,8 @@ export function update(objectApi, dt) {
   if (!isMetaPlace && s.characterCreated && !_panelM && !_panelP) _loadPanels().catch(function () {}); // warm the panels as the hero stands
 
   // ── Quest / gathering save: scripts/quest-player.js raises _questSave after accept, claim, progress or a log ──
-  if (s._questSave && !s._saveInFlight && s.characterCreated) {
+  if (s._questSave && !s._saveInFlight && s.characterCreated &&
+      (objectApi.now ? objectApi.now() : 0) >= (s._saveRetryAt || 0)) {
     objectApi.patchState({ _questSave: false });
     saveCharacter(objectApi);
   }
@@ -989,7 +1010,8 @@ export function onDisconnect(objectApi) {
 
 // ─── LOGOUT ──────────────────────────────────────────────────────
 export function handleLogout(objectApi, screen) {
-  saveCharacter(objectApi, function() {
+  saveCharacter(objectApi, function(saved) {
+    if (saved === false) return; // Keep the hero active until the authoritative save succeeds.
     // Stop music
     objectApi.musicShift(null, { fade: 0.5 });
 

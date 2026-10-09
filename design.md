@@ -1,5 +1,11 @@
 # WHISPERS : Realm of the Nine — build page
 
+## 2026-10-08 · SAVE-001 authoritative save confirmation (spaiber)
+- Character saves keep their in-flight guard until SQL and the legacy roster job finish. The saved fingerprint advances only after SQL confirms success; failed SQL leaves progression queued with a two-second retry delay. Logout stays in gameplay after a failed or overlapping save rather than proceeding on an unconfirmed write. Fresh joins clear stale transient save guards.
+- Preserved: save schema, character slots, inventory/bank/cache receipts, quest progression and existing roster fallback when SQL is unavailable. No assets imported or player rows modified by tests.
+- Acceptance evidence: actual save function and SQL helper passed delayed SQL/storage in both orders, SQL rejection, retry flag/cooldown, overlapping call rejection, mutation during a pending save, and storage-only fallback. Full real disconnect/rejoin and SQL persistence remain unverified; no completion claim for that milestone.
+- Next queue: isolated fresh-character playthrough with database reconnect; visual review of resident animation; measured arrival payload work; then character/environment detail. Savi handoff: preserve this confirmation path while optimizing imports. No Savi job submitted.
+
 ## 2026-10-08 · campaign validation checkpoint (spaiber)
 - Authored giver/receiver placement audit passed for all 209 implemented quests. All 48 race/class/branch routes reach VEI-09 in read-only engine simulation, and all six Q001 origin gates passed.
 - Method and remaining playtest gates: QA_CAMPAIGN_VALIDATION.md. Synthetic objectives and optional quest XP do not prove physical traversal, combat pacing or SQL reconnect. Those are the next checks; do not mark them complete from the routing audit.
