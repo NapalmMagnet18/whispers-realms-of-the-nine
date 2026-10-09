@@ -40,9 +40,11 @@ function renderTradeWindow(a) { var f = _hf('trades', 'renderTradeWindow'); retu
 function renderAuction(a) { var f = _hf('trades', 'renderAuction'); return f ? f(a) : ''; }
 function renderVendor(a, b) { var f = _hf('vendor', 'renderVendor'); return f ? f(a, b) : ''; }
 function renderBank(a) { var f = _hf('vendor', 'renderBank'); return f ? f(a) : ''; }
-function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : '<div style="position:fixed;inset:0;z-index:2147483000;background:#000"></div>'; } // until the veil's module lands: black, never the half-drawn world
-function zoneSplashActive() { var f = _hf('splash', 'zoneSplashActive'); return f ? f() : false; }
-function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
+// the veil is small and must draw on the very first frame of a new place: loaded with the HUD, never lazily (a lazy veil blinked black between the loader and the world)
+const _SPLASH = require('./lib/ui-zone-splash.js');
+function renderZoneSplash(a) { return _SPLASH.renderZoneSplash(a); }
+function zoneSplashActive() { return _SPLASH.zoneSplashActive(); }
+function resetZoneSplash() { _SPLASH.resetZoneSplash(); }
 function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); _hm('roster'); _hm('settings'); _hm('chat'); _hm('frames'); _hm('tips'); _hm('buffs'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
 function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
@@ -296,7 +298,7 @@ export default function(world, localPlayer) {
   if (localPlayer.state.loadingScreen) {
     // the same picture the arrival veil will show at the race's home, so the crossing never swaps art
     var _race = RACES[localPlayer.state.raceIndex || 0] || RACES[0], _st = _race.start || { x: 0, z: 0 };
-    var _za = _hf('splash', 'zoneArtFor'), _av = _hf('splash', 'arrivalVeil');
+    var _za = _SPLASH.zoneArtFor, _av = _SPLASH.arrivalVeil;
     var _art = _za ? _za(_st.x, _st.z) : (RACE_ART[_race.id] || RACE_ART.marchborn);
     return FONT_INJECTOR + FONT_WRAP_OPEN
       + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();window.__faCharName=undefined;" style="display:none" />'
