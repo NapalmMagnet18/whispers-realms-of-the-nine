@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.43 Alpha';
+var GAME_VERSION = '0.47.44 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.44', 'A warm soak', 'Step into the water at Emberwell Spring and your wounds mend fast, even with wolves at your back.'],
   ['v0.47.43', 'Emberwell Spring', 'West of Cinderhold, a little off the road, a hot spring steams between old stones. A miner left his strongbox by the water and never came back for it.'],
   ['v0.47.42', 'A name in the pines', 'Step into Petalfall Hollow and its name rises over the glade, with a fanfare the first time you find it.'],
   ['v0.47.41', 'Signs on the shrines', 'Each wayside shrine now hangs a gilt sign you can read from the road, so travelers know where to kneel for the Wayfarer\'s Blessing.'],

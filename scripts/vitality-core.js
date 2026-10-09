@@ -133,6 +133,13 @@ export function update(ctx, dt) {
   const max = s.maxHealth || 1000, hp = s.health ?? max;
   if (mem.vitPlace !== me.place) { mem.vitPlace = me.place; mem.safe = null; }
   eat(ctx, me, s, now, dt, hp < (mem.lastHp ?? hp));
+  // Emberwell Spring (x 820, z -60): standing in the steaming water mends 6% of max a second, hurt or not
+  if (me.place === "main") { const fp = me.feetPosition, dx = fp.x - 820, dz = fp.z + 60;
+    if (dx * dx + dz * dz < 6.2 && hp > 0 && hp < max) {
+      s.health = Math.min(max, hp + Math.max(1, Math.round(max * 0.06 * dt))); mem.lastHp = s.health;
+      if (!mem.soaking || now - mem.soaking > 4000) { mem.soaking = now; ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'The warm water eases your wounds', color: '#9fe0d0', size: 1, lifetime: 1.8 }, { audience: { player: me.id } }); }
+    } else if (mem.soaking && (dx * dx + dz * dz >= 6.2)) mem.soaking = 0;
+  }
   if (hp < (mem.lastHp ?? hp)) {
     mem.hurtAt = now;
     if ((mem.lastHp - hp) > max * 0.08 && hp > 0 && now - (mem.gruntAt || 0) > 1200) { mem.gruntAt = now; ctx.emit("playSound", { clip: SND.grunt[Math.floor(ctx.random() * SND.grunt.length)], volume: 0.5, pitch: 0.95 + ctx.random() * 0.1, mode: "restart" }); }
