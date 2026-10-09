@@ -3,6 +3,7 @@
 // (red glow, raised arm) → hit if still in reach (guard reduces it) → leash home. Struck (class scripts write hp/lastHitBy/
 // lastHitAt): flinch and hunt the striker. hp ≤ 0: fall, the killer's tally.quarry_scavenger += 1 (+xp, +copper), fade, respawn.
 import S from "./lib/data/scavengers.yml";
+import { inRefuge } from "./lib/refuge.js";
 import { animate } from "builtin/tween";
 
 const BAR = (name) => `<div face="top" facing="player" offset="0.6m" width="0.8m" class="flex flex-col items-center gap-[10px]">
@@ -160,7 +161,7 @@ export function update(ctx, dt) {
     }
     if (s.mode === "idle") {
       let best = S.aggro, prey = null;
-      for (const p of players) { const d = flat(p.feetPosition, pos); if (d < best) { best = d; prey = p; } }
+      for (const p of players) { if (inRefuge(p.feetPosition)) continue; const d = flat(p.feetPosition, pos); if (d < best) { best = d; prey = p; } }
       if (prey) aggro(ctx, w, s, prey.id);
       else {
         if (now >= (m.roamUntil ?? 0)) {
@@ -173,7 +174,7 @@ export function update(ctx, dt) {
         continue;
       }
     }
-    const p = players.find((q) => q.id === s.target);
+    const p = players.find((q) => q.id === s.target && !inRefuge(q.feetPosition));
     const dist = p ? Math.max(0, flat(p.feetPosition, pos) - ((s.radius || 0.45) - 0.45)) : Infinity; // a big body reaches from its edge
     const T = cs.toll;
     if (T) {

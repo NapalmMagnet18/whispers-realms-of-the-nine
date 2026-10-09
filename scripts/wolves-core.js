@@ -3,6 +3,7 @@
 // reach (guard reduces it) → leash home past 30 m, heal, ignore players. Struck (Vanguard writes hp/lastHitBy/lastHitAt):
 // flinch and hunt the striker. hp ≤ 0: collapse, yelp, the killer's tally.briar_wolf += 1 (+xp, +copper via the player's coins ear), fade, respawn.
 import W from "./lib/data/wolves.yml";
+import { inRefuge } from "./lib/refuge.js";
 import { play, stop } from "builtin/anim";
 import { animate } from "builtin/tween";
 
@@ -135,7 +136,7 @@ export function update(ctx, dt) {
     }
     if (s.mode === "idle") {
       let best = W.aggro, prey = null;
-      for (const p of players) { const d = flat(p.feetPosition, pos); if (d < best) { best = d; prey = p; } }
+      for (const p of players) { if (inRefuge(p.feetPosition)) continue; const d = flat(p.feetPosition, pos); if (d < best) { best = d; prey = p; } }
       if (prey) aggro(ctx, w, s, prey.id);
       else {
         if (now >= (m.roamUntil ?? 0)) {
@@ -148,7 +149,7 @@ export function update(ctx, dt) {
         continue;
       }
     }
-    const p = players.find((q) => q.id === s.target);
+    const p = players.find((q) => q.id === s.target && !inRefuge(q.feetPosition));
     const dist = p ? flat(p.feetPosition, pos) : Infinity;
     if (s.mode === "windup") {
       halt(w, m);
