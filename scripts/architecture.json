@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 2228,
-  "updatedAt": "2026-10-09T13:18:23.447Z",
+  "basedOnSpecVersion": 2257,
+  "updatedAt": "2026-10-09T14:49:47.852Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer dark-fantasy MMO across Lantern's March, race homelands, a battleground, and gate-linked dungeon/raid places. MMORPG Tools owns character, realm, persistence and UI lifecycle; ordered player behaviors, shared registries and data-driven combat cores run world systems, while procedural generators and place-selected looks supply presentation.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -301,7 +301,7 @@
     "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; guild registrar, well, merchant/farm landmarks and central routes.",
     "places/main/cells/x-1z0.scene and neighboring woodland cells - Petalfall Hollow/March woods, glade wisps, quarry camp and quest/enemy sites.",
     "places/main/cells/x-7z0.scene, x-9z15.scene, x2z11.scene - Deepgrove Raider, Court Brine-Taker and Phantom Current camps; placements carry crew positions, combat stats and tally keys.",
-    "places/main/cells/x2z12.scene - Gull's Wake/Captain Merrow boss placement uses a dedicated towering drowned-captain model at scale 1.5; boss arena/home/state remain placement-owned.",
+    "places/main/cells/x2z12.scene - Gull's Wake/Captain Merrow boss placement; arena/home/state are placement-owned and the boss definition supplies its dedicated model and scale.",
     "places/banner-vale/ - 5v5 capture-the-banner battleground; place sim/referee handles teams, flags, scores and returns.",
     "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - gate-linked dungeon/raid instances; Hollowcrypt selects FBsRenderer look, other five use ray-traced lighting and place-specific reflection settings.",
     "places/{character-creation-land,main-menu-land}/ - character-creation and menu environments; both use ray-traced look, with creation-land's distinct fill and reflection/bloom tuning."
@@ -309,7 +309,7 @@
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing, realm pulse and Awakening lighting.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.88 Alpha and newest-first Herald patch notes; version tag shown on menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.89 Alpha and newest-first Herald patch notes; version tag shown on menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain, atmosphere/day-night cycle, Awakening frame look, room weather and Party Finder.",
@@ -357,18 +357,18 @@
     "MMORPG player.js dynamically imports lib/player-panel-input.js after a created hero enters a non-meta place; panel module uses shop-data.js, profession-data.js and scripts/lib/talents.js.",
     "ui-menu-panel.js renders talents from scripts/lib/talents.js → spendTalent/resetTalents handled by player-panel-input.js → state.unlockedTalents; class cores/kit and quest-player derive combat, cooldown and health effects.",
     "ui-menu-panel.js character tab → scripts/lib/sheet.js sheetOf(state) reads level, equipment, training and talents → displays derived character stats without owning character state.",
-    "Class wrappers lazily load matching cores; HUD maps spell slots to per-class action ids; class cores and missile effects produce action/impact FX, with arcanist spells and class-specific ground impacts handled by their respective core/data paths.",
+    "Class wrappers lazily load matching cores; HUD maps spell slots to per-class action ids; class cores and missile effects produce action/impact FX, with arcanist spells and class-specific ground impacts handled by their respective core/data.",
     "places/main atmosphere.timeOfDay → region-music.js selects music.yml night ambience/stingers and creates per-player camera-following forest fireflies/wisps or day motes by zone; enemy cores update their placed actors."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; floor roughness is layout-specific for traced reflections.",
-    "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by definition: hp, arena, abilities/telegraphs, phases, enrage, rewards, model and scale; Captain Merrow's dedicated Gull's Wake model is set in both boss data and its scene placement.",
+    "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by definition: hp, arena, abilities/telegraphs, phases, enrage, rewards, model and scale; Drowned Echo summons use their own drowned choirboy model.",
     "scripts/gen/flora.js - seeded flora across March roads, race-town beds, Reedhaven cottage gardens and Thornhollow bloom clearings; kind, palette, seed, scale and density vary.",
     "scripts/gen/house.js - generated cottages/halls share house geometry with width/depth, roof, chimney and window parameters; cottage weathering/detail differs from stone halls.",
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed.",
     "scripts/gen/{ashen,ashen-village,grave-ground}.js - Ashen Close graveyard, cathedral yard, gothic village pieces and cover; helper, kind, seed, LOD and dimensions vary.",
     "scripts/gen/fen.js and scripts/gen/tree.js - seeded marsh props/boardwalks and March pines/oaks/dead trees recur across regions; kind, seed, LOD and dimensions vary.",
-    "scripts/lib/missiles.js + class cores - data/ability-driven missile and strike FX vary by class, element and impact surface; recent Shade/Rain of Thorns and Vanguard additions include colored impact light, ground rings, embers and persistent smoky magma cracks."
+    "scripts/lib/missiles.js + class cores - data/ability-driven missile and strike FX vary by class, element and impact surface; class-specific ground hits add effects such as colored light, rings, embers and lingering marks."
   ],
   "probableOrphans": [
     "scripts/gen/grave-weeds.js - no scene or other package reference; graveyard cover is currently placed through grave-ground.js instead."
@@ -379,6 +379,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, then counts enterTally.",
     "Creation and first-arrival veils use ui-zone-splash.js zoneArtFor/arrivalVeil; scripts/player.js stamps _areaReady after stable grounded terrain contact and splash retains its wait/hold/fade contract.",
     "Talent picks are state.unlockedTalents entries keyed spec:tier, not flat tier numbers; points derive from floor(level/5), max 12, with one pick per tier in a spec; kit.js and quest-player.js consume derived effects.",
-    "Lantern March audio reads live atmosphere.timeOfDay; keep the one-hour cycle and music.yml night thresholds aligned. Woodlight is session-local and camera-following; missile linger is emitted only on ground-mark hits; keep boss model/scale consistent between bosses.yml and explicit scene overrides."
+    "Lantern March audio reads live atmosphere.timeOfDay; keep the one-hour cycle and music.yml night thresholds aligned. Woodlight is session-local and camera-following; bosses.yml defines boss model/scale and mechanics, while scene placements own arena/home/state."
   ]
 }
