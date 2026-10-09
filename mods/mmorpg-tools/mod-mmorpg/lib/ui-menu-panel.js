@@ -12,6 +12,7 @@ const { renderReputationTab } = require('./ui-reputation.js');
 const { ITEM_LOOKUP } = require('./class-items.js');
 const { QUEST_DATABASE } = require('./quest-data.js');
 const { frame: _frame, rule: _rule } = require('./ui-art.js');
+import { sheetOf } from '../../../../scripts/lib/sheet.js';
 import { TREES, classKey, pointsFree, pointsEarned, fxText, talentFx, canPick, LEVEL_PER_POINT } from '../../../../scripts/lib/talents.js';
 // brass kit pieces shared by every window in this panel
 var _PLATE = 'position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:3px 18px;background:linear-gradient(#3a2a1c,#1a120c);border:1px solid #c9a46a;box-shadow:inset 0 0 0 1px #6b4a2f,0 2px 6px #000;color:#f2b04a;font:600 14px Cinzel,serif;letter-spacing:1px;white-space:nowrap;text-shadow:0 1px 2px #000;z-index:30;pointer-events:none;';
@@ -132,7 +133,7 @@ export function renderCharTab(s) {
   var race = RACES[raceIndex];
   var raceName = race ? race.name : 'Human';
   var raceClasses = race ? race.classes : CLASSES;
-  var className = raceClasses[classIndex] || CLASSES[classIndex] || 'Blood Knight';
+  var className = s.className || raceClasses[classIndex] || CLASSES[classIndex] || 'Vanguard';
   var rawName = s.charName || 'Unknown';
   var charName = rawName.charAt(0).toUpperCase() + rawName.slice(1);
   var level = s.level ?? 1;
@@ -182,8 +183,42 @@ export function renderCharTab(s) {
     + '</div>';
 
   html += '<div style="text-align:center;margin-top:2px;font-family:Cinzel,serif;font-size:13px;color:rgba(180,155,100,0.35);letter-spacing:1px;">Left-click to unequip</div>';
-
+  html += renderPowerSheet(s);
   return html;
+}
+
+// the real numbers under every swing (scripts/lib/sheet.js mirrors kit.js power, the cores' haste, quest-player health)
+export function renderPowerSheet(s) {
+  var sh = sheetOf(s), x = sh.xp;
+  var lab = 'font-family:Cinzel,serif;font-size:13px;color:rgba(200,175,120,.75);';
+  var val = 'font-family:Cinzel,serif;font-size:14px;font-weight:bold;color:#e8d9b5;';
+  var pc = function (m) { return '+' + Math.round((m - 1) * 100) + '%'; };
+  var row = function (a, b, tip) { return '<div title="' + (tip || '') + '" style="display:flex;justify-content:space-between;line-height:1.55;"><span style="' + lab + '">' + a + '</span><span style="' + val + '">' + b + '</span></div>'; };
+  var h = '<div style="margin:10px 6px 0;padding:10px 12px;' + _frame('skillRow', 10, 'rgba(20,14,10,.88)') + '">';
+  h += '<div style="display:flex;justify-content:space-between;align-items:baseline;font-family:Cinzel,serif;color:#c9a46a;font-size:13px;letter-spacing:1.5px;margin-bottom:4px;"><span>EXPERIENCE</span><span style="font-size:12px;color:rgba(232,217,181,.7);">'
+    + (x.capped ? 'Level cap' : x.into + ' / ' + x.need + ' XP') + '</span></div>';
+  var f = x.capped ? 1 : Math.max(0, Math.min(1, x.into / Math.max(1, x.need)));
+  h += '<div style="height:8px;border:1px solid #6b4a2f;background:#120c08;border-radius:2px;overflow:hidden;margin-bottom:10px;"><div style="height:100%;width:' + (f * 100).toFixed(1) + '%;background:linear-gradient(90deg,#7a5a20,#f2b04a);box-shadow:0 0 8px #f2b04a88;"></div></div>';
+  h += '<div style="font-family:Cinzel,serif;color:#c9a46a;font-size:13px;letter-spacing:1.5px;margin-bottom:2px;">POWER</div>';
+  h += '<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;"><span style="font-family:Cinzel,serif;font-size:28px;color:#f2b04a;text-shadow:0 0 10px #f2b04a55;">\u00d7' + sh.damage.toFixed(2) + '</span><span style="' + lab + '">damage on every ability</span></div>';
+  h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">'
+    + row('From level', pc(sh.parts.level), 'every level past 1 adds 8%')
+    + row('From gear', pc(sh.parts.gear), sh.worn + ' pieces worn')
+    + row('From training', pc(sh.parts.trained), 'rank ' + sh.trained + ' with your trainer')
+    + row('From talents', pc(sh.parts.talents), 'press N')
+    + row('Cooldowns', sh.haste ? '\u2212' + sh.haste + '%' : '\u2014', 'talent haste')
+    + row('Max health', (s.maxHealth ?? 0) + (sh.healthPct ? ' <span style="font-size:11px;color:#8fcf6a;">+' + sh.healthPct + '%</span>' : ''), sh.stamina ? '+' + sh.stamina + ' from gear stamina' : '')
+    + '</div>';
+  h += '<div style="font-family:Cinzel,serif;color:#c9a46a;font-size:13px;letter-spacing:1.5px;margin:8px 0 4px;">SPECIALIZATION' + (sh.main ? ' <span style="color:' + sh.main.color + ';letter-spacing:.5px;">\u2022 ' + sh.main.name + '</span>' : '') + '</div>';
+  h += '<div style="display:flex;gap:6px;">';
+  for (var i = 0; i < sh.specs.length; i++) {
+    var sp = sh.specs[i];
+    h += '<div data-interactive onclick="sendAction(\'setMenuTab\',{tab:\'talents\'})" style="flex:1;display:flex;align-items:center;gap:6px;padding:4px;cursor:pointer;border:1px solid ' + sp.color + (sp.n ? '' : '44') + ';border-radius:4px;background:rgba(14,10,8,.9);' + (sp.n ? '' : 'opacity:.55;') + '">'
+      + '<img src="' + sp.icon + '" style="width:24px;height:24px;border-radius:3px;pointer-events:none;"/>'
+      + '<div style="font-family:Cinzel,serif;font-size:11px;color:' + sp.color + ';line-height:1.1;">' + sp.name + '<br/><span style="color:rgba(232,217,181,.7);">' + sp.n + ' / 4</span></div></div>';
+  }
+  h += '</div></div>';
+  return h;
 }
 
 // ─── TAB: STATS ───
