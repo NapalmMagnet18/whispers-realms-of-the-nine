@@ -8,16 +8,6 @@ const PAL = {
 };
 function rng(seed) { let s = seed >>> 0 || 1; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
 
-// a 4-sided timber beam between two points, thick t (square section, its sides along Z and the bend)
-function beam(ctx, a, b, t) {
-  const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy) || 1;
-  const nx = -dy / len, ny = dx / len, h = t / 2;
-  const P = (p, s, z) => [p[0] + nx * s * h, p[1] + ny * s * h, z * h];
-  const A = [P(a, -1, -1), P(a, 1, -1), P(a, 1, 1), P(a, -1, 1)], B = [P(b, -1, -1), P(b, 1, -1), P(b, 1, 1), P(b, -1, 1)];
-  const N = [[0, 0, -1], [nx, ny, 0], [0, 0, 1], [-nx, -ny, 0]];
-  for (let i = 0; i < 4; i++) { const j = (i + 1) % 4; quadN(ctx, A[i], A[j], B[j], B[i], N[(i + 1) % 4 === 0 ? 3 : i === 0 ? 1 : i === 1 ? 2 : i === 2 ? 3 : 0]); }
-}
-
 export function geometry(ctx) {
   const far = (ctx.lod ?? 1) >= 3;
   const span = ctx.params?.span ?? 5.2, H = ctx.params?.height ?? 3.4, R = span / 2 + 0.2;
@@ -42,10 +32,8 @@ export function geometry(ctx) {
   oak("oklch(0.3 0.04 45)");
   for (const z of [-0.28, 0.28]) for (let i = 0; i < seg; i++) {
     const a = arc(i), b = arc(i + 1);
-    ctx.translateZ ? null : null;
     const off = (p) => [p[0], p[1], 0];
     const A = off(a), B = off(b);
-    // shift by z: build beam then move by z via a tiny inline prism
     const dx = B[0] - A[0], dy = B[1] - A[1], len = Math.hypot(dx, dy), nx = -dy / len, ny = dx / len, h = 0.09;
     const P = (p, s, zz) => [p[0] + nx * s * h, p[1] + ny * s * h, z + zz * h];
     const Q = [[P(A, -1, -1), P(A, 1, -1), P(B, 1, -1), P(B, -1, -1), [0, 0, -1]], [P(A, 1, -1), P(A, 1, 1), P(B, 1, 1), P(B, 1, -1), [nx, ny, 0]],
