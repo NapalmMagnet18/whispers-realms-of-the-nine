@@ -1,10 +1,14 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 2004,
-  "updatedAt": "2026-10-09T10:05:53.983Z",
-  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared registries/data drive gameplay, while the newly active Awakening lighting/frame look and the menu's ray-traced look form separate visual pipelines.",
+  "basedOnSpecVersion": 2033,
+  "updatedAt": "2026-10-09T10:16:29.324Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer dark-fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; shared registries and ordered player behaviors drive gameplay, with Awakening as the global lighting/frame pipeline, a separate FBsRenderer film look on Hollowcrypt, and Animação Viva math now powering wolf gait timing.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
+    "mods/animacao-viva/lib/avisos.js",
+    "mods/animacao-viva/lib/camadas.js",
+    "mods/animacao-viva/lib/maquina.js",
+    "mods/animacao-viva/lib/mistura.js",
     "mods/awakening/erosion.js",
     "mods/awakening/floor-cover.js",
     "mods/awakening/forest.js",
@@ -63,6 +67,12 @@
     "mods/codex/lib/doc-ui.js",
     "mods/codex/lib/doc-vfx.js",
     "mods/codex/panel.js",
+    "mods/fbsrenderer/bounce.js",
+    "mods/fbsrenderer/lib/ao.js",
+    "mods/fbsrenderer/lib/brdf.js",
+    "mods/fbsrenderer/lib/tuning.js",
+    "mods/fbsrenderer/lighting.js",
+    "mods/fbsrenderer/look.js",
     "mods/gavi/equipe.js",
     "mods/gavi/painel-equipe.js",
     "mods/mmorpg-tools/mod-mmorpg/building-interact.js",
@@ -287,18 +297,18 @@
   "places": [
     "places/main/ - streamed Lantern March continent; 136 cells span the Reach, race towns, quest regions and landmarks; config.yaml selects Awakening lighting/frame look and defines terrain and atmosphere.",
     "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; guild registrar, well, merchant/farm landmarks and central routes.",
-    "places/main/cells/x-1z0.scene, x-1z1.scene and neighboring woodland cells - Petalfall Hollow and March woods; shared glade wisps appear in Petalfall, Briarwild, Deepgrove, Deepwood, Thornhollow, Sorrowfen and Velthraen.",
-    "places/main/cells/x6z0.scene and x6z-1.scene - Emberwell Spring near (820,-60), west of Cinderhold: steaming lit basin, rocks/stones and miner's strongbox (cache key emberwell-spring).",
-    "places/main/cells/x-1z-8.scene - Starfall Eyrie approach and The Star Pool at (-120,-1060): gravel shelf, basin, five stones and Star-watcher's chest (cache key starpool).",
+    "places/main/cells/x-1z0.scene and neighboring woodland cells - Petalfall Hollow/March woods; shared glade wisps appear across Petalfall, Briarwild, Deepgrove, Deepwood, Thornhollow, Sorrowfen and Velthraen; quarry camp now uses a Bloodmarked Raider model.",
+    "places/main/cells/x1z0.scene - Cinderhold/quarry approach; soot-ghoul drill crew and Gorrath, the Pit-Warden mini-boss camp with cleaver toll and paired braziers at roughly (138,20).",
+    "places/main/cells/x6z0.scene and x6z-1.scene - Emberwell Spring near (820,-60), west of Cinderhold: steaming lit basin and miner's strongbox (cache key emberwell-spring); x-1z-8.scene holds Starfall Eyrie/The Star Pool (-120,-1060), basin and Star-watcher's chest (cache key starpool).",
     "places/main/cells/x-1z1.scene and places/main/config.yaml hamlet-rise - Reedhaven-road cottages with lamps and flower gardens; terrain flatten centers at (-145,117), radius 36, height 2.4.",
-    "places/banner-vale/ - 5v5 capture-the-banner battleground; places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - gate-linked dungeon/raid instances.",
-    "places/{character-creation-land,main-menu-land}/ - character creation and menu environments; main-menu-land uses ray-traced look, instance places each hold themed layouts."
+    "places/banner-vale/ - 5v5 capture-the-banner battleground; places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ - gate-linked dungeon/raid instances; hollowcrypt/config.yaml uniquely uses FBsRenderer film look.",
+    "places/{character-creation-land,main-menu-land}/ - character creation and menu environments; main-menu-land uses ray-traced look, instances hold themed layouts."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing, realm pulse and Awakening lighting model.",
     "places/main-menu-land/config.yaml - menu environment and mods/raytraced-lighting/look-raytrace.js title-screen look.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.53 Alpha and Herald patch notes; version tag appears on menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.56 Alpha and Herald patch notes; version tag appears on menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere with Awakening frame look plus room weather and Party Finder matching.",
@@ -310,9 +320,9 @@
     "mods/mmorpg-tools/mod-mmorpg/lib/music-tracks.js - named soundtrack catalog for Music/jukebox UI; scripts/lib/data/music.yml independently selects rotating themed playlists.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-splash.js - stable per-day zone art and arrival veil shared by creation loading and in-world arrival; ui.js requires it eagerly for first-frame veil rendering.",
     "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world panel actions; player.js imports it after a hero enters the world and it imports shop-data.js and profession-data.js.",
-    "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry used by quests, class actions, vitality, flight and regional music.",
-    "scripts/lib/regions.js - REGIONS/MARCH/regionAt shared by terrain-side region music and HUD named-area recognition; ids key scripts/lib/data/music.yml.",
-    "mods/awakening/lib/ - shared water, sky, terrain and wake math used by Awakening shaders/behaviors and world-specific build tools; individual water/terrain features are opt-in placements."
+    "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry used by quests, class actions, vitality, flight and regional music; scripts/lib/regions.js provides REGIONS/MARCH/regionAt to music and HUD.",
+    "mods/awakening/lib/ - shared water, sky, terrain and wake math for Awakening shaders/behaviors and world-specific build tools; individual features are opt-in placements.",
+    "mods/animacao-viva/lib/ - pure reusable pose/blend, state-machine, layered-animation and notify math; scripts/wolves-core.js currently imports mistura.js for velocity-derived gait frequency."
   ],
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
@@ -321,8 +331,8 @@
     "scripts/lib/lazy.js - lazyBehavior; scripts/lib/resident-animation.js - residentIdle, greetResident, residentPitch.",
     "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class actions; scripts/flight-core.js - updateSchedule, onInput, update.",
     "scripts/vitality-core.js - bloodEnds, blessEnds, onInput, updateSchedule, update; wolves-core.js and scavengers-core.js - update.",
-    "templates/glade.js - wisps effect template (fx, tags, visibleRange); scripts/lib/missiles.js - MISSILES data for fire, frost and other missile effects.",
-    "mods/awakening/lighting.js - lighting; mods/awakening/look.js - look; mods/awakening/forest.js - plantForest; scripts/wolves-core.js - update."
+    "mods/animacao-viva/lib/{camadas,maquina,avisos}.js - criaMisturador, criaMaquina, criaAvisos; mistura.js - criaMistura, criaRelogio, velocidadeParaHz and blend helpers.",
+    "mods/fbsrenderer/{lighting,look,bounce}.js - lighting, look, bounce update; lib/brdf.js and lib/ao.js provide shading/contact-shadow helpers; scripts/gen/wolf.js - skeleton, geometry."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent, velocity/footstep state, arrival ground-ready stamp _areaReady and jump/landing/footstep sounds.",
@@ -332,7 +342,7 @@
     "mods/mmorpg-tools/mod-mmorpg/character-select.js - character selection/creation UI behavior and preview lifecycle; per-object _loadProg tracks loader animation outside replicated/shared state.",
     "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action/cooldown state and combat effects; wrappers load and forward to matching core.",
     "scripts/flight-core.js - player roost discovery, flight map and flying mount/route state; saved roosts live on character state.",
-    "scripts/region-music.js - per-session current region and playlist cursor/timing; per-character state.discoveredZones; scripts/wolves-core.js owns wolf AI/gaits and attack/fall animation effects."
+    "scripts/region-music.js - per-session current region and playlist cursor/timing; per-character state.discoveredZones; scripts/wolves-core.js owns wolf AI/gaits and attack/fall effects; scripts/scavengers-core.js owns per-camp AI scratch and action/gait timing."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -345,8 +355,8 @@
     "MMORPG player.js dynamically imports lib/player-panel-input.js after a created hero stands outside a meta place; panel module imports shop-data.js and profession-data.js and receives host helpers.",
     "MMORPG ui.js warms roster/settings first and delays in-world HUD modules until 2.5 seconds after menu first paint; HUD, quest, vendor, frames and other modules remain lazy-loaded.",
     "Character save → realm-save SQL upsert and legacy roster write; fingerprint advances only after SQL success and both writes finish (or storage-only fallback); SQL failure retains progression for retry and logout waits for confirmed save.",
-    "world.config.yaml selects mods/awakening/lighting.js globally; places/main/config.yaml selects mods/awakening/look.js and its mist/cloud/grade params, while places/main-menu-land/config.yaml independently selects raytraced menu look.",
-    "scripts/wolves.js wrapper → scripts/wolves-core.js update: wolf AI selects idle/walk/gallop gaits, lunges and emits hit/fall FX; wolves remain under the shared core behavior."
+    "world.config.yaml selects mods/awakening/lighting.js globally; places/main/config.yaml selects mods/awakening/look.js, main-menu-land selects ray-traced look, and hollowcrypt/config.yaml selects mods/fbsrenderer/look.js with exposure/sat/vignette/grain/dread params.",
+    "scripts/wolves.js wrapper → scripts/wolves-core.js update → scripts/gen/wolf.js body; core imports mods/animacao-viva/lib/mistura.js velocidadeParaHz to match gait playback to ground speed. scripts/scavengers.js lazy-loads scavengers-core.js; its data-driven camp manager handles quarry crews and Gorrath's windup/toll/death/reward cycle."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
@@ -356,7 +366,7 @@
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed.",
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and cover; helper, kind, seed, LOD and dimensions vary pieces.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
-    "scripts/wolves-core.js - one wolf AI/gait system reused by wolf placements, varied by movement mode and combat state; Awakening sky/water shaders share library math but are independently opted into by world placements."
+    "scripts/scavengers-core.js + scripts/lib/data/scavengers.yml - shared quarry camp AI across crews and Gorrath; model, crew, hp/damage, rewards and toll parameters vary per placement; wolves-core.js separately drives wolf AI and gait."
   ],
   "probableOrphans": [
     "scripts/gen/grave-weeds.js - no scene or other package reference; graveyard cover is currently placed through grave-ground.js instead."
@@ -367,6 +377,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Creation and first-arrival veils must use ui-zone-splash.js zoneArtFor/arrivalVeil; scripts/player.js stamps _areaReady after stable grounded terrain contact, and splash retains its wait/hold/fade contract.",
     "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to character save. Star Pool chest key starpool is the Hidden Places quest-log key.",
-    "Awakening lighting is selected globally and its frame look per place; water, forest, erosion and storm modules are opt-in tools/features. Keep world-specific ids, positions, levels and terrain facts in world/place files, not the reusable mod."
+    "Awakening lighting remains globally selected; FBsRenderer is presently only Hollowcrypt's per-place look (not world lighting). Animação Viva's mistura.js is an actual wolf-core import, and scavenger camp IDs/data rows link scene placements to the shared manager; keep these bindings aligned."
   ]
 }
