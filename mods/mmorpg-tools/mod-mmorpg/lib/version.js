@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.72 Alpha';
+var GAME_VERSION = '0.47.73 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.73', 'Every Foe Its Weather', 'Seven more enemy camps carry an aura. Bloodmarked Raiders kick up dust with red rage-sparks, Deepgrove Raiders trail forest dust and leaves, Court Brine-Takers smoke violet with orbiting motes, the Mirelurker steams and drips under a cold blue glow, Phantom Currents drip sea mist, Tether-Spirits shed falling links of light, and the Inkbound Archivists bleed black ink and drifting runes.'],
   ['v0.47.72', 'Soot and Cinder', 'The Soot-Ghoul Breakers in the Cinderhold quarry now smoke as they work, spitting cinders with a faint ember glow at the face cage. Gorrath, the Pit-Warden, stands in a rust-red forge haze, bone dust drifting off his crown and embers rising off his cleaver arm.'],
   ['v0.47.71', 'Grimfang Roars', 'Grimfang, the Thorn Alpha, now smoulders: red thorn dust and embers rise off him and a low ember glow follows him through the den. When he spots you he lets out a deep roar that shakes the ground and calls every idle wolf in the den down on you.'],
   ['v0.47.70', 'The Pack Calls', 'The first Briar Wolf to catch your scent now throws its head back and howls, and every idle wolf within earshot breaks off and runs at you with it. Walk the Briarwild road carefully.'],
