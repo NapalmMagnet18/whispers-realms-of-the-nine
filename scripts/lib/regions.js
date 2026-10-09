@@ -5,6 +5,7 @@ export const REGIONS = [
   { id: "sea", name: "The Shrouded Sea", test: (x, z) => coastD(x, z) > 1.0 },
   { id: "reach", name: "Lantern's Reach", x: 0, z: 0, r: 70 },
   { id: "petalfall", name: "Petalfall Hollow", x: -100, z: 60, r: 16 },
+  { id: "emberwell", name: "Emberwell Spring", x: 820, z: -60, r: 14 },
   { id: "ashen", name: "Ashen Close", x: 128, z: -185, r: 46 },
   { id: "thornhollow", name: "Thornhollow", x: -720, z: 70, r: 60 },
   { id: "reedhaven", name: "Reedhaven Refuge", x: -430, z: 560, r: 60 },
