@@ -7,20 +7,52 @@ import { inRefuge } from "./lib/refuge.js";
 import { play, stop } from "builtin/anim";
 import { animate } from "builtin/tween";
 
+// Gaits sampled from smooth curves: 24 keys a cycle so the legs roll through their arc instead of snapping between poses.
+const N = 24;
+const wave = (amp, phase = 0, off = 0, harm = 0) => Array.from({ length: N + 1 }, (_, k) => {
+  const t = (k / N) * Math.PI * 2 + phase * Math.PI * 2;
+  return +(off + amp * Math.sin(t) + harm * Math.sin(2 * t)).toFixed(2);
+});
+// a leg's swing: a quick forward reach, a long push back (the foot planted most of the stride)
+const stride = (amp, phase, lift = 0.25) => Array.from({ length: N + 1 }, (_, k) => {
+  const u = ((k / N + phase) % 1 + 1) % 1;
+  const v = u < lift ? -Math.cos((u / lift) * Math.PI) : Math.cos(((u - lift) / (1 - lift)) * Math.PI);
+  return +(amp * v).toFixed(2);
+});
 const GAITS = {
-  idle: { name: "wolf-idle", duration: 3, tracks: { body: { y: [0, 0.012, 0] }, head: { pitch: [0, -5, 3, 0] }, tail: { yaw: [-10, 10, -10] } } },
-  walk: { name: "wolf-walk", duration: 0.9, tracks: {
-    legFL: { pitch: [20, 0, -20, 0, 20] }, legBR: { pitch: [20, 0, -20, 0, 20] }, legFR: { pitch: [-20, 0, 20, 0, -20] }, legBL: { pitch: [-20, 0, 20, 0, -20] },
-    head: { pitch: [0, -3, 0, -3, 0] }, tail: { yaw: [-8, 8, -8] } } },
-  run: { name: "wolf-lope", duration: 0.5, tracks: {
-    legFL: { pitch: [35, 0, -40, -10, 35] }, legFR: { pitch: [25, 10, -35, -20, 25] }, legBL: { pitch: [-40, -10, 35, 0, -40] }, legBR: { pitch: [-30, -20, 30, 10, -30] },
-    body: { pitch: [-5, 0, 5, 0, -5], y: [0, 0.04, 0, 0.04, 0] }, head: { pitch: [5, 0, -6, 0, 5] }, tail: { pitch: [-10, 5, -10] } } },
+  idle: { name: "wolf-idle-2", duration: 4.2, tracks: {
+    body: { y: wave(0.012, 0, 0.006), pitch: wave(0.8, 0.25) },
+    head: { pitch: [0, -4, -6, -2, 3, 6, 4, 0, -2, -1, 0, 1, 0], yaw: [0, 0, 6, 14, 18, 12, 4, -6, -14, -16, -10, -4, 0] },
+    jaw: { pitch: [0, 0, 0, -2, 0, 0, 0, 0, -3, 0, 0, 0, 0] },
+    tail: { yaw: wave(9, 0, 0, 3), pitch: wave(3, 0.3, -6) } } },
+  walk: { name: "wolf-walk-2", duration: 1.0, tracks: {
+    legFL: { pitch: stride(22, 0) }, legBL: { pitch: stride(20, 0.25) }, legFR: { pitch: stride(22, 0.5) }, legBR: { pitch: stride(20, 0.75) },
+    body: { roll: wave(2.2, 0.1), y: wave(0.015, 0, 0.005, 0.01), yaw: wave(1.5, 0.35) },
+    head: { pitch: wave(2.5, 0.1, -2, 1.5), yaw: wave(-2.5, 0.1) },
+    tail: { yaw: wave(10, 0.4), pitch: wave(2, 0.2, -8) } } },
+  run: { name: "wolf-gallop-2", duration: 0.52, tracks: {
+    legFL: { pitch: stride(42, 0.0, 0.4) }, legFR: { pitch: stride(40, 0.08, 0.4) }, legBL: { pitch: stride(-40, 0.52, 0.4) }, legBR: { pitch: stride(-38, 0.6, 0.4) },
+    body: { pitch: wave(6, 0.15), y: wave(0.05, 0.2, 0.03, 0.02) },
+    head: { pitch: wave(-6, 0.1, 4) },
+    jaw: { pitch: wave(-3, 0.3, -6) },
+    tail: { pitch: wave(8, 0.3, 4), yaw: wave(4, 0.1) } } },
 };
 const BAR = `<div face="top" facing="player" offset="0.5m" width="0.8m" class="flex flex-col items-center gap-[10px]">
 <div class="text-[64px] font-bold text-amber-100 tracking-wide" style="font-family:Cinzel,serif;text-shadow:0 3px 6px #000">Briar Wolf</div>
 <div hidden="{{ state.unhurt }}" class="w-full h-[52px] rounded-md bg-black/75 border-[3px] border-amber-900 p-[5px]"><div class="h-full rounded bg-red-700" style="width: {{ state.hpPct }}%"></div></div>
 </div>`;
 
+const pos0 = (w) => w.feetPosition;
+const THUMP = `fx
+pop dust burst=10..14 on=disc(.6) life=.8..1.4 v=up(.3..0.7)+sdir()*(.6..1.2) size=.25..0.45 acc=buoy(.2)+drag(1.6) col=<.55,.5,.42> a=0>.3:.35>0 sz=$size*(.6>2) rot=spin(.1) r=sprite(smoke-puff,alpha)
+pop grit burst=8..12 on=disc(.4) life=.4..0.7 v=up(1..2)+sdir()*(.5..1) size=.02..0.04 acc=grav()+drag(.5) col=<.4,.34,.27> a=1>0 floor=stick r=sprite(grain,alpha)`;
+const BITE_FX = `fx
+pop fur burst=10..16 life=.6..1.1 v=norm(<%normal|0,1,0>)*(1.5..3)+sdir()*(.5..1.2) size=.05..0.1 spin=-6..6 acc=grav()*.5+drag(1.8) col=<.45,.38,.3> a=1>.7:1>0 sz=$size rot=$age*$spin floor=stick r=sprite(stalk,alpha,velocity,.02)
+pop spray burst=8..12 life=.3..0.6 v=norm(<%normal|0,1,0>)*(2..3.5)+sdir()*(.6..1.4) size=.025..0.05 acc=grav()+drag(.8) col=<.55,.06,.05> a=1>0 floor=stick r=sprite(droplet,alpha,velocity,.02)
+pop slash burst=1 life=.18 size=.9 col=hdr(2.5,.5,.3) a=.8>0 sz=$size*(.6>1.2) r=sprite(soft-disc,add)`;
+const SPARKS = `fx
+pop sparks burst=14..22 life=.15..0.35 v=norm(<%normal|0,1,0>)*(3..6)+sdir()*(1.5..3) size=.015..0.03 acc=grav()*.8+drag(.5) col=hdr(5,3.4,1.4)>hdr(2,.7,.15) a=1>0 r=sprite(ember,add,velocity,.02)
+pop flash burst=1 life=.12 size=.7 col=hdr(3,2.6,1.8) a=1>0 r=sprite(soft-disc,add)`;
 const flat = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const arc = (from, to) => ((((to - from) % 360) + 540) % 360) - 180;
 const near = (p) => ({ nearby: p, radius: 40 });
@@ -71,7 +103,10 @@ function die(ctx, w, s, m) {
   s.mode = "dead"; s.diedAt = now; s.target = null; s.hpPct = 0; s.unhurt = true;
   w.velocity = { x: 0, y: -2, z: 0 };
   stop(ctx, w.id, "gait"); m.gait = null;
-  animate(ctx, w.id, { "bones.body.roll": 84, "bones.body.y": -0.34, "bones.head.pitch": -12, "bones.jaw.pitch": -22, "bones.tail.pitch": -20 }, { duration: 0.45, easing: "easeOutCubic" });
+  animate(ctx, w.id, { "bones.body.roll": [0, -8, 20, 70, 92, 84], "bones.body.y": [0, -0.04, -0.12, -0.3, -0.38, -0.34], "bones.body.pitch": [0, 8, 4, 0, 0, 0],
+    "bones.head.pitch": [0, 20, 10, -18, -10, -12], "bones.jaw.pitch": [0, -30, -26, -20, -22, -22], "bones.tail.pitch": [0, 10, -10, -24, -20, -20],
+    "bones.legFL.pitch": [0, -20, 10, 30, 26, 28], "bones.legBR.pitch": [0, 18, -12, -26, -22, -24] }, { duration: 0.85, easing: "easeOutCubic" });
+  ctx.emit("fx", { position: { x: pos.x, y: pos.y + 0.1, z: pos.z }, script: THUMP }, { audience: near(pos) });
   try { animate(ctx, w.id, { "material.dissolve": 1 }, { duration: W.corpse - W.fadeAt, delay: W.fadeAt }); } catch (e) {}
   ctx.emit("playSound", { clip: W.sounds.yelp, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
@@ -87,8 +122,7 @@ function bite(ctx, w, s, m, p, dist) {
   const now = ctx.now();
   m.nextBite = now + W.bite.cooldown * 1000;
   s.mode = "chase";
-  animate(ctx, w.id, { "bones.head.pitch": -18, "bones.jaw.pitch": 0 }, { duration: 0.1 });
-  animate(ctx, w.id, { "bones.head.pitch": 0 }, { duration: 0.3, delay: 0.18 });
+  animate(ctx, w.id, { "bones.head.pitch": [28, -22, -14, 0], "bones.jaw.pitch": [-38, -40, 0, 0], "bones.body.pitch": [0, -8, -4, 0], "bones.body.y": [0, 0.06, 0.02, 0], "bones.legBL.pitch": [0, -25, -10, 0], "bones.legBR.pitch": [0, -25, -10, 0] }, { duration: 0.42, easing: "easeOutCubic" });
   if (dist > W.bite.reach || !p) return;
   const ps = p.state, guarded = (ps.guardUntil ?? 0) > now;
   const health = ps.health ?? 1000;
@@ -97,6 +131,7 @@ function bite(ctx, w, s, m, p, dist) {
   const hit = { x: p.feetPosition.x, y: p.feetPosition.y + 1.1, z: p.feetPosition.z };
   ctx.emit("playSound", { clip: W.sounds.bite, position: hit, volume: 0.75, maxDistance: 30 }, { audience: near(hit) });
   ctx.emit("damageNumber", { position: hit, value: dmg, color: guarded ? "#9fb6c8" : "#ff5a4a" }, { audience: near(hit) });
+  ctx.emit("fx", { position: hit, script: guarded ? SPARKS : BITE_FX, params: { normal: { x: (p.feetPosition.x - pos0(w).x), y: 0.3, z: (p.feetPosition.z - pos0(w).z) } } }, { audience: near(hit) });
   ctx.emit("screenShake", { intensity: guarded ? 0.15 : 0.35, duration: 0.2 }, { audience: { player: p.id } });
   ctx.emit("flash", { target: p.id, color: "#ff3a2a", duration: 0.12 }, { audience: near(hit) });
 }
@@ -124,7 +159,7 @@ export function update(ctx, dt) {
     if (m.hp !== s.hp) { m.hp = s.hp; s.hpPct = Math.max(0, Math.round((100 * s.hp) / (s.maxHp || W.hp))); s.unhurt = s.hp >= (s.maxHp || W.hp); }
     if ((s.lastHitAt ?? 0) !== m.seen) {
       m.seen = s.lastHitAt ?? 0;
-      animate(ctx, w.id, { "bones.body.roll": [0, 14, -7, 0], "bones.head.yaw": [0, -20, 0] }, { duration: 0.3 });
+      animate(ctx, w.id, { "bones.body.roll": [0, 16, -8, 3, 0], "bones.body.y": [0, -0.06, 0.01, 0], "bones.head.yaw": [0, -24, 6, 0], "bones.head.pitch": [0, 12, -4, 0], "bones.jaw.pitch": [0, -24, -10, 0] }, { duration: 0.38, easing: "easeOutCubic" });
       ctx.emit("flash", { target: w.id, color: "#ffffff", duration: 0.08 }, { audience: near(pos) });
       if (s.mode !== "leash" && s.lastHitBy && players.some((p) => p.id === s.lastHitBy)) aggro(ctx, w, s, s.lastHitBy);
     }
