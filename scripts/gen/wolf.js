@@ -1,6 +1,7 @@
-// A Briar Wolf: one rigged scripted body. Origin between the paws, nose to −Z. ~1.4 m nose to rump, 0.85 m at the
-// shoulder ruff. Lofted tubes (torso, head, jaw, legs, tail) each riding one bone; fur painted by facing: dark
-// saddle on the back, grey-brown flanks, pale belly and muzzle; amber eyes glow faintly.
+// A Briar Wolf, dark-fantasy cut: one rigged scripted body. Origin between the paws, nose to −Z. ~1.4 m nose to rump,
+// 0.85 m at the shoulder ruff. Lofted tubes (torso, head, jaw, legs, tail) Catmull-Rom densified, each riding one bone;
+// soot-black saddle streaked with fur jitter, ash-umber flanks, bone-grey muzzle; a ridge of thorn-bone spines from
+// nape to tail, bared fangs, black claws and ember-red eyes that burn.
 import { quadN, triN } from "./shape.js";
 
 export function skeleton() {
@@ -22,20 +23,58 @@ const mul = (a, s) => [a[0] * s, a[1] * s, a[2] * s];
 const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
 const norm = (a) => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; };
 
-// tones: 0 fur by facing, 1 pale, 2 dark, 3 nose, 4 leg
+// tones: 0 fur by facing, 1 pale (ash muzzle), 2 dark, 3 nose, 4 leg
 function paint(ctx, out, tone) {
-  const ny = norm(out)[1], j = (ctx.random() - 0.5) * 0.05;
-  let L, C = 0.032, H = 64;
-  if (tone === 1) { L = 0.76; H = 78; C = 0.028; }
-  else if (tone === 2) { L = 0.3; }
-  else if (tone === 3) { L = 0.16; C = 0.01; }
-  else if (tone === 4) { L = ny < -0.2 ? 0.66 : 0.56; H = 70; }
-  else L = ny > 0.62 ? 0.31 : ny > 0.25 ? 0.43 : ny > -0.35 ? 0.54 : 0.75;
-  ctx.color(`oklch(${(L + j).toFixed(3)} ${C} ${H})`);
+  const ny = norm(out)[1], j = (ctx.random() - 0.5) * 0.09;
+  let L, C = 0.03, H = 42;
+  if (tone === 1) { L = 0.52; H = 60; C = 0.018; }
+  else if (tone === 2) { L = 0.14; }
+  else if (tone === 3) { L = 0.09; C = 0.008; }
+  else if (tone === 4) { L = ny < -0.2 ? 0.32 : 0.22; H = 38; }
+  else L = ny > 0.62 ? 0.13 : ny > 0.25 ? 0.2 : ny > -0.35 ? 0.3 : 0.42;
+  ctx.color(`oklch(${Math.max(0.05, L + j).toFixed(3)} ${C} ${H})`);
+}
+
+// Catmull-Rom between stations: k extra rings per span, radii and tone carried along
+function dense(st, k) {
+  if (k <= 0) return st;
+  const out = [];
+  for (let i = 0; i < st.length - 1; i++) {
+    const a = st[Math.max(0, i - 1)], b = st[i], c = st[i + 1], d = st[Math.min(st.length - 1, i + 2)];
+    out.push(b);
+    for (let j = 1; j <= k; j++) {
+      const t = j / (k + 1), t2 = t * t, t3 = t2 * t, r = [];
+      for (let q = 0; q < 5; q++) r.push(0.5 * (2 * b[q] + (-a[q] + c[q]) * t + (2 * a[q] - 5 * b[q] + 4 * c[q] - d[q]) * t2 + (-a[q] + 3 * b[q] - 3 * c[q] + d[q]) * t3));
+      r[3] = Math.max(0.01, r[3]); r[4] = Math.max(0.01, r[4]); r.push(t < 0.5 ? b[5] : c[5]);
+      out.push(r);
+    }
+  }
+  out.push(st[st.length - 1]);
+  return out;
+}
+
+// a four-sided spike from base point b along dir u: thorn-bone, dark at the root, pale at the tip
+function spike(ctx, b, u, len, w) {
+  const up = norm(u), side = norm(cross(up, Math.abs(up[1]) > 0.9 ? [1, 0, 0] : [0, 1, 0])), fwd = cross(side, up);
+  const tip = add(b, mul(up, len)), ring = [add(b, mul(side, w)), add(b, mul(fwd, w)), add(b, mul(side, -w)), add(b, mul(fwd, -w))];
+  for (let i = 0; i < 4; i++) {
+    const a = ring[i], c = ring[(i + 1) % 4], m = mul(add(add(a, c), tip), 1 / 3);
+    ctx.color(`oklch(${(0.34 + ctx.random() * 0.06).toFixed(3)} 0.035 55)`);
+    triN(ctx, a, c, tip, sub(m, b));
+  }
+}
+
+function fang(ctx, x, y, z, down, len) {
+  ctx.color("oklch(0.88 0.03 85)");
+  const tip = [x, y + (down ? -len : len), z - 0.004];
+  triN(ctx, [x - 0.008, y, z], [x + 0.008, y, z], tip, [0, 0, -1]);
+  triN(ctx, [x + 0.008, y, z], [x, y, z + 0.008], tip, [Math.sign(x) || 1, 0, 0.3]);
+  triN(ctx, [x, y, z + 0.008], [x - 0.008, y, z], tip, [-(Math.sign(x) || 1), 0, 0.3]);
 }
 
 // st: [x, y, z, rx, ry, tone]; rings perpendicular to the path, quads wound outward, caps at both ends
-function tube(ctx, st, n) {
+function tube(ctx, st0, n, k = 0) {
+  const st = dense(st0, k);
   const P = st.map((s) => [s[0], s[1], s[2]]);
   const rings = st.map((s, i) => {
     const d = norm(sub(P[Math.min(P.length - 1, i + 1)], P[Math.max(0, i - 1)]));
@@ -76,8 +115,8 @@ function ear(ctx, x) {
 
 function eye(ctx, s) {
   const x = 0.112 * s, n = [s, 0.1, -0.35];
-  ctx.color("oklch(0.8 0.16 72)");
-  ctx.emissive("oklch(0.62 0.17 62)");
+  ctx.color("oklch(0.72 0.2 35)");
+  ctx.emissive("oklch(0.7 0.22 32)");
   quadN(ctx, [x, 0.935, -0.675], [x + 0.004 * s, 0.918, -0.712], [x, 0.903, -0.678], [x - 0.006 * s, 0.918, -0.645], n);
   ctx.emissive(null);
   ctx.color("oklch(0.12 0.01 60)");
@@ -85,7 +124,7 @@ function eye(ctx, s) {
 }
 
 export function geometry(ctx) {
-  const lod = ctx.lod ?? 1, n = lod <= 1 ? 14 : lod <= 2 ? 10 : lod <= 3 ? 8 : lod <= 4 ? 6 : 4, ln = lod >= 5 ? 4 : Math.max(6, n - 4);
+  const lod = ctx.lod ?? 1, n = lod <= 1 ? 22 : lod <= 2 ? 14 : lod <= 3 ? 9 : lod <= 4 ? 6 : 4, ln = lod >= 5 ? 4 : Math.max(6, n - 6), k = lod <= 1 ? 2 : lod <= 2 ? 1 : 0;
   ctx.smooth();
   ctx.roughness(0.92);
   ctx.bone("body");
@@ -93,23 +132,34 @@ export function geometry(ctx) {
     [0, 0.66, 0.5, 0.05, 0.05, 2], [0, 0.66, 0.46, 0.13, 0.15], [0, 0.65, 0.36, 0.165, 0.19], [0, 0.65, 0.2, 0.15, 0.17],
     [0, 0.67, 0.04, 0.14, 0.15], [0, 0.65, -0.14, 0.17, 0.21], [0, 0.64, -0.28, 0.195, 0.235], [0, 0.69, -0.4, 0.18, 0.21],
     [0, 0.77, -0.48, 0.14, 0.15], [0, 0.84, -0.54, 0.115, 0.12],
-  ], n);
+  ], n, k);
+  if (lod <= 3) { // the thorn ridge: nape to rump, longest over the shoulders, raked back
+    const ridge = [[-0.5, 0.93, 0.07], [-0.42, 0.9, 0.11], [-0.33, 0.86, 0.15], [-0.24, 0.85, 0.16], [-0.14, 0.85, 0.15], [-0.04, 0.83, 0.12], [0.06, 0.82, 0.1], [0.16, 0.82, 0.09], [0.26, 0.83, 0.08], [0.36, 0.83, 0.06], [0.44, 0.8, 0.045]];
+    for (const [z, y, len] of ridge) {
+      spike(ctx, [0, y - 0.02, z], [0, 1, 0.55], len, len * 0.22);
+      if (lod <= 2 && len > 0.09) for (const sx of [-1, 1]) spike(ctx, [sx * 0.09, y - 0.06, z + 0.02], [sx * 0.7, 1, 0.5], len * 0.55, len * 0.16);
+    }
+  }
   ctx.bone("tail");
-  tube(ctx, [[0, 0.7, 0.45, 0.05, 0.05], [0, 0.64, 0.58, 0.075, 0.075], [0, 0.54, 0.7, 0.085, 0.085], [0, 0.42, 0.78, 0.07, 0.07, 2], [0, 0.31, 0.82, 0.03, 0.03, 2]], n);
+  tube(ctx, [[0, 0.7, 0.45, 0.05, 0.05], [0, 0.64, 0.58, 0.075, 0.075], [0, 0.54, 0.7, 0.085, 0.085], [0, 0.42, 0.78, 0.07, 0.07, 2], [0, 0.31, 0.82, 0.03, 0.03, 2]], n, k);
+  if (lod <= 2) for (const [y, z, l] of [[0.66, 0.57, 0.06], [0.57, 0.68, 0.05], [0.46, 0.76, 0.04]]) spike(ctx, [0, y + 0.06, z], [0, 1, 0.9], l, l * 0.25);
   ctx.bone("head");
   tube(ctx, [
     [0, 0.88, -0.5, 0.1, 0.1], [0, 0.9, -0.56, 0.13, 0.13], [0, 0.9, -0.65, 0.125, 0.115], [0, 0.875, -0.73, 0.085, 0.07, 1],
     [0, 0.86, -0.81, 0.06, 0.045, 1], [0, 0.855, -0.875, 0.04, 0.032, 3], [0, 0.855, -0.9, 0.02, 0.018, 3],
-  ], n);
+  ], n, k);
+  if (lod <= 2) { fang(ctx, -0.03, 0.835, -0.845, true, 0.045); fang(ctx, 0.03, 0.835, -0.845, true, 0.045); fang(ctx, -0.045, 0.83, -0.8, true, 0.025); fang(ctx, 0.045, 0.83, -0.8, true, 0.025); }
   ear(ctx, -0.075); ear(ctx, 0.075);
   if (lod <= 3) { eye(ctx, -1); eye(ctx, 1); }
   ctx.bone("jaw");
-  tube(ctx, [[0, 0.815, -0.64, 0.07, 0.045, 1], [0, 0.81, -0.76, 0.05, 0.03, 1], [0, 0.815, -0.85, 0.028, 0.018, 1]], ln);
+  tube(ctx, [[0, 0.815, -0.64, 0.07, 0.045, 1], [0, 0.81, -0.76, 0.05, 0.03, 1], [0, 0.815, -0.85, 0.028, 0.018, 1]], ln, k ? 1 : 0);
+  if (lod <= 2) { fang(ctx, -0.022, 0.83, -0.83, false, 0.035); fang(ctx, 0.022, 0.83, -0.83, false, 0.035); }
   for (const s of [-1, 1]) {
     const x = 0.11 * s;
     ctx.bone(s < 0 ? "legFL" : "legFR");
-    tube(ctx, [[x, 0.6, -0.3, 0.065, 0.08], [x, 0.4, -0.31, 0.055, 0.06, 4], [x, 0.2, -0.3, 0.04, 0.045, 4], [x, 0.07, -0.31, 0.04, 0.045, 4], [x, 0.03, -0.35, 0.05, 0.06, 4], [x, 0.005, -0.37, 0.04, 0.045, 3]], ln);
+    tube(ctx, [[x, 0.6, -0.3, 0.065, 0.08], [x, 0.4, -0.31, 0.055, 0.06, 4], [x, 0.2, -0.3, 0.04, 0.045, 4], [x, 0.07, -0.31, 0.04, 0.045, 4], [x, 0.03, -0.35, 0.05, 0.06, 4], [x, 0.005, -0.37, 0.04, 0.045, 3]], ln, k ? 1 : 0);
+    if (lod <= 2) for (const cx of [-0.025, 0, 0.025]) spike(ctx, [x + cx, 0.02, -0.4], [0, -0.3, -1], 0.035, 0.008);
     ctx.bone(s < 0 ? "legBL" : "legBR");
-    tube(ctx, [[x, 0.62, 0.34, 0.08, 0.1], [x, 0.42, 0.28, 0.07, 0.08], [x, 0.22, 0.38, 0.04, 0.045, 4], [x, 0.07, 0.36, 0.035, 0.04, 4], [x, 0.03, 0.33, 0.045, 0.06, 4], [x, 0.005, 0.31, 0.04, 0.045, 3]], ln);
+    tube(ctx, [[x, 0.62, 0.34, 0.08, 0.1], [x, 0.42, 0.28, 0.07, 0.08], [x, 0.22, 0.38, 0.04, 0.045, 4], [x, 0.07, 0.36, 0.035, 0.04, 4], [x, 0.03, 0.33, 0.045, 0.06, 4], [x, 0.005, 0.31, 0.04, 0.045, 3]], ln, k ? 1 : 0);
   }
 }
