@@ -6,9 +6,10 @@ import { rotate, sub, normalize, dot, length } from 'builtin/vec3'
 import { drill, classOf, meleePlayer, strikePlayer, power, meleeFoley } from './lib/kit.js'
 import { isPlay } from './lib/places.js';
 
-const WHOOSH = '/cdn/knife-slice-sharp-blade-swing-eqoai55c.mp3'
+const WHOOSH = '/cdn/moodboard-painterly-fantasy/sfx-longsword-swing-fast-steel-whoosh-air-cut.mp3'
+const HEAVY_WHOOSH = '/cdn/moodboard-painterly-fantasy/sfx-two-handed-greatsword-heavy-overhead-swing-deep-whoosh-warrior-grunt.mp3'
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
-const GUARD_SND = '/cdn/sfx-metal-latch-mechanical-click-l16pxrf7.mp3'
+const GUARD_SND = '/cdn/moodboard-painterly-fantasy/sfx-raise-wooden-iron-rimmed-shield-brace-thump-leather-straps.mp3'
 const SPARKS = `fx
 pop chips burst=10..16 life=.4..0.8 v=<%normal|0,1,0>*(2..4)+sdir()*(.6..1.4) size=.03..0.07 acc=grav()*.8+drag(1.2) col=<.62,.45,.28> a=1>.6:1>0 sz=$size floor=stick r=sprite(stalk,alpha,velocity,.02)
 pop spark burst=6..9 life=.12..0.25 v=sdir()*(3..6) size=.02..0.04 col=hdr(4,3,1.6) a=1>0 r=sprite(ember,add,velocity,.03)
@@ -38,10 +39,10 @@ function act(ctx, kind) {
     ctx.self.state.guardUntil = now + a.length * 1000
     ctx.self.state.guardReduce = a.reduce
     drill(ctx, 'shield-drill')
-    ctx.emit('playSound', { clip: GUARD_SND, position: ctx.self.feetPosition, volume: 0.4 }, { audience: { nearby: ctx.self.feetPosition, radius: 25 } })
+    ctx.emit('playSound', { clip: GUARD_SND, position: ctx.self.feetPosition, volume: 0.5 }, { audience: { nearby: ctx.self.feetPosition, radius: 25 } })
     return
   }
-  ctx.emit('playSound', { clip: WHOOSH, position: ctx.self.feetPosition, volume: 0.35, pitch: kind === 'heavy' ? 0.8 : 1.05 }, { audience: { nearby: ctx.self.feetPosition, radius: 25 } })
+  ctx.emit('playSound', { clip: kind === 'heavy' ? HEAVY_WHOOSH : WHOOSH, position: ctx.self.feetPosition, volume: kind === 'heavy' ? 0.5 : 0.38, pitch: 0.94 + ctx.random() * 0.12 }, { audience: { nearby: ctx.self.feetPosition, radius: 25 } })
   ctx.after(a.hitAt / 1, 'land', { kind })
 }
 
