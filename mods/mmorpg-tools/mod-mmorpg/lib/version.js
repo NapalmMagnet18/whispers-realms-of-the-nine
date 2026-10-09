@@ -2,7 +2,7 @@
 var GAME_VERSION = '0.47.22 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
-  ['v0.47.22', 'The March in Bloom', 'Blossom trees and wildflower meadows now line the roads out of Lantern\'s Reach.'],
+  ['v0.47.22', 'The March in Bloom', 'Blossom trees and wildflower meadows now line the roads out of Lantern\'s Reach.', '/cdn/value.a3b7d175b8f2989f4561896afd914517e6f45914e600f2a1ef647bd38b46eec1.png'],
   ['v0.47', 'Wings over the March', 'Eleven gryphon roosts now link the continent. Walk near one to learn it, press E to fly. The Ninth Veil and the Ashfall Reaches wait at the far edges.', '/cdn/value.9b81f41b857bd952a2ae562a55e5b84d5eb6137b07dee8760b7cc32d97bd68f0.png'],
   ['v0.47', 'The Deepgrove Bounty', 'A lit board west of Rootwake Glade pays for Scab\'s raiders. Level 8 and up.', '/cdn/value.6489d07ac1164f457c728992a582ec1e52cb7ce0d2e3e0b4726fae264c3ebd86.png'],
   ['v0.46', 'Wells of the March', 'Draw a bucket at any town well and drink to heal over time.'],
