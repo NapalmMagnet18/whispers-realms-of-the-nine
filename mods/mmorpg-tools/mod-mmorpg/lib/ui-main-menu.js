@@ -44,12 +44,7 @@ function realmBadge(s) {
 // one big door (Enter World / Create Hero) bottom-centre with the hero and realm it opens onto, the lesser doors
 // stacked bottom-right. The centre stays clear for the realm gate behind it.
 var CREST = '/cdn/value.215dae666ef9a1a74cb16082f46a9e117966c908d5beaee16b35d07c82bcaa3e.png';
-var NEWS = [
-  ['v0.47', 'Wings over the March', 'Eleven gryphon roosts now link the continent. Walk near one to learn it, press E to fly. The Ninth Veil and the Ashfall Reaches wait at the far edges.', '/cdn/value.9b81f41b857bd952a2ae562a55e5b84d5eb6137b07dee8760b7cc32d97bd68f0.png'],
-  ['v0.47', 'The Deepgrove Bounty', 'A lit board west of Rootwake Glade pays for Scab\'s raiders. Level 8 and up.', '/cdn/value.6489d07ac1164f457c728992a582ec1e52cb7ce0d2e3e0b4726fae264c3ebd86.png'],
-  ['v0.46', 'Wells of the March', 'Draw a bucket at any town well and drink to heal over time.'],
-  ['v0.46', 'Party Finder & Banner Vale', 'Queue for dungeons, raids and the 5v5 banner battleground from any town board.', '/cdn/value.b076587b8d0ebb04368c665fb66c1a3d0e1303b8695e64a49188e8c8e5ae0436.png'],
-];
+var NEWS = require('./version.js').PATCH_NOTES;
 var LOGIN_CSS = '<style>'
   + '@keyframes wl-sheen{0%{background-position:-160% 0}55%,100%{background-position:260% 0}}'
   + '@keyframes wl-glow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.95;transform:scale(1.04)}}'
