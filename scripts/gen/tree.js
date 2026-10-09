@@ -84,9 +84,10 @@ export function geometry(ctx) {
 
   if (kind === "pine") {
     const H = 9 + r() * 4;
-    cyl(W, 0, -0.3, 0, 0.42, 0.08, H, lod > 2 ? 6 : 9);
+    cyl(W, 0, -0.3, 0, 0.42, 0.08, H, lod > 2 ? 6 : lod === 1 ? 12 : 9);
+    if (lod === 1) for (let i = 0; i < 4; i++) { const a = i * 1.571 + r() * 0.5; tube([Math.cos(a) * 0.25, 0.35, Math.sin(a) * 0.25], [Math.cos(a) * 0.75, -0.25, Math.sin(a) * 0.75], 0.14, 0.04, 5); }
     ctx.albedo(null);
-    if (lod <= 3) tiers(2.0, H - 1.2, 3.1, lod === 1 ? 7 : lod === 2 ? 5 : 3, lod === 1 ? 6 : lod === 2 ? 5 : 4, 0.3, 0.42);
+    if (lod <= 3) tiers(2.0, H - 1.2, 3.1, lod === 1 ? 10 : lod === 2 ? 6 : 3, lod === 1 ? 8 : lod === 2 ? 6 : 4, 0.3, 0.42);
     // the silhouette: stacked square crossed cards tapering up (a painted cluster stays square, never stretched tall)
     const lv = lod >= 4 ? 2 : 3, span = (H + 0.6 - 1.4) / lv;
     for (let i = 0; i < lv; i++) { const hw = 2.6 * (1 - i * 0.28), y0 = 1.4 + i * span * 0.92; cross(y0, y0 + hw * 2, hw, 2, "oklch(0.86 0 0)"); }
@@ -103,8 +104,18 @@ export function geometry(ctx) {
   }
   if (kind === "dead") {
     const H = 6 + r() * 2;
-    cyl(W, 0, -0.3, 0, 0.35, 0.1, H, 7);
-    for (let i = 0; i < 4; i++) { const y = 2.5 + i * 1.0, a = r() * 360; boxR(W, [Math.cos(a / 57.3) * 0.8, y + 0.4, Math.sin(a / 57.3) * 0.8], [1.8, 0.1, 0.1], { yaw: -a, roll: 30 }); }
+    cyl(W, 0, -0.3, 0, 0.35, 0.1, H, lod > 2 ? 7 : 10);
+    if (lod >= 4) { for (let i = 0; i < 4; i++) { const y = 2.5 + i * 1.0, a = r() * 360; boxR(W, [Math.cos(a / 57.3) * 0.8, y + 0.4, Math.sin(a / 57.3) * 0.8], [1.8, 0.1, 0.1], { yaw: -a, roll: 30 }); } }
+    else {
+      const sg = lod === 1 ? 6 : 4, nl = lod === 1 ? 6 : 4;
+      for (let i = 0; i < nl; i++) {
+        const y = 2.2 + (i / nl) * (H - 2.6), a = i * 2.4 + r() * 0.6, l = 1.6 + r() * 1.2, rad = 0.35 * (1 - y / H) + 0.04;
+        const b = [Math.cos(a) * rad, y, Math.sin(a) * rad], m = [Math.cos(a) * l * 0.55, y + 0.5 + r() * 0.4, Math.sin(a) * l * 0.55], e = [Math.cos(a + 0.3) * l, y + 0.6 + r() * 0.9, Math.sin(a + 0.3) * l];
+        tube(b, m, 0.11, 0.07, sg); tube(m, e, 0.07, 0.015, sg);
+        if (lod <= 2) { const f = [m[0] + Math.cos(a - 0.9) * 0.7, m[1] + 0.8, m[2] + Math.sin(a - 0.9) * 0.7]; tube(m, f, 0.05, 0.01, 4); }
+      }
+      for (let i = 0; i < (lod === 1 ? 5 : 3); i++) { const a = i * 1.257 + r() * 0.4; tube([Math.cos(a) * 0.2, 0.3, Math.sin(a) * 0.2], [Math.cos(a) * 0.7, -0.25, Math.sin(a) * 0.7], 0.12, 0.04, 5); }
+    }
     return { uvs };
   }
   if (kind === "twisted") {
@@ -128,10 +139,22 @@ export function geometry(ctx) {
   }
   // oak: thick trunk, three limbs, a crown of leaf-cluster cards
   const H = 4.5 + r() * 1.5;
-  cyl(W, 0, -0.3, 0, 0.7, 0.42, H, lod > 2 ? 7 : 10);
-  for (let i = 0; i < 3; i++) { const a = (i / 3) * 6.28 + r(), l = 2.2; boxR(W, [Math.cos(a) * l * 0.5, H + 0.7, Math.sin(a) * l * 0.5], [l * 1.2, 0.35, 0.35], { yaw: -a * 57.3, roll: 35 }); }
+  cyl(W, 0, -0.3, 0, 0.7, 0.42, H, lod > 2 ? 7 : lod === 1 ? 14 : 10);
+  const tips = [];
+  if (lod >= 4) { for (let i = 0; i < 3; i++) { const a = (i / 3) * 6.28 + r(), l = 2.2; boxR(W, [Math.cos(a) * l * 0.5, H + 0.7, Math.sin(a) * l * 0.5], [l * 1.2, 0.35, 0.35], { yaw: -a * 57.3, roll: 35 }); } }
+  else {
+    const sg = lod === 1 ? 8 : 5, nl = lod === 1 ? 5 : 4;
+    for (let i = 0; i < nl; i++) { // forking, tapering limbs from the trunk's head out under the crown
+      const a = (i / nl) * 6.2832 + r() * 0.6, l = 2.4 + r() * 0.8;
+      const b = [Math.cos(a) * 0.25, H - 0.4 - r() * 0.8, Math.sin(a) * 0.25], m = [Math.cos(a) * l * 0.5, H + 0.7 + r() * 0.5, Math.sin(a) * l * 0.5], e = [Math.cos(a + 0.25) * l, H + 1.5 + r() * 0.8, Math.sin(a + 0.25) * l];
+      tube(b, m, 0.3, 0.2, sg); tube(m, e, 0.2, 0.07, sg); tips.push(e);
+      if (lod <= 2) { const f = [m[0] + Math.cos(a - 0.8) * 1.1, m[1] + 1.2, m[2] + Math.sin(a - 0.8) * 1.1]; tube(m, f, 0.13, 0.04, sg - 2); tips.push(f); }
+    }
+    for (let i = 0; i < (lod === 1 ? 6 : 4); i++) { const a = i * 1.047 + r() * 0.4; tube([Math.cos(a) * 0.4, 0.5, Math.sin(a) * 0.4], [Math.cos(a) * 1.1, -0.25, Math.sin(a) * 1.1], 0.24, 0.06, lod === 1 ? 6 : 4); } // root flare
+  }
   ctx.albedo(null);
-  crown([0, H + 2.3, 0], [3.5, 2.6, 3.5], lod === 1 ? 22 : lod === 2 ? 16 : lod === 3 ? 10 : lod === 4 ? 6 : 4, 1.9, r() * 6);
+  crown([0, H + 2.3, 0], [3.5, 2.6, 3.5], lod === 1 ? 34 : lod === 2 ? 22 : lod === 3 ? 10 : lod === 4 ? 6 : 4, 1.9, r() * 6);
+  if (lod === 1) for (const e of tips) crown(e, [1.1, 0.8, 1.1], 3, 1.1, r() * 6);
   if (lod <= 3) cross(H + 0.6, H + 4.4, 2.6, 2, "oklch(0.8 0 0)");
   return { uvs };
 }
