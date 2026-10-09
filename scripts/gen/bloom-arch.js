@@ -5,6 +5,10 @@ import { quadN, cyl, blob, boxR } from "./shape.js";
 
 const PAL = {
   thorn: ["oklch(0.6 0.18 330)", "oklch(0.7 0.15 350)", "oklch(0.55 0.19 20)", "oklch(0.86 0.08 350)", "oklch(0.66 0.16 300)"],
+  ember: ["oklch(0.7 0.19 40)", "oklch(0.82 0.16 75)", "oklch(0.6 0.2 25)", "oklch(0.88 0.12 95)"],
+  tide: ["oklch(0.95 0.02 230)", "oklch(0.72 0.12 240)", "oklch(0.82 0.08 200)", "oklch(0.9 0.05 330)"],
+  fen: ["oklch(0.68 0.14 295)", "oklch(0.86 0.12 100)", "oklch(0.75 0.1 160)", "oklch(0.93 0.03 90)"],
+  star: ["oklch(0.96 0.02 260)", "oklch(0.7 0.13 270)", "oklch(0.8 0.09 230)", "oklch(0.9 0.05 300)"],
 };
 function rng(seed) { let s = seed >>> 0 || 1; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
 
