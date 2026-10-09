@@ -54,6 +54,15 @@ finder-saltborn:
     feetPosition: {x: 251.77504062792073, y: 3.8324276031947795, z: 1431.337439058119}
     rotation: {yaw: 56.309932474020215}
   template: templates/finder.js#board
+gull-bloom-arch:
+  castShadow: true
+  children: [{feetPosition: {x: 0, y: 3.3, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: 262, y: 11.758771327309285, z: 1406}
+  fx: {script: "fx\npop petals rate=?mobile:1|2 on=box(<3,.5,.6>).c(4.4) life=4..7 v=<.3,-.4,.1>+sdir()*.2 size=.05..0.08 spin=-4..4 acc=curl(.4)*.6+drag(.4) col=<.85,.92,1> a=0>.1:1>.85:1>0 sz=$size rot=$age*$spin floor=stick r=sprite(soft-disc,alpha)"}
+  id: gull-bloom-arch
+  primitive: {kind: scripted, params: {height: 3.4, palette: tide, span: 5.2}, script: scripts/gen/bloom-arch.js, seed: 12}
+  rotation: {lookAt: {x: 302, y: 11.808771327309286, z: 1626}}
+  tags: [landmark, bloom, town-arch]
 hc-nam-flame:
   feetPosition: {x: 233.7, z: 1419.7}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

@@ -26,6 +26,15 @@ bloom-star-4:
   id: bloom-star-4
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
+star-bloom-arch:
+  castShadow: true
+  children: [{feetPosition: {x: 0, y: 3.3, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 10, intensity: 3, kind: point}}]
+  feetPosition: {x: -219.4, y: 119.95, z: -1083.6}
+  fx: {script: "fx\npop petals rate=?mobile:1|2 on=box(<3,.5,.6>).c(4.4) life=4..7 v=<.3,-.4,.1>+sdir()*.2 size=.05..0.08 spin=-4..4 acc=curl(.4)*.6+drag(.4) col=<.95,.95,1> a=0>.1:1>.85:1>0 sz=$size rot=$age*$spin floor=stick r=sprite(soft-disc,alpha)"}
+  id: star-bloom-arch
+  primitive: {kind: scripted, params: {height: 3.4, palette: star, span: 5.2}, script: scripts/gen/bloom-arch.js, seed: 14}
+  rotation: {lookAt: {x: -200, y: 120, z: -1094}}
+  tags: [landmark, bloom, town-arch]
 vey-yard-crate-0:
   feetPosition: {x: -211, y: {terrain: -0.3}, z: -1084}
   id: vey-yard-crate-0
