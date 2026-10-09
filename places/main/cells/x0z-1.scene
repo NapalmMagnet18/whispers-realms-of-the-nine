@@ -43,7 +43,7 @@ hc-mar-boss:
   id: hc-mar-boss
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
-  model: /cdn/model-humanoid-fantasy-pale-acolyte-hooded-monk-wax-white-skin-snuffed-candle-hands.glb
+  model: /cdn/model-humanoid-fantasy-reeve-ashcombe-the-lampless-towering-gaunt-reeve-burnt-black-tabard-hollow-eye-sockets-smoking-dead-lantern-chained-to-wrist-iron-crook-dark-gothic.glb
   physics: character
   rotation: 180
   scale: 1.7
