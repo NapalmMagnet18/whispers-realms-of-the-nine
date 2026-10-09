@@ -1,15 +1,15 @@
 // Every flying thing the class kits fire: its body, its trail, its cast flash and what it throws where it lands, per material.
 // A new missile is one row here and a `missile:` name in a class yml.
 const FIRE_TRAIL = `fx
-pop core local n=1 size=.36 col=hdr(6,3,.9) a=.95 sz=$size*flick(18,.22) r=sprite(soft-disc,add)
-pop heart local n=3 size=.22..0.3 col=hdr(7,5,2.4) a=.8 sz=$size*flick(23,.3) rot=spin(1.5) r=sprite(flame-wisp,add)
+pop core local n=1 size=.26 col=hdr(3.2,1.3,.3) a=.9 sz=$size*flick(18,.22) r=sprite(soft-disc,add)
+pop heart local n=3 size=.16..0.22 col=hdr(3.6,1.9,.6) a=.7 sz=$size*flick(23,.3) rot=spin(1.5) r=sprite(flame-wisp,add)
 pop flame rate=?mobile:45|90 on=sphere(.08) life=.18..0.4 v=sdir()*(.3..0.8) size=.16..0.3 acc=curl(.8)*1.4+buoy(1.4)+drag(2) sz=$size*(.6>1:.4>.12) col=hdr(5,2.6,.7)>.5:hdr(2.6,.9,.15)>hdr(.8,.18,.03) a=0>.1:1>.75:.8>0 rot=spin(.4) r=sprite(flame-wisp,add)
 pop embers rate=?mobile:14|26 on=sphere(.1) life=.35..0.8 v=sdir()*(.6..1.6) size=.012..0.03 acc=curl(1)*.8+grav()*.3+drag(.8) col=hdr(5,2.6,.6)>hdr(1.5,.4,.05) a=(1>0)*flick(9,.4) r=sprite(ember,add,velocity,.02)
 pop smoke on=@flame?.18 inh=p;v:$v*.3 life=.6..1.1 size=.12..0.2 acc=buoy(.7)+curl(.4)*.5+drag(1) sz=$size*(.8>2.6) col=<.2,.18,.17>><.12,.12,.13> a=0>.22:.25>0 rot=spin(.15) r=sprite(smoke-puff,alpha)
 pop haze rate=?low:0|14 on=sphere(.06) life=.25..0.4 size=.4..0.6 sz=$size*(.6>1.3) col=<.004,.006,0> a=.8>0 r=sprite(soft-disc,distort)
 pop glow local n=1 glo=flick(14,.25) r=light(<1,.55,.2>,$glo*6,8)`
 const FIRE_HIT = `fx
-pop flash burst=1 life=.18 size=2.2 col=hdr(7,4,1.4) a=1>0 sz=$size*(.4>1.3) r=sprite(soft-disc,add)
+pop flash burst=1 life=.18 size=1.8 col=hdr(4,1.8,.5) a=1>0 sz=$size*(.4>1.3) r=sprite(soft-disc,add)
 pop ring burst=1 life=.35 size=.5 col=hdr(4,1.8,.4) a=.9>0 sz=$size*(1>4.5) r=sprite(soft-disc,add,axis,0,.4,axis=<0,1,0>)
 pop flame burst=22..32 life=.35..0.8 v=sdir()*(1.5..4)+<%normal|0,1,0>*1.6 size=.3..0.55 acc=curl(.7)*1.5+buoy(2)+drag(3.2) sz=$size*(.6>1.4:.5>.2) col=hdr(5,2.4,.6)>.5:hdr(2.4,.8,.12)>hdr(.7,.15,.03) a=0>.08:1>.7:.8>0 rot=spin(.3) r=sprite(flame-wisp,add)
 pop lick burst=6..9 on=disc(.6) life=.8..1.6 v=up(1.2..2) size=.18..0.32 acc=curl(.5)+buoy(1.5)+drag(2) sz=$size*(.5>1:1>.2) col=hdr(4,1.8,.4)>hdr(1,.25,.04) a=(0>.1:1>.7:.8>0)*flick(10,.3) rot=spin(.3) r=sprite(flame-wisp,add)
@@ -21,13 +21,13 @@ const FIRE_CAST = `fx
 pop spark burst=8..12 life=.15..0.3 v=sdir()*(1..2.5) size=.02..0.035 col=hdr(5,2.4,.6) a=1>0 r=sprite(ember,add,velocity,.02)
 pop puff burst=1 life=.2 size=.5 col=hdr(3,1.4,.4) a=.8>0 sz=$size*(.6>1.2) r=sprite(soft-disc,add)`
 const FROST_TRAIL = `fx
-pop core local n=1 size=.3 col=hdr(1.8,2.8,4.4) a=.85 sz=$size*flick(9,.15) r=sprite(soft-disc,add)
-pop glint local n=2 size=.35..0.45 col=hdr(2.4,3.2,4.8) a=.6 rot=spin(.8) sz=$size*flick(6,.3) r=sprite(shard,add)
+pop core local n=1 size=.22 col=hdr(.7,1.4,2.6) a=.8 sz=$size*flick(9,.15) r=sprite(soft-disc,add)
+pop glint local n=2 size=.14..0.2 col=hdr(.9,1.6,2.8) a=.55 rot=spin(.8) sz=$size*flick(6,.3) r=sprite(shard,add)
 pop mist rate=?mobile:30|60 on=sphere(.08) life=.4..0.8 v=sdir()*(.15..0.4) size=.14..0.26 acc=curl(.4)*.4+grav()*.15+drag(2) sz=$size*(.6>1.6) col=<.78,.9,1> a=0>.1:.45>0 rot=spin(.2) r=sprite(smoke-puff,alpha)
 pop flakes rate=?mobile:12|24 on=sphere(.12) life=.5..1 v=sdir()*(.4..1) size=.025..0.055 spin=-6..6 acc=grav()*.25+drag(1) col=hdr(1.8,2.4,3.2) a=(1>0)*flick(7,.4) rot=$age*$spin r=sprite(snowflake,add)
 pop glow local n=1 r=light(<.55,.75,1>,4,7)`
 const FROST_HIT = `fx
-pop flash burst=1 life=.2 size=1.8 col=hdr(2.2,3.2,5) a=1>0 sz=$size*(.4>1.3) r=sprite(soft-disc,add)
+pop flash burst=1 life=.2 size=1.5 col=hdr(1,1.8,3.2) a=1>0 sz=$size*(.4>1.3) r=sprite(soft-disc,add)
 pop ring burst=1 life=.45 size=.4 col=hdr(1.6,2.4,3.6) a=.8>0 sz=$size*(1>4) r=sprite(soft-disc,add,axis,0,.4,axis=<0,1,0>)
 pop shards burst=18..26 life=.5..1 v=<%normal|0,1,0>*(1.5..3.5)+sdir()*(1.5..3.2) size=.05..0.12 spin=-10..10 acc=grav()+drag(.6) col=<.82,.93,1> a=1>.7:1>0 sz=$size rot=$age*$spin floor=bounce(.3) r=sprite(shard,alpha,velocity,.02)
 pop glints on=@shards?.5 life=.3..0.6 size=.04..0.08 col=hdr(2.4,3.2,4.8) a=(1>0)*flick(14,.6) r=sprite(mote,add)
