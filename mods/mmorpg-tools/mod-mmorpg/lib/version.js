@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.57 Alpha';
+var GAME_VERSION = '0.47.58 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.58', 'Deeper Woods', 'Up close, the March\'s oaks now grow forking, tapered limbs over flared roots with twice the leaf clusters; pines carry fuller tiers; dead trees reach out with gnarled, branching arms.'],
   ['v0.47.57', 'Clear Eyes', 'The March is drawn crisper: finer edges and detail sharpened back after smoothing, the film grain nearly gone, a softer bloom that no longer haloes lamps. The title screen\'s reflections and glow blur less.'],
   ['v0.47.56', 'Teeth in the Dark', 'The beasts and brigands around Lantern\'s Reach have turned. Briar wolves run soot-black now, a ridge of bone thorns down their spines, fangs bared and eyes like embers, and Grimfang the Thorn Alpha, half again their size, leads them from the den. The quarry thieves are hollow cultists in chains and bone charms, the bridge raiders scarred brutes in horned iron, the drill crew soot-ghouls with burning eyes. And at the bottom of the quarry, between two braziers, Gorrath the Pit-Warden waits with his cleaver. South of the Reach, Reeve Ashcombe the Lampless walks again, gaunt and burnt black, a dead lantern smoking on his chain.'],
   ['v0.47.55', 'Clean Swings', 'Quarry scavengers no longer freeze mid-swing: every strike, flinch and toll blends back into their stride. Their blows kick up dust and grit, and a guarded block throws sparks.'],
