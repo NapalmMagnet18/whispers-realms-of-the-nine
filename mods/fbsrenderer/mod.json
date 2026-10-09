@@ -1,0 +1,14 @@
+{
+  "name": "fbsrenderer",
+  "displayName": "FBsRenderer",
+  "description": "The Fourth Knock's renderer: matte real-world GGX shading with soft shadow edges and zero flat ambient, hand-placed bounce lights that follow their lamp, and a film look (screen-space contact shadows, drained grade, lens edge, vignette, grain, a dread dial).",
+  "tags": [
+    "rendering",
+    "lighting",
+    "postfx",
+    "look",
+    "horror"
+  ],
+  "visibility": "public",
+  "version": "1.0.0"
+}
