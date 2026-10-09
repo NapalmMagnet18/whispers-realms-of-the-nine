@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.68 Alpha';
+var GAME_VERSION = '0.47.69 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.69', 'Every Homecoming Has Its Weather', 'All six homecoming bosses now carry their own aura. Gharn the Unbanked drips molten embers in a heat haze, Captain Merrow trails sea mist and seawater, Hollowsong sheds glowing spores and dead leaves, the Unbraided hums with marsh flies over murk, and the Star That Answered spins violet motes and shards around her. Far bosses put theirs on the moment they wake.'],
   ['v0.47.68', 'The Lampless Smoulders', 'Reeve Ashcombe now carries his own dark: soot pours off his shoulders, cold blue embers lift around him, ash drifts down, and his dead lantern smokes with a pale glow at his hip. It all goes out when he is laid to rest, and comes back when he rises again.'],
   ['v0.47.67', 'The Briar Pack Grows Wild', 'Briar Wolves are rebuilt meaner: a shaggy black mane of over a hundred fur tufts, a ragged back and a hanging belly fringe, starved bone ribs showing through the flanks, and thorned briar vines strangling their bodies and winding up their forelegs.'],
   ['v0.47.66', 'Nights in the March', 'The sun over Lantern March finally moves: long golden evenings, then a short starlit night, one full day each hour. After sunset the meadows fill with crickets, owls call from the pines, nightjars churr on the heath, and the Reach goes quiet but for its hearths.'],
