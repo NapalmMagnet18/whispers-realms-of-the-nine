@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1846,
-  "updatedAt": "2026-10-09T07:34:24.899Z",
-  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes. Character creation and first arrival share a stable zone-art veil while the destination loads.",
+  "basedOnSpecVersion": 1863,
+  "updatedAt": "2026-10-09T08:30:35.734Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes. Creation and first arrival share a zone-art veil that now waits for the hero's terrain/ground-ready signal before fading.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -243,14 +243,14 @@
     "places/main/cells/x-1z1.scene - Reedhaven-road meadow with four static, individually roofed cottages, door lamps and flower/blossom garden rings; surrounding seeded flora scatter remains in place.",
     "places/main/config.yaml hamlet-rise - terrain flatten centered at (-145,117), radius 36, height 2.4; places the Reedhaven-road hamlet on a gentle rise.",
     "places/main/cells/x-1z-1.scene, x1z-1.scene and x30z-1.scene - Lantern Ward, Ashen Close and Sunscar; tagged water-interaction wells.",
-    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with Discipline Trainers and banners; town cells have race-specific bloom scatter.",
+    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with Discipline Trainers and banners; x-6z1's Briarkin/Thornhollow start now has seven tagged Thornhollow bloom clearings.",
     "places/main/cells/x-10z7.scene and board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
     "places/banner-vale/ is the 5v5 capture-the-banner battleground; places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ are gate-linked dungeon/raid instances."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.29 Alpha and PATCH_NOTES; main-menu Herald reads news here, settings/pause use versionTag.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.32 Alpha and PATCH_NOTES; main-menu Herald reads news here, settings/pause use versionTag.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere plus room weather and Party Finder matching.",
@@ -260,11 +260,11 @@
   "shared": [
     "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency, shop data and UI modules shared by MMORPG behaviors and gameplay scripts.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population and realm list/detail shared by menu and player lifecycle.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-splash.js - stable per-day zone art and shared arrival veil used by creation loading and in-world arrival UI.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-splash.js - stable per-day zone art and arrival veil shared by creation loading and in-world arrival; ui.js requires it eagerly so the veil draws on the first frame.",
     "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world panel actions; player.js imports it after a hero enters the world; imports shop-data.js and profession-data.js.",
     "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry used by quests, class actions, vitality, flight and regional music.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
-    "scripts/gen/flora.js - seeded geometry/collider generator for blossom, wildflowers, lupine, rosebush and willow; March scatter and cottage gardens vary palette, scale and density.",
+    "scripts/gen/flora.js - seeded geometry/collider generator for blossom, wildflowers, lupine, rosebush and willow; March scatter, cottage gardens and Thornhollow bloom sites vary palette, scale and density.",
     "scripts/lib/lazy.js - lazyBehavior powers class and gameplay wrappers plus boss.js, scavengers.js and wolves.js; resident-animation.js is shared by Elric and townsfolk."
   ],
   "notableExports": [
@@ -274,11 +274,11 @@
     "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class actions; scripts/flight-core.js - updateSchedule, onInput, update.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - character lifecycle, roster restoration, spatial audio, gameplay avatar and save operations.",
     "mods/mmorpg-tools/mod-mmorpg/ui.js - renderMainMenuSettingsOverlay, getRightHudLayout, default, renderZoneBanner, renderWASD; lib/ui-main-menu.js - renderMainMenu.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-splash.js - arrivalVeil, renderZoneSplash, resetZoneSplash, zoneSplashActive, zoneArtFor; character-select.js - playRaceVoice, wrapIndex, getModelUrl, getIdleClip, getPreviewModelUrl, updatePreviewModel, updatePreviewLight, destroyPreview, onSpawn, spawnPreviewIfCreating, update, onInput.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-splash.js - arrivalVeil, renderZoneSplash, resetZoneSplash, zoneSplashActive, zoneArtFor; character-select.js - playRaceVoice, wrapIndex, getModelUrl, getIdleClip, getPreviewModelUrl, updatePreviewModelUrl.",
     "scripts/{boss,scavengers,wolves}.js - lazy wrapper exports; scripts/boss-core.js - onSpawn, update, decided; scripts/{scavengers-core,wolves-core}.js - update."
   ],
   "ownership": [
-    "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
+    "scripts/player.js - room-local movement intent, velocity/footstep state, and arrival ground-ready stamp _areaReady; place config owns gravity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment, quest state and trained rank.",
     "MMORPG player.js - save-in-flight/retry guards and confirmed-save fingerprint; SQL and legacy roster-storage completion gate save completion.",
     "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world door/shop/profession panel input state transitions; player.js owns lazy import and supplies host helpers.",
@@ -292,11 +292,11 @@
     "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu and instance gates stamp allowed transitions; routing validates requested room and saved return.",
     "main-menu-mgr loads current-room SQL roster; api.enterPlace routes selected character to saved place/position. realms.yml feeds routing.js and crons/realm-pulse.js; cron writes player count to realm_pulse, realm-save reads it.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot; nameless SQL rows get a generated Unnamed identity.",
-    "Creation confirm → character-select.js loadingScreen/progress; _loadProg animates locally and loadingProgress state is patched only at coarse intervals → ui.js renders the art/animated arrivalVeil.",
-    "While creating, ui.js asks ui-zone-splash.js for the selected race start's zone art and arrivalVeil; first world render uses the same stable daily zone art and holds/fades the veil as destination position/terrain arrives.",
+    "Creation confirm → character-select.js loadingScreen/progress; _loadProg animates locally and loadingProgress state is patched only at coarse intervals → ui.js renders ui-zone-splash.js art/animated arrivalVeil.",
+    "During creation ui.js uses ui-zone-splash.js zoneArtFor/arrivalVeil for selected race start; on first world render splash waits for scripts/player.js to stamp _areaReady after stable terrain/ground contact (or MAX_WAIT), then holds/fades the same zone art.",
     "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → guild → guild-flag → trades → flight → vitality → cursor-free → region-music; player.js/wow-move.js consume movement/camera intents.",
     "MMORPG player.js dynamically imports lib/player-panel-input.js after a created hero stands outside a meta place; panel module imports shop-data.js and profession-data.js and receives host helpers.",
-    "MMORPG ui.js defers HUD, unit frames/action dock, roster and settings modules behind lazy wrappers; first paint after the gate warms modules and later renders them.",
+    "MMORPG ui.js defers HUD, unit frames/action dock, roster and settings modules behind lazy wrappers; first paint after the gate warms modules and later renders them; ui-zone-splash.js itself is required eagerly to avoid a first-frame black blink.",
     "Character save → realm-save SQL upsert and legacy roster write; fingerprint advances only after SQL success and both writes finish (or storage-only fallback); SQL failure retains progression for delayed retry, logout waits for confirmed save.",
     "On main, scripts/vendor.js forwards to vendor-core.js for eligible characters; vendor/bank UI actions write character state, and coin rewards use the coins ear/economy path.",
     "Quest dialog actions pass through quest-player.js to quest-core.js; dialogRewards resolves offer/turn-in reward IDs through quest/gear catalogs, while accept and turn-in recheck the current giver/receiver talk range."
@@ -304,7 +304,7 @@
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
     "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage and rewards.",
-    "scripts/gen/flora.js - procedural flora scattered along March roads, race-town beds and four Reedhaven cottage gardens, varied by kind, seeded shape, palette, scale and scene density; blossom trees use static colliders.",
+    "scripts/gen/flora.js - procedural flora scattered along March roads, race-town beds and four Reedhaven cottage gardens, with seven Thornhollow bloom clearings at the Briarkin start; vary kind, palette, seed, scale, density and ambient petals/fireflies, with static colliders on trees.",
     "scripts/gen/house.js - four Reedhaven-road cottages reuse generated house geometry, varied by width/depth, roof finish, chimney and window parameters; each scene placement parents a warm door lamp.",
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed.",
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
@@ -318,7 +318,7 @@
     "Adding a playable place requires a row in scripts/lib/places.js PLAY; dying heroes rise at SAFE_HOME for listed dungeons/raids. Quest and class logic uses isPlay rather than hard-coded place names.",
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
-    "Creation and first-arrival veils must use ui-zone-splash.js zoneArtFor/arrivalVeil so art stays consistent across the transition; keep loader progress local/coarsely patched to avoid per-frame UI state rerenders.",
+    "Creation and first-arrival veils must use ui-zone-splash.js zoneArtFor/arrivalVeil so art stays consistent across the transition; _areaReady is stamped by scripts/player.js after 0.9 s stable grounded terrain contact, and the splash retains a 15 s escape cap.",
     "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save. Guild vault moves use SQL version-conditional updates.",
     "Quest book reward IDs and payouts remain authoritative; quest-core.dialogRewards resolves item metadata from quest/gear catalogs only for offer/turn-in dialog copies, preserving unknown IDs as visible names."
   ]
