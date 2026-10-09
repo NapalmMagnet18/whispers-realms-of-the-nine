@@ -108,6 +108,10 @@ function aggro(ctx, w, s, target) {
   s.mode = "chase";
 }
 
+// struck: a puff of dust and grit thrown off the body toward the striker's side, small enough to read on every blow
+const STRUCK = `fx
+pop grit burst=?mobile:5|10 on=sphere(.15) life=.3..0.6 v=sdir()*(1.5..3)+up(.5..1.2) size=.02..0.04 acc=grav()+drag(.8) col=<.4,.32,.25> a=1>.7:1>0 floor=die r=sprite(soft-disc,alpha,velocity,.02)
+pop puff burst=?mobile:2|4 on=sphere(.2) life=.5..0.8 v=sdir()*(.4..0.8) size=.2..0.32 acc=drag(2)+buoy(.2) sz=$size*(.6>1.8) col=<.45,.4,.34> a=0>.1:.35>.6:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)`;
 function die(ctx, w, s, m) {
   const now = ctx.now(), pos = { x: w.feetPosition.x, y: w.feetPosition.y + 1.1, z: w.feetPosition.z };
   s.mode = "dead"; s.diedAt = now; s.target = null; s.hpPct = 0; s.unhurt = true;
@@ -171,6 +175,8 @@ export function update(ctx, dt) {
       m.seen = s.lastHitAt ?? 0;
       animate(ctx, w.id, { "bones.body.roll": [0, 16, -8, 3, 0], "bones.body.y": [0, -0.06, 0.01, 0], "bones.head.yaw": [0, -24, 6, 0], "bones.head.pitch": [0, 12, -4, 0], "bones.jaw.pitch": [0, -24, -10, 0] }, { duration: 0.38, easing: "easeOutCubic" });
       ctx.emit("flash", { target: w.id, color: "#ffffff", duration: 0.08 }, { audience: near(pos) });
+      ctx.emit("squash", { target: w.id, axis: "y", intensity: 0.12, duration: 0.18 }, { audience: near(pos) });
+      ctx.emit("fx", { position: { x: pos.x, y: pos.y + 0.6, z: pos.z }, script: STRUCK }, { audience: near(pos) });
       if (s.mode !== "leash" && s.lastHitBy && players.some((p) => p.id === s.lastHitBy)) aggro(ctx, w, s, s.lastHitBy);
     }
     const fromHome = flat(pos, home);

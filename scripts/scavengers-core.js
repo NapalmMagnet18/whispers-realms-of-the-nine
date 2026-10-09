@@ -75,6 +75,10 @@ pop dust burst=?mobile:8|16 on=disc(.5).c(.1) life=.8..1.4 v=sdir()*(1..2)+up(.3
 pop grit burst=?mobile:6|12 on=disc(.4).c(.2) life=.5..0.9 v=sdir()*(1.5..3)+up(1..2) size=.02..0.04 acc=grav() col=<.3,.25,.2> a=1>.8:1>0 floor=die r=sprite(soft-disc,alpha)
 pop ash delay=%fade|1.5 rate=?mobile:10|22 win=0;1.2 on=disc(.55).c(.3) life=1.4..2.4 v=up(.6..1.2)+sdir()*.2 size=.2..0.35 acc=buoy(.4)+curl(.5)*.5+drag(1) sz=$size*(.6>2.2) col=<.08,.07,.07>><.18,.17,.17> a=0>.12:.4>.6:.25>0 rot=spin(.12) r=sprite(smoke-puff,alpha)
 pop embers delay=%fade|1.5 rate=?mobile:8|18 win=0;1.2 on=disc(.5).c(.4) life=1..1.8 v=up(1..1.8)+sdir()*.3 size=.015..0.03 acc=curl(1)+drag(.5) col=hdr(3.5,1.4,.35)>hdr(1,.25,.05) a=(0>.1:1>.7:.8>0)*flick(10,.4) r=sprite(ember,add,velocity,.02)`;
+// struck: a puff of dust and grit thrown off the body toward the striker's side, small enough to read on every blow
+const STRUCK = `fx
+pop grit burst=?mobile:5|10 on=sphere(.15) life=.3..0.6 v=sdir()*(1.5..3)+up(.5..1.2) size=.02..0.04 acc=grav()+drag(.8) col=<.4,.32,.25> a=1>.7:1>0 floor=die r=sprite(soft-disc,alpha,velocity,.02)
+pop puff burst=?mobile:2|4 on=sphere(.2) life=.5..0.8 v=sdir()*(.4..0.8) size=.2..0.32 acc=drag(2)+buoy(.2) sz=$size*(.6>1.8) col=<.45,.4,.34> a=0>.1:.35>.6:.2>0 rot=spin(.15) r=sprite(smoke-puff,alpha)`;
 function die(ctx, w, s, m) {
   const now = ctx.now(), pos = { x: w.feetPosition.x, y: w.feetPosition.y + 1.2, z: w.feetPosition.z };
   s.mode = "dead"; s.diedAt = now; s.target = null; s.hpPct = 0; s.unhurt = true;
@@ -180,6 +184,8 @@ export function update(ctx, dt) {
       m.seen = s.lastHitAt ?? 0;
       once(w, S.clips.hit, 1.3, m);
       ctx.emit("flash", { target: w.id, color: "#ffffff", duration: 0.08 }, { audience: near(pos) });
+      ctx.emit("squash", { target: w.id, axis: "y", intensity: 0.12, duration: 0.18 }, { audience: near(pos) });
+      ctx.emit("fx", { position: { x: pos.x, y: pos.y + 1.1, z: pos.z }, script: STRUCK }, { audience: near(pos) });
       if (s.mode !== "leash" && s.lastHitBy && players.some((p) => p.id === s.lastHitBy)) aggro(ctx, w, s, s.lastHitBy);
     }
     const fromHome = flat(pos, home);
