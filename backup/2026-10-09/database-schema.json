@@ -1,0 +1,90 @@
+[
+  {
+    "name": "_meta",
+    "sql": "CREATE TABLE _meta (\n        key   TEXT PRIMARY KEY,\n        value TEXT NOT NULL\n      )"
+  },
+  {
+    "name": "_backups",
+    "sql": "CREATE TABLE _backups (\n        label        TEXT PRIMARY KEY,\n        bookmark     TEXT NOT NULL,\n        ts           INTEGER NOT NULL,\n        spec_version TEXT,\n        size_bytes   INTEGER NOT NULL\n      )"
+  },
+  {
+    "name": "_sessions",
+    "sql": "CREATE TABLE _sessions (\n        user_id    TEXT PRIMARY KEY,\n        seq        INTEGER NOT NULL,\n        updated_at INTEGER NOT NULL\n      )"
+  },
+  {
+    "name": "legacy_kv",
+    "sql": "CREATE TABLE legacy_kv (\n        name       TEXT PRIMARY KEY,\n        value_json TEXT NOT NULL,\n        version    INTEGER NOT NULL,\n        updated_at INTEGER NOT NULL\n      )"
+  },
+  {
+    "name": "_calls",
+    "sql": "CREATE TABLE _calls (\n        scope     TEXT NOT NULL,\n        key       TEXT NOT NULL,\n        at        INTEGER NOT NULL,\n        summary   TEXT NOT NULL,\n        rows_json TEXT,\n        held      INTEGER NOT NULL DEFAULT 0,\n        holder    TEXT,\n        PRIMARY KEY (scope, key)\n      )"
+  },
+  {
+    "name": "_identity_residue",
+    "sql": "CREATE TABLE _identity_residue (\n        uuid    TEXT NOT NULL,\n        tbl     TEXT NOT NULL,\n        refused TEXT,\n        schema  TEXT,\n        PRIMARY KEY (uuid, tbl)\n      )"
+  },
+  {
+    "name": "_spawn_realm_state",
+    "sql": "CREATE TABLE _spawn_realm_state (world TEXT NOT NULL, carrier TEXT NOT NULL, state TEXT NOT NULL, seq INTEGER NOT NULL DEFAULT 0, updated_at INTEGER NOT NULL, PRIMARY KEY (world, carrier))"
+  },
+  {
+    "name": "_spawn_realm_fold_progress",
+    "sql": "CREATE TABLE _spawn_realm_fold_progress (source TEXT NOT NULL, world TEXT NOT NULL, carrier TEXT NOT NULL, seq INTEGER NOT NULL, PRIMARY KEY (source, world, carrier))"
+  },
+  {
+    "name": "_spawn_realm_stamps",
+    "sql": "CREATE TABLE _spawn_realm_stamps (world TEXT NOT NULL, carrier TEXT NOT NULL, stamps TEXT NOT NULL, PRIMARY KEY (world, carrier))"
+  },
+  {
+    "name": "_spawn_realm_leaves",
+    "sql": "CREATE TABLE _spawn_realm_leaves (world TEXT NOT NULL, carrier TEXT NOT NULL, path TEXT NOT NULL, value TEXT, stamp INTEGER NOT NULL, PRIMARY KEY (world, carrier, path))"
+  },
+  {
+    "name": "_spawn_realm_leaves_of",
+    "sql": "CREATE TABLE _spawn_realm_leaves_of (world TEXT NOT NULL, carrier TEXT NOT NULL, at INTEGER NOT NULL, PRIMARY KEY (world, carrier))"
+  },
+  {
+    "name": "_calls_ring",
+    "sql": "CREATE TABLE _calls_ring (slot INTEGER PRIMARY KEY, scope TEXT NOT NULL, key TEXT NOT NULL, at INTEGER NOT NULL, summary TEXT NOT NULL, rows_json TEXT, held INTEGER NOT NULL DEFAULT 0, holder TEXT)"
+  },
+  {
+    "name": "_spawn_realm_floors",
+    "sql": "CREATE TABLE _spawn_realm_floors (world TEXT NOT NULL, carrier TEXT NOT NULL, stamp INTEGER NOT NULL, PRIMARY KEY (world, carrier)) WITHOUT ROWID"
+  },
+  {
+    "name": "_sql_manifest",
+    "sql": "CREATE TABLE _sql_manifest (spec_version TEXT NOT NULL, part INTEGER NOT NULL, fetched_at_ms INTEGER NOT NULL, body BLOB NOT NULL, used_at_ms INTEGER, PRIMARY KEY (spec_version, part))"
+  },
+  {
+    "name": "characters",
+    "sql": "CREATE TABLE characters (\n    user_id TEXT NOT NULL, realm TEXT NOT NULL, slot INTEGER NOT NULL,\n    name TEXT NOT NULL, race TEXT NOT NULL, class TEXT NOT NULL, level INTEGER NOT NULL DEFAULT 1,\n    copper INTEGER NOT NULL DEFAULT 0, inventory TEXT NOT NULL DEFAULT '[]', equipment TEXT NOT NULL DEFAULT '{}',\n    data TEXT NOT NULL DEFAULT '{}', created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL,\n    PRIMARY KEY (user_id, realm, slot))"
+  },
+  {
+    "name": "realm_pulse",
+    "sql": "CREATE TABLE realm_pulse (realm TEXT PRIMARY KEY, players INTEGER NOT NULL, at INTEGER NOT NULL)"
+  },
+  {
+    "name": "ledger",
+    "sql": "CREATE TABLE ledger (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id TEXT NOT NULL, realm TEXT NOT NULL, char_name TEXT, delta INTEGER NOT NULL, reason TEXT NOT NULL, balance INTEGER NOT NULL, at INTEGER NOT NULL)"
+  },
+  {
+    "name": "sqlite_sequence",
+    "sql": "CREATE TABLE sqlite_sequence(name,seq)"
+  },
+  {
+    "name": "realm_firsts",
+    "sql": "CREATE TABLE realm_firsts (realm TEXT NOT NULL, feat TEXT NOT NULL, label TEXT NOT NULL, char_name TEXT NOT NULL, class TEXT, level INTEGER, at INTEGER NOT NULL, PRIMARY KEY (realm, feat))"
+  },
+  {
+    "name": "auctions",
+    "sql": "CREATE TABLE auctions (id INTEGER PRIMARY KEY AUTOINCREMENT, realm TEXT NOT NULL, seller TEXT NOT NULL, seller_name TEXT,\n    item TEXT NOT NULL, item_id TEXT NOT NULL, item_name TEXT NOT NULL, count INTEGER NOT NULL DEFAULT 1, price INTEGER NOT NULL,\n    created INTEGER NOT NULL, expires INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'active', buyer TEXT, buyer_name TEXT, sold_at INTEGER, settled INTEGER NOT NULL DEFAULT 0)"
+  },
+  {
+    "name": "guilds",
+    "sql": "CREATE TABLE guilds (realm TEXT NOT NULL, name_key TEXT NOT NULL, name TEXT NOT NULL, leader_user TEXT, leader_name TEXT, created INTEGER NOT NULL, vault TEXT NOT NULL DEFAULT '[]', ver INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (realm, name_key))"
+  },
+  {
+    "name": "_account_links",
+    "sql": "CREATE TABLE _account_links (old_user_id TEXT NOT NULL, user_id TEXT NOT NULL, linked_at TEXT NOT NULL, PRIMARY KEY (old_user_id, user_id))"
+  }
+]
