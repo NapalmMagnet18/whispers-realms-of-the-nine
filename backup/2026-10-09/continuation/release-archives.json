@@ -1,0 +1,90 @@
+[
+  {
+    "file": "whispers-local-libraries-part-01.zip",
+    "bytes": 490661566,
+    "sha256": "99cbe1e44b61fca6d22a61d18c78630051d251abceac6ea1b5c82fb29e563a1b",
+    "files": 1608,
+    "verification": "every file SHA-256 matched after ZIP readback"
+  },
+  {
+    "file": "whispers-local-libraries-part-02.zip",
+    "bytes": 526384200,
+    "sha256": "a2c7b13ded0397dd2da0641770dda6eb86c099251d2f7c02f29f96c6bdb42c72",
+    "files": 349,
+    "verification": "every file SHA-256 matched after ZIP readback"
+  },
+  {
+    "file": "whispers-local-libraries-part-03.zip",
+    "bytes": 427572776,
+    "sha256": "0698d1f091b26d271f39de6dcd5e5baad994d81b0ed44d7bf9fbadb0cac1e7d1",
+    "files": 812,
+    "verification": "every file SHA-256 matched after ZIP readback"
+  },
+  {
+    "file": "whispers-local-libraries-part-04.zip",
+    "bytes": 35547517,
+    "sha256": "1691a5253c32c2f765a61311f3f2dafbe89f13dea33ce7e9ee9cf4e2a9c6d8fc",
+    "files": 65,
+    "verification": "every file SHA-256 matched after ZIP readback"
+  },
+  {
+    "file": "whispers-hosted-assets-part-01.zip",
+    "bytes": 514496219,
+    "sha256": "f3ead33c23e70769387676929a7b8c4cf24d7f9075b9425ec06010ce1564b6cc",
+    "files": 653,
+    "verification": "every file SHA-256 matched after ZIP readback"
+  },
+  {
+    "file": "whispers-hosted-assets-part-02.zip",
+    "bytes": 519253290,
+    "sha256": "d68ff9e0e771a9da3b387a050a97060886cea748e847b87de28b2fee098b406e",
+    "files": 749,
+    "verification": "every file SHA-256 matched after ZIP readback"
+  },
+  {
+    "file": "whispers-hosted-assets-part-03.zip",
+    "bytes": 99133982,
+    "sha256": "6ea9632ca47d99d826bd45ced96e891b16310b0cf2f7d53a8714cd8f30fbaa50",
+    "files": 150,
+    "verification": "every file SHA-256 matched after ZIP readback"
+  },
+  {
+    "file": "whispers-source-main-2026-10-09.bundle",
+    "bytes": 15383973,
+    "sha256": "dd2326101130c48cd9dba48d416b5efca632370ee9a956aed24f5474ca78ebe0",
+    "verification": "git bundle verify passed"
+  },
+  {
+    "file": "whispers-engine-reference-and-schema.zip",
+    "bytes": 105679,
+    "sha256": "50b7b1a1d703318a72e1cc98725f2f3804c86a95ff46c6beb46a5512a5ae8a36",
+    "verification": "ZIP CRC readback passed"
+  },
+  {
+    "file": "whispers-hosted-assets-additions-0174febd.zip",
+    "bytes": 8954063,
+    "sha256": "f29fa93dba479a205faf86a744422599e1b8b580d539919a78f4f37004305441",
+    "files": 3,
+    "verification": "all asset SHA-256 hashes matched ZIP readback"
+  },
+  {
+    "file": "whispers-source-main-0174febd.bundle",
+    "bytes": 14878372,
+    "sha256": "3931c07a5e5f90f38bebaa227b480abf528cb3ad127fdf5f74950125d3e7f601",
+    "verification": "git bundle verify passed; all main ancestry"
+  },
+  {
+    "file": "WHISPERS_Private_Backup_2026-10-09.zip",
+    "bytes": 29794774,
+    "sha256": "9843190322a2781dbbf3e8ae29823139f453c52c038b069eb2c266c7c12dfccb",
+    "encrypted": true,
+    "keyUploaded": false
+  },
+  {
+    "file": "WHISPERS_Private_Backup_Latest_0174febd.zip",
+    "bytes": 28457104,
+    "sha256": "5151877487c5d0ff61aa07e9d0b6617b7d9373fc4300a7dd47da89a438209aed",
+    "encrypted": true,
+    "keyUploaded": false
+  }
+]
