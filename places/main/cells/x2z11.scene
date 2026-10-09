@@ -79,6 +79,11 @@ gull-road-shrine:
   primitive: {kind: scripted, script: scripts/gen/roadshrine.js, seed: 13}
   rotation: {lookAt: {x: 261.05788720607114, y: 10.544074381330914, z: 1398.573882058063}}
   tags: [shrine, landmark, roadside]
+gull-road-shrine/hum:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-wayside-shrine-soft-candle-crackle-gentle-wind-chimes-loop.mp3, gain: 0.16, loop: true, maxDistance: 14, spatial: true}
+  feetPosition: {x: 0, y: 1, z: -0.4}
+  id: gull-road-shrine/hum
+  parent: gull-road-shrine
 hc-nam-flame:
   feetPosition: {x: 233.7, z: 1419.7}
   fx: {script: "fx\npop glow n=1 at=<0,.7,0> r=light(<1.6,1.1,.5>,1.6,5)\npop mote rate=3 on=disc(.5) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<1.6,1.1,.5>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

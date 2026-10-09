@@ -109,6 +109,11 @@ thorn-road-shrine:
   primitive: {kind: scripted, script: scripts/gen/roadshrine.js, seed: 13}
   rotation: {lookAt: {x: -592.0025391524167, y: 13.602105520358462, z: 34.83657958604583}}
   tags: [shrine, landmark, roadside]
+thorn-road-shrine/hum:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-wayside-shrine-soft-candle-crackle-gentle-wind-chimes-loop.mp3, gain: 0.16, loop: true, maxDistance: 14, spatial: true}
+  feetPosition: {x: 0, y: 1, z: -0.4}
+  id: thorn-road-shrine/hum
+  parent: thorn-road-shrine
 thr-border-stone:
   feetPosition: {x: -685, y: {terrain: 0}, z: 58}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.6,.8,1>,2,5)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.6,.8,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

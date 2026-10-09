@@ -13,6 +13,11 @@ star-road-shrine:
   primitive: {kind: scripted, script: scripts/gen/roadshrine.js, seed: 7}
   rotation: {lookAt: {x: -190.7695725828098, y: 96.96445437495555, z: -957.4052998242084}}
   tags: [shrine, landmark, roadside]
+star-road-shrine/hum:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-wayside-shrine-soft-candle-crackle-gentle-wind-chimes-loop.mp3, gain: 0.16, loop: true, maxDistance: 14, spatial: true}
+  feetPosition: {x: 0, y: 1, z: -0.4}
+  id: star-road-shrine/hum
+  parent: star-road-shrine
 vey-home-0:
   feetPosition: {x: -190, y: {terrain: -0.3}, z: -1085}
   id: vey-home-0
