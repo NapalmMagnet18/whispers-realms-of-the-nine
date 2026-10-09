@@ -17,7 +17,7 @@ function _lazyMod(key, path) {
 // the in-world HUD set loads after the menu stands (kicked off on the first paint anywhere), ready long before Enter World
 var _HUD_SRC = { hud: function () { return import('./lib/ui-hud.js'); }, quest: function () { return import('./lib/ui-quest.js'); },
   vendor: function () { return import('./lib/ui-vendor.js'); }, welcome: function () { return import('./lib/ui-welcome.js'); },
-  splash: function () { return import('./lib/ui-zone-splash.js'); }, creation: function () { return import('./lib/ui-creation.js'); }, flight: function () { return import('./lib/ui-flight.js'); }, chat: function () { return import('./lib/ui-chat.js'); }, roster: function () { return import('./lib/ui-character-roster.js'); }, settings: function () { return import('./lib/ui-settings.js'); }, tips: function () { return import('./lib/ui-tip-reminder.js'); }, buffs: function () { return import('./lib/ui-buff-icons.js'); }, trades: function () { return import('./lib/ui-trades.js'); } };
+  splash: function () { return import('./lib/ui-zone-splash.js'); }, creation: function () { return import('./lib/ui-creation.js'); }, flight: function () { return import('./lib/ui-flight.js'); }, chat: function () { return import('./lib/ui-chat.js'); }, frames: function () { return import('./lib/ui-frames.js'); }, roster: function () { return import('./lib/ui-character-roster.js'); }, settings: function () { return import('./lib/ui-settings.js'); }, tips: function () { return import('./lib/ui-tip-reminder.js'); }, buffs: function () { return import('./lib/ui-buff-icons.js'); }, trades: function () { return import('./lib/ui-trades.js'); } };
 var _hudMods = {};
 function _hm(key) {
   var e = _hudMods[key] || (_hudMods[key] = { m: null, p: null });
@@ -43,11 +43,10 @@ function renderBank(a) { var f = _hf('vendor', 'renderBank'); return f ? f(a) : 
 function renderZoneSplash(a) { var f = _hf('splash', 'renderZoneSplash'); return f ? f(a) : ''; }
 function zoneSplashActive() { var f = _hf('splash', 'zoneSplashActive'); return f ? f() : false; }
 function resetZoneSplash() { var f = _hf('splash', 'resetZoneSplash'); if (f) f(); }
-function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); _hm('roster'); _hm('settings'); _hm('chat'); _hm('tips'); _hm('buffs'); }
+function _warmHud() { _hm('creation'); _hm('splash'); _hm('hud'); _hm('quest'); _hm('vendor'); _hm('trades'); _hm('welcome'); _hm('flight'); _hm('roster'); _hm('settings'); _hm('chat'); _hm('frames'); _hm('tips'); _hm('buffs'); }
 function renderMenuPanel(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderMenuPanel(a, b, c) : ''; }
 function renderWorldMapOverlay(a, b, c) { var m = _lazyMod('menu'); return m ? m.renderWorldMapOverlay(a, b, c) : ''; }
 function renderDoorPanel(a) { var m = _lazyMod('door'); return m ? m.renderDoorPanel(a) : ''; }
-const WHF = require('./lib/ui-frames.js');
 const { versionTag } = require('./lib/version.js');
 const { renderHerald, renderRealmChip } = require('./lib/ui-herald.js');
 function renderGnomeTipJar(a, b) { var m = _lazyMod('gnome'); return m ? m.renderGnomeTipJar(a, b) : ''; }
@@ -239,8 +238,9 @@ export default function(world, localPlayer) {
       try { _hudParts.push(renderTipReminder(localPlayer)); } catch(e14) { _hudParts.push(''); }
       try { _hudParts.push(renderVampireDialog(localPlayer)); } catch(e15) { _hudParts.push(''); }
       try { _hudParts.push(renderCursedItemDialog(localPlayer)); } catch(e16) { _hudParts.push(''); }
-      try { _hudParts.push(WHF.CSS + WHF.renderUnitFrames(localPlayer) + WHF.renderDock(localPlayer) + WHF.renderBackpack(localPlayer) + WHF.renderGameMenu()); } catch(e17) { _hudParts.push(''); }
-      var _whCls = ''; try { _whCls = WHF.rootClasses(localPlayer.state || {}); } catch(e18) {}
+      var WHF = _hm('frames'); WHF = WHF && (WHF.renderDock ? WHF : WHF.default);
+      if (WHF) try { _hudParts.push(WHF.CSS + WHF.renderUnitFrames(localPlayer) + WHF.renderDock(localPlayer) + WHF.renderBackpack(localPlayer) + WHF.renderGameMenu()); } catch(e17) { _hudParts.push(''); }
+      var _whCls = ''; if (WHF) try { _whCls = WHF.rootClasses(localPlayer.state || {}); } catch(e18) {}
       var _wrap = _whCls ? wrapOpen.replace('<div id="fa-ui-root"', '<div id="fa-ui-root" data-wh="1"').replace(/<div id="fa-ui-root"([^>]*?)( class="([^"]*)")?/, function(m, a, b, c) { return '<div id="fa-ui-root"' + a.replace(/ class="[^"]*"/, '') + ' class="' + ((c || '') + ' ' + _whCls).trim() + '"'; }) : wrapOpen;
       return FONT_INJECTOR + _wrap + _hudParts.join('') + FONT_WRAP_CLOSE;
     } catch(e) {
