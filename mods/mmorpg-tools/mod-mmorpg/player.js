@@ -840,7 +840,7 @@ export function update(objectApi, dt) {
   var vitStats = (s.stats || {});
   var vitBonus = Math.max(0, ((vitStats.vitality || 10) - 10)) * 0.005;
   // Auto-attack is passive — never zero speed due to isAttacking
-  var baseSpeed = (Number.isFinite(s.walkSpeed) ? s.walkSpeed : 6) * (1 + vitBonus);
+  var baseSpeed = (Number.isFinite(s.walkSpeed) ? s.walkSpeed : 6) * (1 + vitBonus) * (s.blessed ? 1.2 : 1); // road shrine blessing
   // Freeze movement during mine deploy
   if (s.isDeployingMine) baseSpeed = 0;
   var speed = mv.sprint ? baseSpeed * 1.5 : baseSpeed;

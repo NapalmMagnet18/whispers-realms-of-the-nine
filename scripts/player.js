@@ -57,7 +57,8 @@ function walkOf(ctx) {
 export function onInput(ctx, input) {
   // WoW controls: wasd in the camera's basis, right-drag steers, both buttons run, Q autoruns (lib/wow-move.js).
   const m = wowMove(ctx, input, 'stride')
-  walkOf(ctx).moveIntent = { x: m.x * PLAYER.walkSpeed, z: m.z * PLAYER.walkSpeed }
+  const blessed = ctx.self.state.blessed ? 1.2 : 1 // the Wayfarer's Blessing from a road shrine (vitality-core.js)
+  walkOf(ctx).moveIntent = { x: m.x * PLAYER.walkSpeed * blessed, z: m.z * PLAYER.walkSpeed * blessed }
   // The look locks while a dialog is open; the camera rig reads this flag.
   const lock = modalOpen(ctx.self.state)
   if (!!ctx.self.state.wowCameraLocked !== lock) ctx.self.state.wowCameraLocked = lock

@@ -38,6 +38,33 @@ export function bloodEnds(ctx) {
   const fp = ctx.self.feetPosition;
   ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.4 }, text: 'The Blood Pact fades', color: '#c8b890', size: 0.95, lifetime: 1.8 }, { audience: { player: ctx.self.id } });
 }
+// Wayside shrines on the town roads: E kneels for the Wayfarer's Blessing, 20% faster travel for 5 min (player.js reads state.blessed).
+const BLESS = { seconds: 300, cooldown: 300, sound: "/cdn/moodboard-painterly-fantasy/sfx-wayfarers-blessing-soft-bell-chime-warm-choir-breath.mp3",
+  aura: `fx
+pop motes rate=5 on=disc(.4) life=1..1.6 v=up(.4..0.8) size=.03..0.05 acc=curl(.3)+buoy(.15) col=hdr(2.4,1.9,.9) a=0>.2:.8>.7:.5>0 r=sprite(ember,add)`,
+  burst: `fx
+pop rise burst=26 on=disc(.6) life=.9..1.4 v=up(1.4..2.4)+sdir()*.3 size=.04..0.08 acc=drag(1.2) col=hdr(3,2.4,1.1) a=1>.6:.8>0 r=sprite(ember,add)
+pop glow n=1 life=.6 g=1>0 r=light(<1,.8,.5>,$g*12,6)` };
+function seekBlessing(ctx) {
+  const me = ctx.self, s = me.state, now = ctx.now(), fp = me.feetPosition, to = { audience: { player: me.id } };
+  const sh = ctx.query({ tags: ['roadside'], radius: 4 })[0]; if (!sh) return false;
+  if ((s.blessAt || 0) + BLESS.cooldown * 1000 > now) { ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'The candles are still. ' + Math.ceil(((s.blessAt || 0) + BLESS.cooldown * 1000 - now) / 1000) + 's', color: '#c8b890', size: 0.95, lifetime: 1.6 }, to); return true; }
+  s.blessAt = now; s.blessed = true;
+  if (!s.bloodUntil || s.bloodUntil < now) me.fx = { script: BLESS.aura };
+  if (ctx.session.blessTimer) ctx.cancel(ctx.session.blessTimer);
+  ctx.session.blessTimer = ctx.after(BLESS.seconds, 'blessEnds');
+  const sp = sh.feetPosition;
+  ctx.emit('playSound', { clip: BLESS.sound, position: sp, volume: 0.7, maxDistance: 20 }, { audience: { nearby: sp, radius: 20 } });
+  ctx.emit('fx', { position: { x: fp.x, y: fp.y + 0.1, z: fp.z }, script: BLESS.burst }, { audience: { nearby: fp, radius: 40 } });
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.6 }, text: "Wayfarer's Blessing: +20% speed, 5 min", color: '#f2d48a', size: 1.15, lifetime: 2.4 }, to);
+  return true;
+}
+export function blessEnds(ctx) {
+  const s = ctx.self.state; if (!s.blessed) return;
+  s.blessed = false; if (!s.bloodUntil || s.bloodUntil < ctx.now()) ctx.self.fx = null;
+  const fp = ctx.self.feetPosition;
+  ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.4 }, text: "The Wayfarer's Blessing fades", color: '#c8b890', size: 0.95, lifetime: 1.8 }, { audience: { player: ctx.self.id } });
+}
 // The March's wells: E beside one cranks up a Bucket of Well Water into the bag (eaten like food: useFood). One draw a minute.
 const WELL = { cooldown: 60, crank: "/cdn/moodboard-painterly-fantasy/sfx-well-windlass-crank-creak-rope-and-bucket-splash.mp3",
   item: { id: 'well-water', name: 'Bucket of Well Water', icon: '/cdn/value.4ca00265ea1a372afbe1b3ca70220d211813853223bca49f44bac8723aa3f4e1.png', slot: 'bag', stackable: true, consumable: true, sellPrice: 0,
@@ -63,7 +90,7 @@ function drawWater(ctx) {
   return true;
 }
 export function onInput(ctx, input) {
-  if (pressed(input, 'interact') && ctx.self.state.characterCreated && !ctx.self.state.dying && (offerBlood(ctx) || drawWater(ctx))) return;
+  if (pressed(input, 'interact') && ctx.self.state.characterCreated && !ctx.self.state.dying && (offerBlood(ctx) || seekBlessing(ctx) || drawWater(ctx))) return;
   if (!pressed(input, 'useFood')) return;
   const me = ctx.self, s = me.state; if (!s.characterCreated || s.dying) return;
   const d = (input.actionData && (input.actionData.useFood || input.actionData[MNS + 'useFood'])) || {};
