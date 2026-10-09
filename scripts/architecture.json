@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 2155,
-  "updatedAt": "2026-10-09T11:03:50.158Z",
+  "basedOnSpecVersion": 2179,
+  "updatedAt": "2026-10-09T11:09:29.855Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer dark-fantasy MMO across Lantern's March, race homelands, a battleground and gate-linked dungeon/raid places. MMORPG Tools owns character, realm, persistence and UI lifecycle; ordered player behaviors and shared gameplay registries run world systems and combat, while procedural generators and place-selected looks supply the world presentation.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -308,7 +308,7 @@
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing, realm pulse and Awakening lighting.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.74 Alpha and Herald patch notes; version tag shown on menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.78 Alpha and Herald patch notes; version tag shown on menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain, atmosphere/day-night cycle, Awakening frame look, room weather and Party Finder.",
@@ -357,17 +357,17 @@
     "ui-menu-panel.js renders talents from scripts/lib/talents.js → spendTalent/resetTalents handled by player-panel-input.js → state.unlockedTalents; class cores/kit and quest-player derive combat, cooldown and health effects.",
     "ui-menu-panel.js character tab → scripts/lib/sheet.js sheetOf(state) reads level, equipment, training and talents → displays XP, damage multipliers, haste, health and specialization; it owns no character state.",
     "Class wrappers lazily load matching cores; HUD maps spell slots to per-class action ids; class data YAML supplies actions and cores emit combat, FX, sound and hits (Arcanist Cinderfall callStar → starLands).",
-    "places/main/config.yaml atmosphere.timeOfDay → scripts/region-music.js selects scripts/lib/data/music.yml night ambience/stingers by region; wolves-core.js detects prey → pack howl/rally calls nearby idle Briar Wolves into combat."
+    "places/main/config.yaml atmosphere.timeOfDay → scripts/region-music.js selects scripts/lib/data/music.yml night ambience/stingers by region; wolves-core.js detects prey → pack howl/rally calls nearby idle Briar Wolves into combat; wolf/scavenger hit handlers emit squash and dust/grit FX."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
-    "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and per-boss aura effects.",
+    "scripts/boss-core.js + scripts/lib/data/bosses.yml - one AI across dungeon/raid and open-world placements, varied by boss definition: hp, arena, abilities/telegraphs, phases, enrage, rewards and per-boss aura effects; Merrow and Unbraided aura mist/glow are tuned independently.",
     "scripts/gen/flora.js - seeded flora across March roads, race-town beds, Reedhaven cottage gardens and Thornhollow bloom clearings; kind, palette, seed, scale and density vary.",
-    "scripts/gen/house.js - generated cottages/halls share house geometry with width/depth, roof, chimney and window parameters; close LOD adds gable boards, rafter tails, flower boxes and door iron.",
+    "scripts/gen/house.js - generated cottages/halls share house geometry with width/depth, roof, chimney and window parameters; cottage detail adds weathered shingle courses, moss, chimney pots/logs and door lanterns, while stone halls get dressed quoins and string courses; LOD/wall style vary.",
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed.",
     "scripts/gen/{ashen,ashen-village,grave-ground}.js - Ashen Close graveyard, cathedral yard, gothic village pieces and cover; helper, kind, seed, LOD and dimensions vary.",
     "scripts/gen/fen.js and scripts/gen/tree.js - seeded marsh props/boardwalks and March pines/oaks/dead trees recur across regions; kind, seed, LOD and dimensions vary.",
-    "scripts/gen/wolf.js + wolves-core.js and scavengers-core.js - camp enemies reuse generated actors and AI with data-defined pack/encounter variants; Briar wolves howl/rally, enemy auras vary by data, and scavenger deaths shed dust then ash/embers."
+    "scripts/gen/wolf.js + wolves-core.js and scavengers-core.js - camp enemies reuse generated actors and AI with data-defined pack/encounter variants; Briar wolves howl/rally, per-hit response combines squash and dust/grit FX, death effects/aura vary by data."
   ],
   "probableOrphans": [
     "scripts/gen/grave-weeds.js - no scene or other package reference; graveyard cover is currently placed through grave-ground.js instead."
@@ -378,6 +378,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, then counts enterTally.",
     "Creation and first-arrival veils use ui-zone-splash.js zoneArtFor/arrivalVeil; scripts/player.js stamps _areaReady after stable grounded terrain contact and splash retains its wait/hold/fade contract.",
     "Talent picks are state.unlockedTalents entries keyed spec:tier, not flat tier numbers; points derive from floor(level/5), max 12, with one pick per tier in a spec; kit.js and quest-player.js consume derived effects.",
-    "Lantern March audio reads the live place atmosphere.timeOfDay; keep config's one-hour cycle and music.yml night.from/until thresholds aligned. Boss/scavenger aura FX are cleared on death (then may be restored on boss reset), and the wolf howl state holds still until its rally windup expires."
+    "Lantern March audio reads the live place atmosphere.timeOfDay; keep config's one-hour cycle and music.yml night.from/until thresholds aligned. Boss/scavenger aura FX are cleared on death (then may be restored on boss reset); wolf/scavenger hit squash and dust/grit are separate from their white hit flash/flinch."
   ]
 }
