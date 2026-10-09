@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.80 Alpha';
+var GAME_VERSION = '0.47.81 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.81', 'Drowned Coast Foes', 'The Court Brine-Takers return as salt-crusted drowned zealots behind corroded brass respirators, carrying barnacled hooked poles; the Phantom Current is now a sailor wraith trailing seaweed, its teal eyes burning under a rotted tricorn.'],
   ['v0.47.80', 'The Deepgrove Cutthroats', 'The Deepgrove Raiders have shed their plain bandit look: gaunt forest cutthroats now, in moss-rotted hoods and bone masks, thorn-wrapped leather and rusted hooked axes.'],
   ['v0.47.79', 'Ember-Backed Wolves', 'Briar Wolves no longer vanish into the dusk: ash-silver guard hairs frost the mane, the flanks and belly pale where the soot saddle breaks, and the briar curse smoulders as ember-lit cracks between the thorn spines.'],
   ['v0.47.78', 'Dressed Stone Halls', 'The stone halls of Lantern\'s Reach, the Hall of Banners and the auction hall among them, now have dressed corner stones laid long and short and a carved string course under the eaves.'],

@@ -297,7 +297,7 @@ nam-phantom-camp:
   behavior: scripts/scavengers.js
   feetPosition: {x: 249, y: {terrain: 0}, z: 1408}
   id: nam-phantom-camp
-  state: {crew: [{id: nam-phantom-1, x: 243, yaw: 30, z: 1404}, {id: nam-phantom-2, x: 252, yaw: 210, z: 1410}, {id: nam-phantom-3, x: 249, yaw: -40, z: 1402}], look: {color: oklch(0.78 0.08 210), emissive: oklch(0.45 0.1 215), emissiveIntensity: 0.8, opacity: 0.7, transparent: true}, model: /cdn/model-humanoid-fantasy-drowned-sailor-ghost-tattered-coat-seaweed.glb, name: Phantom Current, respawnAt: {}, tallyKey: phantom_current}
+  state: {crew: [{id: nam-phantom-1, x: 243, yaw: 30, z: 1404}, {id: nam-phantom-2, x: 252, yaw: 210, z: 1410}, {id: nam-phantom-3, x: 249, yaw: -40, z: 1402}], look: {color: oklch(0.78 0.08 210), emissive: oklch(0.45 0.1 215), emissiveIntensity: 0.8, opacity: 0.7, transparent: true}, model: /cdn/model-humanoid-fantasy-phantom-current-drowned-sailor-wraith-translucent-rotted-coat-trailing-seaweed-glowing-teal-eyes-rusted-anchor-chain-dark-gothic.glb, name: Phantom Current, respawnAt: {}, tallyKey: phantom_current}
   tags: [nam-phantom-camp]
 nam-rack-0:
   feetPosition: {x: 205.91, y: 6.84, z: 1415.5}

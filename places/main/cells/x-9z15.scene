@@ -67,7 +67,7 @@ tid-brine-camp:
   behavior: scripts/scavengers.js
   feetPosition: {x: -1175, y: 1.1, z: 1891}
   id: tid-brine-camp
-  state: {crew: [{id: tid-brine-1, x: -1169, yaw: 30, z: 1887}, {id: tid-brine-2, x: -1181, yaw: 320, z: 1888}, {id: tid-brine-3, x: -1174, yaw: 180, z: 1883}], damage: 85, hp: 300, model: /cdn/model-humanoid-fantasy-court-brine-taker-male-violet-hooded-robe-brass-respirator-mask-hooked-pole.glb, name: Court Brine-Taker, reward: {copper: 40, xp: 110}, scale: 1, tallyKey: brine_taker}
+  state: {crew: [{id: tid-brine-1, x: -1169, yaw: 30, z: 1887}, {id: tid-brine-2, x: -1181, yaw: 320, z: 1888}, {id: tid-brine-3, x: -1174, yaw: 180, z: 1883}], damage: 85, hp: 300, model: /cdn/model-humanoid-fantasy-court-brine-taker-gaunt-drowned-zealot-salt-crusted-violet-hooded-robe-corroded-brass-respirator-mask-barnacled-hooked-pole-dark-gothic.glb, name: Court Brine-Taker, reward: {copper: 40, xp: 110}, scale: 1, tallyKey: brine_taker}
   tags: [tideglass]
 tide-drydock-a:
   feetPosition: {x: -1192, y: 0.66, z: 1948}
