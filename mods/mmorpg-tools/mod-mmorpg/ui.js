@@ -161,31 +161,6 @@ export function getRightHudLayout() {
 var RACE_ART = { marchborn: '/cdn/chatgpt-image-oct-7-2026-09-54-03-pm-1-u5u429bhl.webp', briarkin: '/cdn/chatgpt-image-oct-7-2026-09-54-04-pm-2-u6195ot7r.webp',
   emberforged: '/cdn/chatgpt-image-oct-7-2026-09-54-06-pm-5-u50038dxi.webp', saltborn: '/cdn/chatgpt-image-oct-7-2026-09-54-07-pm-7-u6hx0nqke.webp' };
 var __faEverPlayed = false;
-// The enter veil: one steady picture from "Enter the March" until the hero stands in their zone, then a fade.
-// Client-only, no per-frame state; the bar and fade are CSS so nothing re-renders to animate them.
-var __faVeil = null; // { art, arrivedAt }
-function _veilNow() { return (typeof performance !== 'undefined' && performance.now) ? performance.now() : 0; }
-function _veilMarkup(art, fading) {
-  return '<div id="fa-enter-veil" style="position:fixed;inset:0;z-index:2147483000;background:#000;pointer-events:' + (fading ? 'none' : 'auto') + ';' + (fading ? 'animation:faVeilOut .9s ease 2.2s forwards;' : '') + '">'
-    + '<img id="fa-enter-veil-art" src="' + art + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />'
-    + '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.25) 45%,rgba(0,0,0,.3));pointer-events:none;"></div>'
-    + '<div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:360px;">'
-      + '<div style="width:100%;height:8px;background:rgba(20,15,10,0.9);border:1px solid rgba(120,100,60,0.4);border-radius:4px;overflow:hidden;">'
-        + '<div id="fa-enter-veil-bar" style="height:100%;width:' + (fading ? '100%' : '0') + ';background:linear-gradient(90deg,oklch(0.5 0.2 145),oklch(0.65 0.22 145));border-radius:3px;box-shadow:0 0 8px rgba(60,200,80,0.5);' + (fading ? 'transition:width .4s ease;' : 'animation:faVeilBar 6s cubic-bezier(.2,.7,.3,1) forwards;') + '"></div>'
-      + '</div>'
-      + '<div data-font="title" style="text-align:center;margin-top:10px;font-size:14px;color:rgba(200,180,120,0.75);letter-spacing:3px;text-transform:uppercase;">Entering the World</div>'
-    + '</div>'
-    + '<style>@keyframes faVeilBar{0%{width:0}100%{width:92%}}@keyframes faVeilOut{to{opacity:0;visibility:hidden}}</style>'
-    + '</div>';
-}
-function enterVeil(localPlayer) {
-  if (!__faVeil) return '';
-  var inZone = localPlayer.state.characterCreated === true && localPlayer.place && localPlayer.place !== 'character-creation-land' && localPlayer.place !== 'main-menu-land';
-  if ((inZone || _veilNow() - (__faVeil.at || 0) > 20000) && !__faVeil.arrivedAt) __faVeil.arrivedAt = _veilNow(); // never trap: 20 s at most
-  if (__faVeil.arrivedAt && _veilNow() - __faVeil.arrivedAt > 6000) { __faVeil = null; return ''; }
-  return _veilMarkup(__faVeil.art, !!__faVeil.arrivedAt);
-}
-
 export default function(world, localPlayer) {
   _warmHud();
   var characterCreated = localPlayer.state.characterCreated === true;
@@ -266,7 +241,7 @@ export default function(world, localPlayer) {
       if (WHF) try { _hudParts.push(WHF.CSS + WHF.renderUnitFrames(localPlayer) + WHF.renderDock(localPlayer) + WHF.renderBackpack(localPlayer) + WHF.renderGameMenu()); } catch(e17) { _hudParts.push(''); }
       var _whCls = ''; if (WHF) try { _whCls = WHF.rootClasses(localPlayer.state || {}); } catch(e18) {}
       var _wrap = _whCls ? wrapOpen.replace('<div id="fa-ui-root"', '<div id="fa-ui-root" data-wh="1"').replace(/<div id="fa-ui-root"([^>]*?)( class="([^"]*)")?/, function(m, a, b, c) { return '<div id="fa-ui-root"' + a.replace(/ class="[^"]*"/, '') + ' class="' + ((c || '') + ' ' + _whCls).trim() + '"'; }) : wrapOpen;
-      return FONT_INJECTOR + _wrap + _hudParts.join('') + enterVeil(localPlayer) + FONT_WRAP_CLOSE;
+      return FONT_INJECTOR + _wrap + _hudParts.join('') + FONT_WRAP_CLOSE;
     } catch(e) {
       return FONT_INJECTOR + wrapOpen + '<div class="fixed top-24 left-4" style="color:red;font-size:14px;background:rgba(0,0,0,0.85);padding:12px;border-radius:8px;max-width:600px;z-index:99999;">HUD error: ' + e.message + ' STACK: ' + (e.stack || '').substring(0, 300) + '</div>' + FONT_WRAP_CLOSE;
     }
@@ -319,11 +294,13 @@ export default function(world, localPlayer) {
   
   // Creation-to-Sanctum loading screen
   if (localPlayer.state.loadingScreen) {
-    var _art = RACE_ART[(RACES[localPlayer.state.raceIndex || 0] || {}).id] || RACE_ART.marchborn;
-    if (!__faVeil) __faVeil = { art: _art, arrivedAt: 0, at: _veilNow() };
+    // the same picture the arrival veil will show at the race's home, so the crossing never swaps art
+    var _race = RACES[localPlayer.state.raceIndex || 0] || RACES[0], _st = _race.start || { x: 0, z: 0 };
+    var _za = _hf('splash', 'zoneArtFor'), _av = _hf('splash', 'arrivalVeil');
+    var _art = _za ? _za(_st.x, _st.z) : (RACE_ART[_race.id] || RACE_ART.marchborn);
     return FONT_INJECTOR + FONT_WRAP_OPEN
       + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();window.__faCharName=undefined;" style="display:none" />'
-      + _veilMarkup(__faVeil.art, false)
+      + (_av ? _av(_art, false) : '<div class="fixed inset-0" style="background:#000;"></div>')
       + FONT_WRAP_CLOSE;
   }
 
@@ -337,7 +314,7 @@ export default function(world, localPlayer) {
   if (characterCreated || phase === 'playing' || localPlayer.state._hasCharacter || localPlayer.state._dataLoaded) {
     __faEverPlayed = true;
     try {
-      return FONT_INJECTOR + NAME_SWEEP + wrapOpen + renderHUD(localPlayer, world, rightHudLayout) + enterVeil(localPlayer) + FONT_WRAP_CLOSE;
+      return FONT_INJECTOR + NAME_SWEEP + wrapOpen + renderHUD(localPlayer, world, rightHudLayout) + FONT_WRAP_CLOSE;
     } catch(e) {
       return FONT_INJECTOR + wrapOpen + '<div class="fixed inset-0" style="background:#0a0a0f;"></div>' + FONT_WRAP_CLOSE;
     }

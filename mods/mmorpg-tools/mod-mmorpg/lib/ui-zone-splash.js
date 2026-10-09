@@ -18,6 +18,24 @@ var ART = {
 };
 var _pick = 0;
 function srcOf(k) { var a = ART[k] || ART.ninthveil; return a[(_pick++) % a.length]; }
+// the arrival picture is chosen by the day, so the creation loader and the arrival (two separate UI pages) show the same one
+function stableSrc(k) { var a = ART[k] || ART.ninthveil; var d = Math.floor((typeof Date !== 'undefined' ? Date.now() : 0) / 86400000); return a[d % a.length]; }
+// one veil for every arrival: the art, a dim, the bar and its words; same layout before and after the crossing.
+// fading=false: the bar fills by CSS while the hero is made; fading=true: the bar full, held, then a CSS fade. No per-frame opacity, so nothing stutters.
+export function arrivalVeil(src, fading) {
+  return '<div id="fa-enter-veil" style="position:fixed;inset:0;z-index:2147483000;background:#000;pointer-events:' + (fading ? 'none' : 'auto') + ';' + (fading ? 'animation:faVeilOut 1s ease ' + HOLD_S + 's forwards;' : '') + '">'
+    + (src ? '<img src="' + src + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />' : '')
+    + '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.1) 40%);pointer-events:none;"></div>'
+    + '<div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:360px;">'
+      + '<div style="width:100%;height:8px;background:rgba(20,15,10,0.9);border:1px solid rgba(120,100,60,0.4);border-radius:4px;overflow:hidden;">'
+        + '<div style="height:100%;width:' + (fading ? '100%' : '0') + ';background:linear-gradient(90deg,oklch(0.5 0.2 145),oklch(0.65 0.22 145));border-radius:3px;box-shadow:0 0 8px rgba(60,200,80,0.5);' + (fading ? 'animation:faVeilFill ' + HOLD_S + 's ease-out forwards;' : 'animation:faVeilBar 5s cubic-bezier(.2,.7,.3,1) forwards;') + '"></div>'
+      + '</div>'
+      + '<div data-font="title" style="text-align:center;margin-top:10px;font-size:14px;color:rgba(200,180,120,0.75);letter-spacing:3px;text-transform:uppercase;">Entering the World</div>'
+    + '</div>'
+    + '<style>@keyframes faVeilBar{0%{width:0}100%{width:80%}}@keyframes faVeilFill{0%{width:80%}100%{width:100%}}@keyframes faVeilOut{to{opacity:0;visibility:hidden}}</style>'
+    + '</div>';
+}
+
 // region → art; a region missing here shows no card when walked into (the realm-wide Ninth Veil greets those on arrival)
 var CIRCLES = [
   { art: 'reach', x: 0, z: 0, r: 70 },
@@ -47,18 +65,22 @@ function artAt(x, z) {
   return null;
 }
 var _cur = null, _shown = {}, _splash = null, _first = true, _since = 0;
-var HOLD_FULL = 2200, END_FULL = 4800, END_CARD = 4500, REPEAT = 180000;
+var HOLD_S = 2.8, HOLD_FULL = 2800, END_FULL = 4000, END_CARD = 4500, REPEAT = 180000;
 
 export function renderZoneSplash(localPlayer) {
-  var fp = localPlayer.feetPosition; if (!fp) return '';
-  if (localPlayer.state && localPlayer.state.flying) return ''; // on the wing: the card waits for the landing
+  var fp = localPlayer.feetPosition, st = localPlayer.state || {};
   var now = typeof performance !== 'undefined' ? performance.now() : 0;
-  if (!_since) _since = now || 1;
-  if (_first && now - _since < 350) return ''; // the body settles at its destination first
-  var a = artAt(fp.x, fp.z);
   if (_first) {
-    _first = false; _cur = a;
-    _splash = { art: a || 'ninthveil', t0: now, full: true }; _splash.src = srcOf(_splash.art); _shown[_splash.art] = now;
+    // the first moment in the world: the veil goes up at once (no blank frame), on the art of where the hero is placed
+    var sx = typeof st._savedPosX === 'number' ? st._savedPosX : fp && fp.x, sz = typeof st._savedPosZ === 'number' ? st._savedPosZ : fp && fp.z;
+    var a0 = typeof sx === 'number' ? artAt(sx, sz) : null;
+    _first = false; _cur = fp ? artAt(fp.x, fp.z) : a0;
+    _splash = { art: a0 || 'ninthveil', t0: now, full: true }; _splash.src = stableSrc(_splash.art); _shown[_splash.art] = now;
+  }
+  if (!fp) return _splash && _splash.full ? arrivalVeil(_splash.src, true) : '';
+  if (st.flying) return ''; // on the wing: the card waits for the landing
+  var a = artAt(fp.x, fp.z);
+  if (false) {
   } else if (a !== _cur) {
     _cur = a;
     if (a && (!_shown[a] || now - _shown[a] > REPEAT)) { _splash = { art: a, t0: now, full: false, src: srcOf(a) }; _shown[a] = now; }
@@ -67,9 +89,7 @@ export function renderZoneSplash(localPlayer) {
   var t = now - _splash.t0, src = _splash.src;
   if (_splash.full) {
     if (t > END_FULL) { _splash = null; return ''; }
-    var op = t < HOLD_FULL ? 1 : Math.max(0, 1 - (t - HOLD_FULL) / (END_FULL - HOLD_FULL));
-    return '<div style="position:fixed;inset:0;z-index:900;pointer-events:none;background:#000;opacity:' + op.toFixed(3) + '">'
-      + '<img src="' + src + '" style="width:100%;height:100%;object-fit:cover;display:block" /></div>';
+    return arrivalVeil(src, true);
   }
   if (t > END_CARD) { _splash = null; return ''; }
   var o = t < 400 ? t / 400 : t > END_CARD - 900 ? Math.max(0, (END_CARD - t) / 900) : 1;
@@ -80,5 +100,5 @@ export function renderZoneSplash(localPlayer) {
 }
 export function resetZoneSplash() { _first = true; _splash = null; _cur = null; _since = 0; }
 export function zoneSplashActive() { return !!_splash; }
-export function zoneArtFor(x, z) { return srcOf(artAt(x, z) || 'ninthveil'); }
-module.exports = { renderZoneSplash: renderZoneSplash, resetZoneSplash: resetZoneSplash, zoneSplashActive: zoneSplashActive, zoneArtFor: zoneArtFor };
+export function zoneArtFor(x, z) { return stableSrc(artAt(x, z) || 'ninthveil'); }
+module.exports = { renderZoneSplash: renderZoneSplash, resetZoneSplash: resetZoneSplash, zoneSplashActive: zoneSplashActive, zoneArtFor: zoneArtFor, arrivalVeil: arrivalVeil };
