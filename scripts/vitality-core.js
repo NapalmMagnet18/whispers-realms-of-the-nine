@@ -116,6 +116,7 @@ function eat(ctx, me, s, now, dt, hurt) {
 }
 export const updateSchedule = { every: { seconds: 0.25 } };
 export function update(ctx, dt) {
+  if (ctx.self.state.blessed && ctx.now() > (ctx.self.state.blessAt || 0) + BLESS.seconds * 1000 + 2000) blessEnds(ctx);
   const me = ctx.self, s = me.state, mem = ctx.session, now = ctx.now();
   if (!s.characterCreated || s.phase !== "playing" || s.pvpDead) return;
   if (!isPlay(me.place)) return;
