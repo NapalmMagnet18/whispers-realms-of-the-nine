@@ -472,6 +472,9 @@ export function onSpawn(objectApi) {
     } else {
       objectApi.patchState({ phase: 'mainMenu', inMainMenu: true });
       objectApi.setProperty('visible', false);
+      // the hidden menu body wears no hero model: its 1.8 MB clip set would load before the menu's first picture.
+      // Enter World (main-menu-mgr.js) and the playing-restore path above put the model back.
+      try { objectApi.setProperty('animated3DCharacter', null); } catch (e) {}
       return;
     }
   }
