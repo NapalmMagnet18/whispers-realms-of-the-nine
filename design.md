@@ -1,5 +1,9 @@
 # WHISPERS : Realm of the Nine — build page
 
+## 2026-10-08 · campaign validation checkpoint (spaiber)
+- Authored giver/receiver placement audit passed for all 209 implemented quests. All 48 race/class/branch routes reach VEI-09 in read-only engine simulation, and all six Q001 origin gates passed.
+- Method and remaining playtest gates: QA_CAMPAIGN_VALIDATION.md. Synthetic objectives and optional quest XP do not prove physical traversal, combat pacing or SQL reconnect. Those are the next checks; do not mark them complete from the routing audit.
+
 ## 2026-10-08 · quest NPC proximity (spaiber)
 - Accept and Complete actions recheck that the character is within talk range of the named quest NPC in the current place; delivery rewards require the receiver, not the original giver. Moving away from an open dialog no longer allows a remote claim.
 - Existing prerequisites, objectives, once-only rewards and character saves are preserved. Local regression checks cover remote/vertical requests, distinct delivery receivers, range boundary and duplicates. In-engine data audit found 209 implemented quests, no missing dependencies and no unknown item rewards. This is not a full campaign playthrough.
