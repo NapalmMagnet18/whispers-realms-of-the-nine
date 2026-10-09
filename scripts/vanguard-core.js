@@ -13,7 +13,8 @@ const GUARD_SND = '/cdn/moodboard-painterly-fantasy/sfx-raise-wooden-iron-rimmed
 const SPARKS = `fx
 pop chips burst=10..16 life=.4..0.8 v=<%normal|0,1,0>*(2..4)+sdir()*(.6..1.4) size=.03..0.07 acc=grav()*.8+drag(1.2) col=<.62,.45,.28> a=1>.6:1>0 sz=$size floor=stick r=sprite(stalk,alpha,velocity,.02)
 pop spark burst=6..9 life=.12..0.25 v=sdir()*(3..6) size=.02..0.04 col=hdr(4,3,1.6) a=1>0 r=sprite(ember,add,velocity,.03)
-pop dust burst=3 life=.5..0.8 v=up(.4)+sdir()*.4 size=.15..0.25 acc=drag(1.5) col=<.7,.62,.5> a=0>.3:.3>0 sz=$size*(.6>1.6) r=sprite(smoke-puff,alpha)`
+pop dust burst=3 life=.5..0.8 v=up(.4)+sdir()*.4 size=.15..0.25 acc=drag(1.5) col=<.7,.62,.5> a=0>.3:.3>0 sz=$size*(.6>1.6) r=sprite(smoke-puff,alpha)
+pop light burst=1 life=.18 gl=1>0 r=light(<1,.8,.5>,$gl*3,4)`
 
 function me(ctx) { return (ctx.session.vg ??= {})[ctx.self.id] ??= { ready: {} } }
 
@@ -105,12 +106,16 @@ const SLAM = `fx
 pop flash burst=1 at=point().c(.1) life=.3 size=1 col=hdr(4,2,.6) a=.9>0 sz=3.2*(.3>1) r=sprite(soft-disc,add,axis,0,.8,axis=<0,1,0>)
 pop rocks burst=14..20 on=disc(.6) life=.8..1.3 v=up(4..7)+sdir()*(2..4) size=.08..0.18 acc=grav()*1.4+drag(.3) col=<.3,.24,.19> a=1 floor=bounce(.25) r=mesh(box,1,.7,.8)
 pop dust burst=14..20 on=disc(1) life=1..1.8 v=up(.5..1.2)+sdir()*(1.5..3) size=.5..0.9 acc=buoy(.2)+drag(1.8) sz=$size*(.6>2.2) col=<.55,.48,.38> a=0>.4:.3>0 rot=spin(.15) r=sprite(smoke-puff,alpha)
-pop light burst=1 life=.5 gl=1>0 r=light(<1,.6,.25>,$gl*12,8)`
+pop light burst=1 life=.5 gl=1>0 r=light(<1,.6,.25>,$gl*12,8)
+pop ring burst=1 life=.45 size=.6 col=hdr(3,1.6,.5) a=.8>0 sz=$size*(1>6) r=sprite(soft-disc,add,axis,0,.45,axis=<0,1,0>)
+pop embers burst=14..22 on=disc(.8) life=.5..1.1 v=up(2..4)+sdir()*(1..2.5) size=.015..0.035 acc=grav()*.5+curl(.8)+drag(.6) col=hdr(5,2.4,.6)>hdr(1.3,.3,.05) a=(1>0)*flick(10,.4) r=sprite(ember,add,velocity,.02)`
 const CRACK = `fx
 pop glow burst=1 at=point().c(.04) life=2.2 size=1.6 col=hdr(3,1.2,.25) a=.9>.5:.6>0 sz=$size*(.5>1:.15>1) r=sprite(soft-disc,add,axis,0,0,axis=<0,1,0>)
 pop shards burst=8..12 on=disc(.7) life=.6..1 v=up(3..5.5)+sdir()*(1..2) size=.08..0.2 acc=grav()*1.5+drag(.4) col=<.28,.22,.17> a=1 floor=bounce(.2) r=mesh(box,1,1.4,.6)
 pop lava burst=10..16 on=disc(.5) life=.4..0.8 v=up(2..4)+sdir()*.8 size=.03..0.06 acc=grav()*.9+drag(.5) col=hdr(5,2.2,.4)>hdr(1.4,.3,.04) a=1>0 floor=die r=sprite(ember,add,velocity,.03)
-pop dust burst=6..9 on=disc(.8) life=.8..1.4 v=up(.6..1.4)+sdir()*.8 size=.4..0.7 acc=buoy(.2)+drag(1.8) sz=$size*(.6>2) col=<.52,.45,.36> a=0>.38:.3>0 rot=spin(.15) r=sprite(smoke-puff,alpha)`
+pop dust burst=6..9 on=disc(.8) life=.8..1.4 v=up(.6..1.4)+sdir()*.8 size=.4..0.7 acc=buoy(.2)+drag(1.8) sz=$size*(.6>2) col=<.52,.45,.36> a=0>.38:.3>0 rot=spin(.15) r=sprite(smoke-puff,alpha)
+pop smoke rate=?mobile:3|6 win=0;1.8 on=disc(.5) life=1.4..2.4 v=up(.6..1.2) size=.25..0.45 acc=buoy(.5)+curl(.3)*.5+drag(1) sz=$size*(.6>2.4) col=<.2,.18,.17>><.12,.12,.13> a=0>.25:.3>0 rot=spin(.1) r=sprite(smoke-puff,alpha)
+pop light burst=1 life=2.2 gl=1>.5:.6>0 r=light(<1,.5,.15>,$gl*5,5)`
 export function splitLand(ctx) {
   if (classOf(ctx) !== 'vanguard') return
   const a = V.split, self = ctx.self, p = self.feetPosition
