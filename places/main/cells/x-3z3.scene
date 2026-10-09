@@ -1,0 +1,16 @@
+# spawn-scene v2 yaml x-3z3
+reed-road-lamp-2:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -337.45, y: 11.26, z: 431.77}
+  id: reed-road-lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 146.2595187718779}
+  tags: [lamp, road-lamp]
+reed-road-lamp-3:
+  feetPosition: {x: -324.86, y: 17.45, z: 401.7}
+  id: reed-road-lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -33.70294763979624}
+  tags: [lamp, road-lamp]

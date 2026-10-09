@@ -101,6 +101,21 @@ reed-bloom-arch:
   primitive: {kind: scripted, params: {height: 3.4, palette: fen, span: 5.2}, script: scripts/gen/bloom-arch.js, seed: 13}
   rotation: {lookAt: {x: -426, y: 12, z: 574}}
   tags: [landmark, bloom, town-arch]
+reed-road-lamp-0:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -382.42, y: 17.22, z: 505.49}
+  id: reed-road-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 150.30611136325066}
+  tags: [lamp, road-lamp]
+reed-road-lamp-1:
+  feetPosition: {x: -359.25, y: 15.35, z: 453.29}
+  id: reed-road-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -33.673101139311605}
+  tags: [lamp, road-lamp]
 reh-willow-2:
   feetPosition: {x: -378.2, y: {terrain: 0}, z: 544.8}
   id: reh-willow-2

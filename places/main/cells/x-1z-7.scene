@@ -1,0 +1,38 @@
+# spawn-scene v2 yaml x-1z-7
+star-road-lamp-3:
+  feetPosition: {x: -187.95, y: 96.31, z: -958.43}
+  id: star-road-lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -160.0276433473563}
+  tags: [lamp, road-lamp]
+star-road-lamp-4:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -183.52, y: 90.42, z: -928.12}
+  id: star-road-lamp-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 19.976478421750063}
+  tags: [lamp, road-lamp]
+star-road-lamp-5:
+  feetPosition: {x: -167.44, y: 84.29, z: -902.04}
+  id: star-road-lamp-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -160.10335822805746}
+  tags: [lamp, road-lamp]
+star-road-lamp-6:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -161.82, y: 78.56, z: -873.04}
+  id: star-road-lamp-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 23.243110042928134}
+  tags: [lamp, road-lamp]
+star-road-lamp-7:
+  feetPosition: {x: -144.3, y: 72.38000000000001, z: -847.91}
+  id: star-road-lamp-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -156.83816766962505}
+  tags: [lamp, road-lamp]

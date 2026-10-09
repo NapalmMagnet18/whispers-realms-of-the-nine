@@ -1,0 +1,39 @@
+# spawn-scene v2 yaml x9z-4
+cinder-road-lamp-0:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 1197.8, y: 25.669999999999998, z: -562.61}
+  id: cinder-road-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -45.09505309220946}
+  tags: [lamp, road-lamp]
+cinder-road-lamp-1:
+  feetPosition: {x: 1181.39, y: 26.84, z: -536.58}
+  id: cinder-road-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 134.93313451725052}
+  tags: [lamp, road-lamp]
+cinder-road-lamp-2:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 1155.37, y: 28.36, z: -520.18}
+  id: cinder-road-lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -45.0094518837358}
+  tags: [lamp, road-lamp]
+cinder-road-lamp-3:
+  feetPosition: {x: 1138.97, y: 26.939999999999998, z: -494.16}
+  id: cinder-road-lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 135.08576921668686}
+  tags: [lamp, road-lamp]
+cinder-road-lamp-4:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 1093.68, y: 35.690000000000005, z: -457.24}
+  id: cinder-road-lamp-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -36.86989764584402}
+  tags: [lamp, road-lamp]

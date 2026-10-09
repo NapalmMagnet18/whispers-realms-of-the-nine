@@ -11,6 +11,21 @@ bloom-tide-2:
   id: bloom-tide-2
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
+gull-road-lamp-0:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 285.12, y: 20.3, z: 1514.13}
+  id: gull-road-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -169.64341998006947}
+  tags: [lamp, road-lamp]
+gull-road-lamp-1:
+  feetPosition: {x: 272.34, y: 20.349999999999998, z: 1481.9}
+  id: gull-road-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 10.315671848187057}
+  tags: [lamp, road-lamp]
 hc-nam-boss:
   behavior: scripts/boss.js
   feetPosition: {x: 217, z: 1497}

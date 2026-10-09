@@ -11,3 +11,18 @@ bloom-reed-3-b:
   id: bloom-reed-3-b
   scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
+reed-road-lamp-4:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -303.06, y: 12.389999999999999, z: 380.18}
+  id: reed-road-lamp-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 146.28930499252783}
+  tags: [lamp, road-lamp]
+reed-road-lamp-5:
+  feetPosition: {x: -287.14, y: 17.93, z: 345.12}
+  id: reed-road-lamp-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -33.71582775231089}
+  tags: [lamp, road-lamp]

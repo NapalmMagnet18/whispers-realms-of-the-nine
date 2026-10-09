@@ -35,6 +35,29 @@ star-bloom-arch:
   primitive: {kind: scripted, params: {height: 3.4, palette: star, span: 5.2}, script: scripts/gen/bloom-arch.js, seed: 14}
   rotation: {lookAt: {x: -200, y: 120, z: -1094}}
   tags: [landmark, bloom, town-arch]
+star-road-lamp-0:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -222.25, y: 113.94, z: -1040.67}
+  id: star-road-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 16.387749894741145}
+  tags: [lamp, road-lamp]
+star-road-lamp-1:
+  feetPosition: {x: -207.84, y: 108.14, z: -1013.64}
+  id: star-road-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -163.56552654141515}
+  tags: [lamp, road-lamp]
+star-road-lamp-2:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -204.03, y: 102.42, z: -984.51}
+  id: star-road-lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 19.900695261826964}
+  tags: [lamp, road-lamp]
 vey-yard-crate-0:
   feetPosition: {x: -211, y: {terrain: -0.3}, z: -1084}
   id: vey-yard-crate-0

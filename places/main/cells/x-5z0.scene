@@ -78,6 +78,29 @@ thorn-bloom-arch:
   primitive: {kind: scripted, params: {height: 3.4, palette: thorn, span: 5.2}, script: scripts/gen/bloom-arch.js, seed: 7}
   rotation: {lookAt: {x: -712, y: 15.32345355071613, z: 66}}
   tags: [landmark, thornhollow, bloom]
+thorn-road-lamp-0:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -659.37, y: 2.8800000000000003, z: 55.58}
+  id: thorn-road-lamp-0
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 104.07744545641098}
+  tags: [lamp, road-lamp]
+thorn-road-lamp-1:
+  feetPosition: {x: -632.02, y: 7, z: 41.29}
+  id: thorn-road-lamp-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -75.99292673647706}
+  tags: [lamp, road-lamp]
+thorn-road-lamp-2:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -591.21, y: 8.129999999999999, z: 37.73}
+  id: thorn-road-lamp-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 105.31822163015427}
+  tags: [lamp, road-lamp]
 thr-border-stone:
   feetPosition: {x: -685, y: {terrain: 0}, z: 58}
   fx: {script: "fx\npop glow n=1 at=<0,.6,0> r=light(<.6,.8,1>,2,5)\npop mote rate=3 on=disc(.4) life=1.5..2.5 v=up(.3..0.6) size=.04..0.08 acc=curl(.4)+drag(.6) col=<.6,.8,1>*2 a=0>.6:.6>0 r=sprite(soft-disc,add)"}

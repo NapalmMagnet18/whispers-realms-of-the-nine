@@ -1,4 +1,19 @@
 # spawn-scene v2 yaml x2z9
+gull-road-lamp-6:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: 224.77, y: 20.34, z: 1202.25}
+  id: gull-road-lamp-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -168.22633339940762}
+  tags: [lamp, road-lamp]
+gull-road-lamp-7:
+  feetPosition: {x: 209.55, y: 20.66, z: 1162.52}
+  id: gull-road-lamp-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 11.778487206787597}
+  tags: [lamp, road-lamp]
 start-gullrest-way-4:
   feetPosition: {x: 227.39513541232398, y: 16.94299945472882, z: 1214.8262450650566}
   id: start-gullrest-way-4

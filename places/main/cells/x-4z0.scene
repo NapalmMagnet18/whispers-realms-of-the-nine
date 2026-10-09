@@ -73,3 +73,33 @@ start-thornhollow-way-5:
   primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 5}
   rotation: {yaw: 104.03624346792648}
   tags: [waystone, thornhollow]
+thorn-road-lamp-3:
+  feetPosition: {x: -559.02, y: 16.18, z: 27.29}
+  id: thorn-road-lamp-3
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -100.50959503729412}
+  tags: [lamp, road-lamp]
+thorn-road-lamp-4:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -530.84, y: 21.29, z: 39.86}
+  id: thorn-road-lamp-4
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 79.49106155320932}
+  tags: [lamp, road-lamp]
+thorn-road-lamp-5:
+  feetPosition: {x: -502.44, y: 20.75, z: 35.28}
+  id: thorn-road-lamp-5
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -85.27831866859007}
+  tags: [lamp, road-lamp]
+thorn-road-lamp-6:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -471.95, y: 14.91, z: 39.98}
+  id: thorn-road-lamp-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 94.71599293217993}
+  tags: [lamp, road-lamp]

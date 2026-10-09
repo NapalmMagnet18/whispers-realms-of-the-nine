@@ -43,3 +43,18 @@ march-npc-mott:
   rotation: {yaw: -127}
   state: {homeYaw: -127, idle: idle, npcName: "Mott Farwander, Peddler", shop: mott-fen, who: mott, yaw: -127}
   tags: [npc, vendor, interactable, merchant-npc, townsfolk]
+reed-road-lamp-6:
+  children: [{feetPosition: {x: 0.63, y: 2.45, z: 0}, light: {color: oklch(0.82 0.13 65), distance: 12, intensity: 3, kind: point}}]
+  feetPosition: {x: -254.72, y: 16.82, z: 311.46}
+  id: reed-road-lamp-6
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: 143.13010235415652}
+  tags: [lamp, road-lamp]
+reed-road-lamp-7:
+  feetPosition: {x: -241.68, y: 12.41, z: 283.74}
+  id: reed-road-lamp-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -36.86989764584402}
+  tags: [lamp, road-lamp]

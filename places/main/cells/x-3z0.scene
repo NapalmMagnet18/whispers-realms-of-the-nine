@@ -34,3 +34,10 @@ start-thornhollow-way-7:
   primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 7}
   rotation: {yaw: 111.80140948635182}
   tags: [waystone, thornhollow]
+thorn-road-lamp-7:
+  feetPosition: {x: -443.92, y: 5.88, z: 29.95}
+  id: thorn-road-lamp-7
+  physics: static
+  primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
+  rotation: {yaw: -82.46964842400153}
+  tags: [lamp, road-lamp]
