@@ -11,7 +11,12 @@ atmosphere:
     kind: linear
     near: 45
   look:
-    script: scripts/look-default.js
+    script: mods/raytraced-lighting/look-raytrace.js
+    params:
+      reflection: 1.0
+      denoise: 0.45
+      aoStrength: 0.45
+      bloom: 1.1
   moon:
     intensity: 4
     enabled: true
