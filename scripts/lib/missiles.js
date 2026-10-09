@@ -23,7 +23,7 @@ pop puff burst=1 life=.2 size=.5 col=hdr(3,1.4,.4) a=.8>0 sz=$size*(.6>1.2) r=sp
 const FROST_TRAIL = `fx
 pop core local n=1 size=.22 col=hdr(.7,1.4,2.6) a=.8 sz=$size*flick(9,.15) r=sprite(soft-disc,add)
 pop glint local n=2 size=.14..0.2 col=hdr(.9,1.6,2.8) a=.55 rot=spin(.8) sz=$size*flick(6,.3) r=sprite(shard,add)
-pop mist rate=?mobile:30|60 on=sphere(.08) life=.4..0.8 v=sdir()*(.15..0.4) size=.14..0.26 acc=curl(.4)*.4+grav()*.15+drag(2) sz=$size*(.6>1.6) col=<.78,.9,1> a=0>.1:.45>0 rot=spin(.2) r=sprite(smoke-puff,alpha)
+pop mist rate=?mobile:14|26 on=sphere(.08) life=.4..0.8 v=sdir()*(.15..0.4) size=.1..0.18 acc=curl(.4)*.4+grav()*.15+drag(2) sz=$size*(.6>1.5) col=<.6,.78,.95> a=0>.1:.22>0 rot=spin(.2) r=sprite(smoke-puff,alpha)
 pop flakes rate=?mobile:12|24 on=sphere(.12) life=.5..1 v=sdir()*(.4..1) size=.025..0.055 spin=-6..6 acc=grav()*.25+drag(1) col=hdr(1.8,2.4,3.2) a=(1>0)*flick(7,.4) rot=$age*$spin r=sprite(snowflake,add)
 pop glow local n=1 r=light(<.55,.75,1>,4,7)`
 const FROST_HIT = `fx
