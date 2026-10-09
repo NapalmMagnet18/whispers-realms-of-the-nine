@@ -325,6 +325,16 @@ thr-seedling:
   rotation: 287
   state: {after: testimony_choice, afterText: "First: choose a testimony at the shrine", mark: rootblight, quest: THR-06, say: Grey rot creeps from the soil. You scrape it back and pack clean earth around the stem. It holds., title: Rootblight on the Seedling, verb: Scrape away the blight}
   tags: [quest-mark, rootwake-glade]
+town-sound-thornhollow:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-elven-forest-village-ambience-soft-wind-chimes-leaves-rustle-distant-gentle-voices-loop.mp3, gain: 0.22, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: -720, y: {terrain: 1.5}, z: 70}
+  id: town-sound-thornhollow
+  tags: [town-sound]
+town-sound-thornhollow-bells:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-hanging-glass-bells-tinkling-softly-in-breeze-loop.mp3, gain: 0.16, loop: true, maxDistance: 14, spatial: true}
+  feetPosition: {x: -744, y: {terrain: 1.5}, z: 85}
+  id: town-sound-thornhollow-bells
+  tags: [town-sound]
 trainer-briarkin:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -714, y: 19.6, z: 74}

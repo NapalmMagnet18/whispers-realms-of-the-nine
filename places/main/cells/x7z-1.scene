@@ -571,6 +571,11 @@ start-cinderhold/start-cinderhold-signpost:
   physics: static
   primitive: {kind: scripted, params: {kind: signpost}, script: scripts/gen/hamlet.js}
   rotation: {yaw: 171.41637851988605}
+town-sound-cinderhold:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-mountain-hold-town-ambience-distant-hammers-steam-hiss-low-dwarven-voices-loop.mp3, gain: 0.22, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 896, y: {terrain: 1.5}, z: -165}
+  id: town-sound-cinderhold
+  tags: [town-sound]
 trainer-emberforged:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: 894, y: 40.4, z: -166}

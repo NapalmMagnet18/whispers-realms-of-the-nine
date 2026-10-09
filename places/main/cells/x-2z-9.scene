@@ -53,6 +53,11 @@ start-starfall:
   physics: static
   primitive: {kind: scripted, params: {kind: plate}, script: scripts/gen/hamlet.js}
   tags: [start-zone, starfall]
+town-sound-starfall:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-high-mountain-eyrie-ambience-wind-over-cliffs-banners-flapping-distant-gryphon-call-loop.mp3, gain: 0.22, loop: true, maxDistance: 50, spatial: true}
+  feetPosition: {x: -200, y: {terrain: 1.5}, z: -1100}
+  id: town-sound-starfall
+  tags: [town-sound]
 trainer-veylori:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -194, y: 120, z: -1090}

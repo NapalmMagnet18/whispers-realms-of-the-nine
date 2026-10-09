@@ -124,6 +124,11 @@ reh-willow-2:
   primitive: {kind: scripted, params: {kind: oak}, script: scripts/gen/tree.js, seed: 982}
   rotation: {yaw: 206}
   scale: 1.8
+town-sound-reedhaven:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-marsh-village-ambience-creaking-boardwalk-planks-lapping-water-frogs-distant-voices-loop.mp3, gain: 0.22, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: -430, y: {terrain: 1.5}, z: 560}
+  id: town-sound-reedhaven
+  tags: [town-sound]
 trainer-reedbound:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -434, y: 12, z: 574}

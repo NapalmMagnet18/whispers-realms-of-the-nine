@@ -698,6 +698,16 @@ strand-npc-sena:
   rotation: {yaw: 225}
   state: {homeYaw: 225, idle: Idle_FoldArms_Loop, npcName: Pilot Sena Wavebound, who: sena, yaw: 225}
   tags: [npc, talker, townsfolk, quest-npc, breakwater-strand]
+town-sound-gullrest:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-fishing-harbour-ambience-boats-creaking-ropes-gulls-market-chatter-loop.mp3, gain: 0.22, loop: true, maxDistance: 45, spatial: true}
+  feetPosition: {x: 234, y: {terrain: 1.5}, z: 1432}
+  id: town-sound-gullrest
+  tags: [town-sound]
+town-sound-gullrest-camp:
+  audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-campfire-crackle-loop.mp3, gain: 0.18, loop: true, maxDistance: 12, spatial: true}
+  feetPosition: {x: 249, y: {terrain: 1.5}, z: 1408}
+  id: town-sound-gullrest-camp
+  tags: [town-sound]
 trainer-saltborn:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: 250, y: 3.0896429297549988, z: 1434}
