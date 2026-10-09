@@ -18,6 +18,8 @@ sounds:
   growl: /cdn/moodboard-painterly-fantasy/sfx-wolf-growl.mp3
   bite: /cdn/moodboard-painterly-fantasy/sfx-wolf-bite.mp3
   yelp: /cdn/moodboard-painterly-fantasy/sfx-wolf-yelp.mp3
+  howl: /cdn/moodboard-painterly-fantasy/sfx-dire-wolf-howl-short-hunting-call.mp3
+howl: { seconds: 1.1, rally: 24, every: 8 }   # the first wolf to spot you howls; idle packmates this near charge with it; once per 8 s for the pack
 # the pack: one row per wolf, all off the Briarwild road (-56,-10)->(-80,-18)->(-104,-26)
 pack:
   - { id: briar-wolf-1, x: -72,  z: -34, yaw: 30,  scale: 1.0 }

@@ -181,6 +181,19 @@ export function update(ctx, dt) {
     if (s.mode === "idle") {
       let best = W.aggro, prey = null;
       for (const p of players) { if (inRefuge(p.feetPosition)) continue; const d = flat(p.feetPosition, pos); if (d < best) { best = d; prey = p; } }
+      if (prey && W.howl && now - (S.howlAt ?? -1e9) > W.howl.every * 1000) {
+        // the pack call: head thrown back, the howl, every idle packmate in earshot turns and runs with it
+        S.howlAt = now; s.mode = "howl"; s.target = prey.id; m.howlEnd = now + W.howl.seconds * 1000;
+        gait(ctx, w, m, "idle", 1); halt(w, m);
+        animate(ctx, w.id, { "bones.head.pitch": [0, 44, 46, 40, 0], "bones.jaw.pitch": [0, -26, -30, -24, 0], "bones.body.pitch": [0, 10, 10, 8, 0], "bones.tail.pitch": [0, -16, -18, -14, 0] }, { duration: W.howl.seconds, easing: "easeInOutSine" });
+        ctx.emit("playSound", { clip: W.sounds.howl, position: pos, volume: 0.85, maxDistance: 70 }, { audience: near(pos) });
+        for (const od of (ds.pack || W.pack)) {
+          if (od.id === def.id) continue;
+          const o = ctx.getObject(od.id);
+          if (o && o.state.mode === "idle" && flat(o.feetPosition, pos) < W.howl.rally) aggro(ctx, o, o.state, prey.id);
+        }
+        continue;
+      }
       if (prey) aggro(ctx, w, s, prey.id);
       else {
         if (now >= (m.roamUntil ?? 0)) {
@@ -195,6 +208,12 @@ export function update(ctx, dt) {
     }
     const p = players.find((q) => q.id === s.target && !inRefuge(q.feetPosition));
     const dist = p ? flat(p.feetPosition, pos) : Infinity;
+    if (s.mode === "howl") {
+      halt(w, m);
+      if (p) face(w, m, p.feetPosition, dt);
+      if (now >= (m.howlEnd ?? 0)) s.mode = "chase";
+      continue;
+    }
     if (s.mode === "windup") {
       halt(w, m);
       if (p) face(w, m, p.feetPosition, dt);
