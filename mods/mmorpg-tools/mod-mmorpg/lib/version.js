@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.45 Alpha';
+var GAME_VERSION = '0.47.46 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.46', 'The Star Pool', 'East of Starfall Eyrie, on a shelf of the mountain, a still pool holds the stars even by day. Five pale stones keep watch. So did someone else, once.'],
   ['v0.47.45', 'No beast enters the water', 'Wolves and raiders will not follow you into Emberwell Spring. Run for the steam and they break off at the stones.'],
   ['v0.47.44', 'A warm soak', 'Step into the water at Emberwell Spring and your wounds mend fast, even with wolves at your back.'],
   ['v0.47.43', 'Emberwell Spring', 'West of Cinderhold, a little off the road, a hot spring steams between old stones. A miner left his strongbox by the water and never came back for it.'],
