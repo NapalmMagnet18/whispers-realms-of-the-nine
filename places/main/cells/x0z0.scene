@@ -1167,6 +1167,14 @@ kit-fence-east-2:
   physics: {body: static, collider: box}
   rotation: {yaw: 70}
   tags: [kit]
+kit-gate-farm:
+  feetPosition: {x: -18, y: {terrain: 0}, z: 43}
+  id: kit-gate-farm
+  model: /cdn/value.c61ff1a7d4bb44ce569c59976ceae8964fffd5c1b89976a1c464cfae58730b8c.glb
+  physics: static
+  rotation: 0
+  scale: 3.158
+  tags: [kit-asset]
 kit-hay-1:
   feetPosition: {x: -24.5, y: {terrain: 0}, z: -12.5}
   id: kit-hay-1
@@ -1431,6 +1439,41 @@ merchant:
   primitive: {kind: scripted, params: {chimney: -1, d: 8, h: 3.6, rise: 2.4, roof: weathered red clay roof shingles, w: 10, win: 2}, script: scripts/gen/house.js}
   rotation: -90
   tags: [building, merchant]
+merchant/kit-banner-0:
+  feetPosition: {x: -3.4, y: 0.6, z: -4.08}
+  id: merchant/kit-banner-0
+  model: /cdn/value.691bfde37ce2d4dbe91e380950fa3c7c642893386fb1a0e20ade1df9e8ecbc5f.glb
+  parent: merchant
+  rotation: 0
+  scale: 1.6
+  tags: [kit-asset]
+merchant/kit-banner-1:
+  feetPosition: {x: 3.4, y: 0.6, z: -4.08}
+  id: merchant/kit-banner-1
+  model: /cdn/value.691bfde37ce2d4dbe91e380950fa3c7c642893386fb1a0e20ade1df9e8ecbc5f.glb
+  parent: merchant
+  rotation: 0
+  scale: 1.6
+  tags: [kit-asset]
+merchant/kit-crate-a:
+  feetPosition: {x: 4.6, y: 0, z: -4.6}
+  id: merchant/kit-crate-a
+  layout: {maxExtents: {x: 0.5, y: 1, z: 0.5}, minExtents: {x: -0.5, y: 0, z: -0.5}}
+  model: /cdn/value.6be7abd1243a456979107d0506e3a12053fa24a9c969a5f7d65d2e8d0e182dc1.glb
+  parent: merchant
+  physics: static
+  rotation: 18
+  scale: 1
+  tags: [kit-asset]
+merchant/kit-crate-b:
+  feetPosition: {x: 4.9, y: 0, z: -3.4}
+  id: merchant/kit-crate-b
+  layout: {maxExtents: {x: 0.5, y: 1, z: 0.5}, minExtents: {x: -0.5, y: 0, z: -0.5}}
+  model: /cdn/value.6be7abd1243a456979107d0506e3a12053fa24a9c969a5f7d65d2e8d0e182dc1.glb
+  parent: merchant
+  physics: static
+  rotation: -8
+  tags: [kit-asset]
 obs-npc-leth:
   behavior: [scripts/townsfolk.js]
   feetPosition: {x: -20.4, y: {terrain: 0}, z: -33.2}
