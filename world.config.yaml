@@ -82,6 +82,9 @@ inputs:
     castSlot3:
       keys:
       - Digit3
+    castSlot4:
+      keys:
+      - Digit4
     jump:
       keys:
       - space
