@@ -27,7 +27,7 @@ pop flash burst=1 life=.25 size=6 col=hdr(8,4,1.2) a=1>0 sz=$size*(.4>1.4) r=spr
 pop wave burst=1 at=point().c(.1) life=.55 size=1 col=hdr(4,1.8,.4) a=.9>0 sz=%r|4*2.4*(.2>1) r=sprite(soft-disc,add,axis,0,.85,axis=<0,1,0>)
 pop pillar burst=40..60 on=disc(1.2) life=.5..1.1 v=up(5..9)+sdir()*(1..2.5) size=.5..1 acc=curl(.8)*1.4+buoy(1.5)+drag(2.6) sz=$size*(.6>1.5:.5>.3) col=hdr(6,2.8,.7)>.45:hdr(2.6,.8,.12)>hdr(.6,.12,.02) a=0>.06:1>.7:.8>0 rot=spin(.3) r=sprite(flame-wisp,add)
 pop ground burst=30..44 on=disc(%r|4) life=.8..1.8 v=up(.6..1.6) size=.3..0.6 acc=curl(.5)+buoy(1.2)+drag(2) sz=$size*(.5>1:1>.2) col=hdr(4,1.6,.35)>hdr(1,.22,.03) a=(0>.1:1>.7:.8>0)*flick(9,.3) r=sprite(flame-wisp,add)
-pop rocks burst=18..26 on=disc(.8) life=1..1.6 v=up(5..8)+sdir()*(3..6) size=.08..0.2 acc=grav()*1.4+drag(.3) col=<.18,.12,.09> a=1 floor=bounce(.25) r=mesh(rock,1,1,1,velocity)
+pop rocks burst=18..26 on=disc(.8) life=1..1.6 v=up(5..8)+sdir()*(3..6) size=.08..0.2 acc=grav()*1.4+drag(.3) col=<.18,.12,.09> a=1 floor=bounce(.25) r=mesh(box,1,.7,.8)
 pop embers burst=80..120 life=.8..2 v=sdir()*(4..10)+up(3..6) size=.02..0.05 acc=curl(1)*.8+grav()*.6+drag(.6) col=hdr(6,3,.7)>hdr(1.4,.35,.05) a=(1>0)*flick(12,.4) floor=bounce(.2) r=sprite(ember,add,velocity,.03)
 pop smoke burst=16..22 on=disc(%r|4) life=2.5..4.5 v=up(.8..2)+sdir()*.8 size=1..1.8 acc=buoy(.5)+curl(.3)*.6+drag(1) sz=$size*(.6>2.6) col=<.22,.19,.17>><.12,.12,.13> a=0>.4:.4>0 rot=spin(.1) r=sprite(smoke-puff,alpha)
 pop haze burst=?low:0|8 life=.6..1 v=up(1) size=2..3 sz=$size*(.7>1.4) col=<.008,.01,0> a=.8>0 r=sprite(soft-disc,distort)
