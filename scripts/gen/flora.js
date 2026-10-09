@@ -6,6 +6,7 @@ const BLOSSOM = ["oklch(0.86 0.09 355)", "oklch(0.9 0.06 345)", "oklch(0.8 0.12 
 const WILD = ["oklch(0.72 0.15 300)", "oklch(0.86 0.16 95)", "oklch(0.95 0.02 100)", "oklch(0.62 0.2 28)", "oklch(0.7 0.13 250)", "oklch(0.8 0.14 60)"];
 const LUPINE = ["oklch(0.62 0.17 295)", "oklch(0.78 0.11 340)", "oklch(0.68 0.14 265)", "oklch(0.92 0.04 90)"];
 
+const BASE_BLOSSOM = BLOSSOM.slice(), BASE_WILD = WILD.slice(), BASE_LUPINE = LUPINE.slice();
 function stem(ctx, x, z, h, lean, a) {
   const tx = x + Math.cos(a) * lean, tz = z + Math.sin(a) * lean;
   const w = 0.012;
@@ -139,12 +140,23 @@ function willow(ctx, r, far) {
   blob(ctx, 0, h + 0.6, 0, 2.0, 0.9, 2.0, 7, 0.3, far ? 4 : 5, far ? 6 : 9);
 }
 
+// palettes per region: params.palette swaps the flower colours a kind draws from
+const PALETTES = {
+  ember: ["oklch(0.7 0.19 40)", "oklch(0.82 0.16 75)", "oklch(0.6 0.2 25)", "oklch(0.88 0.12 95)"],
+  tide: ["oklch(0.95 0.02 230)", "oklch(0.72 0.12 240)", "oklch(0.82 0.08 200)", "oklch(0.9 0.05 330)"],
+  fen: ["oklch(0.68 0.14 295)", "oklch(0.86 0.12 100)", "oklch(0.75 0.1 160)", "oklch(0.93 0.03 90)"],
+  star: ["oklch(0.96 0.02 260)", "oklch(0.7 0.13 270)", "oklch(0.8 0.09 230)", "oklch(0.9 0.05 300)"],
+  thorn: ["oklch(0.6 0.18 330)", "oklch(0.66 0.16 300)", "oklch(0.82 0.15 90)", "oklch(0.55 0.19 25)"],
+};
 const KINDS = { blossom, wildflowers, lupine, rosebush, willow };
 export function geometry(ctx) {
   const kind = ctx.params?.kind || "wildflowers";
   const far = (ctx.lod ?? 1) >= 3;
   const r = () => ctx.random();
   ctx.metalness(0);
+  const pal = PALETTES[ctx.params?.palette];
+  if (pal) { WILD.splice(0, WILD.length, ...pal); LUPINE.splice(0, LUPINE.length, ...pal); BLOSSOM.splice(0, BLOSSOM.length, ...(ctx.params.palette === "star" || ctx.params.palette === "tide" ? ["oklch(0.95 0.02 260)", "oklch(0.9 0.04 300)", "oklch(0.86 0.06 330)", "oklch(0.97 0.01 90)"] : BASE_BLOSSOM)); }
+  else { WILD.splice(0, WILD.length, ...BASE_WILD); LUPINE.splice(0, LUPINE.length, ...BASE_LUPINE); BLOSSOM.splice(0, BLOSSOM.length, ...BASE_BLOSSOM); }
   (KINDS[kind] || wildflowers)(ctx, r, far);
   ctx.emissive(null);
 }
