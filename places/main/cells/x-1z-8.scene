@@ -5,6 +5,14 @@ bloom-star-1:
   id: bloom-star-1
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
+star-road-shrine:
+  children: [{feetPosition: {x: 0, y: 0.95, z: -0.6}, light: {color: oklch(0.85 0.12 70), distance: 6, intensity: 1.6, kind: point}}, {feetPosition: {x: 2.1, y: 0, z: -0.6}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: {yaw: 90}}]
+  feetPosition: {x: -187.30818980731104, y: 96.88445437495555, z: -963.9832044511759}
+  id: star-road-shrine
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/roadshrine.js, seed: 7}
+  rotation: {lookAt: {x: -190.7695725828098, y: 96.96445437495555, z: -957.4052998242084}}
+  tags: [shrine, landmark, roadside]
 vey-home-0:
   feetPosition: {x: -190, y: {terrain: -0.3}, z: -1085}
   id: vey-home-0

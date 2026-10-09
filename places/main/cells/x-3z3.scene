@@ -14,3 +14,11 @@ reed-road-lamp-3:
   primitive: {kind: scripted, params: {kind: lamppost}, script: scripts/gen/props.js}
   rotation: {yaw: -33.70294763979624}
   tags: [lamp, road-lamp]
+reed-road-shrine:
+  children: [{feetPosition: {x: 0, y: 0.95, z: -0.6}, light: {color: oklch(0.85 0.12 70), distance: 6, intensity: 1.6, kind: point}}, {feetPosition: {x: 2.1, y: 0, z: -0.6}, physics: static, primitive: {kind: scripted, params: {kind: bench}, script: scripts/gen/props.js}, rotation: {yaw: 90}}]
+  feetPosition: {x: -321.94582900519094, y: 15.307756319219688, z: 392.8254517065366}
+  id: reed-road-shrine
+  physics: static
+  primitive: {kind: scripted, script: scripts/gen/roadshrine.js, seed: 6}
+  rotation: {lookAt: {x: -322.36422324971414, y: 15.387756319219688, z: 403.3646616511269}}
+  tags: [shrine, landmark, roadside]
