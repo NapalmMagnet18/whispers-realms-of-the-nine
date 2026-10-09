@@ -7,6 +7,11 @@ emberwell-cache:
   rotation: {yaw: 225}
   state: {cache: emberwell-spring, copper: 900, lid: emberwell-cache-lid, title: Steam-warmed miner's strongbox, yaw: 225}
   tags: [cache, emberwell]
+emberwell-cache-lid:
+  feetPosition: {x: 823.4050609665442, y: 29.786269348047135, z: -62.99493903345591}
+  id: emberwell-cache-lid
+  primitive: {kind: scripted, params: {kind: lid}, script: scripts/gen/briar.js, seed: 9}
+  rotation: {yaw: 225}
 emberwell-rock-0:
   feetPosition: {x: 824.5, y: 28.99799069719793, z: -60}
   id: emberwell-rock-0
