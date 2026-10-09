@@ -181,7 +181,7 @@ function _veilMarkup(art, fading) {
 function enterVeil(localPlayer) {
   if (!__faVeil) return '';
   var inZone = localPlayer.state.characterCreated === true && localPlayer.place && localPlayer.place !== 'character-creation-land' && localPlayer.place !== 'main-menu-land';
-  if (inZone && !__faVeil.arrivedAt) __faVeil.arrivedAt = _veilNow();
+  if ((inZone || _veilNow() - (__faVeil.at || 0) > 20000) && !__faVeil.arrivedAt) __faVeil.arrivedAt = _veilNow(); // never trap: 20 s at most
   if (__faVeil.arrivedAt && _veilNow() - __faVeil.arrivedAt > 5000) { __faVeil = null; return ''; }
   return _veilMarkup(__faVeil.art, !!__faVeil.arrivedAt);
 }
@@ -320,7 +320,7 @@ export default function(world, localPlayer) {
   // Creation-to-Sanctum loading screen
   if (localPlayer.state.loadingScreen) {
     var _art = RACE_ART[(RACES[localPlayer.state.raceIndex || 0] || {}).id] || RACE_ART.marchborn;
-    if (!__faVeil) __faVeil = { art: _art, arrivedAt: 0 };
+    if (!__faVeil) __faVeil = { art: _art, arrivedAt: 0, at: _veilNow() };
     return FONT_INJECTOR + FONT_WRAP_OPEN
       + '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var e=document.getElementById(\'fa-name-persist\');if(e)e.remove();window.__faCharName=undefined;" style="display:none" />'
       + _veilMarkup(__faVeil.art, false)
