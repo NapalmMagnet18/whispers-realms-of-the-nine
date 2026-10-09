@@ -7,6 +7,7 @@ const { RACES, CLASSES, CLASS_COLORS, SKIN_TONES, HAIR_COLORS, FACE_OPTIONS, HAI
 const { CLASS_STARTING_ITEMS } = require('./lib/class-items.js');
 
 // No-op stub — voice lines removed for mod
+var _loadProg = {}; // the creation loader's progress, kept off shared state so the screen does not repaint every frame
 export function playRaceVoice(objectApi, raceIndex, genderIndex) {}
 
 // GAME_CAMERA: just restore pointer lock for custom camera.js
@@ -264,7 +265,8 @@ export function update(objectApi, dt) {
 
   // --- Loading screen progress ---
   if (s.loadingScreen) {
-    const progress = (s.loadingProgress ?? 0) + dt * 20;
+    const progress = (_loadProg[objectApi.id] ?? s.loadingProgress ?? 0) + dt * 20;
+    _loadProg[objectApi.id] = progress;
     if (progress >= 100) {
       const raceIdx = s.raceIndex ?? 0;
       const race = RACES[raceIdx];
@@ -275,6 +277,7 @@ export function update(objectApi, dt) {
       const modelUrl = getModelUrl(raceIdx, genderIdx);
       const idleClip = getIdleClip(raceIdx, genderIdx);
 
+      delete _loadProg[objectApi.id];
       destroyPreview(objectApi);
 
       objectApi.setProperty('visible', true);
@@ -458,8 +461,7 @@ export function update(objectApi, dt) {
       });
     } else {
       // a state write re-renders every screen: step the bar in tenths, never every frame
-      if (Math.floor(progress / 10) !== Math.floor((s.loadingProgress ?? 0) / 10)) objectApi.patchState({ loadingProgress: progress });
-      else objectApi.patchState({ loadingProgress: progress }, { local: true });
+      if (Math.floor(progress / 25) !== Math.floor((s.loadingProgress ?? 0) / 25)) objectApi.patchState({ loadingProgress: progress });
     }
   }
 
