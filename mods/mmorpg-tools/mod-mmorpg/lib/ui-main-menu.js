@@ -46,7 +46,7 @@ function realmBadge(s) {
 var CREST = '/cdn/value.215dae666ef9a1a74cb16082f46a9e117966c908d5beaee16b35d07c82bcaa3e.png';
 var NEWS = [
   ['v0.47', 'Wings over the March', 'Eleven gryphon roosts now link the continent. Walk near one to learn it, press E to fly. The Ninth Veil and the Ashfall Reaches wait at the far edges.', '/cdn/value.9b81f41b857bd952a2ae562a55e5b84d5eb6137b07dee8760b7cc32d97bd68f0.png'],
-  ['v0.47', 'The Deepgrove Bounty', 'A lit board west of Rootwake Glade pays for Scab\'s raiders. Level 8 and up.', '/cdn/value.726eedc85c8dd01ea6dbcda6f9195135886e90a3962c0c8006b0d03c510fd67a.png'],
+  ['v0.47', 'The Deepgrove Bounty', 'A lit board west of Rootwake Glade pays for Scab\'s raiders. Level 8 and up.', '/cdn/value.6489d07ac1164f457c728992a582ec1e52cb7ce0d2e3e0b4726fae264c3ebd86.png'],
   ['v0.46', 'Wells of the March', 'Draw a bucket at any town well and drink to heal over time.'],
   ['v0.46', 'Party Finder & Banner Vale', 'Queue for dungeons, raids and the 5v5 banner battleground from any town board.', '/cdn/value.b076587b8d0ebb04368c665fb66c1a3d0e1303b8695e64a49188e8c8e5ae0436.png'],
 ];
