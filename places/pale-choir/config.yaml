@@ -13,7 +13,7 @@ atmosphere:
   moon: { enabled: false }
   stars: { enabled: false }
   clouds: { enabled: false }
-  ambient: { light: { color: "oklch(0.62 0.03 80)", intensity: 1.5 } }
+  ambient: { light: { color: "oklch(0.62 0.03 80)", intensity: 1.95 } }
   hemisphere: { sky: "oklch(0.62 0.03 80)", ground: "oklch(0.3 0.03 60)", intensity: 1.0 }
   fog: { kind: linear, color: "oklch(0.16 0.02 70)", near: 18, far: 110 }
   look: # ray-traced reflections, contact shadows and bloom (mods/raytraced-lighting); was aaa-quality-kit look-cinema

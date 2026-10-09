@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.81 Alpha';
+var GAME_VERSION = '0.47.82 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.82', 'Traced Light Below', 'The Drowned Bell, Root Archive, Pale Choir, Emberheart and the Ninth Assembly are now lit with ray-traced reflections, traced contact shadows and soft bloom. Floors carry a sheen to catch it: standing water in the Bell, polished marble in the Assembly.'],
   ['v0.47.81', 'Drowned Coast Foes', 'The Court Brine-Takers return as salt-crusted drowned zealots behind corroded brass respirators, carrying barnacled hooked poles; the Phantom Current is now a sailor wraith trailing seaweed, its teal eyes burning under a rotted tricorn.'],
   ['v0.47.80', 'The Deepgrove Cutthroats', 'The Deepgrove Raiders have shed their plain bandit look: gaunt forest cutthroats now, in moss-rotted hoods and bone masks, thorn-wrapped leather and rusted hooked axes.'],
   ['v0.47.79', 'Ember-Backed Wolves', 'Briar Wolves no longer vanish into the dusk: ash-silver guard hairs frost the mane, the flanks and belly pale where the soot saddle breaks, and the briar curse smoulders as ember-lit cracks between the thorn spines.'],
