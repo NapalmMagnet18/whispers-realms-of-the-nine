@@ -187,3 +187,5 @@ Untested so far: no on-foot run, no real combat against tether-spirits, no journ
 - 2026-10-08: Hall of Banners: a stone guild hall at (5,24) in Lantern's Reach, east of the bank, door facing the bank. Registrar Ambrose Quill at its door (state.guildRegistrar): E opens the guild window, where you found (10 silver) or join by name.
 - 2026-10-08: bandit/scavenger camps stand their crews only while a player is within 60 m and clear idle ones past 110 m (cs.wakeRadius/sleepRadius), so the raider model (4.5 MB) stays out of the Reach's first picture.
 - 2026-10-08: the four class kits and flight load by import() on entering a play place (scripts/<name>.js is a thin loader, the kit is scripts/<name>-core.js); only your own class's kit loads.
+
+- 2026-10-09: the March sky was frozen at 16.9; now one day per real hour (golden 16–19 slow, night ~14 min). From 18.6 to 5.4 the outdoor beds go to crickets and the one-shots to owls and nightjars (music.yml night). Why: creator asked "crickets and owls once the sun goes down".
