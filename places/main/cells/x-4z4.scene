@@ -1,4 +1,14 @@
 # spawn-scene v2 yaml x-4z4
+bloom-fen-5:
+  feetPosition: {x: -489, y: {terrain: 0}, z: 555}
+  id: bloom-fen-5
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {primitive: {kind: scripted, params: {kind: lupine, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 1.2}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-fen-6:
+  feetPosition: {x: -455, y: {terrain: 0}, z: 536}
+  id: bloom-fen-6
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {primitive: {kind: scripted, params: {kind: lupine, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 1.2}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 reh-boat-0:
   feetPosition: {x: -436, y: {terrain: 0}, z: 524}
   id: reh-boat-0

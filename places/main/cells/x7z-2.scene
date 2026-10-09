@@ -1,4 +1,19 @@
 # spawn-scene v2 yaml x7z-2
+bloom-ember-6:
+  feetPosition: {x: 871, y: {terrain: 0}, z: -208}
+  id: bloom-ember-6
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 7}, {primitive: {kind: scripted, params: {kind: lupine, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: rosebush, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 0.6}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.3}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-ember-7:
+  feetPosition: {x: 899, y: {terrain: 0}, z: -227}
+  id: bloom-ember-7
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 7}, {primitive: {kind: scripted, params: {kind: lupine, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: rosebush, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 0.6}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.3}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-ember-8:
+  feetPosition: {x: 938, y: {terrain: 0}, z: -224}
+  id: bloom-ember-8
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 7}, {primitive: {kind: scripted, params: {kind: lupine, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: rosebush, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 0.6}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: ember}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.3}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 kha-hall:
   feetPosition: {x: 914, y: {terrain: -0.3}, z: -207}
   id: kha-hall

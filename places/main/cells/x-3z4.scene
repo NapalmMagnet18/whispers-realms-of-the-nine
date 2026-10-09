@@ -8,6 +8,21 @@ banker-reedbound:
   rotation: -90
   state: {bank: true, homeYaw: -90, idle: Idle_FoldArms_Loop, npcName: "Banker Ilse Reedmarrow, Lantern Vault", who: banker, yaw: -90}
   tags: [npc, vendor, interactable, banker-npc]
+bloom-fen-7:
+  feetPosition: {x: -427, y: {terrain: 0}, z: 517}
+  id: bloom-fen-7
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {primitive: {kind: scripted, params: {kind: lupine, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 1.2}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-fen-8:
+  feetPosition: {x: -388, y: {terrain: 0}, z: 520}
+  id: bloom-fen-8
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {primitive: {kind: scripted, params: {kind: lupine, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 1.2}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-fen-9:
+  feetPosition: {x: -381, y: {terrain: 0}, z: 558}
+  id: bloom-fen-9
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {primitive: {kind: scripted, params: {kind: lupine, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 4}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow, palette: fen}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 1.2}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 bloom-reed-4-a:
   feetPosition: {x: -377, y: {terrain: 0}, z: 449}
   id: bloom-reed-4-a

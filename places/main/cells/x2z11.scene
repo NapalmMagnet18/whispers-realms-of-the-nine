@@ -13,6 +13,36 @@ banker-saltborn:
   rotation: 56.309932474020215
   state: {bank: true, homeYaw: 56.309932474020215, idle: Idle_FoldArms_Loop, npcName: "Banker Pell Tidewright, Lantern Vault", who: banker, yaw: 56.309932474020215}
   tags: [npc, vendor, interactable, banker-npc]
+bloom-tide-0:
+  feetPosition: {x: 290, y: {terrain: 0}, z: 1444}
+  id: bloom-tide-0
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-tide-3:
+  feetPosition: {x: 216, y: {terrain: 0}, z: 1469}
+  id: bloom-tide-3
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-tide-6:
+  feetPosition: {x: 215, y: {terrain: 0}, z: 1392}
+  id: bloom-tide-6
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-tide-7:
+  feetPosition: {x: 243, y: {terrain: 0}, z: 1373}
+  id: bloom-tide-7
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-tide-8:
+  feetPosition: {x: 282, y: {terrain: 0}, z: 1376}
+  id: bloom-tide-8
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-tide-9:
+  feetPosition: {x: 289, y: {terrain: 0}, z: 1414}
+  id: bloom-tide-9
+  scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 finder-saltborn:
   overrides:
     feetPosition: {x: 251.77504062792073, y: 3.8324276031947795, z: 1431.337439058119}
