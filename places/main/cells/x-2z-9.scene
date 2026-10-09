@@ -1,16 +1,19 @@
 # spawn-scene v2 yaml x-2z-9
 bloom-star-5:
   feetPosition: {x: -263, y: {terrain: 0}, z: -1113}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-star-5
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-star-6:
   feetPosition: {x: -229, y: {terrain: 0}, z: -1132}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-star-6
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-star-7:
   feetPosition: {x: -201, y: {terrain: 0}, z: -1151}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-star-7
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]

@@ -10,16 +10,19 @@ banker-veylori:
   tags: [npc, vendor, interactable, banker-npc]
 bloom-star-2:
   feetPosition: {x: -199, y: {terrain: 0}, z: -1028}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-star-2
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-star-3:
   feetPosition: {x: -228, y: {terrain: 0}, z: -1055}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-star-3
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-star-4:
   feetPosition: {x: -254, y: {terrain: 0}, z: -1076}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-star-4
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 5}, {primitive: {kind: scripted, params: {kind: lupine, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 3}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: star}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.8}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]

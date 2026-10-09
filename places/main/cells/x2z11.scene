@@ -15,31 +15,37 @@ banker-saltborn:
   tags: [npc, vendor, interactable, banker-npc]
 bloom-tide-0:
   feetPosition: {x: 290, y: {terrain: 0}, z: 1444}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-tide-0
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-tide-3:
   feetPosition: {x: 216, y: {terrain: 0}, z: 1469}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-tide-3
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-tide-6:
   feetPosition: {x: 215, y: {terrain: 0}, z: 1392}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-tide-6
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-tide-7:
   feetPosition: {x: 243, y: {terrain: 0}, z: 1373}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-tide-7
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-tide-8:
   feetPosition: {x: 282, y: {terrain: 0}, z: 1376}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-tide-8
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
 bloom-tide-9:
   feetPosition: {x: 289, y: {terrain: 0}, z: 1414}
+  fx: {script: "fx\npop flies n=?mobile:3|7 on=disc(8).c(1) life=4..7 v=sdir()*.15 acc=curl(.6)*.5 size=.04..0.06 col=hdr(3,2.4,.8) a=(0>.2:1>.8:1>0)*flick(2,.6) sz=$size r=sprite(soft-disc,add)"}
   id: bloom-tide-9
   scatter: {bounds: {radius: 9, shape: circle}, count: 40, templates: [{primitive: {kind: scripted, params: {kind: wildflowers, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: rosebush, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2}, {primitive: {kind: scripted, params: {kind: lupine, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1.5}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom, palette: tide}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
