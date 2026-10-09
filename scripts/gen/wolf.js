@@ -33,7 +33,7 @@ function paint(ctx, out, tone) {
   else if (tone === 4) { L = ny < -0.2 ? 0.32 : 0.22; H = 38; }
   else if (tone === 5) { L = 0.2 + j * 0.5; C = 0.05; H = 128; } // briar vine
   else if (tone === 6) { L = ny > 0 ? 0.74 : 0.6; C = 0.025; H = 80; } // bare rib bone
-  else L = ny > 0.62 ? 0.13 : ny > 0.25 ? 0.2 : ny > -0.35 ? 0.3 : 0.42;
+  else { L = ny > 0.62 ? 0.15 : ny > 0.25 ? 0.25 : ny > -0.35 ? 0.38 : 0.5; if (ny < 0.25) { H = 70; C = 0.02; } } // soot saddle, ash-silver flanks and belly: the silhouette reads at dusk
   ctx.color(`oklch(${Math.max(0.05, L + j).toFixed(3)} ${C} ${H})`);
 }
 
@@ -178,9 +178,16 @@ export function geometry(ctx) {
   }
   if (lod <= 2) { // the hide: a shaggy mane, a ragged back, a hanging belly fringe; ribs showing through a starved flank; briar choking the trunk
     const f = lod <= 1 ? 1 : 0.45
-    pelt(ctx, -0.56, -0.26, 1.9, Math.round(150 * f), 0.08, 0.15, 0.1)
+    pelt(ctx, -0.56, -0.26, 1.9, Math.round(110 * f), 0.08, 0.15, 0.1)
+    pelt(ctx, -0.56, -0.3, 1.9, Math.round(60 * f), 0.1, 0.17, 0.52) // ash-silver guard hairs through the mane: the frosted ruff of an old pack wolf
     pelt(ctx, -0.26, 0.42, 1.0, Math.round(110 * f), 0.04, 0.075, 0.12)
-    pelt(ctx, -0.32, 0.18, 0.5, Math.round(30 * f), 0.04, 0.07, 0.24)
+    pelt(ctx, -0.32, 0.18, 0.5, Math.round(30 * f), 0.04, 0.07, 0.3)
+    pelt(ctx, -0.25, 0.35, 1.6, Math.round(50 * f), 0.035, 0.06, 0.46) // pale flank fur where the saddle breaks
+    // ember cracks: the briar's curse smoulders under the hide along the ridge, glowing seams between the spines
+    ctx.color("oklch(0.62 0.2 38)"); ctx.emissive("oklch(0.68 0.22 40)")
+    for (let i = 0; i < 9; i++) { const z = -0.44 + i * 0.1, [cy, , ry] = torsoAt(z), y = cy + ry * 0.985, w = 0.012 + (i % 3) * 0.004, sx = i % 2 ? 1 : -1
+      quadN(ctx, [sx * 0.02 - w, y + 0.002, z - 0.035], [sx * 0.02 + w, y + 0.002, z - 0.035], [sx * 0.045 + w, y - 0.004, z + 0.035], [sx * 0.045 - w, y - 0.004, z + 0.035], [0, 1, 0]) }
+    ctx.emissive(null)
     for (const sx of [-1, 1]) for (let r = 0; r < 4; r++) {
       const z = -0.08 + r * 0.075, [cy, rx, ry] = torsoAt(z), arc = []
       for (let q = 0; q <= 5; q++) { const a = sx * (1.35 + q * 0.22); arc.push([Math.sin(a) * rx * 1.02, cy + Math.cos(a) * ry * 1.02, z + q * 0.008, 0.011, 0.011, 6]) }
