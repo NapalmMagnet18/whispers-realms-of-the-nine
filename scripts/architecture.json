@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1917,
-  "updatedAt": "2026-10-09T08:47:26.405Z",
-  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes. Creation and first arrival share a zone-art veil keyed to terrain readiness; March roads connect race towns with lanterns, blossom arches and candlelit shrines, whose Wayfarer's Blessing boosts travel temporarily.",
+  "basedOnSpecVersion": 1933,
+  "updatedAt": "2026-10-09T09:21:02.422Z",
+  "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes. March roads carry lanterns, blossom arches and candlelit shrines, while the hidden Petalfall Hollow adds a blossom-ringed spring glade west of Lantern's Reach.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
     "mods/codex/lib/codex-doc.js",
@@ -142,6 +142,7 @@
     "scripts/gen/lodge.js",
     "scripts/gen/lumber.js",
     "scripts/gen/observatory.js",
+    "scripts/gen/petalfall.js",
     "scripts/gen/props.js",
     "scripts/gen/quarry.js",
     "scripts/gen/quarryworks.js",
@@ -244,15 +245,15 @@
     "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; tagged well, guild registrar and banner landmarks, farm gate and merchant stall kit props.",
     "places/main/cells/x-1z1.scene - Reedhaven-road meadow with four static, individually roofed cottages, door lamps and flower/blossom garden rings; surrounding seeded flora scatter remains in place.",
     "places/main/config.yaml hamlet-rise - terrain flatten centered at (-145,117), radius 36, height 2.4; places the Reedhaven-road hamlet on a gentle rise.",
-    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with Discipline Trainers and banners; x-6z1's Briarkin/Thornhollow start has seven tagged bloom clearings.",
-    "places/main/cells/x-10z7.scene and board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
-    "places/main/cells/x-1z-7.scene, x-2z-8.scene, x-2z2.scene, x-2z3.scene, x-3z0.scene, x-3z3.scene, x-3z4.scene, x-4z0.scene, x-5z0.scene, x2z9.scene–x2z12.scene, x7z-1.scene, x8z-3.scene and x9z-4.scene - race-town road links; wayside shrines are tagged roadside for blessing interaction, with crackle/chime audio and close-range signs in x-1z-8, x-3z3, x-5z0, x2z11 and x9z-4.",
+    "places/main/cells/x-1z0.scene and x-1z1.scene - Petalfall Hollow, hidden west of Lantern's Reach: a spring, six standing stones, a fairy ring and a 750-copper petal-wreathed offering cache among blossom trees and wildflowers.",
+    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with Discipline Trainers and banners; x-6z1 has seven tagged bloom clearings.",
+    "places/main/cells/x-10z7.scene and board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues; road-link cells carry race-town routes, shrines and landmarks.",
     "places/banner-vale/ is the 5v5 capture-the-banner battleground; places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ are gate-linked dungeon/raid instances."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.38 Alpha and PATCH_NOTES; main-menu Herald reads news here, settings/pause use versionTag.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.39 Alpha and PATCH_NOTES; Herald advertises Petalfall Hollow, settings/pause use versionTag.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere plus room weather and Party Finder matching.",
@@ -274,10 +275,10 @@
     "scripts/lib/kit.js - power, gearPower, classOf, canAct, forward, alive, aimPoint, softTargets, launch, materialOf, meleeFoley, applyHit.",
     "scripts/lib/lazy.js - lazyBehavior; scripts/lib/resident-animation.js - residentIdle, greetResident, residentPitch.",
     "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class actions; scripts/flight-core.js - updateSchedule, onInput, update.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js - getMv, setMv, getGameplayCharacterProp, ensureGameplayAvatar, getRosterResumeCandidate, restoreRosterCharacterState, getCurrentPlaceMusic, restorePlaceMusic, setWorldSpatialAudio, buildCharData, saveCharacter, onSpawn.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js - getMv, setMv, getGameplayCharacterProp, ensureGameplayAvatar, getRosterResumeCandidate, restoreRosterCharacterState, getCurrentPlaceMusic, restorePlaceMusic, setWorldSpatialAudio, buildCharData, save helpers.",
     "mods/mmorpg-tools/mod-mmorpg/ui.js - renderMainMenuSettingsOverlay, getRightHudLayout, default, renderZoneBanner, renderWASD; lib/ui-main-menu.js - renderMainMenu.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-zone-splash.js - arrivalVeil, renderZoneSplash, resetZoneSplash, zoneSplashActive, zoneArtFor; character-select.js - preview and race-voice helpers.",
-    "scripts/gen/bloom-arch.js and scripts/gen/roadshrine.js - geometry; scripts/{boss,scavengers,wolves}.js - lazy wrapper exports and matching core AI exports; scripts/vitality-core.js - bloodEnds, blessEnds, onInput, updateSchedule, update."
+    "scripts/gen/petalfall.js - geometry; scripts/gen/bloom-arch.js and roadshrine.js - geometry; scripts/{boss,scavengers,wolves}.js - lazy wrapper exports; scripts/vitality-core.js - bloodEnds, blessEnds, onInput, updateSchedule, update."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent, velocity/footstep state, and arrival ground-ready stamp _areaReady; place config owns gravity.",
@@ -287,8 +288,7 @@
     "mods/mmorpg-tools/mod-mmorpg/character-select.js - character selection/creation UI behavior and preview lifecycle; per-object _loadProg tracks loader animation outside replicated/shared state.",
     "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action/cooldown state and combat effects; wrappers load and forward to matching core.",
     "scripts/flight-core.js - player roost discovery, flight map, flying mount/route state and fare interaction; saved roosts live on character state.",
-    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
-    "scripts/vitality-core.js - player blessing state blessed and blessAt, blessing expiry and shrine-interaction effects; movement scripts read blessed for the speed multiplier."
+    "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -312,7 +312,7 @@
     "scripts/gen/homeland.js - landmarks/foliage reused at homeland encounter sites, varied by kind (hollow, vault, reedcage, bloom), scale and seed.",
     "scripts/gen/ashen.js, scripts/gen/ashen-village.js and scripts/gen/grave-ground.js - Ashen Close graveyard, cathedral yard, gothic village pieces and graveyard cover; helper, kind, seed, LOD and dimensions vary pieces.",
     "scripts/gen/fen.js - procedural marsh props recur in Sorrowfen, Reedhaven Refuge and Starfall Eyrie quest sites, varied by kind/seed/LOD; boardwalk geometry and collider share dimensions.",
-    "scripts/gen/bloom-arch.js and scripts/gen/roadshrine.js - reusable March road landmarks placed beside multiple race-town roads; vary arch span/height/palette/seed or shrine seed, with scene-parented lights, benches and ambient effects; five shrine placements add the shared tagged interaction point, sign and spatial audio."
+    "scripts/gen/petalfall.js - geometry reused for Petalfall's six standing stones, spring basin and fairy-ring mushrooms; params.kind, seed and LOD vary the pieces."
   ],
   "probableOrphans": [
     "scripts/gen/grave-weeds.js - no scene or other package reference; graveyard cover is currently placed through grave-ground.js instead."
@@ -321,7 +321,7 @@
     "Adding a playable place requires a row in scripts/lib/places.js PLAY; dying heroes rise at SAFE_HOME for listed dungeons/raids. Quest and class logic uses isPlay rather than hard-coded place names.",
     "Instance room walls/corridors and scene furnishing placement share layout coordinates: entry is z=0, chambers chain toward -Z, floor y=0; keep scripts/gen/instance.js roomsOf arithmetic consistent with scenes.",
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
-    "Creation and first-arrival veils must use ui-zone-splash.js zoneArtFor/arrivalVeil so art stays consistent across the transition; _areaReady is stamped by scripts/player.js after stable grounded terrain contact, and the splash retains its timeout fallback.",
+    "Creation and first-arrival veils must use ui-zone-splash.js zoneArtFor/arrivalVeil so art stays consistent across the transition; _areaReady is stamped by scripts/player.js after stable grounded terrain contact, and the splash retains its timeout/fade behavior.",
     "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save. Guild vault moves use SQL version-conditional updates.",
     "Wayfarer's Blessing relies on shrine tag roadside, replicated blessed/blessAt timing and the 1.2 speed factor in both scripts/player.js and MMORPG player.js; preserve both movement paths and the 300-second expiration/cooldown semantics."
   ]
