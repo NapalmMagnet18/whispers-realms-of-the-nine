@@ -9,6 +9,19 @@ export const updateSchedule = { every: { seconds: 0.5 } };
 // per-machine module cache: the region table is code, not shared state
 let regionsMod = null, loading = false;
 
+// a theme is one track or a playlist: each track plays through, then the next; the menu opens on its first, an area on a random one
+function trackOf(ctx, theme) {
+  const t = MUSIC.themes[theme];
+  if (!Array.isArray(t)) return t;
+  const pl = ctx.session._pl || (ctx.session._pl = {}), now = ctx.now();
+  let r = pl[theme];
+  if (!r || ctx.session._plLast !== theme) { r = pl[theme] = { i: r ? r.i + 1 : (theme === "menu" || theme === "creation" ? 0 : Math.floor(ctx.random() * t.length)), at: now }; }
+  ctx.session._plLast = theme;
+  const len = ctx.world.assets?.[t[r.i % t.length]]?.duration || 150;
+  if (now - r.at > (len - 2) * 1000) { r.i++; r.at = now; }
+  return t[r.i % t.length];
+}
+
 function themeFor(ctx, self) {
   const place = self.place;
   if (MUSIC.places[place]) return MUSIC.places[place];
@@ -49,15 +62,16 @@ export function update(ctx) {
   const theme = hushing ? "hush" : fighting ? "battle" : area;
   if (!theme) return;
   const vol = typeof s.musicVolume === "number" ? s.musicVolume * MUSIC.volume : MUSIC.volume;
-  if (theme === "hush") { if (ctx.session._areaTheme !== "hush") { ctx.session._areaTheme = "hush"; ctx.session._hushed = true; ctx.musicShift(MUSIC.themes.battle, { fade: 0.25, volume: 0.001, audience: { kind: "player", id: self.id } }); } return; }
-  const key = theme + "|" + vol.toFixed(2);
+  if (theme === "hush") { if (ctx.session._areaTheme !== "hush") { ctx.session._areaTheme = "hush"; ctx.session._hushed = true; ctx.musicShift(trackOf(ctx, "battle"), { fade: 0.25, volume: 0.001, audience: { kind: "player", id: self.id } }); } return; }
+  const ref = trackOf(ctx, theme);
+  const key = ref + "|" + vol.toFixed(2);
   const now = ctx.now();
   // re-assert every 20 s too: a menu or place change elsewhere in the kit may have set its own track
   if (ctx.session._areaTheme === key && now - (ctx.session._areaAt || 0) < 20000) return;
   ctx.session._areaTheme = key; ctx.session._areaAt = now;
   const slam = theme === "battle" && ctx.session._hushed; ctx.session._hushed = false;
   if (slam) ctx.emit("playSound", { clip: "/cdn/moodboard-painterly-fantasy/sfx-huge-war-drum-and-brass-hit-boss-fight-begins.mp3", volume: 0.7, bus: "Music" }, { audience: { player: self.id } });
-  ctx.musicShift(MUSIC.themes[theme], { fade: theme === "battle" ? (ctx.session._hushed ? 0.15 : C.fade) : MUSIC.fade, volume: vol, audience: { kind: "player", id: self.id } });
+  ctx.musicShift(ref, { fade: theme === "battle" ? (ctx.session._hushed ? 0.15 : C.fade) : MUSIC.fade, volume: vol, audience: { kind: "player", id: self.id } });
 }
 
 // The area's bed under the music, and now and then a far-off one-shot only this player hears (a crow, a toll, a howl).

@@ -1,21 +1,56 @@
-# One theme per area. scripts/region-music.js plays the row for where each player stands, to that player alone.
+# One theme per area; a theme may be a list: a playlist, each track played through then the next (region-music.js). scripts/region-music.js plays the row for where each player stands, to that player alone.
 # Region ids come from scripts/lib/regions.js. A region not listed plays `wilds`.
 volume: 0.25          # times the player's own music volume (state.musicVolume, default 1)
 fade: 3.5             # seconds of crossfade when you walk into a new area
 themes:
-  menu: /cdn/moodboard-painterly-fantasy/music-majestic-fantasy-main-theme-solo-horn-rising-strings-choir-swell-loop.mp3
-  creation: /cdn/moodboard-painterly-fantasy/music-gentle-hopeful-fantasy-harp-celesta-soft-strings-hero-awakening-loop.mp3
-  reach: /cdn/moodboard-painterly-fantasy/music-warm-medieval-village-lute-recorder-hand-drum-afternoon-loop.mp3
-  forest: /cdn/moodboard-painterly-fantasy/music-enchanted-forest-wooden-flute-plucked-harp-mysterious-strings-loop.mp3
-  coast: /cdn/moodboard-painterly-fantasy/music-seaside-folk-accordion-fiddle-gentle-waves-sea-shanty-calm-loop.mp3
-  fen: /cdn/moodboard-painterly-fantasy/music-eerie-misty-swamp-low-cello-drones-distant-chimes-melancholy-loop.mp3
-  ember: /cdn/moodboard-painterly-fantasy/music-heroic-dwarven-forge-deep-brass-war-drums-anvil-hits-loop.mp3
-  arcane: /cdn/moodboard-painterly-fantasy/music-ancient-arcane-ruins-ethereal-choir-glass-harmonica-slow-pads-loop.mp3
-  wilds: /cdn/music-instrumental-fantasy-adventure-orchestral.mp3
-  ashen: /cdn/moodboard-gothic-horror/music-ashen-close-graveyard-dark-gothic-solo-cello-music-box-distant-church-bell-dread-loop.mp3
-  frost: /cdn/moodboard-painterly-fantasy/music-frozen-mountain-pass-lonely-low-horn-icy-glass-pads-slow-taiko-wind-loop.mp3
-  desert: /cdn/moodboard-painterly-fantasy/music-scorched-ash-desert-duduk-lament-frame-drum-low-drone-heat-haze-loop.mp3
-  battle: /cdn/moodboard-painterly-fantasy/music-tense-fantasy-battle-war-drums-low-brass-staccato-strings-loop.mp3
+  menu:
+    - /cdn/moodboard-painterly-fantasy/music-majestic-fantasy-main-theme-solo-horn-rising-strings-choir-swell-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-wistful-fantasy-title-theme-solo-cello-harp-warm-strings-distant-choir-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-golden-dusk-fantasy-overture-french-horn-harp-strings-slow-rise-loop.mp3
+  creation:
+    - /cdn/moodboard-painterly-fantasy/music-gentle-hopeful-fantasy-harp-celesta-soft-strings-hero-awakening-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-tender-fantasy-character-select-celesta-harp-soft-cello-music-box-loop.mp3
+  reach:
+    - /cdn/moodboard-painterly-fantasy/music-warm-medieval-village-lute-recorder-hand-drum-afternoon-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-cozy-fantasy-town-square-lute-fiddle-soft-harp-warm-strings-golden-afternoon-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-lantern-lit-fantasy-tavern-evening-mandolin-tin-whistle-cello-loop.mp3
+  forest:
+    - /cdn/moodboard-painterly-fantasy/music-enchanted-forest-wooden-flute-plucked-harp-mysterious-strings-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-sunlit-fantasy-woodland-harp-alto-flute-pizzicato-strings-celesta-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-quiet-old-forest-fantasy-solo-cello-wooden-flute-soft-pads-loop.mp3
+  coast:
+    - /cdn/moodboard-painterly-fantasy/music-seaside-folk-accordion-fiddle-gentle-waves-sea-shanty-calm-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-wistful-fantasy-harbour-tin-whistle-harp-soft-strings-gentle-tide-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-bright-fantasy-seaside-morning-fiddle-acoustic-guitar-light-percussion-loop.mp3
+  fen:
+    - /cdn/moodboard-painterly-fantasy/music-eerie-misty-swamp-low-cello-drones-distant-chimes-melancholy-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-melancholy-fantasy-marsh-solo-viola-hammered-dulcimer-low-pads-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-mysterious-fantasy-wetland-bass-clarinet-harp-slow-mist-loop.mp3
+  ember:
+    - /cdn/moodboard-painterly-fantasy/music-heroic-dwarven-forge-deep-brass-war-drums-anvil-hits-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-proud-fantasy-mountain-hold-low-horns-steady-drums-cello-ostinato-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-warm-fantasy-forge-town-hammered-dulcimer-brass-choir-hum-loop.mp3
+  arcane:
+    - /cdn/moodboard-painterly-fantasy/music-ancient-arcane-ruins-ethereal-choir-glass-harmonica-slow-pads-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-luminous-fantasy-starlit-eyrie-celesta-harp-high-strings-soft-choir-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-ancient-fantasy-observatory-glass-bells-slow-strings-ethereal-voice-loop.mp3
+  wilds:
+    - /cdn/music-instrumental-fantasy-adventure-orchestral.mp3
+    - /cdn/moodboard-painterly-fantasy/music-sweeping-fantasy-open-road-strings-french-horn-harp-travel-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-gentle-fantasy-rolling-hills-acoustic-guitar-flute-soft-strings-loop.mp3
+  ashen:
+    - /cdn/moodboard-gothic-horror/music-ashen-close-graveyard-dark-gothic-solo-cello-music-box-distant-church-bell-dread-loop.mp3
+    - /cdn/moodboard-gothic-horror/music-mournful-gothic-fantasy-graveyard-low-cello-harp-faint-choir-loop.mp3
+  frost:
+    - /cdn/moodboard-painterly-fantasy/music-frozen-mountain-pass-lonely-low-horn-icy-glass-pads-slow-taiko-wind-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-cold-fantasy-highland-pass-solo-violin-low-strings-sparse-bells-loop.mp3
+  desert:
+    - /cdn/moodboard-painterly-fantasy/music-scorched-ash-desert-duduk-lament-frame-drum-low-drone-heat-haze-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-sunbaked-fantasy-wasteland-oud-frame-drum-low-strings-loop.mp3
+  battle:
+    - /cdn/moodboard-painterly-fantasy/music-tense-fantasy-battle-war-drums-low-brass-staccato-strings-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-urgent-fantasy-skirmish-taiko-low-brass-driving-cello-ostinato-loop.mp3
+    - /cdn/moodboard-painterly-fantasy/music-heroic-fantasy-fight-war-drums-strings-horn-calls-loop.mp3
   crypt: /cdn/moodboard-gothic-horror/music-hollowcrypt-candlelit-vault-low-choir-slow-bells.mp3
   drownedbell: /cdn/moodboard-gothic-horror/music-drowned-bell-underwater-choir-muffled-bells-slow-dread-loop.mp3
   rootarchive: /cdn/moodboard-painterly-fantasy/music-root-archive-ancient-underground-forest-low-woodwinds-heartbeat-drum-loop.mp3
@@ -39,8 +74,8 @@ regions:
   farm: reach
   briarwild: forest
   petalfall: forest
-  emberwell: cinderhold
-  starpool: starfall
+  emberwell: ember
+  starpool: arcane
   deepgrove: forest
   deepwood: forest
   elderveil: forest

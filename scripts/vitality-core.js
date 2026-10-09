@@ -137,6 +137,7 @@ export function update(ctx, dt) {
   if (me.place === "main") { const fp = me.feetPosition, dx = fp.x - 820, dz = fp.z + 60;
     if (dx * dx + dz * dz < 6.2 && hp > 0 && hp < max) {
       s.health = Math.min(max, hp + Math.max(1, Math.round(max * 0.06 * dt))); mem.lastHp = s.health;
+      if (!mem.soaking) ctx.emit('playSound', { clip: '/cdn/moodboard-painterly-fantasy/sfx-stepping-into-warm-water-pool-wading-splash-gentle-slosh.mp3', position: fp, volume: 0.6, maxDistance: 16 });
       if (!mem.soaking || now - mem.soaking > 4000) { mem.soaking = now; ctx.emit('damageNumber', { position: { ...fp, y: fp.y + 2.2 }, text: 'The warm water eases your wounds', color: '#9fe0d0', size: 1, lifetime: 1.8 }, { audience: { player: me.id } }); }
     } else if (mem.soaking && (dx * dx + dz * dz >= 6.2)) mem.soaking = 0;
   }
