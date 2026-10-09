@@ -19,6 +19,7 @@ function spawnOne(ctx, def, cs = {}) {
     tags: ["enemy", "scavenger", "quarry-scavenger"], physics: "character", model: cs.model || S.model, ...(cs.look ? { material: { ...cs.look, dissolve: 0 } } : {}),
     layout: cs.extents ? { minExtents: { x: -cs.extents.x / 2, y: 0, z: -cs.extents.z / 2 }, maxExtents: { x: cs.extents.x / 2, y: cs.extents.y, z: cs.extents.z / 2 } } : { minExtents: { x: -0.4, y: 0, z: -0.3 }, maxExtents: { x: 0.4, y: 1.8, z: 0.3 } },
     ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: cs.floorY != null ? cs.floorY : { terrain: 0 } }, ...(cs.scale ? { scale: cs.scale } : {}), rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
+    ...(S.auras?.[cs.tallyKey] ? { fx: { script: S.auras[cs.tallyKey] } } : {}),
     state: { hp: cs.hp || S.hp, maxHp: cs.hp || S.hp, home: { x: def.x, z: def.z }, mode: "idle", radius: cs.radius || 0.45, hpPct: 100, unhurt: true },
   });
 }
@@ -73,6 +74,7 @@ function die(ctx, w, s, m) {
   s.mode = "dead"; s.diedAt = now; s.target = null; s.hpPct = 0; s.unhurt = true;
   w.velocity = { x: 0, y: -2, z: 0 };
   w.anim.base = null; once(w, S.clips.die, 1, m); m.gait = null;
+  if (w.fx) w.fx = null;
   try { animate(ctx, w.id, { "material.dissolve": 1 }, { duration: S.corpse - S.fadeAt, delay: S.fadeAt }); } catch (e) {}
   ctx.emit("playSound", { clip: S.sounds.die, position: pos, volume: 0.7, maxDistance: 35 }, { audience: near(pos) });
   const p = s.lastHitBy ? ctx.getObject(s.lastHitBy) : null;
@@ -157,6 +159,7 @@ export function update(ctx, dt) {
     const s = w.state, pos = w.feetPosition, home = s.home ?? { x: def.x, z: def.z };
     const m = (M[def.id] ??= { seen: s.lastHitAt ?? 0, hp: null });
     if (s.mode !== "dead") settle(w, m, dt);
+    if (s.mode !== "dead" && !w.fx && S.auras?.[cs.tallyKey]) w.fx = { script: S.auras[cs.tallyKey] };
     if (s.mode === "dead") {
       if (now >= (s.diedAt ?? now) + S.corpse * 1000) {
         cs.respawnAt = { ...(cs.respawnAt || {}), [def.id]: (s.diedAt ?? now) + S.respawn * 1000 };
