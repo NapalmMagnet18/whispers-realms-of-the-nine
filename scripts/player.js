@@ -69,7 +69,23 @@ export function onInput(ctx, input) {
   }
 }
 
+// The arrival's real signal: the ground under the hero exists and holds them a beat, then the
+// streamed cell around them gets a moment to draw. Stamped once per arrival; the veil (ui-zone-splash.js)
+// stays up until this stamp is newer than the crossing, never a guess on a timer.
+function areaReady(ctx, dt) {
+  const a = (ctx.session.arrival ??= {})
+  const here = ctx.self.place
+  if (a.place !== here) { a.place = here; a.ok = 0; a.done = false }
+  if (a.done) return
+  const p = ctx.self.feetPosition
+  const h = ctx.place.terrain?.heightAt?.(p.x, p.z)
+  const standing = (h != null || ctx.place.terrain?.kind === 'off') && (ctx.self.grounded || (h != null && Math.abs(p.y - h) < 0.6))
+  a.ok = standing ? a.ok + dt : 0
+  if (a.ok >= 0.9) { a.done = true; ctx.self.state._areaReady = ctx.now() }
+}
+
 export function update(ctx, dt) {
+  areaReady(ctx, dt)
   // Seated (attached to a hull, a mount): the seat carries the body: the legs rest.
   if (ctx.self.parent) return
   // What the body did last tick; y reads 0 on the ground.

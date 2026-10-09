@@ -22,17 +22,18 @@ function srcOf(k) { var a = ART[k] || ART.ninthveil; return a[(_pick++) % a.leng
 function stableSrc(k) { var a = ART[k] || ART.ninthveil; var d = Math.floor((typeof Date !== 'undefined' ? Date.now() : 0) / 86400000); return a[d % a.length]; }
 // one veil for every arrival: the art, a dim, the bar and its words; same layout before and after the crossing.
 // fading=false: the bar fills by CSS while the hero is made; fading=true: the bar full, held, then a CSS fade. No per-frame opacity, so nothing stutters.
-export function arrivalVeil(src, fading) {
+// waiting=true (in the world, ground not yet under the hero): the bar creeps 80→95% and pulses; no fade until the ground holds.
+export function arrivalVeil(src, fading, waiting) {
   return '<div id="fa-enter-veil" style="position:fixed;inset:0;z-index:2147483000;background:#000;pointer-events:' + (fading ? 'none' : 'auto') + ';' + (fading ? 'animation:faVeilOut 1s ease ' + HOLD_S + 's forwards;' : '') + '">'
     + (src ? '<img src="' + src + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />' : '')
     + '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.1) 40%);pointer-events:none;"></div>'
     + '<div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:360px;">'
       + '<div style="width:100%;height:8px;background:rgba(20,15,10,0.9);border:1px solid rgba(120,100,60,0.4);border-radius:4px;overflow:hidden;">'
-        + '<div style="height:100%;width:' + (fading ? '100%' : '0') + ';background:linear-gradient(90deg,oklch(0.5 0.2 145),oklch(0.65 0.22 145));border-radius:3px;box-shadow:0 0 8px rgba(60,200,80,0.5);' + (fading ? 'animation:faVeilFill ' + HOLD_S + 's ease-out forwards;' : 'animation:faVeilBar 5s cubic-bezier(.2,.7,.3,1) forwards;') + '"></div>'
+        + '<div style="height:100%;width:' + (fading ? '100%' : '0') + ';background:linear-gradient(90deg,oklch(0.5 0.2 145),oklch(0.65 0.22 145));border-radius:3px;box-shadow:0 0 8px rgba(60,200,80,0.5);' + (fading ? 'animation:faVeilFill ' + HOLD_S + 's ease-out forwards;' : waiting ? 'width:80%;animation:faVeilWait 8s ease-out forwards,faVeilGlow 1.4s ease-in-out infinite;' : 'animation:faVeilBar 5s cubic-bezier(.2,.7,.3,1) forwards;') + '"></div>'
       + '</div>'
       + '<div data-font="title" style="text-align:center;margin-top:10px;font-size:14px;color:rgba(200,180,120,0.75);letter-spacing:3px;text-transform:uppercase;">Entering the World</div>'
     + '</div>'
-    + '<style>@keyframes faVeilBar{0%{width:0}100%{width:80%}}@keyframes faVeilFill{0%{width:80%}100%{width:100%}}@keyframes faVeilOut{to{opacity:0;visibility:hidden}}</style>'
+    + '<style>@keyframes faVeilBar{0%{width:0}100%{width:80%}}@keyframes faVeilFill{0%{width:80%}100%{width:100%}}@keyframes faVeilOut{to{opacity:0;visibility:hidden}}@keyframes faVeilWait{0%{width:80%}100%{width:95%}}@keyframes faVeilGlow{0%,100%{opacity:1}50%{opacity:.7}}</style>'
     + '</div>';
 }
 
@@ -65,7 +66,7 @@ function artAt(x, z) {
   return null;
 }
 var _cur = null, _shown = {}, _splash = null, _first = true, _since = 0;
-var HOLD_S = 2.8, HOLD_FULL = 2800, END_FULL = 4000, END_CARD = 4500, REPEAT = 180000;
+var HOLD_S = 0.7, HOLD_FULL = 700, END_FULL = 1900, MAX_WAIT = 15000, END_CARD = 4500, REPEAT = 180000;
 
 export function renderZoneSplash(localPlayer) {
   var fp = localPlayer.feetPosition, st = localPlayer.state || {};
@@ -76,6 +77,12 @@ export function renderZoneSplash(localPlayer) {
     var a0 = typeof sx === 'number' ? artAt(sx, sz) : null;
     _first = false; _cur = fp ? artAt(fp.x, fp.z) : a0;
     _splash = { art: a0 || 'ninthveil', t0: now, full: true }; _splash.src = stableSrc(_splash.art); _shown[_splash.art] = now;
+  }
+  if (_splash && _splash.full && !_splash.ready) {
+    // held until the hero's own behavior stamps the ground under them as newer than the crossing (or 15 s, so nobody is ever trapped)
+    var enterAt = Math.max(st._worldEnterAt || 0, st._creationEnterAt || 0);
+    if (fp && ((st._areaReady || 0) > enterAt || now - _splash.t0 > MAX_WAIT)) { _splash.ready = true; _splash.t0 = now; }
+    else return arrivalVeil(_splash.src, false, true);
   }
   if (!fp) return _splash && _splash.full ? arrivalVeil(_splash.src, true) : '';
   if (st.flying) return ''; // on the wing: the card waits for the landing
