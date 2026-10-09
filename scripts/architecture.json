@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 1757,
-  "updatedAt": "2026-10-09T06:25:52.146Z",
+  "basedOnSpecVersion": 1763,
+  "updatedAt": "2026-10-09T06:28:18.515Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer fantasy MMO spanning the Lantern March, race homelands, battlegrounds and themed dungeon/raid instances. MMORPG Tools owns character, realm and UI lifecycle; ordered player behaviors and shared data drive combat, quests, trade, guilds, flight and progression across streamed scenes.",
   "scriptPaths": [
     "mods/aaa-quality-kit/look-cinema.js",
@@ -235,18 +235,18 @@
   ],
   "places": [
     "places/main/config.yaml and places/main/cells/ - Lantern March continent; streamed cells hold Lantern's Reach, race towns, quest regions, encounters, gates and landmarks.",
-    "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; plaza-well is tagged well for player water draws; guild registrar and banner landmarks live nearby.",
-    "places/main/cells/x0z-1.scene, x1z-1.scene and x30z-1.scene - Lantern Ward, Ashen Close and Sunscar wells join the Reach well as tagged water-interaction sites.",
-    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with matching Discipline Trainers and banners.",
+    "places/main/cells/x0z0.scene - Lantern's Reach and Hall of Banners; tagged well, guild registrar and banner landmarks.",
+    "places/main/cells/x0z-1.scene, x1z-1.scene and x30z-1.scene - Lantern Ward, Ashen Close and Sunscar; tagged water-interaction wells.",
+    "places/main/cells/x-2z-9.scene, x-3z4.scene, x-6z1.scene, x0z-1.scene, x2z11.scene and x7z-1.scene - six race-start towns with Discipline Trainers and banners.",
     "places/main/cells/x-10z7.scene and board scenes - Sorrowfen hub and race-town Party Finder boards; scripts/party-finder.js registers dungeon, raid and battleground queues.",
     "places/main/cells/x-1z-5.scene, x-6z1.scene, x-7z0.scene and x0z-4.scene - Starfall giant quest site, Rootwake Glade bounty/raider camp and blood shrine.",
-    "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's traveling caravan on the Reedhaven road; storm parking switches Mott to a hot-tea inventory.",
-    "places/banner-vale/ is the 5v5 capture-the-banner battleground; places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ are dungeon/raid instances linked by paired gates."
+    "places/main/cells/x2z11.scene and x-2z2.scene - Hask's Saltmere shop and Mott Farwander's traveling caravan on the Reedhaven road.",
+    "places/banner-vale/ is the 5v5 capture-the-banner battleground; places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/ are gate-linked dungeon/raid instances."
   ],
   "roots": [
     "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing and realm pulse.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.18 Alpha appears on main menu, settings and pause.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js - GAME_VERSION 0.47.19 Alpha appears on main menu, settings and pause.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free and region-music behaviors.",
     "templates/camera.js#camera - gameplay camera; MMORPG owns separate menu and character-creation camera paths.",
     "places/main/config.yaml and places/main/sim.js - March terrain/atmosphere plus room weather and Party Finder matching.",
@@ -254,48 +254,48 @@
     "places/{hollowcrypt,drowned-bell,root-archive,pale-choir,emberheart,ninth-assembly}/config.yaml - instance terrain, gravity and spawn environment."
   ],
   "shared": [
-    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency, shop data and UI modules reused by MMORPG behaviors and gameplay scripts.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/ - RPG registries, persistence, currency, shop data and UI modules shared by MMORPG behaviors and gameplay scripts.",
     "mods/mmorpg-tools/mod-mmorpg/lib/realm-save.js - character persistence, roster population and realm list/detail shared by menu and player lifecycle.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world panel actions; player.js imports it after a hero enters the world; it imports shop-data.js and profession-data.js.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world panel actions; player.js imports it after a hero enters the world; imports shop-data.js and profession-data.js.",
     "scripts/lib/places.js - PLAY/isPlay and SAFE_HOME registry used by quests, class actions, vitality, flight and regional music.",
     "scripts/gen/instance.js - shared geometry/layout generator for dungeon and raid scenes; placements select layout and kind.",
     "scripts/lib/data/quests.yml + MMORPG lib/quest-data.js - quest mechanics/database shared by quest-core, quest-giver and tracker; quest-text.js supplies prose.",
     "scripts/lib/data/bosses.yml + scripts/boss.js - encounter definitions and common behavior for instance/open-world bosses; IDs also key gear and voice data.",
-    "scripts/lib/lazy.js and scripts/lib/resident-animation.js - lazy behavior forwarding for class, flight, vendor and vitality wrappers; resident idle/bow/pitch handling shared by Elric and townsfolk."
+    "scripts/lib/lazy.js and scripts/lib/resident-animation.js - lazy forwarding for class/flight/vendor/vitality; resident animation shared by Elric and townsfolk."
   ],
   "notableExports": [
     "scripts/lib/places.js - PLAY, isPlay, SAFE_HOME; scripts/gen/instance.js - LAYOUTS, roomsOf, geometry.",
     "scripts/lib/kit.js - power, gearPower, classOf, canAct, forward, alive, aimPoint, softTargets, launch, materialOf, meleeFoley, applyHit.",
     "scripts/lib/lazy.js - lazyBehavior; scripts/lib/resident-animation.js - residentIdle, greetResident, residentPitch.",
-    "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action exports; wrappers defer to matching core modules; scripts/flight-core.js exports updateSchedule, onInput, update.",
-    "mods/mmorpg-tools/mod-mmorpg/player.js - getMv, setMv, getGameplayCharacterProp, ensureGameplayAvatar, getRosterResumeCandidate, restoreRosterCharacterState, getCurrentPlaceMusic, restorePlaceMusic, setWorldSpatialAudio, buildCharData, saveCharacter, onSpawn.",
+    "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class actions; scripts/flight-core.js - updateSchedule, onInput, update.",
+    "mods/mmorpg-tools/mod-mmorpg/player.js - character lifecycle, roster restoration, spatial audio, gameplay avatar and save operations.",
     "mods/mmorpg-tools/mod-mmorpg/ui.js - renderMainMenuSettingsOverlay, getRightHudLayout, default, renderZoneBanner, renderWASD.",
-    "scripts/vendor-core.js and scripts/vendor.js - core exports ears, coins_ear, onInput, update; wrapper exposes ears, onInput, update and lazy-loads core.",
-    "scripts/quest-core.js exports onInput, update; scripts/vitality-core.js exports bloodEnds, onInput, updateSchedule, update; scripts/gen/props.js exports geometry, collider."
+    "scripts/vendor-core.js and scripts/vendor.js - core exports ears, coins_ear, onInput, update; wrapper exposes ears, onInput, update.",
+    "scripts/quest-core.js - dialogRewards, onInput, update; scripts/vitality-core.js - bloodEnds, onInput, updateSchedule, update; scripts/gen/props.js - geometry, collider."
   ],
   "ownership": [
     "scripts/player.js - room-local movement intent and velocity/footstep state; place config owns gravity.",
     "MMORPG player.js and lib/realm-save.js - active character, roster snapshots and persisted character records, including professions, inventory, equipment, quest state and trained rank.",
     "mods/mmorpg-tools/mod-mmorpg/player.js - save-in-flight/retry guards and confirmed-save fingerprint; SQL and legacy roster-storage completion gate save completion.",
-    "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world door/shop/profession and related panel input state transitions; player.js owns its lazy import and supplies host helpers.",
-    "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action/cooldown state and combat effects; wrapper scripts load and forward to the matching core.",
+    "mods/mmorpg-tools/mod-mmorpg/lib/player-panel-input.js - in-world door/shop/profession panel input state transitions; player.js owns lazy import and supplies host helpers.",
+    "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action/cooldown state and combat effects; wrappers load and forward to matching core.",
     "scripts/flight-core.js - player roost discovery, flight map, flying mount/route state and fare interaction; saved roosts live on character state.",
     "scripts/quest-core.js - quest interactions, progression, dialogue, inventory/cache/mark state, owedItems delivery and _questSave; quest-player.js owns kill tally/XP, lockouts, loot and equipment-derived maxHealth.",
-    "scripts/vitality-core.js owns health, food and well-water draw cooldown/inventory item, death/rising and PvP-zone behavior; scripts/boss.js owns placed boss state and encounter scratch lives in boss ctx.session."
+    "scripts/vitality-core.js - health, food/well-water cooldown and inventory item, death/rising and PvP-zone behavior; scripts/boss.js owns placed boss state and encounter scratch lives in boss ctx.session."
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
-    "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu and crypt/instance gates stamp allowed transitions; routing validates requested room, then saved route.",
-    "main-menu-mgr loads current-room SQL roster; api.enterPlace routes selected character to saved place/position. realms.yml feeds routing.js and crons/realm-pulse.js; cron writes room player count to realm_pulse, realm-save reads it.",
+    "Arrival outside main-menu-land without fresh _worldEnterAt or creation-place _creationEnterAt → scripts/arrival.js redirects to menu; menu and instance gates stamp allowed transitions; routing validates requested room and saved return.",
+    "main-menu-mgr loads current-room SQL roster; api.enterPlace routes selected character to saved place/position. realms.yml feeds routing.js and crons/realm-pulse.js; cron writes player count to realm_pulse, realm-save reads it.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert to characters keyed by user, realm and slot.",
-    "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → guild → guild-flag → trades → flight → vitality → cursor-free → region-music; movement/camera intents are consumed by player.js/wow-move.js.",
-    "MMORPG player.js dynamically imports lib/player-panel-input.js after a created hero stands outside a meta place; the panel module imports shop-data.js and profession-data.js and receives host helpers.",
-    "MMORPG ui.js defers HUD, unit frames/action dock, roster and settings modules behind lazy wrappers; first paint after the gate warms these modules and later renders them.",
-    "Character save → realm-save SQL upsert and legacy roster write; fingerprint advances only after SQL success and both writes finish (or storage-only fallback); SQL failure retains progression for delayed retry, and logout waits for confirmed save.",
+    "templates/player.js order → locomotion → movement → class handlers → quest-player → vendor → guild → guild-flag → trades → flight → vitality → cursor-free → region-music; player.js/wow-move.js consume movement/camera intents.",
+    "MMORPG player.js dynamically imports lib/player-panel-input.js after a created hero stands outside a meta place; panel module imports shop-data.js and profession-data.js and receives host helpers.",
+    "MMORPG ui.js defers HUD, unit frames/action dock, roster and settings modules behind lazy wrappers; first paint after the gate warms modules and later renders them.",
+    "Character save → realm-save SQL upsert and legacy roster write; fingerprint advances only after SQL success and both writes finish (or storage-only fallback); SQL failure retains progression for delayed retry, logout waits for confirmed save.",
     "On main, scripts/vendor.js forwards to vendor-core.js for eligible characters; vendor/bank UI actions write character state, and coin rewards use the coins ear/economy path.",
-    "In PLAY, vitality.js forwards to vitality-core.js; enemies write state.health, vitality reads it and handles food, well interaction and water consumption, death/rise, healing and PvP rules.",
-    "Quest dialog actions pass through quest-player.js to quest-core.js; accept checks the placed giver NPC in talk range and completion checks turnInNpcId or giver in range before rewards; quest changes raise _questSave.",
-    "In PLAY, eligible class/flight wrappers and quest-player lazily load their cores; instance gates stamp _worldEnterAt and paired exits link back, while Party Finder in main sim matches queued heroes and routes to instances."
+    "In PLAY, vitality.js forwards to vitality-core.js; enemies write state.health, vitality reads it and handles food, well interaction/water consumption, death/rising, healing and PvP rules.",
+    "Quest dialog actions pass through quest-player.js to quest-core.js; talk builds offer/turn-in dialog rewards via dialogRewards catalog lookup; accept checks giver range, turn-in checks receiver/giver range, and quest changes raise _questSave.",
+    "In PLAY, eligible class/flight wrappers and quest-player lazily load cores; instance gates stamp _worldEnterAt and paired exits link back, while Party Finder in main sim matches queued heroes and routes to instances."
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; scene placements share layout coordinates.",
@@ -316,6 +316,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, and only then counts enterTally.",
     "Boss combat shares hp/lastHitBy/lastHitAt; boss.js emits kills to hero behavior machines so quest-player owns tally/XP and gear rolls. Keep scene boss IDs aligned with bosses.yml and associated gear/voice data.",
     "Cache keys use state.cache or object id; explicit copper overrides legacy gold × 100, and st.caches belongs to the character save. Guild vault moves use SQL version-conditional updates.",
-    "Quest accept/turn-in range is checked server-side against the current placed NPC; delivery uses turnInNpcId when present. Well interaction requires the well tag and stores cooldown in state.wellAt; well-water is a stackable inventory item consumed through useFood."
+    "Quest book reward IDs and payouts remain authoritative; quest-core.dialogRewards resolves item metadata from quest/gear catalogs only for offer/turn-in dialog copies, preserving unknown IDs as visible names."
   ]
 }
