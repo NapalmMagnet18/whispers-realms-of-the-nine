@@ -81,3 +81,17 @@ node-sunleaf-2:
   scale: 0.973624965722498
   state: {node: sunleaf}
   tags: [gather-node, herb-node]
+petalfall-stone-1:
+  feetPosition: {x: -98.31454531081523, y: 0.4832422051320181, z: 67.41075181683378}
+  id: petalfall-stone-1
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 11}
+  rotation: {lookAt: {x: -100, y: 0.6307373613272107, z: 60}}
+  tags: [petalfall]
+petalfall-stone-2:
+  feetPosition: {x: -105.57501246797685, y: 0.39869429109526666, z: 65.16519467028132}
+  id: petalfall-stone-2
+  physics: static
+  primitive: {kind: scripted, params: {kind: stone}, script: scripts/gen/petalfall.js, seed: 12}
+  rotation: {lookAt: {x: -100, y: 0.6307373613272107, z: 60}}
+  tags: [petalfall]
