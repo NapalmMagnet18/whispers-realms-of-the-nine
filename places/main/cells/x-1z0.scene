@@ -708,7 +708,7 @@ van-raider-camp:
   behavior: scripts/scavengers.js
   feetPosition: {x: -74, y: {terrain: 0}, z: -19}
   id: van-raider-camp
-  state: {crew: [{id: van-raider-1, x: -70, yaw: 90, z: -14}, {id: van-raider-2, x: -76, yaw: 60, z: -22}, {id: van-raider-3, x: -79, yaw: 100, z: -16}], model: /cdn/model-humanoid-fantasy-bandit-raider-male-leather-hood-patched-gambeson-short-axe.glb, name: Bridge Raider, respawnAt: {}, tallyKey: bridge_raider}
+  state: {crew: [{id: van-raider-1, x: -70, yaw: 90, z: -14}, {id: van-raider-2, x: -76, yaw: 60, z: -22}, {id: van-raider-3, x: -79, yaw: 100, z: -16}], model: /cdn/model-humanoid-fantasy-bloodmarked-raider-scarred-brute-horned-iron-half-helm-red-war-paint-spiked-leather-black-fur-mantle-notched-axe-dark-gothic.glb, name: Bloodmarked Raider, respawnAt: {}, tallyKey: bridge_raider}
   tags: [van-raider-camp]
 van-raider-fire:
   audio: {clip: /cdn/moodboard-painterly-fantasy/sfx-iron-brazier-fire-crackling-popping-wood-flames-close-loop.mp3, gain: 0.2, loop: true, maxDistance: 14, spatial: true}

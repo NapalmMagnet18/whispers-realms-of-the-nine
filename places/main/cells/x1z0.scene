@@ -569,7 +569,7 @@ equ-drill-camp:
   behavior: scripts/scavengers.js
   feetPosition: {x: 151, y: {terrain: 0}, z: 58}
   id: equ-drill-camp
-  state: {crew: [{id: equ-driller-1, x: 147, yaw: 60, z: 56}, {id: equ-driller-2, x: 151, yaw: 200, z: 62}, {id: equ-driller-3, x: 156, yaw: -90, z: 57}, {id: equ-driller-4, x: 149, yaw: 10, z: 59.5}], model: /cdn/model-humanoid-fantasy-miner-male-soot-goggles-heavy-apron-hand-drill.glb, name: Drill Crew Breaker, respawnAt: {}, tallyKey: drill_crew}
+  state: {crew: [{id: equ-driller-1, x: 147, yaw: 60, z: 56}, {id: equ-driller-2, x: 151, yaw: 200, z: 62}, {id: equ-driller-3, x: 156, yaw: -90, z: 57}, {id: equ-driller-4, x: 149, yaw: 10, z: 59.5}], model: /cdn/model-humanoid-fantasy-soot-ghoul-miner-blackened-cracked-skin-glowing-ember-eyes-iron-face-cage-scorched-apron-hand-drill-dark-gothic.glb, name: Soot-Ghoul Breaker, respawnAt: {}, tallyKey: drill_crew}
   tags: [equ-drill-camp, quarry-chapter]
 equ-lamp-0:
   children: [{feetPosition: {x: 0, y: 2.6, z: 0}, light: {color: oklch(0.83 0.13 70), distance: 14, intensity: 3, kind: point}}]

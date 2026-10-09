@@ -14,7 +14,7 @@ corpse: 3
 fadeAt: 1.8
 respawn: 25
 reward: { xp: 30, copper: 6 }
-model: /cdn/model-humanoid-fantasy-scavenger-male-ragged-hood-patched-leather-rusty-pick.glb
+model: /cdn/model-humanoid-fantasy-hollow-cultist-scavenger-gaunt-ash-grey-skin-tattered-black-hood-rusted-chains-bone-charms-jagged-pick-dark-gothic.glb   # was model-humanoid-fantasy-scavenger-male-ragged-hood-patched-leather-rusty-pick.glb
 clips: { idle: Idle, walk: Walk, run: Run, attack: cdn/clip-attack.glb, hit: cdn/clip-hit-react.glb, die: cdn/clip-die.glb }
 sounds:
   shout: /cdn/moodboard-painterly-fantasy/sfx-scavenger-gruff-shout-hey.mp3
