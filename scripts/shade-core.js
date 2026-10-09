@@ -9,19 +9,24 @@ import { raycast } from 'builtin/physics'
 
 const PUFF = `fx
 pop smoke burst=14..20 on=sphere(.35) life=.5..0.9 v=sdir()*(.6..1.4)+up(.4) size=.3..0.55 acc=drag(2)+buoy(.3) sz=$size*(.7>1.8) col=<.16,.11,.22>><.08,.06,.1> a=0>.08:.8>.6:.5>0 rot=spin(.4) r=sprite(smoke-puff,alpha)
-pop motes burst=10 on=sphere(.4) life=.4..0.8 v=sdir()*(1..2) size=.03..0.06 acc=drag(1.5) col=hdr(1.2,.6,2.2) a=1>0 r=sprite(mote,add)`
+pop motes burst=10 on=sphere(.4) life=.4..0.8 v=sdir()*(1..2) size=.03..0.06 acc=drag(1.5) col=hdr(1.2,.6,2.2) a=1>0 r=sprite(mote,add)
+pop light burst=1 life=.45 gl=1>.2:.4>0 r=light(<.7,.35,1>,$gl*6,6)`
 const VEIL = `fx
 pop wisp rate=?mobile:10|22 on=disc(.35) life=.6..1.1 v=up(.5..1.1)+sdir()*.2 size=.2..0.38 acc=buoy(.4)+curl(.4)+drag(1.2) sz=$size*(.6>1.6) col=<.14,.1,.2> a=0>.2:.55>.7:.3>0 rot=spin(.3) r=sprite(smoke-puff,alpha)
 pop glint rate=4 on=disc(.3).c(1) life=.5..0.9 v=up(.3) size=.03..0.05 col=hdr(1,.5,1.9) a=1>0 r=sprite(mote,add)`
 const CUT = `fx
 pop spark burst=6..10 life=.12..0.25 v=<%normal|0,1,0>*(2..4)+sdir()*(1..2) size=.02..0.04 col=hdr(3,2.6,3.2) a=1>0 r=sprite(ember,add,velocity,.04)
-pop shade burst=4 life=.3..0.5 v=sdir()*.6 size=.2..0.3 acc=drag(2) col=<.2,.12,.28> a=.6>0 sz=$size*(.6>1.6) r=sprite(smoke-puff,alpha)`
+pop shade burst=4 life=.3..0.5 v=sdir()*.6 size=.2..0.3 acc=drag(2) col=<.2,.12,.28> a=.6>0 sz=$size*(.6>1.6) r=sprite(smoke-puff,alpha)
+pop slash burst=1 life=.14 size=.7 col=hdr(2.2,1.2,3.4) a=1>0 sz=$size*(.5>1.3) r=sprite(soft-disc,add)
+pop light burst=1 life=.25 gl=1>0 r=light(<.75,.45,1>,$gl*4,4)`
 const THUD = '/cdn/moodboard-painterly-fantasy/sfx-sword-hit-wooden-dummy-thud.mp3'
 
 const REND = `fx
 pop smoke burst=6..9 on=sphere(.4) life=.5..0.9 v=sdir()*(.3..0.8) size=.35..0.6 acc=drag(2)+buoy(.2) sz=$size*(.7>1.6) col=<.15,.1,.22> a=0>.1:.7>.5:.4>0 rot=spin(.3) r=sprite(smoke-puff,alpha)
 pop arc burst=2 on=sphere(.3) life=.18..0.26 size=1.2..1.6 col=hdr(1.8,.8,3.2) a=1>0 sz=$size*(.6>1.2) rot=0..6.28 r=sprite(soft-disc,add)
-pop motes burst=8 on=sphere(.5) life=.4..0.8 v=sdir()*(1..2) size=.03..0.05 col=hdr(1.4,.7,2.6) a=1>0 r=sprite(mote,add)`
+pop motes burst=8 on=sphere(.5) life=.4..0.8 v=sdir()*(1..2) size=.03..0.05 col=hdr(1.4,.7,2.6) a=1>0 r=sprite(mote,add)
+pop ring burst=1 life=.4 size=.5 col=hdr(1.6,.7,2.8) a=.8>0 sz=$size*(1>3.5) r=sprite(soft-disc,add,axis,0,.4,axis=<0,1,0>)
+pop light burst=1 life=.5 gl=1>.2:.4>0 r=light(<.7,.35,1>,$gl*9,8)`
 function rend(ctx, a, m, now, near) {
   const self = ctx.self, from = { ...self.feetPosition }, f = forward(self)
   const eye = { x: from.x, y: from.y + 1.1, z: from.z }
