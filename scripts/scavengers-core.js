@@ -156,6 +156,7 @@ export function update(ctx, dt) {
     if (!w) { delete M[def.id]; continue; }
     const s = w.state, pos = w.feetPosition, home = s.home ?? { x: def.x, z: def.z };
     const m = (M[def.id] ??= { seen: s.lastHitAt ?? 0, hp: null });
+    if (s.mode !== "dead") settle(w, m, dt);
     if (s.mode === "dead") {
       if (now >= (s.diedAt ?? now) + S.corpse * 1000) {
         cs.respawnAt = { ...(cs.respawnAt || {}), [def.id]: (s.diedAt ?? now) + S.respawn * 1000 };
