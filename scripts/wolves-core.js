@@ -66,6 +66,7 @@ function spawnWolf(ctx, def) {
     tags: ["enemy", "wolf", "briar-wolf"], physics: "character", scale: def.scale ?? 1,
     primitive: { kind: "scripted", script: "scripts/gen/wolf.js" }, material: { roughness: 0.92, dissolve: 0 },
     feetPosition: { x: def.x, z: def.z, y: { terrain: 0 } }, rotation: def.yaw ?? 0, ui: def.name ? BARF(def.name, true) : BAR,
+    ...(W.alpha && def.id === W.alpha.id ? { fx: { script: W.alpha.aura } } : {}),
     state: { hp: def.hp ?? W.hp, maxHp: def.hp ?? W.hp, ...(def.damage ? { damage: def.damage } : {}), ...(def.reward ? { reward: def.reward } : {}), home: { x: def.x, z: def.z }, mode: "idle", radius: 0.5, hpPct: 100, unhurt: true },
   });
 }
@@ -183,14 +184,16 @@ export function update(ctx, dt) {
       for (const p of players) { if (inRefuge(p.feetPosition)) continue; const d = flat(p.feetPosition, pos); if (d < best) { best = d; prey = p; } }
       if (prey && W.howl && now - (S.howlAt ?? -1e9) > W.howl.every * 1000) {
         // the pack call: head thrown back, the howl, every idle packmate in earshot turns and runs with it
-        S.howlAt = now; s.mode = "howl"; s.target = prey.id; m.howlEnd = now + W.howl.seconds * 1000;
+        const alpha = W.alpha && def.id === W.alpha.id, secs = alpha ? W.alpha.seconds : W.howl.seconds;
+        S.howlAt = now; s.mode = "howl"; s.target = prey.id; m.howlEnd = now + secs * 1000;
         gait(ctx, w, m, "idle", 1); halt(w, m);
-        animate(ctx, w.id, { "bones.head.pitch": [0, 44, 46, 40, 0], "bones.jaw.pitch": [0, -26, -30, -24, 0], "bones.body.pitch": [0, 10, 10, 8, 0], "bones.tail.pitch": [0, -16, -18, -14, 0] }, { duration: W.howl.seconds, easing: "easeInOutSine" });
-        ctx.emit("playSound", { clip: W.sounds.howl, position: pos, volume: 0.85, maxDistance: 70 }, { audience: near(pos) });
+        animate(ctx, w.id, { "bones.head.pitch": [0, 44, 46, 40, 0], "bones.jaw.pitch": [0, -26, -30, -24, 0], "bones.body.pitch": [0, 10, 10, 8, 0], "bones.tail.pitch": [0, -16, -18, -14, 0] }, { duration: secs, easing: "easeInOutSine" });
+        ctx.emit("playSound", { clip: alpha ? W.alpha.roar : W.sounds.howl, position: pos, volume: alpha ? 1 : 0.85, maxDistance: alpha ? 90 : 70 }, { audience: alpha ? { nearby: pos, radius: 90 } : near(pos) });
+        if (alpha) { ctx.emit("shockwave", { position: { x: pos.x, y: pos.y + 0.8, z: pos.z }, speed: 10, thickness: 0.6, intensity: 0.25 }, { audience: near(pos) }); ctx.emit("screenShake", { intensity: 0.25, duration: 0.4 }, { audience: { nearby: pos, radius: 20 } }); }
         for (const od of (ds.pack || W.pack)) {
           if (od.id === def.id) continue;
           const o = ctx.getObject(od.id);
-          if (o && o.state.mode === "idle" && flat(o.feetPosition, pos) < W.howl.rally) aggro(ctx, o, o.state, prey.id);
+          if (o && o.state.mode === "idle" && flat(o.feetPosition, pos) < (alpha ? W.alpha.rally : W.howl.rally)) aggro(ctx, o, o.state, prey.id);
         }
         continue;
       }
