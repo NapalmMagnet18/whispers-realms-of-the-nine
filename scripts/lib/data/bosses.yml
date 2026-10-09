@@ -17,6 +17,7 @@ drowned_echo:
   reward: {xp: 15}
   model: /cdn/model-humanoid-fantasy-drowned-echo-gaunt-drowned-choirboy-waterlogged-tattered-surplice-wet-hair-veiling-face-hollow-glowing-teal-eyes-rusted-hymnal-dark-gothic.glb
   scale: 1.0
+  layout: {minExtents: {x: -0.4, y: 0, z: -0.3}, maxExtents: {x: 0.4, y: 1.85, z: 0.3}}
 reed_sentry:
   name: Corrupted Reed Sentry
   hp: 1100
