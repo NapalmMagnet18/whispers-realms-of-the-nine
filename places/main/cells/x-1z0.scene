@@ -501,7 +501,7 @@ petalfall-cache:
   state: {cache: petalfall-hollow, copper: 750, lid: petalfall-cache-lid, title: Petal-wreathed offering box, yaw: 180}
   tags: [cache, petalfall]
 petalfall-cache-lid:
-  feetPosition: {x: -98.5, y: null, z: 56.4}
+  feetPosition: {x: -98.5, y: 1.187, z: 56.69}
   id: petalfall-cache-lid
   primitive: {kind: scripted, params: {kind: lid}, script: scripts/gen/briar.js, seed: 3}
   rotation: {yaw: 180}
