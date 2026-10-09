@@ -1,4 +1,14 @@
 # spawn-scene v2 yaml x-4z0
+bloom-deepwood-3-a:
+  feetPosition: {x: -462, y: {terrain: 0}, z: 18}
+  id: bloom-deepwood-3-a
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-deepwood-3-b:
+  feetPosition: {x: -459, y: {terrain: 0}, z: 59}
+  id: bloom-deepwood-3-b
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 briarwild-leaf-fall-2:
   feetPosition: {x: -560, y: {terrain: 0}, z: 40}
   fx: {params: {height: 10, radius: 14, rate: 3}, script: "fx\npop leaves rate=%rate|3 on=disc(%radius|12).c(%height|9) life=7..11 v=up(-.4..-.8)+sdir()*.3 size=.14..0.24 fr=0..5.99 spin=-2..2 acc=curl(.5)*.9+drag(.6) a=0>.08:1>.85:1>0 sz=$size rot=$age*$spin floor=stick r=mesh(card,material=scripts/leaf-fall-look.js,params=fr:$fr)"}

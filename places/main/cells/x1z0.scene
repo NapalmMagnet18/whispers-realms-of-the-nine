@@ -4,6 +4,16 @@ amb-quarry:
   feetPosition: {x: 135, y: {terrain: 3}, z: 30}
   id: amb-quarry
   tags: [ambience]
+bloom-highlands-0-a:
+  feetPosition: {x: 182, y: {terrain: 0}, z: 59}
+  id: bloom-highlands-0-a
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-highlands-0-b:
+  feetPosition: {x: 178, y: {terrain: 0}, z: 24}
+  id: bloom-highlands-0-b
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 boulder-0:
   feetPosition: {x: 153, y: {terrain: -0.2}, z: 14}
   id: boulder-0

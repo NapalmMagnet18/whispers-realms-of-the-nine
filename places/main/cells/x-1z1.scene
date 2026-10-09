@@ -1,4 +1,14 @@
 # spawn-scene v2 yaml x-1z1
+bloom-reed-1-a:
+  feetPosition: {x: -123, y: {terrain: 0}, z: 109}
+  id: bloom-reed-1-a
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-reed-1-b:
+  feetPosition: {x: -92, y: {terrain: 0}, z: 135}
+  id: bloom-reed-1-b
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 node-briarroot-5:
   behavior: scripts/gather-node.js
   feetPosition: {x: -149.9, y: {terrain: 0}, z: 128.7}

@@ -8,6 +8,16 @@ banker-reedbound:
   rotation: -90
   state: {bank: true, homeYaw: -90, idle: Idle_FoldArms_Loop, npcName: "Banker Ilse Reedmarrow, Lantern Vault", who: banker, yaw: -90}
   tags: [npc, vendor, interactable, banker-npc]
+bloom-reed-4-a:
+  feetPosition: {x: -377, y: {terrain: 0}, z: 449}
+  id: bloom-reed-4-a
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
+bloom-reed-4-b:
+  feetPosition: {x: -346, y: {terrain: 0}, z: 469}
+  id: bloom-reed-4-b
+  scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
+  tags: [foliage, bloom]
 hc-reh-boss:
   behavior: scripts/boss.js
   feetPosition: {x: -392, z: 555}

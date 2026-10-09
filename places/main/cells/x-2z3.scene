@@ -1,32 +1,11 @@
-# spawn-scene v2 yaml x4z0
-bloom-highlands-3-a:
-  feetPosition: {x: 526, y: {terrain: 0}, z: -19}
-  id: bloom-highlands-3-a
+# spawn-scene v2 yaml x-2z3
+bloom-reed-3-a:
+  feetPosition: {x: -298, y: {terrain: 0}, z: 327}
+  id: bloom-reed-3-a
   scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
-bloom-highlands-3-b:
-  feetPosition: {x: 515, y: {terrain: 0}, z: -58}
-  id: bloom-highlands-3-b
+bloom-reed-3-b:
+  feetPosition: {x: -264, y: {terrain: 0}, z: 351}
+  id: bloom-reed-3-b
   scatter: {bounds: {radius: 13, shape: circle}, count: 70, templates: [{primitive: {kind: scripted, params: {kind: wildflowers}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 6}, {primitive: {kind: scripted, params: {kind: lupine}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 2.5}, {primitive: {kind: scripted, params: {kind: rosebush}, script: scripts/gen/flora.js}, visibleRange: {max: 140, min: 0}, weight: 1}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: blossom}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.9}, {physics: {body: static, collider: auto}, primitive: {kind: scripted, params: {kind: willow}, script: scripts/gen/flora.js}, visibleRange: {max: 600, min: 0}, weight: 0.4}], variation: {scale: [0.8, 1.25], yaw: [0, 360]}}
   tags: [foliage, bloom]
-start-cinderhold-way-6:
-  feetPosition: {x: 575.4436438833058, y: 26.55559767206522, z: -57.365550752601436}
-  id: start-cinderhold-way-6
-  physics: static
-  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 6}
-  rotation: {yaw: -75.96375653207353}
-  tags: [waystone, cinderhold]
-start-cinderhold-way-7:
-  feetPosition: {x: 519.3935002951296, y: 22.759607214008792, z: -36.290660995243634}
-  id: start-cinderhold-way-7
-  physics: static
-  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 7}
-  rotation: {yaw: -74.05460409907715}
-  tags: [waystone, cinderhold]
-start-cinderhold-way-8:
-  feetPosition: {x: 459.83395976697807, y: 12.432760654905207, z: -26.345756165358555}
-  id: start-cinderhold-way-8
-  physics: static
-  primitive: {kind: scripted, params: {kind: waystone}, script: scripts/gen/frontier.js, seed: 8}
-  rotation: {yaw: -74.05460409907715}
-  tags: [waystone, cinderhold]
