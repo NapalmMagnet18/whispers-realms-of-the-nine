@@ -33,7 +33,7 @@ function upsert(api, slot, data, cb) {
   var extra = JSON.stringify(data);
   try {
     api.sql`INSERT INTO characters (user_id, realm, slot, name, race, class, level, copper, inventory, equipment, data, created_at, updated_at)
-      VALUES (@caller, ${realm}, ${slot}, ${data.charName || 'Unnamed'}, ${r.id || r.name}, ${classOf(data)}, ${data.level ?? 1}, ${data.copper ?? 0},
+      VALUES (@caller, ${realm}, ${slot}, ${data.charName || ('Unnamed ' + (data.activeCharId || (realm + ':' + slot + ':' + now)))}, ${r.id || r.name}, ${classOf(data)}, ${data.level ?? 1}, ${data.copper ?? 0},
               ${JSON.stringify(data.inventory || [])}, ${JSON.stringify(data.equipment || {})}, ${extra}, ${now}, ${now})
       ON CONFLICT (user_id, realm, slot) DO UPDATE SET name = excluded.name, race = excluded.race, class = excluded.class, level = excluded.level,
         copper = excluded.copper, inventory = excluded.inventory, equipment = excluded.equipment, data = excluded.data, updated_at = excluded.updated_at`
