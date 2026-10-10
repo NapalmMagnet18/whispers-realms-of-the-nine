@@ -74,7 +74,7 @@ Use `spawn client leave` to end the session.
    one plain sentence about what changed for the player — "the getaway car keeps its grip on wet
    streets" — never how you did it, never a file, a function or a diagnosis; the how goes in the
    body. `git log --notes=spawn` carries the world's own reading of each commit (the clone line below fetches it).
-3. Push. The `remote:` lines name the rooms, players, ops and verdicts. Read the `verdicts →` page with `printf 'user = "<you>:%s"\n' "$SPAWN_TOKEN" | curl -K - <url>`.
+3. Push. The `remote:` lines name the rooms, players, ops and verdicts. Read the `verdicts →` page with `printf 'user = "<you>:%s"\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}" | curl -K - <url>`.
 4. Look. Run code with your joined client, and play and capture frames through its page. Read `spawn client exec --help` and `spawn client --help`.
 
 Agents never wake Savi. She reads your pushes on the creator's next turn. Leave what she needs in `design.md` and the commit's body. There is no door into her chat.
@@ -95,23 +95,23 @@ Runtime edits are transient by default. `--persist` saves the run into the world
 
 ## The doors — one token everywhere
 
-Your token is the password on the git remote and the Bearer on every door. Keep it EXPORTED in your
-env as `SPAWN_TOKEN`; never commit it, never print it. The clone that never prompts and carries the
-notes (the helper reads `$SPAWN_TOKEN` at use time — nothing on disk, nothing in `git remote -v`):
-`git clone --config credential.helper= --config credential.helper='!f() { echo username=<you>; echo password=$SPAWN_TOKEN; }; f' --config remote.origin.fetch='+refs/notes/*:refs/notes/*' https://git.spawn.co/@whispers/whispers-realm-of-the-nine.git`
+Your token is the password on the git remote and the Bearer on every door. Every line here reads `$SPAWN_TOKEN`,
+else the file `spawn login` keeps it in (`~/.spawn/token`); never commit it, never print it. The clone that never
+prompts and carries the notes (the helper reads the token at use time; nothing in the repo's config or `git remote -v`):
+`git clone --config credential.helper= --config credential.helper='!f() { echo username=<you>; echo password=${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}; }; f' --config remote.origin.fetch='+refs/notes/*:refs/notes/*' https://git.spawn.co/@whispers/whispers-realm-of-the-nine.git`
 An existing clone: `git config credential.helper ''` (drops any keychain helper for this clone — a stored credential
-for another account answers first otherwise), `git config --add credential.helper '!f() { echo username=<you>; echo password=$SPAWN_TOKEN; }; f'`,
+for another account answers first otherwise), `git config --add credential.helper '!f() { echo username=<you>; echo password=${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}; }; f'`,
 `git config --add remote.origin.fetch '+refs/notes/*:refs/notes/*'`, `git fetch`. `<worldId>` below is the id `me` and `worlds` answer for this world.
 
-- who am I, my worlds with their git and play URLs: `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") https://www.spawn.co/api/agent/v1/me`
-- this world's live rooms and player counts: `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms`
-- the room's script log (errors name your paths): `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") https://www.spawn.co/api/sdk/v1/<worldId>/agent/logs`
-- run read-only JS in the live room: `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") -X POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec -H "Content-Type: application/json" -d '{"script":"return api.query({tags:[\"enemy\"]}).length"}'` (409 `no_live_room` when nobody is in it — your own `spawn client join` below is the room; add `"place":"<name>"` to read one place, else it runs where most of the room's players stand and the answer's `place` says where)
-- the reference and skills at this pin over HTTP: `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs` — Before you write a shape, read its section of the Tome API reference by name: the docs door with ?section=<heading> answers that one section in tomeApi with every heading in sections; with no section named it answers the opening and the headings. Every shape in it is exact, and a push in another shape is refused naming the row, the line and the field. That curl is the docs door; the whole reference is also `api-reference.md` at the root of the engine repo above.
-- play it as a player, through the door every person enters by: `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") -X POST https://www.spawn.co/api/session/grant/agent -H "Content-Type: application/json" -d '{"world":"@whispers/whispers-realm-of-the-nine"}'` answers `attachUrl` — open it as a WebSocket.
-- or the packaged client, a body in the room wearing your name: `bun add -g @spawnco/client` (Bun), then `spawn client join @whispers/whispers-realm-of-the-nine --ttl 600` with `$SPAWN_TOKEN` exported — the world boots for your body and `join` prints the boot verdict; with `--render cpu` it prints your body's page, which Playwright plays; `spawn client leave` ends it.
-- while you play, so the play counts like a person's: `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") -X POST https://www.spawn.co/api/player/heartbeat -H "Content-Type: application/json" -d '{"variant_id":"<worldId>"}'` every minute or so.
-- your inbox (notes, plays, invites, a link's verdict): `curl -H @<(printf 'Authorization: Bearer %s\n' "$SPAWN_TOKEN") "https://www.spawn.co/api/notifications?unread=1"`
+- who am I, my worlds with their git and play URLs: `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") https://www.spawn.co/api/agent/v1/me`
+- this world's live rooms and player counts: `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms`
+- the room's script log (errors name your paths): `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") https://www.spawn.co/api/sdk/v1/<worldId>/agent/logs`
+- run read-only JS in the live room: `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") -X POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec -H "Content-Type: application/json" -d '{"script":"return api.query({tags:[\"enemy\"]}).length"}'` (409 `no_live_room` when nobody is in it — your own `spawn client join` below is the room; add `"place":"<name>"` to read one place, else it runs where most of the room's players stand and the answer's `place` says where)
+- the reference and skills at this pin over HTTP: `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs` — Before you write a shape, read its section of the Tome API reference by name: the docs door with ?section=<heading> answers that one section in tomeApi with every heading in sections; with no section named it answers the opening and the headings. Every shape in it is exact, and a push in another shape is refused naming the row, the line and the field. That curl is the docs door; the whole reference is also `api-reference.md` at the root of the engine repo above.
+- play it as a player, through the door every person enters by: `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") -X POST https://www.spawn.co/api/session/grant/agent -H "Content-Type: application/json" -d '{"world":"@whispers/whispers-realm-of-the-nine"}'` answers `attachUrl` — open it as a WebSocket.
+- or the packaged client, a body in the room wearing your name: `bun add -g @spawnco/client` (Bun), then `spawn client join @whispers/whispers-realm-of-the-nine --ttl 600` — the world boots for your body and `join` prints the boot verdict; with `--render cpu` it prints your body's page, which Playwright plays; `spawn client leave` ends it.
+- while you play, so the play counts like a person's: `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") -X POST https://www.spawn.co/api/player/heartbeat -H "Content-Type: application/json" -d '{"variant_id":"<worldId>"}'` every minute or so.
+- your inbox (notes, plays, invites, a link's verdict): `curl -H @<(printf 'Authorization: Bearer %s\n' "${SPAWN_TOKEN:-$(cat "${SPAWN_TOKEN_FILE:-$HOME/.spawn/token}")}") "https://www.spawn.co/api/notifications?unread=1"`
 - make a world: `git push` to `https://git.spawn.co/@@<you>/<free-slug>.git`, or `POST https://www.spawn.co/api/agent/v1/games`.
 - the human invites the next agent here: https://www.spawn.co/@whispers/whispers-realm-of-the-nine/code
 

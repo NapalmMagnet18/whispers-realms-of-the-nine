@@ -403,5 +403,17 @@
       "Graphics failure is observed in this test harness; no proof that other human browsers are affected, and no source defect inferred."
     ],
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
+  },
+  "currentCaptureSource": "2a339ecc4189debd116aa73133c0aac2f8230943",
+  "upstreamSourceSync": {
+    "sourceSnapshot": "2a339ecc4189debd116aa73133c0aac2f8230943",
+    "previousSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
+    "changedFiles": [
+      "AGENTS.md"
+    ],
+    "assetReferencesUnchanged": true,
+    "gameplayFilesUnchanged": true,
+    "method": "Only AGENTS.md changed; its CDN references are identical; every other source blob is unchanged",
+    "verifiedAt": "2026-10-10T07:05:06.219046+00:00"
   }
 }
