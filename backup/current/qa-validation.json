@@ -2,7 +2,7 @@
   "task": "RENDER-CLIENT-001",
   "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
   "gameVersion": "0.47.97 Alpha",
-  "verifiedAt": "2026-10-10T04:01:15.447200+00:00",
+  "verifiedAt": "2026-10-10T06:06:27.779378+00:00",
   "boardSpacingRepair": {
     "task": "BOARD-SPACING-001",
     "checkedAt": "2026-10-10T00:01:24.051845+00:00",
@@ -332,17 +332,18 @@
   },
   "renderRecheck": {
     "task": "RENDER-CLIENT-001",
-    "verifiedAt": "2026-10-10T04:01:15.447200+00:00",
-    "result": "Known test-client graphics readiness blocker reproduced; saved character data unchanged",
+    "verifiedAt": "2026-10-10T06:06:27.779378+00:00",
+    "result": "Known test-client graphics readiness blocker reproduced; quest rewards and inventory preserved",
     "blockerId": "local-spawn-webgpu-dxil-20261010",
     "blockerNotified": true,
     "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
     "gameVersion": "0.47.97 Alpha",
     "liveSourceEdits": false,
     "jobSubmitted": false,
-    "gpuSessionsAttemptedThisRun": 1,
+    "gpuSessionsAttemptedThisRun": 0,
+    "cpuSessionsAttemptedThisRun": 1,
     "graphicsReady": false,
-    "observedGraphicsError": "WebGPU requestDevice: DynamicLib.Open dxil.dll Windows Error: 87; browser client could not finish loading",
+    "observedGraphicsError": "CPU WebGPU adapter request returned null; supported readiness timed out after 10000ms",
     "questAccepted": false,
     "questCompleted": false,
     "normalMovementAttemptedThisRun": false,
@@ -355,10 +356,11 @@
           "_calls_ring",
           "_spawn_realm_floors",
           "_sql_manifest",
+          "characters",
           "realm_pulse"
         ],
-        "previousRows": 2363,
-        "currentRows": 2361,
+        "previousRows": 2361,
+        "currentRows": 2362,
         "countsStable": true,
         "contentUnchanged": false
       },
@@ -372,7 +374,28 @@
         "contentUnchanged": true
       }
     ],
-    "outcome": "One fresh supported GPU readiness check failed before quest interaction with the same DXIL device error as the prior run. The diagnostic stayed at the menu and did not enter or progress MAR-04. A fresh encrypted comparison confirms character and ledger tables unchanged, database schemas unchanged, and live database contents unchanged. Dev changes are confined to engine bookkeeping/call history and realm pulse. The existing graphics blocker was already reported; no additional user action is required by this unchanged result.",
+    "characterFieldDrift": {
+      "changedRows": 1,
+      "differences": [
+        {
+          "changedColumns": [
+            "data",
+            "updated_at"
+          ],
+          "primaryKeyUnchanged": true,
+          "changedDataFields": [
+            "tally"
+          ],
+          "changedTallyCounters": [
+            "reach_visits"
+          ],
+          "questsRewardsAndItemsUnchanged": true,
+          "questRewardInventoryUnchanged": false
+        }
+      ],
+      "onlyUpdatedAtChanged": false
+    },
+    "outcome": "One fresh supported CPU readiness check on the retained QA body in main timed out after ten seconds; the local host log again reported a null WebGPU adapter. No quest or movement interaction was attempted. A read-only combined inspector encountered a nonresident target; it applied no changes and its local helper now tolerates absent streamed targets. The body left cleanly. Encrypted comparison confirms quest acceptance/completion, XP, copper, inventory and equipment unchanged; one character save changed only the passive reach_visits counter and update timestamp, consistent with quest-core.js recording zone entry on rejoin. Database schemas, ledger and live contents are unchanged. The existing graphics blocker is unchanged; human-browser impact remains unverified.",
     "limits": [
       "MAR-04 objectives/reward remain untested; no synthetic substitute used.",
       "Multiplayer, independent simultaneous transactions, physical pointer hit-testing and visual quality remain unverified.",
