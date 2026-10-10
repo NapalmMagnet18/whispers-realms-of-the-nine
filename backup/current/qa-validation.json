@@ -415,5 +415,48 @@
     "gameplayFilesUnchanged": true,
     "method": "Only AGENTS.md changed; its CDN references are identical; every other source blob is unchanged",
     "verifiedAt": "2026-10-10T07:05:06.219046+00:00"
+  },
+  "privateNotesBackupSync": {
+    "task": "BACKUP-NOTES-20261010T100603Z",
+    "verifiedAt": "2026-10-10T10:07:46.769293+00:00",
+    "result": "Updated private Spawn notes and engine metadata captured; gameplay and character data unchanged",
+    "sourceSnapshot": "2a339ecc4189debd116aa73133c0aac2f8230943",
+    "gameVersion": "0.47.97 Alpha",
+    "previousPrivateNotesRef": "37707d1a87de5c1d34a482becf844a202914c5aa",
+    "privateNotesRef": "6c1c328016eb0e81a404ed838ccb6a5485821f37",
+    "liveSourceEdits": false,
+    "jobSubmitted": false,
+    "runtimePlaytestAttempted": false,
+    "graphicsBlockerChanged": false,
+    "snapshotDrift": [
+      {
+        "database": "dev",
+        "schemaChanged": false,
+        "changedTables": [
+          "_meta",
+          "_sql_manifest"
+        ],
+        "previousRows": 2363,
+        "currentRows": 2364,
+        "countsStable": true,
+        "contentUnchanged": false
+      },
+      {
+        "database": "live",
+        "schemaChanged": false,
+        "changedTables": [],
+        "previousRows": 6,
+        "currentRows": 6,
+        "countsStable": true,
+        "contentUnchanged": true
+      }
+    ],
+    "outcome": "Complete updated private Spawn-note ancestry and fresh approved encrypted dev/live data replace the selected recovery archive. Source, game version, hosted assets and local libraries are unchanged. Database differences are confined to engine metadata/SQL bookkeeping; characters, ledger, guilds and auctions are unchanged, as are all live contents. Encryption roundtrips, database reconstruction and integrity checks passed. No body, quest interaction or Savi job was submitted; prior runtime QA remains pinned to its actual tested source, and renderer readiness was not retested this run.",
+    "limits": [
+      "MAR-04, multiplayer and character/environment visual runtime gates remain unverified.",
+      "Exactly 75 unavailable references remain recorded; managed Spawn engine/server/services are not exposed as exportable files.",
+      "Database reads are sequential rather than an atomic cross-table snapshot."
+    ],
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
   }
 }
