@@ -1,5 +1,11 @@
 # WHISPERS : Realm of the Nine — build page
 
+## 2026-10-09 · BOARD-SPACING-001 / 0.47.97 Alpha (spaiber)
+- Real MAR-01 play reached the Ward census from Elric, advanced its objective with E, walked back and earned one named Ward Starter Coat and 10 XP. Independent reads of the QA hero's own SQL row matched its inventory, XP, purse, completed/active quests and gear after reward and after leave/rejoin. Re-interacting with Elric offered no completed MAR-01. Two rapid UI clicks produced one reward but may coalesce; this does not prove two independent server claims or multiplayer ownership.
+- The old census board at (5,-79) was 1.81 m from Banker Wenna; E opened the vault at the same time as the quest tally and ordinary movement wedged between their colliders. Moved only qm-ward-census to (-3, terrain+0, -90), still in Lantern Ward/cell x0z-1. Its closest vendor is over 11 m away, exceeding the combined 3.2 m mark/3.5 m vendor interaction ranges. Board ID, quest/canon, appearance, FX, all services, scenery and saves are preserved.
+- Scene parsing and placement/regression checks passed. Published walking/E/service and logs checks are recorded in the creator's Codex outputs and GitHub backup/current/qa-validation.json after the push; do not infer fresh-active MAR-01 proof from a completed hero.
+- Next queue: retained hero MAR-02 at Quartermaster Dren, then origin → Q001–Q008 reward/rejoin proof and actual two-player ownership; resident/character/environment visual review and measured arrival performance remain explicit parallel priorities. Savi handoff: retain the service/mark separation and existing save confirmation; no agent job submitted.
+
 ## 2026-10-09 · QUEST-UI-001 reward identity (spaiber)
 - Actual QA play exposed MAR-01's offer showing only “Item” for starter_coat. Offer/turn-in dialogue copies now resolve reward IDs through the existing quest/gear catalogs, carrying names and available icon/description/slot metadata. Quest definitions, payouts, progression and saves are unchanged; unknown IDs remain visible by ID.
 - Local actual-helper checks passed canonical names, metadata, object-form rewards, missing IDs, absent rewards and source immutability; quest proximity/payout regressions still pass. Published-engine validation is recorded in the external log.

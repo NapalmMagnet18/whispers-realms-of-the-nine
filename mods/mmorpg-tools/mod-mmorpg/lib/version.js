@@ -1,7 +1,8 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.96 Alpha';
+var GAME_VERSION = '0.47.97 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.47.97', 'Room to Read', 'The Ward Census Board stands clear of the vault and trainer now, with room to approach and leave its posts. Examining the census no longer brings up the nearby bank.'],
   ['v0.47.96', 'The Land Awakens', 'Lantern\'s March and Banner Vale stand on sharper ground, with stone, moss and gravel you can read up close and new wind-combed grass. Banner Vale now has the March\'s sky, cloud and valley mist.'],
   ['v0.47.95', 'Weight of the Chain', 'Captain Merrow\'s anchor chain whooshes through the air and lands with a wet crunch, a burst of brine and a jolt you feel.'],
   ['v0.47.94', 'The Captain Stirs', 'Captain Merrow breathes and sways on his strand, walks with a heavy gait, and casts his tide attacks with a real spell motion.'],

@@ -12,6 +12,12 @@ The route simulation completes objectives synthetically and includes all availab
 
 ## Remaining gates
 
+### QA-MAR01-WALK-REWARD-001 / BOARD-SPACING-001 — October 9 (spaiber)
+
+The retained agent-owned hero physically walked from Elric around the inn to the Ward Census Board, pressed E for the actual objective, returned to Elric and turned in MAR-01. Earned 10 XP and one Ward Starter Coat. The own SQL character row matched six progression/gear fields after reward and after disconnect/rejoin; the coat and completed flag persisted. Re-interacting with Elric offered no completed MAR-01. No teleport, synthetic objective, SQL write or save reset was used. Two same-frame UI completion click events yielded one reward, which can coalesce into one server input; independent repeated transactions and two-player ownership remain unverified. UI handlers were dispatched through Playwright, so physical pointer hit testing is also unverified.
+
+This walking test exposed simultaneous vault opening and a narrow census/banker collider gap. Version 0.47.97 moves only the census board to (-3,-90), keeping its ID and mark while separating service/quest interaction ranges. Authored scene parses and vendor-distance checks pass; post-push ordinary walking, E and banker regression evidence is recorded in external Codex outputs and the current GitHub backup QA receipt. The retained hero already completed MAR-01, so another active-quest objective at the new location remains unverified. This first quest is not proof of the whole origin or Q001–Q008 loop, balance, two-player behavior, visual quality or client FPS.
+
 ### QA-REJOIN-001 — real QA body, October 8 (spaiber)
 
 Created SpaiberLanternQA (Marchborn Vanguard) through the creation UI on the agent-owned spaiber_qa body. The actual save path acknowledged its SQL write. Disconnected, rejoined the same body, saw the hero in the roster and selected Enter World. Name, race, class, level, copper, XP and starter sword/robes matched the pre-disconnect state. Empty bag, bank, quest and cache fields also matched; this does not test nonempty contents. One second of real W input moved the restored hero 5.933 metres (rounded).

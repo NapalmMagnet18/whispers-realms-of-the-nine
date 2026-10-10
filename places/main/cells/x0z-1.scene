@@ -206,7 +206,7 @@ qm-ward-bell-roll:
   state: {after: lost_notice, mark: bell_roll, quest: MAR-04, say: "Eda Sable. The Sables of Thirteen. The household at Twelve. All rung for on a single night: the First Silence.", title: The Bell Roll, verb: Read}
   tags: [quest-mark, lantern-ward]
 qm-ward-census:
-  feetPosition: {x: 5, y: {terrain: 0}, z: -79}
+  feetPosition: {x: -3, y: {terrain: 0}, z: -90}
   fx: {script: "fx\npop motes rate=5 on=disc(.5) life=1.4..2.2 v=up(.35..0.7) size=.04..0.08 acc=curl(.4)+drag(.6) col=hdr(2.6,1.9,.7) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)"}
   id: qm-ward-census
   physics: static
