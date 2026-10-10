@@ -1,30 +1,92 @@
 {
-  "task": "QA-MAR01-WALK-REWARD-001",
-  "verifiedAt": "2026-10-09T22:55:44.972084+00:00",
-  "sourceSnapshot": "0174febd8283af5d593db301a53db850448db960",
-  "gameVersion": "0.47.96 Alpha",
-  "quest": "MAR-01",
-  "physicalTraversalVerified": true,
-  "realKeyboardInteract": true,
-  "objectiveBefore": 0,
-  "objectiveAfter": 1,
-  "xpAwarded": 10,
-  "rewardItem": "starter_coat",
-  "rewardCount": 1,
-  "uiClickEventsDispatched": 2,
-  "rejoinedSameBody": true,
-  "restoredRewardFieldsMatch": true,
-  "independentSqlReadBeforeAndAfterRejoin": true,
-  "completedQuestCopies": 1,
-  "reinteractingAfterRejoinAddedNoReward": true,
-  "teleports": 0,
-  "syntheticObjectiveWrites": 0,
-  "directDatabaseWrites": 0,
-  "limitations": [
-    "Two rapid UI events may coalesce into one server input; this is not proof of two independently processed claim transactions",
-    "CPU UI click handlers were dispatched; physical pointer quality and rendered character/environment quality remain unverified",
-    "No multiplayer reward ownership test or full origin/Q001-Q008 loop completed"
-  ],
-  "newIssue": "Census-board interaction also opens nearby bank; narrow banker/board collider gap needed normal jump to leave",
-  "nextTask": "Validate and repair census-board/service spacing, then continue MAR-02 at Quartermaster Dren and rendered character/environment review"
+  "task": "BOARD-SPACING-001",
+  "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
+  "gameVersion": "0.47.97 Alpha",
+  "verifiedAt": "2026-10-10T00:01:24.051845+00:00",
+  "boardSpacingRepair": {
+    "task": "BOARD-SPACING-001",
+    "checkedAt": "2026-10-10T00:01:24.051845+00:00",
+    "gameVersion": "0.47.97 Alpha",
+    "static": {
+      "task": "BOARD-SPACING-001",
+      "scenesParsed": 157,
+      "onlyCensusFeetChanged": true,
+      "correctCell": true,
+      "markReach": 3.2,
+      "vendorReach": 3.5,
+      "nearestVendors": [
+        {
+          "id": "trainer-marchborn",
+          "distance": 11.313708498984761
+        },
+        {
+          "id": "banker-marchborn",
+          "distance": 12.346672629634504
+        },
+        {
+          "id": "quartermaster-dren",
+          "distance": 100.6166984153227
+        }
+      ],
+      "canonAndAppearancePreserved": true,
+      "runtimeWalkingPending": false
+    },
+    "publishedBoardFeet": {
+      "x": -3,
+      "y": 0.8,
+      "z": -90
+    },
+    "approachWithinMarkRange": true,
+    "boardEOpenedBank": false,
+    "normalDepartureMetres": 9.480389494076633,
+    "jumpUsed": false,
+    "teleports": 0,
+    "syntheticObjectives": 0,
+    "bankerEStillWorks": true,
+    "rewardStateUnchanged": true,
+    "ownSqlFieldsMatched": 6,
+    "ownSqlRowsRead": 1,
+    "activeQuestObjectiveAtNewPositionVerified": false,
+    "multiplayerVerified": false,
+    "pushVerdictPage": "HTTP 403; push output accepted four operations and arrival-budget warnings; room exec confirms placement",
+    "nextTask": "Retained hero MAR-02 at Quartermaster Dren, origin/Q001-Q008 reward/rejoin and two-player ownership; resident/character/environment visual review and measured arrival optimization"
+  },
+  "firstQuestEvidence": {
+    "task": "QA-MAR01-WALK-REWARD-001",
+    "verifiedAt": "2026-10-09T22:55:44.972084+00:00",
+    "sourceSnapshot": "0174febd8283af5d593db301a53db850448db960",
+    "gameVersion": "0.47.96 Alpha",
+    "quest": "MAR-01",
+    "physicalTraversalVerified": true,
+    "realKeyboardInteract": true,
+    "objectiveBefore": 0,
+    "objectiveAfter": 1,
+    "xpAwarded": 10,
+    "rewardItem": "starter_coat",
+    "rewardCount": 1,
+    "uiClickEventsDispatched": 2,
+    "rejoinedSameBody": true,
+    "restoredRewardFieldsMatch": true,
+    "independentSqlReadBeforeAndAfterRejoin": true,
+    "completedQuestCopies": 1,
+    "reinteractingAfterRejoinAddedNoReward": true,
+    "teleports": 0,
+    "syntheticObjectiveWrites": 0,
+    "directDatabaseWrites": 0,
+    "limitations": [
+      "Two rapid UI events may coalesce into one server input; this is not proof of two independently processed claim transactions",
+      "CPU UI click handlers were dispatched; physical pointer quality and rendered character/environment quality remain unverified",
+      "No multiplayer reward ownership test or full origin/Q001-Q008 loop completed"
+    ],
+    "newIssue": "Census-board interaction also opens nearby bank; narrow banker/board collider gap needed normal jump to leave",
+    "nextTask": "Validate and repair census-board/service spacing, then continue MAR-02 at Quartermaster Dren and rendered character/environment review"
+  },
+  "nextTask": "Retained hero MAR-02 at Quartermaster Dren, origin/Q001-Q008 reward/rejoin and two-player ownership; resident/character/environment visual review and measured arrival optimization",
+  "remainingGates": [
+    "Fresh-active MAR-01 objective at relocated board",
+    "MAR-02 through origin/Q001-Q008 normal quest/combat/craft/equip progression",
+    "Two independently processed repeated reward claims and two-player ownership/reconnect",
+    "Physical UI pointer quality, rendered character/environment review and client performance",
+    "Existing arrival-size budget and engine compatibility warnings"
+  ]
 }

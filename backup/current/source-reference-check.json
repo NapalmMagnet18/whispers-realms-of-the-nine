@@ -1,0 +1,13 @@
+{
+  "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
+  "previousSnapshot": "0174febd8283af5d593db301a53db850448db960",
+  "changedFiles": [
+    "QA_CAMPAIGN_VALIDATION.md",
+    "design.md",
+    "mods/mmorpg-tools/mod-mmorpg/lib/version.js",
+    "places/main/cells/x0z-1.scene"
+  ],
+  "assetReferencesUnchanged": true,
+  "method": "All four changed file CDN references equal; geometry/material/recipe scripts unchanged; census field-only diff independently parsed",
+  "verifiedAt": "2026-10-10T00:01:24.051845+00:00"
+}
