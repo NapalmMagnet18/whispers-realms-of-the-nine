@@ -1,0 +1,47 @@
+[
+  {
+    "database": "dev",
+    "addedSchema": [
+      {
+        "type": "index",
+        "name": "sqlite_autoindex__spawn_chunks_1",
+        "tbl_name": "_spawn_chunks",
+        "sql": null
+      },
+      {
+        "type": "table",
+        "name": "_spawn_chunks",
+        "tbl_name": "_spawn_chunks",
+        "sql": "CREATE TABLE _spawn_chunks (world TEXT NOT NULL, place_id TEXT NOT NULL, cx INTEGER NOT NULL, cy INTEGER NOT NULL, cz INTEGER NOT NULL, blob BLOB NOT NULL, rev INTEGER NOT NULL, PRIMARY KEY (world, place_id, cx, cy, cz))"
+      }
+    ],
+    "addedTableRows": 0,
+    "existingSchemaUnchanged": true,
+    "changedExistingTables": [
+      "_meta",
+      "_sql_manifest"
+    ],
+    "playerAndGameplayTablesUnchanged": true
+  },
+  {
+    "database": "live",
+    "addedSchema": [
+      {
+        "type": "index",
+        "name": "sqlite_autoindex__spawn_chunks_1",
+        "tbl_name": "_spawn_chunks",
+        "sql": null
+      },
+      {
+        "type": "table",
+        "name": "_spawn_chunks",
+        "tbl_name": "_spawn_chunks",
+        "sql": "CREATE TABLE _spawn_chunks (world TEXT NOT NULL, place_id TEXT NOT NULL, cx INTEGER NOT NULL, cy INTEGER NOT NULL, cz INTEGER NOT NULL, blob BLOB NOT NULL, rev INTEGER NOT NULL, PRIMARY KEY (world, place_id, cx, cy, cz))"
+      }
+    ],
+    "addedTableRows": 0,
+    "existingSchemaUnchanged": true,
+    "changedExistingTables": [],
+    "playerAndGameplayTablesUnchanged": true
+  }
+]

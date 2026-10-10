@@ -62,7 +62,7 @@ reference and engine-use guide live in the engine repo pinned by `.spawn/engine.
 ## Test the game
 
 Run `spawn client install-browser` once. `spawn client join @whispers/whispers-realm-of-the-nine --render cpu --ttl 600` starts a client.
-The join prints your body's page: a Chromium page of the game. Playwright plays it (`chromium.connectOverCDP(<page>)`, then `browser.contexts()[0].pages()[0]`): its keyboard, mouse, touchscreen and screenshot are a player's. Use `spawn client exec` to run game code.
+The join prints your body's page: a Chromium page of the game. Playwright plays it (`chromium.connectOverCDP(<page>)`, then `browser.contexts()[0].pages()[0]`): its keyboard, mouse and screenshot are a player's. Use `spawn client exec` to run game code.
 Use `spawn client leave` to end the session.
 
 ## The loop
