@@ -1,8 +1,8 @@
 {
-  "task": "QA-MAR02-001",
+  "task": "QA-MAR03-001",
   "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
   "gameVersion": "0.47.97 Alpha",
-  "verifiedAt": "2026-10-10T01:10:23.687150+00:00",
+  "verifiedAt": "2026-10-10T02:01:37.469400+00:00",
   "boardSpacingRepair": {
     "task": "BOARD-SPACING-001",
     "checkedAt": "2026-10-10T00:01:24.051845+00:00",
@@ -81,7 +81,7 @@
     "newIssue": "Census-board interaction also opens nearby bank; narrow banker/board collider gap needed normal jump to leave",
     "nextTask": "Validate and repair census-board/service spacing, then continue MAR-02 at Quartermaster Dren and rendered character/environment review"
   },
-  "nextTask": "QA-MAR03-001: retained hero MAR-03 at Sergeant Bram; continue the origin and Q001\u2013Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review remains queued alongside those gates.",
+  "nextTask": "QA-MAR04-001: retained hero MAR-04 at Sister Vale; continue the origin and Q001\u2013Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review and CPU capture/arrival diagnosis remain queued alongside those gates.",
   "remainingGates": [
     "Fresh-active MAR-01 objective at relocated board",
     "MAR-02 through origin/Q001-Q008 normal quest/combat/craft/equip progression",
@@ -154,6 +154,109 @@
       "CPU screenshot timed out; character visual quality and client FPS are not verified.",
       "No server remained after clean leave; subsequent health/log doors returned no active room.",
       "No supported Savi job-status door; no Savi job was submitted."
+    ]
+  },
+  "mar03Validation": {
+    "task": "QA-MAR03-001",
+    "verifiedAt": "2026-10-10T02:01:37.469400+00:00",
+    "gameVersion": "0.47.97 Alpha",
+    "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
+    "result": "passed for one retained QA character in the dev room",
+    "acceptedThroughQuestUI": true,
+    "normalWalking": true,
+    "walledDoorCount": 1,
+    "latchCount": 1,
+    "orderedObjectiveProgressObserved": true,
+    "completedThroughQuestUI": true,
+    "rewardXp": 30,
+    "rewardCopper": 60,
+    "rewardItem": "lantern_scrap",
+    "rewardItemCount": 1,
+    "finalXp": 65,
+    "finalCopper": 180,
+    "completedQuestCopies": 1,
+    "existingStarterCoatCount": 1,
+    "rewardSurvivedRejoin": true,
+    "repeatInteractionOfferedCompletedQuest": false,
+    "repeatInteractionGrantedReward": false,
+    "ownSavedFieldsMatch": [
+      {
+        "xp": true,
+        "copper": true,
+        "inventory": true,
+        "equipment": true,
+        "activeQuests": true,
+        "completedQuests": true,
+        "tally": true,
+        "marks": true
+      },
+      {
+        "xp": true,
+        "copper": true,
+        "inventory": true,
+        "equipment": true,
+        "activeQuests": true,
+        "completedQuests": true,
+        "tally": true,
+        "marks": true
+      },
+      {
+        "xp": true,
+        "copper": true,
+        "inventory": true,
+        "equipment": true,
+        "activeQuests": true,
+        "completedQuests": true,
+        "tally": true,
+        "marks": true
+      }
+    ],
+    "sqlReadsOwnRowsOnly": true,
+    "normalReentryAddsReachVisit": true,
+    "teleports": 0,
+    "syntheticObjectiveWrites": 0,
+    "remoteDatabaseWrites": 0,
+    "liveSourceEdits": false,
+    "nextTask": "QA-MAR04-001: retained hero MAR-04 at Sister Vale; continue the origin and Q001\u2013Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review and CPU capture/arrival diagnosis remain queued alongside those gates.",
+    "health": [
+      {
+        "room": "main",
+        "mode": "dev",
+        "players": 1,
+        "state": "keeping_up",
+        "summary": "The room's server is keeping up: its slowest ticks take 7.2 ms against a 33.3 ms budget.",
+        "servers": [
+          {
+            "label": "srv-280e5aef",
+            "startedAt": "2026-10-10T01:53:23.000Z",
+            "reportedAt": "2026-10-10T01:59:09.865Z",
+            "answering": true,
+            "keepsTick": true,
+            "tick": {
+              "p50Ms": 2.9,
+              "p95Ms": 7.2,
+              "budgetMs": 33.3,
+              "rateHz": 30,
+              "targetHz": 30
+            },
+            "busyPercent": 9.8,
+            "memoryBytes": 1672343552,
+            "entities": 5568
+          }
+        ]
+      }
+    ],
+    "visibleErrorCount": 0,
+    "logsPage": {
+      "rows": 133,
+      "more": 0
+    },
+    "limits": [
+      "Single-player dev-room verification; multiplayer authority and independent simultaneous transactions remain unverified.",
+      "Completion button used its actual DOM handler; physical pointer hit-testing is not verified.",
+      "CPU screenshot timed out at eight seconds; visual quality and client FPS are not verified.",
+      "Warnings about existing compatibility/camera/render paths remain; no error/fatal row in the returned log result.",
+      "No supported Savi job-status door; no Savi job submitted."
     ]
   }
 }
