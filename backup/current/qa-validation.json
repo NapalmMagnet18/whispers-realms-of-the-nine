@@ -1,8 +1,8 @@
 {
-  "task": "QA-MAR04-001 / RENDER-CLIENT-001",
+  "task": "RENDER-CLIENT-001",
   "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
   "gameVersion": "0.47.97 Alpha",
-  "verifiedAt": "2026-10-10T03:09:59.835641+00:00",
+  "verifiedAt": "2026-10-10T04:01:15.447200+00:00",
   "boardSpacingRepair": {
     "task": "BOARD-SPACING-001",
     "checkedAt": "2026-10-10T00:01:24.051845+00:00",
@@ -329,5 +329,56 @@
       "Supported Savi job-status interface unavailable; no job submitted."
     ],
     "outcome": "MAR-04 was neither accepted nor completed. Prior MAR-01/02/03 completion and65XP/180copper persisted. Two CPU sessions stayed stationary despite normal keys and verified canvas focus; GPU fallback failed loading. No renderer frame arrived through supported ready() within10seconds. Local host log identifies null CPU WebGPU adapter and GPU dxil.dll Windows Error87, plus worker origin/render delivery errors. No live source edit or gameplay reward was fabricated."
+  },
+  "renderRecheck": {
+    "task": "RENDER-CLIENT-001",
+    "verifiedAt": "2026-10-10T04:01:15.447200+00:00",
+    "result": "Known test-client graphics readiness blocker reproduced; saved character data unchanged",
+    "blockerId": "local-spawn-webgpu-dxil-20261010",
+    "blockerNotified": true,
+    "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
+    "gameVersion": "0.47.97 Alpha",
+    "liveSourceEdits": false,
+    "jobSubmitted": false,
+    "gpuSessionsAttemptedThisRun": 1,
+    "graphicsReady": false,
+    "observedGraphicsError": "WebGPU requestDevice: DynamicLib.Open dxil.dll Windows Error: 87; browser client could not finish loading",
+    "questAccepted": false,
+    "questCompleted": false,
+    "normalMovementAttemptedThisRun": false,
+    "qaSession": "Left cleanly; account stands zero bodies",
+    "snapshotDrift": [
+      {
+        "database": "dev",
+        "schemaChanged": false,
+        "changedTables": [
+          "_calls_ring",
+          "_spawn_realm_floors",
+          "_sql_manifest",
+          "realm_pulse"
+        ],
+        "previousRows": 2363,
+        "currentRows": 2361,
+        "countsStable": true,
+        "contentUnchanged": false
+      },
+      {
+        "database": "live",
+        "schemaChanged": false,
+        "changedTables": [],
+        "previousRows": 6,
+        "currentRows": 6,
+        "countsStable": true,
+        "contentUnchanged": true
+      }
+    ],
+    "outcome": "One fresh supported GPU readiness check failed before quest interaction with the same DXIL device error as the prior run. The diagnostic stayed at the menu and did not enter or progress MAR-04. A fresh encrypted comparison confirms character and ledger tables unchanged, database schemas unchanged, and live database contents unchanged. Dev changes are confined to engine bookkeeping/call history and realm pulse. The existing graphics blocker was already reported; no additional user action is required by this unchanged result.",
+    "limits": [
+      "MAR-04 objectives/reward remain untested; no synthetic substitute used.",
+      "Multiplayer, independent simultaneous transactions, physical pointer hit-testing and visual quality remain unverified.",
+      "Supported Savi job-status interface unavailable; no job submitted.",
+      "Graphics failure is observed in this test harness; no proof that other human browsers are affected, and no source defect inferred."
+    ],
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
   }
 }
