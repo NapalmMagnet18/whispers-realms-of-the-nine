@@ -2,7 +2,7 @@
   "task": "RENDER-CLIENT-001",
   "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
   "gameVersion": "0.47.97 Alpha",
-  "verifiedAt": "2026-10-10T06:06:27.779378+00:00",
+  "verifiedAt": "2026-10-10T15:14:56.150777+00:00",
   "boardSpacingRepair": {
     "task": "BOARD-SPACING-001",
     "checkedAt": "2026-10-10T00:01:24.051845+00:00",
@@ -332,17 +332,18 @@
   },
   "renderRecheck": {
     "task": "RENDER-CLIENT-001",
-    "verifiedAt": "2026-10-10T06:06:27.779378+00:00",
+    "verifiedAt": "2026-10-10T15:14:56.150777+00:00",
     "result": "Known test-client graphics readiness blocker reproduced; quest rewards and inventory preserved",
     "blockerId": "local-spawn-webgpu-dxil-20261010",
     "blockerNotified": true,
-    "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
+    "sourceSnapshot": "2a339ecc4189debd116aa73133c0aac2f8230943",
     "gameVersion": "0.47.97 Alpha",
     "liveSourceEdits": false,
     "jobSubmitted": false,
     "gpuSessionsAttemptedThisRun": 0,
     "cpuSessionsAttemptedThisRun": 1,
     "graphicsReady": false,
+    "diagnosticPlace": "main-menu-land",
     "observedGraphicsError": "CPU WebGPU adapter request returned null; supported readiness timed out after 10000ms",
     "questAccepted": false,
     "questCompleted": false,
@@ -355,12 +356,12 @@
         "changedTables": [
           "_calls_ring",
           "_spawn_realm_floors",
+          "_spawn_realm_leaves",
           "_sql_manifest",
-          "characters",
           "realm_pulse"
         ],
-        "previousRows": 2361,
-        "currentRows": 2362,
+        "previousRows": 2370,
+        "currentRows": 2367,
         "countsStable": true,
         "contentUnchanged": false
       },
@@ -374,28 +375,8 @@
         "contentUnchanged": true
       }
     ],
-    "characterFieldDrift": {
-      "changedRows": 1,
-      "differences": [
-        {
-          "changedColumns": [
-            "data",
-            "updated_at"
-          ],
-          "primaryKeyUnchanged": true,
-          "changedDataFields": [
-            "tally"
-          ],
-          "changedTallyCounters": [
-            "reach_visits"
-          ],
-          "questsRewardsAndItemsUnchanged": true,
-          "questRewardInventoryUnchanged": false
-        }
-      ],
-      "onlyUpdatedAtChanged": false
-    },
-    "outcome": "One fresh supported CPU readiness check on the retained QA body in main timed out after ten seconds; the local host log again reported a null WebGPU adapter. No quest or movement interaction was attempted. A read-only combined inspector encountered a nonresident target; it applied no changes and its local helper now tolerates absent streamed targets. The body left cleanly. Encrypted comparison confirms quest acceptance/completion, XP, copper, inventory and equipment unchanged; one character save changed only the passive reach_visits counter and update timestamp, consistent with quest-core.js recording zone entry on rejoin. Database schemas, ledger and live contents are unchanged. The existing graphics blocker is unchanged; human-browser impact remains unverified.",
+    "characterFieldDrift": null,
+    "outcome": "One fresh supported CPU readiness check on the retained QA body timed out after ten seconds; the local host log again reported a null WebGPU adapter. No quest or movement interaction was attempted. The body left cleanly. Encrypted comparison confirms quest acceptance/completion, XP, copper, inventory and equipment unchanged. Character table contents are unchanged. Database schemas, ledger and live contents are unchanged. The existing graphics blocker is unchanged; human-browser impact remains unverified. This diagnostic remained in main-menu-land; it did not enter the origin play area or select/progress MAR-04.",
     "limits": [
       "MAR-04 objectives/reward remain untested; no synthetic substitute used.",
       "Multiplayer, independent simultaneous transactions, physical pointer hit-testing and visual quality remain unverified.",
