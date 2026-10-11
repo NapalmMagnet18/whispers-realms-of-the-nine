@@ -441,13 +441,13 @@
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
-    "task": "BACKUP-RECOVERY-20261011T183016Z",
-    "verifiedAt": "2026-10-11T18:31:44.845663+00:00",
-    "result": "Updated private Spawn notes and engine metadata captured; gameplay and character data unchanged",
+    "task": "BACKUP-RECOVERY-20261011T193147Z",
+    "verifiedAt": "2026-10-11T19:33:27.275597+00:00",
+    "result": "Updated private notes and active-world recovery data captured; source and character data unchanged",
     "sourceSnapshot": "51f04ec0fd830ce8311bd0a24257b8465c8461e3",
     "gameVersion": "0.47.97 Alpha",
-    "previousPrivateNotesRef": "806dcc60b10dc8a4ef52138c69eba51984886dc5",
-    "privateNotesRef": "91a10f7faea304862b766af56f3301bc70375459",
+    "previousPrivateNotesRef": "91a10f7faea304862b766af56f3301bc70375459",
+    "privateNotesRef": "894136245aff4ae9fe184a67c7aba413c8af8a6d",
     "privateNotesChanged": true,
     "liveSourceEdits": false,
     "jobSubmitted": false,
@@ -458,10 +458,14 @@
         "database": "dev",
         "schemaChanged": false,
         "changedTables": [
+          "_calls_ring",
           "_meta",
-          "_sql_manifest"
+          "_spawn_realm_floors",
+          "_spawn_realm_leaves",
+          "_sql_manifest",
+          "realm_pulse"
         ],
-        "previousRows": 2391,
+        "previousRows": 2392,
         "currentRows": 2392,
         "countsStable": true,
         "contentUnchanged": false
@@ -476,7 +480,7 @@
         "contentUnchanged": true
       }
     ],
-    "outcome": "Complete private Spawn-note ancestry and fresh approved encrypted dev/live data replace the selected recovery archive. Source, game version, hosted assets and local libraries are unchanged. Database differences are confined to engine metadata/SQL bookkeeping; characters, ledger, guilds and auctions are unchanged, as are all live contents. Encryption roundtrips, database reconstruction and integrity checks passed. No body, quest interaction or Savi job was submitted; prior runtime QA remains pinned to its actual tested source, and renderer readiness was not retested this run.",
+    "outcome": "Complete private Spawn-note ancestry and fresh approved encrypted dev/live data replace the selected recovery archive. Source, game version, hosted assets and local libraries are unchanged. Changed dev tables: _calls_ring, _meta, _spawn_realm_floors, _spawn_realm_leaves, _sql_manifest, realm_pulse. Character, ledger, guild and auction contents, schemas and all live contents are unchanged. The realm_pulse world state and platform room/backup metadata changed during activity by another body; this task did not join, interact or interrupt it. Encryption roundtrips, database reconstruction and integrity checks passed. Prior runtime QA remains pinned to its tested source; no renderer rejoin or Savi job submitted.",
     "limits": [
       "MAR-04, multiplayer and character/environment visual runtime gates remain unverified.",
       "Exactly 75 unavailable references remain recorded; managed Spawn engine/server/services are not exposed as exportable files.",
