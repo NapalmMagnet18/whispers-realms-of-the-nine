@@ -2,10 +2,10 @@
   "task": "RENDER-CLIENT-001",
   "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
   "gameVersion": "0.47.97 Alpha",
-  "verifiedAt": "2026-10-10T15:14:56.150777+00:00",
+  "verifiedAt": "2026-10-10T09:14:56.150777-06:00",
   "boardSpacingRepair": {
     "task": "BOARD-SPACING-001",
-    "checkedAt": "2026-10-10T00:01:24.051845+00:00",
+    "checkedAt": "2026-10-09T18:01:24.051845-06:00",
     "gameVersion": "0.47.97 Alpha",
     "static": {
       "task": "BOARD-SPACING-001",
@@ -53,7 +53,7 @@
   },
   "firstQuestEvidence": {
     "task": "QA-MAR01-WALK-REWARD-001",
-    "verifiedAt": "2026-10-09T22:55:44.972084+00:00",
+    "verifiedAt": "2026-10-09T16:55:44.972084-06:00",
     "sourceSnapshot": "0174febd8283af5d593db301a53db850448db960",
     "gameVersion": "0.47.96 Alpha",
     "quest": "MAR-01",
@@ -81,7 +81,7 @@
     "newIssue": "Census-board interaction also opens nearby bank; narrow banker/board collider gap needed normal jump to leave",
     "nextTask": "Validate and repair census-board/service spacing, then continue MAR-02 at Quartermaster Dren and rendered character/environment review"
   },
-  "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates.",
+  "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates.",
   "remainingGates": [
     "Fresh-active MAR-01 objective at relocated board",
     "MAR-02 through origin/Q001-Q008 normal quest/combat/craft/equip progression",
@@ -91,7 +91,7 @@
   ],
   "mar02Validation": {
     "task": "QA-MAR02-001",
-    "verifiedAt": "2026-10-10T01:10:23.687150+00:00",
+    "verifiedAt": "2026-10-09T19:10:23.68715-06:00",
     "gameVersion": "0.47.97 Alpha",
     "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
     "result": "passed for one retained QA character in the dev room",
@@ -147,7 +147,7 @@
     "syntheticObjectiveWrites": 0,
     "remoteDatabaseWrites": 0,
     "liveSourceEdits": false,
-    "nextTask": "QA-MAR03-001: retained hero MAR-03 at Sergeant Bram; continue the origin and Q001\u2013Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review remains queued alongside those gates.",
+    "nextTask": "QA-MAR03-001: retained hero MAR-03 at Sergeant Bram; continue the origin and Q001–Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review remains queued alongside those gates.",
     "limits": [
       "Single-player dev-room verification; multiplayer authority and independent simultaneous transactions remain unverified.",
       "Completion button used its actual DOM handler; physical pointer hit-testing is not verified.",
@@ -158,7 +158,7 @@
   },
   "mar03Validation": {
     "task": "QA-MAR03-001",
-    "verifiedAt": "2026-10-10T02:01:37.469400+00:00",
+    "verifiedAt": "2026-10-09T20:01:37.4694-06:00",
     "gameVersion": "0.47.97 Alpha",
     "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
     "result": "passed for one retained QA character in the dev room",
@@ -217,7 +217,7 @@
     "syntheticObjectiveWrites": 0,
     "remoteDatabaseWrites": 0,
     "liveSourceEdits": false,
-    "nextTask": "QA-MAR04-001: retained hero MAR-04 at Sister Vale; continue the origin and Q001\u2013Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review and CPU capture/arrival diagnosis remain queued alongside those gates.",
+    "nextTask": "QA-MAR04-001: retained hero MAR-04 at Sister Vale; continue the origin and Q001–Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review and CPU capture/arrival diagnosis remain queued alongside those gates.",
     "health": [
       {
         "room": "main",
@@ -228,7 +228,7 @@
         "servers": [
           {
             "label": "srv-280e5aef",
-            "startedAt": "2026-10-10T01:53:23.000Z",
+            "startedAt": "2026-10-10T01:53:23Z",
             "reportedAt": "2026-10-10T01:59:09.865Z",
             "answering": true,
             "keepsTick": true,
@@ -261,7 +261,7 @@
   },
   "mar04Attempt": {
     "task": "QA-MAR04-001 / RENDER-CLIENT-001",
-    "verifiedAt": "2026-10-10T03:09:59.835641+00:00",
+    "verifiedAt": "2026-10-09T21:09:59.835641-06:00",
     "sourceSnapshot": "6b496c2c7ef9fc6b4d65308dd42787c7a12e1c18",
     "gameVersion": "0.47.97 Alpha",
     "result": "MAR-04 unverified: client graphics/input failure in this run",
@@ -293,7 +293,7 @@
         "servers": [
           {
             "label": "srv-f8400bfa",
-            "startedAt": "2026-10-10T02:59:26.000Z",
+            "startedAt": "2026-10-10T02:59:26Z",
             "reportedAt": "2026-10-10T03:02:00.236Z",
             "answering": true,
             "keepsTick": true,
@@ -322,7 +322,7 @@
       "Render backlog replaced/discarded1305frames."
     ],
     "diagnosisLimit": "Graphics failure is observed in this test harness; no proof that other human browsers are affected, and no source defect inferred.",
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates.",
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates.",
     "limits": [
       "MAR-04 objectives/reward remain untested; no synthetic substitute used.",
       "Multiplayer, independent simultaneous transactions, physical pointer hit-testing and visual quality remain unverified.",
@@ -332,7 +332,7 @@
   },
   "renderRecheck": {
     "task": "RENDER-CLIENT-001",
-    "verifiedAt": "2026-10-10T15:14:56.150777+00:00",
+    "verifiedAt": "2026-10-10T09:14:56.150777-06:00",
     "result": "Known test-client graphics readiness blocker reproduced; quest rewards and inventory preserved",
     "blockerId": "local-spawn-webgpu-dxil-20261010",
     "blockerNotified": true,
@@ -383,7 +383,7 @@
       "Supported Savi job-status interface unavailable; no job submitted.",
       "Graphics failure is observed in this test harness; no proof that other human browsers are affected, and no source defect inferred."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
   },
   "currentCaptureSource": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
   "upstreamSourceSync": {
@@ -395,11 +395,11 @@
     "assetReferencesUnchanged": true,
     "gameplayFilesUnchanged": true,
     "method": "Only the listed agent guides changed; their CDN references are identical; every other source blob is unchanged",
-    "verifiedAt": "2026-10-11T10:28:58.906856+00:00"
+    "verifiedAt": "2026-10-11T04:28:58.906856-06:00"
   },
   "privateNotesBackupSync": {
     "task": "BACKUP-NOTES-20261010T100603Z",
-    "verifiedAt": "2026-10-10T10:07:46.769293+00:00",
+    "verifiedAt": "2026-10-10T04:07:46.769293-06:00",
     "result": "Updated private Spawn notes and engine metadata captured; gameplay and character data unchanged",
     "sourceSnapshot": "2a339ecc4189debd116aa73133c0aac2f8230943",
     "gameVersion": "0.47.97 Alpha",
@@ -438,16 +438,16 @@
       "Exactly 75 unavailable references remain recorded; managed Spawn engine/server/services are not exposed as exportable files.",
       "Database reads are sequential rather than an atomic cross-table snapshot."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
-    "task": "BACKUP-RECOVERY-20261011T112408Z",
-    "verifiedAt": "2026-10-11T11:26:19.732323+00:00",
+    "task": "BACKUP-RECOVERY-20261011T122709Z",
+    "verifiedAt": "2026-10-11T06:28:47.794798-06:00",
     "result": "Updated private notes and active-world recovery data captured; source and character data unchanged",
     "sourceSnapshot": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
     "gameVersion": "0.47.97 Alpha",
-    "previousPrivateNotesRef": "ee131c6091b67a57bd6c57b02325ec4e3eeaf3ec",
-    "privateNotesRef": "bdc0e86f3be4763a3cbb3529f9960b23a090f982",
+    "previousPrivateNotesRef": "bdc0e86f3be4763a3cbb3529f9960b23a090f982",
+    "privateNotesRef": "7330a990d7054fac99ad6214f57c7c7077c5daaf",
     "privateNotesChanged": true,
     "liveSourceEdits": false,
     "jobSubmitted": false,
@@ -458,7 +458,6 @@
         "database": "dev",
         "schemaChanged": false,
         "changedTables": [
-          "_backups",
           "_calls_ring",
           "_meta",
           "_spawn_realm_floors",
@@ -466,8 +465,8 @@
           "_sql_manifest",
           "realm_pulse"
         ],
-        "previousRows": 2377,
-        "currentRows": 2381,
+        "previousRows": 2381,
+        "currentRows": 2389,
         "countsStable": true,
         "contentUnchanged": false
       },
@@ -481,18 +480,18 @@
         "contentUnchanged": true
       }
     ],
-    "outcome": "Complete private Spawn-note ancestry and fresh approved encrypted dev/live data replace the selected recovery archive. Source, game version, hosted assets and local libraries are unchanged. Changed dev tables: _backups, _calls_ring, _meta, _spawn_realm_floors, _spawn_realm_leaves, _sql_manifest, realm_pulse. Character, ledger, guild and auction contents, schemas and all live contents are unchanged. The realm_pulse world state and platform room/backup metadata changed during activity by another body; this task did not join, interact or interrupt it. Encryption roundtrips, database reconstruction and integrity checks passed. Prior runtime QA remains pinned to its tested source; no renderer rejoin or Savi job submitted.",
+    "outcome": "Complete private Spawn-note ancestry and fresh approved encrypted dev/live data replace the selected recovery archive. Source, game version, hosted assets and local libraries are unchanged. Changed dev tables: _calls_ring, _meta, _spawn_realm_floors, _spawn_realm_leaves, _sql_manifest, realm_pulse. Character, ledger, guild and auction contents, schemas and all live contents are unchanged. The realm_pulse world state and platform room/backup metadata changed since the prior capture. No live room remained at this check; this task did not join or interact. Encryption roundtrips, database reconstruction and integrity checks passed. Prior runtime QA remains pinned to its tested source; no renderer rejoin or Savi job submitted.",
     "limits": [
       "MAR-04, multiplayer and character/environment visual runtime gates remain unverified.",
       "Exactly 75 unavailable references remain recorded; managed Spawn engine/server/services are not exposed as exportable files.",
       "Database reads are sequential rather than an atomic cross-table snapshot."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
   },
   "storageSchemaSync": null,
   "materialBackupSync": {
     "task": "BACKUP-MATERIAL-20261011T021749Z",
-    "verifiedAt": "2026-10-11T02:20:31.586845+00:00",
+    "verifiedAt": "2026-10-10T20:20:31.586845-06:00",
     "result": "Upstream tree/rock material compatibility changes captured with current encrypted recovery data",
     "sourceSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
     "gameVersion": "0.47.97 Alpha",
@@ -515,7 +514,7 @@
       "visualRuntimeVerified": false,
       "gameVersionUnchanged": true,
       "method": "Only the two reviewed material modules differ; CDN references and every other source blob are unchanged. Bun parsed/bundled JavaScript with Spawn builtin imports external; this does not compile WGSL or verify rendering.",
-      "verifiedAt": "2026-10-11T02:19:46.058358+00:00"
+      "verifiedAt": "2026-10-10T20:19:46.058358-06:00"
     },
     "snapshotDrift": [
       {
@@ -547,6 +546,6 @@
       "75 unavailable references and managed-engine/server export gaps remain documented.",
       "Database reads are sequential, not an atomic snapshot."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
   }
 }
