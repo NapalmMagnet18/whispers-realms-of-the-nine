@@ -441,13 +441,13 @@
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
-    "task": "BACKUP-RECOVERY-20261011T163144Z",
-    "verifiedAt": "2026-10-11T16:33:12.442783+00:00",
+    "task": "BACKUP-RECOVERY-20261011T183016Z",
+    "verifiedAt": "2026-10-11T18:31:44.845663+00:00",
     "result": "Updated private Spawn notes and engine metadata captured; gameplay and character data unchanged",
     "sourceSnapshot": "51f04ec0fd830ce8311bd0a24257b8465c8461e3",
     "gameVersion": "0.47.97 Alpha",
-    "previousPrivateNotesRef": "e27fa0f58b682fdd8120b60f17848d455c2ac0e7",
-    "privateNotesRef": "806dcc60b10dc8a4ef52138c69eba51984886dc5",
+    "previousPrivateNotesRef": "806dcc60b10dc8a4ef52138c69eba51984886dc5",
+    "privateNotesRef": "91a10f7faea304862b766af56f3301bc70375459",
     "privateNotesChanged": true,
     "liveSourceEdits": false,
     "jobSubmitted": false,
@@ -461,8 +461,8 @@
           "_meta",
           "_sql_manifest"
         ],
-        "previousRows": 2390,
-        "currentRows": 2391,
+        "previousRows": 2391,
+        "currentRows": 2392,
         "countsStable": true,
         "contentUnchanged": false
       },
