@@ -385,22 +385,17 @@
     ],
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
   },
-  "currentCaptureSource": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
+  "currentCaptureSource": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
   "upstreamSourceSync": {
-    "sourceSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
-    "previousSnapshot": "b76410e8252c7d6447341abac27101be48c9feba",
+    "sourceSnapshot": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
+    "previousSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
     "changedFiles": [
-      "mods/awakening/rock-look.js",
-      "scripts/tree-look.js"
+      ".spawn/skills.md"
     ],
     "assetReferencesUnchanged": true,
-    "nonMaterialSourceFilesUnchanged": true,
-    "javascriptSyntaxVerified": true,
-    "shaderCompilationVerified": false,
-    "visualRuntimeVerified": false,
-    "gameVersionUnchanged": true,
-    "method": "Only the two reviewed material modules differ; CDN references and every other source blob are unchanged. Bun parsed/bundled JavaScript with Spawn builtin imports external; this does not compile WGSL or verify rendering.",
-    "verifiedAt": "2026-10-11T02:19:46.058358+00:00"
+    "gameplayFilesUnchanged": true,
+    "method": "Only the listed agent guides changed; their CDN references are identical; every other source blob is unchanged",
+    "verifiedAt": "2026-10-11T10:28:58.906856+00:00"
   },
   "privateNotesBackupSync": {
     "task": "BACKUP-NOTES-20261010T100603Z",
@@ -488,53 +483,7 @@
     ],
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
   },
-  "storageSchemaSync": [
-    {
-      "database": "dev",
-      "addedSchema": [
-        {
-          "type": "index",
-          "name": "sqlite_autoindex__spawn_chunks_1",
-          "tbl_name": "_spawn_chunks",
-          "sql": null
-        },
-        {
-          "type": "table",
-          "name": "_spawn_chunks",
-          "tbl_name": "_spawn_chunks",
-          "sql": "CREATE TABLE _spawn_chunks (world TEXT NOT NULL, place_id TEXT NOT NULL, cx INTEGER NOT NULL, cy INTEGER NOT NULL, cz INTEGER NOT NULL, blob BLOB NOT NULL, rev INTEGER NOT NULL, PRIMARY KEY (world, place_id, cx, cy, cz))"
-        }
-      ],
-      "addedTableRows": 0,
-      "existingSchemaUnchanged": true,
-      "changedExistingTables": [
-        "_meta",
-        "_sql_manifest"
-      ],
-      "playerAndGameplayTablesUnchanged": true
-    },
-    {
-      "database": "live",
-      "addedSchema": [
-        {
-          "type": "index",
-          "name": "sqlite_autoindex__spawn_chunks_1",
-          "tbl_name": "_spawn_chunks",
-          "sql": null
-        },
-        {
-          "type": "table",
-          "name": "_spawn_chunks",
-          "tbl_name": "_spawn_chunks",
-          "sql": "CREATE TABLE _spawn_chunks (world TEXT NOT NULL, place_id TEXT NOT NULL, cx INTEGER NOT NULL, cy INTEGER NOT NULL, cz INTEGER NOT NULL, blob BLOB NOT NULL, rev INTEGER NOT NULL, PRIMARY KEY (world, place_id, cx, cy, cz))"
-        }
-      ],
-      "addedTableRows": 0,
-      "existingSchemaUnchanged": true,
-      "changedExistingTables": [],
-      "playerAndGameplayTablesUnchanged": true
-    }
-  ],
+  "storageSchemaSync": null,
   "materialBackupSync": {
     "task": "BACKUP-MATERIAL-20261011T021749Z",
     "verifiedAt": "2026-10-11T02:20:31.586845+00:00",

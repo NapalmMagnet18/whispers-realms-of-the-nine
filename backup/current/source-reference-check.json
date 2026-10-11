@@ -1,16 +1,11 @@
 {
-  "sourceSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
-  "previousSnapshot": "b76410e8252c7d6447341abac27101be48c9feba",
+  "sourceSnapshot": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
+  "previousSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
   "changedFiles": [
-    "mods/awakening/rock-look.js",
-    "scripts/tree-look.js"
+    ".spawn/skills.md"
   ],
   "assetReferencesUnchanged": true,
-  "nonMaterialSourceFilesUnchanged": true,
-  "javascriptSyntaxVerified": true,
-  "shaderCompilationVerified": false,
-  "visualRuntimeVerified": false,
-  "gameVersionUnchanged": true,
-  "method": "Only the two reviewed material modules differ; CDN references and every other source blob are unchanged. Bun parsed/bundled JavaScript with Spawn builtin imports external; this does not compile WGSL or verify rendering.",
-  "verifiedAt": "2026-10-11T02:19:46.058358+00:00"
+  "gameplayFilesUnchanged": true,
+  "method": "Only the listed agent guides changed; their CDN references are identical; every other source blob is unchanged",
+  "verifiedAt": "2026-10-11T10:28:58.906856+00:00"
 }
