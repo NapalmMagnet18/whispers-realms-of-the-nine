@@ -385,18 +385,22 @@
     ],
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
   },
-  "currentCaptureSource": "b76410e8252c7d6447341abac27101be48c9feba",
+  "currentCaptureSource": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
   "upstreamSourceSync": {
-    "sourceSnapshot": "b76410e8252c7d6447341abac27101be48c9feba",
-    "previousSnapshot": "2a339ecc4189debd116aa73133c0aac2f8230943",
+    "sourceSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
+    "previousSnapshot": "b76410e8252c7d6447341abac27101be48c9feba",
     "changedFiles": [
-      ".spawn/skills.md",
-      "AGENTS.md"
+      "mods/awakening/rock-look.js",
+      "scripts/tree-look.js"
     ],
     "assetReferencesUnchanged": true,
-    "gameplayFilesUnchanged": true,
-    "method": "Only the listed agent guides changed; their CDN references are identical; every other source blob is unchanged",
-    "verifiedAt": "2026-10-10T23:12:45.819139+00:00"
+    "nonMaterialSourceFilesUnchanged": true,
+    "javascriptSyntaxVerified": true,
+    "shaderCompilationVerified": false,
+    "visualRuntimeVerified": false,
+    "gameVersionUnchanged": true,
+    "method": "Only the two reviewed material modules differ; CDN references and every other source blob are unchanged. Bun parsed/bundled JavaScript with Spawn builtin imports external; this does not compile WGSL or verify rendering.",
+    "verifiedAt": "2026-10-11T02:19:46.058358+00:00"
   },
   "privateNotesBackupSync": {
     "task": "BACKUP-NOTES-20261010T100603Z",
@@ -530,5 +534,64 @@
       "changedExistingTables": [],
       "playerAndGameplayTablesUnchanged": true
     }
-  ]
+  ],
+  "materialBackupSync": {
+    "task": "BACKUP-MATERIAL-20261011T021749Z",
+    "verifiedAt": "2026-10-11T02:20:31.586845+00:00",
+    "result": "Upstream tree/rock material compatibility changes captured with current encrypted recovery data",
+    "sourceSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
+    "gameVersion": "0.47.97 Alpha",
+    "privateNotesRef": "912c8a514a31fcb820d0b1858576f63d6da51ae0",
+    "liveSourceEdits": false,
+    "jobSubmitted": false,
+    "runtimePlaytestAttempted": false,
+    "graphicsBlockerChanged": false,
+    "sourceSync": {
+      "sourceSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
+      "previousSnapshot": "b76410e8252c7d6447341abac27101be48c9feba",
+      "changedFiles": [
+        "mods/awakening/rock-look.js",
+        "scripts/tree-look.js"
+      ],
+      "assetReferencesUnchanged": true,
+      "nonMaterialSourceFilesUnchanged": true,
+      "javascriptSyntaxVerified": true,
+      "shaderCompilationVerified": false,
+      "visualRuntimeVerified": false,
+      "gameVersionUnchanged": true,
+      "method": "Only the two reviewed material modules differ; CDN references and every other source blob are unchanged. Bun parsed/bundled JavaScript with Spawn builtin imports external; this does not compile WGSL or verify rendering.",
+      "verifiedAt": "2026-10-11T02:19:46.058358+00:00"
+    },
+    "snapshotDrift": [
+      {
+        "database": "dev",
+        "schemaChanged": false,
+        "changedTables": [
+          "_meta",
+          "_sql_manifest"
+        ],
+        "previousRows": 2373,
+        "currentRows": 2374,
+        "countsStable": true,
+        "contentUnchanged": false
+      },
+      {
+        "database": "live",
+        "schemaChanged": false,
+        "changedTables": [],
+        "previousRows": 6,
+        "currentRows": 6,
+        "countsStable": true,
+        "contentUnchanged": true
+      }
+    ],
+    "outcome": "The upstream tree and granite material modules preserve their authored normal-map calculation with keptNormalMap. All other source blobs and CDN references are unchanged. The backup preserves the exact upstream source and original ancestry; no live code was edited by this task. The upstream gameplay version remains 0.47.97 Alpha; source SHA identifies the material revision. JavaScript syntax/bundling passed with builtin imports external, which does not verify WGSL compilation or in-world appearance. Current encrypted dev/live snapshots reconstruct successfully with stable counts and integrity; only dev metadata/SQL bookkeeping differs, while characters, ledger, guilds, auctions, schemas and live contents are unchanged. Prior gameplay QA remains pinned to the source actually tested; no join, quest progression or Savi job was submitted.",
+    "limits": [
+      "WGSL compilation and tree/rock visual fidelity remain unverified in play because the prior renderer blocker is unresolved.",
+      "MAR-04, multiplayer and character/environment runtime acceptance gates remain unverified.",
+      "75 unavailable references and managed-engine/server export gaps remain documented.",
+      "Database reads are sequential, not an atomic snapshot."
+    ],
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u2013Q008 and character/environment visual gates."
+  }
 }

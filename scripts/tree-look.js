@@ -3,6 +3,29 @@
 // colour, cut by its mask (alphaTest), lifted by `leafGain`. Vertex colour (the geometry's tint) shades both.
 import { uv, vec2, vec3, mix, step, normalMap, normalView, vertexColor, float } from "builtin/tsl";
 import { MeshStandardNodeMaterial, DoubleSide } from "builtin/three";
+// keptNormalMap is the normalMap() this script was made with, kept for its look. New code calls normalMap() from builtin/tsl.
+import * as keptTsl from "builtin/tsl";
+const keptNormalFrame = keptTsl.wgslFn(`
+fn kept_normal_frame(posW: vec3<f32>, nrmW: vec3<f32>, uvv: vec2<f32>, mapN: vec3<f32>) -> vec3<f32> {
+  let q0 = dpdx(posW);
+  let q1 = dpdy(posW);
+  let st0 = dpdx(uvv);
+  let st1 = dpdy(uvv);
+  let n = normalize(nrmW);
+  let q1perp = cross(q1, n);
+  let q0perp = cross(n, q0);
+  let t = q1perp * st0.x + q0perp * st1.x;
+  let b = q1perp * st0.y + q0perp * st1.y;
+  let det = max(dot(t, t), dot(b, b));
+  let s = select(inverseSqrt(det), 0.0, det == 0.0);
+  return normalize(t * (s * mapN.x) + b * (s * mapN.y) + n * mapN.z);
+}
+`);
+const keptNormalMap = (node, scale) => {
+  const decoded = (node.type === "vec4f" ? node.xyz : node).mul(2).sub(1);
+  const mapN = scale === undefined ? decoded : keptTsl.vec3(decoded.xy.mul(scale), decoded.z);
+  return keptNormalFrame(keptTsl.positionWorld, keptTsl.normalWorld, keptTsl.uv(), mapN);
+};
 const KINDS = {
   pine:      { bark: "/cdn/bark-normaltree-u9xpx2wlu.webp", normal: "/cdn/bark-normaltree-normal-u8iiw3l01.webp", leaf: "/cdn/leaf-pine-c-u2al2ck9b.webp", mask: "/cdn/leaf-pine-u9tw3bqgj.webp", gain: 1.7 },
   giantpine: { bark: "/cdn/bark-normaltree-u9xpx2wlu.webp", normal: "/cdn/bark-normaltree-normal-u8iiw3l01.webp", leaf: "/cdn/leaves-giantpine-c-u1ohevj1u.webp", mask: null, gain: 1.25 },
@@ -18,7 +41,7 @@ export function material(ctx) {
   const barkTex = ctx.texture(ctx.params?.bark || K.bark);
   const barkUV = uv();
   const barkCol = barkTex.sample(barkUV).rgb;
-  const nrm = normalMap(ctx.texture(K.normal).sample(barkUV), vec2(1.2, 1.2));
+  const nrm = keptNormalMap(ctx.texture(K.normal).sample(barkUV), vec2(1.2, 1.2));
   if (!K.leaf) {
     m.colorNode = barkCol.mul(tint);
     m.normalNode = nrm;

@@ -1,6 +1,6 @@
 # Current WHISPERS backup — 0.47.97 Alpha
 
-This is the authoritative recovery set, refreshed 2026-10-10T23:16:57.581439+00:00. Every current source file matches Spawn commit `b76410e8252c7d6447341abac27101be48c9feba`: **636 files and 2,307 original main commits**. The source and current asset references are aligned to the captured game version. Fresh encrypted dev/live saves and complete Spawn-note ancestry have been captured separately at their recorded export times.
+This is the authoritative recovery set, refreshed 2026-10-11T02:20:08.190298+00:00. Every current source file matches Spawn commit `c3ee08c1fe0cfe5c63ec651bfe555badd1347031`: **636 files and 2,311 original main commits**. The source and current asset references are aligned to the captured game version. Fresh encrypted dev/live saves and complete Spawn-note ancestry have been captured separately at their recorded export times.
 
 Use [backup/current/README.md](backup/current/README.md) and [backup/current/manifest.json](backup/current/manifest.json). The large files are in the [backup release](https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/tag/backup-2026-10-09-full); download the exact **11-archive current set** from its current inventory. Older named bundles and private archives are historical snapshots and are not used by the current guide. Existing Git history and historical snapshots remain preserved.
 
