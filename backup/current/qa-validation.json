@@ -441,9 +441,9 @@
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
-    "task": "BACKUP-SCOPE-20261011T213120Z",
-    "verifiedAt": "2026-10-11T21:34:40.956984+00:00",
-    "result": "Game recovery capture restored through supported table export; platform internals now excluded",
+    "task": "BACKUP-SCOPE-20261011T223551Z",
+    "verifiedAt": "2026-10-11T22:37:20.049018+00:00",
+    "result": "Current supported game-data and private-note recovery refreshed",
     "sourceSnapshot": "51f04ec0fd830ce8311bd0a24257b8465c8461e3",
     "gameVersion": "0.47.97 Alpha",
     "liveSourceEdits": false,
@@ -481,7 +481,7 @@
         "scope": "Game-owned tables; platform internal tables excluded by supported API policy"
       }
     ],
-    "outcome": "Spawn explicitly refuses internal platform table reads. Current snapshots include all exposed game tables: dev8 tables119 rows, live1 table0 rows. Game schemas and character/ledger/guild/auction contents are unchanged; realm_pulse changed. Strict per-table counts, encryption roundtrips and SQLite integrity passed. Earlier full platform captures remain historical; current platform internals are unavailable, not silently claimed exported. Source/private notes/assets unchanged. Another body left undisturbed; no runtime playtest or job submitted.",
+    "outcome": "Spawn explicitly refuses internal platform table reads. Current snapshots include all exposed game tables: dev8 tables119 rows, live1 table0 rows. Game schemas and character/ledger/guild/auction contents are unchanged; Changed game tables are listed in game-scope-check.json. Strict per-table counts, encryption roundtrips and SQLite integrity passed. Earlier full platform captures remain historical; current platform internals are unavailable, not silently claimed exported. Source and assets unchanged; current private-note ancestry captured. Another body left undisturbed; no runtime playtest or job submitted.",
     "limits": [
       "Current platform internal tables are not exportable through the supported SQL door. Earlier snapshots remain history and are not current platform state.",
       "75 unavailable asset references and managed Spawn engine/service export limits persist.",
