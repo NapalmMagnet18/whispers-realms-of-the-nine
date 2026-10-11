@@ -1,0 +1,31 @@
+[
+  {
+    "database": "dev",
+    "gameSchemaUnchanged": true,
+    "gameTables": [
+      "auctions",
+      "characters",
+      "guilds",
+      "ledger",
+      "legacy_kv",
+      "realm_firsts",
+      "realm_pulse",
+      "sqlite_sequence"
+    ],
+    "changedGameTables": [
+      "realm_pulse"
+    ],
+    "countsStable": true,
+    "scope": "Game-owned tables; platform internal tables excluded by supported API policy"
+  },
+  {
+    "database": "live",
+    "gameSchemaUnchanged": true,
+    "gameTables": [
+      "legacy_kv"
+    ],
+    "changedGameTables": [],
+    "countsStable": true,
+    "scope": "Game-owned tables; platform internal tables excluded by supported API policy"
+  }
+]

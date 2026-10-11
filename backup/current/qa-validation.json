@@ -81,7 +81,7 @@
     "newIssue": "Census-board interaction also opens nearby bank; narrow banker/board collider gap needed normal jump to leave",
     "nextTask": "Validate and repair census-board/service spacing, then continue MAR-02 at Quartermaster Dren and rendered character/environment review"
   },
-  "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates.",
+  "nextTask": "Use work/backup_game_databases.py for subsequent supported game-table captures; compare against this scope and do not retry restricted internals. Preserve supported renderer diagnosis before MAR-04, origin/Q001-Q008, multiplayer and detailed character/environment visual gates.",
   "remainingGates": [
     "Fresh-active MAR-01 objective at relocated board",
     "MAR-02 through origin/Q001-Q008 normal quest/combat/craft/equip progression",
@@ -441,52 +441,53 @@
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
-    "task": "BACKUP-RECOVERY-20261011T193147Z",
-    "verifiedAt": "2026-10-11T19:33:27.275597+00:00",
-    "result": "Updated private notes and active-world recovery data captured; source and character data unchanged",
+    "task": "BACKUP-SCOPE-20261011T213120Z",
+    "verifiedAt": "2026-10-11T21:34:40.956984+00:00",
+    "result": "Game recovery capture restored through supported table export; platform internals now excluded",
     "sourceSnapshot": "51f04ec0fd830ce8311bd0a24257b8465c8461e3",
     "gameVersion": "0.47.97 Alpha",
-    "previousPrivateNotesRef": "91a10f7faea304862b766af56f3301bc70375459",
-    "privateNotesRef": "894136245aff4ae9fe184a67c7aba413c8af8a6d",
-    "privateNotesChanged": true,
     "liveSourceEdits": false,
     "jobSubmitted": false,
     "runtimePlaytestAttempted": false,
     "graphicsBlockerChanged": false,
-    "snapshotDrift": [
+    "gameScopeCheck": [
       {
         "database": "dev",
-        "schemaChanged": false,
-        "changedTables": [
-          "_calls_ring",
-          "_meta",
-          "_spawn_realm_floors",
-          "_spawn_realm_leaves",
-          "_sql_manifest",
+        "gameSchemaUnchanged": true,
+        "gameTables": [
+          "auctions",
+          "characters",
+          "guilds",
+          "ledger",
+          "legacy_kv",
+          "realm_firsts",
+          "realm_pulse",
+          "sqlite_sequence"
+        ],
+        "changedGameTables": [
           "realm_pulse"
         ],
-        "previousRows": 2392,
-        "currentRows": 2392,
         "countsStable": true,
-        "contentUnchanged": false
+        "scope": "Game-owned tables; platform internal tables excluded by supported API policy"
       },
       {
         "database": "live",
-        "schemaChanged": false,
-        "changedTables": [],
-        "previousRows": 6,
-        "currentRows": 6,
+        "gameSchemaUnchanged": true,
+        "gameTables": [
+          "legacy_kv"
+        ],
+        "changedGameTables": [],
         "countsStable": true,
-        "contentUnchanged": true
+        "scope": "Game-owned tables; platform internal tables excluded by supported API policy"
       }
     ],
-    "outcome": "Complete private Spawn-note ancestry and fresh approved encrypted dev/live data replace the selected recovery archive. Source, game version, hosted assets and local libraries are unchanged. Changed dev tables: _calls_ring, _meta, _spawn_realm_floors, _spawn_realm_leaves, _sql_manifest, realm_pulse. Character, ledger, guild and auction contents, schemas and all live contents are unchanged. The realm_pulse world state and platform room/backup metadata changed during activity by another body; this task did not join, interact or interrupt it. Encryption roundtrips, database reconstruction and integrity checks passed. Prior runtime QA remains pinned to its tested source; no renderer rejoin or Savi job submitted.",
+    "outcome": "Spawn explicitly refuses internal platform table reads. Current snapshots include all exposed game tables: dev8 tables119 rows, live1 table0 rows. Game schemas and character/ledger/guild/auction contents are unchanged; realm_pulse changed. Strict per-table counts, encryption roundtrips and SQLite integrity passed. Earlier full platform captures remain historical; current platform internals are unavailable, not silently claimed exported. Source/private notes/assets unchanged. Another body left undisturbed; no runtime playtest or job submitted.",
     "limits": [
-      "MAR-04, multiplayer and character/environment visual runtime gates remain unverified.",
-      "Exactly 75 unavailable references remain recorded; managed Spawn engine/server/services are not exposed as exportable files.",
-      "Database reads are sequential rather than an atomic cross-table snapshot."
+      "Current platform internal tables are not exportable through the supported SQL door. Earlier snapshots remain history and are not current platform state.",
+      "75 unavailable asset references and managed Spawn engine/service export limits persist.",
+      "Sequential reads are not atomic; runtime/quest/multiplayer/visual acceptance remains unverified."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
+    "nextTask": "Use work/backup_game_databases.py for subsequent supported game-table captures; compare against this scope and do not retry restricted internals. Preserve supported renderer diagnosis before MAR-04, origin/Q001-Q008, multiplayer and detailed character/environment visual gates."
   },
   "storageSchemaSync": null,
   "materialBackupSync": {
