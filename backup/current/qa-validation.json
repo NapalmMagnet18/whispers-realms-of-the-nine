@@ -81,7 +81,7 @@
     "newIssue": "Census-board interaction also opens nearby bank; narrow banker/board collider gap needed normal jump to leave",
     "nextTask": "Validate and repair census-board/service spacing, then continue MAR-02 at Quartermaster Dren and rendered character/environment review"
   },
-  "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates.",
+  "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates.",
   "remainingGates": [
     "Fresh-active MAR-01 objective at relocated board",
     "MAR-02 through origin/Q001-Q008 normal quest/combat/craft/equip progression",
@@ -147,7 +147,7 @@
     "syntheticObjectiveWrites": 0,
     "remoteDatabaseWrites": 0,
     "liveSourceEdits": false,
-    "nextTask": "QA-MAR03-001: retained hero MAR-03 at Sergeant Bram; continue the origin and Q001–Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review remains queued alongside those gates.",
+    "nextTask": "QA-MAR03-001: retained hero MAR-03 at Sergeant Bram; continue the origin and Q001\u00e2\u20ac\u201cQ008 loop, then two-player ownership/reconnect proof. Character/environment visual review remains queued alongside those gates.",
     "limits": [
       "Single-player dev-room verification; multiplayer authority and independent simultaneous transactions remain unverified.",
       "Completion button used its actual DOM handler; physical pointer hit-testing is not verified.",
@@ -217,7 +217,7 @@
     "syntheticObjectiveWrites": 0,
     "remoteDatabaseWrites": 0,
     "liveSourceEdits": false,
-    "nextTask": "QA-MAR04-001: retained hero MAR-04 at Sister Vale; continue the origin and Q001–Q008 loop, then two-player ownership/reconnect proof. Character/environment visual review and CPU capture/arrival diagnosis remain queued alongside those gates.",
+    "nextTask": "QA-MAR04-001: retained hero MAR-04 at Sister Vale; continue the origin and Q001\u00e2\u20ac\u201cQ008 loop, then two-player ownership/reconnect proof. Character/environment visual review and CPU capture/arrival diagnosis remain queued alongside those gates.",
     "health": [
       {
         "room": "main",
@@ -322,7 +322,7 @@
       "Render backlog replaced/discarded1305frames."
     ],
     "diagnosisLimit": "Graphics failure is observed in this test harness; no proof that other human browsers are affected, and no source defect inferred.",
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates.",
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates.",
     "limits": [
       "MAR-04 objectives/reward remain untested; no synthetic substitute used.",
       "Multiplayer, independent simultaneous transactions, physical pointer hit-testing and visual quality remain unverified.",
@@ -383,19 +383,19 @@
       "Supported Savi job-status interface unavailable; no job submitted.",
       "Graphics failure is observed in this test harness; no proof that other human browsers are affected, and no source defect inferred."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
-  "currentCaptureSource": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
+  "currentCaptureSource": "51f04ec0fd830ce8311bd0a24257b8465c8461e3",
   "upstreamSourceSync": {
-    "sourceSnapshot": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
-    "previousSnapshot": "c3ee08c1fe0cfe5c63ec651bfe555badd1347031",
+    "sourceSnapshot": "51f04ec0fd830ce8311bd0a24257b8465c8461e3",
+    "previousSnapshot": "c12fd2549c5cd56716993ac8f71d217fc42e16f0",
     "changedFiles": [
       ".spawn/skills.md"
     ],
     "assetReferencesUnchanged": true,
     "gameplayFilesUnchanged": true,
     "method": "Only the listed agent guides changed; their CDN references are identical; every other source blob is unchanged",
-    "verifiedAt": "2026-10-11T04:28:58.906856-06:00"
+    "verifiedAt": "2026-10-11T15:30:22.283919+00:00"
   },
   "privateNotesBackupSync": {
     "task": "BACKUP-NOTES-20261010T100603Z",
@@ -438,7 +438,7 @@
       "Exactly 75 unavailable references remain recorded; managed Spawn engine/server/services are not exposed as exportable files.",
       "Database reads are sequential rather than an atomic cross-table snapshot."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
     "task": "BACKUP-RECOVERY-20261011T122709Z",
@@ -486,7 +486,7 @@
       "Exactly 75 unavailable references remain recorded; managed Spawn engine/server/services are not exposed as exportable files.",
       "Database reads are sequential rather than an atomic cross-table snapshot."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "storageSchemaSync": null,
   "materialBackupSync": {
@@ -546,6 +546,6 @@
       "75 unavailable references and managed-engine/server export gaps remain documented.",
       "Database reads are sequential, not an atomic snapshot."
     ],
-    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001–Q008 and character/environment visual gates."
+    "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   }
 }
