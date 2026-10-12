@@ -441,11 +441,11 @@
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
-    "task": "BACKUP-SCOPE-20261012T064128Z",
-    "verifiedAt": "2026-10-12T06:42:36.337002+00:00",
+    "task": "BACKUP-SCOPE-20261012T085030Z",
+    "verifiedAt": "2026-10-12T08:56:57.746141+00:00",
     "result": "Current supported game-data and private-note recovery refreshed",
-    "sourceSnapshot": "b0b9c5b91cd27a9aa87e66776fd47d189a961d00",
-    "gameVersion": "0.47.97 Alpha",
+    "sourceSnapshot": "e7e830cf98216e81df2b7da84c36bcd20e42131c",
+    "gameVersion": "0.47.99 Alpha",
     "liveSourceEdits": false,
     "jobSubmitted": false,
     "runtimePlaytestAttempted": false,
@@ -481,7 +481,7 @@
         "scope": "Game-owned tables; platform internal tables excluded by supported API policy"
       }
     ],
-    "outcome": "Spawn explicitly refuses internal platform table reads. Current snapshots include all exposed game tables: dev8 tables119 rows, live1 table0 rows. Game schemas and character/ledger/guild/auction contents are unchanged; Changed game tables are listed in game-scope-check.json. Strict per-table counts, encryption roundtrips and SQLite integrity passed. Earlier full platform captures remain historical; current platform internals are unavailable, not silently claimed exported. Source and assets unchanged; current private-note ancestry captured. Another body left undisturbed; no runtime playtest or job submitted.",
+    "outcome": "Spawn game source snapshot synced to GitHub backup at the current version. Three upstream source files were copied and blob-checked. Spawn explicitly refuses internal platform table reads. Current snapshots include all exposed game tables: dev8 tables119 rows, live1 table0 rows. Game schemas and character/ledger/guild/auction contents are unchanged; Changed game tables are listed in game-scope-check.json. Strict per-table counts, encryption roundtrips and SQLite integrity passed. Earlier full platform captures remain historical; current platform internals are unavailable, not silently claimed exported. Current source/version changes were incorporated into the backup repository, not pushed to the live Spawn project; current private-note ancestry captured. Another body left undisturbed; no runtime playtest or Spawn job submitted.",
     "limits": [
       "Current platform internal tables are not exportable through the supported SQL door. Earlier snapshots remain history and are not current platform state.",
       "75 unavailable asset references and managed Spawn engine/service export limits persist.",
