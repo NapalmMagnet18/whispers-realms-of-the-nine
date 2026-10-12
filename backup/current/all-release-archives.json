@@ -420,5 +420,13 @@
     "encrypted": true,
     "keyUploaded": false,
     "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T053857Z.zip"
+  },
+  {
+    "file": "WHISPERS_Private_Backup_Current_20261012T064128Z.zip",
+    "bytes": 28187237,
+    "sha256": "a8a463709128e97f4203efdfcafb5097e94ecba2467a9c855098549a5513592a",
+    "encrypted": true,
+    "keyUploaded": false,
+    "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T064128Z.zip"
   }
 ]

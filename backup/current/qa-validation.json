@@ -441,8 +441,8 @@
     "nextTask": "RENDER-CLIENT-001: recheck supported browser graphics readiness before MAR-04 normal play; diagnose local WebGPU/DXIL and renderer delivery. Resume MAR-04 at Sister Vale only after actual movement works. Preserve multiplayer, origin/Q001\u00e2\u20ac\u201cQ008 and character/environment visual gates."
   },
   "recoveryBackupSync": {
-    "task": "BACKUP-SCOPE-20261012T053857Z",
-    "verifiedAt": "2026-10-12T05:40:34.996907+00:00",
+    "task": "BACKUP-SCOPE-20261012T064128Z",
+    "verifiedAt": "2026-10-12T06:42:36.337002+00:00",
     "result": "Current supported game-data and private-note recovery refreshed",
     "sourceSnapshot": "b0b9c5b91cd27a9aa87e66776fd47d189a961d00",
     "gameVersion": "0.47.97 Alpha",
