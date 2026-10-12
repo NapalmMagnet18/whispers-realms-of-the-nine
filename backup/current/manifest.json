@@ -1,13 +1,13 @@
 {
-  "run": "20261012T044326Z",
-  "capturedAt": "2026-10-12T04:46:54.241166+00:00",
+  "run": "20261012T053857Z",
+  "capturedAt": "2026-10-12T05:40:34.624836+00:00",
   "sourceSnapshot": "b0b9c5b91cd27a9aa87e66776fd47d189a961d00",
   "gameVersion": "0.47.97 Alpha",
   "sourceFiles": 636,
   "sourceHistoryCommits": 2333,
   "privateNotesRef": "e21f56054a5fec5b283193bbc56c35287d98dbd8",
   "sourceBundle": "whispers-source-main-b0b9c5b9.bundle",
-  "recoveryArchive": "WHISPERS_Private_Backup_Current_20261012T044326Z.zip",
+  "recoveryArchive": "WHISPERS_Private_Backup_Current_20261012T053857Z.zip",
   "currentArchives": [
     {
       "file": "whispers-local-libraries-part-01.zip",
@@ -88,12 +88,12 @@
       "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-source-main-b0b9c5b9.bundle"
     },
     {
-      "file": "WHISPERS_Private_Backup_Current_20261012T044326Z.zip",
-      "bytes": 28121231,
-      "sha256": "afec962ee8325783a79bf79f57d0d2970b16c2f5ff74cba18b189c621dbd8dc7",
+      "file": "WHISPERS_Private_Backup_Current_20261012T053857Z.zip",
+      "bytes": 27970328,
+      "sha256": "ad9a18f523f80e47ff0c8ad9f600c5ef6c61dda420b9125e99906a8731a0426e",
       "encrypted": true,
       "keyUploaded": false,
-      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T044326Z.zip"
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T053857Z.zip"
     }
   ],
   "allReleaseArchives": [
@@ -510,23 +510,24 @@
       "encrypted": true,
       "keyUploaded": false,
       "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T044326Z.zip"
+    },
+    {
+      "file": "WHISPERS_Private_Backup_Current_20261012T053857Z.zip",
+      "bytes": 27970328,
+      "sha256": "ad9a18f523f80e47ff0c8ad9f600c5ef6c61dda420b9125e99906a8731a0426e",
+      "encrypted": true,
+      "keyUploaded": false,
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T053857Z.zip"
     }
   ],
   "newUploadArchives": [
     {
-      "file": "whispers-source-main-b0b9c5b9.bundle",
-      "bytes": 15254395,
-      "sha256": "5647d5c8acd24098afd0398752a844d8e5a4ba929cbd05c4c513b0b4e79ded5b",
-      "sourceSnapshot": "b0b9c5b91cd27a9aa87e66776fd47d189a961d00",
-      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/whispers-source-main-b0b9c5b9.bundle"
-    },
-    {
-      "file": "WHISPERS_Private_Backup_Current_20261012T044326Z.zip",
-      "bytes": 28121231,
-      "sha256": "afec962ee8325783a79bf79f57d0d2970b16c2f5ff74cba18b189c621dbd8dc7",
+      "file": "WHISPERS_Private_Backup_Current_20261012T053857Z.zip",
+      "bytes": 27970328,
+      "sha256": "ad9a18f523f80e47ff0c8ad9f600c5ef6c61dda420b9125e99906a8731a0426e",
       "encrypted": true,
       "keyUploaded": false,
-      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T044326Z.zip"
+      "url": "https://github.com/NapalmMagnet18/whispers-realms-of-the-nine/releases/download/backup-2026-10-09-full/WHISPERS_Private_Backup_Current_20261012T053857Z.zip"
     }
   ],
   "hostedAssetAudit": {
@@ -623,12 +624,12 @@
       "database": "dev",
       "file": "database-dev-2026-10-09.json.dpapi",
       "bytes": 84230,
-      "sha256": "1c70e4779fb79bfeac2787aadc9c364dac4df168d49f38a96fa014cd6e73aa93",
+      "sha256": "3df6184a205fb673eebf1ad2f33e19295507de6355b41a8ed4edad0435f6a182",
       "tables": 8,
       "rows": 119,
       "countsStable": true,
-      "startedAt": "2026-10-12T04:45:02.527591+00:00",
-      "finishedAt": "2026-10-12T04:45:14.685116+00:00",
+      "startedAt": "2026-10-12T05:39:53.462757+00:00",
+      "finishedAt": "2026-10-12T05:40:07.072327+00:00",
       "roundtripVerified": true,
       "consistency": "paginated reads; not an atomic database transaction",
       "protection": "Windows CurrentUser DPAPI; requires original Windows user DPAPI keys",
@@ -653,7 +654,7 @@
       ],
       "portableFile": "database-dev-2026-10-09.json.aesgcm",
       "portableBytes": 84048,
-      "portableSha256": "45e2b61bef51f9893131f6a875b1208cd800a9a02029613ea006f810af120752",
+      "portableSha256": "8c815e4f76ffd297b756eb9ec4acac8bb59d356632506681673d1253e910131a",
       "sqliteReconstructionVerified": true,
       "portableProtection": "AES-256-GCM; recovery key stored locally outside repository"
     },
@@ -661,12 +662,12 @@
       "database": "live",
       "file": "database-live-2026-10-09.json.dpapi",
       "bytes": 1222,
-      "sha256": "61169a11bf6a62a590825a4fd7a3e9b04da2d7a84becd610ec29af4c2ad32d31",
+      "sha256": "c3182343b74f1198dc01174a85004201057417a8e17cdf1f0cece7844b404b7f",
       "tables": 1,
       "rows": 0,
       "countsStable": true,
-      "startedAt": "2026-10-12T04:45:14.710143+00:00",
-      "finishedAt": "2026-10-12T04:45:16.601725+00:00",
+      "startedAt": "2026-10-12T05:40:07.086327+00:00",
+      "finishedAt": "2026-10-12T05:40:09.293355+00:00",
       "roundtripVerified": true,
       "consistency": "paginated reads; not an atomic database transaction",
       "protection": "Windows CurrentUser DPAPI; requires original Windows user DPAPI keys",
@@ -683,7 +684,7 @@
       ],
       "portableFile": "database-live-2026-10-09.json.aesgcm",
       "portableBytes": 1042,
-      "portableSha256": "916f1d2172637fb656a95bda60b10cf834fc4e387001e21b46607270b9e4c03b",
+      "portableSha256": "077783af3b1bcc62cf31d44a57a14cfb7b55acd6b3f94fb6b2dd5518a60c68b3",
       "sqliteReconstructionVerified": true,
       "portableProtection": "AES-256-GCM; recovery key stored locally outside repository"
     }
