@@ -24,7 +24,7 @@ fn kept_normal_frame(posW: vec3<f32>, nrmW: vec3<f32>, uvv: vec2<f32>, mapN: vec
 const keptNormalMap = (node, scale) => {
   const decoded = (node.type === "vec4f" ? node.xyz : node).mul(2).sub(1);
   const mapN = scale === undefined ? decoded : keptTsl.vec3(decoded.xy.mul(scale), decoded.z);
-  return keptNormalFrame(keptTsl.positionWorld, keptTsl.normalWorld, keptTsl.uv(), mapN);
+  return keptTsl.transformDirection(keptNormalFrame(keptTsl.positionWorld, keptTsl.normalWorld, keptTsl.uv(), mapN), keptTsl.cameraViewMatrix);
 };
 const KINDS = {
   pine:      { bark: "/cdn/bark-normaltree-u9xpx2wlu.webp", normal: "/cdn/bark-normaltree-normal-u8iiw3l01.webp", leaf: "/cdn/leaf-pine-c-u2al2ck9b.webp", mask: "/cdn/leaf-pine-u9tw3bqgj.webp", gain: 1.7 },
