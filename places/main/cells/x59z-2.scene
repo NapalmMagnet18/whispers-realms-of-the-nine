@@ -202,7 +202,7 @@ bellforged-sentinel:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-bellforged-sentinel-bronze-bell-headed-golem-riveted-plates-furnace-glow-chest.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.6
   state: {arena: {r: 13, x: 7582, z: -192}, boss: bellforged_sentinel, home: {x: 7582, z: -192}, hp: 6400, hpPct: 100, maxHp: 6400, mode: asleep, radius: 0.75, title: The Bellforged Sentinel, unhurt: true, yaw: 180}

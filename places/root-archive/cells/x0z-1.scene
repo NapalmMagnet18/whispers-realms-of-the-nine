@@ -69,7 +69,7 @@ thorn-custodian:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-thorn-custodian-giant-guardian-of-living-briar-and-bellglass-thorns-amber-heart-glowing-through-bark.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.9
   state: {arena: {r: 12, x: 0, z: -68}, boss: thorn_custodian, home: {x: 0, z: -72}, hp: 2600, hpPct: 100, maxHp: 2600, mode: asleep, radius: 0.7, title: The Thorn Custodian, unhurt: true, yaw: 180}

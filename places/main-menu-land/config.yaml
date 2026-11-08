@@ -35,6 +35,7 @@ atmosphere:
   wind:
     direction: 230
     speed: 1.2
+  environmentIntensity: 0
 defaultSpawnPoint:
   x: 0
   y:

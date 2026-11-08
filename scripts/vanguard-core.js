@@ -33,7 +33,7 @@ function act(ctx, kind) {
   if (now < (m.ready[kind] ?? 0) || now < (m.busyUntil ?? 0)) return
   m.ready[kind] = now + a.cooldown * 1000 * haste(ctx)
   m.busyUntil = now + (kind === 'guard' ? 400 : kind === 'split' ? 1300 : a.cooldown * 700)
-  ctx.self.anim.action = { clip: a.clip, weight: 1, loop: 'once', speed: a.speed, blendIn: 0.08 }
+  ctx.self.anim.action = { clip: a.clip, weight: 1, loop: 'once', clampWhenFinished: true, speed: a.speed, blendIn: 0.08 }
   ctx.self.state.cd = { ...(ctx.self.state.cd || {}), [kind]: m.ready[kind] }
   if (m.clearId) ctx.cancel(m.clearId)
   m.clearId = ctx.after(a.length, 'endAction')

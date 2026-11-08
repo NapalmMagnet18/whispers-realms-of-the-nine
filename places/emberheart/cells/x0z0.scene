@@ -177,7 +177,7 @@ kesh-slagmaster:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-kesh-slagmaster-massive-forge-overseer-molten-iron-apron-horned-helm-giant-ladle.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.8
   state: {arena: {r: 11, x: 0, z: -48}, boss: kesh_slagmaster, home: {x: 0, z: -52}, hp: 7500, hpPct: 100, maxHp: 7500, mode: asleep, radius: 0.7, title: Kesh the Slagmaster, unhurt: true, yaw: 180}
@@ -190,7 +190,7 @@ slag-hound-0:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -31}, boss: slag_hound, home: {x: -7, z: -31}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}
@@ -203,7 +203,7 @@ slag-hound-1:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -31}, boss: slag_hound, home: {x: 7, z: -31}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}
@@ -216,7 +216,7 @@ slag-hound-2:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -35}, boss: slag_hound, home: {x: -3, z: -35}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}
@@ -229,7 +229,7 @@ slag-hound-3:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -35}, boss: slag_hound, home: {x: 3, z: -35}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}
@@ -242,7 +242,7 @@ slag-hound-4:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -40}, boss: slag_hound, home: {x: -8, z: -40}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}
@@ -255,7 +255,7 @@ slag-hound-5:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -40}, boss: slag_hound, home: {x: 8, z: -40}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}
@@ -268,7 +268,7 @@ slag-hound-6:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -44}, boss: slag_hound, home: {x: -2, z: -44}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}
@@ -281,7 +281,7 @@ slag-hound-7:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1
   state: {arena: {r: 6, x: 0, z: -44}, boss: slag_hound, home: {x: 2, z: -44}, hp: 1500, hpPct: 100, maxHp: 1500, mode: asleep, radius: 0.55, title: Slag Hound, unhurt: true, yaw: 0}

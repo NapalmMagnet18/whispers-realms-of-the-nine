@@ -12,7 +12,7 @@ candle-warden:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-candle-warden-towering-armored-knight-crown-of-candles-wax-draped-cloak.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1.6
   state: {home: {x: 0, z: -71}, hp: 900, hpPct: 100, maxHp: 900, mode: asleep, radius: 0.7, unhurt: true}

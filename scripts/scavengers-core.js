@@ -16,7 +16,7 @@ const near = (p) => ({ nearby: p, radius: 40 });
 
 function spawnOne(ctx, def, cs = {}) {
   ctx.spawn(def.id, {
-    tags: ["enemy", "scavenger", "quarry-scavenger"], physics: "character", model: cs.model || S.model, ...(cs.look ? { material: { ...cs.look, dissolve: 0 } } : {}),
+    tags: ["enemy", "scavenger", "quarry-scavenger"], physics: { body: "character", layer: "player" }, model: cs.model || S.model, ...(cs.look ? { material: { ...cs.look, dissolve: 0 } } : {}),
     layout: cs.extents ? { minExtents: { x: -cs.extents.x / 2, y: 0, z: -cs.extents.z / 2 }, maxExtents: { x: cs.extents.x / 2, y: cs.extents.y, z: cs.extents.z / 2 } } : { minExtents: { x: -0.4, y: 0, z: -0.3 }, maxExtents: { x: 0.4, y: 1.8, z: 0.3 } },
     ...(cs.look ? {} : { material: { dissolve: 0 } }), feetPosition: { x: def.x, z: def.z, y: cs.floorY != null ? cs.floorY : { terrain: 0 } }, ...(cs.scale ? { scale: cs.scale } : {}), rotation: def.yaw ?? 0, ui: BAR(cs.name || "Quarry Scavenger"),
     ...(S.auras?.[cs.tallyKey] ? { fx: { script: S.auras[cs.tallyKey] } } : {}),
@@ -34,7 +34,7 @@ function gait(w, m, name, speed = 1) {
 const GAIT_RATE = { walk: Math.min(1.25, Math.max(0.8, S.walk / 1.4)), run: Math.min(1.35, Math.max(0.8, S.run / 4.8)) };
 const ONCE_SECS = { attack: 1.1, hit: 0.7, die: 99 };
 function once(w, clip, speed = 1, m) {
-  w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override", blendIn: 0.12, blendOut: 0.22 };
+  w.anim.action = { clip, weight: 1, loop: "once", clampWhenFinished: true, speed, blend: "override", blendIn: 0.12, blendOut: 0.22 };
   if (m) { const k = Object.keys(S.clips).find((n) => S.clips[n] === clip) || "attack"; m.actionEnd = (ONCE_SECS[k] ?? 1) / speed; m.actionT = 0; }
 }
 function settle(w, m, dt) {

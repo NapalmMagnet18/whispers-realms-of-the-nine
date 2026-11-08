@@ -63,7 +63,7 @@ const near = (p) => ({ nearby: p, radius: 40 });
 
 function spawnWolf(ctx, def) {
   ctx.spawn(def.id, {
-    tags: ["enemy", "wolf", "briar-wolf"], physics: "character", scale: def.scale ?? 1,
+    tags: ["enemy", "wolf", "briar-wolf"], physics: { body: "character", layer: "player" }, scale: def.scale ?? 1,
     primitive: { kind: "scripted", script: "scripts/gen/wolf.js" }, material: { roughness: 0.92, dissolve: 0 },
     feetPosition: { x: def.x, z: def.z, y: { terrain: 0 } }, rotation: def.yaw ?? 0, ui: def.name ? BARF(def.name, true) : BAR,
     ...(W.alpha && def.id === W.alpha.id ? { fx: { script: W.alpha.aura } } : {}),

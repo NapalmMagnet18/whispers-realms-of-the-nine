@@ -45,7 +45,7 @@ hc-reh-boss:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-reed-sentry-tall-guardian-woven-from-black-reeds-and-chapel-iron-glowing-teal-lantern-head.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.7
   state: {arena: {r: 13, x: -392, z: 555}, boss: the_unbraided, home: {x: -392, z: 555}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: The Unbraided, unhurt: true, yaw: 180}

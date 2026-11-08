@@ -6,7 +6,7 @@ bone-organist:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-bone-organist-skeletal-giant-in-tattered-choir-robes-ribcage-organ-pipes-on-back.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.8
   state: {arena: {r: 11, x: 0, z: -85}, boss: bone_organist, home: {x: 0, z: -88}, hp: 8000, hpPct: 100, maxHp: 8000, mode: asleep, radius: 0.7, title: The Bone Organist, unhurt: true, yaw: 180}
@@ -254,7 +254,7 @@ saint-ilvane:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-saint-ilvane-fallen-saint-tall-pale-woman-broken-halo-white-armor-black-veil-greatsword.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.9
   state: {arena: {r: 14, x: 0, z: -124}, boss: saint_ilvane, home: {x: 0, z: -128}, hp: 10000, hpPct: 100, maxHp: 10000, mode: asleep, radius: 0.7, title: Saint Ilvane the Candleless, unhurt: true, yaw: 180}

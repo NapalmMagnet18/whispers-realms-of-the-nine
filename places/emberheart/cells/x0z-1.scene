@@ -6,7 +6,7 @@ bellglass-colossus:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-bellglass-colossus-giant-golem-of-amber-glass-and-bronze-molten-core-visible-in-chest.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 2.2
   state: {arena: {r: 12, x: 0, z: -84}, boss: bellglass_colossus, home: {x: 0, z: -88}, hp: 9000, hpPct: 100, maxHp: 9000, mode: asleep, radius: 0.7, title: The Bellglass Colossus, unhurt: true, yaw: 180}
@@ -240,7 +240,7 @@ vharok:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-vharok-volcanic-titan-obsidian-plate-lava-veins-crown-of-flame-giant-maul.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 2.2
   state: {arena: {r: 15, x: 0, z: -125}, boss: vharok_caldera, home: {x: 0, z: -130}, hp: 11000, hpPct: 100, maxHp: 11000, mode: asleep, radius: 0.7, title: "Vharok, Heart of the Caldera", unhurt: true, yaw: 180}

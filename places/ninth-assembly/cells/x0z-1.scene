@@ -236,7 +236,7 @@ memory-engine:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-memory-engine-hovering-colossus-of-brass-rings-violet-glass-and-thousands-of-tiny-floating-names-a-face-in-the-core.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 2.2
   state: {arena: {r: 16, x: 0, z: -125}, boss: memory_engine, home: {x: 0, z: -130}, hp: 13000, hpPct: 100, maxHp: 13000, mode: asleep, radius: 0.7, title: The Memory Engine, unhurt: true, yaw: 180}
@@ -351,7 +351,7 @@ seal-keeper:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-seal-keeper-armored-warden-eight-glowing-violet-seals-on-chains-around-body-faceless-helm.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.9
   state: {arena: {r: 10, x: 0, z: -81}, boss: seal_keeper, home: {x: 0, z: -84}, hp: 8000, hpPct: 100, maxHp: 8000, mode: asleep, radius: 0.7, title: The First Seal-Keeper, unhurt: true, yaw: 180}

@@ -30,7 +30,7 @@ pop smoke burst=20 on=disc(${r * 0.6}) life=1.4..2.2 v=up(.5..1.1) size=.4..0.7 
 pop flash n=1 life=.35 r=light(<${(a / 3.4).toFixed(2)},${(b / 3.4).toFixed(2)},${(c / 3.4).toFixed(2)}>,26,${r + 8})`; };
 
 function def(ctx) { return BOSSES[ctx.self.state.boss] || null; }
-function once(w, clip, speed = 1) { if (clip) w.anim.action = { clip, weight: 1, loop: "once", speed, blend: "override", blendIn: 0.14, blendOut: 0.25 }; }
+function once(w, clip, speed = 1) { if (clip) w.anim.action = { clip, weight: 1, loop: "once", clampWhenFinished: true, speed, blend: "override", blendIn: 0.14, blendOut: 0.25 }; }
 function gait(w, m, D, name) { if (m.gait === name) return; m.gait = name; const c = D.clips?.[name] ?? (name === "idle" ? "Idle" : "Walk"); w.anim.base = { clip: c, weight: 1, loop: "loop", blendIn: 0.3 }; }
 function face(w, m, D, to, dt) {
   const p = w.feetPosition, want = (Math.atan2(-(to.x - p.x), -(to.z - p.z)) * 180) / Math.PI;
@@ -195,7 +195,7 @@ function summon(ctx, D, a) {
   for (let k = 0; k < Math.min(n, (a.max ?? 8) - live); k++) {
     const ang = ctx.random() * Math.PI * 2, r = A.r * 0.8;
     const at = { x: A.x + Math.cos(ang) * r, y: ctx.self.feetPosition.y + 0.2, z: A.z + Math.sin(ang) * r };
-    ctx.spawn({ behavior: "scripts/boss.js", model: AD.model, scale: AD.scale ?? 1, physics: "character", feetPosition: at, tags: ["enemy", "add", "add-of-" + ctx.self.id],
+    ctx.spawn({ behavior: "scripts/boss.js", model: AD.model, scale: AD.scale ?? 1, physics: { body: "character", layer: "player" }, feetPosition: at, tags: ["enemy", "add", "add-of-" + ctx.self.id],
       layout: AD.layout, state: { boss: a.add, add: true, home: { x: at.x, z: at.z }, arena: A, hp: AD.hp, maxHp: AD.hp, hpPct: 100, unhurt: true, radius: 0.6, title: AD.name },
       ui: `<div face="top" facing="player" offset="0.4m" width="0.8m" class="flex flex-col items-center gap-[6px]"><div class="text-[48px] font-bold text-red-200" style="font-family:Cinzel,serif;text-shadow:0 3px 6px #000">${AD.name}</div><div hidden="{{ state.unhurt }}" class="w-full h-[30px] rounded bg-black/75 border-2 border-red-900 p-[3px]"><div class="h-full rounded bg-red-600" style="width: {{ state.hpPct }}%"></div></div></div>` });
     ctx.emit("fx", { position: at, script: BURST(1.2, a.color) }, { audience: near(at) });

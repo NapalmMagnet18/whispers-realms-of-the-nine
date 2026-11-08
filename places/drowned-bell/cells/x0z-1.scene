@@ -64,7 +64,7 @@ choir-mother:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-drowned-choir-mother-tall-pale-woman-flooded-robes-lantern-coral-crown.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.45
   state: {arena: {r: 12, x: 0, z: -66}, boss: choir_mother, home: {x: 0, z: -70}, hp: 2200, hpPct: 100, maxHp: 2200, mode: asleep, radius: 0.7, title: The Choirmother Projection, unhurt: true, yaw: 180}

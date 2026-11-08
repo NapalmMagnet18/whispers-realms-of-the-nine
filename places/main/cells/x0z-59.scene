@@ -18,7 +18,7 @@ engine-manifestation:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-memory-engine-manifestation-clockwork-wraith-brass-gears-violet-glass-heart.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.7
   state: {arena: {r: 13, x: 62, z: -7592}, boss: engine_manifestation, home: {x: 62, z: -7592}, hp: 9800, hpPct: 100, maxHp: 9800, mode: asleep, radius: 0.75, title: Manifestation of the Memory Engine, unhurt: true, yaw: 180}

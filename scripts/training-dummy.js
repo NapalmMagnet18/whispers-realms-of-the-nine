@@ -9,7 +9,7 @@ export function update(ctx) {
     s.seenHit = s.lastHitAt
     if (s.hp <= 0 && !s.down) {
       s.down = true
-      ctx.self.anim.react = { clip: DOWN, weight: 1, loop: 'once', blendIn: 0.1 }
+      ctx.self.anim.react = { clip: DOWN, weight: 1, loop: 'once', clampWhenFinished: true, blendIn: 0.1 }
       ctx.after(V.dummyReset, 'standUp')
     } else if (!s.down) {
       ctx.self.anim.react = { clip: REEL, weight: 1, loop: 'once', speed: 1.4, blendIn: 0.05 }

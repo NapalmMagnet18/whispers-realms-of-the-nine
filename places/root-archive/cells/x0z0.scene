@@ -176,7 +176,7 @@ root-lasher-0:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1.1
   state: {arena: {r: 6, x: 0, z: -30}, boss: root_lasher, home: {x: -5, z: -30}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
@@ -189,7 +189,7 @@ root-lasher-1:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1.1
   state: {arena: {r: 6, x: 0, z: -30}, boss: root_lasher, home: {x: 4, z: -30}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
@@ -202,7 +202,7 @@ root-lasher-2:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1.1
   state: {arena: {r: 6, x: 0, z: -37}, boss: root_lasher, home: {x: -4, z: -37}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
@@ -215,7 +215,7 @@ root-lasher-3:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1.1
   state: {arena: {r: 6, x: 0, z: -38}, boss: root_lasher, home: {x: 5, z: -38}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
@@ -228,7 +228,7 @@ root-lasher-4:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1.1
   state: {arena: {r: 6, x: 0, z: -34}, boss: root_lasher, home: {x: -1, z: -34}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}
@@ -241,7 +241,7 @@ root-lasher-5:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-root-lasher-gnarled-wooden-forest-creature-mossy-bark-amber-eyes.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 0
   scale: 1.1
   state: {arena: {r: 6, x: 0, z: -42}, boss: root_lasher, home: {x: 1, z: -42}, hp: 320, hpPct: 100, maxHp: 320, mode: asleep, radius: 0.55, title: Root Lasher, unhurt: true, yaw: 0}

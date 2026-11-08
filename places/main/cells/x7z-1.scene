@@ -116,7 +116,7 @@ hc-kha-boss:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-slag-brute-hunched-molten-rock-skin-glowing-cracks-chain-collar.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 2
   state: {arena: {r: 13, x: 874, z: -130}, boss: gharn_unbanked, home: {x: 874, z: -130}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: Gharn the Unbanked, unhurt: true, yaw: 180}

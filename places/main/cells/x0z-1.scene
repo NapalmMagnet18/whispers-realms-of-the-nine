@@ -44,7 +44,7 @@ hc-mar-boss:
   layout: {maxExtents: {x: 0.45, y: 1.8, z: 0.35}, minExtents: {x: -0.45, y: 0, z: -0.35}}
   material: {dissolve: 0}
   model: /cdn/model-humanoid-fantasy-reeve-ashcombe-the-lampless-towering-gaunt-reeve-burnt-black-tabard-hollow-eye-sockets-smoking-dead-lantern-chained-to-wrist-iron-crook-dark-gothic.glb
-  physics: character
+  physics: {body: character, layer: player}
   rotation: 180
   scale: 1.7
   state: {arena: {r: 13, x: 45, z: -132}, boss: lampless_reeve, home: {x: 45, z: -132}, hp: 5200, hpPct: 100, maxHp: 5200, mode: asleep, radius: 0.75, title: "Reeve Ashcombe, the Lampless", unhurt: true, yaw: 180}
