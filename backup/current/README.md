@@ -1,3 +1,5 @@
+Final PC-reset capture (November 7, 2026): source commit 0c0a1b0a3ab07b0c5a9230d15165a5041b58ad3d and fresh portable encrypted game saves are in ../final-2026-11-07/. The older asset archives below remain the last captured asset inventory; a fresh full asset crawl was not performed. The SSD also holds a complete all-ref source bundle. Preserve the offline recovery key before resetting Windows.
+
 # Recover the current WHISPERS game — 0.47.99 Alpha
 
 Captured source: `e7e830cf98216e81df2b7da84c36bcd20e42131c`, 636 source files and 2,353 original main commits. This directory is the canonical current inventory; the older dated backup directories describe historical captures. Main game files have been compared with the current Spawn source. No gameplay version number was changed merely to publish backup documentation.
