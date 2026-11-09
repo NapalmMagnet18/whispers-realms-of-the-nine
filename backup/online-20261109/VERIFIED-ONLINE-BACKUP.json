@@ -1,0 +1,41 @@
+{
+  "checkedAtUTC": "2026-11-09T17:49:35.281013+00:00",
+  "sourceCommit": "f246db7d384bd4917abd04c90ea7a987f7216ac0",
+  "githubCommit": "a8174217c1ecfe7aad6c609de655f9d98a8e2f90",
+  "exactSourceFilesVerified": 648,
+  "sourceMismatches": [],
+  "releaseArchivesVerified": 59,
+  "allVerifiedReleaseSizesAndServerSHA256DigestsMatch": true,
+  "runtimeAssetReferencesCaptured": 1590,
+  "uniqueCurrentAssetFiles": 1580,
+  "currentAssetBytes": 1153094123,
+  "capturedAssetHashesMissingPublishedCoverage": [],
+  "unresolvedRuntimeAssets": [],
+  "documentationPlaceholders": [
+    "/cdn/....glb",
+    "/cdn/...png"
+  ],
+  "saveSnapshots": [
+    {
+      "database": "dev",
+      "rows": 119,
+      "portableRecoveryVerified": true
+    },
+    {
+      "database": "live",
+      "rows": 6,
+      "portableRecoveryVerified": true
+    }
+  ],
+  "privateArchiveUploadPendingApproval": [
+    "WHISPERS-online-20261109-private.zip"
+  ],
+  "ssdWrites": false,
+  "ssdSyncPending": true,
+  "limits": [
+    "Static and supported constructed-reference scanner coverage; not proof against every possible runtime-computed URL.",
+    "Managed Spawn platform internals/services are not exported as game files.",
+    "Save snapshot reads are sequential, not atomic.",
+    "F filesystem remains under recovery; no reset/source deletion clearance."
+  ]
+}
