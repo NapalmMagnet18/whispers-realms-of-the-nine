@@ -1,6 +1,5 @@
 name: 'WHISPERS : Realm of the Nine'
-description: A lantern-lit frontier town, a wolf-haunted forest and a copper quarry.
-  Gather, craft, fight together.
+description: A lantern-lit frontier town, a wolf-haunted forest and a copper quarry. Gather, craft, fight together.
 camera: templates/camera.js#camera
 lighting: mods/awakening/lighting.js
 defaultPlace: main-menu-land
@@ -138,3 +137,4 @@ buyables:
     minSpoins: 10
     imageUrl: /cdn/value.e8e7e96eb470e1cebd449f33231b95755806b23c960d360ac8511a322bc28711.png
     onPurchase: scripts/buyables/tip.js
+borrowing: ask-first

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "basedOnSpecVersion": 2448,
-  "updatedAt": "2026-11-08T07:15:00.831Z",
+  "basedOnSpecVersion": 2451,
+  "updatedAt": "2026-11-09T08:19:08.571Z",
   "summary": "WHISPERS: Realm of the Nine is a multiplayer dark-fantasy MMO spanning Lantern's March, race homelands, a battleground, and gate-linked dungeon/raid places. MMORPG Tools owns character, realm, persistence and UI lifecycle; ordered player behaviors, shared registries and data-driven combat cores run world systems, while procedural generators and Awakening supply presentation, water and creator-facing controls.",
   "scriptPaths": [],
   "places": [
@@ -14,7 +14,7 @@
     "places/main-menu-land/ - default arrival/menu place; MMORPG menu owns realm roster and character selection before routing into creation or gameplay."
   ],
   "roots": [
-    "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing, realm pulse, Awakening lighting and three buyable offers.",
+    "world.config.yaml - defaults to main-menu-land; binds player/camera templates, MMORPG UI, arrival redirect, routing, realm pulse, Awakening lighting and three buyable offers; borrowing is ask-first.",
     "mods/mmorpg-tools/mod-mmorpg/mod.json - registers MMORPG lifecycle, cameras, character/interaction behaviors and UI actions.",
     "mods/mmorpg-tools/mod-mmorpg/lib/ui-main-menu.js - menu/roster UI; entry for realm and character selection.",
     "templates/player.js#player - ordered locomotion, movement, class, quest, vendor, guild, guild-flag, trades, flight, vitality, cursor-free, region-music and mount behaviors.",
@@ -51,7 +51,7 @@
     "scripts/{vanguard,arcanist,pathfinder,shade}-core.js - class action/cooldown state and combat effects; wrappers lazily load and forward to matching cores.",
     "mods/awakening/input.js - editor awOpen/awPage/awFlash and optional world switch changes; mirrors active Awakening settings into world.state.awakening for panel.js.",
     "mods/awakening/waves.js - per-tick heave/drift forces on tagged floating bodies; water-surface.js and river-surface.js own their ripple slots and effects.",
-    "scripts/mount.js - transient player.state.mounted, session cloak reference, mount/rider linkage and ride behavior; platform owns durable player.state.purchases. scripts/flight-core.js and scripts/region-music.js own flight/map and per-session music state."
+    "scripts/mount.js - transient player.state.mounted, session cloak reference, mount/rider linkage and ride behavior; platform owns durable player.state.purchases. scripts/flight-core.js and scripts/region-music.js own flight/map and per-sess…"
   ],
   "flows": [
     "world.config.yaml defaultPlace main-menu-land → main-menu-mgr/main-menu UI → realm roster or character selection → creation/enter-world → gameplay lifecycle.",
@@ -59,13 +59,13 @@
     "main-menu-mgr loads current-room SQL roster; api.enterPlace routes selected character to saved place/position; realms.yml feeds routing.js and realm-pulse cron, which writes realm_pulse for realm-save to read.",
     "Character creation race/class → lib/races.js start and character state → MMORPG player.js/realm-save upsert characters keyed by user, realm and slot.",
     "Creation confirm → character-select.js loadingScreen/progress → ui-zone-splash.js arrival veil; it waits for scripts/player.js _areaReady after stable grounded terrain contact.",
-    "templates/player.js behavior order → locomotion → movement → class handlers → quest-player → vendor → guild → guild-flag → trades → flight → vitality → cursor-free → region-music → mount; MMORPG player.js/wow-move.js consume movement/camera state.",
+    "templates/player.js behavior order → locomotion → movement → class handlers → quest-player → vendor → guild → guild-flag → trades → flight → vitality → cursor-free → region-music → mount; MMORPG player.js/wow-move.js consume movement/camer…",
     "MMORPG player.js dynamically imports lib/player-panel-input.js after a created hero enters a non-meta place; panel module uses shop-data.js, profession-data.js and scripts/lib/talents.js.",
     "ui-menu-panel.js renders talents and character sheet from talents.js/sheet.js → player-panel-input.js handles spend/reset → state.unlockedTalents; class cores/kit and quest-player derive effects.",
     "Class wrappers lazily load matching cores; HUD maps spell slots to per-class action ids; class cores and missile effects produce action/impact FX.",
     "scripts/lib/data/bosses.yml definitions → boss-core.js; boss melee hitFx emits impact FX, cameraPunch/hitstop and swing/hit sounds from the same definition.",
-    "Awakening panel.js taps send awOp actions → attached input.js on player/god mutates editor switches and world.state.awakening → handbook reflects settings; wave manager reads shared swell/wind and floaters, writes forces and emits awakening effects.",
-    "Lantern Stall sign ui:stag/ui:cloak/ui:tip → scripts/lantern-stall.js proposes checkout → world.config.yaml buyables/platform callbacks record player.state.purchases; mount.js reads ownership, handles mountToggle to call/dismiss the session stag, and outfits an owned cloak."
+    "Awakening panel.js taps send awOp actions → attached input.js on player/god mutates editor switches and world.state.awakening → handbook reflects settings; wave manager reads shared swell/wind and floaters, writes forces and emits awakenin…",
+    "Lantern Stall sign ui:stag/ui:cloak/ui:tip → scripts/lantern-stall.js proposes checkout → world.config.yaml buyables/platform callbacks record player.state.purchases; mount.js reads ownership, handles mountToggle to call/dismiss the sessio…"
   ],
   "behaviorFamilies": [
     "scripts/gen/instance.js - reused across instance places, varied by layout (room dimensions, corridor length, materials/colors) and kind; floor roughness is layout-specific for traced reflections.",
@@ -86,6 +86,6 @@
     "Gate links are explicit +place#object links on paired gates; instance-gate checks minLevel and active enterQuest, stamps _worldEnterAt for arrival.js, then counts enterTally.",
     "Creation and first-arrival veils use ui-zone-splash.js zoneArtFor/arrivalVeil; scripts/player.js stamps _areaReady after stable grounded terrain contact and splash retains its wait/hold/fade contract.",
     "Talent picks are state.unlockedTalents entries keyed spec:tier, not flat tier numbers; points derive from floor(level/5), max 12, with one pick per tier in a spec.",
-    "mods/wow-camera-controls/move.js owns body velocity/yaw: use it instead of, never beside, the world's movement writer; mount rides ctx.session.walk intent. scripts/mount.js recognizes the bare mountToggle input.pressed/actions key (not the MMORPG-namespaced alias); Awakening float forces and visible swell share lib/swell.js math."
+    "mods/wow-camera-controls/move.js owns body velocity/yaw: use it instead of, never beside, the world's movement writer; mount rides ctx.session.walk intent. scripts/mount.js recognizes the bare mountToggle input.pressed/actions key (not the…"
   ]
 }

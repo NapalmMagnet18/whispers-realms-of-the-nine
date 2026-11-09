@@ -1,0 +1,13 @@
+{
+  "references": 1592,
+  "downloaded": 1590,
+  "uniqueFiles": 1580,
+  "uniqueBytes": 1153094123,
+  "unavailableRuntimeReferences": [],
+  "illustrativeOrHistoricalUnavailable": [
+    "/cdn/....glb",
+    "/cdn/...png"
+  ],
+  "externalGltfDependencies": [],
+  "allDownloadedFileHashesVerified": true
+}
