@@ -1,0 +1,24 @@
+# The Lantern Stag and the Runed Cloak (scripts/mount.js). Numbers are her picks.
+model: /cdn/model-spectral-stag-mount-pale-white-coat-glowing-teal-antlers-leather-saddle-hanging-brass-lantern.glb
+box: { min: { x: -0.5, y: 0, z: -1.15 }, max: { x: 0.5, y: 2.5, z: 1.15 } }
+seat: { x: 0, y: 1.05, z: 0.15 }      # where the rider's feet rest on the saddle, local to the stag
+lanternAt: { x: 0.35, y: 1.2, z: -0.7 }
+speed: 1.8      # times the walk intent from player.js (6 m/s walk -> 10.8 m/s ride)
+accel: 30       # m/s² toward the intent
+turn: 360       # degrees a second the stag can swing
+callSound: /cdn/moodboard-painterly-fantasy/sfx-spectral-stag-summon-soft-bell-chime-and-deer-snort.mp3
+dismissSound: /cdn/moodboard-painterly-fantasy/sfx-spectral-stag-fades-whispering-chime.mp3
+hooves:
+  - /cdn/moodboard-painterly-fantasy/sfx-deer-hoof-clop-on-dirt-trail.mp3
+  - /cdn/moodboard-painterly-fantasy/sfx-deer-hoof-clop-on-dirt-trail-2.mp3
+aura: |
+  fx
+  pop motes rate=?mobile:6|14 on=box(.5,.8,1) life=1..1.8 v=up(.2..0.5) size=.03..0.06 acc=curl(.4)+drag(1) col=hdr(.6,2.4,2) a=0>.2:1>.7:.8>0 sz=$size r=sprite(soft-disc,add)
+burst: |
+  fx
+  pop ring burst=40 on=disc(.9) life=.6..1.1 v=up(1.2..2.6)+sdir()*.4 size=.05..0.1 acc=drag(2) col=hdr(.8,3,2.4)>hdr(.3,1,.9) a=1>0 sz=$size r=sprite(soft-disc,add)
+  pop glow n=1 life=.6 r=light(<.5,1,.9>,(1>0)*25,8)
+cloak:
+  model: /cdn/model-long-flowing-cape-dark-blue-gold-trim-glowing-teal-runes-two-shoulder-clasps.glb
+  box: { min: { x: -0.32, y: 0, z: -0.06 }, max: { x: 0.32, y: 1.0, z: 0.1 } }
+  at: { x: 0, y: 0.42, z: 0.17 }       # behind the shoulders (a body faces -Z)
