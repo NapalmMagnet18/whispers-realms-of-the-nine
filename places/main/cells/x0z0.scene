@@ -1421,6 +1421,16 @@ lanefence-b:
   primitive: {kind: scripted, params: {kind: fence, len: 8}, script: scripts/gen/farm.js}
   rotation: -45
   tags: [farm]
+lantern-stall:
+  behavior: scripts/lantern-stall.js
+  children: [{feetPosition: {x: 0, y: 1.5, z: -1.7}, id: sign, material: {color: oklch(0.3 0.04 55)}, primitive: {depth: 0.08, height: 1.25, kind: box, width: 1.7}, ui: "<div face=\"front\" width=\"1.6m\" class=\"p-3 rounded\" style=\"background:#1d140ecc;border:3px solid #c9a46a;color:#e8d9b5;font-family:serif;width:1600px\">\n<div style=\"font-size:120px;color:#f2b04a;text-align:center;letter-spacing:6px\">THE LANTERN STALL</div>\n<button id=\"stag\" style=\"display:block;width:100%;margin-top:30px;font-size:90px;padding:24px;background:#3f5a3a;color:#e8d9b5;border:3px solid #7ff0d8\">Lantern Stag mount · 300</button>\n<button id=\"cloak\" style=\"display:block;width:100%;margin-top:24px;font-size:90px;padding:24px;background:#2a2a52;color:#e8d9b5;border:3px solid #f2b04a\">Runed Cloak · 150</button>\n<button id=\"tip\" style=\"display:block;width:100%;margin-top:24px;font-size:90px;padding:24px;background:#6b4a2f;color:#e8d9b5;border:3px solid #c9a46a\">Tip the jar · any coin</button>\n</div>"}, {feetPosition: {x: 1.1, y: 0, z: -1.6}, id: jar, physics: static, primitive: {kind: scripted, params: {kind: barrel}, script: scripts/gen/props.js}, scale: 0.6}, {feetPosition: {x: 0, y: 2.6, z: -1.2}, id: glow, light: {color: oklch(0.82 0.13 65), distance: 9, intensity: 4, kind: point}}, {feetPosition: {x: -2.4, y: 0, z: -0.6}, id: stag-display, layout: {box: {max: {x: 0.5, y: 2.5, z: 1.15}, min: {x: -0.5, y: 0, z: -1.15}}}, model: /cdn/model-spectral-stag-mount-pale-white-coat-glowing-teal-antlers-leather-saddle-hanging-brass-lantern.glb, physics: static, rotation: {yaw: 60}}]
+  feetPosition: {x: 12, y: 4, z: -9}
+  id: lantern-stall
+  layout: {maxExtents: {y: 3}, minExtents: {y: 3}}
+  model: {id: /cdn/value.443e541a345409de9eaf9164ae09f0d6a583d31bf4e2d34b4bfa3063a9980d06.glb}
+  physics: {body: static, collider: box}
+  rotation: {yaw: 200}
+  tags: [lantern-stall, kit]
 meadow-clover:
   feetPosition: {x: 0, y: {terrain: 0}, z: 0}
   id: meadow-clover

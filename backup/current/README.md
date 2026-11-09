@@ -1,3 +1,5 @@
+Latest verified pre-reset capture: source 169180d326f9fdaf949025587afc15409da95f7f. See ../final-2026-11-07/README.md and STATUS.json for the refreshed source/save snapshot and exact SSD audit. One uploaded Cinzel font remains unavailable. The older inventories below are historical.
+
 Final PC-reset capture (November 7, 2026): source commit 0c0a1b0a3ab07b0c5a9230d15165a5041b58ad3d and fresh portable encrypted game saves are in ../final-2026-11-07/. The older asset archives below remain the last captured asset inventory; a fresh full asset crawl was not performed. The SSD also holds a complete all-ref source bundle. Preserve the offline recovery key before resetting Windows.
 
 # Recover the current WHISPERS game — 0.47.99 Alpha

@@ -1,0 +1,25 @@
+{
+  "resource": "/cdn/value.09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.woff2",
+  "classification": "Explicit immutable uploaded Cinzel font reference introduced in commit c5e95fbc; required by four current UI files; server bytes unavailable at referenced location. Not a documentation placeholder or a synthetic substituted font.",
+  "storageAttempts": [
+    {
+      "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.woff",
+      "httpStatus": 404
+    },
+    {
+      "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.ttf",
+      "httpStatus": 404
+    },
+    {
+      "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.otf",
+      "httpStatus": 404
+    },
+    {
+      "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.bin",
+      "httpStatus": 404
+    }
+  ],
+  "historicalExactHashMatches": [],
+  "suppliedLibraryExactHashMatches": [],
+  "targetedBrowserCacheIdentifierSearch": "No matching identifiers found in accessible Codex browser and Codex app Cache paths. No claim that every browser/system cache was searched."
+}

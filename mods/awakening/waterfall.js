@@ -28,7 +28,7 @@
 // uv: u across 0..1 (+10 per layer: 0 core back, 10 core front, 20 veil, 30 ropes), v metres along from the lip.
 // colours: r aeration (ropes: their own fade-in), g speed ÷ 20, b fraction fallen.
 import { vec2, vec3, float, positionWorld, cameraPosition, normalize, time, mix, smoothstep, clamp, max, min, abs, uv, vertexColor, normalWorld, dot, floor, sqrt, dFdx, dFdy, cross } from "builtin/tsl";
-import { sunDirection, sunRadiance, ambientRadiance, sunVisibility } from "builtin/lighting";
+import { sunDirection, sunRadiance, ambientRadiance } from "builtin/lighting";
 import { MeshBasicNodeMaterial, DoubleSide } from "builtin/three";
 import { fallMaterial } from "./lib/fall-material.js";
 import { exp } from "builtin/tsl";

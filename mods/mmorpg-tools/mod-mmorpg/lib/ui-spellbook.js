@@ -36,8 +36,8 @@ export function renderSpellbook(localPlayer) {
 
   return ''
     + '<style>'
-    + "@font-face {font-family:'Cinzel';src:url('/cdn/font-cinzel-regular.woff2') format('woff2');font-weight:400;font-display:swap}"
-    + "@font-face {font-family:'Cinzel';src:url('/cdn/font-cinzel-bold.woff2') format('woff2');font-weight:700;font-display:swap}"
+    + "@font-face {font-family:'Cinzel';src:url('/cdn/value.09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.woff2') format('woff2');font-weight:400;font-display:swap}"
+    + "@font-face {font-family:'Cinzel';src:url('/cdn/value.09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.woff2') format('woff2');font-weight:700;font-display:swap}"
     + '</style>'
     + '<div style="'
     + 'display:flex;flex-direction:column;align-items:center;justify-content:center;'

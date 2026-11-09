@@ -13,7 +13,7 @@
 // strength), current (ripple strength in the flow), drift (m/s the detail travels)
 import { plungeField } from "./lib/plunge.js";
 import { vec2, vec3, float, exp, positionWorld, time, smoothstep, clamp, max, min, length, fract, uv, normalWorld, select, dFdx, dFdy, cross, vertexColor, inverseSqrt, dot, mix, normalize, mx_noise_float, mod, cameraPosition, floor, cos, sin, sqrt, Fn, If } from "builtin/tsl";
-import { sunDirection, sunRadiance, ambientRadiance, sunVisibility } from "builtin/lighting";
+import { sunDirection, sunRadiance, ambientRadiance } from "builtin/lighting";
 import { material as water } from "./lib/water-material.js";
 import { TRAIL_BODIES, BODIES } from "./lib/river-slots.js";
 export { TRAIL_BODIES, BODIES } from "./lib/river-slots.js";
@@ -200,7 +200,7 @@ export function material(ctx) {
     cover = mix(cover, c.mul(0.9).add(A0.mul(0.08)), smoothstep(0.12, 0.4, fp)); // far: the average, never a shimmer
     const dense = PL ? core.mul(0.4).add(0.5).add(smoothstep(0.8, 1.5, plA).mul(0.35)).min(1) : core.mul(0.4).add(0.5); // cores thick, fringes and streaks thin and see-through
     const foam = cover.mul(dense).mul(smoothstep(0.0, 0.12, A0)).mul(smoothstep(0.0, 0.05, depthV)); // the lake's shore lace owns the very edge
-    const sunD = max(N.dot(sunDirection), 0).mul(sunVisibility(P));
+    const sunD = max(N.dot(sunDirection), 0).mul(smoothstep(-0.02, 0.08, sunDirection.y));
     const foamLum = ambientRadiance.mul(1.1).add(sunRadiance.mul(sunD.mul(0.6).add(0.15))).dot(vec3(0.3, 0.59, 0.11));
     // foam relief: heaped cores catch the light, the hollows between bubbles sit in their own shade, and a
     // fine bubble grain (a fourth octave, held only close up) keeps it from reading as flat paint
@@ -218,7 +218,7 @@ export function material(ctx) {
     // the brink whitening: torn streaks lit like the curtain's foam (waterfall.js), so the tear meets white on white
     const sunL = dot(sunRadiance, vec3(0.2126, 0.7152, 0.0722));
     const bSky = max(ambientRadiance, vec3(0.44, 0.52, 0.62).mul(sunL));
-    const bFoam = bSky.mul(1.05).add(mix(vec3(sunL), sunRadiance, 0.35).mul(0.38).mul(sunVisibility(P)));
+    const bFoam = bSky.mul(1.05).add(mix(vec3(sunL), sunRadiance, 0.35).mul(0.38).mul(smoothstep(-0.02, 0.08, sunDirection.y)));
     outC = mix(outC, bFoam.mul(rope.mul(0.3).add(0.85)), brinkWhite);
     return mix(outC, surf, float(1).sub(keepOwn));
   };

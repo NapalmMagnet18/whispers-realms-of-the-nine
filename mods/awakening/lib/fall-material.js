@@ -2,7 +2,7 @@
 // (waterfall-boil.js, solid froth that writes depth so the pool can never paint over it). Two files, not one
 // param: a scripted material is built once per script, so a param can't switch its depth or blend flags.
 import { vec2, vec3, float, positionWorld, cameraPosition, normalize, time, mix, smoothstep, clamp, max, min, abs, uv, vertexColor, normalWorld, dot, floor, sqrt, dFdx, dFdy, cross, exp } from "builtin/tsl";
-import { sunDirection, sunRadiance, ambientRadiance, sunVisibility } from "builtin/lighting";
+import { sunDirection, sunRadiance, ambientRadiance } from "builtin/lighting";
 import { MeshBasicNodeMaterial, DoubleSide } from "builtin/three";
 import { plungeField } from "./plunge.js";
 
@@ -77,7 +77,7 @@ export function fallMaterial(ctx, solid = false) {
   const grad = r1.mul(dFdx(h)).add(r2.mul(dFdy(h))).mul(det.sign());
   const Nf = normalize(N1.mul(abs(det).max(1e-9)).sub(grad));
   alpha = alpha.add(float(1).sub(abs(dot(N1, V))).pow(3).mul(0.3).mul(isCore).mul(float(1).sub(fray)).mul(lipIn).mul(foot));
-  const vis = sunVisibility(P);
+  const vis = smoothstep(-0.02, 0.08, sunDirection.y);
   const back = max(dot(V, sunDirection.negate()), 0).pow(6).mul(0.9); // the sun behind it: the sheet glows
   const sunL = dot(sunRadiance, vec3(0.2126, 0.7152, 0.0722));
   const sky = max(ambientRadiance, vec3(0.44, 0.52, 0.62).mul(sunL)); // the gorge's open sky still lights shaded foam

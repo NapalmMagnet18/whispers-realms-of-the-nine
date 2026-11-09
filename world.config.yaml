@@ -91,6 +91,9 @@ inputs:
     interact:
       keys:
       - e
+    mountToggle:
+      keys:
+      - z
     acceptQuest: {}
     declineQuest: {}
     completeQuest: {}
@@ -113,3 +116,25 @@ routing:
 audio:
   gains: { Master: 1, Music: 0.85, SFX: 1, UI: 0.8, Ambience: 0.55, Voice: 1 }
   maxVoices: 40
+buyables:
+  lantern-stag:
+    name: Lantern Stag
+    description: A spectral stag with glowing antlers and a lantern at its harness. Press Z in the March to ride, nearly twice as fast as on foot.
+    priceSpoins: 300
+    once: true
+    imageUrl: /cdn/value.7abe0c057eed0ac541bcc1c4ae30790ea2ffc719953435efd02c5db126a174df.png
+    onPurchase: scripts/buyables/stag.js
+  runed-cloak:
+    name: Runed Cloak
+    description: A deep blue cloak with gold trim and softly glowing runes, worn by your hero wherever you go.
+    priceSpoins: 150
+    once: true
+    imageUrl: /cdn/value.a6a3a0386e773e6ef3047d0085836e885fffffef70b4ca56b99f85389ea0d363.png
+    onPurchase: scripts/buyables/cloak.js
+  lantern-tip:
+    name: Tip the Tavern Jar
+    description: Drop a coin in the Lantern Stall's jar to help the realm grow. Pay what you want.
+    priceSpoins: 25
+    minSpoins: 10
+    imageUrl: /cdn/value.e8e7e96eb470e1cebd449f33231b95755806b23c960d360ac8511a322bc28711.png
+    onPurchase: scripts/buyables/tip.js

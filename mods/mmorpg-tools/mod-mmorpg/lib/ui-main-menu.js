@@ -46,14 +46,14 @@ function realmBadge(s) {
 var CREST = '/cdn/value.215dae666ef9a1a74cb16082f46a9e117966c908d5beaee16b35d07c82bcaa3e.png';
 var NEWS = require('./version.js').PATCH_NOTES;
 var LOGIN_CSS = '<style>'
-  + '@keyframes wl-sheen{0%{background-position:-160% 0}55%,100%{background-position:260% 0}}'
+  + '@keyframes wl-sheen{0%{transform:translateX(-120%)}55%,100%{transform:translateX(220%)}}'
   + '@keyframes wl-glow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.95;transform:scale(1.04)}}'
   + '@keyframes wl-ember{0%{transform:translate(0,0);opacity:0}12%{opacity:.9}100%{transform:translate(var(--dx),-70vh);opacity:0}}'
-  + '@keyframes wl-pulse{0%,100%{box-shadow:0 0 18px rgba(242,176,74,.25),0 10px 30px rgba(0,0,0,.55)}50%{box-shadow:0 0 34px rgba(242,176,74,.55),0 10px 30px rgba(0,0,0,.55)}}'
+  + '@keyframes wl-pulse{0%,100%{opacity:.35}50%{opacity:1}}'
   + '@keyframes wl-spin{to{transform:rotate(360deg)}}'
   + '.wl-metal{font-family:Cinzel,Palatino,Georgia,serif;font-weight:700;background:linear-gradient(180deg,#fff6dc 0%,#f2d38a 30%,#c99a48 52%,#8a5a22 70%,#e8c27a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #1a0f08) drop-shadow(0 0 14px rgba(242,176,74,.35))}'
-  + '.wl-cta{position:relative;overflow:hidden;animation:wl-pulse 3.2s ease-in-out infinite}'
-  + '.wl-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,236,190,.38) 48%,transparent 66%);background-size:60% 100%;background-repeat:no-repeat;animation:wl-sheen 4.5s ease-in-out infinite;pointer-events:none}'
+  + '.wl-cta{position:relative;box-shadow:0 0 18px rgba(242,176,74,.25),0 10px 30px rgba(0,0,0,.55)}.wl-cta::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 34px rgba(242,176,74,.55);animation:wl-pulse 3.2s ease-in-out infinite;pointer-events:none;will-change:opacity}'
+  + '.wl-cta::after{content:"";position:absolute;inset:0;inset:0 auto 0 0;width:60%;background:linear-gradient(105deg,transparent 0%,rgba(255,236,190,.38) 50%,transparent 100%);animation:wl-sheen 4.5s ease-in-out infinite;pointer-events:none;will-change:transform;clip-path:inset(0)}'
   + '.wl-side .wm-btn:hover{transform:translateX(-4px)}'
   + '.wl-news-item{padding:7px 2px 8px;border-bottom:1px solid rgba(201,164,106,.18)}.wl-news-item:last-child{border-bottom:0}'
   + '.wl-mobile{display:none}'

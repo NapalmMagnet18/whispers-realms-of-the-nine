@@ -1,7 +1,7 @@
 {
   "name": "wow-camera-controls",
   "displayName": "World of Warcraft Camera Controls",
-  "description": "Camera controls exactly like World of Warcraft, for anyone who wants that classic MMO feel: hold left mouse to orbit, hold right mouse to steer, both buttons run forward, wheel zooms smoothly all the way into first person. Eased, collision-aware, touch-drag and pinch friendly.",
+  "description": "World of Warcraft controls, camera and movement: W/S walk, A/D turn in place, Q/E strafe, R or Num Lock autorun (A/D steer it, W or S stops it), runs by default, backpedals at walking pace with Numpad / to toggle walking. Hold left mouse to orbit around your character without turning them, right mouse to steer, both buttons run forward, wheel zooms smoothly into first person, Alt free-looks. No pointer lock, ground-hugging camera arm, steep slopes slide, swimming along the look. Touch friendly.",
   "tags": [
     "camera",
     "controls",
@@ -10,9 +10,17 @@
     "mouse"
   ],
   "visibility": "public",
-  "version": "1.1.0",
+  "version": "1.7.0",
   "inputs": {
     "actions": {
+      "jump": {
+        "keys": [
+          "space"
+        ],
+        "touch": {
+          "button": false
+        }
+      },
       "orbit": {
         "mouse": "left",
         "touch": {
@@ -29,7 +37,8 @@
       },
       "autoRun": {
         "keys": [
-          "q"
+          "r",
+          "NumLock"
         ],
         "touch": {
           "button": false
@@ -43,9 +52,27 @@
           "button": false
         }
       },
+      "freeLook": {
+        "keys": [
+          "alt"
+        ],
+        "touch": {
+          "button": false
+        },
+        "activeOn": "hold"
+      },
+      "walkToggle": {
+        "keys": [
+          "NumpadDivide"
+        ],
+        "touch": {
+          "button": false
+        }
+      },
       "autoRunStop": {
         "keys": [
-          "w"
+          "w",
+          "s"
         ],
         "touch": {
           "button": false
@@ -53,8 +80,17 @@
       }
     },
     "axes": {
+      "turn": {
+        "keys": "a/d"
+      },
       "zoom": {
         "mouse": "wheelY"
+      },
+      "strafe": {
+        "keys": "q/e"
+      },
+      "forward": {
+        "keys": "s/w"
       }
     }
   },

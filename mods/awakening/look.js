@@ -1,8 +1,8 @@
 // Awakening: the frame's film stock. Sharpen, ambient occlusion, sun-lit ground mist, a filmic grade.
 // Every number is a live param: place atmosphere.look.params.<name> retunes it with no recompile.
 // Cost scales by the viewer's tier: low = sharpen + grade; medium adds AO; high/ultra add the mist march.
-import { vec2, vec3, vec4, float, Loop, mx_noise_float, cameraPosition, screenUV, texture, max, min, clamp } from "builtin/tsl";
-import { sunDirection, sunRadiance, ambientRadiance, sunVisibility, windTravel } from "builtin/lighting";
+import { vec2, vec3, vec4, float, Loop, mx_noise_float, cameraPosition, screenUV, texture, max, min, clamp , smoothstep } from "builtin/tsl";
+import { sunDirection, sunRadiance, ambientRadiance, windTravel } from "builtin/lighting";
 import { grade, vignette, grain } from "builtin/postfx";
 import { skyClouds, stormNode } from "./lib/sky-clouds.js";
 import { depthUpsample } from "./lib/upsample.js";
@@ -99,7 +99,7 @@ export function look(ctx) {
         const through = mist.mul(dt).negate().exp();
         // under a storm deck no direct sun gets through: the shafts (and a player's shadow tube) fade with it,
         // so nobody drags a dark slab through the dense storm mist behind them
-        const sunIn = float(1).sub(S.mul(0.95)), vis = sunVisibility(p);
+        const sunIn = float(1).sub(S.mul(0.95)), vis = smoothstep(-0.02, 0.08, sunDirection.y);
         const lit = sunRadiance.mul(vis.mul(sunIn)).mul(phase).add(ambientRadiance.mul(S.mul(0.4).add(0.35)));
         light.addAssign(lit.mul(clear).mul(float(1).sub(through)));
         clear.mulAssign(through);

@@ -13,7 +13,26 @@
     "weather"
   ],
   "visibility": "public",
-  "version": "1.7.0",
+  "version": "1.9.0",
+  "inputs": {
+    "actions": {
+      "awOp": {}
+    }
+  },
+  "attach": [
+    {
+      "target": {
+        "kind": "player"
+      },
+      "behavior": "input.js"
+    },
+    {
+      "target": {
+        "kind": "god"
+      },
+      "behavior": "input.js"
+    }
+  ],
   "tab": {
     "id": "guide",
     "label": "Awakening",

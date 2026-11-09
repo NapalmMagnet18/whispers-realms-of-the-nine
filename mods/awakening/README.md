@@ -41,6 +41,8 @@ Everything it changes is one version; `spawn undo` puts the world back.
 | **Touching water** (`touch.js`) | One line in the player script and wading or swimming wakes whichever lake, river or creek you're in. |
 | **Boats** (`water-mask.js`, `lib/swell.js`) | Hulls ride the same waves you see; no water inside the hull. |
 | **Squalls & storms** (`lib/swell.js`, `storm.js`) | Optional: squalls cross the water, and can arrive as thunderstorms with rain, wet ground and lightning. |
+| **Storm waves** (`lib/swell.js` stormSwell, `waves.js`, `lib/waves.js`) | Optional, experimental (`stormWaves: 1` on a lake, needs `squall: 1`): a squall raises real chop; boats and anything tagged `floats` heave and drift on it. |
+| **Handbook** (`panel.js`, `input.js`, `lib/guide.js`, `lib/shots.js`) | The god-mode tab: a half-screen handbook, one page per feature with real before/after pictures, the optional world switches (saved as versions), and an Ask Savi button per feature. |
 | **Texture cook** (`tools/hires.py`) | Turns a painted photo into a seamless 2K colour + bump + shine set for a new surface. |
 
 ## Where waters meet

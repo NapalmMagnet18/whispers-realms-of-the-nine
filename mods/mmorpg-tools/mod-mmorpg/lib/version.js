@@ -1,7 +1,9 @@
 // The game's update version: bump this line with each release (0.47.6: guild banner over the Hall of Banners). Drawn only on the main menu, settings and pause screens.
-var GAME_VERSION = '0.47.99 Alpha';
+var GAME_VERSION = '0.48.1 Alpha';
 // The Herald of the Realm on the main menu reads these, newest first: [version, title, note, optional /cdn/ art]. Add a row with each bump.
 var PATCH_NOTES = [
+  ['v0.48.1', 'The Lantern Stall', 'A new stall in Lantern\'s Reach sells the Lantern Stag mount (press Z in the March to ride), the Runed Cloak, and holds a tip jar for the realm. Spellbook and menu headings now load the Cinzel font.'],
+  ['v0.48.0', 'A Steadier Gate', 'The Enter World button still glows and gleams, but no longer redraws the whole main menu every frame to do it.'],
   ['v0.47.99', 'A Lighter Threshold', 'The main menu meadow now uses the March\'s wind-combed grass at half the blades. The change to frame time has not yet been measured.'],
   ['v0.47.98', 'A Lighter Threshold', 'The main menu meadow now uses the March\'s wind-combed grass at half the blades.'],
   ['v0.47.97', 'Room to Read', 'The Ward Census Board stands clear of the vault and trainer now, with room to approach and leave its posts. Examining the census no longer brings up the nearby bank.'],

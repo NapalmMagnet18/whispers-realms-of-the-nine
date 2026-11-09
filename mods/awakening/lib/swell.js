@@ -41,9 +41,20 @@ export function storm(t) {
   return lead > 0 && lead < 1 ? Math.sin(Math.PI * lead) ** 1.5 : 0;
 }
 export const squallOpts = (params) => ({ on: Number(params?.squall ?? 0) > 0, push: Number(params?.squallPush ?? 0) > 0 });
+// the weather decides a squall's teeth: in clear weather (lake param stormy: 0, mirrored from the Thunderstorms
+// switch) a squall is a passing riffle, CLEAR.gust of its storm wind, and raises no storm waves.
+export const CLEAR = { gust: 0.35 };
+const stormyOf = (params) => (Number(params?.stormy ?? 0) > 0 ? 1 : 0);
+// the wind a squall adds right now, m/s: every reader (shader, canoe, floaters) uses this one sum
+export const gustOf = (t, params) => (Number(params?.squall ?? 0) > 0 ? squall(t) * SQUALL.extra * (stormyOf(params) ? 1 : CLEAR.gust) : 0);
 export function squall(t) {
   const ph = (t % SQUALL.period) / SQUALL.length;
   return ph < 1 ? Math.sin(Math.PI * ph) ** 2 : 0;
 }
-// how much the wind builds the swell: 1 at a 3 m/s breeze, 3x in a gale (the shader uses the same curve)
-export const windSwell = (speed) => Math.min(3, Math.max(0.6, (speed ?? 3) / 3));
+// how much the wind builds the swell: 0.6 at a 3 m/s breeze (a calm, near-glassy lake), 3x in a gale (the shader uses the same curve)
+export const windSwell = (speed) => Math.min(3, Math.max(0.35, (speed ?? 3) / 5));
+// storm waves (optional, per lake: stormWaves: 1, needs squall: 1): a squall raises the swell past the breeze's
+// cap, up to STORM.extra more at its peak, so a crossing gets real chop. Every reader adds it the same way:
+// swell scale = swell * (windSwell(wind) + stormSwell(t, params)); the shader writes the same sum.
+export const STORM = { extra: 4 };
+export const stormSwell = (t, params) => (Number(params?.squall ?? 0) > 0 ? squall(t) * Number(params?.stormWaves ?? 0) * stormyOf(params) * STORM.extra : 0);

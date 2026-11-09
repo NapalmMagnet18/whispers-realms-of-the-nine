@@ -1,0 +1,66 @@
+[
+  {
+    "reference": "/cdn/....glb",
+    "sources": [
+      "mods/gavi/skills/animais-de-verdade.md"
+    ],
+    "status": "http_error",
+    "httpStatus": 400,
+    "recoveryAttempts": [
+      {
+        "url": "https://spawnfile.io/dev/magic-assets/v5/assets/....glb",
+        "status": 404
+      }
+    ],
+    "classification": "illustrative-doc-reference"
+  },
+  {
+    "reference": "/cdn/...png",
+    "sources": [
+      "mods/gavi/skills/qualidade-sem-falha.md"
+    ],
+    "status": "http_error",
+    "httpStatus": 400,
+    "recoveryAttempts": [
+      {
+        "url": "https://spawnfile.io/dev/magic-assets/v5/assets/...png",
+        "status": 404
+      }
+    ],
+    "classification": "illustrative-doc-reference"
+  },
+  {
+    "reference": "/cdn/value.09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.woff2",
+    "sources": [
+      "mods/mmorpg-tools/mod-mmorpg/lib/ui-creation.js",
+      "mods/mmorpg-tools/mod-mmorpg/lib/ui-inventory.js",
+      "mods/mmorpg-tools/mod-mmorpg/lib/ui-spellbook.js",
+      "mods/mmorpg-tools/mod-mmorpg/ui.js"
+    ],
+    "status": "http_error",
+    "httpStatus": 404,
+    "recoveryAttempts": [
+      {
+        "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.woff2",
+        "status": 404
+      },
+      {
+        "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.jpg",
+        "status": 404
+      },
+      {
+        "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.jpeg",
+        "status": 404
+      },
+      {
+        "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.png",
+        "status": 404
+      },
+      {
+        "url": "https://spawnfile.io/dev/magic-assets/v5/values/09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.webp",
+        "status": 404
+      }
+    ],
+    "classification": "unavailable-runtime-reference"
+  }
+]

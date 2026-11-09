@@ -10,11 +10,11 @@
 // params: chop, micro, refract, ssr, reflectDistance, glint, sky, foam, lap (shore foam lines), shallow
 // (green lift over a shallow bed), swell, interact, deep (tint distance m), glacial (0..1 toward turquoise)
 import { vec2, vec3, vec4, float, color, positionWorld, cameraPosition, normalize, time, mix, smoothstep, clamp, max, exp, fwidth, screenUV, viewportSharedTexture, depthFade, cameraProjectionMatrix, cameraViewMatrix, mx_noise_float, reflect, length, mod, select, hash, fract, floor, step } from "builtin/tsl";
-import { sunDirection, sunRadiance, ambientRadiance, windDirection, windSpeed, windTravel, rain, sunVisibility } from "builtin/lighting";
+import { sunDirection, sunRadiance, ambientRadiance, windDirection, windSpeed, windTravel, rain } from "builtin/lighting";
 import { waterFresnel, waterFoam, waterCaustics, waterTransmittance, waterMedium, waterRippleSlope } from "builtin/water";
 import { MeshBasicNodeMaterial, DoubleSide } from "builtin/three";
 import { positionLocal, modelWorldMatrix } from "builtin/tsl";
-import { SWELL, SQUALL } from "./swell.js";
+import { SWELL, SQUALL, STORM, CLEAR } from "./swell.js";
 import { bodies as trailBodies } from "./trail.js";
 import { junctions, junctionBlend } from "./junction.js";
 export const LAKE_TRAILS = 3; // still water's wave trails (lib/trail.js): two swimmers and a boat
@@ -59,14 +59,16 @@ export function material(ctx, flow) {
   // the squall (swell.js squall(), same clock): only amplitudes follow it, never directions or travel
   const sqPh = mod(mod(time, 3600), SQUALL.period).div(SQUALL.length);
   const squallS = clamp(sqPh, 0, 1).mul(Math.PI).sin().max(0).pow(2).mul(par("squall", 0)); // optional: squall: 1
-  const windV = windSpeed.add(squallS.mul(SQUALL.extra));
+  const stormy = float(par("stormy", 0)).min(1); // the weather: clear = a riffle, stormy = the full squall (gustOf() in swell.js)
+  const windV = windSpeed.add(squallS.mul(SQUALL.extra).mul(mix(float(CLEAR.gust), float(1), stormy)));
   const tq0 = mod(time, 3600);
   const J = junctions(ctx, xz, tq0, fp, { lite }); // where this water meets another: ownership, plume, hand-over
-  const wind = clamp(windV.div(6), 0.3, 1.3).mul(par("chop", 1)).mul(J.calm);
+  const wind = clamp(windV.div(8), 0.2, 1.3).mul(par("chop", 1)).mul(J.calm);
   const gust = mx_noise_float(vec3(xz.sub(windTravel.mul(0.35)).mul(0.03), time.mul(0.03))).mul(0.7).add(0.8);
 
   // the swell: real height. The vertices ride it (positionNode) and its slope joins the normal below.
-  const swAt = (at) => float(par("swell", 1, at)).mul(clamp(windV.div(3), 0.6, 3)); // windSwell() in swell.js
+  const stormS = squallS.mul(par("stormWaves", 0)).mul(stormy).mul(STORM.extra); // stormSwell() in swell.js: optional, stormWaves: 1
+  const swAt = (at) => float(par("swell", 1, at)).mul(clamp(windV.div(5), 0.35, 3).add(stormS)); // windSwell() + stormSwell() in swell.js
   const sw = swAt(xz);
   const tq = mod(time, 3600);
   const swellAt = (q, swq = sw) => {
@@ -147,9 +149,12 @@ export function material(ctx, flow) {
   const bend = N.xz.mul(par("refract", 0.03)).mul(smoothstep(0.0, 1.5, thick)).div(dist.mul(0.04).add(1));
   const plain = viewportSharedTexture(screenUV).rgb;
   let behind = viewportSharedTexture(screenUV.add(bend)).rgb;
+  // sun on the water without builtin/lighting's sunVisibility: its shadow-cascade read fails the GPU build on
+  // engine 6.0.0 (unresolved lighting_viewDepth), so caustics and glint fade with the sun's height instead
+  const sunLit = smoothstep(-0.02, 0.08, sunDirection.y);
   if (T.caustics) {
     const bed = P.sub(V.mul(thick));
-    const caust = waterCaustics(bed.xz, time).mul(exp(thick.div(-3))).mul(sunVisibility(P)).mul(0.9);
+    const caust = waterCaustics(bed.xz, time).mul(exp(thick.div(-3))).mul(sunLit).mul(0.9);
     behind = behind.mul(caust.add(1));
   }
   const glacial = par("glacial", 0); // 0 the valley's green water, 1 a cold turquoise plunge pool (optional)
@@ -181,7 +186,7 @@ export function material(ctx, flow) {
   const paw = smoothstep(1.0, 1.4, gust).mul(clamp(windV.sub(4).div(6), 0, 1));
   const F = waterFresnel(N.dot(V).abs(), 0.02).mul(0.9).add(0.06).mul(float(1).sub(paw.mul(0.35)));
   const shin = mix(float(1400), float(160), smoothstep(0.01, 0.5, fp));
-  const glint = sunRadiance.mul(max(Rv.dot(sunDirection), 0).pow(shin)).mul(shin.mul(0.0022)).mul(sunVisibility(P)).mul(par("glint", 1));
+  const glint = sunRadiance.mul(max(Rv.dot(sunDirection), 0).pow(shin)).mul(shin.mul(0.0022)).mul(sunLit).mul(par("glint", 1));
 
   // shore: a faint, broken lace where it touches, and soft foam patches that drift in from 35 cm deep and
   // thin out on the sand: wide falloffs and noise breakup, so nothing reads as a drawn line

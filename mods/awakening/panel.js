@@ -1,101 +1,138 @@
-// Awakening: the creator's guide, a god-mode tab (320 px column; ctx may be null on the first render).
-// Plain words only: what each piece does, whether THIS world has it, and the sentence to say to Savi.
-// It reads the world and writes nothing, so it is right in any game the mod is installed in.
-// Each row: [icon, name, what it does, ask Savi, status(ctx info) → true | false | null (unknown: no pill)]
-const GROUPS = [
-  ['Sky & light', [
-    ['☀️', 'Light', 'Realistic sun and shadow on every surface. Metal shines, rock stays matte, corners darken naturally.', 'turn on Awakening lighting', (i) => i.lighting],
-    ['🎞️', 'Film look', 'Sharpening, soft contact shadows, sun-lit mist in low ground and a gentle colour grade.', 'more mist in the valley · less vignette', (i) => i.look],
-    ['☁️', 'Clouds', 'Real 3D clouds with silver edges and dark bellies. Their shadows drift across the land.', 'make it overcast · fewer clouds', (i) => i.look],
-  ]],
-  ['Land', [
-    ['🟫', 'Ground textures', 'Sharp 2K ground: grass, dry grass, forest floor, gravel, granite, snow. No visible tiling.', 'add a mud texture', null],
-    ['⛰️', 'Mountains', 'Ranges carved by simulated rivers: gullies, ridges, snow in the couloirs. Your mountains stay yours; nothing shrinks them without asking.', 'carve mountains around my valley', null],
-    ['🪨', 'Rock', 'Close-up granite detail layered onto rock models.', 'use Awakening rock on my cliffs', null],
-  ]],
-  ['Plants', [
-    ['🌾', 'Grass', 'Wind-blown blades that thin with distance and on slower devices.', 'drier grass · denser meadow', null],
-    ['🌲', 'Forest', 'Whole forests from rules: species in clumps, glades, understory, trails worn through.', 'replant the forest thicker', null],
-    ['🍂', 'Forest floor', 'Moss, twigs, cones and tufts scattered in clusters under the trees.', 'more moss under the pines', null],
-  ]],
-  ['Water', [
-    ['💧', 'Lakes', 'Real depth colour, reflections, refraction, sun glints and caustics. Far water goes calm and glassy, never grainy.', 'add a lake here · make the water clearer', (i) => i.lake],
-    ['🏞️', 'Rivers & creeks', 'Moving water on the same surface as the lake: current, whitewater at drops, boulders that split the flow.', 'run a creek from that hill into the lake', (i) => i.river],
-    ['🔀', 'Where waters meet', 'A river hands over to a lake (or a creek to a river) with no seam: its current spreads out into the calmer water.', 'blend the creek into the lake', (i) => (i.river && i.lake) || null],
-    ['🌊', 'Waterfalls', 'A layered 3D curtain that tears white as it falls, ropes of water peeling off, and a heap of froth churning into the pool at its foot.', 'add a waterfall off that cliff', (i) => i.waterfall ?? null],
-    ['〰️', 'Ripples & wakes', 'Wading and swimming leave trails, rocks leave wakes in the current, things that fall in splash, boats leave wakes.', 'make splashes quieter', (i) => i.lake || i.river || null],
-    ['🏖️', 'Shoreline', 'Soft foam where water laps, damp dark sand the waves just left.', 'less foam on the edge', (i) => i.lake],
-    ['🛶', 'Boats', 'Boats ride the same waves you see. No water shows inside the hull.', 'add a rowboat', null],
-  ]],
-  ['Weather', [
-    ['🌬️', 'Squalls', 'Optional. A squall crosses the water every few minutes: waves build, whitecaps break. A separate switch decides if it may push boats and players.', 'turn squalls on · don’t let weather push players', null],
-    ['⛈️', 'Storms', 'Optional. Squalls arrive as thunderstorms: dark clouds, rain, wet ground, lightning on the ridges, thunder after.', 'turn storms on · storms less often', (i) => i.storm],
-  ]],
-]
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
-function info(ctx) {
-  const w = ctx?.world
-  if (!w) return {}
+// Awakening handbook, the god-mode tab. The rail column is a launcher; the handbook opens as a half-screen sheet
+// over the game (left half, clear of Spawn's rail): a sidebar of pages, each page a large title, a real
+// before/after picture (plain Spawn vs Awakening, lib/shots.js), its features as an inset grouped list with an
+// Ask Savi button per feature, and on Weather and Overview the optional world switches. Built to Apple's HIG:
+// one system font, a clear hierarchy, 44 px targets, system colours, translucent material, plain words.
+// Taps go to input.js (awOp). ctx may be null on the first render. Data: lib/guide.js; pictures: lib/shots.js.
+import { PAGES, SWITCHES } from './lib/guide.js'
+import { SHOTS } from './lib/shots.js'
+
+const FONT = '-apple-system,BlinkMacSystemFont,&quot;SF Pro Text&quot;,&quot;SF Pro&quot;,&quot;Helvetica Neue&quot;,Inter,sans-serif'
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+const A = (o) => esc(`sendAction('awOp',${JSON.stringify(o)})`)
+
+const CSS = `<style>
+.aw{--bg:rgba(28,28,30,.86);--bg2:rgba(44,44,46,.72);--sep:rgba(84,84,88,.55);--l1:rgba(255,255,255,.96);--l2:rgba(235,235,245,.62);--l3:rgba(235,235,245,.34);--blue:#0a84ff;--green:#30d158;font-family:${FONT};color:var(--l1);-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+.aw *{box-sizing:border-box}
+.aw button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.aw-side a,.aw-side button{display:flex;align-items:center;gap:10px;width:100%;min-height:36px;padding:6px 10px;border-radius:8px;font-size:14px;text-align:left}
+.aw-side button:hover{background:rgba(255,255,255,.06)}
+.aw-side button.on{background:var(--blue);color:#fff}
+.aw-tile{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-size:14px;flex:none}
+.aw-group{background:var(--bg2);border-radius:12px;overflow:hidden}
+.aw-row{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;position:relative}
+.aw-row+.aw-row::before{content:'';position:absolute;top:0;left:52px;right:0;height:.5px;background:var(--sep)}
+.aw-cap{font-size:12px;font-weight:400;text-transform:uppercase;letter-spacing:.02em;color:var(--l2);margin:22px 16px 7px}
+.aw-foot{font-size:12px;color:var(--l2);margin:7px 16px 0;line-height:1.4}
+.aw-ask{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 12px;border-radius:999px;background:rgba(10,132,255,.18);color:#409cff !important;font-size:13px;font-weight:600;white-space:nowrap}
+.aw-ask:hover{background:rgba(10,132,255,.28)}
+.aw-sw{width:51px;height:31px;border-radius:999px;background:rgba(120,120,128,.32);position:relative;flex:none;transition:background .2s}
+.aw-sw::after{content:'';position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.15),0 3px 1px rgba(0,0,0,.06);transition:transform .2s}
+.aw-sw.on{background:var(--green)}.aw-sw.on::after{transform:translateX(20px)}
+.aw-sw[disabled]{opacity:.4;cursor:default}
+.aw-seg{display:inline-flex;background:rgba(118,118,128,.24);border-radius:9px;padding:2px}
+.aw-seg label{min-width:96px;height:28px;display:grid;place-items:center;font-size:13px;font-weight:500;border-radius:7px;cursor:pointer;color:var(--l1)}
+.aw-cmp input{display:none}
+.aw-cmp #awv-both:checked~.aw-seg label[for=awv-both],.aw-cmp #awv-base:checked~.aw-seg label[for=awv-base],.aw-cmp #awv-aw:checked~.aw-seg label[for=awv-aw]{background:#636366;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+.aw-cmp .aw-pics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.aw-cmp #awv-base:checked~.aw-pics{grid-template-columns:1fr}.aw-cmp #awv-base:checked~.aw-pics .aw-p-aw{display:none}
+.aw-cmp #awv-aw:checked~.aw-pics{grid-template-columns:1fr}.aw-cmp #awv-aw:checked~.aw-pics .aw-p-base{display:none}
+.aw-pic{position:relative;border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.aw-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.aw-pic span{position:absolute;left:8px;top:8px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);color:#fff}
+.aw-pill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;flex:none}
+.aw-scroll{overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent}
+@keyframes awin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+</style>`
+
+function status(ctx) {
+  const w = ctx?.world; if (!w) return {}
   const places = Object.values(w.places ?? {})
   const has = (s) => String(s ?? '').includes('awakening')
   const marks = places.flatMap((p) => Object.values(p?.terrain?.marks ?? {}))
-  const looks = places.map((p) => p?.atmosphere?.look).filter((l) => has(l?.script))
-  const weather = places.map((p) => p?.state?.weather).find(Boolean)
+  const sw = w.state?.awakening ?? {}
+  const lake = marks.some((m) => m?.kind === 'lake') || sw.squall != null
+  const river = marks.some((m) => m?.kind === 'river')
   return {
-    lighting: has(w.lighting),
-    look: looks.length > 0,
-    storm: looks.some((l) => Number(l?.params?.storm) > 0),
-    lake: marks.some((m) => m?.kind === 'lake' && has(JSON.stringify(m.liquid ?? ''))) || null,
-    river: marks.some((m) => m?.kind === 'river') || null,
-    weather,
+    lighting: has(w.lighting), look: places.some((p) => has(p?.atmosphere?.look?.script)),
+    lake: lake || null, river: river || null, meet: (lake && river) || null,
+    squall: sw.squall ?? null, stormWaves: sw.stormWaves ?? null, storm: sw.storm ?? null,
+    weather: places.map((p) => p?.state?.weather).find(Boolean),
   }
 }
-const pill = (v) => v === true
-  ? '<span class="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 ring-1 ring-emerald-400/30">In use</span>'
-  : v === false ? '<span class="shrink-0 text-[10px] font-medium px-2 py-0.5 rounded-full bg-white/5 text-white/45 ring-1 ring-white/10">Off</span>' : ''
+const pill = (v) => v === true ? '<span class="aw-pill" style="background:rgba(48,209,88,.16);color:#30d158">In use</span>'
+  : v === false ? '<span class="aw-pill" style="background:rgba(118,118,128,.2);color:var(--l2)">Off</span>' : ''
 
-export default function panel(ctx) {
-  const i = info(ctx)
-  const all = GROUPS.flatMap(([, rows]) => rows)
-  const inUse = all.filter((r) => r[4]?.(i) === true).length
-  const section = ([title, rows]) => `
-    <div class="mt-4 mb-1.5 px-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-200/60">${title}</div>
-    <div class="rounded-xl bg-white/[0.04] ring-1 ring-white/10 divide-y divide-white/[0.06] overflow-hidden">
-      ${rows.map(([icon, name, what, ask, st]) => `
-      <details class="group">
-        <summary class="list-none cursor-pointer select-none flex items-center gap-2.5 px-3 py-2.5 hover:bg-white/[0.05] transition-colors">
-          <span class="w-7 h-7 shrink-0 grid place-items-center rounded-lg bg-amber-300/10 text-[15px]">${icon}</span>
-          <span class="flex-1 text-[13px] font-medium text-white/90">${name}</span>
-          ${pill(st ? st(i) : null)}
-          <span class="text-white/30 text-[11px] transition-transform group-open:rotate-90">›</span>
-        </summary>
-        <div class="px-3 pb-3 pl-[52px] text-[12px] leading-relaxed text-white/65">
-          ${what}
-          <div class="mt-2 rounded-lg bg-black/25 ring-1 ring-white/5 px-2.5 py-1.5">
-            <div class="text-[9.5px] uppercase tracking-wider text-white/35">Say to Savi</div>
-            <div class="text-[12px] text-amber-100/90">“${esc(ask)}”</div>
-          </div>
-        </div>
-      </details>`).join('')}
-    </div>`
-  return `<div class="w-full px-3 pt-3 pb-4 text-white" style="font-family:ui-sans-serif,system-ui,sans-serif">
-    <div class="rounded-2xl p-3.5 ring-1 ring-amber-300/20" style="background:linear-gradient(135deg,rgba(217,130,43,.28),rgba(61,34,20,.35))">
-      <div class="flex items-center gap-2">
-        <span class="text-xl">🌅</span>
-        <div class="flex-1">
-          <div class="text-[15px] font-bold text-amber-100 leading-tight">Awakening</div>
-          <div class="text-[11px] text-white/60">High-fidelity look for 3D worlds</div>
-        </div>
-        ${ctx ? `<div class="text-right"><div class="text-[18px] font-bold text-amber-200 leading-none">${inUse}</div><div class="text-[9.5px] text-white/50">in use here</div></div>` : ''}
-      </div>
-      <div class="mt-2.5 text-[11.5px] leading-snug text-white/75">Every piece is optional. Open one to see what it does, then say the line to Savi in chat. She wires it and tunes it to your world.</div>
-      ${i.weather ? `<div class="mt-2.5 inline-flex items-center gap-1.5 rounded-full bg-black/25 px-2.5 py-1 text-[11px] text-white/80">🌦️ Weather now: <b class="text-white">${esc(i.weather)}</b></div>` : ''}
-    </div>
-    ${GROUPS.map(section).join('')}
-    <div class="mt-4 rounded-xl bg-white/[0.03] ring-1 ring-white/10 p-3 text-[11px] leading-relaxed text-white/55">
-      <div class="font-semibold text-white/75 mb-0.5">🖥️ Slower machines</div>
-      Grass thins, clouds become a painted layer, water drops caustics and reflections. Resolution is never lowered to keep up.
-    </div>
-    <div class="mt-2 px-1 text-[10.5px] text-white/35">Anything Savi changes is one version: “undo that” puts it back.</div>
+function switches(ctx, st, page) {
+  const live = ctx?.world?.state?.awakening
+  if (!live || Object.values(live).every((v) => v == null)) return `<div class="aw-cap">World settings</div><div class="aw-group"><div class="aw-row" style="color:var(--l2);font-size:14px">Add an Awakening lake to this world to use its weather switches.</div></div>`
+  return `<div class="aw-cap">World settings</div><div class="aw-group">${SWITCHES.map((s) => {
+    const on = live[s.key] === true, dis = (s.needs && live[s.needs] !== true) || live[s.key] == null
+    return `<div class="aw-row" style="align-items:center"><div style="flex:1;min-width:0"><div style="font-size:15px">${esc(s.label)}</div><div style="font-size:12.5px;color:var(--l2);margin-top:1px">${esc(s.sub)}</div></div>
+      <button role="switch" aria-checked="${on}" aria-label="${esc(s.label)}" class="aw-sw${on ? ' on' : ''}" ${dis ? 'disabled' : `onclick="${A({ op: 'set', key: s.key, on: !on })}"`}></button></div>`
+  }).join('')}</div><div class="aw-foot">Each change is saved as a version, so “undo that” to Savi puts it back. Storm waves, pushing and thunderstorms need squalls on.</div>`
+}
+
+function compare(id) {
+  const s = SHOTS[id] ?? (id === 'overview' ? SHOTS.water : null) // the overview leads with the lake
+  if (!s?.base || !s?.awakening) return `<div class="aw-pic" style="display:grid;place-items:center;color:var(--l3);font-size:13px;margin-top:16px">Comparison pictures are being taken</div>`
+  return `<div class="aw-cmp" style="margin-top:18px">
+    <input type="radio" name="awv-${id}" id="awv-both" checked><input type="radio" name="awv-${id}" id="awv-base"><input type="radio" name="awv-${id}" id="awv-aw">
+    <div class="aw-seg" role="radiogroup" aria-label="Compare"><label for="awv-both">Side by side</label><label for="awv-base">Base Spawn</label><label for="awv-aw">Awakening</label></div>
+    <div class="aw-pics"><div class="aw-pic aw-p-base"><img src="${esc(s.base)}" alt="Base Spawn"><span>Base Spawn</span></div><div class="aw-pic aw-p-aw"><img src="${esc(s.awakening)}" alt="Awakening"><span>Awakening</span></div></div>
+    ${s.note ? `<div class="aw-foot" style="margin-left:4px">${esc(s.note)}</div>` : ''}
   </div>`
+}
+
+function features(pg, st) {
+  return `<div class="aw-cap">Features</div><div class="aw-group">${pg.features.map(([icon, name, what, ask, key]) => `
+    <div class="aw-row"><div class="aw-tile" style="background:${pg.tint}33">${icon}</div>
+      <div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:8px"><div style="font-size:15px;font-weight:600">${esc(name)}</div>${pill(key ? st[key] : null)}</div>
+        <div style="font-size:13.5px;color:var(--l2);line-height:1.4;margin-top:2px">${esc(what)}</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:9px"><button class="aw-ask" onclick="${A({ op: 'ask', page: pg.id, text: ask })}">✦ Ask Savi</button><span style="font-size:12.5px;color:var(--l3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">“${esc(ask)}”</span></div></div></div>`).join('')}</div>`
+}
+
+function overview(ctx, st) {
+  const all = PAGES.flatMap((p) => p.features ?? [])
+  const used = all.filter((f) => f[4] && st[f[4]] === true).length
+  return `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px">
+      ${[[used, 'features in use here'], [all.length, 'features in the mod'], [st.weather ? esc(st.weather) : '—', 'weather right now']].map(([n, l]) => `<div class="aw-group" style="padding:12px 14px"><div style="font-size:22px;font-weight:700">${n}</div><div style="font-size:12px;color:var(--l2)">${l}</div></div>`).join('')}
+    </div>
+    <div class="aw-cap">Pages</div><div class="aw-group">${PAGES.slice(1).map((p) => `<button class="aw-row" style="width:100%;text-align:left;align-items:center" onclick="${A({ op: 'page', page: p.id })}"><div class="aw-tile" style="background:${p.tint}33">${p.icon}</div><div style="flex:1;min-width:0"><div style="font-size:15px">${esc(p.title)}</div><div style="font-size:12.5px;color:var(--l2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(p.blurb)}</div></div><span style="color:var(--l3);font-size:17px">›</span></button>`).join('')}</div>
+    ${switches(ctx, st)}
+    <div class="aw-cap">How to use it</div><div class="aw-group"><div class="aw-row" style="font-size:13.5px;color:var(--l2);line-height:1.45">Open a page, look at the difference, then press <b style="color:var(--l1)">Ask Savi</b> on any feature: the line goes straight to her and she wires and tunes it for your world. Slower machines get lighter grass, painted clouds and simpler water; resolution is never lowered.</div></div>`
+}
+
+function sheet(ctx, player) {
+  const st = status(ctx), id = player.state?.awPage ?? 'overview', pg = PAGES.find((p) => p.id === id) ?? PAGES[0]
+  const fl = player.state?.awFlash, flash = fl && ctx && ctx.now() - fl.at < 4000 ? fl.t : ''
+  return `<div class="aw" data-modal style="position:fixed;left:16px;top:16px;bottom:16px;width:min(calc(50vw - 16px),calc(100vw - var(--spawn-chrome-reservation-right-inset,50px) - 48px));min-width:min(620px,calc(100vw - 32px));z-index:60;display:flex;border-radius:16px;overflow:hidden;background:var(--bg);backdrop-filter:blur(40px) saturate(1.6);-webkit-backdrop-filter:blur(40px) saturate(1.6);box-shadow:0 24px 60px rgba(0,0,0,.5),inset 0 0 0 .5px rgba(255,255,255,.12);pointer-events:auto">
+    <nav class="aw-side aw-scroll" aria-label="Awakening pages" style="width:200px;flex:none;padding:14px 10px;background:rgba(0,0,0,.18);border-right:.5px solid var(--sep)">
+      <div style="display:flex;align-items:center;gap:8px;padding:2px 8px 12px"><span style="font-size:20px">🌅</span><div><div style="font-size:15px;font-weight:700">Awakening</div><div style="font-size:11.5px;color:var(--l2)">Handbook</div></div></div>
+      ${PAGES.map((p) => `<button class="${p.id === pg.id ? 'on' : ''}" aria-current="${p.id === pg.id}" onclick="${A({ op: 'page', page: p.id })}"><span class="aw-tile" style="background:${p.id === pg.id ? 'rgba(255,255,255,.22)' : p.tint + '33'}">${p.icon}</span>${esc(p.title)}</button>`).join('')}
+    </nav>
+    <main class="aw-scroll" style="flex:1;min-width:0;padding:16px 24px 28px">
+      <div style="display:flex;justify-content:flex-end;position:sticky;top:0;z-index:2"><button aria-label="Close" onclick="${A({ op: 'close' })}" style="width:30px;height:30px;border-radius:50%;background:rgba(118,118,128,.28);display:grid;place-items:center;font-size:14px;color:var(--l2)">✕</button></div>
+      <div id="awpg-${pg.id}" style="animation:awin .18s ease-out">
+        <h1 style="font-size:34px;font-weight:700;letter-spacing:.01em;margin:-6px 0 6px">${esc(pg.title)}</h1>
+        <p style="font-size:15px;color:var(--l2);line-height:1.45;margin:0;max-width:62ch">${esc(pg.blurb)}</p>
+        ${compare(pg.id)}
+        ${pg.id === 'overview' ? overview(ctx, st) : features(pg, st) + (pg.id === 'weather' ? switches(ctx, st) : '')}
+      </div>
+    </main>
+    ${flash ? `<div id="awfl-${fl.at}" role="status" style="position:absolute;left:50%;bottom:20px;transform:translateX(-50%);padding:10px 16px;border-radius:999px;background:rgba(58,58,60,.95);font-size:13.5px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.4);animation:awin .2s ease-out">${esc(flash)}</div>` : ''}
+  </div>`
+}
+
+export default function panel(ctx, player) {
+  if (player && !player.isEditor) return ''
+  const st = status(ctx), open = !!player?.state?.awOpen
+  const used = PAGES.flatMap((p) => p.features ?? []).filter((f) => f[4] && st[f[4]] === true).length
+  const launcher = `<div class="aw" style="padding:14px">
+    <div style="display:flex;align-items:center;gap:10px"><span class="aw-tile" style="background:#ff9f0a33;width:34px;height:34px;font-size:18px;border-radius:9px">🌅</span>
+      <div style="flex:1"><div style="font-size:15px;font-weight:700">Awakening</div><div style="font-size:12px;color:var(--l2)">${ctx ? `${used} features in use here` : 'High-fidelity worlds'}</div></div></div>
+    <p style="font-size:13px;color:var(--l2);line-height:1.4;margin:10px 0 12px">Every feature with a real before-and-after, its settings, and one press to ask Savi for it.</p>
+    <button onclick="${A({ op: open ? 'close' : 'open' })}" style="width:100%;height:36px;border-radius:9px;background:var(--blue);color:#fff;font-size:14px;font-weight:600">${open ? 'Close handbook' : 'Open handbook'}</button>
+  </div>`
+  return CSS + launcher + (open && player ? sheet(ctx, player) : '')
 }

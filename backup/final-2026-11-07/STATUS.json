@@ -1,0 +1,217 @@
+{
+  "verifiedAtUTC": "2026-11-09T06:58:34.383339+00:00",
+  "world": "acbda8f4-161f-4a83-bea7-f338a1cfd22a",
+  "sourceCommit": "169180d326f9fdaf949025587afc15409da95f7f",
+  "sourceFiles": 648,
+  "allSourceBlobsVerified": true,
+  "gitBundleVerified": true,
+  "uniqueCapturedAssetFiles": 1632,
+  "capturedAssetBytes": 1203684989,
+  "allCapturedAssetHashesVerified": true,
+  "currentAssetReferences": 1592,
+  "unavailableCurrentReferences": 3,
+  "saveRestoration": [
+    {
+      "database": "dev",
+      "rows": 119,
+      "restorationVerified": true,
+      "capturedAt": "2026-11-09T06:56:07.240955+00:00"
+    },
+    {
+      "database": "live",
+      "rows": 6,
+      "restorationVerified": true,
+      "capturedAt": "2026-11-09T06:56:18.418624+00:00"
+    }
+  ],
+  "archives": [
+    {
+      "file": "database-dev-2026-10-09.json.aesgcm",
+      "bytes": 84080,
+      "sha256": "2a4b96ea9dfd9580154624047f0105d535359f9a99b16b961836351ce2a55d2a"
+    },
+    {
+      "file": "database-live-2026-10-09.json.aesgcm",
+      "bytes": 12014,
+      "sha256": "9806128c3dd6245acc8a825bf09d4aff09412b42b774ee4a4d2047ab66301a28"
+    },
+    {
+      "file": "hosted-assets/database-dev-2026-10-09.json.aesgcm",
+      "bytes": 799695,
+      "sha256": "96ea6d3eee8accfeb91ffccff11b793ea7aecdcbe935edcdb2e6832b7aadd4a4"
+    },
+    {
+      "file": "hosted-assets/database-live-2026-10-09.json.aesgcm",
+      "bytes": 5959,
+      "sha256": "478d366bcd9b267152eceab35411218838428274ae0ab636280de09ab7d66ee7"
+    },
+    {
+      "file": "hosted-assets/release/whispers-databases-and-engine-reference.zip",
+      "bytes": 1717932,
+      "sha256": "4ebd2abe763e63ba5c97526813faebe8aab402b9dadc7c86c15a5d685d497c8a"
+    },
+    {
+      "file": "hosted-assets/release/whispers-engine-reference-and-schema.zip",
+      "bytes": 105679,
+      "sha256": "50b7b1a1d703318a72e1cc98725f2f3804c86a95ff46c6beb46a5512a5ae8a36"
+    },
+    {
+      "file": "hosted-assets/release/whispers-hosted-assets-part-01.zip",
+      "bytes": 514496219,
+      "sha256": "f3ead33c23e70769387676929a7b8c4cf24d7f9075b9425ec06010ce1564b6cc"
+    },
+    {
+      "file": "hosted-assets/release/whispers-hosted-assets-part-02.zip",
+      "bytes": 519253290,
+      "sha256": "d68ff9e0e771a9da3b387a050a97060886cea748e847b87de28b2fee098b406e"
+    },
+    {
+      "file": "hosted-assets/release/whispers-hosted-assets-part-03.zip",
+      "bytes": 99133982,
+      "sha256": "6ea9632ca47d99d826bd45ced96e891b16310b0cf2f7d53a8714cd8f30fbaa50"
+    },
+    {
+      "file": "hosted-assets/release/whispers-local-libraries-part-01.zip",
+      "bytes": 490661566,
+      "sha256": "99cbe1e44b61fca6d22a61d18c78630051d251abceac6ea1b5c82fb29e563a1b"
+    },
+    {
+      "file": "hosted-assets/release/whispers-local-libraries-part-02.zip",
+      "bytes": 526384200,
+      "sha256": "a2c7b13ded0397dd2da0641770dda6eb86c099251d2f7c02f29f96c6bdb42c72"
+    },
+    {
+      "file": "hosted-assets/release/whispers-local-libraries-part-03.zip",
+      "bytes": 427572776,
+      "sha256": "0698d1f091b26d271f39de6dcd5e5baad994d81b0ed44d7bf9fbadb0cac1e7d1"
+    },
+    {
+      "file": "hosted-assets/release/whispers-local-libraries-part-04.zip",
+      "bytes": 35547517,
+      "sha256": "1691a5253c32c2f765a61311f3f2dafbe89f13dea33ce7e9ee9cf4e2a9c6d8fc"
+    },
+    {
+      "file": "hosted-assets/release/whispers-source-and-notes-2026-10-09.bundle",
+      "bytes": 28170725,
+      "sha256": "7a3c3516c8ddcb0870363d5ac6755992ec10b55ab8d933f1bceb29da3dc78205"
+    },
+    {
+      "file": "hosted-assets/release/whispers-source-and-notes-2026-10-09.bundle.aesgcm",
+      "bytes": 28170761,
+      "sha256": "e2a8f8690f2fba852fcb7173541989b42522a4fa7f9e723cd3dafafa07117f03"
+    },
+    {
+      "file": "hosted-assets/release/whispers-source-main-2026-10-09.bundle",
+      "bytes": 15383973,
+      "sha256": "dd2326101130c48cd9dba48d416b5efca632370ee9a956aed24f5474ca78ebe0"
+    },
+    {
+      "file": "source-all-refs.bundle",
+      "bytes": 26285373,
+      "sha256": "081197aacb66428ac859f979ad95e24de29774e50565f06994c596175e184637"
+    },
+    {
+      "file": "source-and-notes-rechecked.bundle",
+      "bytes": 25223900,
+      "sha256": "9ad9a12b1d0b449b02b4fc44086e347edcb98067724030d5e7ca64a0095d6e69"
+    },
+    {
+      "file": "source-current.zip",
+      "bytes": 2212706,
+      "sha256": "6863b36751e03b715b38cdd24cb338d0d22dab924acfe58001068fa33e8f8d00"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE 3D ASSETS/KayKit_FantasyWeaponsBits_1.0_FREE.zip",
+      "bytes": 3375694,
+      "sha256": "1017144f85a994f405b731befa71ced360f5b60ed0b9c00c72e711c1633ce2d2"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE 3D ASSETS/KayKit_RPGToolsBits_1.0_FREE.zip",
+      "bytes": 3885168,
+      "sha256": "a17c2a54df93d525e90d960baf3c68638defb4f424e204ceead6ea1f89e9c7dd"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE 3D ASSETS/Medieval Village MegaKit[Standard].zip",
+      "bytes": 161003471,
+      "sha256": "e60dea67c10f30dccccfbff92a7933f5ea5cfe99be0e2a0fa5118cceabeec5c4"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE 3D ASSETS/Modular Character Outfits - Fantasy[Standard].zip",
+      "bytes": 294347394,
+      "sha256": "c3468b18871cc8c8f05ab14df7712baf22cb9f389cbd870babf130e595187f70"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE 3D ASSETS/Stylized Nature MegaKit[Standard].zip",
+      "bytes": 104088529,
+      "sha256": "298f6732b872e4cf7b30e6e7abf9641c7f6dc6b326df37ac089533ed7e3d58c9"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE 3D ASSETS/Universal Animation Library 2[Standard].zip",
+      "bytes": 18735003,
+      "sha256": "4008ea208a604773a2b2177d965f0f5d3195498b5bf838c3f5785d68e95f2a68"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE 3D ASSETS/Universal Animation Library[Standard].zip",
+      "bytes": 15904933,
+      "sha256": "cc73fc4e495b82958207316596317a3f40b9fa38065bde1027937452da537724"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE SOUND ASSETS/kenney_interface-sounds.zip",
+      "bytes": 834536,
+      "sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE SOUND ASSETS/kenney_rpg-audio.zip",
+      "bytes": 964837,
+      "sha256": "6dbeaf8544da958d8f2adcb4a4a4b76c1ade34a05f8ab9edccd327da7375f38b"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE UI ASSETS/fantasy_rpg_icons.zip",
+      "bytes": 1039243,
+      "sha256": "d7e8e4d41dbf6b5c3d2de0f9eee74674488728e1bf9e551861cddb1d74a0b624"
+    },
+    {
+      "file": "supplied-design-and-assets/asset-library/FREE UI ASSETS/kenney_fantasy-ui-borders.zip",
+      "bytes": 358780,
+      "sha256": "59532da3bd61195a425585455b40baa6cbf1eda8227c42adcef31a535a737769"
+    },
+    {
+      "file": "supplied-design-and-assets/design-library/WHISPERS Complete_MMO_Story_Quest_Maps_Guide.zip",
+      "bytes": 45032616,
+      "sha256": "336ff4850534a5846217d43b85e8d59368b27d1936027cdabb3c0d10b913ce7b"
+    },
+    {
+      "file": "supplied-design-and-assets/design-library/WHISPERS_Realms_of_the_Nine_Spawn_Complete_Development_Kit.zip",
+      "bytes": 512060,
+      "sha256": "761104268f6eeeb6620956bc1aa0393a63b24be1f6273383c92c9db72da42a47"
+    }
+  ],
+  "limitations": [
+    "Unresolved asset references listed separately; no claim of full asset coverage.",
+    "Runtime-generated or constructed paths may require additional inventory.",
+    "Spawn managed platform internals and engine/services are not included as exportable game files.",
+    "Save reads are sequential, not atomic."
+  ],
+  "status": "verified-capture-with-one-unavailable-uploaded-font",
+  "backupRoot": "F:\\Codex\\Final-Game-Backup-2026-11-07",
+  "sourceBytes": 7127235,
+  "extractedLibraryFiles": 2834,
+  "extractedLibraryBytes": 1639835923,
+  "allExtractedLibraryHashesVerified": true,
+  "currentUniqueAssets": 1579,
+  "currentAssetBytes": 1153068219,
+  "unavailableRuntimeReferences": [
+    "/cdn/value.09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370.woff2"
+  ],
+  "illustrativePlaceholders": [
+    "/cdn/....glb",
+    "/cdn/...png"
+  ],
+  "globalWorkspaceCopyOwnedBy": "Central migration chat; outside this game audit",
+  "originalsDeleted": false,
+  "readyForReset": false,
+  "requiredHumanReconnects": [
+    "Reauthenticate Spawn and GitHub after Windows reset; DPAPI credentials depend on original Windows keys. Use existing accounts."
+  ],
+  "portableRecoveryKey": "PRIVATE-recovery-key.txt; owner-private SSD copy, never uploaded"
+}
